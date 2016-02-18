@@ -79,13 +79,11 @@ categories: Linux
 	范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
 	不用再开新的窗口
 	
-{% highlight bash linenos %}
-screen -S yourname //创建一个名为yourname的虚拟链接
-jekyll serve //在yourname中启动一个jekyll
-ctrl+a,d //保存并返回
-screen -ls //查看所有的screen
-screen -r yourname //返回该screen
-{% endhighlight %}
+	screen -S yourname //创建一个名为yourname的虚拟链接
+	jekyll serve //在yourname中启动一个jekyll
+	ctrl+a,d //保存并返回
+	screen -ls //查看所有的screen
+	screen -r yourname //返回该screen
 
 ![screen]({{site.baseurl}}/pics/screen.png)
 

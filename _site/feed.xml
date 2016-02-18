@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 18 Feb 2016 21:56:40 +0800</pubDate>
-    <lastBuildDate>Thu, 18 Feb 2016 21:56:40 +0800</lastBuildDate>
+    <pubDate>Thu, 18 Feb 2016 22:02:26 +0800</pubDate>
+    <lastBuildDate>Thu, 18 Feb 2016 22:02:26 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -83,29 +83,31 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;以一段Git代码提交脚本为例：&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 添加目录下所有文件&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; git add . 
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;date +%Y-%m-%d-%H-%M&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# getopts命令可获取输入的参数，如m:则表示检查&amp;#39;-m&amp;#39;的参数输入，并将参数名存入opt中。&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;getopts &lt;/span&gt;m: opt
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$opt&lt;/span&gt; in
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;         m&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;            &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$OPTARG&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;            &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;         ?&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Usage: args [-m]&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;-m means message&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;exit&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;            &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# git提交message信息&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; git commit -m &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt; git push origin gh-pages&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;# 添加目录下所有文件
+git add . 
+# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
+message=`date +%Y-%m-%d-%H-%M`
+# getopts命令可获取输入的参数，如m:则表示检查&#39;-m&#39;的参数输入，并将参数名存入opt中。
+# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
+
+while getopts m: opt
+do
+case $opt in
+     m)
+       message=$OPTARG
+       ;;
+     ?)
+       echo &quot;Usage: args [-m]&quot;
+       echo &quot;-m means message&quot;
+       echo &quot;exit&quot;
+       exit
+       ;;
+esac
+done
+# git提交message信息
+git commit -m $message
+git push origin gh-pages
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Git代码提交脚本执行效果截图：&lt;/p&gt;
 
@@ -645,13 +647,13 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 &lt;pre&gt;&lt;code&gt;范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
 不用再开新的窗口
-&lt;/code&gt;&lt;/pre&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; screen -S yourname //创建一个名为yourname的虚拟链接
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; jekyll serve //在yourname中启动一个jekyll
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; ctrl+a,d //保存并返回
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; screen -ls //查看所有的screen
-&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; screen -r yourname //返回该screen&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+screen -S yourname //创建一个名为yourname的虚拟链接
+jekyll serve //在yourname中启动一个jekyll
+ctrl+a,d //保存并返回
+screen -ls //查看所有的screen
+screen -r yourname //返回该screen
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/screen.png&quot; alt=&quot;screen&quot; /&gt;&lt;/p&gt;
 
