@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>黄欢的博客</title>
+    <description>黄欢的博客：程序，读书，电影</description>
+    <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
+    <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 18 Feb 2016 21:38:36 +0800</pubDate>
+    <lastBuildDate>Thu, 18 Feb 2016 21:38:36 +0800</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Five</title>
+        <description>&lt;h3 id=&quot;linux-debian&quot;&gt;Linux命令(系统 Debian)&lt;/h3&gt;
+
+&lt;h2 id=&quot;ps&quot;&gt;1. ps命令&lt;/h2&gt;
+
+&lt;p&gt;ps命令用来在Linux系统中显示进程的状态快照，其参数选项可谓非常之多。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 ps [option]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有用户的进程&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-x&lt;/code&gt; 显示没有控制终端的进程&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 按照用户名称查询进程&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 列出全部信息，常和其它选项联用&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-j&lt;/code&gt; 用任务格式来显示进程&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-e&lt;/code&gt; 显示所有进程&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;ps -ef&lt;/code&gt; 用标准格式显示所有进程&lt;br /&gt;
+显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/ps_ef.png&quot; alt=&quot;ps_ef&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code&gt;ps aux&lt;/code&gt;&lt;br /&gt;
+显示的项目有：USER, PID, %CPU, %MEM, VSZ(虚拟内存量KB), RSS(固定内存量), TTY(进程所运行在的终端机), STAT, START, TIME, COMMAND&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/ps_aux.png&quot; alt=&quot;ps_aux&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tmuxmac-osx&quot;&gt;2. tmux命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;tmux(Terminal Multiplexer)命令是一个颇为炫酷的命令，其特点与screen命令类似。tmux通过开出窗口，分拆面板，接管和分离会话，能够让使用者在一个窗口内同时进行多项操作。&lt;br /&gt;
+tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 tmux [option]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;tmux new -s sessionName&lt;/code&gt; 创建新的session会话&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;tmux attach -t sessionName&lt;/code&gt; 重新连接上某一个session&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;tmux kill-session -t sessionName&lt;/code&gt; 杀死某个session&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;tmux ls&lt;/code&gt; 显示所有会话&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;tmux new -s mySession&lt;/code&gt; 创建一个名为mySession的会话&lt;br /&gt;
+输入&lt;code&gt;CTRL+b d&lt;/code&gt;将从此会话脱离，如果要重新连接，则使用&lt;code&gt;tmux attach -t mySession&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_mySession.png&quot; alt=&quot;tmux_new&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：在范例一的mySession中按下&lt;code&gt;CTRL+b c&lt;/code&gt;则会在mySession中创建一个新的窗口&lt;br /&gt;
+可以通过&lt;code&gt;CTRL+b w&lt;/code&gt;来查看窗口列表，&lt;code&gt;CTRL+b &amp;lt;窗口号&amp;gt;&lt;/code&gt;来切换窗口&lt;br /&gt;
+&lt;code&gt;CTRL+b f&lt;/code&gt;来查找窗口，&lt;code&gt;exit&lt;/code&gt;来退出窗口&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_windows.png&quot; alt=&quot;tmux_multiple&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;为了便于穿窗口的识别，还可以通过&lt;code&gt;CTRL+b ,&lt;/code&gt;来重命名窗口&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_rename.png&quot; alt=&quot;tmux_rename&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：tmux还支持把窗口分割成多个面板，&lt;code&gt;CTRL+b &quot;&lt;/code&gt;为水平分割，&lt;code&gt;CTRL+b %&lt;/code&gt;为垂直分割&lt;br /&gt;
+通过&lt;code&gt;CTRL+b &amp;lt;光标键&amp;gt;&lt;/code&gt;来进行窗口移动&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_panes.png&quot; alt=&quot;tmux_panes&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Feb 2016 10:10:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Shell脚本学习</title>
+        <description>&lt;h2 id=&quot;mac&quot;&gt;范例代码(Mac下)&lt;/h2&gt;
+
+&lt;p&gt;以一段Git代码提交脚本为例：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 添加目录下所有文件&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; git add . 
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;date +%Y-%m-%d-%H-%M&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# getopts命令可获取输入的参数，如m:则表示检查&amp;#39;-m&amp;#39;的参数输入，并将参数名存入opt中。&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;getopts &lt;/span&gt;m: opt
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$opt&lt;/span&gt; in
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;         m&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;            &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$OPTARG&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;            &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;         ?&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Usage: args [-m]&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;-m means message&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;exit&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;            &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;            &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# git提交message信息&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; git commit -m &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt; git push origin gh-pages&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Git代码提交脚本执行效果截图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To be continued&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 13 Feb 2016 23:49:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
+        
+        
+        <category>Shell</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Four</title>
+        <description>&lt;h3 id=&quot;linux-debian&quot;&gt;Linux命令(系统 Debian)&lt;/h3&gt;
+
+&lt;h2 id=&quot;sort&quot;&gt;1. sort命令&lt;/h2&gt;
+
+&lt;p&gt;sort命令用于对文本进行排序，并将结果输出。其以文本的每一行为单位，从首字符向后，依次按照ascii码值进行比较，最后升序排列。（默认是忽略每行前面空格的）&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 sort [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 忽略重复行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 按照数字大小排序&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 逆序&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-k start,end&lt;/code&gt;start为比较的起始位置，end为结束位置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;sort sort.txt&lt;/code&gt; 排序&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sort.png&quot; alt=&quot;sort&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;br /&gt;
+1. &lt;code&gt;sort -nk 2 -t - sort.txt&lt;/code&gt; 以&lt;code&gt;-&lt;/code&gt;进行分割，对分割后的第二个域进行排序；&lt;br /&gt;
+2. &lt;code&gt;sort -nrk 2 -t - sort.txt&lt;/code&gt; 逆序排序&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sort_t.png&quot; alt=&quot;sort_t&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：&lt;code&gt;sort -t - -k 1.7 -nk 3,3 sort_k.txt&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;-k start,end&lt;/code&gt;中end可以省略，上面的&lt;code&gt;1.7&lt;/code&gt;表示分割后第一个域的第7个字符，由于没有&lt;code&gt;end&lt;/code&gt;，则表示对第一个域中第7字符及其之后的字符排序。而&lt;code&gt;3,3&lt;/code&gt;则表示在前面排序的基础上，再对第三个域进行排序。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sort_k.png&quot; alt=&quot;sort_k&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;netstat&quot;&gt;2. netstat命令&lt;/h2&gt;
+
+&lt;p&gt;netstat用于输出linux系统的网络情况信息，以前面试的时候还被问过：“如何查看占用某个端口的程序的pid?”，这个问题实际用&lt;code&gt;netstat -anp&lt;/code&gt;输出，然后再grep一下即可。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 netstat [option]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有socket连接&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-l&lt;/code&gt; 显示监控中(listening)的socket连接&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 直接使用ip地址，而不使用域名服务器&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-p&lt;/code&gt; 显示正在使用socket的程序的pid和名称&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 打印路由表&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 显示TCP传输协议的连线状况&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 显示UDP传输协议的连线状况&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-s&lt;/code&gt; 显示网络工作信息统计表&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;netstat -anp&lt;/code&gt;
+显示程序的pid和名称&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/netstat_anp.png&quot; alt=&quot;netstat 端口&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code&gt;netstat -r&lt;/code&gt;
+输出本机路由表&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/netstat_r.png&quot; alt=&quot;netstat 路由表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：&lt;code&gt;netstat -lts&lt;/code&gt;
+输出监听状态中的tcp协议统计信息&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/netstat_lts.png&quot; alt=&quot;netstat tcp统计&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;more&quot;&gt;3. more命令&lt;/h2&gt;
+
+&lt;p&gt;more命令用于显示文件的内容，与cat和tail等命令不同的是，more命令是按页显示文件内容，同时具有搜寻字符串的功能。（由于more具有向前翻页功能，因此该命令会加载整个文件）&lt;/p&gt;
+
+&lt;h4&gt;&lt;b&gt;基本格式 more [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;+n&lt;/code&gt; 从第n行开始显示&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 定义屏幕大小为n行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;+/pattern&lt;/code&gt; 再显示前按pattern匹配子串并显示&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;-s&lt;/code&gt; 把连续的多个空行显示为一行&lt;/p&gt;
+
+    &lt;p&gt;常用操作命令：&lt;/p&gt;
+    &lt;ul&gt;
+  &lt;li&gt;Enter 向下n行，默认为1行&lt;/li&gt;
+  &lt;li&gt;Ctrl+F 跳过一屏&lt;/li&gt;
+  &lt;li&gt;Ctrl+B 返回上一屏&lt;/li&gt;
+  &lt;li&gt;空格键 向下滚动一屏&lt;/li&gt;
+  &lt;li&gt;= 输出当前行的行号&lt;/li&gt;
+  &lt;li&gt;在more模式中回车，输入&lt;code&gt;/pattern&lt;/code&gt;可以持续向下搜索&lt;/li&gt;&lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;more +/Deploy catalina.out&lt;/code&gt;&lt;br /&gt;
+在catalina.out文件中查找“Deploy字符第一次出现的位置”，并从该处的前两行开始显示输出&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/more_+.png&quot; alt=&quot;more 搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code&gt;more +10 -10 catalina.out&lt;/code&gt;&lt;br /&gt;
+从第10行开始，每页10行&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/more_+_-.png&quot; alt=&quot;more 参数&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;less&quot;&gt;4. less命令&lt;/h2&gt;
+
+&lt;p&gt;less命令与more命令对应，既可以前后翻看文件，同时还有前后搜索功能，除此之外，less在查看前不会加载整个文件。&lt;/p&gt;
+
+&lt;h4&gt;&lt;b&gt;基本格式 less [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;－N&lt;/code&gt; 显示每行的行号&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-i&lt;/code&gt; 忽略搜索时的大小写&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-s&lt;/code&gt; 将连续空行显示为一行&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;-m&lt;/code&gt; 显示百分比&lt;/p&gt;
+
+    &lt;p&gt;常用操作命令：&lt;/p&gt;
+    &lt;ul&gt;
+  &lt;li&gt;/字符串 向下搜索“字符串”功能&lt;/li&gt;
+  &lt;li&gt;?字符串 向上搜索“字符串”功能&lt;/li&gt;
+  &lt;li&gt;n 重复前一个搜索&lt;/li&gt;
+  &lt;li&gt;空格键 滚动一页&lt;/li&gt;
+  &lt;li&gt;d 滚动半页&lt;/li&gt;
+  &lt;li&gt;b 回溯一页&lt;/li&gt;
+  &lt;li&gt;y 回溯一行&lt;/li&gt;
+  &lt;li&gt;q 退出less命令&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;less -Nm catalina.out&lt;/code&gt;&lt;br /&gt;
+显示行号和百分比&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/less_Nm.png&quot; alt=&quot;less 行号百分比&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code&gt;/detail&lt;/code&gt;或者&lt;code&gt;?detail&lt;/code&gt;
+向前向后搜索”detail”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/less_search.png&quot; alt=&quot;less 搜索&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 11 Feb 2016 19:55:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>读书笔记</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年 黄仁宇著&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
+
+&lt;p&gt;万历十五年即为1587年，作者认为这一年为明朝历史的转折点，这个帝国从此走向灭亡。而我对本书的理解是，其作为转折点的原因有二：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;万历皇帝的怠政&lt;/li&gt;
+  &lt;li&gt;国家的积弊：长期的以道德代替法律治理国家，以及文官治国发展到了一个顶峰，国家的体制已经凝固，难以改革。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。&lt;/p&gt;
+
+&lt;p&gt;To be continued&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 Feb 2016 21:56:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
+    
+      <item>
+        <title>程序小事</title>
+        <description>&lt;h2 id=&quot;jekyllgithub-pages&quot;&gt;1. jekyll博客发布到github pages问题&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;时间：2016年2月8日 晚&lt;/li&gt;
+  &lt;li&gt;问题回放：在本地发布无问题的jekyll博客，在&lt;code&gt;push&lt;/code&gt;到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。&lt;/li&gt;
+  &lt;li&gt;问题分析：目前还没有找到发生该问题的原因，不知道是否是因为github pages本身有这样的设置，正在调查中。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;jekyll博客的搭建和发布可参考:&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&quot;&gt;阮一峰的博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2. 需要为工作准备的技能树&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;redis&lt;/li&gt;
+  &lt;li&gt;zookeeper&lt;/li&gt;
+  &lt;li&gt;spring(需要进阶)&lt;/li&gt;
+  &lt;li&gt;rest&lt;/li&gt;
+  &lt;li&gt;数据库(从mysql入手)&lt;/li&gt;
+  &lt;li&gt;脚本&lt;/li&gt;
+  &lt;li&gt;算法(需要进阶)&lt;/li&gt;
+  &lt;li&gt;网络&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;3. 关于希望今后达到的一个工作状态&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在工作中游刃有余，同时保持对新技术的兴趣和尝试，参与到产品的设计和策划中。&lt;/li&gt;
+  &lt;li&gt;未来事不可预知，不要过多的担忧，多思无益&lt;/li&gt;
+  &lt;li&gt;不可能每次遇到问题都已做好准备，要冷静的去思考解决之法&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 08 Feb 2016 17:35:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
+        
+        
+        <category>Develop</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Three</title>
+        <description>&lt;h3 id=&quot;linux-debian&quot;&gt;Linux命令(系统 Debian)&lt;/h3&gt;
+
+&lt;h2 id=&quot;tail&quot;&gt;1. tail命令&lt;/h2&gt;
+
+&lt;p&gt;文本查看命令，可以看文本的最后几行。tail命令的优点在于其内容能够与输入同步更新，非常适用于查看实时日志。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 tail [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-n number&lt;/code&gt; 定位参数，+5表示从第五行开始显示，10或-10表示显示最后10行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 监控文本变化，更新内容&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-k number&lt;/code&gt; 从number所指的KB处开始读取&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;tail -n -5 catalina.out&lt;/code&gt;
+输出最后5行&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tail_n.png&quot; alt=&quot;tail_n&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code&gt;tail -f catalina.out&lt;/code&gt;
+监听catalina.out最后行的变化并显示&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tail_f.png&quot; alt=&quot;tail_f&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;head&quot;&gt;2. head命令&lt;/h2&gt;
+
+&lt;p&gt;该命令与tail命令类似，默认显示文件前两行的内容&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 head [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-n number&lt;/code&gt; 显示前几行,-5表示文件中除了最后5行之外的所有内容&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-c number&lt;/code&gt; 显示前几个字节&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;head -n 5 server.xml&lt;/code&gt;和&lt;code&gt;head -n －5 server.xml&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/head_n.png&quot; alt=&quot;head_n&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;du&quot;&gt;3. du命令&lt;/h2&gt;
+
+&lt;p&gt;该命令用于查看系统中文件和目录所占用的空间&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 du [option] [name]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-h&lt;/code&gt; 用human readable的方式显示&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;--max-depth=number&lt;/code&gt; 最大的查询层次&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有文件的大小，默认只显示目录的大小&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;du -h&lt;/code&gt; 显示目录下所有文件夹的大小&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/du.png&quot; alt=&quot;du&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code&gt;du -h catalina.out&lt;/code&gt;和&lt;code&gt;du -h ../logs&lt;/code&gt; 显示文件或目录的大小&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/du_name.png&quot; alt=&quot;du_name&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：&lt;code&gt;du -ah --max-depth=1&lt;/code&gt;显示递归的层次为1，显示所有文件和文件夹大小&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/du_max_depth.png&quot; alt=&quot;du_max_depth&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;whichwhereis&quot;&gt;4. which命令和whereis命令&lt;/h2&gt;
+
+&lt;p&gt;which命令的作用是在PATH变量制定的路径中，查找系统命令的位置。&lt;br /&gt;
+whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man说明文件，源代码文件｝。whereis的查询时通过查询系统的数据库文件记录，所以速度比find更快，但由于数据库的更新频率较为缓慢，其结果与实际状况并不一定一致。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-m&lt;/code&gt; 只查找说明文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-b&lt;/code&gt; 只查找二进制文件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：which命令&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/which.png&quot; alt=&quot;which&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：whereis命令&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/whereis.png&quot; alt=&quot;whereis&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 07 Feb 2016 21:19:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Two</title>
+        <description>&lt;h3 id=&quot;linuxunixmac-os&quot;&gt;Linux&amp;amp;Unix通用命令(系统Mac OS)&lt;/h3&gt;
+&lt;p&gt;1. find命令&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;文件查找命令,find命令将递归的搜索目录下符合要求的所有文件&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;h4&gt;&lt;b&gt;基本格式 find [path] [option] [expression]&lt;/b&gt;&lt;/h4&gt;
+    &lt;p&gt;-name 查找名为filename的文件&lt;br /&gt;
+-perm 查找符合执行权限
+-user 按照文件的所属主查找&lt;br /&gt;
+-mtime -n +n 按照文件的更改时间查找文件，n代表天数&lt;br /&gt;
+-ctime -n +n 按照创建时间查找&lt;br /&gt;
+-newer f1 !f2 查更改时间在f1和f2之间的文件    &lt;br /&gt;
+-size n 查找长度为n块的文件，一块为512 bytes&lt;br /&gt;
+-depth 使得查找在进入子目录前先行查找完本目录&lt;br /&gt;
+-prune 查找时忽略某个目录&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;范例一：find ~ -name &#39;*.yml&#39; | grep &#39;\.yml&#39; --color=always
+在用户目录下查找文件名后缀为.yml的文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/find_name.png&quot; alt=&quot;按照文件名查找&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例二：find . -perm 644
+查找当前目录下权限为644的所有文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/find_perm.png&quot; alt=&quot;按照权限的搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例三：find . -path &#39;./_site*&#39; -a -prune -o -name &#39;feed.xml&#39; -print
+整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
+-a -o实际为逻辑与和逻辑或，当路径匹配时将执行-prune，那么将不会查找匹配路径中的文件，
+当路径不匹配时则不执行-prune，-o后的语句始终执行。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/find_prune.png&quot; alt=&quot;忽略一些文件夹搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例四：find . -maxdepth 2 -size 3
+控制查找的深度
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/find_depth.png&quot; alt=&quot;限制搜索深度&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;补充：Linux的权限模式为三元组“owner”，“group”，“other”,权限对应表如下&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rwx&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;-wx&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rw-&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;-w-&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;r-x&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;--x&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;r--&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;---&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;2. wc命令&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;用于统计输入中的字节数，字数，行数并输出&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;h4&gt;&lt;b&gt;基本格式 wc [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+    &lt;p&gt;-c 统计字节数&lt;br /&gt;
+-l 统计行数&lt;br /&gt;
+-m 统计字符数&lt;br /&gt;
+-w 统计字数，一个字为由空白，跳格或换行字符分隔的字符串&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;范例一：wc -l _config.yml
+统计行数，-c实际上可以查看文件的大小
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/wc.png&quot; alt=&quot;统计&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3. cat命令&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;连结命令(Concatenation)，连结多个文本，或者以标准输出形式打印文件的内容&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;h4&gt;&lt;b&gt;基本格式 cat [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+    &lt;p&gt;-n 队输出的所有行编号&lt;br /&gt;
+-b 与-n类似，但空行不编号&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;范例一：cat -b testColumn(cat -n testColumn)
+显示文件内容
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cat_b_n.png&quot; alt=&quot;显示文件内容到控制台&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例二：cat testColumn testCat
+同时显示两个文件内容
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cat_mul.png&quot; alt=&quot;显示两个文件&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例三：cat testColumn testCat&amp;gt;merge
+将两个内容连结并输出到一个文件中，&amp;gt;为重新创建，&amp;gt;&amp;gt;为追加
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cat_merge.png&quot; alt=&quot;连结并输出&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Feb 2016 16:50:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux命令学习的日常 Part One</title>
+        <description>&lt;h3 id=&quot;linuxunixmac-os&quot;&gt;Linux&amp;amp;Unix通用命令(系统Mac OS)&lt;/h3&gt;
+&lt;p&gt;1. grep命令&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;文本查找命令, 能够使用正则表达式的方式搜索文本，其搜索对象可以是单个或则多个文件&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;h4&gt;&lt;b&gt;基本格式 grep [option] [regex] [path]&lt;/b&gt;&lt;/h4&gt;
+    &lt;p&gt;-c 只输出匹配行的数目&lt;br /&gt;
+-n 显示匹配行的行号&lt;br /&gt;
+-v 显示不包含匹配文本的行&lt;br /&gt;
+-i 不区分大小写 (grep是大小写敏感的)&lt;br /&gt;
+-R 文件夹下递归搜索&lt;br /&gt;
+-l 只显示匹配的文件名  &lt;br /&gt;
+-H 显示文件名&lt;br /&gt;
+-A NUM(after)显示匹配的后几行&lt;br /&gt;
+-B NUM(before)显示匹配的前几行&lt;br /&gt;
+-C NUM显示匹配的前后几行  &lt;br /&gt;
+–color 标出颜色&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;范例一：man grep | grep --color=always -n search
+带颜色的文本搜索，并同时输出行号
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/grep_color_n.png&quot; alt=&quot;带颜色的搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例二：man grep | grep --color=always -n &#39;\&amp;lt;search\&amp;gt;&#39;
+正则表达式模式的搜索
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/grep_color_n_regex.png&quot; alt=&quot;正则表达式的搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例三：grep -nR --color=always  a ./*.yml
+在文件夹下的yml文件中搜索，并标注行号和对应行
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/grep_dir.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例四：grep -lR a ./*.yml
+在文件夹下的yml文件中搜索，但只输出匹配的文件名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/grep_dir_only.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2. ls命令&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ls是命令行中用的最多的命令之一了，用于显示目录下的文件&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;h4&gt;&lt;b&gt;基本格式 ls [option]&lt;/b&gt;&lt;/h4&gt;
+    &lt;p&gt;-a 列出所有文件，包括’.’开头的隐藏文件&lt;br /&gt;
+-h 使打印结果易于使用者查看(human readable)&lt;br /&gt;
+-l 列出文件的详细信息：创建者，创建时间，读写权限等&lt;br /&gt;
+-s 显示文件大小&lt;br /&gt;
+-t 按时间进行文件的排序&lt;br /&gt;
+-S 以大小进行排序&lt;br /&gt;
+-r 当前条件逆序&lt;br /&gt;
+-L 显示文件链接名&lt;br /&gt;
+-R 将目录中所有文件都递归显示出来&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;范例一：ls -lharts
+输出文件信息，并时间从旧到新排列
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/ls_r_t.png&quot; alt=&quot;详细信息&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例二：ls -R
+递归输出目录下的所有文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/ls_R.png&quot; alt=&quot;ls递归&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3. 有趣的命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例一：cal -j 2 2016
+显示2016年2月份的日历，标注当天为一年中的第几天
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cal.png&quot; alt=&quot;cal&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
+不用再开新的窗口
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;S&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yourname&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//创建一个名为yourname的虚拟链接&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serve&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//在yourname中启动一个jekyll&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//保存并返回&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//查看所有的screen&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yourname&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//返回该screen&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/screen.png&quot; alt=&quot;screen&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/column.png&quot; alt=&quot;column&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例四：file命令可以查看对象类型
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/file.png&quot; alt=&quot;file&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;范例五：xargs命令的作用时将参数分段传输给其它命令
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/xargs.png&quot; alt=&quot;xargs&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 01 Feb 2016 12:00:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+  </channel>
+</rss>
