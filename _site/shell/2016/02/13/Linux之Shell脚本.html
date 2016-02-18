@@ -102,29 +102,52 @@
 
 <p>以一段Git代码提交脚本为例：</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno"> 1</span> <span class="c"># 添加目录下所有文件</span>
-<span class="lineno"> 2</span> git add . 
-<span class="lineno"> 3</span> <span class="c"># message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。</span>
-<span class="lineno"> 4</span> <span class="nv">message</span><span class="o">=</span><span class="sb">`</span>date +%Y-%m-%d-%H-%M<span class="sb">`</span>
-<span class="lineno"> 5</span> <span class="c"># getopts命令可获取输入的参数，如m:则表示检查&#39;-m&#39;的参数输入，并将参数名存入opt中。</span>
-<span class="lineno"> 6</span> <span class="c"># 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。</span>
-<span class="lineno"> 7</span> <span class="k">while</span> <span class="nb">getopts </span>m: opt
-<span class="lineno"> 8</span> <span class="k">do</span>
-<span class="lineno"> 9</span>    <span class="k">case</span> <span class="nv">$opt</span> in
-<span class="lineno">10</span>         m<span class="o">)</span>
-<span class="lineno">11</span>            <span class="nv">message</span><span class="o">=</span><span class="nv">$OPTARG</span>
-<span class="lineno">12</span>            <span class="p">;;</span>
-<span class="lineno">13</span>         ?<span class="o">)</span>
-<span class="lineno">14</span>            <span class="nb">echo</span> <span class="s2">&quot;Usage: args [-m]&quot;</span>
-<span class="lineno">15</span>            <span class="nb">echo</span> <span class="s2">&quot;-m means message&quot;</span>
-<span class="lineno">16</span>            <span class="nb">echo</span> <span class="s2">&quot;exit&quot;</span>
-<span class="lineno">17</span>            <span class="nb">exit</span>
-<span class="lineno">18</span>            <span class="p">;;</span>
-<span class="lineno">19</span>    <span class="k">esac</span>
-<span class="lineno">20</span> <span class="k">done</span>
-<span class="lineno">21</span> <span class="c"># git提交message信息</span>
-<span class="lineno">22</span> git commit -m <span class="nv">$message</span>
-<span class="lineno">23</span> git push origin gh-pages</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="c"># 添加目录下所有文件</span>
+git add . 
+<span class="c"># message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。</span>
+<span class="nv">message</span><span class="o">=</span><span class="sb">`</span>date +%Y-%m-%d-%H-%M<span class="sb">`</span>
+<span class="c"># getopts命令可获取输入的参数，如m:则表示检查'-m'的参数输入，并将参数名存入opt中。</span>
+<span class="c"># 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。</span>
+<span class="k">while </span><span class="nb">getopts </span>m: opt
+<span class="k">do
+   case</span> <span class="nv">$opt</span> <span class="k">in
+        </span>m<span class="p">)</span>
+           <span class="nv">message</span><span class="o">=</span><span class="nv">$OPTARG</span>
+           <span class="p">;;</span>
+        ?<span class="p">)</span>
+           <span class="nb">echo</span> <span class="s2">"Usage: args [-m]"</span>
+           <span class="nb">echo</span> <span class="s2">"-m means message"</span>
+           <span class="nb">echo</span> <span class="s2">"exit"</span>
+           <span class="nb">exit</span>
+           <span class="p">;;</span>
+   <span class="k">esac</span>
+<span class="k">done</span>
+<span class="c"># git提交message信息</span>
+git commit -m <span class="nv">$message</span>
+git push origin gh-pages<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Git代码提交脚本执行效果截图：</p>
 

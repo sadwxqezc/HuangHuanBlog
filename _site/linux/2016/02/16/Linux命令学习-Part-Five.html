@@ -136,22 +136,22 @@ tmux在osx的安装方式：<code>brew install tmux</code></p>
 </ul>
 
 <p>范例一：<code>tmux new -s mySession</code> 创建一个名为mySession的会话<br />
-输入<code>CTRL+b d</code>将从此会话脱离，如果要重新连接，则使用<code>tmux attach -t mySession</code></p>
+输入<code class="highlighter-rouge">CTRL+b d</code>将从此会话脱离，如果要重新连接，则使用<code class="highlighter-rouge">tmux attach -t mySession</code></p>
 
 <p><img src="/pics/tmux_mySession.png" alt="tmux_new" /></p>
 
-<p>范例二：在范例一的mySession中按下<code>CTRL+b c</code>则会在mySession中创建一个新的窗口<br />
-可以通过<code>CTRL+b w</code>来查看窗口列表，<code>CTRL+b &lt;窗口号&gt;</code>来切换窗口<br />
-<code>CTRL+b f</code>来查找窗口，<code>exit</code>来退出窗口</p>
+<p>范例二：在范例一的mySession中按下<code class="highlighter-rouge">CTRL+b c</code>则会在mySession中创建一个新的窗口<br />
+可以通过<code class="highlighter-rouge">CTRL+b w</code>来查看窗口列表，<code class="highlighter-rouge">CTRL+b &lt;窗口号&gt;</code>来切换窗口<br />
+<code class="highlighter-rouge">CTRL+b f</code>来查找窗口，<code class="highlighter-rouge">exit</code>来退出窗口</p>
 
 <p><img src="/pics/tmux_windows.png" alt="tmux_multiple" /></p>
 
-<p>为了便于穿窗口的识别，还可以通过<code>CTRL+b ,</code>来重命名窗口</p>
+<p>为了便于穿窗口的识别，还可以通过<code class="highlighter-rouge">CTRL+b ,</code>来重命名窗口</p>
 
 <p><img src="/pics/tmux_rename.png" alt="tmux_rename" /></p>
 
-<p>范例三：tmux还支持把窗口分割成多个面板，<code>CTRL+b "</code>为水平分割，<code>CTRL+b %</code>为垂直分割<br />
-通过<code>CTRL+b &lt;光标键&gt;</code>来进行窗口移动</p>
+<p>范例三：tmux还支持把窗口分割成多个面板，<code class="highlighter-rouge">CTRL+b "</code>为水平分割，<code class="highlighter-rouge">CTRL+b %</code>为垂直分割<br />
+通过<code class="highlighter-rouge">CTRL+b &lt;光标键&gt;</code>来进行窗口移动</p>
 
 <p><img src="/pics/tmux_panes.png" alt="tmux_panes" /></p>
 

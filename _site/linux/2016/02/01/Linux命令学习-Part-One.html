@@ -120,27 +120,31 @@
   </blockquote>
 </blockquote>
 
-<pre><code>范例一：man grep | grep --color=always -n search
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：man grep | grep --color=always -n search
 带颜色的文本搜索，并同时输出行号
 </code></pre>
+</div>
 
 <p><img src="/pics/grep_color_n.png" alt="带颜色的搜索" /></p>
 
-<pre><code>范例二：man grep | grep --color=always -n '\&lt;search\&gt;'
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：man grep | grep --color=always -n '\&lt;search\&gt;'
 正则表达式模式的搜索
 </code></pre>
+</div>
 
 <p><img src="/pics/grep_color_n_regex.png" alt="正则表达式的搜索" /></p>
 
-<pre><code>范例三：grep -nR --color=always  a ./*.yml
+<div class="highlighter-rouge"><pre class="highlight"><code>范例三：grep -nR --color=always  a ./*.yml
 在文件夹下的yml文件中搜索，并标注行号和对应行
 </code></pre>
+</div>
 
 <p><img src="/pics/grep_dir.png" alt="文件夹搜索" /></p>
 
-<pre><code>范例四：grep -lR a ./*.yml
+<div class="highlighter-rouge"><pre class="highlight"><code>范例四：grep -lR a ./*.yml
 在文件夹下的yml文件中搜索，但只输出匹配的文件名
 </code></pre>
+</div>
 
 <p><img src="/pics/grep_dir_only.png" alt="文件夹搜索" /></p>
 
@@ -163,50 +167,62 @@
   </blockquote>
 </blockquote>
 
-<pre><code>范例一：ls -lharts
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：ls -lharts
 输出文件信息，并时间从旧到新排列
 </code></pre>
+</div>
 
 <p><img src="/pics/ls_r_t.png" alt="详细信息" /></p>
 
-<pre><code>范例二：ls -R
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：ls -R
 递归输出目录下的所有文件
 </code></pre>
+</div>
 
 <p><img src="/pics/ls_R.png" alt="ls递归" /></p>
 
 <p>3. 有趣的命令</p>
 
-<pre><code>范例一：cal -j 2 2016
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：cal -j 2 2016
 显示2016年2月份的日历，标注当天为一年中的第几天
 </code></pre>
+</div>
 
 <p><img src="/pics/cal.png" alt="cal" /></p>
 
-<pre><code>范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
 不用再开新的窗口
 </code></pre>
+</div>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">screen</span> <span class="o">-</span><span class="n">S</span> <span class="n">yourname</span> <span class="c1">//创建一个名为yourname的虚拟链接</span>
-<span class="lineno">2</span> <span class="n">jekyll</span> <span class="n">serve</span> <span class="c1">//在yourname中启动一个jekyll</span>
-<span class="lineno">3</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">a</span><span class="o">,</span><span class="n">d</span> <span class="c1">//保存并返回</span>
-<span class="lineno">4</span> <span class="n">screen</span> <span class="o">-</span><span class="n">ls</span> <span class="c1">//查看所有的screen</span>
-<span class="lineno">5</span> <span class="n">screen</span> <span class="o">-</span><span class="n">r</span> <span class="n">yourname</span> <span class="c1">//返回该screen</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">screen</span> <span class="o">-</span><span class="n">S</span> <span class="n">yourname</span> <span class="c1">//创建一个名为yourname的虚拟链接</span>
+<span class="n">jekyll</span> <span class="n">serve</span> <span class="c1">//在yourname中启动一个jekyll</span>
+<span class="n">ctrl</span><span class="o">+</span><span class="n">a</span><span class="o">,</span><span class="n">d</span> <span class="c1">//保存并返回</span>
+<span class="n">screen</span> <span class="o">-</span><span class="n">ls</span> <span class="c1">//查看所有的screen</span>
+<span class="n">screen</span> <span class="o">-</span><span class="n">r</span> <span class="n">yourname</span> <span class="c1">//返回该screen</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><img src="/pics/screen.png" alt="screen" /></p>
 
-<pre><code>范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
+<div class="highlighter-rouge"><pre class="highlight"><code>范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
 </code></pre>
+</div>
 
 <p><img src="/pics/column.png" alt="column" /></p>
 
-<pre><code>范例四：file命令可以查看对象类型
+<div class="highlighter-rouge"><pre class="highlight"><code>范例四：file命令可以查看对象类型
 </code></pre>
+</div>
 
 <p><img src="/pics/file.png" alt="file" /></p>
 
-<pre><code>范例五：xargs命令的作用时将参数分段传输给其它命令
+<div class="highlighter-rouge"><pre class="highlight"><code>范例五：xargs命令的作用时将参数分段传输给其它命令
 </code></pre>
+</div>
 
 <p><img src="/pics/xargs.png" alt="xargs" /></p>
 

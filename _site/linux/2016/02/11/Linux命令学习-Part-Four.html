@@ -116,13 +116,13 @@
 <p><img src="/pics/sort.png" alt="sort" /></p>
 
 <p>范例二：<br />
-1. <code>sort -nk 2 -t - sort.txt</code> 以<code>-</code>进行分割，对分割后的第二个域进行排序；<br />
+1. <code>sort -nk 2 -t - sort.txt</code> 以<code class="highlighter-rouge">-</code>进行分割，对分割后的第二个域进行排序；<br />
 2. <code>sort -nrk 2 -t - sort.txt</code> 逆序排序</p>
 
 <p><img src="/pics/sort_t.png" alt="sort_t" /></p>
 
 <p>范例三：<code>sort -t - -k 1.7 -nk 3,3 sort_k.txt</code><br />
-<code>-k start,end</code>中end可以省略，上面的<code>1.7</code>表示分割后第一个域的第7个字符，由于没有<code>end</code>，则表示对第一个域中第7字符及其之后的字符排序。而<code>3,3</code>则表示在前面排序的基础上，再对第三个域进行排序。</p>
+<code class="highlighter-rouge">-k start,end</code>中end可以省略，上面的<code class="highlighter-rouge">1.7</code>表示分割后第一个域的第7个字符，由于没有<code class="highlighter-rouge">end</code>，则表示对第一个域中第7字符及其之后的字符排序。而<code class="highlighter-rouge">3,3</code>则表示在前面排序的基础上，再对第三个域进行排序。</p>
 
 <p><img src="/pics/sort_k.png" alt="sort_k" /></p>
 

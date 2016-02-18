@@ -118,29 +118,33 @@
   </blockquote>
 </blockquote>
 
-<pre><code>范例一：find ~ -name '*.yml' | grep '\.yml' --color=always
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：find ~ -name '*.yml' | grep '\.yml' --color=always
 在用户目录下查找文件名后缀为.yml的文件
 </code></pre>
+</div>
 
 <p><img src="/pics/find_name.png" alt="按照文件名查找" /></p>
 
-<pre><code>范例二：find . -perm 644
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：find . -perm 644
 查找当前目录下权限为644的所有文件
 </code></pre>
+</div>
 
 <p><img src="/pics/find_perm.png" alt="按照权限的搜索" /></p>
 
-<pre><code>范例三：find . -path './_site*' -a -prune -o -name 'feed.xml' -print
+<div class="highlighter-rouge"><pre class="highlight"><code>范例三：find . -path './_site*' -a -prune -o -name 'feed.xml' -print
 整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
 -a -o实际为逻辑与和逻辑或，当路径匹配时将执行-prune，那么将不会查找匹配路径中的文件，
 当路径不匹配时则不执行-prune，-o后的语句始终执行。
 </code></pre>
+</div>
 
 <p><img src="/pics/find_prune.png" alt="忽略一些文件夹搜索" /></p>
 
-<pre><code>范例四：find . -maxdepth 2 -size 3
+<div class="highlighter-rouge"><pre class="highlight"><code>范例四：find . -maxdepth 2 -size 3
 控制查找的深度
 </code></pre>
+</div>
 
 <p><img src="/pics/find_depth.png" alt="限制搜索深度" /></p>
 
@@ -189,9 +193,10 @@
   </blockquote>
 </blockquote>
 
-<pre><code>范例一：wc -l _config.yml
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：wc -l _config.yml
 统计行数，-c实际上可以查看文件的大小
 </code></pre>
+</div>
 
 <p><img src="/pics/wc.png" alt="统计" /></p>
 
@@ -207,21 +212,24 @@
   </blockquote>
 </blockquote>
 
-<pre><code>范例一：cat -b testColumn(cat -n testColumn)
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：cat -b testColumn(cat -n testColumn)
 显示文件内容
 </code></pre>
+</div>
 
 <p><img src="/pics/cat_b_n.png" alt="显示文件内容到控制台" /></p>
 
-<pre><code>范例二：cat testColumn testCat
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：cat testColumn testCat
 同时显示两个文件内容
 </code></pre>
+</div>
 
 <p><img src="/pics/cat_mul.png" alt="显示两个文件" /></p>
 
-<pre><code>范例三：cat testColumn testCat&gt;merge
+<div class="highlighter-rouge"><pre class="highlight"><code>范例三：cat testColumn testCat&gt;merge
 将两个内容连结并输出到一个文件中，&gt;为重新创建，&gt;&gt;为追加
 </code></pre>
+</div>
 
 <p><img src="/pics/cat_merge.png" alt="连结并输出" /></p>
 
