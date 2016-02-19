@@ -69,3 +69,14 @@ ack(better than grep)命令的作用和grep类似，但效果更好。
 范例一：<code>ack -w 测试</code> 与grep搜索的对比
 	
 ![ack_w]({{site.baseurl}}/pics/ack_w.png)  
+
+## 4\. thefuck命令
+ 
+thefuck命令就是用在你想说`fuck`的时候，它能够自动尝试修复有错误的命令
+<h4><b>基本格式 fuck [option] </b></h4>  
+需要在`~/.bashrc`中设置`eval $(thefuck --alias)`
+
+
+范例一：<code>git brnch</code>后回车再输入`fuck`
+	
+![fuck]({{site.baseurl}}/pics/thefuck.png)  
