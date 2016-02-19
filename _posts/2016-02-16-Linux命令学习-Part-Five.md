@@ -57,3 +57,15 @@ tmux在osx的安装方式：<code>brew install tmux</code>
 通过`CTRL+b <光标键>`来进行窗口移动
 
 ![tmux_panes]({{site.baseurl}}/pics/tmux_panes.png)
+
+## 3\. ack命令
+ 
+ack(better than grep)命令的作用和grep类似，但效果更好。
+<h4><b>基本格式 ack [option] [pattern]</b></h4>
++ <code>-w</code> 按单词匹配
++ <code>--ingore-dir</code> 忽略某些目录
+
+
+范例一：<code>ack -w 测试</code> 与grep搜索的对比
+	
+![ack_w]({{site.baseurl}}/pics/ack_w.png)  
