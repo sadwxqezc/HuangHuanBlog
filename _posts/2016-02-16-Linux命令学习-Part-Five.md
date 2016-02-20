@@ -58,7 +58,7 @@ tmux在osx的安装方式：<code>brew install tmux</code>
 
 ![tmux_panes]({{site.baseurl}}/pics/tmux_panes.png)
 
-## 3\. ack命令
+## 3\. ack命令(Mac OSX)
  
 ack(better than grep)命令的作用和grep类似，但效果更好。
 <h4><b>基本格式 ack [option] [pattern]</b></h4>
@@ -70,7 +70,7 @@ ack(better than grep)命令的作用和grep类似，但效果更好。
 	
 ![ack_w]({{site.baseurl}}/pics/ack_w.png)  
 
-## 4\. thefuck命令
+## 4\. thefuck命令(Mac OSX)
  
 thefuck命令就是用在你想说`fuck`的时候，它能够自动尝试修复有错误的命令
 <h4><b>基本格式 fuck [option] </b></h4>  
