@@ -8,25 +8,25 @@
 	<title>Shell脚本学习</title>
 	<meta name="description" content="范例代码(Mac下)">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -63,7 +63,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">黄欢的博客</a>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -73,7 +73,7 @@
         
           <li>
         
-          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -102,7 +102,7 @@
 
 <p>以一段Git代码提交脚本为例：</p>
 
-<pre><code># 添加目录下所有文件
+<div class="highlighter-rouge"><pre class="highlight"><code># 添加目录下所有文件
 git add . 
 # message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
 message=`date +%Y-%m-%d-%H-%M`
@@ -127,10 +127,11 @@ done
 git commit -m $message
 git push origin gh-pages
 </code></pre>
+</div>
 
 <p>Git代码提交脚本执行效果截图：</p>
 
-<p><img src="/pics/git_shell.png" alt="Git代码提交" /></p>
+<p><img src="/HuangHuanBlog/pics/git_shell.png" alt="Git代码提交" /></p>
 
 <p>To be continued</p>
 
@@ -189,7 +190,7 @@ git push origin gh-pages
           
           
           <span class="point"> · </span>
-          <span><a href="/feed.xml">RSS</a></span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>
