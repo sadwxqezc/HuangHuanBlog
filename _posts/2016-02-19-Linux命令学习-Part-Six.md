@@ -29,3 +29,14 @@ pv命令可以通过管道来显示数据的处理进度
 范例二：<code>echo 'this is a pv test' | pv -L 2</code>  限制传输速度为2Bytes
 
 ![pv_L]({{site.baseurl}}/pics/pv_L.png)
+
+## 2\. bc命令
+ 
+bc命令可以用于计算
+<h4><b>基本格式 bc [option]</b></h4>
++ <code>-l</code> 定义数学函数的库，并将初始值scale设定为20
+
+范例一：<code>bc</code>
+	
+![bc]({{site.baseurl}}/pics/bc.png)  
+
