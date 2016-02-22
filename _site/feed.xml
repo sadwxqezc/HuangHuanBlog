@@ -5,12 +5,119 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Feb 2016 12:09:52 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Feb 2016 12:09:52 +0800</lastBuildDate>
+    <pubDate>Mon, 22 Feb 2016 18:21:33 +0800</pubDate>
+    <lastBuildDate>Mon, 22 Feb 2016 18:21:33 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>Linux命令学习 Part Six</title>
+        <title>Shell脚本学习 初阶</title>
+        <description>&lt;h2 id=&quot;mac&quot;&gt;范例代码(Mac下)&lt;/h2&gt;
+
+&lt;p&gt;以一段Git代码提交脚本为例：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 添加目录下所有文件
+git add . 
+# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
+message=`date +%Y-%m-%d-%H-%M`
+# getopts命令可获取输入的参数，如m:则表示检查&#39;-m&#39;的参数输入，并将参数名存入opt中。
+# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
+
+while getopts m: opt
+do
+case $opt in
+     m)
+       message=$OPTARG
+       ;;
+     ?)
+       echo &quot;Usage: args [-m]&quot;
+       echo &quot;-m means message&quot;
+       echo &quot;exit&quot;
+       exit
+       ;;
+esac
+done
+# git提交message信息
+git commit -m &quot;$message&quot;
+git push origin gh-pages
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Git代码提交脚本执行效果截图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;基本知识介绍&lt;/h2&gt;
+
+&lt;p&gt;一般所指的Shell是指Shell脚本（Shell script），是为Shell编写的脚本程序。而Shell本身是用户访问操作系统内核服务的程序界面，Shell编程与其它语言类似，只需要编写代码的编辑器和能够解释执行的程序即可。Bourne shell是标准的Shell解释器，其所在路径往往是&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;在Shell脚本中，第一行一般是&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;#!&lt;/code&gt;是用于约定的标记，告诉系统该脚本需要什么解释器执行。当然如果文件以&lt;code class=&quot;highlighter-rouge&quot;&gt;.sh&lt;/code&gt;作为后缀的话，不写这一行也能正确执行。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;1. 基本语法&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;变量定义与赋值 &lt;code class=&quot;highlighter-rouge&quot;&gt;testVar=&quot;testValue&quot;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;变量的取值只需要在前面加入&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;符号，如&lt;code class=&quot;highlighter-rouge&quot;&gt;$testVar&lt;/code&gt;，加花括号可以帮助解释器识别边界，如&lt;code class=&quot;highlighter-rouge&quot;&gt;${testVar}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;代码范例：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1 #! /bin/sh
+2 count=0
+3 for testVar in Let us learn Shell
+4 do
+5     echo &quot;Word:${testVar}_Number:$count&quot;
+6     ((count++))
+7 done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var.sh&lt;/code&gt;执行结果：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To be continued!&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 21 Feb 2016 17:27:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
+        
+        
+        <category>Shell</category>
+        
+      </item>
+    
+      <item>
+        <title>边边角角的知识点</title>
+        <description>&lt;h2 id=&quot;setuid&quot;&gt;1. setuid权限&lt;/h2&gt;
+
+&lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ps和rcp的执行文件颜色和其它不同，从&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha&lt;/code&gt;的结果来看它们两个与其它文件并没有什么不同，于是我再用&lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt;命令查看文件：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 21 Feb 2016 16:34:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
+        
+        
+        <category>bits&amp;pieces</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Six</title>
         <description>&lt;h2 id=&quot;tar&quot;&gt;1. tar命令&lt;/h2&gt;
 
 &lt;p&gt;tar命令用于文件的解压或压缩&lt;/p&gt;
@@ -178,55 +285,6 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
         
         
         <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Shell脚本学习</title>
-        <description>&lt;h2 id=&quot;mac&quot;&gt;范例代码(Mac下)&lt;/h2&gt;
-
-&lt;p&gt;以一段Git代码提交脚本为例：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 添加目录下所有文件
-git add . 
-# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
-message=`date +%Y-%m-%d-%H-%M`
-# getopts命令可获取输入的参数，如m:则表示检查&#39;-m&#39;的参数输入，并将参数名存入opt中。
-# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
-
-while getopts m: opt
-do
-case $opt in
-     m)
-       message=$OPTARG
-       ;;
-     ?)
-       echo &quot;Usage: args [-m]&quot;
-       echo &quot;-m means message&quot;
-       echo &quot;exit&quot;
-       exit
-       ;;
-esac
-done
-# git提交message信息
-git commit -m $message
-git push origin gh-pages
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Git代码提交脚本执行效果截图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To be continued&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 13 Feb 2016 23:49:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
-        
-        
-        <category>Shell</category>
         
       </item>
     

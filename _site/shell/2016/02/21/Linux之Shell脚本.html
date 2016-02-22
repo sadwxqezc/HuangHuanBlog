@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Linux命令学习的日常 Part Six</title>
-	<meta name="description" content="1. tar命令">
+	<title>Shell脚本学习 初阶</title>
+	<meta name="description" content="范例代码(Mac下)">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -93,79 +93,82 @@
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>Linux命令学习的日常 Part Six</h1>
-        <p>Feb 19, 2016</p>
+        <h1>Shell脚本学习 初阶</h1>
+        <p>Feb 21, 2016</p>
       </header>
       <hr>
       <article>
-        <h2 id="tar">1. tar命令</h2>
+        <h2 id="mac">范例代码(Mac下)</h2>
 
-<p>tar命令用于文件的解压或压缩</p>
-<h4><b>基本格式 tar [main option] [accessibility options] [filename or dir]</b></h4>
-<h5><b>main option 主选项 三者有且只能有一个</b></h5>
+<p>以一段Git代码提交脚本为例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 添加目录下所有文件
+git add . 
+# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
+message=`date +%Y-%m-%d-%H-%M`
+# getopts命令可获取输入的参数，如m:则表示检查'-m'的参数输入，并将参数名存入opt中。
+# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
+
+while getopts m: opt
+do
+case $opt in
+     m)
+       message=$OPTARG
+       ;;
+     ?)
+       echo "Usage: args [-m]"
+       echo "-m means message"
+       echo "exit"
+       exit
+       ;;
+esac
+done
+# git提交message信息
+git commit -m "$message"
+git push origin gh-pages
+</code></pre>
+</div>
+
+<p>Git代码提交脚本执行效果截图：</p>
+
+<p><img src="/pics/git_shell.png" alt="Git代码提交" /></p>
+
+<h2 id="section">基本知识介绍</h2>
+
+<p>一般所指的Shell是指Shell脚本（Shell script），是为Shell编写的脚本程序。而Shell本身是用户访问操作系统内核服务的程序界面，Shell编程与其它语言类似，只需要编写代码的编辑器和能够解释执行的程序即可。Bourne shell是标准的Shell解释器，其所在路径往往是<code class="highlighter-rouge">/bin/sh</code>。</p>
+
+<p>在Shell脚本中，第一行一般是<code class="highlighter-rouge"><span class="c">#!/bin/sh</span></code>，<code class="highlighter-rouge">#!</code>是用于约定的标记，告诉系统该脚本需要什么解释器执行。当然如果文件以<code class="highlighter-rouge">.sh</code>作为后缀的话，不写这一行也能正确执行。</p>
+
+<hr />
+
+<h3 id="section-1">1. 基本语法</h3>
+
 <ul>
-  <li><code>-c</code> 创建新的文件，相当于打包</li>
-  <li><code>-x</code> 释放文件，相当于拆包</li>
-  <li><code>-t</code> 列出档案文件的内容，查看已经备份了哪些文件</li>
-</ul>
-<h5><b>accessibility options 辅助选项</b></h5>
-<ul>
-  <li><code>-z</code> 是否需要用gzip压缩或解压，一般格式为.tar.gz或者.tgz</li>
-  <li><code>-j</code> 是否需要用bzip2压缩或解压，一般格式为.tar.bz2</li>
-  <li><code>-v</code> 压缩过程中显示文件</li>
-  <li><code>-f</code> 使用文档名</li>
-  <li><code>--exclude FILE</code> 压缩过程中不要将File打包&lt;/code&gt;</li>
-  <li><code>-c dir</code> 切换工作目录，参考:<a href="http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html">Linux下使用tar命令</a></li>
-</ul>
-
-<p>范例一：<code class="highlighter-rouge">tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz</code> 解压到当前文件夹</p>
-
-<p><img src="/pics/tar_xzvf.png" alt="tar_xzvf" /></p>
-
-<p>范例二：<code class="highlighter-rouge">tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz</code> 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数</p>
-
-<p><img src="/pics/tar_tf.png" alt="tar_tf" /></p>
-
-<p>范例三：<code class="highlighter-rouge">tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d</code> 压缩文件</p>
-
-<p><img src="/pics/tar_jcvf.png" alt="tar_jcvf" /></p>
-
-<p>参考:<a href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md">命令行的艺术</a></p>
-
-<h2 id="mac-osx">冷门但有用的命令(Mac OSX)</h2>
-
-<h2 id="pv">1. pv命令</h2>
-
-<p>pv命令可以通过管道来显示数据的处理进度</p>
-<h4><b>基本格式 pv [option]</b></h4>
-<ul>
-  <li><code>-p</code> 显示百分比</li>
-  <li><code>-t</code> 显示时间</li>
-  <li><code>-r</code> 传输速率</li>
-  <li><code>-e</code> 估计的剩余时间</li>
-  <li><code>-n</code> 用数字代替进度条来显示百分比</li>
-  <li><code>-L</code> 限制传输速度</li>
-</ul>
-
-<p>范例一：<code>pv ./12怒汉.mkv &gt; ~/Work/Test/angry.mkv</code> 显示拷贝的速度和百分比</p>
-
-<p><img src="/pics/pv.png" alt="pv" /></p>
-
-<p>范例二：<code>echo 'this is a pv test' | pv -L 2</code>  限制传输速度为2Bytes</p>
-
-<p><img src="/pics/pv_L.png" alt="pv_L" /></p>
-
-<h2 id="bc">2. bc命令</h2>
-
-<p>bc命令可以用于计算</p>
-<h4><b>基本格式 bc [option]</b></h4>
-<ul>
-  <li><code>-l</code> 定义数学函数的库，并将初始值scale设定为20</li>
+  <li>变量定义与赋值 <code class="highlighter-rouge">testVar="testValue"</code></li>
+  <li>变量的取值只需要在前面加入<code class="highlighter-rouge">$</code>符号，如<code class="highlighter-rouge">$testVar</code>，加花括号可以帮助解释器识别边界，如<code class="highlighter-rouge">${testVar}</code></li>
 </ul>
 
-<p>范例一：<code>bc</code></p>
+<blockquote>
+  <p>代码范例：</p>
+</blockquote>
 
-<p><img src="/pics/bc.png" alt="bc" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1 #! /bin/sh
+2 count=0
+3 for testVar in Let us learn Shell
+4 do
+5     echo "Word:${testVar}_Number:$count"
+6     ((count++))
+7 done
+</code></pre>
+</div>
+
+<blockquote>
+  <p><code class="highlighter-rouge">var.sh</code>执行结果：</p>
+</blockquote>
+
+<p><img src="/pics/var.png" alt="var.sh" /></p>
+
+<p>To be continued!</p>
 
 
       </article>
@@ -176,7 +179,7 @@
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/linux/2016/02/19/Linux命令学习-Part-Six" data-title="Linux命令学习的日常 Part Six" data-url="gaohaoyang.github.io/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html"></div>
+      <div class="ds-thread" data-thread-key="/shell/2016/02/21/Linux之Shell脚本" data-title="Shell脚本学习 初阶" data-url="gaohaoyang.github.io/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html"></div>
       
       <!-- 多说评论框 end -->
     </div>

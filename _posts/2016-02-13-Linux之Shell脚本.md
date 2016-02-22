@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Shell脚本学习"
-date:   2016-02-13 23:49:00 ＋8000
+title:  "Shell脚本学习 初阶"
+date:   2016-02-21 17:27:00 ＋8000
 categories: Shell
 ---
 
@@ -39,5 +39,34 @@ Git代码提交脚本执行效果截图：
 
 ![Git代码提交]({{site.baseurl}}/pics/git_shell.png)
 
-To be continued
+## 基本知识介绍
+
+一般所指的Shell是指Shell脚本（Shell script），是为Shell编写的脚本程序。而Shell本身是用户访问操作系统内核服务的程序界面，Shell编程与其它语言类似，只需要编写代码的编辑器和能够解释执行的程序即可。Bourne shell是标准的Shell解释器，其所在路径往往是`/bin/sh`。
+
+在Shell脚本中，第一行一般是`#!/bin/sh`，`#!`是用于约定的标记，告诉系统该脚本需要什么解释器执行。当然如果文件以`.sh`作为后缀的话，不写这一行也能正确执行。
+
+---
+
+### 1. 基本语法
+
++ 变量定义与赋值 `testVar="testValue"`
++ 变量的取值只需要在前面加入`$`符号，如`$testVar`，加花括号可以帮助解释器识别边界，如`${testVar}`
+
+> 代码范例：
+	
+	1 #! /bin/sh
+	2 count=0
+	3 for testVar in Let us learn Shell
+	4 do
+	5     echo "Word:${testVar}_Number:$count"
+	6     ((count++))
+	7 done
+	
+> `var.sh`执行结果：
+
+![var.sh]({{site.baseurl}}/pics/var.png)
+
+
+To be continued!
+
 

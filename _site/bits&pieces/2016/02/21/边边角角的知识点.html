@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Shell脚本学习</title>
-	<meta name="description" content="范例代码(Mac下)">
+	<title>边边角角的知识点</title>
+	<meta name="description" content="1. setuid权限">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -93,48 +93,22 @@
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>Shell脚本学习</h1>
-        <p>Feb 13, 2016</p>
+        <h1>边边角角的知识点</h1>
+        <p>Feb 21, 2016</p>
       </header>
       <hr>
       <article>
-        <h2 id="mac">范例代码(Mac下)</h2>
+        <h2 id="setuid">1. setuid权限</h2>
 
-<p>以一段Git代码提交脚本为例：</p>
+<p>今天调了一下Iterm2中<code class="highlighter-rouge">ls</code>的配色，发现在<code class="highlighter-rouge">\bin</code>目录下有如图的显示效果：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 添加目录下所有文件
-git add . 
-# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
-message=`date +%Y-%m-%d-%H-%M`
-# getopts命令可获取输入的参数，如m:则表示检查'-m'的参数输入，并将参数名存入opt中。
-# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
+<p><img src="/pics/setuid_1.png" alt="setuid" /></p>
 
-while getopts m: opt
-do
-case $opt in
-     m)
-       message=$OPTARG
-       ;;
-     ?)
-       echo "Usage: args [-m]"
-       echo "-m means message"
-       echo "exit"
-       exit
-       ;;
-esac
-done
-# git提交message信息
-git commit -m $message
-git push origin gh-pages
-</code></pre>
-</div>
+<p>ps和rcp的执行文件颜色和其它不同，从<code class="highlighter-rouge">ls -lha</code>的结果来看它们两个与其它文件并没有什么不同，于是我再用<code class="highlighter-rouge">file</code>命令查看文件：</p>
 
-<p>Git代码提交脚本执行效果截图：</p>
+<p><img src="/pics/setuid_2.png" alt="setuid_2" /></p>
 
-<p><img src="/pics/git_shell.png" alt="Git代码提交" /></p>
-
-<p>To be continued</p>
-
+<p>此时发现ps和rcp的前面多了个<code class="highlighter-rouge">setuid</code>的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了<code class="highlighter-rouge">setuid</code>外还有<code class="highlighter-rouge">setgid</code>和<code class="highlighter-rouge">stick bit</code>。</p>
 
       </article>
       <hr>
@@ -144,7 +118,7 @@ git push origin gh-pages
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/shell/2016/02/13/Linux之Shell脚本" data-title="Shell脚本学习" data-url="gaohaoyang.github.io/shell/2016/02/13/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html"></div>
+      <div class="ds-thread" data-thread-key="/bits&pieces/2016/02/21/边边角角的知识点" data-title="边边角角的知识点" data-url="gaohaoyang.github.io/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
