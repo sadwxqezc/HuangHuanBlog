@@ -102,30 +102,30 @@
 
 <p>以一段Git代码提交脚本为例：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 添加目录下所有文件
-git add . 
-# message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
-message=`date +%Y-%m-%d-%H-%M`
-# getopts命令可获取输入的参数，如m:则表示检查'-m'的参数输入，并将参数名存入opt中。
-# 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
-
-while getopts m: opt
-do
-case $opt in
-     m)
-       message=$OPTARG
-       ;;
-     ?)
-       echo "Usage: args [-m]"
-       echo "-m means message"
-       echo "exit"
-       exit
-       ;;
-esac
-done
-# git提交message信息
-git commit -m "$message"
-git push origin gh-pages
+<div class="highlighter-rouge"><pre class="highlight"><code>1  # 添加目录下所有文件
+2  git add . 
+3  # message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
+4  message=`date +%Y-%m-%d-%H-%M`
+5  # getopts命令可获取输入的参数，如m:则表示检查'-m'的参数输入，并将参数名存入opt中。
+6  # 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
+7
+8  while getopts m: opt
+9  do
+10   case $opt in
+11     m)
+12       message=$OPTARG
+13       ;;
+14     ?)
+15       echo "Usage: args [-m]"
+16       echo "-m means message"
+17       echo "exit"
+18       exit
+19       ;;
+20 esac
+21 done
+22 # git提交message信息
+23 git commit -m "$message"
+24 git push origin gh-pages
 </code></pre>
 </div>
 
