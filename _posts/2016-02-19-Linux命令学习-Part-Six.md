@@ -1,12 +1,40 @@
 ---
 layout: post
-title:  "Linux命令的艺术学习笔记"
+title:  "Linux命令学习的日常 Part Six"
 date:   2016-02-19 16:52:00 ＋8000
 categories: Linux
 ---
 
-来源于:[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
+## 1. tar命令
 
+tar命令用于文件的解压或压缩
+<h4><b>基本格式 tar [main option] [accessibility options] [filename or dir]</b></h4>
+<h5><b>main option 主选项 三者有且只能有一个</b></h5>
++ <code>-c</code> 创建新的文件，相当于打包
++ <code>-x</code> 释放文件，相当于拆包
++ <code>-t</code> 列出档案文件的内容，查看已经备份了哪些文件
+<h5><b>accessibility options 辅助选项</b></h5>
++ <code>-z</code> 是否需要用gzip压缩或解压，一般格式为.tar.gz或者.tgz
++ <code>-j</code> 是否需要用bzip2压缩或解压，一般格式为.tar.bz2
++ <code>-v</code> 压缩过程中显示文件
++ <code>-f</code> 使用文档名
++ <code>--exclude FILE</code> 压缩过程中不要将File打包</code>
++ <code>-c dir</code> 切换工作目录，参考:[Linux下使用tar命令](http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html)
+
+范例一：`tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz` 解压到当前文件夹
+	
+![tar_xzvf]({{site.baseurl}}/pics/tar_xzvf.png)  
+
+范例二：`tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz` 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数
+	
+![tar_tf]({{site.baseurl}}/pics/tar_tf.png)  
+
+范例三：`tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d` 压缩文件
+	
+![tar_jcvf]({{site.baseurl}}/pics/tar_jcvf.png)  
+
+
+参考:[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
 
 ## 冷门但有用的命令(Mac OSX)
 
@@ -39,4 +67,5 @@ bc命令可以用于计算
 范例一：<code>bc</code>
 	
 ![bc]({{site.baseurl}}/pics/bc.png)  
+
 

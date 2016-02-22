@@ -5,13 +5,45 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 21 Feb 2016 11:30:48 +0800</pubDate>
-    <lastBuildDate>Sun, 21 Feb 2016 11:30:48 +0800</lastBuildDate>
+    <pubDate>Mon, 22 Feb 2016 12:09:52 +0800</pubDate>
+    <lastBuildDate>Mon, 22 Feb 2016 12:09:52 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>Linux命令的艺术学习笔记</title>
-        <description>&lt;p&gt;来源于:&lt;a href=&quot;https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md&quot;&gt;命令行的艺术&lt;/a&gt;&lt;/p&gt;
+        <title>Linux命令学习 Part Six</title>
+        <description>&lt;h2 id=&quot;tar&quot;&gt;1. tar命令&lt;/h2&gt;
+
+&lt;p&gt;tar命令用于文件的解压或压缩&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 tar [main option] [accessibility options] [filename or dir]&lt;/b&gt;&lt;/h4&gt;
+&lt;h5&gt;&lt;b&gt;main option 主选项 三者有且只能有一个&lt;/b&gt;&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-c&lt;/code&gt; 创建新的文件，相当于打包&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-x&lt;/code&gt; 释放文件，相当于拆包&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 列出档案文件的内容，查看已经备份了哪些文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;&lt;b&gt;accessibility options 辅助选项&lt;/b&gt;&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-z&lt;/code&gt; 是否需要用gzip压缩或解压，一般格式为.tar.gz或者.tgz&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-j&lt;/code&gt; 是否需要用bzip2压缩或解压，一般格式为.tar.bz2&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 压缩过程中显示文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 使用文档名&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;--exclude FILE&lt;/code&gt; 压缩过程中不要将File打包&amp;lt;/code&amp;gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-c dir&lt;/code&gt; 切换工作目录，参考:&lt;a href=&quot;http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html&quot;&gt;Linux下使用tar命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 解压到当前文件夹&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tar_xzvf.png&quot; alt=&quot;tar_xzvf&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tar_tf.png&quot; alt=&quot;tar_tf&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d&lt;/code&gt; 压缩文件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tar_jcvf.png&quot; alt=&quot;tar_jcvf&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;参考:&lt;a href=&quot;https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md&quot;&gt;命令行的艺术&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;mac-osx&quot;&gt;冷门但有用的命令(Mac OSX)&lt;/h2&gt;
 
