@@ -16,5 +16,5 @@ do
    esac
 done
 
-git commit -m $message
+git commit -m "$message"
 git push origin gh-pages
