@@ -142,7 +142,8 @@ git push origin gh-pages
 <hr />
 
 <h3 id="section-1">1. 基本语法</h3>
-
+<p><br /></p>
+<h4><b>Shell变量</b></h4>
 <ul>
   <li>变量定义与赋值 <code class="highlighter-rouge">testVar="testValue"</code></li>
   <li>变量的取值只需要在前面加入<code class="highlighter-rouge">$</code>符号，如<code class="highlighter-rouge">$testVar</code>，加花括号可以帮助解释器识别边界，如<code class="highlighter-rouge">${testVar}</code></li>
@@ -168,7 +169,39 @@ git push origin gh-pages
 
 <p><img src="/pics/var.png" alt="var.sh" /></p>
 
-<p>To be continued!</p>
+<p><br /></p>
+<h4><b>字符串</b></h4>
+<ul>
+  <li>单引号的特点: <br />
+1.单引号中的所有字符串都原样输出，字符串中的变量无效<br />
+2.单引号中不能出现单引号，转义亦无效</li>
+  <li>双引号的特点：<br />
+1.双引号中可以有变量，并读取变量值
+2.双引号中可以出现转义字符</li>
+</ul>
+
+<blockquote>
+  <p>代码范例：</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1  #! /bin/sh
+2  testString='this is a test'
+3  echo '$testString'
+4  echo "$testString"
+5  testString="${testString} string catenate"
+6  echo $testString
+7  testString=""$testString" string catenate"
+8  echo $testString
+9  echo "The length: ${#testString}"
+10 echo "Part of the string: ${testString:1:7}"
+</code></pre>
+</div>
+
+<blockquote>
+  <p><code class="highlighter-rouge">string.sh</code>执行结果：</p>
+</blockquote>
+
+<p><img src="/pics/shell_string.png" alt="string.sh" /></p>
 
 
       </article>

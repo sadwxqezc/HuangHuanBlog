@@ -48,7 +48,8 @@ Git代码提交脚本执行效果截图：
 ---
 
 ### 1. 基本语法
-
+<br/>
+<h4><b>Shell变量</b></h4>
 + 变量定义与赋值 `testVar="testValue"`
 + 变量的取值只需要在前面加入`$`符号，如`$testVar`，加花括号可以帮助解释器识别边界，如`${testVar}`
 
@@ -66,7 +67,29 @@ Git代码提交脚本执行效果截图：
 
 ![var.sh]({{site.baseurl}}/pics/var.png)
 
+<br/>
+<h4><b>字符串</b></h4>
++ 单引号的特点:   
+  1.单引号中的所有字符串都原样输出，字符串中的变量无效  
+  2.单引号中不能出现单引号，转义亦无效
++ 双引号的特点：  
+  1.双引号中可以有变量，并读取变量值
+  2.双引号中可以出现转义字符
 
-To be continued!
+> 代码范例：
 
+	1  #! /bin/sh
+	2  testString='this is a test'
+	3  echo '$testString'
+    4  echo "$testString"
+    5  testString="${testString} string catenate"
+    6  echo $testString
+    7  testString=""$testString" string catenate"
+    8  echo $testString
+    9  echo "The length: ${#testString}"
+    10 echo "Part of the string: ${testString:1:7}"
+
+> `string.sh`执行结果：
+
+![string.sh]({{site.baseurl}}/pics/shell_string.png)
 

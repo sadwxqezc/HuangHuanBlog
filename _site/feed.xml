@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Feb 2016 18:21:33 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Feb 2016 18:21:33 +0800</lastBuildDate>
+    <pubDate>Mon, 22 Feb 2016 20:35:51 +0800</pubDate>
+    <lastBuildDate>Mon, 22 Feb 2016 20:35:51 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -55,7 +55,8 @@ git push origin gh-pages
 &lt;hr /&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;1. 基本语法&lt;/h3&gt;
-
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;Shell变量&lt;/b&gt;&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;变量定义与赋值 &lt;code class=&quot;highlighter-rouge&quot;&gt;testVar=&quot;testValue&quot;&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;变量的取值只需要在前面加入&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;符号，如&lt;code class=&quot;highlighter-rouge&quot;&gt;$testVar&lt;/code&gt;，加花括号可以帮助解释器识别边界，如&lt;code class=&quot;highlighter-rouge&quot;&gt;${testVar}&lt;/code&gt;&lt;/li&gt;
@@ -81,7 +82,39 @@ git push origin gh-pages
 
 &lt;p&gt;&lt;img src=&quot;/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;To be continued!&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;字符串&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;单引号的特点: &lt;br /&gt;
+1.单引号中的所有字符串都原样输出，字符串中的变量无效&lt;br /&gt;
+2.单引号中不能出现单引号，转义亦无效&lt;/li&gt;
+  &lt;li&gt;双引号的特点：&lt;br /&gt;
+1.双引号中可以有变量，并读取变量值
+2.双引号中可以出现转义字符&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;代码范例：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  #! /bin/sh
+2  testString=&#39;this is a test&#39;
+3  echo &#39;$testString&#39;
+4  echo &quot;$testString&quot;
+5  testString=&quot;${testString} string catenate&quot;
+6  echo $testString
+7  testString=&quot;&quot;$testString&quot; string catenate&quot;
+8  echo $testString
+9  echo &quot;The length: ${#testString}&quot;
+10 echo &quot;Part of the string: ${testString:1:7}&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;string.sh&lt;/code&gt;执行结果：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/shell_string.png&quot; alt=&quot;string.sh&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 21 Feb 2016 17:27:00 +0800</pubDate>
