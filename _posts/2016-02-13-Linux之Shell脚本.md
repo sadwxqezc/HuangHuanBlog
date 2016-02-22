@@ -40,6 +40,7 @@ Git代码提交脚本执行效果截图：
 ![Git代码提交]({{site.baseurl}}/pics/git_shell.png)
 
 ## 基本知识介绍
+参考：[Shell脚本30分钟入门](http://www.jianshu.com/p/4b7f99486cab)
 
 一般所指的Shell是指Shell脚本（Shell script），是为Shell编写的脚本程序。而Shell本身是用户访问操作系统内核服务的程序界面，Shell编程与其它语言类似，只需要编写代码的编辑器和能够解释执行的程序即可。Bourne shell是标准的Shell解释器，其所在路径往往是`/bin/sh`。
 
@@ -63,7 +64,7 @@ Git代码提交脚本执行效果截图：
 	6     ((count++))
 	7 done
 	
-> `var.sh`执行结果：
+> 脚本执行结果：
 
 ![var.sh]({{site.baseurl}}/pics/var.png)
 
@@ -73,8 +74,9 @@ Git代码提交脚本执行效果截图：
   1.单引号中的所有字符串都原样输出，字符串中的变量无效  
   2.单引号中不能出现单引号，转义亦无效
 + 双引号的特点：  
-  1.双引号中可以有变量，并读取变量值
+  1.双引号中可以有变量，并读取变量值  
   2.双引号中可以出现转义字符
++ ``符号之间字符串可用于执行指令
 
 > 代码范例：
 
@@ -89,7 +91,63 @@ Git代码提交脚本执行效果截图：
     9  echo "The length: ${#testString}"
     10 echo "Part of the string: ${testString:1:7}"
 
-> `string.sh`执行结果：
+> 脚本执行结果：
 
 ![string.sh]({{site.baseurl}}/pics/shell_string.png)
 
+<br/>
+<h4><b>shell中的各种括号</b></h4>
+作为脚本语言，shell各种各样的符号括号挺让人头疼，降低了其代码的可读性
+参考：[Shell中各种括号的作用](http://blog.csdn.net/taiyang1987912/article/details/39551385)
+
++ Shell中大括号`{}`可以用来限定变量名称的范围
++ Shell中<code>``</code>和<code>()</code>，可以执行其中的命令并读出结果
++ <code>(())</code>中支持POSIX标准的计算，符合C语言的运算符都可以用在其中，表达式真值为1，假则为0
+
+>代码范例：
+
+	1  #! /bin/sh
+	2  if ((1))
+	3  then
+	4      echo $(pwd)
+	5  fi
+
+>脚本执行结果：
+
+![brackets]({{site.baseurl}}/pics/brackets.png)
+
+<br/>
+<h4><b>条件判断与流程控制</b></h4>
+>if else代码范例：
+
+	1  if condition
+	2  then
+	3      phase one
+	4      phase two
+	5  elif condition2
+	6      phase three
+	7  else
+	8      #else后不能为空
+	9      phase four
+	10 fi
+
+>for while代码范例：
+
+    # for (shell)
+	1  for param in paramOne paramTwo ... paramN
+	2  do
+	3      phase one
+	4      phase two
+	5  done
+	# for (C)
+	1  for (( EXP1;EXP2;EXP3))
+	2  do
+	3     phase one
+	4     phase two
+	5  done
+	# while
+	1  while condition
+	2  do
+	3     phase one
+	4  done
+	

@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Feb 2016 20:40:08 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Feb 2016 20:40:08 +0800</lastBuildDate>
+    <pubDate>Mon, 22 Feb 2016 22:34:45 +0800</pubDate>
+    <lastBuildDate>Mon, 22 Feb 2016 22:34:45 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -47,6 +47,7 @@
 &lt;p&gt;&lt;img src=&quot;/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;基本知识介绍&lt;/h2&gt;
+&lt;p&gt;参考：&lt;a href=&quot;http://www.jianshu.com/p/4b7f99486cab&quot;&gt;Shell脚本30分钟入门&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;一般所指的Shell是指Shell脚本（Shell script），是为Shell编写的脚本程序。而Shell本身是用户访问操作系统内核服务的程序界面，Shell编程与其它语言类似，只需要编写代码的编辑器和能够解释执行的程序即可。Bourne shell是标准的Shell解释器，其所在路径往往是&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt;。&lt;/p&gt;
 
@@ -77,7 +78,7 @@
 &lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var.sh&lt;/code&gt;执行结果：&lt;/p&gt;
+  &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;img src=&quot;/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
@@ -89,8 +90,9 @@
 1.单引号中的所有字符串都原样输出，字符串中的变量无效&lt;br /&gt;
 2.单引号中不能出现单引号，转义亦无效&lt;/li&gt;
   &lt;li&gt;双引号的特点：&lt;br /&gt;
-1.双引号中可以有变量，并读取变量值
+1.双引号中可以有变量，并读取变量值&lt;br /&gt;
 2.双引号中可以出现转义字符&lt;/li&gt;
+  &lt;li&gt;``符号之间字符串可用于执行指令&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
@@ -111,10 +113,82 @@
 &lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;string.sh&lt;/code&gt;执行结果：&lt;/p&gt;
+  &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;img src=&quot;/pics/shell_string.png&quot; alt=&quot;string.sh&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;shell中的各种括号&lt;/b&gt;&lt;/h4&gt;
+&lt;p&gt;作为脚本语言，shell各种各样的符号括号挺让人头疼，降低了其代码的可读性
+参考：&lt;a href=&quot;http://blog.csdn.net/taiyang1987912/article/details/39551385&quot;&gt;Shell中各种括号的作用&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Shell中大括号&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;可以用来限定变量名称的范围&lt;/li&gt;
+  &lt;li&gt;Shell中&lt;code&gt;``&lt;/code&gt;和&lt;code&gt;()&lt;/code&gt;，可以执行其中的命令并读出结果&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;(())&lt;/code&gt;中支持POSIX标准的计算，符合C语言的运算符都可以用在其中，表达式真值为1，假则为0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;代码范例：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  #! /bin/sh
+2  if ((1))
+3  then
+4      echo $(pwd)
+5  fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;脚本执行结果：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/brackets.png&quot; alt=&quot;brackets&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;条件判断与流程控制&lt;/b&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;if else代码范例：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  if condition
+2  then
+3      phase one
+4      phase two
+5  elif condition2
+6      phase three
+7  else
+8      #else后不能为空
+9      phase four
+10 fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;for while代码范例：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# for (shell)
+1  for param in paramOne paramTwo ... paramN
+2  do
+3      phase one
+4      phase two
+5  done
+# for (C)
+1  for (( EXP1;EXP2;EXP3))
+2  do
+3     phase one
+4     phase two
+5  done
+# while
+1  while condition
+2  do
+3     phase one
+4  done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
         <pubDate>Sun, 21 Feb 2016 17:27:00 +0800</pubDate>
