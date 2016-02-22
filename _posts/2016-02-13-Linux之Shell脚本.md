@@ -32,7 +32,7 @@ categories: Shell
     esac
     done
     # git提交message信息
-	git commit -m $message
+	git commit -m "$message""
 	git push origin gh-pages
 
 Git代码提交脚本执行效果截图：
