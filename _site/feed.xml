@@ -3,10 +3,10 @@
   <channel>
     <title>黄欢的博客</title>
     <description>黄欢的博客：程序，读书，电影</description>
-    <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
-    <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Feb 2016 22:34:45 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Feb 2016 22:34:45 +0800</lastBuildDate>
+    <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/</link>
+    <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 23 Feb 2016 16:07:13 +0800</pubDate>
+    <lastBuildDate>Tue, 23 Feb 2016 16:07:13 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -44,7 +44,7 @@
 
 &lt;p&gt;Git代码提交脚本执行效果截图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;基本知识介绍&lt;/h2&gt;
 &lt;p&gt;参考：&lt;a href=&quot;http://www.jianshu.com/p/4b7f99486cab&quot;&gt;Shell脚本30分钟入门&lt;/a&gt;&lt;/p&gt;
@@ -81,7 +81,7 @@
   &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;字符串&lt;/b&gt;&lt;/h4&gt;
@@ -116,7 +116,7 @@
   &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/shell_string.png&quot; alt=&quot;string.sh&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/shell_string.png&quot; alt=&quot;string.sh&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;shell中的各种括号&lt;/b&gt;&lt;/h4&gt;
@@ -145,7 +145,7 @@
   &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/brackets.png&quot; alt=&quot;brackets&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/brackets.png&quot; alt=&quot;brackets&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;条件判断与流程控制&lt;/b&gt;&lt;/h4&gt;
@@ -190,10 +190,11 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;p&gt;To be continued!&lt;/p&gt;
 </description>
         <pubDate>Sun, 21 Feb 2016 17:27:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
         
         
         <category>Shell</category>
@@ -206,17 +207,17 @@
 
 &lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ps和rcp的执行文件颜色和其它不同，从&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha&lt;/code&gt;的结果来看它们两个与其它文件并没有什么不同，于是我再用&lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt;命令查看文件：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
 </description>
         <pubDate>Sun, 21 Feb 2016 16:34:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
         
         
         <category>bits&amp;pieces</category>
@@ -225,7 +226,7 @@
     
       <item>
         <title>Linux命令学习的日常 Part Six</title>
-        <description>&lt;h2 id=&quot;tar&quot;&gt;1. tar命令&lt;/h2&gt;
+        <description>&lt;h2 id=&quot;tarmac-osx&quot;&gt;1. tar命令(Mac OSX)&lt;/h2&gt;
 
 &lt;p&gt;tar命令用于文件的解压或压缩&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;基本格式 tar [main option] [accessibility options] [filename or dir]&lt;/b&gt;&lt;/h4&gt;
@@ -242,20 +243,33 @@
   &lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 压缩过程中显示文件&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 使用文档名&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;--exclude FILE&lt;/code&gt; 压缩过程中不要将File打包&amp;lt;/code&amp;gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-c dir&lt;/code&gt; 切换工作目录，参考:&lt;a href=&quot;http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html&quot;&gt;Linux下使用tar命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-C dir&lt;/code&gt; 切换工作目录，参考:&lt;a href=&quot;http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html&quot;&gt;Linux下使用tar命令&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 解压到当前文件夹&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tar_xzvf.png&quot; alt=&quot;tar_xzvf&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tar_xzvf.png&quot; alt=&quot;tar_xzvf&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tar_tf.png&quot; alt=&quot;tar_tf&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tar_tf.png&quot; alt=&quot;tar_tf&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d&lt;/code&gt; 压缩文件&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tar_jcvf.png&quot; alt=&quot;tar_jcvf&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tar_jcvf.png&quot; alt=&quot;tar_jcvf&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;aliasmac-osx&quot;&gt;2. alias命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;alias命令用来设定指令的别名，可以使用该命令将较长的命令简化。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 alias newCmd=&#39;originCmd [option]&#39;&lt;/b&gt;&lt;/h4&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;alias -p&lt;/code&gt;显示已经定义的别名，可用&lt;code class=&quot;highlighter-rouge&quot;&gt;unalias&lt;/code&gt;命令删除别名&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/alias.png&quot; alt=&quot;alias&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias ll=&#39;ls -lhaS&#39;&lt;/code&gt;可以缩短命令长度，如果要使该alias长期有效，需要写在系统环境变量中。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/alias_ll.png&quot; alt=&quot;alias_ll&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;参考:&lt;a href=&quot;https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md&quot;&gt;命令行的艺术&lt;/a&gt;&lt;/p&gt;
 
@@ -276,11 +290,11 @@
 
 &lt;p&gt;范例一：&lt;code&gt;pv ./12怒汉.mkv &amp;gt; ~/Work/Test/angry.mkv&lt;/code&gt; 显示拷贝的速度和百分比&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/pv.png&quot; alt=&quot;pv&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/pv.png&quot; alt=&quot;pv&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;echo &#39;this is a pv test&#39; | pv -L 2&lt;/code&gt;  限制传输速度为2Bytes&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/pv_L.png&quot; alt=&quot;pv_L&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/pv_L.png&quot; alt=&quot;pv_L&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;bc&quot;&gt;2. bc命令&lt;/h2&gt;
 
@@ -292,12 +306,12 @@
 
 &lt;p&gt;范例一：&lt;code&gt;bc&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/bc.png&quot; alt=&quot;bc&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/bc.png&quot; alt=&quot;bc&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 19 Feb 2016 16:52:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
         
         
         <category>Linux</category>
@@ -324,12 +338,12 @@
 &lt;p&gt;范例一：&lt;code&gt;ps -ef&lt;/code&gt; 用标准格式显示所有进程&lt;br /&gt;
 显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/ps_ef.png&quot; alt=&quot;ps_ef&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ps_ef.png&quot; alt=&quot;ps_ef&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;ps aux&lt;/code&gt;&lt;br /&gt;
 显示的项目有：USER, PID, %CPU, %MEM, VSZ(虚拟内存量KB), RSS(固定内存量), TTY(进程所运行在的终端机), STAT, START, TIME, COMMAND&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/ps_aux.png&quot; alt=&quot;ps_aux&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ps_aux.png&quot; alt=&quot;ps_aux&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;tmuxmac-osx&quot;&gt;2. tmux命令(Mac OSX)&lt;/h2&gt;
 
@@ -346,22 +360,22 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;范例一：&lt;code&gt;tmux new -s mySession&lt;/code&gt; 创建一个名为mySession的会话&lt;br /&gt;
 输入&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b d&lt;/code&gt;将从此会话脱离，如果要重新连接，则使用&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux attach -t mySession&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tmux_mySession.png&quot; alt=&quot;tmux_new&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_mySession.png&quot; alt=&quot;tmux_new&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：在范例一的mySession中按下&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b c&lt;/code&gt;则会在mySession中创建一个新的窗口&lt;br /&gt;
 可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b w&lt;/code&gt;来查看窗口列表，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &amp;lt;窗口号&amp;gt;&lt;/code&gt;来切换窗口&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b f&lt;/code&gt;来查找窗口，&lt;code class=&quot;highlighter-rouge&quot;&gt;exit&lt;/code&gt;来退出窗口&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tmux_windows.png&quot; alt=&quot;tmux_multiple&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_windows.png&quot; alt=&quot;tmux_multiple&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;为了便于穿窗口的识别，还可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b ,&lt;/code&gt;来重命名窗口&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tmux_rename.png&quot; alt=&quot;tmux_rename&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_rename.png&quot; alt=&quot;tmux_rename&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：tmux还支持把窗口分割成多个面板，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &quot;&lt;/code&gt;为水平分割，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b %&lt;/code&gt;为垂直分割&lt;br /&gt;
 通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &amp;lt;光标键&amp;gt;&lt;/code&gt;来进行窗口移动&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tmux_panes.png&quot; alt=&quot;tmux_panes&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_panes.png&quot; alt=&quot;tmux_panes&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;ackmac-osx&quot;&gt;3. ack命令(Mac OSX)&lt;/h2&gt;
 
@@ -374,7 +388,7 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;范例一：&lt;code&gt;ack -w 测试&lt;/code&gt; 与grep搜索的对比&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/ack_w.png&quot; alt=&quot;ack_w&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ack_w.png&quot; alt=&quot;ack_w&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;thefuckmac-osx&quot;&gt;4. thefuck命令(Mac OSX)&lt;/h2&gt;
 
@@ -384,11 +398,11 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;范例一：&lt;code&gt;git brnch&lt;/code&gt;后回车再输入&lt;code class=&quot;highlighter-rouge&quot;&gt;fuck&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/thefuck.png&quot; alt=&quot;fuck&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/thefuck.png&quot; alt=&quot;fuck&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 16 Feb 2016 10:10:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</guid>
         
         
         <category>Linux</category>
@@ -412,18 +426,18 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;范例一：&lt;code&gt;sort sort.txt&lt;/code&gt; 排序&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/sort.png&quot; alt=&quot;sort&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sort.png&quot; alt=&quot;sort&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;br /&gt;
 1. &lt;code&gt;sort -nk 2 -t - sort.txt&lt;/code&gt; 以&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;进行分割，对分割后的第二个域进行排序；&lt;br /&gt;
 2. &lt;code&gt;sort -nrk 2 -t - sort.txt&lt;/code&gt; 逆序排序&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/sort_t.png&quot; alt=&quot;sort_t&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sort_t.png&quot; alt=&quot;sort_t&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：&lt;code&gt;sort -t - -k 1.7 -nk 3,3 sort_k.txt&lt;/code&gt;&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;-k start,end&lt;/code&gt;中end可以省略，上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;1.7&lt;/code&gt;表示分割后第一个域的第7个字符，由于没有&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;，则表示对第一个域中第7字符及其之后的字符排序。而&lt;code class=&quot;highlighter-rouge&quot;&gt;3,3&lt;/code&gt;则表示在前面排序的基础上，再对第三个域进行排序。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/sort_k.png&quot; alt=&quot;sort_k&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sort_k.png&quot; alt=&quot;sort_k&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;netstat&quot;&gt;2. netstat命令&lt;/h2&gt;
 
@@ -443,17 +457,17 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;范例一：&lt;code&gt;netstat -anp&lt;/code&gt;
 显示程序的pid和名称&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/netstat_anp.png&quot; alt=&quot;netstat 端口&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/netstat_anp.png&quot; alt=&quot;netstat 端口&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;netstat -r&lt;/code&gt;
 输出本机路由表&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/netstat_r.png&quot; alt=&quot;netstat 路由表&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/netstat_r.png&quot; alt=&quot;netstat 路由表&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：&lt;code&gt;netstat -lts&lt;/code&gt;
 输出监听状态中的tcp协议统计信息&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/netstat_lts.png&quot; alt=&quot;netstat tcp统计&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/netstat_lts.png&quot; alt=&quot;netstat tcp统计&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;more&quot;&gt;3. more命令&lt;/h2&gt;
 
@@ -481,12 +495,12 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;范例一：&lt;code&gt;more +/Deploy catalina.out&lt;/code&gt;&lt;br /&gt;
 在catalina.out文件中查找“Deploy字符第一次出现的位置”，并从该处的前两行开始显示输出&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/more_+.png&quot; alt=&quot;more 搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/more_+.png&quot; alt=&quot;more 搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;more +10 -10 catalina.out&lt;/code&gt;&lt;br /&gt;
 从第10行开始，每页10行&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/more_+_-.png&quot; alt=&quot;more 参数&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/more_+_-.png&quot; alt=&quot;more 参数&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;less&quot;&gt;4. less命令&lt;/h2&gt;
 
@@ -517,16 +531,16 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;范例一：&lt;code&gt;less -Nm catalina.out&lt;/code&gt;&lt;br /&gt;
 显示行号和百分比&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/less_Nm.png&quot; alt=&quot;less 行号百分比&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/less_Nm.png&quot; alt=&quot;less 行号百分比&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;/detail&lt;/code&gt;或者&lt;code&gt;?detail&lt;/code&gt;
 向前向后搜索”detail”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/less_search.png&quot; alt=&quot;less 搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/less_search.png&quot; alt=&quot;less 搜索&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 11 Feb 2016 19:55:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</guid>
         
         
         <category>Linux</category>
@@ -537,7 +551,7 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
         <title>读书笔记</title>
         <description>&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年 黄仁宇著&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
 
@@ -553,8 +567,8 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To be continued&lt;/p&gt;
 </description>
         <pubDate>Mon, 08 Feb 2016 21:56:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</guid>
         
         
         <category>Read</category>
@@ -595,8 +609,8 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 08 Feb 2016 17:35:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
         
         
         <category>Develop</category>
@@ -620,12 +634,12 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;范例一：&lt;code&gt;tail -n -5 catalina.out&lt;/code&gt;
 输出最后5行&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tail_n.png&quot; alt=&quot;tail_n&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tail_n.png&quot; alt=&quot;tail_n&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;tail -f catalina.out&lt;/code&gt;
 监听catalina.out最后行的变化并显示&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/tail_f.png&quot; alt=&quot;tail_f&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tail_f.png&quot; alt=&quot;tail_f&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;head&quot;&gt;2. head命令&lt;/h2&gt;
 
@@ -638,7 +652,7 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;范例一：&lt;code&gt;head -n 5 server.xml&lt;/code&gt;和&lt;code&gt;head -n －5 server.xml&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/head_n.png&quot; alt=&quot;head_n&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/head_n.png&quot; alt=&quot;head_n&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;du&quot;&gt;3. du命令&lt;/h2&gt;
 
@@ -652,15 +666,15 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;范例一：&lt;code&gt;du -h&lt;/code&gt; 显示目录下所有文件夹的大小&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/du.png&quot; alt=&quot;du&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/du.png&quot; alt=&quot;du&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;du -h catalina.out&lt;/code&gt;和&lt;code&gt;du -h ../logs&lt;/code&gt; 显示文件或目录的大小&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/du_name.png&quot; alt=&quot;du_name&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/du_name.png&quot; alt=&quot;du_name&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：&lt;code&gt;du -ah --max-depth=1&lt;/code&gt;显示递归的层次为1，显示所有文件和文件夹大小&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/du_max_depth.png&quot; alt=&quot;du_max_depth&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/du_max_depth.png&quot; alt=&quot;du_max_depth&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;whichwhereis&quot;&gt;4. which命令和whereis命令&lt;/h2&gt;
 
@@ -674,16 +688,16 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 &lt;p&gt;范例一：which命令&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/which.png&quot; alt=&quot;which&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/which.png&quot; alt=&quot;which&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：whereis命令&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/whereis.png&quot; alt=&quot;whereis&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/whereis.png&quot; alt=&quot;whereis&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 07 Feb 2016 21:19:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</guid>
         
         
         <category>Linux</category>
@@ -717,14 +731,14 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/find_name.png&quot; alt=&quot;按照文件名查找&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_name.png&quot; alt=&quot;按照文件名查找&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：find . -perm 644
 查找当前目录下权限为644的所有文件
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/find_perm.png&quot; alt=&quot;按照权限的搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_perm.png&quot; alt=&quot;按照权限的搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：find . -path &#39;./_site*&#39; -a -prune -o -name &#39;feed.xml&#39; -print
 整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
@@ -733,14 +747,14 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/find_prune.png&quot; alt=&quot;忽略一些文件夹搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_prune.png&quot; alt=&quot;忽略一些文件夹搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：find . -maxdepth 2 -size 3
 控制查找的深度
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/find_depth.png&quot; alt=&quot;限制搜索深度&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_depth.png&quot; alt=&quot;限制搜索深度&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;补充：Linux的权限模式为三元组“owner”，“group”，“other”,权限对应表如下&lt;/p&gt;
 
@@ -792,7 +806,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/wc.png&quot; alt=&quot;统计&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/wc.png&quot; alt=&quot;统计&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;3. cat命令&lt;/p&gt;
 
@@ -811,25 +825,25 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/cat_b_n.png&quot; alt=&quot;显示文件内容到控制台&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cat_b_n.png&quot; alt=&quot;显示文件内容到控制台&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：cat testColumn testCat
 同时显示两个文件内容
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/cat_mul.png&quot; alt=&quot;显示两个文件&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cat_mul.png&quot; alt=&quot;显示两个文件&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：cat testColumn testCat&amp;gt;merge
 将两个内容连结并输出到一个文件中，&amp;gt;为重新创建，&amp;gt;&amp;gt;为追加
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/cat_merge.png&quot; alt=&quot;连结并输出&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cat_merge.png&quot; alt=&quot;连结并输出&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 04 Feb 2016 16:50:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</guid>
         
         
         <category>Linux</category>
@@ -865,28 +879,28 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/grep_color_n.png&quot; alt=&quot;带颜色的搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_color_n.png&quot; alt=&quot;带颜色的搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：man grep | grep --color=always -n &#39;\&amp;lt;search\&amp;gt;&#39;
 正则表达式模式的搜索
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/grep_color_n_regex.png&quot; alt=&quot;正则表达式的搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_color_n_regex.png&quot; alt=&quot;正则表达式的搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：grep -nR --color=always  a ./*.yml
 在文件夹下的yml文件中搜索，并标注行号和对应行
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/grep_dir.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_dir.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：grep -lR a ./*.yml
 在文件夹下的yml文件中搜索，但只输出匹配的文件名
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/grep_dir_only.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_dir_only.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;2. ls命令&lt;/p&gt;
 
@@ -912,14 +926,14 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/ls_r_t.png&quot; alt=&quot;详细信息&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ls_r_t.png&quot; alt=&quot;详细信息&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：ls -R
 递归输出目录下的所有文件
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/ls_R.png&quot; alt=&quot;ls递归&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ls_R.png&quot; alt=&quot;ls递归&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;3. 有趣的命令&lt;/p&gt;
 
@@ -928,7 +942,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/cal.png&quot; alt=&quot;cal&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cal.png&quot; alt=&quot;cal&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
 不用再开新的窗口
@@ -941,30 +955,30 @@ screen -r yourname //返回该screen
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/screen.png&quot; alt=&quot;screen&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/screen.png&quot; alt=&quot;screen&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/column.png&quot; alt=&quot;column&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/column.png&quot; alt=&quot;column&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：file命令可以查看对象类型
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/file.png&quot; alt=&quot;file&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/file.png&quot; alt=&quot;file&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例五：xargs命令的作用时将参数分段传输给其它命令
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/xargs.png&quot; alt=&quot;xargs&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/xargs.png&quot; alt=&quot;xargs&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 01 Feb 2016 12:00:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</guid>
         
         
         <category>Linux</category>
