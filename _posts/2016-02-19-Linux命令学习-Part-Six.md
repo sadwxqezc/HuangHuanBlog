@@ -5,7 +5,7 @@ date:   2016-02-19 16:52:00 ＋8000
 categories: Linux
 ---
 
-## 1. tar命令
+## 1. tar命令(Mac OSX)
 
 tar命令用于文件的解压或压缩
 <h4><b>基本格式 tar [main option] [accessibility options] [filename or dir]</b></h4>
@@ -19,7 +19,7 @@ tar命令用于文件的解压或压缩
 + <code>-v</code> 压缩过程中显示文件
 + <code>-f</code> 使用文档名
 + <code>--exclude FILE</code> 压缩过程中不要将File打包</code>
-+ <code>-c dir</code> 切换工作目录，参考:[Linux下使用tar命令](http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html)
++ <code>-C dir</code> 切换工作目录，参考:[Linux下使用tar命令](http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html)
 
 范例一：`tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz` 解压到当前文件夹
 	
@@ -33,6 +33,18 @@ tar命令用于文件的解压或压缩
 	
 ![tar_jcvf]({{site.baseurl}}/pics/tar_jcvf.png)  
 
+## 2. alias命令(Mac OSX)
+
+alias命令用来设定指令的别名，可以使用该命令将较长的命令简化。
+<h4><b>基本格式 alias newCmd='originCmd [option]'</b></h4>
+
+范例一：`alias`或者`alias -p`显示已经定义的别名，可用`unalias`命令删除别名
+	
+![alias]({{site.baseurl}}/pics/alias.png)  
+
+范例二：`alias ll='ls -lhaS'`可以缩短命令长度，如果要使该alias长期有效，需要写在系统环境变量中。
+
+![alias_ll]({{site.baseurl}}/pics/alias_ll.png)  
 
 参考:[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
 
