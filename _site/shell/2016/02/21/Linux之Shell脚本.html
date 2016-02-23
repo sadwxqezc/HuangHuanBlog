@@ -8,25 +8,25 @@
 	<title>Shell脚本学习 初阶</title>
 	<meta name="description" content="范例代码(Mac下)">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	<script type="text/javascript" src="/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <a class="navbar-brand" href="/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
         
           <li>
         
-          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -122,7 +122,7 @@ var _hmt = _hmt || [];
 17       echo "exit"
 18       exit
 19       ;;
-20 esac
+20   esac
 21 done
 22 # git提交message信息
 23 git commit -m "$message"
@@ -132,7 +132,7 @@ var _hmt = _hmt || [];
 
 <p>Git代码提交脚本执行效果截图：</p>
 
-<p><img src="/HuangHuanBlog/pics/git_shell.png" alt="Git代码提交" /></p>
+<p><img src="/pics/git_shell.png" alt="Git代码提交" /></p>
 
 <h2 id="section">基本知识介绍</h2>
 <p>参考：<a href="http://www.jianshu.com/p/4b7f99486cab">Shell脚本30分钟入门</a></p>
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
   <p>脚本执行结果：</p>
 </blockquote>
 
-<p><img src="/HuangHuanBlog/pics/var.png" alt="var.sh" /></p>
+<p><img src="/pics/var.png" alt="var.sh" /></p>
 
 <p><br /></p>
 <h4><b>字符串</b></h4>
@@ -204,10 +204,10 @@ var _hmt = _hmt || [];
   <p>脚本执行结果：</p>
 </blockquote>
 
-<p><img src="/HuangHuanBlog/pics/shell_string.png" alt="string.sh" /></p>
+<p><img src="/pics/shell_string.png" alt="string.sh" /></p>
 
 <p><br /></p>
-<h4><b>shell中的各种括号</b></h4>
+<h4><b>Shell中的各种括号</b></h4>
 <p>作为脚本语言，shell各种各样的符号括号挺让人头疼，降低了其代码的可读性
 参考：<a href="http://blog.csdn.net/taiyang1987912/article/details/39551385">Shell中各种括号的作用</a></p>
 
@@ -215,6 +215,7 @@ var _hmt = _hmt || [];
   <li>Shell中大括号<code class="highlighter-rouge"><span class="p">{}</span></code>可以用来限定变量名称的范围</li>
   <li>Shell中<code>``</code>和<code>()</code>，可以执行其中的命令并读出结果</li>
   <li><code>(())</code>中支持POSIX标准的计算，符合C语言的运算符都可以用在其中，表达式真值为1，假则为0</li>
+  <li><code>[]</code>中放置条件表达式</li>
 </ul>
 
 <blockquote>
@@ -233,7 +234,7 @@ var _hmt = _hmt || [];
   <p>脚本执行结果：</p>
 </blockquote>
 
-<p><img src="/HuangHuanBlog/pics/brackets.png" alt="brackets" /></p>
+<p><img src="/pics/brackets.png" alt="brackets" /></p>
 
 <p><br /></p>
 <h4><b>条件判断与流程控制</b></h4>
@@ -278,7 +279,62 @@ var _hmt = _hmt || [];
 </code></pre>
 </div>
 
-<p>To be continued!</p>
+<blockquote>
+  <p>case 代码范例：</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1  case $opt in
+2       valueOne)
+3          phase one
+4          ;;
+5       valueTwo)
+6          phase two
+7          ;;
+8       *)
+9          echo "error"
+10 esac
+</code></pre>
+</div>
+
+<p><br /></p>
+<h4><b>Shell函数</b></h4>
+<blockquote>
+  <p>代码范例：</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1  #! /bin/sh
+2 
+3  function add(){
+4    if [ $# != 2 ]
+5    then
+6       return 1
+7    else
+8       return $(($1+$2))
+9    fi
+10 }
+11
+12 add 1 2
+13 echo "1+2=$?"
+</code></pre>
+</div>
+
+<blockquote>
+  <p>执行结果：</p>
+</blockquote>
+
+<p><img src="/pics/shell_function.png" alt="shell function" /></p>
+
+<p><br /></p>
+<h4><b>Shell传入变量</b></h4>
+
+<ul>
+  <li><code class="highlighter-rouge">$0</code>当前脚本的文件名</li>
+  <li><code class="highlighter-rouge">$n</code>第n个参数的值</li>
+  <li><code class="highlighter-rouge">$#</code>传入的参数个数</li>
+  <li><code class="highlighter-rouge">$*</code>所有参数</li>
+  <li><code class="highlighter-rouge">$?</code>上个命令的退出状态或行数的返回值</li>
+  <li><code class="highlighter-rouge">$$</code>当前Shell进行ID</li>
+</ul>
 
       </article>
       <hr>
@@ -334,7 +390,7 @@ var _hmt = _hmt || [];
           
           
           <span class="point"> · </span>
-          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span><a href="/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>

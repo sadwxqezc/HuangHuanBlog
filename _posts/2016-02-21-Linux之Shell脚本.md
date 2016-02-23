@@ -29,7 +29,7 @@ categories: Shell
     17       echo "exit"
     18       exit
     19       ;;
-    20 esac
+    20   esac
     21 done
     22 # git提交message信息
 	23 git commit -m "$message"
@@ -96,13 +96,14 @@ Git代码提交脚本执行效果截图：
 ![string.sh]({{site.baseurl}}/pics/shell_string.png)
 
 <br/>
-<h4><b>shell中的各种括号</b></h4>
+<h4><b>Shell中的各种括号</b></h4>
 作为脚本语言，shell各种各样的符号括号挺让人头疼，降低了其代码的可读性
 参考：[Shell中各种括号的作用](http://blog.csdn.net/taiyang1987912/article/details/39551385)
 
 + Shell中大括号`{}`可以用来限定变量名称的范围
 + Shell中<code>``</code>和<code>()</code>，可以执行其中的命令并读出结果
 + <code>(())</code>中支持POSIX标准的计算，符合C语言的运算符都可以用在其中，表达式真值为1，假则为0
++ <code>[]</code>中放置条件表达式
 
 >代码范例：
 
@@ -151,4 +152,47 @@ Git代码提交脚本执行效果截图：
 	3     phase one
 	4  done
 	
-To be continued!
+>case 代码范例：
+
+	1  case $opt in
+	2       valueOne)
+	3          phase one
+	4          ;;
+	5       valueTwo)
+	6          phase two
+	7          ;;
+	8       *)
+	9          echo "error"
+	10 esac
+
+<br/>
+<h4><b>Shell函数</b></h4>
+>代码范例：
+
+	1  #! /bin/sh
+	2 
+    3  function add(){
+    4    if [ $# != 2 ]
+    5    then
+    6       return 1
+    7    else
+    8       return $(($1+$2))
+    9    fi
+    10 }
+    11
+    12 add 1 2
+    13 echo "1+2=$?"
+
+>执行结果：
+
+![shell function]({{site.baseurl}}/pics/shell_function.png)
+
+<br/>
+<h4><b>Shell传入变量</b></h4>
+
++ `$0`当前脚本的文件名
++ `$n`第n个参数的值
++ `$#`传入的参数个数
++ `$*`所有参数
++ `$?`上个命令的退出状态或行数的返回值
++ `$$`当前Shell进行ID
