@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux命令学习的日常 Part Six"
-date:   2016-02-24 11:36:00 ＋8000
+date:   2016-02-23 11:36:00 ＋8000
 categories: Linux
 ---
 
