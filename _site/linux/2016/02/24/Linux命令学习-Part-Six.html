@@ -8,7 +8,7 @@
 	<title>Linux命令学习的日常 Part Six</title>
 	<meta name="description" content="1. tar命令(Mac OSX)">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -95,7 +95,7 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>Linux命令学习的日常 Part Six</h1>
-        <p>Feb 19, 2016</p>
+        <p>Feb 24, 2016</p>
       </header>
       <hr>
       <article>
@@ -144,7 +144,24 @@ var _hmt = _hmt || [];
 
 <p><img src="/pics/alias_ll.png" alt="alias_ll" /></p>
 
-<p>参考:<a href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md">命令行的艺术</a></p>
+<h2 id="chmodmac-osx">3. chmod命令(Mac OSX)</h2>
+
+<p>chmod命令用于设定文件或目录的权限，可以用数字或符号的方式进行设定，这里推荐用符号的方式</p>
+<h4><b>基本格式 chmod [option] [filename|dirname]</b></h4>
+<ul>
+  <li><code class="highlighter-rouge">-R</code>递归的持续变更</li>
+</ul>
+
+<p>范例一：<code class="highlighter-rouge">chmod u-x,g+w,o=rwx function.sh</code>其中<code class="highlighter-rouge">u</code>表示文件所有者，<code class="highlighter-rouge">g</code>表示组用户，<code class="highlighter-rouge">o</code>表示其它用户，<code class="highlighter-rouge">a</code>表示所有用户。而<code class="highlighter-rouge">-,+,=</code>分别表示删除，增加和设定权限。</p>
+
+<p><img src="/pics/chmod_ugo.png" alt="chmod_ugo" /></p>
+
+<p>范例二：<code class="highlighter-rouge">chmod a=rwx function.sh</code>设定所有类型用户的权限</p>
+
+<p><img src="/pics/chmod_a.png" alt="chmod_a" /></p>
+
+<p><br />
+参考:<a href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md">命令行的艺术</a></p>
 
 <h2 id="mac-osx">冷门但有用的命令(Mac OSX)</h2>
 
@@ -190,7 +207,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/linux/2016/02/19/Linux命令学习-Part-Six" data-title="Linux命令学习的日常 Part Six" data-url="gaohaoyang.github.io/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html"></div>
+      <div class="ds-thread" data-thread-key="/linux/2016/02/24/Linux命令学习-Part-Six" data-title="Linux命令学习的日常 Part Six" data-url="gaohaoyang.github.io/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
@@ -240,7 +257,7 @@ var _hmt = _hmt || [];
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>
-          <span>&copy; 2015 Gaohaoyang</span>
+          <span>&copy; 2016 HuangHuan</span>
           <span class="point"> · </span>
           <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
 
@@ -248,6 +265,7 @@ var _hmt = _hmt || [];
     </div>
   </div>
 </footer>
+
 
    
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->

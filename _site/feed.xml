@@ -5,9 +5,120 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Feb 2016 17:35:11 +0800</pubDate>
-    <lastBuildDate>Tue, 23 Feb 2016 17:35:11 +0800</lastBuildDate>
+    <pubDate>Wed, 24 Feb 2016 11:53:19 +0800</pubDate>
+    <lastBuildDate>Wed, 24 Feb 2016 11:53:19 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Six</title>
+        <description>&lt;h2 id=&quot;tarmac-osx&quot;&gt;1. tar命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;tar命令用于文件的解压或压缩&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 tar [main option] [accessibility options] [filename or dir]&lt;/b&gt;&lt;/h4&gt;
+&lt;h5&gt;&lt;b&gt;main option 主选项 三者有且只能有一个&lt;/b&gt;&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-c&lt;/code&gt; 创建新的文件，相当于打包&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-x&lt;/code&gt; 释放文件，相当于拆包&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 列出档案文件的内容，查看已经备份了哪些文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;&lt;b&gt;accessibility options 辅助选项&lt;/b&gt;&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-z&lt;/code&gt; 是否需要用gzip压缩或解压，一般格式为.tar.gz或者.tgz&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-j&lt;/code&gt; 是否需要用bzip2压缩或解压，一般格式为.tar.bz2&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 压缩过程中显示文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 使用文档名&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;--exclude FILE&lt;/code&gt; 压缩过程中不要将File打包&amp;lt;/code&amp;gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-C dir&lt;/code&gt; 切换工作目录，参考:&lt;a href=&quot;http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html&quot;&gt;Linux下使用tar命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 解压到当前文件夹&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tar_xzvf.png&quot; alt=&quot;tar_xzvf&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tar_tf.png&quot; alt=&quot;tar_tf&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d&lt;/code&gt; 压缩文件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/tar_jcvf.png&quot; alt=&quot;tar_jcvf&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;aliasmac-osx&quot;&gt;2. alias命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;alias命令用来设定指令的别名，可以使用该命令将较长的命令简化。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 alias newCmd=&#39;originCmd [option]&#39;&lt;/b&gt;&lt;/h4&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;alias -p&lt;/code&gt;显示已经定义的别名，可用&lt;code class=&quot;highlighter-rouge&quot;&gt;unalias&lt;/code&gt;命令删除别名&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/alias.png&quot; alt=&quot;alias&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias ll=&#39;ls -lhaS&#39;&lt;/code&gt;可以缩短命令长度，如果要使该alias长期有效，需要写在系统环境变量中。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/alias_ll.png&quot; alt=&quot;alias_ll&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;chmodmac-osx&quot;&gt;3. chmod命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;chmod命令用于设定文件或目录的权限，可以用数字或符号的方式进行设定，这里推荐用符号的方式&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 chmod [option] [filename|dirname]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-R&lt;/code&gt;递归的持续变更&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod u-x,g+w,o=rwx function.sh&lt;/code&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;u&lt;/code&gt;表示文件所有者，&lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt;表示组用户，&lt;code class=&quot;highlighter-rouge&quot;&gt;o&lt;/code&gt;表示其它用户，&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;表示所有用户。而&lt;code class=&quot;highlighter-rouge&quot;&gt;-,+,=&lt;/code&gt;分别表示删除，增加和设定权限。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/chmod_ugo.png&quot; alt=&quot;chmod_ugo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod a=rwx function.sh&lt;/code&gt;设定所有类型用户的权限&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/chmod_a.png&quot; alt=&quot;chmod_a&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+参考:&lt;a href=&quot;https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md&quot;&gt;命令行的艺术&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mac-osx&quot;&gt;冷门但有用的命令(Mac OSX)&lt;/h2&gt;
+
+&lt;h2 id=&quot;pv&quot;&gt;1. pv命令&lt;/h2&gt;
+
+&lt;p&gt;pv命令可以通过管道来显示数据的处理进度&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 pv [option]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-p&lt;/code&gt; 显示百分比&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 显示时间&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 传输速率&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-e&lt;/code&gt; 估计的剩余时间&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 用数字代替进度条来显示百分比&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-L&lt;/code&gt; 限制传输速度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;pv ./12怒汉.mkv &amp;gt; ~/Work/Test/angry.mkv&lt;/code&gt; 显示拷贝的速度和百分比&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/pv.png&quot; alt=&quot;pv&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code&gt;echo &#39;this is a pv test&#39; | pv -L 2&lt;/code&gt;  限制传输速度为2Bytes&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/pv_L.png&quot; alt=&quot;pv_L&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;bc&quot;&gt;2. bc命令&lt;/h2&gt;
+
+&lt;p&gt;bc命令可以用于计算&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 bc [option]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-l&lt;/code&gt; 定义数学函数的库，并将初始值scale设定为20&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code&gt;bc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/bc.png&quot; alt=&quot;bc&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 24 Feb 2016 11:36:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>Shell脚本学习 初阶</title>
@@ -272,105 +383,11 @@
 &lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
 </description>
         <pubDate>Sun, 21 Feb 2016 16:34:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/bits&pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
         
         
-        <category>bits&amp;pieces</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令学习的日常 Part Six</title>
-        <description>&lt;h2 id=&quot;tarmac-osx&quot;&gt;1. tar命令(Mac OSX)&lt;/h2&gt;
-
-&lt;p&gt;tar命令用于文件的解压或压缩&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 tar [main option] [accessibility options] [filename or dir]&lt;/b&gt;&lt;/h4&gt;
-&lt;h5&gt;&lt;b&gt;main option 主选项 三者有且只能有一个&lt;/b&gt;&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-c&lt;/code&gt; 创建新的文件，相当于打包&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-x&lt;/code&gt; 释放文件，相当于拆包&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 列出档案文件的内容，查看已经备份了哪些文件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5&gt;&lt;b&gt;accessibility options 辅助选项&lt;/b&gt;&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-z&lt;/code&gt; 是否需要用gzip压缩或解压，一般格式为.tar.gz或者.tgz&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-j&lt;/code&gt; 是否需要用bzip2压缩或解压，一般格式为.tar.bz2&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 压缩过程中显示文件&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 使用文档名&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;--exclude FILE&lt;/code&gt; 压缩过程中不要将File打包&amp;lt;/code&amp;gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-C dir&lt;/code&gt; 切换工作目录，参考:&lt;a href=&quot;http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html&quot;&gt;Linux下使用tar命令&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 解压到当前文件夹&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/tar_xzvf.png&quot; alt=&quot;tar_xzvf&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/tar_tf.png&quot; alt=&quot;tar_tf&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d&lt;/code&gt; 压缩文件&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/tar_jcvf.png&quot; alt=&quot;tar_jcvf&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;aliasmac-osx&quot;&gt;2. alias命令(Mac OSX)&lt;/h2&gt;
-
-&lt;p&gt;alias命令用来设定指令的别名，可以使用该命令将较长的命令简化。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 alias newCmd=&#39;originCmd [option]&#39;&lt;/b&gt;&lt;/h4&gt;
-
-&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;alias -p&lt;/code&gt;显示已经定义的别名，可用&lt;code class=&quot;highlighter-rouge&quot;&gt;unalias&lt;/code&gt;命令删除别名&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/alias.png&quot; alt=&quot;alias&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias ll=&#39;ls -lhaS&#39;&lt;/code&gt;可以缩短命令长度，如果要使该alias长期有效，需要写在系统环境变量中。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/alias_ll.png&quot; alt=&quot;alias_ll&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;参考:&lt;a href=&quot;https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md&quot;&gt;命令行的艺术&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;mac-osx&quot;&gt;冷门但有用的命令(Mac OSX)&lt;/h2&gt;
-
-&lt;h2 id=&quot;pv&quot;&gt;1. pv命令&lt;/h2&gt;
-
-&lt;p&gt;pv命令可以通过管道来显示数据的处理进度&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 pv [option]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-p&lt;/code&gt; 显示百分比&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 显示时间&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 传输速率&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-e&lt;/code&gt; 估计的剩余时间&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 用数字代替进度条来显示百分比&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-L&lt;/code&gt; 限制传输速度&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;pv ./12怒汉.mkv &amp;gt; ~/Work/Test/angry.mkv&lt;/code&gt; 显示拷贝的速度和百分比&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/pv.png&quot; alt=&quot;pv&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;echo &#39;this is a pv test&#39; | pv -L 2&lt;/code&gt;  限制传输速度为2Bytes&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/pv_L.png&quot; alt=&quot;pv_L&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;bc&quot;&gt;2. bc命令&lt;/h2&gt;
-
-&lt;p&gt;bc命令可以用于计算&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 bc [option]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-l&lt;/code&gt; 定义数学函数的库，并将初始值scale设定为20&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;bc&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/bc.png&quot; alt=&quot;bc&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 19 Feb 2016 16:52:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/19/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
-        
-        
-        <category>Linux</category>
+        <category>Pieces</category>
         
       </item>
     

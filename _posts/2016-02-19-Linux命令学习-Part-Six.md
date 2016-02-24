@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux命令学习的日常 Part Six"
-date:   2016-02-19 16:52:00 ＋8000
+date:   2016-02-24 11:36:00 ＋8000
 categories: Linux
 ---
 
@@ -46,6 +46,21 @@ alias命令用来设定指令的别名，可以使用该命令将较长的命令
 
 ![alias_ll]({{site.baseurl}}/pics/alias_ll.png)  
 
+## 3. chmod命令(Mac OSX)
+
+chmod命令用于设定文件或目录的权限，可以用数字或符号的方式进行设定，这里推荐用符号的方式
+<h4><b>基本格式 chmod [option] [filename|dirname]</b></h4>
++ `-R`递归的持续变更 
+
+范例一：`chmod u-x,g+w,o=rwx function.sh`其中`u`表示文件所有者，`g`表示组用户，`o`表示其它用户，`a`表示所有用户。而`-,+,=`分别表示删除，增加和设定权限。
+	
+![chmod_ugo]({{site.baseurl}}/pics/chmod_ugo.png)  
+
+范例二：`chmod a=rwx function.sh`设定所有类型用户的权限
+
+![chmod_a]({{site.baseurl}}/pics/chmod_a.png)  
+
+<br/>
 参考:[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
 
 ## 冷门但有用的命令(Mac OSX)
