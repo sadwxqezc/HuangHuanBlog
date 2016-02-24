@@ -19,7 +19,8 @@ categories: Linux
 > > -newer f1 !f2 查更改时间在f1和f2之间的文件      
 > > -size n 查找长度为n块的文件，一块为512 bytes  
 > > -depth 使得查找在进入子目录前先行查找完本目录  
-> > -prune 查找时忽略某个目录  
+> > -prune 查找时忽略某个目录
+> > -type 按文件类型查找，b为块设备，d为目录，f为普通文档 
 
 	范例一：find ~ -name '*.yml' | grep '\.yml' --color=always
 	在用户目录下查找文件名后缀为.yml的文件
