@@ -5,9 +5,98 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 24 Feb 2016 11:53:19 +0800</pubDate>
-    <lastBuildDate>Wed, 24 Feb 2016 11:53:19 +0800</lastBuildDate>
+    <pubDate>Thu, 25 Feb 2016 10:57:02 +0800</pubDate>
+    <lastBuildDate>Thu, 25 Feb 2016 10:57:02 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>边边角角的知识点</title>
+        <description>&lt;h2 id=&quot;setuid&quot;&gt;1. setuid权限&lt;/h2&gt;
+
+&lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ps和rcp的执行文件颜色和其它不同，从&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha&lt;/code&gt;的结果来看它们两个与其它文件并没有什么不同，于是我再用&lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt;命令查看文件：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2. 执行权限&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/execute.png&quot; alt=&quot;execute&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图所示，作为execute.sh的owner，我拥有&lt;code class=&quot;highlighter-rouge&quot;&gt;rw&lt;/code&gt;读写权限，但如果想通过&lt;code class=&quot;highlighter-rouge&quot;&gt;./execute.sh&lt;/code&gt;直接执行，却被告知权限不够，而用&lt;code class=&quot;highlighter-rouge&quot;&gt;sh execute.sh&lt;/code&gt;却能够执行。后者实际上是将脚本交由&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt;执行，仅仅需要读权限即可。那么如果我只有&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;执行权限，是否能够直接执行了？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/execute_x.png&quot; alt=&quot;execute_x&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin\sh&lt;/code&gt;程序去读取并解释执行，所以同时亦需要读权限。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 24 Feb 2016 10:41:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
+        
+        
+        <category>Pieces</category>
+        
+      </item>
+    
+      <item>
+        <title>读书笔记-学</title>
+        <description>&lt;h2 id=&quot;effective-java-by-joshua-bloch&quot;&gt;1. Effective Java By Joshua Bloch&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/effective_java.jpg&quot; alt=&quot;Effective Java&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 23 Feb 2016 19:26:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
+    
+      <item>
+        <title>读书笔记-思</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年 黄仁宇著&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
+
+&lt;p&gt;万历十五年即为1587年，作者认为这一年为明朝历史的转折点，这个帝国从此走向灭亡。而我对本书的理解是，其作为转折点的原因有二：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;万历皇帝的怠政&lt;/li&gt;
+  &lt;li&gt;国家的积弊：长期的以道德代替法律治理国家，以及文官治国发展到了一个顶峰，国家的体制已经凝固，难以改革。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。&lt;/p&gt;
+
+&lt;h2 id=&quot;this-is-water-by-david-foster-wallace&quot;&gt;2. “This is Water” By David Foster Wallace&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/this_is_water.jpg&quot; alt=&quot;this is water&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在繁琐无聊的日常中，日复一日地保持自觉与警醒，困难得不可想象&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;视频链接：&lt;a href=&quot;http://v.youku.com/v_show/id_XNjYyMjYzNDky.html?from=y1.2-1-103.3.4-1.1-1-1-3-0#paction&quot;&gt;生命中最简单又最困难的事&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2016年2月24日：写给将要参加工作的自己，莫要被生活所淹没，选择思考的方式，保持自觉与警醒。&lt;/p&gt;
+
+&lt;p&gt;To be continued&lt;/p&gt;
+</description>
+        <pubDate>Tue, 23 Feb 2016 17:07:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
     
       <item>
         <title>Linux命令学习的日常 Part Six</title>
@@ -111,9 +200,9 @@
 &lt;p&gt;&lt;img src=&quot;/pics/bc.png&quot; alt=&quot;bc&quot; /&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Wed, 24 Feb 2016 11:36:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
+        <pubDate>Tue, 23 Feb 2016 11:36:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
         
         
         <category>Linux</category>
@@ -369,29 +458,6 @@
       </item>
     
       <item>
-        <title>边边角角的知识点</title>
-        <description>&lt;h2 id=&quot;setuid&quot;&gt;1. setuid权限&lt;/h2&gt;
-
-&lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ps和rcp的执行文件颜色和其它不同，从&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha&lt;/code&gt;的结果来看它们两个与其它文件并没有什么不同，于是我再用&lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt;命令查看文件：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 21 Feb 2016 16:34:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
-        
-        
-        <category>Pieces</category>
-        
-      </item>
-    
-      <item>
         <title>Linux命令学习的日常 Part Five</title>
         <description>&lt;h3 id=&quot;linux-debian&quot;&gt;Linux命令(系统 Debian)&lt;/h3&gt;
 
@@ -621,34 +687,6 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
       </item>
     
       <item>
-        <title>读书笔记</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年 黄仁宇著&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
-
-&lt;p&gt;万历十五年即为1587年，作者认为这一年为明朝历史的转折点，这个帝国从此走向灭亡。而我对本书的理解是，其作为转折点的原因有二：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;万历皇帝的怠政&lt;/li&gt;
-  &lt;li&gt;国家的积弊：长期的以道德代替法律治理国家，以及文官治国发展到了一个顶峰，国家的体制已经凝固，难以改革。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。&lt;/p&gt;
-
-&lt;p&gt;To be continued&lt;/p&gt;
-</description>
-        <pubDate>Mon, 08 Feb 2016 21:56:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html</guid>
-        
-        
-        <category>Read</category>
-        
-      </item>
-    
-      <item>
         <title>程序小事</title>
         <description>&lt;h2 id=&quot;jekyllgithub-pages&quot;&gt;1. jekyll博客发布到github pages问题&lt;/h2&gt;
 &lt;ul&gt;
@@ -795,7 +833,8 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 -newer f1 !f2 查更改时间在f1和f2之间的文件    &lt;br /&gt;
 -size n 查找长度为n块的文件，一块为512 bytes&lt;br /&gt;
 -depth 使得查找在进入子目录前先行查找完本目录&lt;br /&gt;
--prune 查找时忽略某个目录&lt;/p&gt;
+-prune 查找时忽略某个目录
+-type 按文件类型查找，b为块设备，d为目录，f为普通文档&lt;/p&gt;
   &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 
@@ -917,141 +956,6 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
         <pubDate>Thu, 04 Feb 2016 16:50:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</link>
         <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令学习的日常 Part One</title>
-        <description>&lt;h3 id=&quot;linuxunixmac-os&quot;&gt;Linux&amp;amp;Unix通用命令(系统Mac OS)&lt;/h3&gt;
-&lt;p&gt;1. grep命令&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;文本查找命令, 能够使用正则表达式的方式搜索文本，其搜索对象可以是单个或则多个文件&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 grep [option] [regex] [path]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-c 只输出匹配行的数目&lt;br /&gt;
--n 显示匹配行的行号&lt;br /&gt;
--v 显示不包含匹配文本的行&lt;br /&gt;
--i 不区分大小写 (grep是大小写敏感的)&lt;br /&gt;
--R 文件夹下递归搜索&lt;br /&gt;
--l 只显示匹配的文件名  &lt;br /&gt;
--H 显示文件名&lt;br /&gt;
--A NUM(after)显示匹配的后几行&lt;br /&gt;
--B NUM(before)显示匹配的前几行&lt;br /&gt;
--C NUM显示匹配的前后几行  &lt;br /&gt;
-–color 标出颜色&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：man grep | grep --color=always -n search
-带颜色的文本搜索，并同时输出行号
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/grep_color_n.png&quot; alt=&quot;带颜色的搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：man grep | grep --color=always -n &#39;\&amp;lt;search\&amp;gt;&#39;
-正则表达式模式的搜索
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/grep_color_n_regex.png&quot; alt=&quot;正则表达式的搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：grep -nR --color=always  a ./*.yml
-在文件夹下的yml文件中搜索，并标注行号和对应行
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/grep_dir.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：grep -lR a ./*.yml
-在文件夹下的yml文件中搜索，但只输出匹配的文件名
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/grep_dir_only.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2. ls命令&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;ls是命令行中用的最多的命令之一了，用于显示目录下的文件&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 ls [option]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-a 列出所有文件，包括’.’开头的隐藏文件&lt;br /&gt;
--h 使打印结果易于使用者查看(human readable)&lt;br /&gt;
--l 列出文件的详细信息：创建者，创建时间，读写权限等&lt;br /&gt;
--s 显示文件大小&lt;br /&gt;
--t 按时间进行文件的排序&lt;br /&gt;
--S 以大小进行排序&lt;br /&gt;
--r 当前条件逆序&lt;br /&gt;
--L 显示文件链接名&lt;br /&gt;
--R 将目录中所有文件都递归显示出来&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：ls -lharts
-输出文件信息，并时间从旧到新排列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/ls_r_t.png&quot; alt=&quot;详细信息&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：ls -R
-递归输出目录下的所有文件
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/ls_R.png&quot; alt=&quot;ls递归&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3. 有趣的命令&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：cal -j 2 2016
-显示2016年2月份的日历，标注当天为一年中的第几天
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/cal.png&quot; alt=&quot;cal&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
-不用再开新的窗口
-
-screen -S yourname //创建一个名为yourname的虚拟链接
-jekyll serve //在yourname中启动一个jekyll
-ctrl+a,d //保存并返回
-screen -ls //查看所有的screen
-screen -r yourname //返回该screen
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/screen.png&quot; alt=&quot;screen&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/column.png&quot; alt=&quot;column&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：file命令可以查看对象类型
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/file.png&quot; alt=&quot;file&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例五：xargs命令的作用时将参数分段传输给其它命令
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/xargs.png&quot; alt=&quot;xargs&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 01 Feb 2016 12:00:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-One.html</guid>
         
         
         <category>Linux</category>

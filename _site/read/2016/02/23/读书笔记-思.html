@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Linux命令学习的日常 Part Six</title>
-	<meta name="description" content="1. tar命令(Mac OSX)">
+	<title>读书笔记-思</title>
+	<meta name="description" content="1. 万历十五年 黄仁宇著">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -81,6 +81,8 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -94,110 +96,39 @@ var _hmt = _hmt || [];
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>Linux命令学习的日常 Part Six</h1>
-        <p>Feb 24, 2016</p>
+        <h1>读书笔记-思</h1>
+        <p>Feb 23, 2016</p>
       </header>
       <hr>
       <article>
-        <h2 id="tarmac-osx">1. tar命令(Mac OSX)</h2>
+        <h2 id="section">1. 万历十五年 黄仁宇著</h2>
 
-<p>tar命令用于文件的解压或压缩</p>
-<h4><b>基本格式 tar [main option] [accessibility options] [filename or dir]</b></h4>
-<h5><b>main option 主选项 三者有且只能有一个</b></h5>
+<p><img src="/pics/wanli.jpg" alt="万历十五年" /></p>
+
+<p>在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，"心学"等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。</p>
+
+<p>万历十五年即为1587年，作者认为这一年为明朝历史的转折点，这个帝国从此走向灭亡。而我对本书的理解是，其作为转折点的原因有二：</p>
+
 <ul>
-  <li><code>-c</code> 创建新的文件，相当于打包</li>
-  <li><code>-x</code> 释放文件，相当于拆包</li>
-  <li><code>-t</code> 列出档案文件的内容，查看已经备份了哪些文件</li>
-</ul>
-<h5><b>accessibility options 辅助选项</b></h5>
-<ul>
-  <li><code>-z</code> 是否需要用gzip压缩或解压，一般格式为.tar.gz或者.tgz</li>
-  <li><code>-j</code> 是否需要用bzip2压缩或解压，一般格式为.tar.bz2</li>
-  <li><code>-v</code> 压缩过程中显示文件</li>
-  <li><code>-f</code> 使用文档名</li>
-  <li><code>--exclude FILE</code> 压缩过程中不要将File打包&lt;/code&gt;</li>
-  <li><code>-C dir</code> 切换工作目录，参考:<a href="http://www.cnblogs.com/li-hao/archive/2011/10/03/2198480.html">Linux下使用tar命令</a></li>
+  <li>万历皇帝的怠政</li>
+  <li>国家的积弊：长期的以道德代替法律治理国家，以及文官治国发展到了一个顶峰，国家的体制已经凝固，难以改革。</li>
 </ul>
 
-<p>范例一：<code class="highlighter-rouge">tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz</code> 解压到当前文件夹</p>
+<p>虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。</p>
 
-<p><img src="/pics/tar_xzvf.png" alt="tar_xzvf" /></p>
+<h2 id="this-is-water-by-david-foster-wallace">2. “This is Water” By David Foster Wallace</h2>
 
-<p>范例二：<code class="highlighter-rouge">tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz</code> 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数</p>
+<p><img src="/pics/this_is_water.jpg" alt="this is water" /></p>
 
-<p><img src="/pics/tar_tf.png" alt="tar_tf" /></p>
+<blockquote>
+  <p>在繁琐无聊的日常中，日复一日地保持自觉与警醒，困难得不可想象</p>
+</blockquote>
 
-<p>范例三：<code class="highlighter-rouge">tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d</code> 压缩文件</p>
+<p>视频链接：<a href="http://v.youku.com/v_show/id_XNjYyMjYzNDky.html?from=y1.2-1-103.3.4-1.1-1-1-3-0#paction">生命中最简单又最困难的事</a></p>
 
-<p><img src="/pics/tar_jcvf.png" alt="tar_jcvf" /></p>
+<p>2016年2月24日：写给将要参加工作的自己，莫要被生活所淹没，选择思考的方式，保持自觉与警醒。</p>
 
-<h2 id="aliasmac-osx">2. alias命令(Mac OSX)</h2>
-
-<p>alias命令用来设定指令的别名，可以使用该命令将较长的命令简化。</p>
-<h4><b>基本格式 alias newCmd='originCmd [option]'</b></h4>
-
-<p>范例一：<code class="highlighter-rouge">alias</code>或者<code class="highlighter-rouge">alias -p</code>显示已经定义的别名，可用<code class="highlighter-rouge">unalias</code>命令删除别名</p>
-
-<p><img src="/pics/alias.png" alt="alias" /></p>
-
-<p>范例二：<code class="highlighter-rouge">alias ll='ls -lhaS'</code>可以缩短命令长度，如果要使该alias长期有效，需要写在系统环境变量中。</p>
-
-<p><img src="/pics/alias_ll.png" alt="alias_ll" /></p>
-
-<h2 id="chmodmac-osx">3. chmod命令(Mac OSX)</h2>
-
-<p>chmod命令用于设定文件或目录的权限，可以用数字或符号的方式进行设定，这里推荐用符号的方式</p>
-<h4><b>基本格式 chmod [option] [filename|dirname]</b></h4>
-<ul>
-  <li><code class="highlighter-rouge">-R</code>递归的持续变更</li>
-</ul>
-
-<p>范例一：<code class="highlighter-rouge">chmod u-x,g+w,o=rwx function.sh</code>其中<code class="highlighter-rouge">u</code>表示文件所有者，<code class="highlighter-rouge">g</code>表示组用户，<code class="highlighter-rouge">o</code>表示其它用户，<code class="highlighter-rouge">a</code>表示所有用户。而<code class="highlighter-rouge">-,+,=</code>分别表示删除，增加和设定权限。</p>
-
-<p><img src="/pics/chmod_ugo.png" alt="chmod_ugo" /></p>
-
-<p>范例二：<code class="highlighter-rouge">chmod a=rwx function.sh</code>设定所有类型用户的权限</p>
-
-<p><img src="/pics/chmod_a.png" alt="chmod_a" /></p>
-
-<p><br />
-参考:<a href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md">命令行的艺术</a></p>
-
-<h2 id="mac-osx">冷门但有用的命令(Mac OSX)</h2>
-
-<h2 id="pv">1. pv命令</h2>
-
-<p>pv命令可以通过管道来显示数据的处理进度</p>
-<h4><b>基本格式 pv [option]</b></h4>
-<ul>
-  <li><code>-p</code> 显示百分比</li>
-  <li><code>-t</code> 显示时间</li>
-  <li><code>-r</code> 传输速率</li>
-  <li><code>-e</code> 估计的剩余时间</li>
-  <li><code>-n</code> 用数字代替进度条来显示百分比</li>
-  <li><code>-L</code> 限制传输速度</li>
-</ul>
-
-<p>范例一：<code>pv ./12怒汉.mkv &gt; ~/Work/Test/angry.mkv</code> 显示拷贝的速度和百分比</p>
-
-<p><img src="/pics/pv.png" alt="pv" /></p>
-
-<p>范例二：<code>echo 'this is a pv test' | pv -L 2</code>  限制传输速度为2Bytes</p>
-
-<p><img src="/pics/pv_L.png" alt="pv_L" /></p>
-
-<h2 id="bc">2. bc命令</h2>
-
-<p>bc命令可以用于计算</p>
-<h4><b>基本格式 bc [option]</b></h4>
-<ul>
-  <li><code>-l</code> 定义数学函数的库，并将初始值scale设定为20</li>
-</ul>
-
-<p>范例一：<code>bc</code></p>
-
-<p><img src="/pics/bc.png" alt="bc" /></p>
-
+<p>To be continued</p>
 
       </article>
       <hr>
@@ -207,7 +138,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/linux/2016/02/24/Linux命令学习-Part-Six" data-title="Linux命令学习的日常 Part Six" data-url="gaohaoyang.github.io/linux/2016/02/24/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html"></div>
+      <div class="ds-thread" data-thread-key="/read/2016/02/23/读书笔记-思" data-title="读书笔记-思" data-url="gaohaoyang.github.io/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html"></div>
       
       <!-- 多说评论框 end -->
     </div>

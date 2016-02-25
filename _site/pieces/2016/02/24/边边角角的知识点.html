@@ -8,7 +8,7 @@
 	<title>边边角角的知识点</title>
 	<meta name="description" content="1. setuid权限">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -81,6 +81,8 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -95,7 +97,7 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>边边角角的知识点</h1>
-        <p>Feb 21, 2016</p>
+        <p>Feb 24, 2016</p>
       </header>
       <hr>
       <article>
@@ -111,6 +113,16 @@ var _hmt = _hmt || [];
 
 <p>此时发现ps和rcp的前面多了个<code class="highlighter-rouge">setuid</code>的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了<code class="highlighter-rouge">setuid</code>外还有<code class="highlighter-rouge">setgid</code>和<code class="highlighter-rouge">stick bit</code>。</p>
 
+<h2 id="section">2. 执行权限</h2>
+
+<p><img src="/pics/execute.png" alt="execute" /></p>
+
+<p>如上图所示，作为execute.sh的owner，我拥有<code class="highlighter-rouge">rw</code>读写权限，但如果想通过<code class="highlighter-rouge">./execute.sh</code>直接执行，却被告知权限不够，而用<code class="highlighter-rouge">sh execute.sh</code>却能够执行。后者实际上是将脚本交由<code class="highlighter-rouge">/bin/sh</code>执行，仅仅需要读权限即可。那么如果我只有<code class="highlighter-rouge">execute.sh</code>的<code class="highlighter-rouge">x</code>执行权限，是否能够直接执行了？</p>
+
+<p><img src="/pics/execute_x.png" alt="execute_x" /></p>
+
+<p>如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行<code class="highlighter-rouge">execute.sh</code>，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要<code class="highlighter-rouge">\bin\sh</code>程序去读取并解释执行，所以同时亦需要读权限。</p>
+
       </article>
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -119,7 +131,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/pieces/2016/02/21/边边角角的知识点" data-title="边边角角的知识点" data-url="gaohaoyang.github.io/pieces/2016/02/21/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html"></div>
+      <div class="ds-thread" data-thread-key="/pieces/2016/02/24/边边角角的知识点" data-title="边边角角的知识点" data-url="gaohaoyang.github.io/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
