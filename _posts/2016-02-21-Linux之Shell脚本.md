@@ -126,11 +126,12 @@ Git代码提交脚本执行效果截图：
 	3      phase one
 	4      phase two
 	5  elif condition2
-	6      phase three
-	7  else
-	8      #else后不能为空
-	9      phase four
-	10 fi
+	6  then
+	7      phase three
+	8  else
+	9      #else后不能为空
+	10      phase four
+	1 fi
 
 >for while代码范例：
 
