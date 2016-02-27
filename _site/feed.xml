@@ -5,9 +5,48 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 27 Feb 2016 11:56:43 +0800</pubDate>
-    <lastBuildDate>Sat, 27 Feb 2016 11:56:43 +0800</lastBuildDate>
+    <pubDate>Sat, 27 Feb 2016 19:33:06 +0800</pubDate>
+    <lastBuildDate>Sat, 27 Feb 2016 19:33:06 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Cookie and Session</title>
+        <description>&lt;h2 id=&quot;cookie&quot;&gt;Cookie&lt;/h2&gt;
+
+&lt;h3 id=&quot;cookie-&quot;&gt;什么是Cookie ？&lt;/h3&gt;
+
+&lt;p&gt;由于&lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt;是无状态协议，它不会对之前发生过的请求和响应的状态进行管理。无状态协议虽然资源消耗少，但由于其无法管理如登陆状态等信息，给服务器管理客户端的状态带来了难题。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/http.png&quot; alt=&quot;图解Http_状态&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;为了解决该问题，Cookie技术被引入，通过在请求和响应报文中写入Cookie信息来控制客户端的状态。&lt;/p&gt;
+
+&lt;h3 id=&quot;cookie-1&quot;&gt;Cookie的工作原理&lt;/h3&gt;
+
+&lt;p&gt;在服务端发送的响应报文内会有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Set-Cookie&lt;/code&gt;字段信息，通知客户端保存Cookie。当客户端在此往同一服务器发送请求时，客户端会自动在请求报文中加入Cookie值，其选择Cookie的依据是当前的url地址。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/http_process.png&quot; alt=&quot;Cookie工作流程&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cookie-2&quot;&gt;Cookie的类型与内容&lt;/h3&gt;
+
+&lt;p&gt;Cookie中内容以Key-Value的形式存储，存在两种类型的Cookie:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;session cookie&lt;/code&gt;（会话Cookie）：未设置过期时间的cookie，一般被保存在内存中，cookie的生命周期为浏览器会话期间&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;persistent cookie&lt;/code&gt;（持久Cookie）：设置了过期时间的cookie，浏览器会将其保存在硬盘上，直至其过期失效&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;PS:图片来自《图解Http》,书中图画的萌，我就不重新画了&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 26 Feb 2016 17:06:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/backend/2016/02/26/Cookies-And-Session.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/backend/2016/02/26/Cookies-And-Session.html</guid>
+        
+        
+        <category>Backend</category>
+        
+      </item>
     
       <item>
         <title>Linux命令学习的日常 Part Seven</title>
@@ -649,144 +688,6 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
         <pubDate>Tue, 16 Feb 2016 10:10:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</link>
         <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令学习的日常 Part Four</title>
-        <description>&lt;h3 id=&quot;linux-debian&quot;&gt;Linux命令(系统 Debian)&lt;/h3&gt;
-
-&lt;h2 id=&quot;sort&quot;&gt;1. sort命令&lt;/h2&gt;
-
-&lt;p&gt;sort命令用于对文本进行排序，并将结果输出。其以文本的每一行为单位，从首字符向后，依次按照ascii码值进行比较，最后升序排列。（默认是忽略每行前面空格的）&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 sort [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 忽略重复行&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 按照数字大小排序&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 逆序&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-k start,end&lt;/code&gt;start为比较的起始位置，end为结束位置&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;sort sort.txt&lt;/code&gt; 排序&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/sort.png&quot; alt=&quot;sort&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;br /&gt;
-1. &lt;code&gt;sort -nk 2 -t - sort.txt&lt;/code&gt; 以&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;进行分割，对分割后的第二个域进行排序；&lt;br /&gt;
-2. &lt;code&gt;sort -nrk 2 -t - sort.txt&lt;/code&gt; 逆序排序&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/sort_t.png&quot; alt=&quot;sort_t&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code&gt;sort -t - -k 1.7 -nk 3,3 sort_k.txt&lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;-k start,end&lt;/code&gt;中end可以省略，上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;1.7&lt;/code&gt;表示分割后第一个域的第7个字符，由于没有&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;，则表示对第一个域中第7字符及其之后的字符排序。而&lt;code class=&quot;highlighter-rouge&quot;&gt;3,3&lt;/code&gt;则表示在前面排序的基础上，再对第三个域进行排序。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/sort_k.png&quot; alt=&quot;sort_k&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;netstat&quot;&gt;2. netstat命令&lt;/h2&gt;
-
-&lt;p&gt;netstat用于输出linux系统的网络情况信息，以前面试的时候还被问过：“如何查看占用某个端口的程序的pid?”，这个问题实际用&lt;code&gt;netstat -anp&lt;/code&gt;输出，然后再grep一下即可。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 netstat [option]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有socket连接&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-l&lt;/code&gt; 显示监控中(listening)的socket连接&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 直接使用ip地址，而不使用域名服务器&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-p&lt;/code&gt; 显示正在使用socket的程序的pid和名称&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 打印路由表&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 显示TCP传输协议的连线状况&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 显示UDP传输协议的连线状况&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-s&lt;/code&gt; 显示网络工作信息统计表&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;netstat -anp&lt;/code&gt;
-显示程序的pid和名称&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/netstat_anp.png&quot; alt=&quot;netstat 端口&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;netstat -r&lt;/code&gt;
-输出本机路由表&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/netstat_r.png&quot; alt=&quot;netstat 路由表&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code&gt;netstat -lts&lt;/code&gt;
-输出监听状态中的tcp协议统计信息&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/netstat_lts.png&quot; alt=&quot;netstat tcp统计&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;more&quot;&gt;3. more命令&lt;/h2&gt;
-
-&lt;p&gt;more命令用于显示文件的内容，与cat和tail等命令不同的是，more命令是按页显示文件内容，同时具有搜寻字符串的功能。（由于more具有向前翻页功能，因此该命令会加载整个文件）&lt;/p&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 more [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;+n&lt;/code&gt; 从第n行开始显示&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 定义屏幕大小为n行&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;+/pattern&lt;/code&gt; 再显示前按pattern匹配子串并显示&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;-s&lt;/code&gt; 把连续的多个空行显示为一行&lt;/p&gt;
-
-    &lt;p&gt;常用操作命令：&lt;/p&gt;
-    &lt;ul&gt;
-  &lt;li&gt;Enter 向下n行，默认为1行&lt;/li&gt;
-  &lt;li&gt;Ctrl+F 跳过一屏&lt;/li&gt;
-  &lt;li&gt;Ctrl+B 返回上一屏&lt;/li&gt;
-  &lt;li&gt;空格键 向下滚动一屏&lt;/li&gt;
-  &lt;li&gt;= 输出当前行的行号&lt;/li&gt;
-  &lt;li&gt;在more模式中回车，输入&lt;code&gt;/pattern&lt;/code&gt;可以持续向下搜索&lt;/li&gt;&lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;more +/Deploy catalina.out&lt;/code&gt;&lt;br /&gt;
-在catalina.out文件中查找“Deploy字符第一次出现的位置”，并从该处的前两行开始显示输出&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/more_+.png&quot; alt=&quot;more 搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;more +10 -10 catalina.out&lt;/code&gt;&lt;br /&gt;
-从第10行开始，每页10行&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/more_+_-.png&quot; alt=&quot;more 参数&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;less&quot;&gt;4. less命令&lt;/h2&gt;
-
-&lt;p&gt;less命令与more命令对应，既可以前后翻看文件，同时还有前后搜索功能，除此之外，less在查看前不会加载整个文件。&lt;/p&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 less [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;－N&lt;/code&gt; 显示每行的行号&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-i&lt;/code&gt; 忽略搜索时的大小写&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-s&lt;/code&gt; 将连续空行显示为一行&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;-m&lt;/code&gt; 显示百分比&lt;/p&gt;
-
-    &lt;p&gt;常用操作命令：&lt;/p&gt;
-    &lt;ul&gt;
-  &lt;li&gt;/字符串 向下搜索“字符串”功能&lt;/li&gt;
-  &lt;li&gt;?字符串 向上搜索“字符串”功能&lt;/li&gt;
-  &lt;li&gt;n 重复前一个搜索&lt;/li&gt;
-  &lt;li&gt;空格键 滚动一页&lt;/li&gt;
-  &lt;li&gt;d 滚动半页&lt;/li&gt;
-  &lt;li&gt;b 回溯一页&lt;/li&gt;
-  &lt;li&gt;y 回溯一行&lt;/li&gt;
-  &lt;li&gt;q 退出less命令&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;less -Nm catalina.out&lt;/code&gt;&lt;br /&gt;
-显示行号和百分比&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/less_Nm.png&quot; alt=&quot;less 行号百分比&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;/detail&lt;/code&gt;或者&lt;code&gt;?detail&lt;/code&gt;
-向前向后搜索”detail”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/less_search.png&quot; alt=&quot;less 搜索&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 11 Feb 2016 19:55:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</guid>
         
         
         <category>Linux</category>
