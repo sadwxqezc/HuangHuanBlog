@@ -18,5 +18,18 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 	
 ![uniq]({{site.baseurl}}/pics/uniq.png)  
 
+一个好玩的命令站点：[Commandlinefu](http://www.commandlinefu.com/commands/browse/sort-by-votes)
 
+![command]({{site.baseurl}}/pics/command.png)
 
+## 几个好玩的命令（Mac OSX）
+
+范例一：`espeak haliluya` 文本转语音命令，颇为有趣。Mac下可用`brew`安装。
+
+范例二：`man ascii` 可以方便的显示ascii 表
+
+![ascii]({{site.baseurl}}/pics/ascii.png)
+
+范例三：`time read`计时器，按`Ctrl+D`结束
+
+![time]({{site.baseurl}}/pics/time_read.png)

@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>边边角角的知识点</title>
-	<meta name="description" content="1. setuid权限">
+	<title>算法补完计划</title>
+	<meta name="description" content="算法补完计划">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -96,34 +96,16 @@ var _hmt = _hmt || [];
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>边边角角的知识点</h1>
-        <p>Feb 24, 2016</p>
+        <h1>算法补完计划</h1>
+        <p>Feb 25, 2016</p>
       </header>
       <hr>
       <article>
-        <h2 id="setuid">1. setuid权限</h2>
+        <h2 id="section">算法补完计划</h2>
 
-<p>今天调了一下Iterm2中<code class="highlighter-rouge">ls</code>的配色，发现在<code class="highlighter-rouge">\bin</code>目录下有如图的显示效果：</p>
-
-<p><img src="/pics/setuid_1.png" alt="setuid" /></p>
-
-<p>ps和rcp的执行文件颜色和其它不同，从<code class="highlighter-rouge">ls -lha</code>的结果来看它们两个与其它文件并没有什么不同，于是我再用<code class="highlighter-rouge">file</code>命令查看文件：</p>
-
-<p><img src="/pics/setuid_2.png" alt="setuid_2" /></p>
-
-<p>此时发现ps和rcp的前面多了个<code class="highlighter-rouge">setuid</code>的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了<code class="highlighter-rouge">setuid</code>外还有<code class="highlighter-rouge">setgid</code>和<code class="highlighter-rouge">stick bit</code>。</p>
-
-<h2 id="section">2. 执行权限</h2>
-
-<p><img src="/pics/execute.png" alt="execute" /></p>
-
-<p>如上图所示，作为execute.sh的owner，我拥有<code class="highlighter-rouge">rw</code>读写权限，但如果想通过<code class="highlighter-rouge">./execute.sh</code>直接执行，却被告知权限不够，而用<code class="highlighter-rouge">sh execute.sh</code>却能够执行。后者实际上是将脚本交由<code class="highlighter-rouge">/bin/sh</code>执行，仅仅需要读权限即可。那么如果我只有<code class="highlighter-rouge">execute.sh</code>的<code class="highlighter-rouge">x</code>执行权限，是否能够直接执行了？</p>
-
-<p><img src="/pics/execute_x.png" alt="execute_x" /></p>
-
-<p>如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行<code class="highlighter-rouge">execute.sh</code>，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要<code class="highlighter-rouge">\bin\sh</code>程序去读取并解释执行，所以同时亦需要读权限。</p>
-
-<h2 id="section-1">3. 标准输出与标准错误输出</h2>
+<blockquote>
+  <p>之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式，故名为算法补完计划</p>
+</blockquote>
 
       </article>
       <hr>
@@ -133,7 +115,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/pieces/2016/02/24/边边角角的知识点" data-title="边边角角的知识点" data-url="gaohaoyang.github.io/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html"></div>
+      <div class="ds-thread" data-thread-key="/algorithm/2016/02/25/算法之道" data-title="算法补完计划" data-url="gaohaoyang.github.io/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html"></div>
       
       <!-- 多说评论框 end -->
     </div>

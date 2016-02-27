@@ -5,9 +5,113 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 Feb 2016 10:57:02 +0800</pubDate>
-    <lastBuildDate>Thu, 25 Feb 2016 10:57:02 +0800</lastBuildDate>
+    <pubDate>Sat, 27 Feb 2016 11:56:43 +0800</pubDate>
+    <lastBuildDate>Sat, 27 Feb 2016 11:56:43 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Seven</title>
+        <description>&lt;h2 id=&quot;uniqlinux&quot;&gt;1. uniq命令(Linux)&lt;/h2&gt;
+
+&lt;p&gt;参考:&lt;a href=&quot;http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html&quot;&gt;sort命令&lt;/a&gt;
+uniq命令通常和sort命令合用，用于检查文本中重复出现的行列，但前提是重复行必须是相邻的。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 uniq [option] [filename] [outputfilename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-c&lt;/code&gt; 显示该行重复出现的次数&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-d&lt;/code&gt; 仅仅显示重复出现的行列&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 仅显示出现一次的行列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;sort sort.txt | uniq -c&lt;/code&gt;等命令结果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/uniq.png&quot; alt=&quot;uniq&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;一个好玩的命令站点：&lt;a href=&quot;http://www.commandlinefu.com/commands/browse/sort-by-votes&quot;&gt;Commandlinefu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/command.png&quot; alt=&quot;command&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mac-osx&quot;&gt;几个好玩的命令（Mac OSX）&lt;/h2&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;espeak haliluya&lt;/code&gt; 文本转语音命令，颇为有趣。Mac下可用&lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;安装。&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;man ascii&lt;/code&gt; 可以方便的显示ascii 表&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/ascii.png&quot; alt=&quot;ascii&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;time read&lt;/code&gt;计时器，按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+D&lt;/code&gt;结束&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/time_read.png&quot; alt=&quot;time&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 25 Feb 2016 10:52:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>算法补完计划</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;算法补完计划&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式，故名为算法补完计划&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Thu, 25 Feb 2016 10:30:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</guid>
+        
+        
+        <category>Algorithm</category>
+        
+      </item>
+    
+      <item>
+        <title>Shell脚本实例</title>
+        <description>&lt;h2 id=&quot;fileopenmac-osx&quot;&gt;fileopen命令实现(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;fileopen命令是为了实现Mac系统下，在终端中用应用打开文件。&lt;br /&gt;
+首先将目录&lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/huanghuan/Work/MyCMD &lt;/code&gt;命令加入环境变量中，Mac下可配置在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bashrc&lt;/code&gt;中。然后创建&lt;code class=&quot;highlighter-rouge&quot;&gt;fileopen&lt;/code&gt;文件，其内容为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  1  #! /bin/sh
+  2  if [ $# != 2 ]
+  3  then
+  4      echo &quot;输入参数错误!&quot;
+  5  else
+  6     search_result=`find /Applications -maxdepth 1  -name *${1}*.app | wc -l`
+  7     app_list=`find /Applications -maxdepth 1  -name *${1}*.app`
+  8     if (($search_result&amp;lt;=0))
+  9     then
+  10        echo &quot;未找到对应程序&quot;
+  11    elif (($search_result==1))
+  12    then
+  13        echo &quot;打开文件&quot;
+  14        open ${app_list} ${2}
+  15    else
+  16        echo &quot;符合条件的程序有:\n${app_list}&quot;
+  17        echo &quot;请重新输入正确的程序名&quot;
+  18    fi
+  19 fi
+  20 exit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;命令的运行效果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/fileopen.png&quot; alt=&quot;fileopen命令&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PS:该命令将进一步完善，目前作为一个Shell练习而简单实现&lt;/p&gt;
+</description>
+        <pubDate>Wed, 24 Feb 2016 16:31:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/24/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/shell/2016/02/24/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</guid>
+        
+        
+        <category>Shell</category>
+        
+      </item>
     
       <item>
         <title>边边角角的知识点</title>
@@ -32,6 +136,8 @@
 &lt;p&gt;&lt;img src=&quot;/pics/execute_x.png&quot; alt=&quot;execute_x&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin\sh&lt;/code&gt;程序去读取并解释执行，所以同时亦需要读权限。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;3. 标准输出与标准错误输出&lt;/h2&gt;
 </description>
         <pubDate>Wed, 24 Feb 2016 10:41:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
@@ -359,11 +465,12 @@
 3      phase one
 4      phase two
 5  elif condition2
-6      phase three
-7  else
-8      #else后不能为空
-9      phase four
-10 fi
+6  then
+7      phase three
+8  else
+9      #else后不能为空
+10      phase four
+1 fi
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -680,282 +787,6 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
         <pubDate>Thu, 11 Feb 2016 19:55:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</link>
         <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>程序小事</title>
-        <description>&lt;h2 id=&quot;jekyllgithub-pages&quot;&gt;1. jekyll博客发布到github pages问题&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;时间：2016年2月8日 晚&lt;/li&gt;
-  &lt;li&gt;问题回放：在本地发布无问题的jekyll博客，在&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。&lt;/li&gt;
-  &lt;li&gt;问题分析：目前还没有找到发生该问题的原因，不知道是否是因为github pages本身有这样的设置，正在调查中。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;jekyll博客的搭建和发布可参考:&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&quot;&gt;阮一峰的博客&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;2. 需要为工作准备的技能树&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;redis&lt;/li&gt;
-  &lt;li&gt;zookeeper&lt;/li&gt;
-  &lt;li&gt;spring(需要进阶)&lt;/li&gt;
-  &lt;li&gt;rest&lt;/li&gt;
-  &lt;li&gt;数据库(从mysql入手)&lt;/li&gt;
-  &lt;li&gt;脚本&lt;/li&gt;
-  &lt;li&gt;算法(需要进阶)&lt;/li&gt;
-  &lt;li&gt;网络&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;3. 关于希望今后达到的一个工作状态&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在工作中游刃有余，同时保持对新技术的兴趣和尝试，参与到产品的设计和策划中。&lt;/li&gt;
-  &lt;li&gt;未来事不可预知，不要过多的担忧，多思无益&lt;/li&gt;
-  &lt;li&gt;不可能每次遇到问题都已做好准备，要冷静的去思考解决之法&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 08 Feb 2016 17:35:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/develop/2016/02/08/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
-        
-        
-        <category>Develop</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令学习的日常 Part Three</title>
-        <description>&lt;h3 id=&quot;linux-debian&quot;&gt;Linux命令(系统 Debian)&lt;/h3&gt;
-
-&lt;h2 id=&quot;tail&quot;&gt;1. tail命令&lt;/h2&gt;
-
-&lt;p&gt;文本查看命令，可以看文本的最后几行。tail命令的优点在于其内容能够与输入同步更新，非常适用于查看实时日志。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 tail [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-n number&lt;/code&gt; 定位参数，+5表示从第五行开始显示，10或-10表示显示最后10行&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 监控文本变化，更新内容&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-k number&lt;/code&gt; 从number所指的KB处开始读取&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;tail -n -5 catalina.out&lt;/code&gt;
-输出最后5行&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/tail_n.png&quot; alt=&quot;tail_n&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;tail -f catalina.out&lt;/code&gt;
-监听catalina.out最后行的变化并显示&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/tail_f.png&quot; alt=&quot;tail_f&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;head&quot;&gt;2. head命令&lt;/h2&gt;
-
-&lt;p&gt;该命令与tail命令类似，默认显示文件前两行的内容&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 head [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-n number&lt;/code&gt; 显示前几行,-5表示文件中除了最后5行之外的所有内容&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-c number&lt;/code&gt; 显示前几个字节&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;head -n 5 server.xml&lt;/code&gt;和&lt;code&gt;head -n －5 server.xml&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/head_n.png&quot; alt=&quot;head_n&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;du&quot;&gt;3. du命令&lt;/h2&gt;
-
-&lt;p&gt;该命令用于查看系统中文件和目录所占用的空间&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 du [option] [name]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-h&lt;/code&gt; 用human readable的方式显示&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;--max-depth=number&lt;/code&gt; 最大的查询层次&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有文件的大小，默认只显示目录的大小&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;du -h&lt;/code&gt; 显示目录下所有文件夹的大小&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/du.png&quot; alt=&quot;du&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;du -h catalina.out&lt;/code&gt;和&lt;code&gt;du -h ../logs&lt;/code&gt; 显示文件或目录的大小&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/du_name.png&quot; alt=&quot;du_name&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code&gt;du -ah --max-depth=1&lt;/code&gt;显示递归的层次为1，显示所有文件和文件夹大小&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/du_max_depth.png&quot; alt=&quot;du_max_depth&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;whichwhereis&quot;&gt;4. which命令和whereis命令&lt;/h2&gt;
-
-&lt;p&gt;which命令的作用是在PATH变量制定的路径中，查找系统命令的位置。&lt;br /&gt;
-whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man说明文件，源代码文件｝。whereis的查询时通过查询系统的数据库文件记录，所以速度比find更快，但由于数据库的更新频率较为缓慢，其结果与实际状况并不一定一致。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-m&lt;/code&gt; 只查找说明文件&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-b&lt;/code&gt; 只查找二进制文件&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：which命令&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/which.png&quot; alt=&quot;which&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：whereis命令&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/whereis.png&quot; alt=&quot;whereis&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 07 Feb 2016 21:19:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/07/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Three.html</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令学习的日常 Part Two</title>
-        <description>&lt;h3 id=&quot;linuxunixmac-os&quot;&gt;Linux&amp;amp;Unix通用命令(系统Mac OS)&lt;/h3&gt;
-&lt;p&gt;1. find命令&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;文件查找命令,find命令将递归的搜索目录下符合要求的所有文件&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 find [path] [option] [expression]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-name 查找名为filename的文件&lt;br /&gt;
--perm 查找符合执行权限
--user 按照文件的所属主查找&lt;br /&gt;
--mtime -n +n 按照文件的更改时间查找文件，n代表天数&lt;br /&gt;
--ctime -n +n 按照创建时间查找&lt;br /&gt;
--newer f1 !f2 查更改时间在f1和f2之间的文件    &lt;br /&gt;
--size n 查找长度为n块的文件，一块为512 bytes&lt;br /&gt;
--depth 使得查找在进入子目录前先行查找完本目录&lt;br /&gt;
--prune 查找时忽略某个目录
--type 按文件类型查找，b为块设备，d为目录，f为普通文档&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：find ~ -name &#39;*.yml&#39; | grep &#39;\.yml&#39; --color=always
-在用户目录下查找文件名后缀为.yml的文件
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/find_name.png&quot; alt=&quot;按照文件名查找&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：find . -perm 644
-查找当前目录下权限为644的所有文件
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/find_perm.png&quot; alt=&quot;按照权限的搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：find . -path &#39;./_site*&#39; -a -prune -o -name &#39;feed.xml&#39; -print
-整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
--a -o实际为逻辑与和逻辑或，当路径匹配时将执行-prune，那么将不会查找匹配路径中的文件，
-当路径不匹配时则不执行-prune，-o后的语句始终执行。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/find_prune.png&quot; alt=&quot;忽略一些文件夹搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：find . -maxdepth 2 -size 3
-控制查找的深度
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/find_depth.png&quot; alt=&quot;限制搜索深度&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;补充：Linux的权限模式为三元组“owner”，“group”，“other”,权限对应表如下&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;rwx&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;-wx&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;rw-&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;-w-&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r-x&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;--x&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r--&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;---&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;2. wc命令&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;用于统计输入中的字节数，字数，行数并输出&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 wc [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-c 统计字节数&lt;br /&gt;
--l 统计行数&lt;br /&gt;
--m 统计字符数&lt;br /&gt;
--w 统计字数，一个字为由空白，跳格或换行字符分隔的字符串&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：wc -l _config.yml
-统计行数，-c实际上可以查看文件的大小
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/wc.png&quot; alt=&quot;统计&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3. cat命令&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;连结命令(Concatenation)，连结多个文本，或者以标准输出形式打印文件的内容&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 cat [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-n 队输出的所有行编号&lt;br /&gt;
--b 与-n类似，但空行不编号&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：cat -b testColumn(cat -n testColumn)
-显示文件内容
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/cat_b_n.png&quot; alt=&quot;显示文件内容到控制台&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：cat testColumn testCat
-同时显示两个文件内容
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/cat_mul.png&quot; alt=&quot;显示两个文件&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：cat testColumn testCat&amp;gt;merge
-将两个内容连结并输出到一个文件中，&amp;gt;为重新创建，&amp;gt;&amp;gt;为追加
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/cat_merge.png&quot; alt=&quot;连结并输出&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 04 Feb 2016 16:50:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html</guid>
         
         
         <category>Linux</category>
