@@ -33,3 +33,25 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 范例三：`time read`计时器，按`Ctrl+D`结束
 
 ![time]({{site.baseurl}}/pics/time_read.png)
+
+## 2. curl命令(Mac OSX)
+
+curl命令是一个非常强大的文件传输工具，利用，利用URL规则它支持文件的上传和下载。curl支持包括HTTP,HTTPS,Ftp等多种协议，同时支持Post，cookies，限速，认证等众多功能。
+
+<h4><b>基本格式 curl [option] [params]</b></h4>
++ <code>-A</code> 设置用户代理
++ <code>-c [file]</code> 命令执行结束后将cookie写入到某个文件中
++ <code>-C [offset]</code> 断点续传
++ <code>-e </code>  设定来源网址
++ <code>-s </code> 寂寞模式，不输出任何东西
++ <code>-S </code> 显示错误
++ <code>-T [file] </code> 上传文件
++ <code>-u </code> 设置用户名和密码
++ <code>-o [filename]</code> 将文件写入到某个文件中
++ <code>-O </code> 将文件写入到本地文件，保存原始文件名
+
+范例一：`curl http://man.linuxde.net/test.iso -o filename.iso --progress` 下载文件并显示进度条
+	
+![curl_o]({{site.baseurl}}/pics/curl_o.png)  
+
+该命令功能较多，今后将进一步补充

@@ -132,6 +132,30 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 <p><img src="/pics/time_read.png" alt="time" /></p>
 
+<h2 id="curlmac-osx">2. curl命令(Mac OSX)</h2>
+
+<p>curl命令是一个非常强大的文件传输工具，利用，利用URL规则它支持文件的上传和下载。curl支持包括HTTP,HTTPS,Ftp等多种协议，同时支持Post，cookies，限速，认证等众多功能。</p>
+
+<h4><b>基本格式 curl [option] [params]</b></h4>
+<ul>
+  <li><code>-A</code> 设置用户代理</li>
+  <li><code>-c [file]</code> 命令执行结束后将cookie写入到某个文件中</li>
+  <li><code>-C [offset]</code> 断点续传</li>
+  <li><code>-e </code>  设定来源网址</li>
+  <li><code>-s </code> 寂寞模式，不输出任何东西</li>
+  <li><code>-S </code> 显示错误</li>
+  <li><code>-T [file] </code> 上传文件</li>
+  <li><code>-u </code> 设置用户名和密码</li>
+  <li><code>-o [filename]</code> 将文件写入到某个文件中</li>
+  <li><code>-O </code> 将文件写入到本地文件，保存原始文件名</li>
+</ul>
+
+<p>范例一：<code class="highlighter-rouge">curl http://man.linuxde.net/test.iso -o filename.iso --progress</code> 下载文件并显示进度条</p>
+
+<p><img src="/pics/curl_o.png" alt="curl_o" /></p>
+
+<p>该命令功能较多，今后将进一步补充</p>
+
       </article>
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>

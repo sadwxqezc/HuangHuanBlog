@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 27 Feb 2016 19:33:06 +0800</pubDate>
-    <lastBuildDate>Sat, 27 Feb 2016 19:33:06 +0800</lastBuildDate>
+    <pubDate>Sun, 28 Feb 2016 12:16:22 +0800</pubDate>
+    <lastBuildDate>Sun, 28 Feb 2016 12:16:22 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -80,6 +80,30 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;time read&lt;/code&gt;计时器，按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+D&lt;/code&gt;结束&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/pics/time_read.png&quot; alt=&quot;time&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;curlmac-osx&quot;&gt;2. curl命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;curl命令是一个非常强大的文件传输工具，利用，利用URL规则它支持文件的上传和下载。curl支持包括HTTP,HTTPS,Ftp等多种协议，同时支持Post，cookies，限速，认证等众多功能。&lt;/p&gt;
+
+&lt;h4&gt;&lt;b&gt;基本格式 curl [option] [params]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-A&lt;/code&gt; 设置用户代理&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-c [file]&lt;/code&gt; 命令执行结束后将cookie写入到某个文件中&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-C [offset]&lt;/code&gt; 断点续传&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-e &lt;/code&gt;  设定来源网址&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-s &lt;/code&gt; 寂寞模式，不输出任何东西&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-S &lt;/code&gt; 显示错误&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-T [file] &lt;/code&gt; 上传文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-u &lt;/code&gt; 设置用户名和密码&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-o [filename]&lt;/code&gt; 将文件写入到某个文件中&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-O &lt;/code&gt; 将文件写入到本地文件，保存原始文件名&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;curl http://man.linuxde.net/test.iso -o filename.iso --progress&lt;/code&gt; 下载文件并显示进度条&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/curl_o.png&quot; alt=&quot;curl_o&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;该命令功能较多，今后将进一步补充&lt;/p&gt;
 </description>
         <pubDate>Thu, 25 Feb 2016 10:52:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</link>
@@ -177,6 +201,8 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;p&gt;如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin\sh&lt;/code&gt;程序去读取并解释执行，所以同时亦需要读权限。&lt;/p&gt;
 
 &lt;h2 id=&quot;section-1&quot;&gt;3. 标准输出与标准错误输出&lt;/h2&gt;
+
+&lt;p&gt;在Shell脚本中有时能看到 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt;这样的语句，在语句中&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null&lt;/code&gt;等同于&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;表示&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;标准输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/null&lt;/code&gt;表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;则表示不输出任何信息到终端，也不定向到系统文件中。而&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;表示标准错误输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;表示等同于的意思，&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&amp;amp;1&lt;/code&gt;则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。&lt;/p&gt;
 </description>
         <pubDate>Wed, 24 Feb 2016 10:41:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
