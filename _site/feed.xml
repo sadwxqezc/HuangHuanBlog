@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 28 Feb 2016 12:16:22 +0800</pubDate>
-    <lastBuildDate>Sun, 28 Feb 2016 12:16:22 +0800</lastBuildDate>
+    <pubDate>Mon, 29 Feb 2016 11:17:14 +0800</pubDate>
+    <lastBuildDate>Mon, 29 Feb 2016 11:17:14 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -104,6 +104,27 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;p&gt;&lt;img src=&quot;/pics/curl_o.png&quot; alt=&quot;curl_o&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;该命令功能较多，今后将进一步补充&lt;/p&gt;
+
+&lt;h2 id=&quot;toplinux&quot;&gt;3. top命令(Linux)&lt;/h2&gt;
+
+&lt;p&gt;top命令实际上就是Linux下的“任务管理器”，能够实时的显示系统中各个进程的资源占用状况，默认刷新频率是5秒一次。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 top [option]&lt;/b&gt;&lt;/h4&gt;
+
+&lt;p&gt;快捷键：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;P&lt;/code&gt; 根据CPU占用排序&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;M&lt;/code&gt; 根据内存使用大小排序&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;T&lt;/code&gt; 根据时间/累计时间排序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一: &lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; 显示效果，前五行显示了启动时间，任务数，cpu，内存和交换分区等信息，之后是更详细的各个进程信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/top.png&quot; alt=&quot;top&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二: &lt;code class=&quot;highlighter-rouge&quot;&gt;free -m&lt;/code&gt; 如果只想查看内存占用，同样可使用&lt;code class=&quot;highlighter-rouge&quot;&gt;free&lt;/code&gt;命令，一般选择按&lt;code class=&quot;highlighter-rouge&quot;&gt;MB&lt;/code&gt;显示。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/free.png&quot; alt=&quot;free&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 25 Feb 2016 10:52:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</link>
