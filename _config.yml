@@ -10,7 +10,7 @@ description: 黄欢的博客：程序，读书，电影
 # baseurl: "" # the subpath of your site, e.g. /blog/
 # url: "http://yourdomain.com" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
-baseurl: "/HuangHuanBlog"
+baseurl: "/HuangHuanBlog/"
 url: "http://sadwxqezc.github.io/HuangHuanBlog/" # the base hostname & protocol for your site
 github_username:  sadwxqezc
 
