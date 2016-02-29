@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Feb 2016 11:17:14 +0800</pubDate>
-    <lastBuildDate>Mon, 29 Feb 2016 11:17:14 +0800</lastBuildDate>
+    <pubDate>Mon, 29 Feb 2016 21:32:28 +0800</pubDate>
+    <lastBuildDate>Mon, 29 Feb 2016 21:32:28 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -38,6 +38,50 @@
 
 &lt;p&gt;PS:图片来自《图解Http》,书中图画的萌，我就不重新画了&lt;/p&gt;
 
+&lt;h3 id=&quot;cookie-3&quot;&gt;Cookie示例&lt;/h3&gt;
+
+&lt;p&gt;参考：&lt;a href=&quot;http://www.importnew.com/15141.html&quot;&gt;Spring MVC&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.springapp.mvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
+@Controller
+@RequestMapping(value = &quot;/testCookie&quot;)
+public class HelloController {
+
+	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public String testCookie(@CookieValue(value = &quot;testCookie&quot;, defaultValue = &quot;defaultCookieValue&quot;) String cookieValue, HttpServletResponse httpServletResponse) {
+	/** 输出cookie内容` **/
+	String result = &quot;&quot;;
+	/** 创建Cookie **/
+	Cookie cookie = new Cookie(&quot;testCookie&quot;, &quot;CookieValue&quot;);
+	httpServletResponse.addCookie(cookie);
+	result += &quot;Key:testCookie&quot; + &quot;Value:&quot; + cookieValue + &quot;\n&quot;;
+	return result;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;需要&lt;code class=&quot;highlighter-rouge&quot;&gt;@ResponseBody&lt;/code&gt;把&lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;的内容作为请求返回体，不然会跳转成&lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;内容&lt;code class=&quot;highlighter-rouge&quot;&gt;.jsp&lt;/code&gt;之类的。&lt;/p&gt;
+
+&lt;p&gt;第一次访问截图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cookie_init.png&quot; alt=&quot;cookie_init&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第二次访问截图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cookie_after.png&quot; alt=&quot;cookie_after&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Feb 2016 17:06:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog/backend/2016/02/26/Cookies-And-Session.html</link>

@@ -30,3 +30,45 @@ Cookie中内容以Key-Value的形式存储，存在两种类型的Cookie:
 
 PS:图片来自《图解Http》,书中图画的萌，我就不重新画了
 
+### Cookie示例
+
+参考：[Spring MVC](http://www.importnew.com/15141.html)
+
+	package com.springapp.mvc.controller;
+
+	import org.springframework.stereotype.Controller;
+	import org.springframework.ui.ModelMap;
+	import org.springframework.web.bind.annotation.CookieValue;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.RequestMethod;
+	import org.springframework.web.bind.annotation.ResponseBody;
+
+	import javax.servlet.http.Cookie;
+	import javax.servlet.http.HttpServletResponse;
+
+	@Controller
+	@RequestMapping(value = "/testCookie")
+	public class HelloController {
+
+    	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
+    	@ResponseBody
+    	public String testCookie(@CookieValue(value = "testCookie", defaultValue = "defaultCookieValue") String cookieValue, HttpServletResponse httpServletResponse) {
+    	/** 输出cookie内容` **/
+    	String result = "";
+    	/** 创建Cookie **/
+    	Cookie cookie = new Cookie("testCookie", "CookieValue");
+    	httpServletResponse.addCookie(cookie);
+    	result += "Key:testCookie" + "Value:" + cookieValue + "\n";
+    	return result;
+    	}
+    }
+
+需要`@ResponseBody`把`return`的内容作为请求返回体，不然会跳转成`return`内容`.jsp`之类的。
+
+第一次访问截图：
+
+![cookie_init]({{site.baseurl}}/pics/cookie_init.png)
+
+第二次访问截图：
+
+![cookie_after]({{site.baseurl}}/pics/cookie_after.png)
