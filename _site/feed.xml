@@ -3,10 +3,10 @@
   <channel>
     <title>黄欢的博客</title>
     <description>黄欢的博客：程序，读书，电影</description>
-    <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/</link>
-    <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Feb 2016 21:48:22 +0800</pubDate>
-    <lastBuildDate>Mon, 29 Feb 2016 21:48:22 +0800</lastBuildDate>
+    <link>http://sadwxqezc.github.io/HuangHuanBlog//</link>
+    <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 29 Feb 2016 22:29:33 +0800</pubDate>
+    <lastBuildDate>Mon, 29 Feb 2016 22:29:33 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -17,7 +17,7 @@
 
 &lt;p&gt;由于&lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt;是无状态协议，它不会对之前发生过的请求和响应的状态进行管理。无状态协议虽然资源消耗少，但由于其无法管理如登陆状态等信息，给服务器管理客户端的状态带来了难题。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/http.png&quot; alt=&quot;图解Http_状态&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/http.png&quot; alt=&quot;图解Http_状态&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;为了解决该问题，Cookie技术被引入，通过在请求和响应报文中写入Cookie信息来控制客户端的状态。&lt;/p&gt;
 
@@ -25,7 +25,7 @@
 
 &lt;p&gt;在服务端发送的响应报文内会有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Set-Cookie&lt;/code&gt;字段信息，通知客户端保存Cookie。当客户端在此往同一服务器发送请求时，客户端会自动在请求报文中加入Cookie值，其选择Cookie的依据是当前的url地址。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/http_process.png&quot; alt=&quot;Cookie工作流程&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/http_process.png&quot; alt=&quot;Cookie工作流程&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;cookie-2&quot;&gt;Cookie的类型与内容&lt;/h3&gt;
 
@@ -77,15 +77,15 @@ public class HelloController {
 
 &lt;p&gt;第一次访问截图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cookie_init.png&quot; alt=&quot;cookie_init&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/cookie_init.png&quot; alt=&quot;cookie_init&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;第二次访问截图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cookie_after.png&quot; alt=&quot;cookie_after&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/cookie_after.png&quot; alt=&quot;cookie_after&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Feb 2016 17:06:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/backend/2016/02/26/Cookies-And-Session.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/backend/2016/02/26/Cookies-And-Session.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//backend/2016/02/26/Cookies-And-Session.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//backend/2016/02/26/Cookies-And-Session.html</guid>
         
         
         <category>Backend</category>
@@ -107,11 +107,11 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;sort sort.txt | uniq -c&lt;/code&gt;等命令结果&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/uniq.png&quot; alt=&quot;uniq&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/uniq.png&quot; alt=&quot;uniq&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;一个好玩的命令站点：&lt;a href=&quot;http://www.commandlinefu.com/commands/browse/sort-by-votes&quot;&gt;Commandlinefu&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/command.png&quot; alt=&quot;command&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/command.png&quot; alt=&quot;command&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;mac-osx&quot;&gt;几个好玩的命令（Mac OSX）&lt;/h2&gt;
 
@@ -119,11 +119,11 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;man ascii&lt;/code&gt; 可以方便的显示ascii 表&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ascii.png&quot; alt=&quot;ascii&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/ascii.png&quot; alt=&quot;ascii&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;time read&lt;/code&gt;计时器，按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+D&lt;/code&gt;结束&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/time_read.png&quot; alt=&quot;time&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/time_read.png&quot; alt=&quot;time&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;curlmac-osx&quot;&gt;2. curl命令(Mac OSX)&lt;/h2&gt;
 
@@ -145,7 +145,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;curl http://man.linuxde.net/test.iso -o filename.iso --progress&lt;/code&gt; 下载文件并显示进度条&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/curl_o.png&quot; alt=&quot;curl_o&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/curl_o.png&quot; alt=&quot;curl_o&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;该命令功能较多，今后将进一步补充&lt;/p&gt;
 
@@ -164,15 +164,15 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一: &lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; 显示效果，前五行显示了启动时间，任务数，cpu，内存和交换分区等信息，之后是更详细的各个进程信息。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/top.png&quot; alt=&quot;top&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/top.png&quot; alt=&quot;top&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二: &lt;code class=&quot;highlighter-rouge&quot;&gt;free -m&lt;/code&gt; 如果只想查看内存占用，同样可使用&lt;code class=&quot;highlighter-rouge&quot;&gt;free&lt;/code&gt;命令，一般选择按&lt;code class=&quot;highlighter-rouge&quot;&gt;MB&lt;/code&gt;显示。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/free.png&quot; alt=&quot;free&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/free.png&quot; alt=&quot;free&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 25 Feb 2016 10:52:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</guid>
         
         
         <category>Linux</category>
@@ -188,8 +188,8 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 25 Feb 2016 10:30:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</guid>
         
         
         <category>Algorithm</category>
@@ -228,13 +228,13 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;命令的运行效果如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/fileopen.png&quot; alt=&quot;fileopen命令&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/fileopen.png&quot; alt=&quot;fileopen命令&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;PS:该命令将进一步完善，目前作为一个Shell练习而简单实现&lt;/p&gt;
 </description>
         <pubDate>Wed, 24 Feb 2016 16:31:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/24/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/24/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//shell/2016/02/24/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//shell/2016/02/24/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</guid>
         
         
         <category>Shell</category>
@@ -247,21 +247,21 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ps和rcp的执行文件颜色和其它不同，从&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha&lt;/code&gt;的结果来看它们两个与其它文件并没有什么不同，于是我再用&lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt;命令查看文件：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;2. 执行权限&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/execute.png&quot; alt=&quot;execute&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/execute.png&quot; alt=&quot;execute&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;如上图所示，作为execute.sh的owner，我拥有&lt;code class=&quot;highlighter-rouge&quot;&gt;rw&lt;/code&gt;读写权限，但如果想通过&lt;code class=&quot;highlighter-rouge&quot;&gt;./execute.sh&lt;/code&gt;直接执行，却被告知权限不够，而用&lt;code class=&quot;highlighter-rouge&quot;&gt;sh execute.sh&lt;/code&gt;却能够执行。后者实际上是将脚本交由&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt;执行，仅仅需要读权限即可。那么如果我只有&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;执行权限，是否能够直接执行了？&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/execute_x.png&quot; alt=&quot;execute_x&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/execute_x.png&quot; alt=&quot;execute_x&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin\sh&lt;/code&gt;程序去读取并解释执行，所以同时亦需要读权限。&lt;/p&gt;
 
@@ -270,8 +270,8 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;p&gt;在Shell脚本中有时能看到 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt;这样的语句，在语句中&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null&lt;/code&gt;等同于&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;表示&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;标准输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/null&lt;/code&gt;表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;则表示不输出任何信息到终端，也不定向到系统文件中。而&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;表示标准错误输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;表示等同于的意思，&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&amp;amp;1&lt;/code&gt;则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。&lt;/p&gt;
 </description>
         <pubDate>Wed, 24 Feb 2016 10:41:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
         
         
         <category>Pieces</category>
@@ -282,12 +282,12 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
         <title>读书笔记-学</title>
         <description>&lt;h2 id=&quot;effective-java-by-joshua-bloch&quot;&gt;1. Effective Java By Joshua Bloch&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/effective_java.jpg&quot; alt=&quot;Effective Java&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/effective_java.jpg&quot; alt=&quot;Effective Java&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 23 Feb 2016 19:26:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
         
         
         <category>Read</category>
@@ -298,7 +298,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
         <title>读书笔记-思</title>
         <description>&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年 黄仁宇著&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
 
@@ -313,7 +313,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;h2 id=&quot;this-is-water-by-david-foster-wallace&quot;&gt;2. “This is Water” By David Foster Wallace&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/this_is_water.jpg&quot; alt=&quot;this is water&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/this_is_water.jpg&quot; alt=&quot;this is water&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;在繁琐无聊的日常中，日复一日地保持自觉与警醒，困难得不可想象&lt;/p&gt;
@@ -326,8 +326,8 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;p&gt;To be continued&lt;/p&gt;
 </description>
         <pubDate>Tue, 23 Feb 2016 17:07:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</guid>
         
         
         <category>Read</category>
@@ -358,15 +358,15 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 解压到当前文件夹&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tar_xzvf.png&quot; alt=&quot;tar_xzvf&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/tar_xzvf.png&quot; alt=&quot;tar_xzvf&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz&lt;/code&gt; 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tar_tf.png&quot; alt=&quot;tar_tf&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/tar_tf.png&quot; alt=&quot;tar_tf&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d&lt;/code&gt; 压缩文件&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tar_jcvf.png&quot; alt=&quot;tar_jcvf&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/tar_jcvf.png&quot; alt=&quot;tar_jcvf&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;aliasmac-osx&quot;&gt;2. alias命令(Mac OSX)&lt;/h2&gt;
 
@@ -375,11 +375,11 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;alias -p&lt;/code&gt;显示已经定义的别名，可用&lt;code class=&quot;highlighter-rouge&quot;&gt;unalias&lt;/code&gt;命令删除别名&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/alias.png&quot; alt=&quot;alias&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/alias.png&quot; alt=&quot;alias&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias ll=&#39;ls -lhaS&#39;&lt;/code&gt;可以缩短命令长度，如果要使该alias长期有效，需要写在系统环境变量中。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/alias_ll.png&quot; alt=&quot;alias_ll&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/alias_ll.png&quot; alt=&quot;alias_ll&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;chmodmac-osx&quot;&gt;3. chmod命令(Mac OSX)&lt;/h2&gt;
 
@@ -391,11 +391,11 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod u-x,g+w,o=rwx function.sh&lt;/code&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;u&lt;/code&gt;表示文件所有者，&lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt;表示组用户，&lt;code class=&quot;highlighter-rouge&quot;&gt;o&lt;/code&gt;表示其它用户，&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;表示所有用户。而&lt;code class=&quot;highlighter-rouge&quot;&gt;-,+,=&lt;/code&gt;分别表示删除，增加和设定权限。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/chmod_ugo.png&quot; alt=&quot;chmod_ugo&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/chmod_ugo.png&quot; alt=&quot;chmod_ugo&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod a=rwx function.sh&lt;/code&gt;设定所有类型用户的权限&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/chmod_a.png&quot; alt=&quot;chmod_a&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/chmod_a.png&quot; alt=&quot;chmod_a&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
 参考:&lt;a href=&quot;https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md&quot;&gt;命令行的艺术&lt;/a&gt;&lt;/p&gt;
@@ -417,11 +417,11 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一：&lt;code&gt;pv ./12怒汉.mkv &amp;gt; ~/Work/Test/angry.mkv&lt;/code&gt; 显示拷贝的速度和百分比&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/pv.png&quot; alt=&quot;pv&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/pv.png&quot; alt=&quot;pv&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;echo &#39;this is a pv test&#39; | pv -L 2&lt;/code&gt;  限制传输速度为2Bytes&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/pv_L.png&quot; alt=&quot;pv_L&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/pv_L.png&quot; alt=&quot;pv_L&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;bc&quot;&gt;2. bc命令&lt;/h2&gt;
 
@@ -433,12 +433,12 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;范例一：&lt;code&gt;bc&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/bc.png&quot; alt=&quot;bc&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/bc.png&quot; alt=&quot;bc&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 23 Feb 2016 11:36:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html</guid>
         
         
         <category>Linux</category>
@@ -480,7 +480,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;p&gt;Git代码提交脚本执行效果截图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;基本知识介绍&lt;/h2&gt;
 &lt;p&gt;参考：&lt;a href=&quot;http://www.jianshu.com/p/4b7f99486cab&quot;&gt;Shell脚本30分钟入门&lt;/a&gt;&lt;/p&gt;
@@ -517,7 +517,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
   &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;字符串&lt;/b&gt;&lt;/h4&gt;
@@ -552,7 +552,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
   &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/shell_string.png&quot; alt=&quot;string.sh&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/shell_string.png&quot; alt=&quot;string.sh&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;Shell中的各种括号&lt;/b&gt;&lt;/h4&gt;
@@ -582,7 +582,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
   &lt;p&gt;脚本执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/brackets.png&quot; alt=&quot;brackets&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/brackets.png&quot; alt=&quot;brackets&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;条件判断与流程控制&lt;/b&gt;&lt;/h4&gt;
@@ -671,7 +671,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
   &lt;p&gt;执行结果：&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/shell_function.png&quot; alt=&quot;shell function&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/shell_function.png&quot; alt=&quot;shell function&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;Shell传入变量&lt;/b&gt;&lt;/h4&gt;
@@ -686,8 +686,8 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Feb 2016 17:27:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//shell/2016/02/21/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
         
         
         <category>Shell</category>
@@ -714,12 +714,12 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 &lt;p&gt;范例一：&lt;code&gt;ps -ef&lt;/code&gt; 用标准格式显示所有进程&lt;br /&gt;
 显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ps_ef.png&quot; alt=&quot;ps_ef&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/ps_ef.png&quot; alt=&quot;ps_ef&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：&lt;code&gt;ps aux&lt;/code&gt;&lt;br /&gt;
 显示的项目有：USER, PID, %CPU, %MEM, VSZ(虚拟内存量KB), RSS(固定内存量), TTY(进程所运行在的终端机), STAT, START, TIME, COMMAND&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ps_aux.png&quot; alt=&quot;ps_aux&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/ps_aux.png&quot; alt=&quot;ps_aux&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;tmuxmac-osx&quot;&gt;2. tmux命令(Mac OSX)&lt;/h2&gt;
 
@@ -736,22 +736,22 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;范例一：&lt;code&gt;tmux new -s mySession&lt;/code&gt; 创建一个名为mySession的会话&lt;br /&gt;
 输入&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b d&lt;/code&gt;将从此会话脱离，如果要重新连接，则使用&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux attach -t mySession&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_mySession.png&quot; alt=&quot;tmux_new&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_mySession.png&quot; alt=&quot;tmux_new&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例二：在范例一的mySession中按下&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b c&lt;/code&gt;则会在mySession中创建一个新的窗口&lt;br /&gt;
 可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b w&lt;/code&gt;来查看窗口列表，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &amp;lt;窗口号&amp;gt;&lt;/code&gt;来切换窗口&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b f&lt;/code&gt;来查找窗口，&lt;code class=&quot;highlighter-rouge&quot;&gt;exit&lt;/code&gt;来退出窗口&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_windows.png&quot; alt=&quot;tmux_multiple&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_windows.png&quot; alt=&quot;tmux_multiple&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;为了便于穿窗口的识别，还可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b ,&lt;/code&gt;来重命名窗口&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_rename.png&quot; alt=&quot;tmux_rename&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_rename.png&quot; alt=&quot;tmux_rename&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;范例三：tmux还支持把窗口分割成多个面板，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &quot;&lt;/code&gt;为水平分割，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b %&lt;/code&gt;为垂直分割&lt;br /&gt;
 通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &amp;lt;光标键&amp;gt;&lt;/code&gt;来进行窗口移动&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_panes.png&quot; alt=&quot;tmux_panes&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/tmux_panes.png&quot; alt=&quot;tmux_panes&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;ackmac-osx&quot;&gt;3. ack命令(Mac OSX)&lt;/h2&gt;
 
@@ -764,7 +764,7 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;范例一：&lt;code&gt;ack -w 测试&lt;/code&gt; 与grep搜索的对比&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ack_w.png&quot; alt=&quot;ack_w&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/ack_w.png&quot; alt=&quot;ack_w&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;thefuckmac-osx&quot;&gt;4. thefuck命令(Mac OSX)&lt;/h2&gt;
 
@@ -774,11 +774,11 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;范例一：&lt;code&gt;git brnch&lt;/code&gt;后回车再输入&lt;code class=&quot;highlighter-rouge&quot;&gt;fuck&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/thefuck.png&quot; alt=&quot;fuck&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/thefuck.png&quot; alt=&quot;fuck&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 16 Feb 2016 10:10:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</guid>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/16/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Five.html</guid>
         
         
         <category>Linux</category>

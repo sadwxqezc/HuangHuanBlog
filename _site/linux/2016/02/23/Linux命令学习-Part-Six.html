@@ -8,25 +8,25 @@
 	<title>Linux命令学习的日常 Part Six</title>
 	<meta name="description" content="1. tar命令(Mac OSX)">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog/HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/23/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Six.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	<script type="text/javascript" src="/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <a class="navbar-brand" href="/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
         
           <li>
         
-          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -123,15 +123,15 @@ var _hmt = _hmt || [];
 
 <p>范例一：<code class="highlighter-rouge">tar -xzvf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz</code> 解压到当前文件夹</p>
 
-<p><img src="/HuangHuanBlog/pics/tar_xzvf.png" alt="tar_xzvf" /></p>
+<p><img src="/pics/tar_xzvf.png" alt="tar_xzvf" /></p>
 
 <p>范例二：<code class="highlighter-rouge">tar -tf mbadolato-iTerm2-Color-Schemes-a646a1d.tar.gz</code> 显示压缩包中的文件目录，如果文件是用gizp压缩的需要加z参数</p>
 
-<p><img src="/HuangHuanBlog/pics/tar_tf.png" alt="tar_tf" /></p>
+<p><img src="/pics/tar_tf.png" alt="tar_tf" /></p>
 
 <p>范例三：<code class="highlighter-rouge">tar -cjvf ./test.bz2 ./mbadolato-iTerm2-Color-Schemes-a646a1d</code> 压缩文件</p>
 
-<p><img src="/HuangHuanBlog/pics/tar_jcvf.png" alt="tar_jcvf" /></p>
+<p><img src="/pics/tar_jcvf.png" alt="tar_jcvf" /></p>
 
 <h2 id="aliasmac-osx">2. alias命令(Mac OSX)</h2>
 
@@ -140,11 +140,11 @@ var _hmt = _hmt || [];
 
 <p>范例一：<code class="highlighter-rouge">alias</code>或者<code class="highlighter-rouge">alias -p</code>显示已经定义的别名，可用<code class="highlighter-rouge">unalias</code>命令删除别名</p>
 
-<p><img src="/HuangHuanBlog/pics/alias.png" alt="alias" /></p>
+<p><img src="/pics/alias.png" alt="alias" /></p>
 
 <p>范例二：<code class="highlighter-rouge">alias ll='ls -lhaS'</code>可以缩短命令长度，如果要使该alias长期有效，需要写在系统环境变量中。</p>
 
-<p><img src="/HuangHuanBlog/pics/alias_ll.png" alt="alias_ll" /></p>
+<p><img src="/pics/alias_ll.png" alt="alias_ll" /></p>
 
 <h2 id="chmodmac-osx">3. chmod命令(Mac OSX)</h2>
 
@@ -156,11 +156,11 @@ var _hmt = _hmt || [];
 
 <p>范例一：<code class="highlighter-rouge">chmod u-x,g+w,o=rwx function.sh</code>其中<code class="highlighter-rouge">u</code>表示文件所有者，<code class="highlighter-rouge">g</code>表示组用户，<code class="highlighter-rouge">o</code>表示其它用户，<code class="highlighter-rouge">a</code>表示所有用户。而<code class="highlighter-rouge">-,+,=</code>分别表示删除，增加和设定权限。</p>
 
-<p><img src="/HuangHuanBlog/pics/chmod_ugo.png" alt="chmod_ugo" /></p>
+<p><img src="/pics/chmod_ugo.png" alt="chmod_ugo" /></p>
 
 <p>范例二：<code class="highlighter-rouge">chmod a=rwx function.sh</code>设定所有类型用户的权限</p>
 
-<p><img src="/HuangHuanBlog/pics/chmod_a.png" alt="chmod_a" /></p>
+<p><img src="/pics/chmod_a.png" alt="chmod_a" /></p>
 
 <p><br />
 参考:<a href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md">命令行的艺术</a></p>
@@ -182,11 +182,11 @@ var _hmt = _hmt || [];
 
 <p>范例一：<code>pv ./12怒汉.mkv &gt; ~/Work/Test/angry.mkv</code> 显示拷贝的速度和百分比</p>
 
-<p><img src="/HuangHuanBlog/pics/pv.png" alt="pv" /></p>
+<p><img src="/pics/pv.png" alt="pv" /></p>
 
 <p>范例二：<code>echo 'this is a pv test' | pv -L 2</code>  限制传输速度为2Bytes</p>
 
-<p><img src="/HuangHuanBlog/pics/pv_L.png" alt="pv_L" /></p>
+<p><img src="/pics/pv_L.png" alt="pv_L" /></p>
 
 <h2 id="bc">2. bc命令</h2>
 
@@ -198,7 +198,7 @@ var _hmt = _hmt || [];
 
 <p>范例一：<code>bc</code></p>
 
-<p><img src="/HuangHuanBlog/pics/bc.png" alt="bc" /></p>
+<p><img src="/pics/bc.png" alt="bc" /></p>
 
 
       </article>
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
           
           
           <span class="point"> · </span>
-          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span><a href="/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>
