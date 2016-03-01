@@ -8,25 +8,25 @@
 	<title>Linux命令学习的日常 Part Two</title>
 	<meta name="description" content="Linux&amp;Unix通用命令(系统Mac OS)1. find命令  文件查找命令,find命令将递归的搜索目录下符合要求的所有文件      基本格式 find [path] [option] [expression]    -name 查找名为filename的文件-perm 查找符合执行权限-use...">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/02/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Two.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">黄欢的博客</a>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
         
           <li>
         
-          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -127,14 +127,14 @@ var _hmt = _hmt || [];
 </code></pre>
 </div>
 
-<p><img src="/pics/find_name.png" alt="按照文件名查找" /></p>
+<p><img src="/HuangHuanBlog/pics/find_name.png" alt="按照文件名查找" /></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>范例二：find . -perm 644
 查找当前目录下权限为644的所有文件
 </code></pre>
 </div>
 
-<p><img src="/pics/find_perm.png" alt="按照权限的搜索" /></p>
+<p><img src="/HuangHuanBlog/pics/find_perm.png" alt="按照权限的搜索" /></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>范例三：find . -path './_site*' -a -prune -o -name 'feed.xml' -print
 整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
@@ -143,14 +143,14 @@ var _hmt = _hmt || [];
 </code></pre>
 </div>
 
-<p><img src="/pics/find_prune.png" alt="忽略一些文件夹搜索" /></p>
+<p><img src="/HuangHuanBlog/pics/find_prune.png" alt="忽略一些文件夹搜索" /></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>范例四：find . -maxdepth 2 -size 3
 控制查找的深度
 </code></pre>
 </div>
 
-<p><img src="/pics/find_depth.png" alt="限制搜索深度" /></p>
+<p><img src="/HuangHuanBlog/pics/find_depth.png" alt="限制搜索深度" /></p>
 
 <p>补充：Linux的权限模式为三元组“owner”，“group”，“other”,权限对应表如下</p>
 
@@ -202,7 +202,7 @@ var _hmt = _hmt || [];
 </code></pre>
 </div>
 
-<p><img src="/pics/wc.png" alt="统计" /></p>
+<p><img src="/HuangHuanBlog/pics/wc.png" alt="统计" /></p>
 
 <p>3. cat命令</p>
 
@@ -221,21 +221,21 @@ var _hmt = _hmt || [];
 </code></pre>
 </div>
 
-<p><img src="/pics/cat_b_n.png" alt="显示文件内容到控制台" /></p>
+<p><img src="/HuangHuanBlog/pics/cat_b_n.png" alt="显示文件内容到控制台" /></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>范例二：cat testColumn testCat
 同时显示两个文件内容
 </code></pre>
 </div>
 
-<p><img src="/pics/cat_mul.png" alt="显示两个文件" /></p>
+<p><img src="/HuangHuanBlog/pics/cat_mul.png" alt="显示两个文件" /></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>范例三：cat testColumn testCat&gt;merge
 将两个内容连结并输出到一个文件中，&gt;为重新创建，&gt;&gt;为追加
 </code></pre>
 </div>
 
-<p><img src="/pics/cat_merge.png" alt="连结并输出" /></p>
+<p><img src="/HuangHuanBlog/pics/cat_merge.png" alt="连结并输出" /></p>
 
       </article>
       <hr>
@@ -291,7 +291,7 @@ var _hmt = _hmt || [];
           
           
           <span class="point"> · </span>
-          <span><a href="/feed.xml">RSS</a></span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>

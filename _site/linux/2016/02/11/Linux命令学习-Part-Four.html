@@ -8,25 +8,25 @@
 	<title>Linux命令学习的日常 Part Four</title>
 	<meta name="description" content="Linux命令(系统 Debian)">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">黄欢的博客</a>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
         
           <li>
         
-          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -116,18 +116,18 @@ var _hmt = _hmt || [];
 
 <p>范例一：<code>sort sort.txt</code> 排序</p>
 
-<p><img src="/pics/sort.png" alt="sort" /></p>
+<p><img src="/HuangHuanBlog/pics/sort.png" alt="sort" /></p>
 
 <p>范例二：<br />
 1. <code>sort -nk 2 -t - sort.txt</code> 以<code class="highlighter-rouge">-</code>进行分割，对分割后的第二个域进行排序；<br />
 2. <code>sort -nrk 2 -t - sort.txt</code> 逆序排序</p>
 
-<p><img src="/pics/sort_t.png" alt="sort_t" /></p>
+<p><img src="/HuangHuanBlog/pics/sort_t.png" alt="sort_t" /></p>
 
 <p>范例三：<code>sort -t - -k 1.7 -nk 3,3 sort_k.txt</code><br />
 <code class="highlighter-rouge">-k start,end</code>中end可以省略，上面的<code class="highlighter-rouge">1.7</code>表示分割后第一个域的第7个字符，由于没有<code class="highlighter-rouge">end</code>，则表示对第一个域中第7字符及其之后的字符排序。而<code class="highlighter-rouge">3,3</code>则表示在前面排序的基础上，再对第三个域进行排序。</p>
 
-<p><img src="/pics/sort_k.png" alt="sort_k" /></p>
+<p><img src="/HuangHuanBlog/pics/sort_k.png" alt="sort_k" /></p>
 
 <h2 id="netstat">2. netstat命令</h2>
 
@@ -147,17 +147,17 @@ var _hmt = _hmt || [];
 <p>范例一：<code>netstat -anp</code>
 显示程序的pid和名称</p>
 
-<p><img src="/pics/netstat_anp.png" alt="netstat 端口" /></p>
+<p><img src="/HuangHuanBlog/pics/netstat_anp.png" alt="netstat 端口" /></p>
 
 <p>范例二：<code>netstat -r</code>
 输出本机路由表</p>
 
-<p><img src="/pics/netstat_r.png" alt="netstat 路由表" /></p>
+<p><img src="/HuangHuanBlog/pics/netstat_r.png" alt="netstat 路由表" /></p>
 
 <p>范例三：<code>netstat -lts</code>
 输出监听状态中的tcp协议统计信息</p>
 
-<p><img src="/pics/netstat_lts.png" alt="netstat tcp统计" /></p>
+<p><img src="/HuangHuanBlog/pics/netstat_lts.png" alt="netstat tcp统计" /></p>
 
 <h2 id="more">3. more命令</h2>
 
@@ -185,12 +185,12 @@ var _hmt = _hmt || [];
 <p>范例一：<code>more +/Deploy catalina.out</code><br />
 在catalina.out文件中查找“Deploy字符第一次出现的位置”，并从该处的前两行开始显示输出</p>
 
-<p><img src="/pics/more_+.png" alt="more 搜索" /></p>
+<p><img src="/HuangHuanBlog/pics/more_+.png" alt="more 搜索" /></p>
 
 <p>范例二：<code>more +10 -10 catalina.out</code><br />
 从第10行开始，每页10行</p>
 
-<p><img src="/pics/more_+_-.png" alt="more 参数" /></p>
+<p><img src="/HuangHuanBlog/pics/more_+_-.png" alt="more 参数" /></p>
 
 <h2 id="less">4. less命令</h2>
 
@@ -221,12 +221,12 @@ var _hmt = _hmt || [];
 <p>范例一：<code>less -Nm catalina.out</code><br />
 显示行号和百分比</p>
 
-<p><img src="/pics/less_Nm.png" alt="less 行号百分比" /></p>
+<p><img src="/HuangHuanBlog/pics/less_Nm.png" alt="less 行号百分比" /></p>
 
 <p>范例二：<code>/detail</code>或者<code>?detail</code>
 向前向后搜索”detail”</p>
 
-<p><img src="/pics/less_search.png" alt="less 搜索" /></p>
+<p><img src="/HuangHuanBlog/pics/less_search.png" alt="less 搜索" /></p>
 
       </article>
       <hr>
@@ -282,7 +282,7 @@ var _hmt = _hmt || [];
           
           
           <span class="point"> · </span>
-          <span><a href="/feed.xml">RSS</a></span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>
