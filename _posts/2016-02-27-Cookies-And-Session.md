@@ -1,9 +1,11 @@
 ---
 layout: post
 title:  "Cookie and Session"
-date:   2016-02-26 17:06:00 ＋8000
+date:   2016-02-29 20:06:00 ＋8000
 categories: Backend
 ---
+* 内容目录
+{:toc}
 
 ## Cookie
 
@@ -72,3 +74,60 @@ PS:图片来自《图解Http》,书中图画的萌，我就不重新画了
 第二次访问截图：
 
 ![cookie_after]({{site.baseurl}}/pics/cookie_after.png)
+
+## Session
+
+### 什么是Session ？
+
+本文所讲的为HTTP Session，在Java中该Session对象用`javax.servlet.http.HttpSession`表示。Session代表服务器和浏览器的一次会话过程，当如JSP页面中未显示的禁止session时，在浏览器第一次请求该JSP时，服务器会为其自动创建一个session，并分配给其一个sessionID，返回给客户端。当客户端再次请求时，会自动在header中加上：`Cookie:JSESSIONID=分配到的sessionID`，服务器会根据该ID在内存中找到之前创建的session对象（与Cookie不同，Session是保存在服务端）。对于同一个浏览器窗口中的多个标签，同时访问同一应用的不同页面，其session是一样的，但不同的浏览器窗口，其session不一样。
+
+### Session的删除时间
++ Session超时
++ 程序显示的调用`HttpSession.invalidate()`
++ 服务器关闭或停止
+
+### Session示例
+
+	package com.springapp.mvc.controller;
+
+	import org.springframework.stereotype.Controller;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.RequestMethod;
+	import org.springframework.web.bind.annotation.ResponseBody;
+
+	import javax.servlet.http.HttpSession;
+
+	/**
+	 * Created by huanghuan on 16/3/1.
+	 */
+
+	@Controller
+	@RequestMapping(value = "/testSession")
+	public class TestSession {
+
+	    @RequestMapping(method = RequestMethod.GET)
+	    @ResponseBody
+	    public String testSession(HttpSession httpSession) {
+	        /** 输出结果 **/
+	        String result = "SessionID:";
+	        if (httpSession != null) {
+	            result += httpSession.getId();
+	            /** 参数设置 **/
+	            Object value = httpSession.getAttribute("key");
+	            if (value == null) {
+	                httpSession.setAttribute("key", "value");
+	            } else {
+	                result += " " + httpSession.getAttribute("key").toString();
+	            }
+	        }
+	        return result;
+	    }
+	}
+
+第一次访问截图：
+
+![testSession_init]({{site.baseurl}}/pics/testSession_init.png)
+
+第二次访问截图，包括在浏览器开两个窗口的情况：
+
+![testSession_after]({{site.baseurl}}/pics/testSession_after.png)
