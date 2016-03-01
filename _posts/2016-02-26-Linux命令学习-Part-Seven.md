@@ -74,3 +74,16 @@ top命令实际上就是Linux下的“任务管理器”，能够实时的显示
 范例二: `free -m` 如果只想查看内存占用，同样可使用`free`命令，一般选择按`MB`显示。
 
 ![free]({{site.baseurl}}/pics/free.png)
+
+## 4. paste命令(Mac OSX)
+
+paste命令用于将多个文件的内容合并
+
+
+<h4><b>基本格式 paste [option] [filename]</b></h4>
++ `-s` 串行处理而非平行
++ `-d` 设定间隔符号
+
+范例：`paste -s -d ':' test2 test1`
+
+![paste]({{site.baseurl}}/pics/paste.png)

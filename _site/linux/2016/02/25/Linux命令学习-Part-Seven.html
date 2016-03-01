@@ -8,25 +8,25 @@
 	<title>Linux命令学习的日常 Part Seven</title>
 	<meta name="description" content="1. uniq命令(Linux)">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/25/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	<script type="text/javascript" src="/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <a class="navbar-brand" href="/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
         
           <li>
         
-          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -114,11 +114,11 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 <p>范例一：<code class="highlighter-rouge">sort sort.txt | uniq -c</code>等命令结果</p>
 
-<p><img src="/HuangHuanBlog/pics/uniq.png" alt="uniq" /></p>
+<p><img src="/pics/uniq.png" alt="uniq" /></p>
 
 <p>一个好玩的命令站点：<a href="http://www.commandlinefu.com/commands/browse/sort-by-votes">Commandlinefu</a></p>
 
-<p><img src="/HuangHuanBlog/pics/command.png" alt="command" /></p>
+<p><img src="/pics/command.png" alt="command" /></p>
 
 <h2 id="mac-osx">几个好玩的命令（Mac OSX）</h2>
 
@@ -126,11 +126,11 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 <p>范例二：<code class="highlighter-rouge">man ascii</code> 可以方便的显示ascii 表</p>
 
-<p><img src="/HuangHuanBlog/pics/ascii.png" alt="ascii" /></p>
+<p><img src="/pics/ascii.png" alt="ascii" /></p>
 
 <p>范例三：<code class="highlighter-rouge">time read</code>计时器，按<code class="highlighter-rouge">Ctrl+D</code>结束</p>
 
-<p><img src="/HuangHuanBlog/pics/time_read.png" alt="time" /></p>
+<p><img src="/pics/time_read.png" alt="time" /></p>
 
 <h2 id="curlmac-osx">2. curl命令(Mac OSX)</h2>
 
@@ -152,7 +152,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 <p>范例一：<code class="highlighter-rouge">curl http://man.linuxde.net/test.iso -o filename.iso --progress</code> 下载文件并显示进度条</p>
 
-<p><img src="/HuangHuanBlog/pics/curl_o.png" alt="curl_o" /></p>
+<p><img src="/pics/curl_o.png" alt="curl_o" /></p>
 
 <p>该命令功能较多，今后将进一步补充</p>
 
@@ -171,11 +171,25 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 <p>范例一: <code class="highlighter-rouge">top</code> 显示效果，前五行显示了启动时间，任务数，cpu，内存和交换分区等信息，之后是更详细的各个进程信息。</p>
 
-<p><img src="/HuangHuanBlog/pics/top.png" alt="top" /></p>
+<p><img src="/pics/top.png" alt="top" /></p>
 
 <p>范例二: <code class="highlighter-rouge">free -m</code> 如果只想查看内存占用，同样可使用<code class="highlighter-rouge">free</code>命令，一般选择按<code class="highlighter-rouge">MB</code>显示。</p>
 
-<p><img src="/HuangHuanBlog/pics/free.png" alt="free" /></p>
+<p><img src="/pics/free.png" alt="free" /></p>
+
+<h2 id="pastemac-osx">4. paste命令(Mac OSX)</h2>
+
+<p>paste命令用于将多个文件的内容合并</p>
+
+<h4><b>基本格式 paste [option] [filename]</b></h4>
+<ul>
+  <li><code class="highlighter-rouge">-s</code> 串行处理而非平行</li>
+  <li><code class="highlighter-rouge">-d</code> 设定间隔符号</li>
+</ul>
+
+<p>范例：<code class="highlighter-rouge">paste -s -d ':' test2 test1</code></p>
+
+<p><img src="/pics/paste.png" alt="paste" /></p>
 
       </article>
       <hr>
@@ -231,7 +245,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
           
           
           <span class="point"> · </span>
-          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span><a href="/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>
