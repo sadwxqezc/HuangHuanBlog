@@ -55,7 +55,7 @@ PS:图片来自《图解Http》,书中图画的萌，我就不重新画了
     	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
     	@ResponseBody
     	public String testCookie(@CookieValue(value = "testCookie", defaultValue = "defaultCookieValue") String cookieValue, HttpServletResponse httpServletResponse) {
-    	/** 输出cookie内容` **/
+    	/** 输出cookie内容 **/
     	String result = "";
     	/** 创建Cookie **/
     	Cookie cookie = new Cookie("testCookie", "CookieValue");
