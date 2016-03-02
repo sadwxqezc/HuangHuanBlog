@@ -4,6 +4,9 @@ title:  "Linux命令学习的日常 Part Six"
 date:   2016-02-23 11:36:00 ＋8000
 categories: Linux
 ---
+* 内容目录
+{:toc}
+
 
 ## 1. tar命令(Mac OSX)
 
@@ -63,10 +66,10 @@ chmod命令用于设定文件或目录的权限，可以用数字或符号的方
 <br/>
 参考:[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
 
-## 冷门但有用的命令(Mac OSX)
+## 冷门命令(Mac OSX)
 
 
-## 1\. pv命令
+### a\. pv命令
  
 pv命令可以通过管道来显示数据的处理进度
 <h4><b>基本格式 pv [option]</b></h4>
@@ -85,7 +88,7 @@ pv命令可以通过管道来显示数据的处理进度
 
 ![pv_L]({{site.baseurl}}/pics/pv_L.png)
 
-## 2\. bc命令
+### b\. bc命令
  
 bc命令可以用于计算
 <h4><b>基本格式 bc [option]</b></h4>

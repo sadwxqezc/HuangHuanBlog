@@ -115,6 +115,7 @@ var _hmt = _hmt || [];
       <li><a href="#session-2" id="markdown-toc-session-2">Session示例</a></li>
     </ul>
   </li>
+  <li><a href="#cookiesession" id="markdown-toc-cookiesession">Cookie与Session的区别</a></li>
 </ul>
 
 <h2 id="cookie">Cookie</h2>
@@ -167,12 +168,12 @@ public class HelloController {
 	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String testCookie(@CookieValue(value = "testCookie", defaultValue = "defaultCookieValue") String cookieValue, HttpServletResponse httpServletResponse) {
-	/** 输出cookie内容` **/
+	/** 输出cookie内容 **/
 	String result = "";
 	/** 创建Cookie **/
 	Cookie cookie = new Cookie("testCookie", "CookieValue");
 	httpServletResponse.addCookie(cookie);
-	result += "Key:testCookie" + "Value:" + cookieValue + "\n";
+	result += "Key:testCookie" + "Value:" + cookieValue + "n";
 	return result;
 	}
 }
@@ -249,6 +250,10 @@ public class TestSession {
 <p>第二次访问截图，包括在浏览器开两个窗口的情况：</p>
 
 <p><img src="/pics/testSession_after.png" alt="testSession_after" /></p>
+
+<h2 id="cookiesession">Cookie与Session的区别</h2>
+
+<p>主要在于Cookie保存在客户端而Session保存在服务端，单个Cookie保存的数据不能超过4k，同时很多浏览器限制一个站点的总Cookie数为20，而服务端的Session会占用服务器内存，影响性能。</p>
 
       </article>
       <hr>

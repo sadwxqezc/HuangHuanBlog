@@ -5,13 +5,22 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Mar 2016 11:29:34 +0800</pubDate>
-    <lastBuildDate>Wed, 02 Mar 2016 11:29:34 +0800</lastBuildDate>
+    <pubDate>Wed, 02 Mar 2016 22:46:51 +0800</pubDate>
+    <lastBuildDate>Wed, 02 Mar 2016 22:46:51 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
         <title>Linux命令学习的日常 Part Seven</title>
-        <description>&lt;h2 id=&quot;uniqlinux&quot;&gt;1. uniq命令(Linux)&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#uniqlinux&quot; id=&quot;markdown-toc-uniqlinux&quot;&gt;1. uniq命令(Linux)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mac-osx&quot; id=&quot;markdown-toc-mac-osx&quot;&gt;几个好玩的命令（Mac OSX）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#curlmac-osx&quot; id=&quot;markdown-toc-curlmac-osx&quot;&gt;2. curl命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#toplinux&quot; id=&quot;markdown-toc-toplinux&quot;&gt;3. top命令(Linux)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#pastemac-osx&quot; id=&quot;markdown-toc-pastemac-osx&quot;&gt;4. paste命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cutmac-osx&quot; id=&quot;markdown-toc-cutmac-osx&quot;&gt;5. cut命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;uniqlinux&quot;&gt;1. uniq命令(Linux)&lt;/h2&gt;
 
 &lt;p&gt;参考:&lt;a href=&quot;http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html&quot;&gt;sort命令&lt;/a&gt;
 uniq命令通常和sort命令合用，用于检查文本中重复出现的行列，但前提是重复行必须是相邻的。&lt;/p&gt;
@@ -151,6 +160,7 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
       &lt;li&gt;&lt;a href=&quot;#session-2&quot; id=&quot;markdown-toc-session-2&quot;&gt;Session示例&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cookiesession&quot; id=&quot;markdown-toc-cookiesession&quot;&gt;Cookie与Session的区别&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;cookie&quot;&gt;Cookie&lt;/h2&gt;
@@ -203,12 +213,12 @@ public class HelloController {
 	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String testCookie(@CookieValue(value = &quot;testCookie&quot;, defaultValue = &quot;defaultCookieValue&quot;) String cookieValue, HttpServletResponse httpServletResponse) {
-	/** 输出cookie内容` **/
+	/** 输出cookie内容 **/
 	String result = &quot;&quot;;
 	/** 创建Cookie **/
 	Cookie cookie = new Cookie(&quot;testCookie&quot;, &quot;CookieValue&quot;);
 	httpServletResponse.addCookie(cookie);
-	result += &quot;Key:testCookie&quot; + &quot;Value:&quot; + cookieValue + &quot;\n&quot;;
+	result += &quot;Key:testCookie&quot; + &quot;Value:&quot; + cookieValue + &quot;n&quot;;
 	return result;
 	}
 }
@@ -285,6 +295,10 @@ public class TestSession {
 &lt;p&gt;第二次访问截图，包括在浏览器开两个窗口的情况：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/pics/testSession_after.png&quot; alt=&quot;testSession_after&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;cookiesession&quot;&gt;Cookie与Session的区别&lt;/h2&gt;
+
+&lt;p&gt;主要在于Cookie保存在客户端而Session保存在服务端，单个Cookie保存的数据不能超过4k，同时很多浏览器限制一个站点的总Cookie数为20，而服务端的Session会占用服务器内存，影响性能。&lt;/p&gt;
 </description>
         <pubDate>Mon, 29 Feb 2016 20:06:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//backend/2016/02/29/Cookies-And-Session.html</link>
@@ -297,7 +311,11 @@ public class TestSession {
     
       <item>
         <title>算法补完计划</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;算法补完计划&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;算法补完计划&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;算法补完计划&lt;/h2&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式，故名为算法补完计划&lt;/p&gt;
@@ -314,7 +332,11 @@ public class TestSession {
     
       <item>
         <title>Shell脚本实例</title>
-        <description>&lt;h2 id=&quot;fileopenmac-osx&quot;&gt;fileopen命令实现(Mac OSX)&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#fileopen&quot; id=&quot;markdown-toc-fileopen&quot;&gt;fileopen命令实现&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fileopen&quot;&gt;fileopen命令实现&lt;/h2&gt;
 
 &lt;p&gt;fileopen命令是为了实现Mac系统下，在终端中用应用打开文件。&lt;br /&gt;
 首先将目录&lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/huanghuan/Work/MyCMD &lt;/code&gt;命令加入环境变量中，Mac下可配置在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bashrc&lt;/code&gt;中。然后创建&lt;code class=&quot;highlighter-rouge&quot;&gt;fileopen&lt;/code&gt;文件，其内容为：&lt;/p&gt;
@@ -334,7 +356,7 @@ public class TestSession {
   13        echo &quot;打开文件&quot;
   14        open ${app_list} ${2}
   15    else
-  16        echo &quot;符合条件的程序有:\n${app_list}&quot;
+  16        echo &quot;符合条件的程序有:n${app_list}&quot;
   17        echo &quot;请重新输入正确的程序名&quot;
   18    fi
   19 fi
@@ -359,7 +381,13 @@ public class TestSession {
     
       <item>
         <title>边边角角的知识点</title>
-        <description>&lt;h2 id=&quot;setuid&quot;&gt;1. setuid权限&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#setuid&quot; id=&quot;markdown-toc-setuid&quot;&gt;1. setuid权限&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 执行权限&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 标准输出与错误输出&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;setuid&quot;&gt;1. setuid权限&lt;/h2&gt;
 
 &lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
 
@@ -381,7 +409,7 @@ public class TestSession {
 
 &lt;p&gt;如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin\sh&lt;/code&gt;程序去读取并解释执行，所以同时亦需要读权限。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;3. 标准输出与标准错误输出&lt;/h2&gt;
+&lt;h2 id=&quot;section-1&quot;&gt;3. 标准输出与错误输出&lt;/h2&gt;
 
 &lt;p&gt;在Shell脚本中有时能看到 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt;这样的语句，在语句中&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null&lt;/code&gt;等同于&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;表示&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;标准输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/null&lt;/code&gt;表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;则表示不输出任何信息到终端，也不定向到系统文件中。而&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;表示标准错误输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;表示等同于的意思，&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&amp;amp;1&lt;/code&gt;则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。&lt;/p&gt;
 </description>
@@ -396,7 +424,12 @@ public class TestSession {
     
       <item>
         <title>读书笔记-学</title>
-        <description>&lt;h2 id=&quot;effective-java-by-joshua-bloch&quot;&gt;1. Effective Java By Joshua Bloch&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#effective-java&quot; id=&quot;markdown-toc-effective-java&quot;&gt;1. Effective Java&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;effective-java&quot;&gt;1. Effective Java&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;By Joshua Bloch&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/pics/effective_java.jpg&quot; alt=&quot;Effective Java&quot; /&gt;&lt;/p&gt;
 
@@ -412,7 +445,13 @@ public class TestSession {
     
       <item>
         <title>读书笔记-思</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年 黄仁宇著&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 万历十五年&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#this-is-water&quot; id=&quot;markdown-toc-this-is-water&quot;&gt;2. This is Water&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;[美]黄仁宇著&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
 
@@ -427,7 +466,8 @@ public class TestSession {
 
 &lt;p&gt;虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。&lt;/p&gt;
 
-&lt;h2 id=&quot;this-is-water-by-david-foster-wallace&quot;&gt;2. “This is Water” By David Foster Wallace&lt;/h2&gt;
+&lt;h2 id=&quot;this-is-water&quot;&gt;2. This is Water&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;By David Foster Wallace&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/pics/this_is_water.jpg&quot; alt=&quot;this is water&quot; /&gt;&lt;/p&gt;
 
@@ -452,7 +492,18 @@ public class TestSession {
     
       <item>
         <title>Linux命令学习的日常 Part Six</title>
-        <description>&lt;h2 id=&quot;tarmac-osx&quot;&gt;1. tar命令(Mac OSX)&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#tarmac-osx&quot; id=&quot;markdown-toc-tarmac-osx&quot;&gt;1. tar命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#aliasmac-osx&quot; id=&quot;markdown-toc-aliasmac-osx&quot;&gt;2. alias命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#chmodmac-osx&quot; id=&quot;markdown-toc-chmodmac-osx&quot;&gt;3. chmod命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mac-osx&quot; id=&quot;markdown-toc-mac-osx&quot;&gt;冷门命令(Mac OSX)&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#a-pv&quot; id=&quot;markdown-toc-a-pv&quot;&gt;a. pv命令&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#b-bc&quot; id=&quot;markdown-toc-b-bc&quot;&gt;b. bc命令&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tarmac-osx&quot;&gt;1. tar命令(Mac OSX)&lt;/h2&gt;
 
 &lt;p&gt;tar命令用于文件的解压或压缩&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;基本格式 tar [main option] [accessibility options] [filename or dir]&lt;/b&gt;&lt;/h4&gt;
@@ -516,9 +567,9 @@ public class TestSession {
 &lt;p&gt;&lt;br /&gt;
 参考:&lt;a href=&quot;https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md&quot;&gt;命令行的艺术&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;mac-osx&quot;&gt;冷门但有用的命令(Mac OSX)&lt;/h2&gt;
+&lt;h2 id=&quot;mac-osx&quot;&gt;冷门命令(Mac OSX)&lt;/h2&gt;
 
-&lt;h2 id=&quot;pv&quot;&gt;1. pv命令&lt;/h2&gt;
+&lt;h3 id=&quot;a-pv&quot;&gt;a. pv命令&lt;/h3&gt;
 
 &lt;p&gt;pv命令可以通过管道来显示数据的处理进度&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;基本格式 pv [option]&lt;/b&gt;&lt;/h4&gt;
@@ -539,7 +590,7 @@ public class TestSession {
 
 &lt;p&gt;&lt;img src=&quot;/pics/pv_L.png&quot; alt=&quot;pv_L&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;bc&quot;&gt;2. bc命令&lt;/h2&gt;
+&lt;h3 id=&quot;b-bc&quot;&gt;b. bc命令&lt;/h3&gt;
 
 &lt;p&gt;bc命令可以用于计算&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;基本格式 bc [option]&lt;/b&gt;&lt;/h4&gt;
@@ -563,7 +614,13 @@ public class TestSession {
     
       <item>
         <title>Shell脚本学习 初阶</title>
-        <description>&lt;h2 id=&quot;mac&quot;&gt;范例代码(Mac下)&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#mac&quot; id=&quot;markdown-toc-mac&quot;&gt;范例代码(Mac下)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;基本知识介绍&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;基本语法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mac&quot;&gt;范例代码(Mac下)&lt;/h2&gt;
 
 &lt;p&gt;以一段Git代码提交脚本为例：&lt;/p&gt;
 
@@ -607,7 +664,7 @@ public class TestSession {
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;1. 基本语法&lt;/h3&gt;
+&lt;h2 id=&quot;section-1&quot;&gt;基本语法&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4&gt;&lt;b&gt;Shell变量&lt;/b&gt;&lt;/h4&gt;
 &lt;ul&gt;
@@ -812,7 +869,12 @@ public class TestSession {
     
       <item>
         <title>Linux命令学习的日常 Part Five</title>
-        <description>&lt;h3 id=&quot;linux-debian&quot;&gt;Linux命令(系统 Debian)&lt;/h3&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#ps&quot; id=&quot;markdown-toc-ps&quot;&gt;1. ps命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tmuxmac-osx&quot; id=&quot;markdown-toc-tmuxmac-osx&quot;&gt;2. tmux命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ackmac-osx&quot; id=&quot;markdown-toc-ackmac-osx&quot;&gt;3. ack命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#thefuckmac-osx&quot; id=&quot;markdown-toc-thefuckmac-osx&quot;&gt;4. thefuck命令(Mac OSX)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;ps&quot;&gt;1. ps命令&lt;/h2&gt;
 

@@ -4,6 +4,9 @@ title:  "Shell脚本学习 初阶"
 date:   2016-02-21 17:27:00 ＋8000
 categories: Shell
 ---
+* 内容目录
+{:toc}
+
 
 
 ## 范例代码(Mac下)
@@ -48,7 +51,7 @@ Git代码提交脚本执行效果截图：
 
 ---
 
-### 1. 基本语法
+## 基本语法
 <br/>
 <h4><b>Shell变量</b></h4>
 + 变量定义与赋值 `testVar="testValue"`

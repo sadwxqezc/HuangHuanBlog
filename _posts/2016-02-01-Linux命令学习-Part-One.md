@@ -4,10 +4,10 @@ title:  "Linux命令学习的日常 Part One"
 date:   2016-02-01 12:00:00 ＋8000
 categories: Linux
 ---
+* 内容目录
+{:toc}
 
-
-### Linux&Unix通用命令(系统Mac OS)
-1\. grep命令
+### 1\. grep命令
  
 > 文本查找命令, 能够使用正则表达式的方式搜索文本，其搜索对象可以是单个或则多个文件
 > 
@@ -44,7 +44,7 @@ categories: Linux
 	
 ![文件夹搜索]({{site.baseurl}}/pics/grep_dir_only.png)
 
-2\. ls命令
+### 2\. ls命令
 
 > ls是命令行中用的最多的命令之一了，用于显示目录下的文件
 >
@@ -69,7 +69,7 @@ categories: Linux
 	
 ![ls递归]({{site.baseurl}}/pics/ls_R.png)
 
-3\. 有趣的命令
+### 3\. 有趣的命令
 
 	范例一：cal -j 2 2016
 	显示2016年2月份的日历，标注当天为一年中的第几天

@@ -4,8 +4,8 @@ title:  "Linux命令学习的日常 Part Three"
 date:   2016-02-07 21:19:00 ＋8000
 categories: Linux
 ---
-
-### Linux命令(系统 Debian)
+* 内容目录
+{:toc}
 
 ## 1\. tail命令
  

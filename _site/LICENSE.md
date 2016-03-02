@@ -1,4 +1,7 @@
 The MIT License (MIT)
+/* 内容目录/* 内容目录/
+s/* 内容目录/* 内容目录/
+s/* 内容目录/* 内容目录/
 
 Copyright (c) 2015 Gaohaoyang
 

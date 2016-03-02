@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>边边角角的知识点</title>
-	<meta name="description" content="1. setuid权限">
+	<meta name="description" content="">
 	
 	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
@@ -101,7 +101,13 @@ var _hmt = _hmt || [];
       </header>
       <hr>
       <article>
-        <h2 id="setuid">1. setuid权限</h2>
+        <ul id="markdown-toc">
+  <li><a href="#setuid" id="markdown-toc-setuid">1. setuid权限</a></li>
+  <li><a href="#section" id="markdown-toc-section">2. 执行权限</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">3. 标准输出与错误输出</a></li>
+</ul>
+
+<h2 id="setuid">1. setuid权限</h2>
 
 <p>今天调了一下Iterm2中<code class="highlighter-rouge">ls</code>的配色，发现在<code class="highlighter-rouge">\bin</code>目录下有如图的显示效果：</p>
 
@@ -123,7 +129,7 @@ var _hmt = _hmt || [];
 
 <p>如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行<code class="highlighter-rouge">execute.sh</code>，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要<code class="highlighter-rouge">\bin\sh</code>程序去读取并解释执行，所以同时亦需要读权限。</p>
 
-<h2 id="section-1">3. 标准输出与标准错误输出</h2>
+<h2 id="section-1">3. 标准输出与错误输出</h2>
 
 <p>在Shell脚本中有时能看到 <code class="highlighter-rouge">&gt;/dev/null 2&gt;&amp;1</code>这样的语句，在语句中<code class="highlighter-rouge">&gt;/dev/null</code>等同于<code class="highlighter-rouge">1&gt;/dev/null</code>，其中<code class="highlighter-rouge">1</code>表示<code class="highlighter-rouge">stdout</code>标准输出，而<code class="highlighter-rouge">/dev/null</code>表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，<code class="highlighter-rouge">1&gt;/dev/null</code>则表示不输出任何信息到终端，也不定向到系统文件中。而<code class="highlighter-rouge">2</code>表示标准错误输出，而<code class="highlighter-rouge">&amp;</code>表示等同于的意思，<code class="highlighter-rouge">2&gt;&amp;1</code>则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。</p>
 

@@ -4,8 +4,9 @@ title:  "Linux命令学习的日常 Part Four"
 date:   2016-02-11 19:55:00 ＋8000
 categories: Linux
 ---
+* 内容目录
+{:toc}
 
-### Linux命令(系统 Debian)
 
 ## 1\. sort命令
  

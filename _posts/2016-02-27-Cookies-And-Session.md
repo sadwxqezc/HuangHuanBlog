@@ -7,6 +7,7 @@ categories: Backend
 * 内容目录
 {:toc}
 
+
 ## Cookie
 
 ### 什么是Cookie ？
@@ -60,7 +61,7 @@ PS:图片来自《图解Http》,书中图画的萌，我就不重新画了
     	/** 创建Cookie **/
     	Cookie cookie = new Cookie("testCookie", "CookieValue");
     	httpServletResponse.addCookie(cookie);
-    	result += "Key:testCookie" + "Value:" + cookieValue + "\n";
+    	result += "Key:testCookie" + "Value:" + cookieValue + "n";
     	return result;
     	}
     }
@@ -131,3 +132,7 @@ PS:图片来自《图解Http》,书中图画的萌，我就不重新画了
 第二次访问截图，包括在浏览器开两个窗口的情况：
 
 ![testSession_after]({{site.baseurl}}/pics/testSession_after.png)
+
+## Cookie与Session的区别
+
+主要在于Cookie保存在客户端而Session保存在服务端，单个Cookie保存的数据不能超过4k，同时很多浏览器限制一个站点的总Cookie数为20，而服务端的Session会占用服务器内存，影响性能。

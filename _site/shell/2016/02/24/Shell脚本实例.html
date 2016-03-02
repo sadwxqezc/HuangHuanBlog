@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shell脚本实例</title>
-	<meta name="description" content="fileopen命令实现(Mac OSX)">
+	<meta name="description" content="">
 	
 	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//shell/2016/02/24/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
@@ -101,7 +101,11 @@ var _hmt = _hmt || [];
       </header>
       <hr>
       <article>
-        <h2 id="fileopenmac-osx">fileopen命令实现(Mac OSX)</h2>
+        <ul id="markdown-toc">
+  <li><a href="#fileopen" id="markdown-toc-fileopen">fileopen命令实现</a></li>
+</ul>
+
+<h2 id="fileopen">fileopen命令实现</h2>
 
 <p>fileopen命令是为了实现Mac系统下，在终端中用应用打开文件。<br />
 首先将目录<code class="highlighter-rouge">/Users/huanghuan/Work/MyCMD </code>命令加入环境变量中，Mac下可配置在<code class="highlighter-rouge">/etc/bashrc</code>中。然后创建<code class="highlighter-rouge">fileopen</code>文件，其内容为：</p>
@@ -121,7 +125,7 @@ var _hmt = _hmt || [];
   13        echo "打开文件"
   14        open ${app_list} ${2}
   15    else
-  16        echo "符合条件的程序有:\n${app_list}"
+  16        echo "符合条件的程序有:n${app_list}"
   17        echo "请重新输入正确的程序名"
   18    fi
   19 fi
