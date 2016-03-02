@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux命令学习的日常 Part Seven"
-date:   2016-02-29 12:07:00 ＋8000
+date:   2016-03-01 11:29:00 ＋8000
 categories: Linux
 ---
 
@@ -87,3 +87,26 @@ paste命令用于将多个文件的内容合并
 范例：`paste -s -d ':' test2 test1`
 
 ![paste]({{site.baseurl}}/pics/paste.png)
+
+## 5. cut命令(Mac OSX)
+
+cut命令用于在文件中剪切数据，以每一行为处理对象。
+
+<h4><b>基本格式 cut [option] [filename]</b></h4>
+
++ `-b` 按字节分割，空格算一个字节，汉字三个字节
++ `-c` 按字符分割
++ `-f` 按域分割
++ `-d` 指定域分隔符
+
+范例一: `date | cut -b 1-7,9` 
+
+![cut_b]({{site.baseurl}}/pics/cut_b.png)
+
+范例二: `date | cut -c 1-5`
+
+![cut_c]({{site.baseurl}}/pics/cut_c.png)
+
+范例三: `date | cut -d " " -f 1-5 testColumn`
+
+![cut_f]({{site.baseurl}}/pics/cut_f.png)

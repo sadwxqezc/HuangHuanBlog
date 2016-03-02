@@ -5,9 +5,135 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 01 Mar 2016 21:39:07 +0800</pubDate>
-    <lastBuildDate>Tue, 01 Mar 2016 21:39:07 +0800</lastBuildDate>
+    <pubDate>Wed, 02 Mar 2016 11:29:34 +0800</pubDate>
+    <lastBuildDate>Wed, 02 Mar 2016 11:29:34 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Linux命令学习的日常 Part Seven</title>
+        <description>&lt;h2 id=&quot;uniqlinux&quot;&gt;1. uniq命令(Linux)&lt;/h2&gt;
+
+&lt;p&gt;参考:&lt;a href=&quot;http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html&quot;&gt;sort命令&lt;/a&gt;
+uniq命令通常和sort命令合用，用于检查文本中重复出现的行列，但前提是重复行必须是相邻的。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 uniq [option] [filename] [outputfilename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-c&lt;/code&gt; 显示该行重复出现的次数&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-d&lt;/code&gt; 仅仅显示重复出现的行列&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 仅显示出现一次的行列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;sort sort.txt | uniq -c&lt;/code&gt;等命令结果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/uniq.png&quot; alt=&quot;uniq&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;一个好玩的命令站点：&lt;a href=&quot;http://www.commandlinefu.com/commands/browse/sort-by-votes&quot;&gt;Commandlinefu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/command.png&quot; alt=&quot;command&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mac-osx&quot;&gt;几个好玩的命令（Mac OSX）&lt;/h2&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;espeak haliluya&lt;/code&gt; 文本转语音命令，颇为有趣。Mac下可用&lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;安装。&lt;/p&gt;
+
+&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;man ascii&lt;/code&gt; 可以方便的显示ascii 表&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/ascii.png&quot; alt=&quot;ascii&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;time read&lt;/code&gt;计时器，按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+D&lt;/code&gt;结束&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/time_read.png&quot; alt=&quot;time&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;curlmac-osx&quot;&gt;2. curl命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;curl命令是一个非常强大的文件传输工具，利用，利用URL规则它支持文件的上传和下载。curl支持包括HTTP,HTTPS,Ftp等多种协议，同时支持Post，cookies，限速，认证等众多功能。&lt;/p&gt;
+
+&lt;h4&gt;&lt;b&gt;基本格式 curl [option] [params]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-A&lt;/code&gt; 设置用户代理&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-c [file]&lt;/code&gt; 命令执行结束后将cookie写入到某个文件中&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-C [offset]&lt;/code&gt; 断点续传&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-e &lt;/code&gt;  设定来源网址&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-s &lt;/code&gt; 寂寞模式，不输出任何东西&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-S &lt;/code&gt; 显示错误&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-T [file] &lt;/code&gt; 上传文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-u &lt;/code&gt; 设置用户名和密码&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-o [filename]&lt;/code&gt; 将文件写入到某个文件中&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-O &lt;/code&gt; 将文件写入到本地文件，保存原始文件名&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;curl http://man.linuxde.net/test.iso -o filename.iso --progress&lt;/code&gt; 下载文件并显示进度条&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/curl_o.png&quot; alt=&quot;curl_o&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;该命令功能较多，今后将进一步补充&lt;/p&gt;
+
+&lt;h2 id=&quot;toplinux&quot;&gt;3. top命令(Linux)&lt;/h2&gt;
+
+&lt;p&gt;top命令实际上就是Linux下的“任务管理器”，能够实时的显示系统中各个进程的资源占用状况，默认刷新频率是5秒一次。&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 top [option]&lt;/b&gt;&lt;/h4&gt;
+
+&lt;p&gt;快捷键：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;P&lt;/code&gt; 根据CPU占用排序&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;M&lt;/code&gt; 根据内存使用大小排序&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;T&lt;/code&gt; 根据时间/累计时间排序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一: &lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; 显示效果，前五行显示了启动时间，任务数，cpu，内存和交换分区等信息，之后是更详细的各个进程信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/top.png&quot; alt=&quot;top&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二: &lt;code class=&quot;highlighter-rouge&quot;&gt;free -m&lt;/code&gt; 如果只想查看内存占用，同样可使用&lt;code class=&quot;highlighter-rouge&quot;&gt;free&lt;/code&gt;命令，一般选择按&lt;code class=&quot;highlighter-rouge&quot;&gt;MB&lt;/code&gt;显示。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/free.png&quot; alt=&quot;free&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;pastemac-osx&quot;&gt;4. paste命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;paste命令用于将多个文件的内容合并&lt;/p&gt;
+
+&lt;h4&gt;&lt;b&gt;基本格式 paste [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-s&lt;/code&gt; 串行处理而非平行&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; 设定间隔符号&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例：&lt;code class=&quot;highlighter-rouge&quot;&gt;paste -s -d &#39;:&#39; test2 test1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/paste.png&quot; alt=&quot;paste&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;cutmac-osx&quot;&gt;5. cut命令(Mac OSX)&lt;/h2&gt;
+
+&lt;p&gt;cut命令用于在文件中剪切数据，以每一行为处理对象。&lt;/p&gt;
+
+&lt;h4&gt;&lt;b&gt;基本格式 cut [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-b&lt;/code&gt; 按字节分割，空格算一个字节，汉字三个字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-c&lt;/code&gt; 按字符分割&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt; 按域分割&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; 指定域分隔符&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;范例一: &lt;code class=&quot;highlighter-rouge&quot;&gt;date | cut -b 1-7,9&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cut_b.png&quot; alt=&quot;cut_b&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例二: &lt;code class=&quot;highlighter-rouge&quot;&gt;date | cut -c 1-5&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cut_c.png&quot; alt=&quot;cut_c&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;范例三: &lt;code class=&quot;highlighter-rouge&quot;&gt;date | cut -d &quot; &quot; -f 1-5 testColumn&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/cut_f.png&quot; alt=&quot;cut_f&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 01 Mar 2016 11:29:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>Cookie and Session</title>
@@ -166,107 +292,6 @@ public class TestSession {
         
         
         <category>Backend</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令学习的日常 Part Seven</title>
-        <description>&lt;h2 id=&quot;uniqlinux&quot;&gt;1. uniq命令(Linux)&lt;/h2&gt;
-
-&lt;p&gt;参考:&lt;a href=&quot;http://sadwxqezc.github.io/HuangHuanBlog/linux/2016/02/11/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Four.html&quot;&gt;sort命令&lt;/a&gt;
-uniq命令通常和sort命令合用，用于检查文本中重复出现的行列，但前提是重复行必须是相邻的。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 uniq [option] [filename] [outputfilename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-c&lt;/code&gt; 显示该行重复出现的次数&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-d&lt;/code&gt; 仅仅显示重复出现的行列&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 仅显示出现一次的行列&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;sort sort.txt | uniq -c&lt;/code&gt;等命令结果&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/uniq.png&quot; alt=&quot;uniq&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;一个好玩的命令站点：&lt;a href=&quot;http://www.commandlinefu.com/commands/browse/sort-by-votes&quot;&gt;Commandlinefu&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/command.png&quot; alt=&quot;command&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;mac-osx&quot;&gt;几个好玩的命令（Mac OSX）&lt;/h2&gt;
-
-&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;espeak haliluya&lt;/code&gt; 文本转语音命令，颇为有趣。Mac下可用&lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt;安装。&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code class=&quot;highlighter-rouge&quot;&gt;man ascii&lt;/code&gt; 可以方便的显示ascii 表&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/ascii.png&quot; alt=&quot;ascii&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code class=&quot;highlighter-rouge&quot;&gt;time read&lt;/code&gt;计时器，按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+D&lt;/code&gt;结束&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/time_read.png&quot; alt=&quot;time&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;curlmac-osx&quot;&gt;2. curl命令(Mac OSX)&lt;/h2&gt;
-
-&lt;p&gt;curl命令是一个非常强大的文件传输工具，利用，利用URL规则它支持文件的上传和下载。curl支持包括HTTP,HTTPS,Ftp等多种协议，同时支持Post，cookies，限速，认证等众多功能。&lt;/p&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 curl [option] [params]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-A&lt;/code&gt; 设置用户代理&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-c [file]&lt;/code&gt; 命令执行结束后将cookie写入到某个文件中&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-C [offset]&lt;/code&gt; 断点续传&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-e &lt;/code&gt;  设定来源网址&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-s &lt;/code&gt; 寂寞模式，不输出任何东西&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-S &lt;/code&gt; 显示错误&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-T [file] &lt;/code&gt; 上传文件&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-u &lt;/code&gt; 设置用户名和密码&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-o [filename]&lt;/code&gt; 将文件写入到某个文件中&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-O &lt;/code&gt; 将文件写入到本地文件，保存原始文件名&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code class=&quot;highlighter-rouge&quot;&gt;curl http://man.linuxde.net/test.iso -o filename.iso --progress&lt;/code&gt; 下载文件并显示进度条&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/curl_o.png&quot; alt=&quot;curl_o&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;该命令功能较多，今后将进一步补充&lt;/p&gt;
-
-&lt;h2 id=&quot;toplinux&quot;&gt;3. top命令(Linux)&lt;/h2&gt;
-
-&lt;p&gt;top命令实际上就是Linux下的“任务管理器”，能够实时的显示系统中各个进程的资源占用状况，默认刷新频率是5秒一次。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 top [option]&lt;/b&gt;&lt;/h4&gt;
-
-&lt;p&gt;快捷键：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;P&lt;/code&gt; 根据CPU占用排序&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;M&lt;/code&gt; 根据内存使用大小排序&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;T&lt;/code&gt; 根据时间/累计时间排序&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一: &lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; 显示效果，前五行显示了启动时间，任务数，cpu，内存和交换分区等信息，之后是更详细的各个进程信息。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/top.png&quot; alt=&quot;top&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二: &lt;code class=&quot;highlighter-rouge&quot;&gt;free -m&lt;/code&gt; 如果只想查看内存占用，同样可使用&lt;code class=&quot;highlighter-rouge&quot;&gt;free&lt;/code&gt;命令，一般选择按&lt;code class=&quot;highlighter-rouge&quot;&gt;MB&lt;/code&gt;显示。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/free.png&quot; alt=&quot;free&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;pastemac-osx&quot;&gt;4. paste命令(Mac OSX)&lt;/h2&gt;
-
-&lt;p&gt;paste命令用于将多个文件的内容合并&lt;/p&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 paste [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-s&lt;/code&gt; 串行处理而非平行&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; 设定间隔符号&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例：&lt;code class=&quot;highlighter-rouge&quot;&gt;paste -s -d &#39;:&#39; test2 test1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/paste.png&quot; alt=&quot;paste&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 29 Feb 2016 12:07:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/29/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/02/29/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html</guid>
-        
-        
-        <category>Linux</category>
         
       </item>
     
