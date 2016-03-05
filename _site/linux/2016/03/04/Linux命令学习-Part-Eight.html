@@ -8,7 +8,7 @@
 	<title>Linux命令之sed与awk</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/02/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -97,12 +97,16 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>Linux命令之sed与awk</h1>
-        <p>Mar 2, 2016</p>
+        <p>Mar 4, 2016</p>
       </header>
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#sedmac" id="markdown-toc-sedmac">1. sed命令(Mac)</a></li>
+  <li><a href="#sedmac" id="markdown-toc-sedmac">1. sed命令(Mac)</a>    <ul>
+      <li><a href="#sed" id="markdown-toc-sed">sed命令语法</a></li>
+      <li><a href="#sed-1" id="markdown-toc-sed-1">sed命令示例</a></li>
+    </ul>
+  </li>
 </ul>
 
 <blockquote>
@@ -112,6 +116,11 @@ var _hmt = _hmt || [];
 <h2 id="sedmac">1. sed命令(Mac)</h2>
 
 <p>sed是Linux中的一个文件编辑工具，按行处理文件内容，可以实现插入，删除，替换等功能。更重要的是sed命令可以用script来处理文本文件，能够应对复杂的编辑需求。</p>
+
+<hr />
+
+<h3 id="sed">sed命令语法</h3>
+
 <h4><b>基本格式 sed [option] [filename]</b></h4>
 <h5><b>选项:</b></h5>
 
@@ -135,6 +144,33 @@ var _hmt = _hmt || [];
   <li><code class="highlighter-rouge">s</code> 取代，搭配正则表达式，替换文本中的内容</li>
 </ul>
 
+<hr />
+
+<h3 id="sed-1">sed命令示例</h3>
+<p>1. 行的删除：<code class="highlighter-rouge">ls -lha | nl | gsed '1,3d'</code>删除输出中的第1到第3行，此时参数<code class="highlighter-rouge">-e</code>可不加。</p>
+
+<p><img src="/pics/sed_d.png" alt="sed delete" /></p>
+
+<p>2. 行的插入：</p>
+
+<ul>
+  <li>在指定行前插入 <code class="highlighter-rouge">gsed '4a 插入的第一行\n插入的第二行' testSed</code></li>
+  <li>在指定行后插入  <code class="highlighter-rouge">gsed '1i 插入的第一行\n插入的第二行' testSed</code><br />
+若要让操作更新到原文件中，需加<code class="highlighter-rouge">-i</code>，该操作较为危险。建议使用<code class="highlighter-rouge">gsed -i.bak '1i test' testSed</code>这样的执行方式，通过这种方式可额外生成<code class="highlighter-rouge">testSed.bak</code>文件，该文件保存了原始内容，这样更安全。</li>
+</ul>
+
+<p><img src="/pics/sed_insert.png" alt="sed insert" /></p>
+
+<p>3. 行的选择性显示：
+有时会显示文件中某个区间内容的需求，这时通过<code class="highlighter-rouge">gsed -n</code>可以做到。<br />
+<code class="highlighter-rouge">gsed -n '2,$p' testSed</code></p>
+
+<p><img src="/pics/sed_n.png" alt="sed print" /></p>
+
+<p>4. 搜索含有关键字的行：<code class="highlighter-rouge">gsed -n '/^第.行/p' testSed</code></p>
+
+<p><img src="/pics/sed_search.png" alt="sed search" /></p>
+
       </article>
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -143,7 +179,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/linux/2016/03/02/Linux命令学习-Part-Eight" data-title="Linux命令之sed与awk" data-url="gaohaoyang.github.io/linux/2016/03/02/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html"></div>
+      <div class="ds-thread" data-thread-key="/linux/2016/03/04/Linux命令学习-Part-Eight" data-title="Linux命令之sed与awk" data-url="gaohaoyang.github.io/linux/2016/03/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html"></div>
       
       <!-- 多说评论框 end -->
     </div>

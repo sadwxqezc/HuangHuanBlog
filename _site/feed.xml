@@ -5,9 +5,90 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 Mar 2016 12:43:25 +0800</pubDate>
-    <lastBuildDate>Fri, 04 Mar 2016 12:43:25 +0800</lastBuildDate>
+    <pubDate>Sat, 05 Mar 2016 18:28:12 +0800</pubDate>
+    <lastBuildDate>Sat, 05 Mar 2016 18:28:12 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Linux命令之sed与awk</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#sedmac&quot; id=&quot;markdown-toc-sedmac&quot;&gt;1. sed命令(Mac)&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#sed&quot; id=&quot;markdown-toc-sed&quot;&gt;sed命令语法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sed-1&quot; id=&quot;markdown-toc-sed-1&quot;&gt;sed命令示例&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt;是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;使用的是&lt;code class=&quot;highlighter-rouge&quot;&gt;gng-sed 4.2.2&lt;/code&gt;版本，对应下文中出现的&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed&lt;/code&gt;，而不是Mac自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;sedmac&quot;&gt;1. sed命令(Mac)&lt;/h2&gt;
+
+&lt;p&gt;sed是Linux中的一个文件编辑工具，按行处理文件内容，可以实现插入，删除，替换等功能。更重要的是sed命令可以用script来处理文本文件，能够应对复杂的编辑需求。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;sed&quot;&gt;sed命令语法&lt;/h3&gt;
+
+&lt;h4&gt;&lt;b&gt;基本格式 sed [option] [filename]&lt;/b&gt;&lt;/h4&gt;
+&lt;h5&gt;&lt;b&gt;选项:&lt;/b&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-e &amp;lt;script&amp;gt;&lt;/code&gt; 按script编辑文本并输出到控制台，但不修改原文件内容&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-f filename&lt;/code&gt; 调用sed脚本文件&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt; 直接修改读取的文件内容，而不输出到终端&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt; 使用安静模式，只有经过sed处理的行才会被显示出来&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt; 使用延伸型的正则表达式语法，预设的是基础的正则语法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;&lt;b&gt;动作命令[n1[,n2]] function&lt;/b&gt;&lt;/h5&gt;
+&lt;p&gt;n1,n2表示起始行和结束行，不一定存在，而function表示动作行为&lt;/p&gt;
+&lt;h5&gt;&lt;b&gt;常用function命令:&lt;/b&gt;&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; 新增一行内容（在指定行的下一行）&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; 取代内容，可取代n1,n2之间的行&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; 删除行&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; 插入一行内容（在指定行的上一行）&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; 列印，将某个选择的资料印出，常与&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -n&lt;/code&gt;连用&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; 取代，搭配正则表达式，替换文本中的内容&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;sed-1&quot;&gt;sed命令示例&lt;/h3&gt;
+&lt;p&gt;1. 行的删除：&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha | nl | gsed &#39;1,3d&#39;&lt;/code&gt;删除输出中的第1到第3行，此时参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt;可不加。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sed_d.png&quot; alt=&quot;sed delete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2. 行的插入：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在指定行前插入 &lt;code class=&quot;highlighter-rouge&quot;&gt;gsed &#39;4a 插入的第一行\n插入的第二行&#39; testSed&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;在指定行后插入  &lt;code class=&quot;highlighter-rouge&quot;&gt;gsed &#39;1i 插入的第一行\n插入的第二行&#39; testSed&lt;/code&gt;&lt;br /&gt;
+若要让操作更新到原文件中，需加&lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt;，该操作较为危险。建议使用&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -i.bak &#39;1i test&#39; testSed&lt;/code&gt;这样的执行方式，通过这种方式可额外生成&lt;code class=&quot;highlighter-rouge&quot;&gt;testSed.bak&lt;/code&gt;文件，该文件保存了原始内容，这样更安全。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sed_insert.png&quot; alt=&quot;sed insert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3. 行的选择性显示：
+有时会显示文件中某个区间内容的需求，这时通过&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -n&lt;/code&gt;可以做到。&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -n &#39;2,$p&#39; testSed&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sed_n.png&quot; alt=&quot;sed print&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4. 搜索含有关键字的行：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -n &#39;/^第.行/p&#39; testSed&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sed_search.png&quot; alt=&quot;sed search&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 04 Mar 2016 18:08:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>Shell脚本实例</title>
@@ -99,51 +180,6 @@
         
         
         <category>Shell</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令之sed与awk</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#sedmac&quot; id=&quot;markdown-toc-sedmac&quot;&gt;1. sed命令(Mac)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt;是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;使用的是&lt;code class=&quot;highlighter-rouge&quot;&gt;gng-sed 4.2.2&lt;/code&gt;版本，对应下文中出现的&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed&lt;/code&gt;，而不是Mac自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;sedmac&quot;&gt;1. sed命令(Mac)&lt;/h2&gt;
-
-&lt;p&gt;sed是Linux中的一个文件编辑工具，按行处理文件内容，可以实现插入，删除，替换等功能。更重要的是sed命令可以用script来处理文本文件，能够应对复杂的编辑需求。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 sed [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;h5&gt;&lt;b&gt;选项:&lt;/b&gt;&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-e &amp;lt;script&amp;gt;&lt;/code&gt; 按script编辑文本并输出到控制台，但不修改原文件内容&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-f filename&lt;/code&gt; 调用sed脚本文件&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt; 直接修改读取的文件内容，而不输出到终端&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt; 使用安静模式，只有经过sed处理的行才会被显示出来&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt; 使用延伸型的正则表达式语法，预设的是基础的正则语法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;&lt;b&gt;动作命令[n1[,n2]] function&lt;/b&gt;&lt;/h5&gt;
-&lt;p&gt;n1,n2表示起始行和结束行，不一定存在，而function表示动作行为&lt;/p&gt;
-&lt;h5&gt;&lt;b&gt;常用function命令:&lt;/b&gt;&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; 新增一行内容（在指定行的下一行）&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; 取代内容，可取代n1,n2之间的行&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; 删除行&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; 插入一行内容（在指定行的上一行）&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; 列印，将某个选择的资料印出，常与&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -n&lt;/code&gt;连用&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; 取代，搭配正则表达式，替换文本中的内容&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 14:36:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/02/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/02/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</guid>
-        
-        
-        <category>Linux</category>
         
       </item>
     
