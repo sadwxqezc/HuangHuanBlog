@@ -167,9 +167,43 @@ var _hmt = _hmt || [];
 
 <p><img src="/pics/sed_n.png" alt="sed print" /></p>
 
-<p>4. 搜索含有关键字的行：<code class="highlighter-rouge">gsed -n '/^第.行/p' testSed</code></p>
+<p>4. 搜索并执行命令：</p>
 
-<p><img src="/pics/sed_search.png" alt="sed search" /></p>
+<ul>
+  <li>搜索含有关键字的行：<code class="highlighter-rouge">gsed -n '/^第.行/p' testSed</code></li>
+</ul>
+
+<p><img src="/pics/sed_search.png" alt="sed search and print" /></p>
+
+<ul>
+  <li>搜索并删除：<code class="highlighter-rouge">gsed '/第四行/d' testSed</code></li>
+</ul>
+
+<p><img src="/pics/gsed_sr.png" alt="sed search and remove" /></p>
+
+<ul>
+  <li>执行多组命令：<code class="highlighter-rouge">gsed '/四/{s/行/列/;s/第四列/测试/}' testSed</code> <code class="highlighter-rouge">s</code>表示替换，从图中的结果可以看到，这个过程有点类似<code class="highlighter-rouge">SQL的where查询</code>，后面的命令在前面的执行结果下执行。</li>
+</ul>
+
+<p><img src="/pics/gsed_mul.png" alt="sed search and multiple operations" /></p>
+
+<p>5. 内容替换：</p>
+
+<ul>
+  <li>区域替换：<code class="highlighter-rouge">gsed '2,3c 替换内容' testSed</code></li>
+</ul>
+
+<p><img src="/pics/sed_c.png" alt="sed c replace" /></p>
+
+<ul>
+  <li>搜索替换：<code class="highlighter-rouge">gsed 's/行/列/g' testSed</code> 如果没有<code class="highlighter-rouge">g</code>则只替换行内匹配的第一个</li>
+</ul>
+
+<p><img src="/pics/gsed_g.png" alt="sed g replace" /></p>
+
+<p>6. 多重编辑：<code class="highlighter-rouge">gsed -e '1i 测试行' -e '1d'  testSed</code>和<code class="highlighter-rouge">gsed -e '1d' -e '1i测试行'  testSed</code>，从图中可以看到两者执行的区别，由于<code class="highlighter-rouge">sed</code>是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。</p>
+
+<p><img src="/pics/gsed_e.png" alt="sed -e" /></p>
 
       </article>
       <hr>

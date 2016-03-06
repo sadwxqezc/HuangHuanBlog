@@ -57,6 +57,30 @@ n1,n2表示起始行和结束行，不一定存在，而function表示动作行�
 
 ![sed print]({{site.baseurl}}/pics/sed_n.png)
 
-4\. 搜索含有关键字的行：`gsed -n '/^第.行/p' testSed`
+4\. 搜索并执行命令：
 
-![sed search]({{site.baseurl}}/pics/sed_search.png)
++ 搜索含有关键字的行：`gsed -n '/^第.行/p' testSed`
+
+![sed search and print]({{site.baseurl}}/pics/sed_search.png)
+
++ 搜索并删除：`gsed '/第四行/d' testSed`
+
+![sed search and remove]({{site.baseurl}}/pics/gsed_sr.png)
+
++ 执行多组命令：`gsed '/四/{s/行/列/;s/第四列/测试/}' testSed` `s`表示替换，从图中的结果可以看到，这个过程有点类似`SQL的where查询`，后面的命令在前面的执行结果下执行。
+
+![sed search and multiple operations]({{site.baseurl}}/pics/gsed_mul.png)
+
+5\. 内容替换：
+
++ 区域替换：`gsed '2,3c 替换内容' testSed`
+
+![sed c replace]({{site.baseurl}}/pics/sed_c.png)
+
++ 搜索替换：`gsed 's/行/列/g' testSed` 如果没有`g`则只替换行内匹配的第一个
+
+![sed g replace]({{site.baseurl}}/pics/gsed_g.png)
+
+6\. 多重编辑：`gsed -e '1i 测试行' -e '1d'  testSed`和`gsed -e '1d' -e '1i测试行'  testSed`，从图中可以看到两者执行的区别，由于`sed`是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。
+
+![sed -e]({{site.baseurl}}/pics/gsed_e.png)

@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 06 Mar 2016 14:39:24 +0800</pubDate>
-    <lastBuildDate>Sun, 06 Mar 2016 14:39:24 +0800</lastBuildDate>
+    <pubDate>Sun, 06 Mar 2016 18:24:50 +0800</pubDate>
+    <lastBuildDate>Sun, 06 Mar 2016 18:24:50 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -46,8 +46,6 @@
 
 &lt;p&gt;2016年2月24日：写给将要参加工作的自己，莫要被生活所淹没，选择思考的方式，保持自觉与警醒。&lt;/p&gt;
 
-&lt;p&gt;To be continued&lt;/p&gt;
-
 &lt;h2 id=&quot;section-1&quot;&gt;3. 看见&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;柴静&lt;/em&gt;&lt;/p&gt;
 
@@ -55,7 +53,7 @@
 
 &lt;p&gt;柴静的这本书，给我最大的震动便如书中所说的“真实自有万钧之力”，“人生是一个摆脱矇昧的过程”，要接近“真实”需要去感受的勇气和能力。能够感受才能够理解，在理解的基础上才能正确的思考，以接近“真实”，获取宽容的能力。但这需要一个过程，需要在生活中摔打和淬炼，要理解自己的弱点，也能理解别人的弱点，但要克服弱点并不是一个快速的过程，毕竟“如果人的弱点那么容易被克服，还要这么长的人生干什么”。而如果不正视自己的弱点，去感受和接受，时间只会带来经验的积累，却不会带来成长。&lt;/p&gt;
 
-&lt;p&gt;感谢柴静这本书，让我知道了她“看见”的历程。虽然对于柴静人们各有褒贬，但既然能看见她的缺点和局限，也应能看到她的努力和思考，我相信今后的某个时刻，我会因为自己的生活，而回过头来再看这本书，寻求启发。&lt;/p&gt;
+&lt;p&gt;感谢柴静这本书，让我知道了她“看见”的历程。虽然对于柴静人们各有褒贬，但既然能看见她的缺点和局限，也应能看到她的努力和思考，我相信今后的某个时刻，我会因为自己的生活，而回过头来再看这本书，寻求启发。毕竟柴静也是通过那么丰富的人生经历才能悟出一些道理，我也不可能只是靠多读几本书就能“看见”一切，还是要在真实的生活中磨砺。&lt;/p&gt;
 </description>
         <pubDate>Sat, 05 Mar 2016 13:46:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//read/2016/03/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</link>
@@ -134,9 +132,43 @@
 
 &lt;p&gt;&lt;img src=&quot;/pics/sed_n.png&quot; alt=&quot;sed print&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;4. 搜索含有关键字的行：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -n &#39;/^第.行/p&#39; testSed&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4. 搜索并执行命令：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/pics/sed_search.png&quot; alt=&quot;sed search&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;搜索含有关键字的行：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -n &#39;/^第.行/p&#39; testSed&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sed_search.png&quot; alt=&quot;sed search and print&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;搜索并删除：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed &#39;/第四行/d&#39; testSed&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/gsed_sr.png&quot; alt=&quot;sed search and remove&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;执行多组命令：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed &#39;/四/{s/行/列/;s/第四列/测试/}&#39; testSed&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;表示替换，从图中的结果可以看到，这个过程有点类似&lt;code class=&quot;highlighter-rouge&quot;&gt;SQL的where查询&lt;/code&gt;，后面的命令在前面的执行结果下执行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/gsed_mul.png&quot; alt=&quot;sed search and multiple operations&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5. 内容替换：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;区域替换：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed &#39;2,3c 替换内容&#39; testSed&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/sed_c.png&quot; alt=&quot;sed c replace&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;搜索替换：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed &#39;s/行/列/g&#39; testSed&lt;/code&gt; 如果没有&lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt;则只替换行内匹配的第一个&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/gsed_g.png&quot; alt=&quot;sed g replace&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6. 多重编辑：&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -e &#39;1i 测试行&#39; -e &#39;1d&#39;  testSed&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed&lt;/code&gt;，从图中可以看到两者执行的区别，由于&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/gsed_e.png&quot; alt=&quot;sed -e&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 04 Mar 2016 18:08:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//linux/2016/03/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>
