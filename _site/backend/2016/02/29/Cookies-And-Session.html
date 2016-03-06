@@ -8,25 +8,25 @@
 	<title>Cookie and Session</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//backend/2016/02/29/Cookies-And-Session.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/backend/2016/02/29/Cookies-And-Session.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">黄欢的博客</a>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
         
           <li>
         
-          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -124,7 +124,7 @@ var _hmt = _hmt || [];
 
 <p>由于<code class="highlighter-rouge">http</code>是无状态协议，它不会对之前发生过的请求和响应的状态进行管理。无状态协议虽然资源消耗少，但由于其无法管理如登陆状态等信息，给服务器管理客户端的状态带来了难题。</p>
 
-<p><img src="/pics/http.png" alt="图解Http_状态" /></p>
+<p><img src="/HuangHuanBlog/pics/http.png" alt="图解Http_状态" /></p>
 
 <p>为了解决该问题，Cookie技术被引入，通过在请求和响应报文中写入Cookie信息来控制客户端的状态。</p>
 
@@ -132,7 +132,7 @@ var _hmt = _hmt || [];
 
 <p>在服务端发送的响应报文内会有一个<code class="highlighter-rouge">Set-Cookie</code>字段信息，通知客户端保存Cookie。当客户端在此往同一服务器发送请求时，客户端会自动在请求报文中加入Cookie值，其选择Cookie的依据是当前的url地址。</p>
 
-<p><img src="/pics/http_process.png" alt="Cookie工作流程" /></p>
+<p><img src="/HuangHuanBlog/pics/http_process.png" alt="Cookie工作流程" /></p>
 
 <h3 id="cookie-2">Cookie的类型与内容</h3>
 
@@ -184,11 +184,11 @@ public class HelloController {
 
 <p>第一次访问截图：</p>
 
-<p><img src="/pics/cookie_init.png" alt="cookie_init" /></p>
+<p><img src="/HuangHuanBlog/pics/cookie_init.png" alt="cookie_init" /></p>
 
 <p>第二次访问截图：</p>
 
-<p><img src="/pics/cookie_after.png" alt="cookie_after" /></p>
+<p><img src="/HuangHuanBlog/pics/cookie_after.png" alt="cookie_after" /></p>
 
 <h2 id="session">Session</h2>
 
@@ -245,11 +245,11 @@ public class TestSession {
 
 <p>第一次访问截图：</p>
 
-<p><img src="/pics/testSession_init.png" alt="testSession_init" /></p>
+<p><img src="/HuangHuanBlog/pics/testSession_init.png" alt="testSession_init" /></p>
 
 <p>第二次访问截图，包括在浏览器开两个窗口的情况：</p>
 
-<p><img src="/pics/testSession_after.png" alt="testSession_after" /></p>
+<p><img src="/HuangHuanBlog/pics/testSession_after.png" alt="testSession_after" /></p>
 
 <h2 id="cookiesession">Cookie与Session的区别</h2>
 
@@ -258,10 +258,10 @@ public class TestSession {
       </article>
       <hr>
       
-      <a href="/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">上一篇博客：算法补完计划</a><br>
+      <a href="/HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">上一篇博客：算法补完计划</a><br>
       
       
-      <a href="/linux/2016/03/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html">下一篇博客：Linux命令学习的日常 Part Seven</a>
+      <a href="/HuangHuanBlog/linux/2016/03/01/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Seven.html">下一篇博客：Linux命令学习的日常 Part Seven</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -317,7 +317,7 @@ public class TestSession {
           
           
           <span class="point"> · </span>
-          <span><a href="/feed.xml">RSS</a></span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>

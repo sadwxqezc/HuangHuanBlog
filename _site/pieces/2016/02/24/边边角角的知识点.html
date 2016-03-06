@@ -8,25 +8,25 @@
 	<title>边边角角的知识点</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//feed.xml" />
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
-	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
 	
 
-	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
 	
-	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
 
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">黄欢的博客</a>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
       <p class="navbar-text">Coder</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
         
           <li>
         
-          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
 
         
           
@@ -111,21 +111,21 @@ var _hmt = _hmt || [];
 
 <p>今天调了一下Iterm2中<code class="highlighter-rouge">ls</code>的配色，发现在<code class="highlighter-rouge">\bin</code>目录下有如图的显示效果：</p>
 
-<p><img src="/pics/setuid_1.png" alt="setuid" /></p>
+<p><img src="/HuangHuanBlog/pics/setuid_1.png" alt="setuid" /></p>
 
 <p>ps和rcp的执行文件颜色和其它不同，从<code class="highlighter-rouge">ls -lha</code>的结果来看它们两个与其它文件并没有什么不同，于是我再用<code class="highlighter-rouge">file</code>命令查看文件：</p>
 
-<p><img src="/pics/setuid_2.png" alt="setuid_2" /></p>
+<p><img src="/HuangHuanBlog/pics/setuid_2.png" alt="setuid_2" /></p>
 
 <p>此时发现ps和rcp的前面多了个<code class="highlighter-rouge">setuid</code>的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了<code class="highlighter-rouge">setuid</code>外还有<code class="highlighter-rouge">setgid</code>和<code class="highlighter-rouge">stick bit</code>。</p>
 
 <h2 id="section">2. 执行权限</h2>
 
-<p><img src="/pics/execute.png" alt="execute" /></p>
+<p><img src="/HuangHuanBlog/pics/execute.png" alt="execute" /></p>
 
 <p>如上图所示，作为execute.sh的owner，我拥有<code class="highlighter-rouge">rw</code>读写权限，但如果想通过<code class="highlighter-rouge">./execute.sh</code>直接执行，却被告知权限不够，而用<code class="highlighter-rouge">sh execute.sh</code>却能够执行。后者实际上是将脚本交由<code class="highlighter-rouge">/bin/sh</code>执行，仅仅需要读权限即可。那么如果我只有<code class="highlighter-rouge">execute.sh</code>的<code class="highlighter-rouge">x</code>执行权限，是否能够直接执行了？</p>
 
-<p><img src="/pics/execute_x.png" alt="execute_x" /></p>
+<p><img src="/HuangHuanBlog/pics/execute_x.png" alt="execute_x" /></p>
 
 <p>如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行<code class="highlighter-rouge">execute.sh</code>，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要<code class="highlighter-rouge">\bin\sh</code>程序去读取并解释执行，所以同时亦需要读权限。</p>
 
@@ -136,10 +136,10 @@ var _hmt = _hmt || [];
       </article>
       <hr>
       
-      <a href="/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html">上一篇博客：读书笔记-学</a><br>
+      <a href="/HuangHuanBlog/read/2016/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html">上一篇博客：读书笔记-学</a><br>
       
       
-      <a href="/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">下一篇博客：算法补完计划</a>
+      <a href="/HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">下一篇博客：算法补完计划</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -195,7 +195,7 @@ var _hmt = _hmt || [];
           
           
           <span class="point"> · </span>
-          <span><a href="/feed.xml">RSS</a></span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
           <span class="point"> · </span>
           <span>黄欢的博客：程序，读书，电影</span>
           <span class="point"> · </span>
