@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "Linux命令之sed与awk"
-date:   2016-03-04 18:08:00 ＋8000
+date:   2016-03-06 11:55:00 ＋8000
 categories: Linux
 ---
 * 内容目录
 {:toc}
 
-> `sed`与`awk`是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中`sed`使用的是`gng-sed 4.2.2`版本，对应下文中出现的`gsed`，而不是Mac自带的`sed`。
+> `sed`与`awk`是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中`sed`使用的是`gnu-sed 4.2.2`版本，对应下文中出现的`gsed`，而不是Mac自带的`sed`。`awk`同样使用`gnu`版本的`awk`，对应文中出现的`gawk`。
 
 ## 1. sed命令(Mac)
 
@@ -84,3 +84,22 @@ n1,n2表示起始行和结束行，不一定存在，而function表示动作行�
 6\. 多重编辑：`gsed -e '1i 测试行' -e '1d'  testSed`和`gsed -e '1d' -e '1i测试行'  testSed`，从图中可以看到两者执行的区别，由于`sed`是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。
 
 ![sed -e]({{site.baseurl}}/pics/gsed_e.png)
+
+## 2.awk (Mac)
+
+awk时非常强大的文本分析工具，非常适用于生成分析报告。awk会将文本逐行的读入，默认以空格或制表符为分隔符进行切片，然后对切片后的部分分析处理。awk十分强大，实际上它也有自己的编程语言：“样式扫描和处理语言”，其名称源自于创始人Alfred Aho，Peter Weinberger，Brian Kernighan。
+
+### awk语法
+
+<h4><b>基本格式 awk [option] '[pattern + action]' [filenames]</b></h4>
+
+pattern表示用正则表达式匹配文本中的内容，而action则是匹配到内容时所执行的一系列命令。
+
++ `-F` 指定域分隔符
+
+### awk示例
+
+1\. 打印账户和账户对应的shell：`cat -n /etc/passwd | gawk -F ':' '{print $1" "$5}' | gsed '1,10d'`
+其中`$1`和`$5`分别表示分割后的第一个和第五个域。
+
+![awk print]({{site.baseurl}}/pics/awk_print.png)

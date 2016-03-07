@@ -8,7 +8,7 @@
 	<title>Linux命令之sed与awk</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/06/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -97,7 +97,7 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>Linux命令之sed与awk</h1>
-        <p>Mar 4, 2016</p>
+        <p>Mar 6, 2016</p>
       </header>
       <hr>
       <article>
@@ -107,10 +107,15 @@ var _hmt = _hmt || [];
       <li><a href="#sed-1" id="markdown-toc-sed-1">sed命令示例</a></li>
     </ul>
   </li>
+  <li><a href="#awk-mac" id="markdown-toc-awk-mac">2.awk (Mac)</a>    <ul>
+      <li><a href="#awk" id="markdown-toc-awk">awk语法</a></li>
+      <li><a href="#awk-1" id="markdown-toc-awk-1">awk示例</a></li>
+    </ul>
+  </li>
 </ul>
 
 <blockquote>
-  <p><code class="highlighter-rouge">sed</code>与<code class="highlighter-rouge">awk</code>是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中<code class="highlighter-rouge">sed</code>使用的是<code class="highlighter-rouge">gng-sed 4.2.2</code>版本，对应下文中出现的<code class="highlighter-rouge">gsed</code>，而不是Mac自带的<code class="highlighter-rouge">sed</code>。</p>
+  <p><code class="highlighter-rouge">sed</code>与<code class="highlighter-rouge">awk</code>是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中<code class="highlighter-rouge">sed</code>使用的是<code class="highlighter-rouge">gnu-sed 4.2.2</code>版本，对应下文中出现的<code class="highlighter-rouge">gsed</code>，而不是Mac自带的<code class="highlighter-rouge">sed</code>。<code class="highlighter-rouge">awk</code>同样使用<code class="highlighter-rouge">gnu</code>版本的<code class="highlighter-rouge">awk</code>，对应文中出现的<code class="highlighter-rouge">gawk</code>。</p>
 </blockquote>
 
 <h2 id="sedmac">1. sed命令(Mac)</h2>
@@ -205,13 +210,32 @@ var _hmt = _hmt || [];
 
 <p><img src="/HuangHuanBlog/pics/gsed_e.png" alt="sed -e" /></p>
 
+<h2 id="awk-mac">2.awk (Mac)</h2>
+
+<p>awk时非常强大的文本分析工具，非常适用于生成分析报告。awk会将文本逐行的读入，默认以空格或制表符为分隔符进行切片，然后对切片后的部分分析处理。awk十分强大，实际上它也有自己的编程语言：“样式扫描和处理语言”，其名称源自于创始人Alfred Aho，Peter Weinberger，Brian Kernighan。</p>
+
+<h3 id="awk">awk语法</h3>
+
+<h4><b>基本格式 awk [option] '[pattern + action]' [filenames]</b></h4>
+
+<p>pattern表示用正则表达式匹配文本中的内容，而action则是匹配到内容时所执行的一系列命令。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-F</code> 指定域分隔符</li>
+</ul>
+
+<h3 id="awk-1">awk示例</h3>
+
+<p>1. 打印账户和账户对应的shell：<code class="highlighter-rouge">cat -n /etc/passwd | gawk -F ':' '{print $1" "$5}' | gsed '1,10d'</code>
+其中<code class="highlighter-rouge">$1</code>和<code class="highlighter-rouge">$5</code>分别表示分割后的第一个和第五个域。</p>
+
+<p><img src="/HuangHuanBlog/pics/awk_print.png" alt="awk print" /></p>
+
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/shell/2016/03/03/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html">上一篇博客：Shell脚本实例</a><br>
+      <a href="/HuangHuanBlog/read/2016/03/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html">上一篇博客：读书笔记-思</a><br>
       
-      
-      <a href="/HuangHuanBlog/read/2016/03/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html">下一篇博客：读书笔记-思</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -220,7 +244,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/linux/2016/03/04/Linux命令学习-Part-Eight" data-title="Linux命令之sed与awk" data-url="sadwxqezc.github.io/linux/2016/03/04/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html"></div>
+      <div class="ds-thread" data-thread-key="/linux/2016/03/06/Linux命令学习-Part-Eight" data-title="Linux命令之sed与awk" data-url="sadwxqezc.github.io/linux/2016/03/06/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
