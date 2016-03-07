@@ -1,4 +1,4 @@
-lin---
+---
 layout: post
 title:  "Shell脚本学习 初阶"
 date:   2016-02-21 17:27:00 ＋8000
