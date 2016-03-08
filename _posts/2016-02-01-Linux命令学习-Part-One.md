@@ -95,9 +95,11 @@ categories: Linux
 
 ![file]({{site.baseurl}}/pics/file.png)
 
-    范例五：xargs命令的作用时将参数分段传输给其它命令
+    范例五：xargs命令的作用时将参数分段传输给其它命令，后面加-n1表示每次传入一个参数，-n2表示传入两个参数。
 
 ![xargs]({{site.baseurl}}/pics/xargs.png)
 
+	范例六：basename命令可用于去除文件的前缀，只获取文件名。
 
+![basename]({{site.baseurl}}/pics/basename.png)
 
