@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Mar 2016 17:32:42 +0800</pubDate>
-    <lastBuildDate>Tue, 08 Mar 2016 17:32:42 +0800</lastBuildDate>
+    <pubDate>Wed, 09 Mar 2016 13:22:40 +0800</pubDate>
+    <lastBuildDate>Wed, 09 Mar 2016 13:22:40 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -256,8 +256,7 @@
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;Shell传入变量&lt;/b&gt;&lt;/h4&gt;
-&lt;p&gt;文件的条件判断逻辑：&lt;/p&gt;
+&lt;h4&gt;&lt;b&gt;Shell文件判断逻辑&lt;/b&gt;&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-a&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;－e&lt;/code&gt;：文件是否存在&lt;/li&gt;
@@ -293,7 +292,9 @@
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#awk-mac&quot; id=&quot;markdown-toc-awk-mac&quot;&gt;2.awk (Mac)&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#awk&quot; id=&quot;markdown-toc-awk&quot;&gt;awk语法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#awk-1&quot; id=&quot;markdown-toc-awk-1&quot;&gt;awk示例&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#awk-1&quot; id=&quot;markdown-toc-awk-1&quot;&gt;awk代码块表示方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#awk-2&quot; id=&quot;markdown-toc-awk-2&quot;&gt;awk内置变量(通过$取值)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#awk-3&quot; id=&quot;markdown-toc-awk-3&quot;&gt;awk示例&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -400,20 +401,57 @@
 
 &lt;h3 id=&quot;awk&quot;&gt;awk语法&lt;/h3&gt;
 
-&lt;h4&gt;&lt;b&gt;基本格式 awk [option] &#39;[pattern + action]&#39; [filenames]&lt;/b&gt;&lt;/h4&gt;
+&lt;h4&gt;&lt;b&gt;基本格式 awk [option] &#39;[codeblock]&#39; [filenames]&lt;/b&gt;&lt;/h4&gt;
 
-&lt;p&gt;pattern表示用正则表达式匹配文本中的内容，而action则是匹配到内容时所执行的一系列命令。&lt;/p&gt;
+&lt;p&gt;codeblock表示代码块区域&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-F&lt;/code&gt; 指定域分隔符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt; 调用脚本&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; 定义变量&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;awk-1&quot;&gt;awk示例&lt;/h3&gt;
+&lt;h3 id=&quot;awk-1&quot;&gt;awk代码块表示方法&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;BEGIN {} // { sentence one; sentence two} END {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BEGIN&lt;/code&gt; 初始代码块&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;//&lt;/code&gt; 匹配代码块，与sed中的用法类似&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt; 命令代码块，包含多条命令语句，用&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt;分隔&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;END&lt;/code&gt; 结尾代码块，在每一行执行完后运行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;awk-2&quot;&gt;awk内置变量(通过$取值)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; 表示当前行所有内容&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; 第n个域的内容&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ARGC&lt;/code&gt; 命令行参数个数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ARGV&lt;/code&gt; 命令行参数排列&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENVIRON&lt;/code&gt; 支持队列中系统的环境变量使用&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FILENAME&lt;/code&gt; 正在浏览的文件名&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FNR&lt;/code&gt; 浏览文件的记录数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FS&lt;/code&gt; 设置输入域的分隔符，等价于&lt;code class=&quot;highlighter-rouge&quot;&gt;-F&lt;/code&gt;选项，在&lt;code class=&quot;highlighter-rouge&quot;&gt;BEGIN&lt;/code&gt;时定义&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NF&lt;/code&gt; 域的个数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NR&lt;/code&gt; 已经读取的记录个数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;OFS&lt;/code&gt; 输出域分隔符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ORS&lt;/code&gt; 输出记录分隔符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RS&lt;/code&gt; 控制记录分隔符&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;awk-3&quot;&gt;awk示例&lt;/h3&gt;
 
 &lt;p&gt;1. 打印账户和账户对应的shell：&lt;code class=&quot;highlighter-rouge&quot;&gt;cat -n /etc/passwd | gawk -F &#39;:&#39; &#39;{print $1&quot; &quot;$5}&#39; | gsed &#39;1,10d&#39;&lt;/code&gt;
 其中&lt;code class=&quot;highlighter-rouge&quot;&gt;$1&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;$5&lt;/code&gt;分别表示分割后的第一个和第五个域。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_print.png&quot; alt=&quot;awk print&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2. 使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Begin End&lt;/code&gt;：&lt;code class=&quot;highlighter-rouge&quot;&gt;cat /etc/passwd | gawk -F: &#39;BEGIN{print &quot;名称-权限&quot;} {print $1&quot;-&quot;$5} END{print &quot;the end!&quot;}&#39; | sed &#39;2,11d&#39; | column -t -s &#39;-&#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_begin_end.png&quot; alt=&quot;awk begin&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 06 Mar 2016 11:55:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/06/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>

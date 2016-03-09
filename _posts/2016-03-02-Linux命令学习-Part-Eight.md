@@ -91,11 +91,38 @@ awk时非常强大的文本分析工具，非常适用于生成分析报告。aw
 
 ### awk语法
 
-<h4><b>基本格式 awk [option] '[pattern + action]' [filenames]</b></h4>
+<h4><b>基本格式 awk [option] '[codeblock]' [filenames]</b></h4>
 
-pattern表示用正则表达式匹配文本中的内容，而action则是匹配到内容时所执行的一系列命令。
+codeblock表示代码块区域
 
 + `-F` 指定域分隔符
++ `-f` 调用脚本
++ `-v` 定义变量
+
+### awk代码块表示方法
+
+	BEGIN {} // { sentence one; sentence two} END {}
+
++ `BEGIN` 初始代码块
++ `//` 匹配代码块，与sed中的用法类似
++ `{}` 命令代码块，包含多条命令语句，用`;`分隔
++ `END` 结尾代码块，在每一行执行完后运行。
+
+### awk内置变量(通过$取值)
+
++ `0` 表示当前行所有内容
++ `n` 第n个域的内容
++ `ARGC` 命令行参数个数
++ `ARGV` 命令行参数排列
++ `ENVIRON` 支持队列中系统的环境变量使用
++ `FILENAME` 正在浏览的文件名
++ `FNR` 浏览文件的记录数
++ `FS` 设置输入域的分隔符，等价于`-F`选项，在`BEGIN`时定义
++ `NF` 域的个数
++ `NR` 已经读取的记录个数
++ `OFS` 输出域分隔符
++ `ORS` 输出记录分隔符
++ `RS` 控制记录分隔符
 
 ### awk示例
 
@@ -103,3 +130,7 @@ pattern表示用正则表达式匹配文本中的内容，而action则是匹配�
 其中`$1`和`$5`分别表示分割后的第一个和第五个域。
 
 ![awk print]({{site.baseurl}}/pics/awk_print.png)
+
+2\. 使用`Begin End`：`cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'`
+
+![awk begin]({{site.baseurl}}/pics/awk_begin_end.png)

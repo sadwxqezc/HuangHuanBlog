@@ -109,7 +109,9 @@ var _hmt = _hmt || [];
   </li>
   <li><a href="#awk-mac" id="markdown-toc-awk-mac">2.awk (Mac)</a>    <ul>
       <li><a href="#awk" id="markdown-toc-awk">awk语法</a></li>
-      <li><a href="#awk-1" id="markdown-toc-awk-1">awk示例</a></li>
+      <li><a href="#awk-1" id="markdown-toc-awk-1">awk代码块表示方法</a></li>
+      <li><a href="#awk-2" id="markdown-toc-awk-2">awk内置变量(通过$取值)</a></li>
+      <li><a href="#awk-3" id="markdown-toc-awk-3">awk示例</a></li>
     </ul>
   </li>
 </ul>
@@ -216,20 +218,57 @@ var _hmt = _hmt || [];
 
 <h3 id="awk">awk语法</h3>
 
-<h4><b>基本格式 awk [option] '[pattern + action]' [filenames]</b></h4>
+<h4><b>基本格式 awk [option] '[codeblock]' [filenames]</b></h4>
 
-<p>pattern表示用正则表达式匹配文本中的内容，而action则是匹配到内容时所执行的一系列命令。</p>
+<p>codeblock表示代码块区域</p>
 
 <ul>
   <li><code class="highlighter-rouge">-F</code> 指定域分隔符</li>
+  <li><code class="highlighter-rouge">-f</code> 调用脚本</li>
+  <li><code class="highlighter-rouge">-v</code> 定义变量</li>
 </ul>
 
-<h3 id="awk-1">awk示例</h3>
+<h3 id="awk-1">awk代码块表示方法</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>BEGIN {} // { sentence one; sentence two} END {}
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">BEGIN</code> 初始代码块</li>
+  <li><code class="highlighter-rouge">//</code> 匹配代码块，与sed中的用法类似</li>
+  <li><code class="highlighter-rouge"><span class="p">{}</span></code> 命令代码块，包含多条命令语句，用<code class="highlighter-rouge">;</code>分隔</li>
+  <li><code class="highlighter-rouge">END</code> 结尾代码块，在每一行执行完后运行。</li>
+</ul>
+
+<h3 id="awk-2">awk内置变量(通过$取值)</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">0</code> 表示当前行所有内容</li>
+  <li><code class="highlighter-rouge">n</code> 第n个域的内容</li>
+  <li><code class="highlighter-rouge">ARGC</code> 命令行参数个数</li>
+  <li><code class="highlighter-rouge">ARGV</code> 命令行参数排列</li>
+  <li><code class="highlighter-rouge">ENVIRON</code> 支持队列中系统的环境变量使用</li>
+  <li><code class="highlighter-rouge">FILENAME</code> 正在浏览的文件名</li>
+  <li><code class="highlighter-rouge">FNR</code> 浏览文件的记录数</li>
+  <li><code class="highlighter-rouge">FS</code> 设置输入域的分隔符，等价于<code class="highlighter-rouge">-F</code>选项，在<code class="highlighter-rouge">BEGIN</code>时定义</li>
+  <li><code class="highlighter-rouge">NF</code> 域的个数</li>
+  <li><code class="highlighter-rouge">NR</code> 已经读取的记录个数</li>
+  <li><code class="highlighter-rouge">OFS</code> 输出域分隔符</li>
+  <li><code class="highlighter-rouge">ORS</code> 输出记录分隔符</li>
+  <li><code class="highlighter-rouge">RS</code> 控制记录分隔符</li>
+</ul>
+
+<h3 id="awk-3">awk示例</h3>
 
 <p>1. 打印账户和账户对应的shell：<code class="highlighter-rouge">cat -n /etc/passwd | gawk -F ':' '{print $1" "$5}' | gsed '1,10d'</code>
 其中<code class="highlighter-rouge">$1</code>和<code class="highlighter-rouge">$5</code>分别表示分割后的第一个和第五个域。</p>
 
 <p><img src="/HuangHuanBlog/pics/awk_print.png" alt="awk print" /></p>
+
+<p>2. 使用<code class="highlighter-rouge">Begin End</code>：<code class="highlighter-rouge">cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'</code></p>
+
+<p><img src="/HuangHuanBlog/pics/awk_begin_end.png" alt="awk begin" /></p>
 
       </article>
       <hr>
