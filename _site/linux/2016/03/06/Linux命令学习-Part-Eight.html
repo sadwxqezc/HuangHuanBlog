@@ -266,9 +266,17 @@ var _hmt = _hmt || [];
 
 <p><img src="/HuangHuanBlog/pics/awk_print.png" alt="awk print" /></p>
 
-<p>2. 使用<code class="highlighter-rouge">Begin End</code>：<code class="highlighter-rouge">cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'</code></p>
+<p>2. 使用<code class="highlighter-rouge">printf</code>：<code class="highlighter-rouge">ls -lha | gawk '{printf("owner:%-15s size:%-10s name:%-15s\n",$3,$5,$NF)}'</code>类似C语言的<code class="highlighter-rouge">printf</code>。</p>
+
+<p><img src="/HuangHuanBlog/pics/gawk_printf.png" alt="gawk printf" /></p>
+
+<p>3. 使用<code class="highlighter-rouge">Begin End</code>：<code class="highlighter-rouge">cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'</code></p>
 
 <p><img src="/HuangHuanBlog/pics/awk_begin_end.png" alt="awk begin" /></p>
+
+<p>4. awk中模式匹配的使用：<code class="highlighter-rouge">cat -n /etc/passwd | gawk -F: '/System/{print $1" "$5}'</code> 搜索包含<code class="highlighter-rouge">System</code>关键字的行并输出。</p>
+
+<p><img src="/HuangHuanBlog/pics/gawk_search.png" alt="awk search" /></p>
 
       </article>
       <hr>

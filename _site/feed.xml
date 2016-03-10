@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 Mar 2016 13:22:40 +0800</pubDate>
-    <lastBuildDate>Wed, 09 Mar 2016 13:22:40 +0800</lastBuildDate>
+    <pubDate>Thu, 10 Mar 2016 11:30:03 +0800</pubDate>
+    <lastBuildDate>Thu, 10 Mar 2016 11:30:03 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -449,9 +449,17 @@
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_print.png&quot; alt=&quot;awk print&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;2. 使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Begin End&lt;/code&gt;：&lt;code class=&quot;highlighter-rouge&quot;&gt;cat /etc/passwd | gawk -F: &#39;BEGIN{print &quot;名称-权限&quot;} {print $1&quot;-&quot;$5} END{print &quot;the end!&quot;}&#39; | sed &#39;2,11d&#39; | column -t -s &#39;-&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2. 使用&lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;：&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha | gawk &#39;{printf(&quot;owner:%-15s size:%-10s name:%-15s\n&quot;,$3,$5,$NF)}&#39;&lt;/code&gt;类似C语言的&lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gawk_printf.png&quot; alt=&quot;gawk printf&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3. 使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Begin End&lt;/code&gt;：&lt;code class=&quot;highlighter-rouge&quot;&gt;cat /etc/passwd | gawk -F: &#39;BEGIN{print &quot;名称-权限&quot;} {print $1&quot;-&quot;$5} END{print &quot;the end!&quot;}&#39; | sed &#39;2,11d&#39; | column -t -s &#39;-&#39;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_begin_end.png&quot; alt=&quot;awk begin&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4. awk中模式匹配的使用：&lt;code class=&quot;highlighter-rouge&quot;&gt;cat -n /etc/passwd | gawk -F: &#39;/System/{print $1&quot; &quot;$5}&#39;&lt;/code&gt; 搜索包含&lt;code class=&quot;highlighter-rouge&quot;&gt;System&lt;/code&gt;关键字的行并输出。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gawk_search.png&quot; alt=&quot;awk search&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 06 Mar 2016 11:55:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/06/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>

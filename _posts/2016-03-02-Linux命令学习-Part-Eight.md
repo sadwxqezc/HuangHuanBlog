@@ -131,6 +131,14 @@ codeblock表示代码块区域
 
 ![awk print]({{site.baseurl}}/pics/awk_print.png)
 
-2\. 使用`Begin End`：`cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'`
+2\. 使用`printf`：`ls -lha | gawk '{printf("owner:%-15s size:%-10s name:%-15s\n",$3,$5,$NF)}'`类似C语言的`printf`。
+
+![gawk printf]({{site.baseurl}}/pics/gawk_printf.png)
+
+3\. 使用`Begin End`：`cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'`
 
 ![awk begin]({{site.baseurl}}/pics/awk_begin_end.png)
+
+4\. awk中模式匹配的使用：`cat -n /etc/passwd | gawk -F: '/System/{print $1" "$5}'` 搜索包含`System`关键字的行并输出。
+
+![awk search]({{site.baseurl}}/pics/gawk_search.png)
