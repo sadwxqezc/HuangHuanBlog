@@ -111,6 +111,8 @@ var _hmt = _hmt || [];
       <li><a href="#awk" id="markdown-toc-awk">awk语法</a></li>
       <li><a href="#awk-1" id="markdown-toc-awk-1">awk代码块表示方法</a></li>
       <li><a href="#awk-2" id="markdown-toc-awk-2">awk内置变量</a></li>
+      <li><a href="#awk-3" id="markdown-toc-awk-3">awk内置函数</a></li>
+      <li><a href="#awk-4" id="markdown-toc-awk-4">awk示例</a></li>
     </ul>
   </li>
 </ul>
@@ -316,9 +318,21 @@ gsed -e '1d' -e '1i测试行'  testSed
   <li><code class="highlighter-rouge">OFS</code> 输出域分隔符</li>
   <li><code class="highlighter-rouge">ORS</code> 输出记录分隔符</li>
   <li><code class="highlighter-rouge">RS</code> 控制记录分隔符
-变量用<code class="highlighter-rouge">$</code>取值，比如<code class="highlighter-rouge">$0,$1</code>
-### awk示例</li>
+变量用<code class="highlighter-rouge">$</code>取值，比如<code class="highlighter-rouge">$0,$1</code></li>
 </ul>
+
+<h3 id="awk-3">awk内置函数</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">cos(x),sin(x),sqrt(x),rand()</code>等算数类函数</li>
+  <li><code class="highlighter-rouge">sub(),index(),length(),substr(),sprintf(),split()</code>等字符串函数</li>
+  <li><code class="highlighter-rouge">getline(),system(),close(),mktime(),systime()</code>等其它函数</li>
+  <li><code class="highlighter-rouge">function funcName(){}</code>自定义函数</li>
+</ul>
+
+<p>详细内容参考：<a href="http://blog.jobbole.com/92497/">awk内部函数</a></p>
+
+<h3 id="awk-4">awk示例</h3>
 
 <p>1. 打印账户和账户对应的shell：</p>
 
@@ -370,13 +384,22 @@ gsed -e '1d' -e '1i测试行'  testSed
 
 <p>6. 输出文件夹下大小小于200B的文件名称：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ls -l | gawk 'BEGIN{i=0} {if($NF&gt;=5&amp;&amp;$5&lt;200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j&lt;i;j++){print "filename:"filename[j];}}
+<div class="highlighter-rouge"><pre class="highlight"><code>ls -l | gawk 'BEGIN{i=0} {if($NF&gt;=5&amp;&amp;$5&lt;200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j&lt;i;j++){print "filename:"filename[j];}}'
 </code></pre>
 </div>
 
 <p>在调用某个域的值之前，需要先判断该域是否存在，此时用<code class="highlighter-rouge">$NF</code>取值。</p>
 
 <p><img src="/HuangHuanBlog/pics/awk_if.png" alt="awk if for" /></p>
+
+<p>7. 调用自定义函数实现范例6中的功能：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ls -l | gawk 'function check(total,size){if(total&gt;=5&amp;&amp;size&lt;200){return 1;} return 0;} BEGIN{i=0} {if(check($NF,$5)){filename[i++]=$9;}} END{print "total:"i;for(j=0;j&lt;i;j++){print "filename:"filename[j];}}'
+</code></pre>
+</div>
+
+<p><img src="/HuangHuanBlog/pics/awk_function.png" alt="awk function" /></p>
+
 
       </article>
       <hr>

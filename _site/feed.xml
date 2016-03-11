@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Mar 2016 12:31:51 +0800</pubDate>
-    <lastBuildDate>Fri, 11 Mar 2016 12:31:51 +0800</lastBuildDate>
+    <pubDate>Fri, 11 Mar 2016 18:37:12 +0800</pubDate>
+    <lastBuildDate>Fri, 11 Mar 2016 18:37:12 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -21,6 +21,8 @@
       &lt;li&gt;&lt;a href=&quot;#awk&quot; id=&quot;markdown-toc-awk&quot;&gt;awk语法&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#awk-1&quot; id=&quot;markdown-toc-awk-1&quot;&gt;awk代码块表示方法&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#awk-2&quot; id=&quot;markdown-toc-awk-2&quot;&gt;awk内置变量&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#awk-3&quot; id=&quot;markdown-toc-awk-3&quot;&gt;awk内置函数&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#awk-4&quot; id=&quot;markdown-toc-awk-4&quot;&gt;awk示例&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -226,9 +228,21 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;OFS&lt;/code&gt; 输出域分隔符&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ORS&lt;/code&gt; 输出记录分隔符&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RS&lt;/code&gt; 控制记录分隔符
-变量用&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;取值，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;$0,$1&lt;/code&gt;
-### awk示例&lt;/li&gt;
+变量用&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;取值，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;$0,$1&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;awk-3&quot;&gt;awk内置函数&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cos(x),sin(x),sqrt(x),rand()&lt;/code&gt;等算数类函数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sub(),index(),length(),substr(),sprintf(),split()&lt;/code&gt;等字符串函数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getline(),system(),close(),mktime(),systime()&lt;/code&gt;等其它函数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;function funcName(){}&lt;/code&gt;自定义函数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;详细内容参考：&lt;a href=&quot;http://blog.jobbole.com/92497/&quot;&gt;awk内部函数&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;awk-4&quot;&gt;awk示例&lt;/h3&gt;
 
 &lt;p&gt;1. 打印账户和账户对应的shell：&lt;/p&gt;
 
@@ -280,13 +294,22 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
 
 &lt;p&gt;6. 输出文件夹下大小小于200B的文件名称：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;BEGIN{i=0} {if($NF&amp;gt;=5&amp;amp;&amp;amp;$5&amp;lt;200){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;BEGIN{i=0} {if($NF&amp;gt;=5&amp;amp;&amp;amp;$5&amp;lt;200){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;在调用某个域的值之前，需要先判断该域是否存在，此时用&lt;code class=&quot;highlighter-rouge&quot;&gt;$NF&lt;/code&gt;取值。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_if.png&quot; alt=&quot;awk if for&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;7. 调用自定义函数实现范例6中的功能：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;function check(total,size){if(total&amp;gt;=5&amp;amp;&amp;amp;size&amp;lt;200){return 1;} return 0;} BEGIN{i=0} {if(check($NF,$5)){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_function.png&quot; alt=&quot;awk function&quot; /&gt;&lt;/p&gt;
+
 </description>
         <pubDate>Thu, 10 Mar 2016 11:31:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/10/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>

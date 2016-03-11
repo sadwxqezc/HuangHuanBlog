@@ -172,6 +172,16 @@ awk中的数组表示方式为`array[key]`，其中`key` 可以是字母或数�
 + `ORS` 输出记录分隔符
 + `RS` 控制记录分隔符
 变量用`$`取值，比如`$0,$1`
+
+### awk内置函数
+
++ `cos(x),sin(x),sqrt(x),rand()`等算数类函数
++ `sub(),index(),length(),substr(),sprintf(),split()`等字符串函数
++ `getline(),system(),close(),mktime(),systime()`等其它函数
++ `function funcName(){}`自定义函数
+
+详细内容参考：[awk内部函数](http://blog.jobbole.com/92497/)
+
 ### awk示例
 
 1\. 打印账户和账户对应的shell：
@@ -214,8 +224,15 @@ awk中的数组表示方式为`array[key]`，其中`key` 可以是字母或数�
 
 6\. 输出文件夹下大小小于200B的文件名称：
 
-	ls -l | gawk 'BEGIN{i=0} {if($NF>=5&&$5<200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}
+	ls -l | gawk 'BEGIN{i=0} {if($NF>=5&&$5<200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}'
 
 在调用某个域的值之前，需要先判断该域是否存在，此时用`$NF`取值。
 
 ![awk if for]({{site.baseurl}}/pics/awk_if.png)
+
+7\. 调用自定义函数实现范例6中的功能：
+
+	ls -l | gawk 'function check(total,size){if(total>=5&&size<200){return 1;} return 0;} BEGIN{i=0} {if(check($NF,$5)){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}'
+	
+![awk function]({{site.baseurl}}/pics/awk_function.png)
+	
