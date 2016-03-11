@@ -8,7 +8,7 @@
 	<title>Linux命令之sed与awk</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/06/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/10/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -97,7 +97,7 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>Linux命令之sed与awk</h1>
-        <p>Mar 6, 2016</p>
+        <p>Mar 10, 2016</p>
       </header>
       <hr>
       <article>
@@ -107,11 +107,10 @@ var _hmt = _hmt || [];
       <li><a href="#sed-1" id="markdown-toc-sed-1">sed命令示例</a></li>
     </ul>
   </li>
-  <li><a href="#awk-mac" id="markdown-toc-awk-mac">2.awk (Mac)</a>    <ul>
+  <li><a href="#awk-mac" id="markdown-toc-awk-mac">2. awk (Mac)</a>    <ul>
       <li><a href="#awk" id="markdown-toc-awk">awk语法</a></li>
       <li><a href="#awk-1" id="markdown-toc-awk-1">awk代码块表示方法</a></li>
-      <li><a href="#awk-2" id="markdown-toc-awk-2">awk内置变量(通过$取值)</a></li>
-      <li><a href="#awk-3" id="markdown-toc-awk-3">awk示例</a></li>
+      <li><a href="#awk-2" id="markdown-toc-awk-2">awk内置变量</a></li>
     </ul>
   </li>
 </ul>
@@ -154,71 +153,116 @@ var _hmt = _hmt || [];
 <hr />
 
 <h3 id="sed-1">sed命令示例</h3>
-<p>1. 行的删除：<code class="highlighter-rouge">ls -lha | nl | gsed '1,3d'</code>删除输出中的第1到第3行，此时参数<code class="highlighter-rouge">-e</code>可不加。</p>
+<p>1. 行的删除：`</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ls -lha | nl | gsed '1,3d'
+</code></pre>
+</div>
+
+<p>删除输出中的第1到第3行，此时参数<code class="highlighter-rouge">-e</code>可不加。</p>
 
 <p><img src="/HuangHuanBlog/pics/sed_d.png" alt="sed delete" /></p>
 
 <p>2. 行的插入：</p>
 
-<ul>
-  <li>在指定行前插入 <code class="highlighter-rouge">gsed '4a 插入的第一行\n插入的第二行' testSed</code></li>
-  <li>在指定行后插入  <code class="highlighter-rouge">gsed '1i 插入的第一行\n插入的第二行' testSed</code><br />
-若要让操作更新到原文件中，需加<code class="highlighter-rouge">-i</code>，该操作较为危险。建议使用<code class="highlighter-rouge">gsed -i.bak '1i test' testSed</code>这样的执行方式，通过这种方式可额外生成<code class="highlighter-rouge">testSed.bak</code>文件，该文件保存了原始内容，这样更安全。</li>
-</ul>
+<p>a. 在指定行前插入</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed '4a 插入的第一行\n插入的第二行' testSed
+</code></pre>
+</div>
+
+<p>b. 在指定行后插入</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed '1i 插入的第一行\n插入的第二行' testSed
+</code></pre>
+</div>
+
+<p>若要让操作更新到原文件中，需加<code class="highlighter-rouge">-i</code>，该操作较为危险。建议使用</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed -i.bak '1i test' testSed
+</code></pre>
+</div>
+
+<p>这样的执行方式，通过这种方式可额外生成<code class="highlighter-rouge">testSed.bak</code>文件，该文件保存了原始内容，这样更安全。</p>
 
 <p><img src="/HuangHuanBlog/pics/sed_insert.png" alt="sed insert" /></p>
 
-<p>3. 行的选择性显示：
-有时会显示文件中某个区间内容的需求，这时通过<code class="highlighter-rouge">gsed -n</code>可以做到。<br />
-<code class="highlighter-rouge">gsed -n '2,$p' testSed</code></p>
+<p>3. 行的选择性显示：</p>
+
+<p>有时会显示文件中某个区间内容的需求，这时通过<code class="highlighter-rouge">gsed -n</code>可以做到：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed -n '2,$p' testSed
+</code></pre>
+</div>
 
 <p><img src="/HuangHuanBlog/pics/sed_n.png" alt="sed print" /></p>
 
 <p>4. 搜索并执行命令：</p>
 
-<ul>
-  <li>搜索含有关键字的行：<code class="highlighter-rouge">gsed -n '/^第.行/p' testSed</code></li>
-</ul>
+<p>a. 搜索含有关键字的行：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed -n '/^第.行/p' testSed
+</code></pre>
+</div>
 
 <p><img src="/HuangHuanBlog/pics/sed_search.png" alt="sed search and print" /></p>
 
-<ul>
-  <li>搜索并删除：<code class="highlighter-rouge">gsed '/第四行/d' testSed</code></li>
-</ul>
+<p>b. 搜索并删除：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed '/第四行/d' testSed
+</code></pre>
+</div>
 
 <p><img src="/HuangHuanBlog/pics/gsed_sr.png" alt="sed search and remove" /></p>
 
-<ul>
-  <li>执行多组命令：<code class="highlighter-rouge">gsed '/四/{s/行/列/;s/第四列/测试/}' testSed</code> <code class="highlighter-rouge">s</code>表示替换，从图中的结果可以看到，这个过程有点类似<code class="highlighter-rouge">SQL的where查询</code>，后面的命令在前面的执行结果下执行。</li>
-</ul>
+<p>c. 执行多组命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed '/四/{s/行/列/;s/第四列/测试/}' testSed
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">s</code>表示替换，从图中的结果可以看到，这个过程有点类似<code class="highlighter-rouge">SQL的where查询</code>，后面的命令在前面的执行结果下执行。</p>
 
 <p><img src="/HuangHuanBlog/pics/gsed_mul.png" alt="sed search and multiple operations" /></p>
 
 <p>5. 内容替换：</p>
 
-<ul>
-  <li>区域替换：<code class="highlighter-rouge">gsed '2,3c 替换内容' testSed</code></li>
-</ul>
+<p>a. 区域替换：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed '2,3c 替换内容' testSed
+</code></pre>
+</div>
 
 <p><img src="/HuangHuanBlog/pics/sed_c.png" alt="sed c replace" /></p>
 
-<ul>
-  <li>搜索替换：<code class="highlighter-rouge">gsed 's/行/列/g' testSed</code> 如果没有<code class="highlighter-rouge">g</code>则只替换行内匹配的第一个</li>
-</ul>
+<p>b. 搜索替换：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed 's/行/列/g' testSed
+</code></pre>
+</div>
+
+<p>如果没有<code class="highlighter-rouge">g</code>则只替换行内匹配的第一个</p>
 
 <p><img src="/HuangHuanBlog/pics/gsed_g.png" alt="sed g replace" /></p>
 
-<p>6. 多重编辑：<code class="highlighter-rouge">gsed -e '1i 测试行' -e '1d'  testSed</code>和<code class="highlighter-rouge">gsed -e '1d' -e '1i测试行'  testSed</code>，从图中可以看到两者执行的区别，由于<code class="highlighter-rouge">sed</code>是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。</p>
+<p>6. 多重编辑：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gsed -e '1i 测试行' -e '1d'  testSed
+gsed -e '1d' -e '1i测试行'  testSed
+</code></pre>
+</div>
+
+<p>从图中可以看到两者执行的区别，由于<code class="highlighter-rouge">sed</code>是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。</p>
 
 <p><img src="/HuangHuanBlog/pics/gsed_e.png" alt="sed -e" /></p>
 
-<h2 id="awk-mac">2.awk (Mac)</h2>
+<h2 id="awk-mac">2. awk (Mac)</h2>
 
 <p>awk时非常强大的文本分析工具，非常适用于生成分析报告。awk会将文本逐行的读入，默认以空格或制表符为分隔符进行切片，然后对切片后的部分分析处理。awk十分强大，实际上它也有自己的编程语言：“样式扫描和处理语言”，其名称源自于创始人Alfred Aho，Peter Weinberger，Brian Kernighan。</p>
 
 <h3 id="awk">awk语法</h3>
 
-<h4><b>基本格式 awk [option] '[codeblock]' [filenames]</b></h4>
+<h4><b>基本格式 awk [option] '[pattern][codeblock]' [filenames]</b></h4>
 
 <p>codeblock表示代码块区域</p>
 
@@ -229,8 +273,9 @@ var _hmt = _hmt || [];
 </ul>
 
 <h3 id="awk-1">awk代码块表示方法</h3>
+<p>awk中的<code class="highlighter-rouge">BEGIN,END</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>BEGIN {} // { sentence one; sentence two} END {}
+<div class="highlighter-rouge"><pre class="highlight"><code>BEGIN {} // { statement one; statement two} END {}
 </code></pre>
 </div>
 
@@ -241,7 +286,21 @@ var _hmt = _hmt || [];
   <li><code class="highlighter-rouge">END</code> 结尾代码块，在每一行执行完后运行。</li>
 </ul>
 
-<h3 id="awk-2">awk内置变量(通过$取值)</h3>
+<p>awk中的条件语句与<code class="highlighter-rouge">C语言</code>相同，支持<code class="highlighter-rouge">while,for,break,continue</code>：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if( condition expression ){
+    statement one;
+}else if ( condition expression ){
+    statement two;
+}else{
+    statement three;
+}
+</code></pre>
+</div>
+
+<p>awk中的数组表示方式为<code class="highlighter-rouge">array[key]</code>，其中<code class="highlighter-rouge">key</code> 可以是字母或数字，其内部实际上是用<code class="highlighter-rouge">hash</code>的方式存储。</p>
+
+<h3 id="awk-2">awk内置变量</h3>
 
 <ul>
   <li><code class="highlighter-rouge">0</code> 表示当前行所有内容</li>
@@ -256,35 +315,74 @@ var _hmt = _hmt || [];
   <li><code class="highlighter-rouge">NR</code> 已经读取的记录个数</li>
   <li><code class="highlighter-rouge">OFS</code> 输出域分隔符</li>
   <li><code class="highlighter-rouge">ORS</code> 输出记录分隔符</li>
-  <li><code class="highlighter-rouge">RS</code> 控制记录分隔符</li>
+  <li><code class="highlighter-rouge">RS</code> 控制记录分隔符
+变量用<code class="highlighter-rouge">$</code>取值，比如<code class="highlighter-rouge">$0,$1</code>
+### awk示例</li>
 </ul>
 
-<h3 id="awk-3">awk示例</h3>
+<p>1. 打印账户和账户对应的shell：</p>
 
-<p>1. 打印账户和账户对应的shell：<code class="highlighter-rouge">cat -n /etc/passwd | gawk -F ':' '{print $1" "$5}' | gsed '1,10d'</code>
-其中<code class="highlighter-rouge">$1</code>和<code class="highlighter-rouge">$5</code>分别表示分割后的第一个和第五个域。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>cat -n /etc/passwd | gawk -F ':' '{print $1" "$5}' | gsed '1,10d'
+</code></pre>
+</div>
+
+<p>其中<code class="highlighter-rouge">$1</code>和<code class="highlighter-rouge">$5</code>分别表示分割后的第一个和第五个域。</p>
 
 <p><img src="/HuangHuanBlog/pics/awk_print.png" alt="awk print" /></p>
 
-<p>2. 使用<code class="highlighter-rouge">printf</code>：<code class="highlighter-rouge">ls -lha | gawk '{printf("owner:%-15s size:%-10s name:%-15s\n",$3,$5,$NF)}'</code>类似C语言的<code class="highlighter-rouge">printf</code>。</p>
+<p>2. 使用<code class="highlighter-rouge">printf</code>：</p>
 
-<p><img src="/HuangHuanBlog/pics/gawk_printf.png" alt="gawk printf" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>ls -lha | gawk '{printf("owner:%-15s size:%-10s name:%-15s\n",$3,$5,$NF)}'
+</code></pre>
+</div>
 
-<p>3. 使用<code class="highlighter-rouge">Begin End</code>：<code class="highlighter-rouge">cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'</code></p>
+<p>类似C语言的<code class="highlighter-rouge">printf</code>。</p>
+
+<p><img src="/HuangHuanBlog/pics/gawk_printf.png" alt="awk printf" /></p>
+
+<p>3. 使用<code class="highlighter-rouge">Begin End</code>：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'
+</code></pre>
+</div>
 
 <p><img src="/HuangHuanBlog/pics/awk_begin_end.png" alt="awk begin" /></p>
 
-<p>4. awk中模式匹配的使用：<code class="highlighter-rouge">cat -n /etc/passwd | gawk -F: '/System/{print $1" "$5}'</code> 搜索包含<code class="highlighter-rouge">System</code>关键字的行并输出。</p>
+<p>4. awk中模式匹配的使用：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cat -n /etc/passwd | gawk -F: '/System/{print $1" "$5}'
+</code></pre>
+</div>
+
+<p>搜索包含<code class="highlighter-rouge">System</code>关键字的行并输出。</p>
 
 <p><img src="/HuangHuanBlog/pics/gawk_search.png" alt="awk search" /></p>
+
+<p>5. 统计文件夹下的文件数目：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ls -lha | gawk 'BEGIN {count=0} {count++} END { print "File Count:"count}' 
+</code></pre>
+</div>
+
+<p>最好在<code class="highlighter-rouge">BEGIN</code>中初始化变量</p>
+
+<p><img src="/HuangHuanBlog/pics/awk_count.png" alt="awk count" /></p>
+
+<p>6. 输出文件夹下大小小于200B的文件名称：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ls -l | gawk 'BEGIN{i=0} {if($NF&gt;=5&amp;&amp;$5&lt;200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j&lt;i;j++){print "filename:"filename[j];}}
+</code></pre>
+</div>
+
+<p>在调用某个域的值之前，需要先判断该域是否存在，此时用<code class="highlighter-rouge">$NF</code>取值。</p>
+
+<p><img src="/HuangHuanBlog/pics/awk_if.png" alt="awk if for" /></p>
 
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/read/2016/03/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html">上一篇博客：读书笔记-思</a><br>
+      <a href="/HuangHuanBlog/shell/2016/03/07/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">上一篇博客：Shell脚本学习 初阶</a><br>
       
-      
-      <a href="/HuangHuanBlog/shell/2016/03/07/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">下一篇博客：Shell脚本学习 初阶</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -293,7 +391,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/linux/2016/03/06/Linux命令学习-Part-Eight" data-title="Linux命令之sed与awk" data-url="sadwxqezc.github.io/linux/2016/03/06/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html"></div>
+      <div class="ds-thread" data-thread-key="/linux/2016/03/10/Linux命令学习-Part-Eight" data-title="Linux命令之sed与awk" data-url="sadwxqezc.github.io/linux/2016/03/10/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
