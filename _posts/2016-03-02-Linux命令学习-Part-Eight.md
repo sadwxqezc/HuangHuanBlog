@@ -233,4 +233,3 @@ awk中的数组表示方式为`array[key]`，其中`key` 可以是字母或数�
 	ls -l | gawk 'function check(total,size){if(total>=5&&size<200){return 1;} return 0;} BEGIN{i=0} {if(check(NF,$5)){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}'
 	
 ![awk function]({{site.baseurl}}/pics/awk_function.png)
-	
