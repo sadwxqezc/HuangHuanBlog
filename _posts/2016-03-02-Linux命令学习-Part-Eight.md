@@ -158,8 +158,7 @@ awk中的数组表示方式为`array[key]`，其中`key` 可以是字母或数�
 
 ### awk内置变量
 
-+ `0` 表示当前行所有内容
-+ `n` 第n个域的内容
++ `0` 表示当前行所有内容，`n` 第n个域的内容，用`$`取值
 + `ARGC` 命令行参数个数
 + `ARGV` 命令行参数排列
 + `ENVIRON` 支持队列中系统的环境变量使用
@@ -171,7 +170,6 @@ awk中的数组表示方式为`array[key]`，其中`key` 可以是字母或数�
 + `OFS` 输出域分隔符
 + `ORS` 输出记录分隔符
 + `RS` 控制记录分隔符
-变量用`$`取值，比如`$0,$1`
 
 ### awk内置函数
 
@@ -224,7 +222,7 @@ awk中的数组表示方式为`array[key]`，其中`key` 可以是字母或数�
 
 6\. 输出文件夹下大小小于200B的文件名称：
 
-	ls -l | gawk 'BEGIN{i=0} {if($NF>=5&&$5<200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}'
+	ls -l | gawk 'BEGIN{i=0} {if(NF>=5&&$5<200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}'
 
 在调用某个域的值之前，需要先判断该域是否存在，此时用`$NF`取值。
 
@@ -232,7 +230,7 @@ awk中的数组表示方式为`array[key]`，其中`key` 可以是字母或数�
 
 7\. 调用自定义函数实现范例6中的功能：
 
-	ls -l | gawk 'function check(total,size){if(total>=5&&size<200){return 1;} return 0;} BEGIN{i=0} {if(check($NF,$5)){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}'
+	ls -l | gawk 'function check(total,size){if(total>=5&&size<200){return 1;} return 0;} BEGIN{i=0} {if(check(NF,$5)){filename[i++]=$9;}} END{print "total:"i;for(j=0;j<i;j++){print "filename:"filename[j];}}'
 	
 ![awk function]({{site.baseurl}}/pics/awk_function.png)
 	

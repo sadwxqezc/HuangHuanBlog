@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 12 Mar 2016 12:08:55 +0800</pubDate>
-    <lastBuildDate>Sat, 12 Mar 2016 12:08:55 +0800</lastBuildDate>
+    <pubDate>Sat, 12 Mar 2016 12:18:15 +0800</pubDate>
+    <lastBuildDate>Sat, 12 Mar 2016 12:18:15 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -257,8 +257,7 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
 &lt;h3 id=&quot;awk-2&quot;&gt;awk内置变量&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; 表示当前行所有内容&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; 第n个域的内容&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; 表示当前行所有内容，&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; 第n个域的内容，用&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;取值&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ARGC&lt;/code&gt; 命令行参数个数&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ARGV&lt;/code&gt; 命令行参数排列&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENVIRON&lt;/code&gt; 支持队列中系统的环境变量使用&lt;/li&gt;
@@ -269,8 +268,7 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NR&lt;/code&gt; 已经读取的记录个数&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;OFS&lt;/code&gt; 输出域分隔符&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ORS&lt;/code&gt; 输出记录分隔符&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RS&lt;/code&gt; 控制记录分隔符
-变量用&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;取值，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;$0,$1&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RS&lt;/code&gt; 控制记录分隔符&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;awk-3&quot;&gt;awk内置函数&lt;/h3&gt;
@@ -336,7 +334,7 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
 
 &lt;p&gt;6. 输出文件夹下大小小于200B的文件名称：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;BEGIN{i=0} {if($NF&amp;gt;=5&amp;amp;&amp;amp;$5&amp;lt;200){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;BEGIN{i=0} {if(NF&amp;gt;=5&amp;amp;&amp;amp;$5&amp;lt;200){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -346,7 +344,7 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
 
 &lt;p&gt;7. 调用自定义函数实现范例6中的功能：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;function check(total,size){if(total&amp;gt;=5&amp;amp;&amp;amp;size&amp;lt;200){return 1;} return 0;} BEGIN{i=0} {if(check($NF,$5)){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;function check(total,size){if(total&amp;gt;=5&amp;amp;&amp;amp;size&amp;lt;200){return 1;} return 0;} BEGIN{i=0} {if(check(NF,$5)){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
