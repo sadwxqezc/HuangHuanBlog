@@ -121,7 +121,7 @@ var _hmt = _hmt || [];
   <li><code class="highlighter-rouge">.</code> 匹配除了<code class="highlighter-rouge">\r</code>或<code class="highlighter-rouge">\n</code>之外的任何字符</li>
   <li><code class="highlighter-rouge">*</code> 匹配前面的子表达式<code class="highlighter-rouge">&gt;=0</code>次</li>
   <li><code class="highlighter-rouge">+</code> 匹配前面的子表达式<code class="highlighter-rouge">&gt;=1</code>次</li>
-  <li><code class="highlighter-rouge">?</code> 匹配前面的子表达式零次或一次</li>
+  <li><code class="highlighter-rouge">?</code> 匹配前面的子表达式零次或一次，当该符号跟在<code class="highlighter-rouge">*,+,?,{n},{n,},{n,m}</code>时，会尽可能少的匹配所搜索的字符串。比如<code class="highlighter-rouge">aaaa</code>,<code class="highlighter-rouge">a+?</code>匹配单个<code class="highlighter-rouge">a</code>，而<code class="highlighter-rouge">a+</code>将匹配所有<code class="highlighter-rouge">a</code></li>
   <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">n</span><span class="p">}</span></code> 匹配前面的子表达式<code class="highlighter-rouge">n</code>次，<code class="highlighter-rouge"><span class="p">{</span><span class="err">n,</span><span class="p">}</span></code> 匹配至少<code class="highlighter-rouge">n</code>次，<code class="highlighter-rouge"><span class="p">{</span><span class="err">n,m</span><span class="p">}</span></code>匹配<code class="highlighter-rouge">n</code>到<code class="highlighter-rouge">m</code>次</li>
   <li><code class="highlighter-rouge">^</code> 从输入字符串的开始位置进行匹配</li>
   <li><code class="highlighter-rouge">$</code> 从输入字符串的结束位置进行匹配</li>
@@ -130,6 +130,22 @@ var _hmt = _hmt || [];
   <li><code class="highlighter-rouge">[^xyz]</code> 匹配<code class="highlighter-rouge">xyz</code>之外的任意字符</li>
   <li><code class="highlighter-rouge">[a-z]</code> 匹配<code class="highlighter-rouge">a</code>到<code class="highlighter-rouge">z</code>之内的任意字符</li>
   <li><code class="highlighter-rouge">[^a-z]</code> 匹配<code class="highlighter-rouge">a</code>到<code class="highlighter-rouge">z</code>之外的任意字符</li>
+  <li><code class="highlighter-rouge">\b</code> 匹配字边界，即字与空格间的位置</li>
+  <li><code class="highlighter-rouge">\B</code> 与<code class="highlighter-rouge">\b</code>相反，匹配非字边界，比如<code class="highlighter-rouge">test\B</code>匹配<code class="highlighter-rouge">mytestb</code>中的<code class="highlighter-rouge">test</code>，而非<code class="highlighter-rouge">testb</code>中的<code class="highlighter-rouge">test</code></li>
+  <li><code class="highlighter-rouge">\d</code> 匹配数字字符</li>
+  <li><code class="highlighter-rouge">\D</code> 匹配非数字字符</li>
+  <li><code class="highlighter-rouge">\n</code> 匹配换行符</li>
+  <li><code class="highlighter-rouge">\r</code> 匹配回车符</li>
+  <li><code class="highlighter-rouge">\t</code> 匹配制表符</li>
+  <li><code class="highlighter-rouge">\s</code> 匹配任何空白字符，与[\f\n\r\t\v]等价</li>
+  <li><code class="highlighter-rouge">\S</code> 匹配任何非空白字符</li>
+  <li><code class="highlighter-rouge">\w</code> 匹配任何字类字符，以及下划线，等价于[A-Za-z0-9_]</li>
+  <li><code class="highlighter-rouge">\W</code> 与任何非单词字符匹配</li>
+  <li><code class="highlighter-rouge">&lt; &gt;</code> 匹配词的开始与结束，比如<code class="highlighter-rouge">&lt;monster&gt;</code>匹配<code class="highlighter-rouge">monster hunter</code>中的<code class="highlighter-rouge">monster</code>，但不匹配<code class="highlighter-rouge">monsterhunter</code></li>
+  <li><code class="highlighter-rouge">(pattern)</code> 匹配pattern并获取这一匹配结果</li>
+  <li><code class="highlighter-rouge">(?:pattern)</code> 匹配但不获取匹配结果</li>
+  <li><code class="highlighter-rouge">(?=pattern)</code> 正向预检查，举个例子来说<code class="highlighter-rouge">windows (?=xp|7|8|10)</code>匹配<code class="highlighter-rouge">windows 10</code>中的<code class="highlighter-rouge">windows</code>，但不匹配<code class="highlighter-rouge">windows 95</code>中的<code class="highlighter-rouge">windows</code>，也就是<code class="highlighter-rouge">pattern</code>是作为一个匹配的条件存在，且不出现在匹配结果中</li>
+  <li><code class="highlighter-rouge">(?!pattern)</code> 反向预查，也就是<code class="highlighter-rouge">windows (?=xp|7|8|10)</code>能匹配<code class="highlighter-rouge">windows 95</code>中的<code class="highlighter-rouge">windows</code>，而非<code class="highlighter-rouge">windows xp</code>中的<code class="highlighter-rouge">windows</code></li>
 </ul>
 
       </article>

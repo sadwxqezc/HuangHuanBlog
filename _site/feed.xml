@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 12 Mar 2016 12:18:15 +0800</pubDate>
-    <lastBuildDate>Sat, 12 Mar 2016 12:18:15 +0800</lastBuildDate>
+    <pubDate>Sat, 12 Mar 2016 19:56:35 +0800</pubDate>
+    <lastBuildDate>Sat, 12 Mar 2016 19:56:35 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -31,7 +31,7 @@
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt; 匹配除了&lt;code class=&quot;highlighter-rouge&quot;&gt;\r&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;之外的任何字符&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; 匹配前面的子表达式&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;=0&lt;/code&gt;次&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; 匹配前面的子表达式&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;=1&lt;/code&gt;次&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;?&lt;/code&gt; 匹配前面的子表达式零次或一次&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;?&lt;/code&gt; 匹配前面的子表达式零次或一次，当该符号跟在&lt;code class=&quot;highlighter-rouge&quot;&gt;*,+,?,{n},{n,},{n,m}&lt;/code&gt;时，会尽可能少的匹配所搜索的字符串。比如&lt;code class=&quot;highlighter-rouge&quot;&gt;aaaa&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;a+?&lt;/code&gt;匹配单个&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;，而&lt;code class=&quot;highlighter-rouge&quot;&gt;a+&lt;/code&gt;将匹配所有&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; 匹配前面的子表达式&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;次，&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;n,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; 匹配至少&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;次，&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;n,m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;到&lt;code class=&quot;highlighter-rouge&quot;&gt;m&lt;/code&gt;次&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt; 从输入字符串的开始位置进行匹配&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt; 从输入字符串的结束位置进行匹配&lt;/li&gt;
@@ -40,6 +40,22 @@
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[^xyz]&lt;/code&gt; 匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;xyz&lt;/code&gt;之外的任意字符&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[a-z]&lt;/code&gt; 匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;到&lt;code class=&quot;highlighter-rouge&quot;&gt;z&lt;/code&gt;之内的任意字符&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[^a-z]&lt;/code&gt; 匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;到&lt;code class=&quot;highlighter-rouge&quot;&gt;z&lt;/code&gt;之外的任意字符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\b&lt;/code&gt; 匹配字边界，即字与空格间的位置&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\B&lt;/code&gt; 与&lt;code class=&quot;highlighter-rouge&quot;&gt;\b&lt;/code&gt;相反，匹配非字边界，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;test\B&lt;/code&gt;匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;mytestb&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;test&lt;/code&gt;，而非&lt;code class=&quot;highlighter-rouge&quot;&gt;testb&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;test&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\d&lt;/code&gt; 匹配数字字符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\D&lt;/code&gt; 匹配非数字字符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt; 匹配换行符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\r&lt;/code&gt; 匹配回车符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; 匹配制表符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\s&lt;/code&gt; 匹配任何空白字符，与[\f\n\r\t\v]等价&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\S&lt;/code&gt; 匹配任何非空白字符&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\w&lt;/code&gt; 匹配任何字类字符，以及下划线，等价于[A-Za-z0-9_]&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\W&lt;/code&gt; 与任何非单词字符匹配&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt; &amp;gt;&lt;/code&gt; 匹配词的开始与结束，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;monster&amp;gt;&lt;/code&gt;匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;monster hunter&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;monster&lt;/code&gt;，但不匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;monsterhunter&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(pattern)&lt;/code&gt; 匹配pattern并获取这一匹配结果&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(?:pattern)&lt;/code&gt; 匹配但不获取匹配结果&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(?=pattern)&lt;/code&gt; 正向预检查，举个例子来说&lt;code class=&quot;highlighter-rouge&quot;&gt;windows (?=xp|7|8|10)&lt;/code&gt;匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;windows 10&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;windows&lt;/code&gt;，但不匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;windows 95&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;windows&lt;/code&gt;，也就是&lt;code class=&quot;highlighter-rouge&quot;&gt;pattern&lt;/code&gt;是作为一个匹配的条件存在，且不出现在匹配结果中&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(?!pattern)&lt;/code&gt; 反向预查，也就是&lt;code class=&quot;highlighter-rouge&quot;&gt;windows (?=xp|7|8|10)&lt;/code&gt;能匹配&lt;code class=&quot;highlighter-rouge&quot;&gt;windows 95&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;windows&lt;/code&gt;，而非&lt;code class=&quot;highlighter-rouge&quot;&gt;windows xp&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;windows&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 11 Mar 2016 11:28:00 +0800</pubDate>
@@ -338,7 +354,7 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;在调用某个域的值之前，需要先判断该域是否存在，此时用&lt;code class=&quot;highlighter-rouge&quot;&gt;$NF&lt;/code&gt;取值。&lt;/p&gt;
+&lt;p&gt;在调用某个域的值之前，需要先判断该域是否存在，此时用&lt;code class=&quot;highlighter-rouge&quot;&gt;NF&lt;/code&gt;值。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_if.png&quot; alt=&quot;awk if for&quot; /&gt;&lt;/p&gt;
 
@@ -349,7 +365,6 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
 &lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_function.png&quot; alt=&quot;awk function&quot; /&gt;&lt;/p&gt;
-
 </description>
         <pubDate>Thu, 10 Mar 2016 11:31:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/10/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>
