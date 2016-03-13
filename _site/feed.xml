@@ -5,9 +5,34 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 13 Mar 2016 12:31:43 +0800</pubDate>
-    <lastBuildDate>Sun, 13 Mar 2016 12:31:43 +0800</lastBuildDate>
+    <pubDate>Sun, 13 Mar 2016 20:09:30 +0800</pubDate>
+    <lastBuildDate>Sun, 13 Mar 2016 20:09:30 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>算法学习计划</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;算法学习计划&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;算法学习计划&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;主要学习资料：&lt;a href=&quot;http://open.163.com/special/opencourse/algorithms.html&quot;&gt;算法导论 第三版&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;代码地址：&lt;a href=&quot;https://github.com/sadwxqezc/Algorithms.git&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 12 Mar 2016 10:30:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/12/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/12/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</guid>
+        
+        
+        <category>Algorithm</category>
+        
+      </item>
     
       <item>
         <title>正则表达式</title>
@@ -91,6 +116,8 @@
 &lt;p&gt;范例三：匹配所有的&lt;code class=&quot;highlighter-rouge&quot;&gt;href&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;链接 &lt;code class=&quot;highlighter-rouge&quot;&gt;(?&amp;lt;=href=(?:&quot;|&#39;)|src=(?:&quot;|&#39;))[^\s&#39;&quot;]*&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/regex_href.png&quot; alt=&quot;regex href&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To be continued: Linux下的正则表达式&lt;/p&gt;
 </description>
         <pubDate>Fri, 11 Mar 2016 11:28:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/03/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html</link>
@@ -1129,27 +1156,6 @@ public class TestSession {
         
         
         <category>Backend</category>
-        
-      </item>
-    
-      <item>
-        <title>算法补完计划</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;算法补完计划&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;算法补完计划&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式，故名为算法补完计划&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-        <pubDate>Thu, 25 Feb 2016 10:30:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/02/25/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</guid>
-        
-        
-        <category>Algorithm</category>
         
       </item>
     
