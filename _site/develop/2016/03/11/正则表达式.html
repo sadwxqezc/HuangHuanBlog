@@ -104,6 +104,7 @@ var _hmt = _hmt || [];
         <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">常规的正则表达式</a>    <ul>
       <li><a href="#section-1" id="markdown-toc-section-1">正则表达式的符号</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">正则表达式范例</a></li>
     </ul>
   </li>
 </ul>
@@ -145,8 +146,41 @@ var _hmt = _hmt || [];
   <li><code class="highlighter-rouge">(pattern)</code> 匹配pattern并获取这一匹配结果</li>
   <li><code class="highlighter-rouge">(?:pattern)</code> 匹配但不获取匹配结果</li>
   <li><code class="highlighter-rouge">(?=pattern)</code> 正向预检查，举个例子来说<code class="highlighter-rouge">windows (?=xp|7|8|10)</code>匹配<code class="highlighter-rouge">windows 10</code>中的<code class="highlighter-rouge">windows</code>，但不匹配<code class="highlighter-rouge">windows 95</code>中的<code class="highlighter-rouge">windows</code>，也就是<code class="highlighter-rouge">pattern</code>是作为一个匹配的条件存在，且不出现在匹配结果中</li>
-  <li><code class="highlighter-rouge">(?!pattern)</code> 反向预查，也就是<code class="highlighter-rouge">windows (?=xp|7|8|10)</code>能匹配<code class="highlighter-rouge">windows 95</code>中的<code class="highlighter-rouge">windows</code>，而非<code class="highlighter-rouge">windows xp</code>中的<code class="highlighter-rouge">windows</code></li>
+  <li><code class="highlighter-rouge">(?!pattern)</code> 反向预查，也就是<code class="highlighter-rouge">windows (?!xp|7|8|10)</code>能匹配<code class="highlighter-rouge">windows 95</code>中的<code class="highlighter-rouge">windows</code>，而非<code class="highlighter-rouge">windows xp</code>中的<code class="highlighter-rouge">windows</code></li>
+  <li><code class="highlighter-rouge">(?&lt;=pattern)</code> 和<code class="highlighter-rouge">(?=pattern)</code>方向相反，比如<code class="highlighter-rouge">(?=hre)f</code>匹配<code class="highlighter-rouge">href</code>的结果是<code class="highlighter-rouge">f</code></li>
 </ul>
+
+<h3 id="section-2">正则表达式范例</h3>
+
+<p>测试用的是一个在线正则表达式测试工具：<a href="http://tool.oschina.net/regex/">oschina regex tool</a>和Mac上的工具<code class="highlighter-rouge">RegExRx</code><br />
+测试文本是一段html内的head代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/1999/xhtml"</span> <span class="na">xml:lang=</span><span class="s">"zh-CN"</span> <span class="na">lang=</span><span class="s">"zh-CN"</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;head&gt;</span> 
+<span class="nt">&lt;title&gt;</span>在线正则表达式测试<span class="nt">&lt;/title&gt;</span> 
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"开源中国 在线工具,ostools,jsbin,加密/解密，Markdown,less,java api,php api,node.js api,QR Code"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"/img/favicon.ico"</span> <span class="na">type=</span><span class="s">"image/x-icon"</span> <span class="nt">/&gt;</span> 
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/css/basic.css?20120912"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">/&gt;</span> 
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">'/js/jquery/jquery-1.7.2.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">'/js/jquery/jquery.cookies.2.2.0.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">'/js/bootstrap/css/bootstrap.min.css'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'/js/bootstrap/js/bootstrap.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre>
+</div>
+
+<p>范例一：匹配中文词组<code class="highlighter-rouge">[\u4e00-\u9fa5]{1,}</code></p>
+
+<p><img src="/HuangHuanBlog/pics/regex_chinese.png" alt="regex chinese" /></p>
+
+<p>范例二：匹URL链接<code class="highlighter-rouge">[a-zA-z]+://\S*(/|\w)</code></p>
+
+<p><img src="/HuangHuanBlog/pics/regex_url.png" alt="regex url" /></p>
+
+<p>范例三：匹配所有的<code class="highlighter-rouge">href</code>和<code class="highlighter-rouge">src</code>链接 <code class="highlighter-rouge">(?&lt;=href=(?:"|')|src=(?:"|'))[^\s'"]*</code></p>
+
+<p><img src="/HuangHuanBlog/pics/regex_href.png" alt="regex href" /></p>
 
       </article>
       <hr>
