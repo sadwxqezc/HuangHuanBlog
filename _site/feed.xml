@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 13 Mar 2016 20:09:30 +0800</pubDate>
-    <lastBuildDate>Sun, 13 Mar 2016 20:09:30 +0800</lastBuildDate>
+    <pubDate>Mon, 14 Mar 2016 11:34:08 +0800</pubDate>
+    <lastBuildDate>Mon, 14 Mar 2016 11:34:08 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -42,6 +42,7 @@
       &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;正则表达式范例&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#linux&quot; id=&quot;markdown-toc-linux&quot;&gt;Linux下的正则表达式&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;常规的正则表达式&lt;/h2&gt;
@@ -117,7 +118,17 @@
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/regex_href.png&quot; alt=&quot;regex href&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;To be continued: Linux下的正则表达式&lt;/p&gt;
+&lt;h2 id=&quot;linux&quot;&gt;Linux下的正则表达式&lt;/h2&gt;
+
+&lt;p&gt;各类环境对正则表达式语法的支持情况如下图，来源:&lt;a href=&quot;http://net.pku.edu.cn/~yhf/tutorial/tao_regexps_zh.html&quot;&gt;正则表达式之道&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/regex_support.png&quot; alt=&quot;regex support&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Linux下中主要在各类命令中使用到正则表达式，分为POSIX(Portable Operating System Interfac for Unix)定义的基本正则表达式(BRE)和扩展正则表达式(ERE)。下面引用 &lt;a href=&quot;http://www.infoq.com/cn/news/2011/07/regular-expressions-6-POSIX&quot;&gt;Linux/Unix工具与正则表达式的POSIX规范&lt;/a&gt; 来展示它们的异同，和对应的工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/POSIX_KIND.png&quot; alt=&quot;POSIX kind&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/POSIX_USAGE.png&quot; alt=&quot;POSIX usage&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 11 Mar 2016 11:28:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/03/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html</link>
