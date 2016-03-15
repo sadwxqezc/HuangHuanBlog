@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Mar 2016 16:40:29 +0800</pubDate>
-    <lastBuildDate>Tue, 15 Mar 2016 16:40:29 +0800</lastBuildDate>
+    <pubDate>Tue, 15 Mar 2016 16:47:51 +0800</pubDate>
+    <lastBuildDate>Tue, 15 Mar 2016 16:47:51 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -36,7 +36,7 @@
   &lt;li&gt;&lt;a href=&quot;#bcmac&quot; id=&quot;markdown-toc-bcmac&quot;&gt;22. bc命令(Mac)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#uniq&quot; id=&quot;markdown-toc-uniq&quot;&gt;23. uniq命令&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#curlmac&quot; id=&quot;markdown-toc-curlmac&quot;&gt;24. curl命令(Mac)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#top&quot; id=&quot;markdown-toc-top&quot;&gt;25. top命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#topfree&quot; id=&quot;markdown-toc-topfree&quot;&gt;25. top和free命令&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#pastemac&quot; id=&quot;markdown-toc-pastemac&quot;&gt;26. paste命令(Mac)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#cutmac&quot; id=&quot;markdown-toc-cutmac&quot;&gt;27. cut命令(Mac)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;有趣的命令&lt;/a&gt;&lt;/li&gt;
@@ -725,9 +725,10 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;top&quot;&gt;25. top命令&lt;/h3&gt;
+&lt;h3 id=&quot;topfree&quot;&gt;25. top和free命令&lt;/h3&gt;
 
 &lt;p&gt;top命令实际上就是Linux下的“任务管理器”，能够实时的显示系统中各个进程的资源占用状况，默认刷新频率是5秒一次。&lt;/p&gt;
+
 &lt;h4&gt;&lt;b&gt;基本格式 top [option]&lt;/b&gt;&lt;/h4&gt;
 
 &lt;p&gt;快捷键：&lt;/p&gt;
