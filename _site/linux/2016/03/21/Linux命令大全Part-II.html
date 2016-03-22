@@ -8,7 +8,7 @@
 	<title>Linux命令大全 Part Two</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-II.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/21/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-II.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -97,7 +97,7 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>Linux命令大全 Part Two</h1>
-        <p>Mar 14, 2016</p>
+        <p>Mar 21, 2016</p>
       </header>
       <hr>
       <article>
@@ -113,6 +113,7 @@ var _hmt = _hmt || [];
   <li><a href="#topfree" id="markdown-toc-topfree">25. top和free命令</a></li>
   <li><a href="#pastemac" id="markdown-toc-pastemac">26. paste命令(Mac)</a></li>
   <li><a href="#cutmac" id="markdown-toc-cutmac">27. cut命令(Mac)</a></li>
+  <li><a href="#lsof" id="markdown-toc-lsof">28. lsof命令</a></li>
   <li><a href="#section" id="markdown-toc-section">有趣的命令</a></li>
   <li><a href="#mac" id="markdown-toc-mac">几个好玩的命令（Mac）</a></li>
 </ul>
@@ -351,19 +352,49 @@ uniq命令通常和sort命令合用，用于检查文本中重复出现的行列
 
 <hr />
 
+<h3 id="lsof">28. lsof命令</h3>
+
+<p>在Linux中，一切都以文件的形式存在，包括常规数据，网络连接和硬件。而lsof(list open files)命令能够列出当前系统打开的文件，通过该命令可以查看进程和文件的占用关系。</p>
+
+<h4><b>基本格式 lsof [option] [filename]</b></h4>
+
+<ul>
+  <li><code class="highlighter-rouge">-c</code> 显示进程打开的文件</li>
+  <li><code class="highlighter-rouge">-p</code> 显示某进程号的进程打开的文件</li>
+  <li><code class="highlighter-rouge">-i [46][TCP|UDP][@hostname|hostaddr][:service|port]</code> 显示符合条件的进程情况</li>
+</ul>
+
+<h4>显示的内容：</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">COMMAND</code> 进程名称</li>
+  <li><code class="highlighter-rouge">PID</code> 进程id</li>
+  <li><code class="highlighter-rouge">USER</code> 进程所有者</li>
+  <li><code class="highlighter-rouge">FD</code> 文件描述符</li>
+  <li><code class="highlighter-rouge">DEVICE</code> 指定磁盘的名称</li>
+  <li><code class="highlighter-rouge">SIZE</code> 文件大小</li>
+  <li><code class="highlighter-rouge">NODE</code> 索引节点（文件在磁盘的标志）</li>
+  <li><code class="highlighter-rouge">NAME</code> 打开文件的确切名称（带绝对路径）</li>
+</ul>
+
+<p>范例一：<code class="highlighter-rouge">lsof -i:5000</code> 该命令的作用类似于<code class="highlighter-rouge">netstat -anp | grep 5000</code>，可以根据端口号，查看是哪个进程占用了5000端口。</p>
+
+<p><img src="/HuangHuanBlog/pics/lsof_i.png" alt="lsof -i port" /></p>
+
+<p>范例二：<code class="highlighter-rouge">lsof catlina.out</code> 查看tomcat的logs文件中的日志文件被占用情况</p>
+
+<p><img src="/HuangHuanBlog/pics/lsof.png" alt="lsof file" /></p>
+
 <h3 id="section">有趣的命令</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例一：cal -j 2 2016
-显示2016年2月份的日历，标注当天为一年中的第几天
-</code></pre>
-</div>
+<p>范例一：<code class="highlighter-rouge">cal -j 2 2016</code><br />
+显示2016年2月份的日历，标注当天为一年中的第几天</p>
 
 <p><img src="/HuangHuanBlog/pics/cal.png" alt="cal" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
-不用再开新的窗口
+<p>范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,不用再开新的窗口</p>
 
-screen -S yourname //创建一个名为yourname的虚拟链接
+<div class="highlighter-rouge"><pre class="highlight"><code>screen -S yourname //创建一个名为yourname的虚拟链接
 jekyll serve //在yourname中启动一个jekyll
 ctrl+a,d //保存并返回
 screen -ls //查看所有的screen
@@ -373,27 +404,19 @@ screen -r yourname //返回该screen
 
 <p><img src="/HuangHuanBlog/pics/screen.png" alt="screen" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
-</code></pre>
-</div>
+<p>范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本</p>
 
 <p><img src="/HuangHuanBlog/pics/column.png" alt="column" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例四：file命令可以查看对象类型
-</code></pre>
-</div>
+<p>范例四：file命令可以查看对象类型</p>
 
 <p><img src="/HuangHuanBlog/pics/file.png" alt="file" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例五：xargs命令的作用时将参数分段传输给其它命令，后面加-n1表示每次传入一个参数，-n2表示传入两个参数。
-</code></pre>
-</div>
+<p>范例五：xargs命令的作用时将参数分段传输给其它命令，后面加-n1表示每次传入一个参数，-n2表示传入两个参数。</p>
 
 <p><img src="/HuangHuanBlog/pics/xargs.png" alt="xargs" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例六：basename命令可用于去除文件的前缀，只获取文件名。
-</code></pre>
-</div>
+<p>范例六：basename命令可用于去除文件的前缀，只获取文件名。</p>
 
 <p><img src="/HuangHuanBlog/pics/basename.png" alt="basename" /></p>
 
@@ -414,10 +437,8 @@ screen -r yourname //返回该screen
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html">上一篇博客：Linux命令大全 Part One</a><br>
+      <a href="/HuangHuanBlog/read/2016/03/18/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html">上一篇博客：读书笔记-思</a><br>
       
-      
-      <a href="/HuangHuanBlog/confused/2016/03/16/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3.html">下一篇博客：胡思乱想</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -426,7 +447,7 @@ screen -r yourname //返回该screen
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/linux/2016/03/14/Linux命令大全Part-II" data-title="Linux命令大全 Part Two" data-url="sadwxqezc.github.io/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-II.html"></div>
+      <div class="ds-thread" data-thread-key="/linux/2016/03/21/Linux命令大全Part-II" data-title="Linux命令大全 Part Two" data-url="sadwxqezc.github.io/linux/2016/03/21/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-II.html"></div>
       
       <!-- 多说评论框 end -->
     </div>

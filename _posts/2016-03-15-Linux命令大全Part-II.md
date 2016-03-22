@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux命令大全 Part Two"
-date:   2016-03-14 21:24:00 ＋8000
+date:   2016-03-21 11:47:00 ＋8000
 categories: Linux
 ---
 * 内容目录
@@ -222,15 +222,43 @@ cut命令用于在文件中剪切数据，以每一行为处理对象。
 
 ---
 
+### 28\. lsof命令
+
+在Linux中，一切都以文件的形式存在，包括常规数据，网络连接和硬件。而lsof(list open files)命令能够列出当前系统打开的文件，通过该命令可以查看进程和文件的占用关系。
+
+<h4><b>基本格式 lsof [option] [filename]</b></h4>
+
++ `-c` 显示进程打开的文件
++ `-p` 显示某进程号的进程打开的文件 
++ `-i [46][TCP|UDP][@hostname|hostaddr][:service|port]` 显示符合条件的进程情况
+
+<h4>显示的内容：</h4>
+
++ `COMMAND` 进程名称
++ `PID` 进程id
++ `USER` 进程所有者
++ `FD` 文件描述符
++ `DEVICE` 指定磁盘的名称
++ `SIZE` 文件大小
++ `NODE` 索引节点（文件在磁盘的标志）
++ `NAME` 打开文件的确切名称（带绝对路径）
+
+范例一：`lsof -i:5000` 该命令的作用类似于`netstat -anp | grep 5000`，可以根据端口号，查看是哪个进程占用了5000端口。
+
+![lsof -i port]({{site.baseurl}}/pics/lsof_i.png)
+
+范例二：`lsof catlina.out` 查看tomcat的logs文件中的日志文件被占用情况
+
+![lsof file]({{site.baseurl}}/pics/lsof.png)
+
 ### 有趣的命令
 
-	范例一：cal -j 2 2016
-	显示2016年2月份的日历，标注当天为一年中的第几天
+范例一：`cal -j 2 2016`  
+显示2016年2月份的日历，标注当天为一年中的第几天
     
 ![cal]({{site.baseurl}}/pics/cal.png)
 
-	范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,
-	不用再开新的窗口
+范例二：screen在一个窗口中开启多个虚拟链接，适用于在screen的虚拟链接中运行脚本,不用再开新的窗口
 	
 	screen -S yourname //创建一个名为yourname的虚拟链接
 	jekyll serve //在yourname中启动一个jekyll
@@ -240,19 +268,19 @@ cut命令用于在文件中剪切数据，以每一行为处理对象。
 
 ![screen]({{site.baseurl}}/pics/screen.png)
 
-	范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
+范例三：column命令可以用于格式化文本，但仅仅适用于较为简单的文本
 
 ![column]({{site.baseurl}}/pics/column.png)
 
-	范例四：file命令可以查看对象类型
+范例四：file命令可以查看对象类型
 
 ![file]({{site.baseurl}}/pics/file.png)
 
-    范例五：xargs命令的作用时将参数分段传输给其它命令，后面加-n1表示每次传入一个参数，-n2表示传入两个参数。
+范例五：xargs命令的作用时将参数分段传输给其它命令，后面加-n1表示每次传入一个参数，-n2表示传入两个参数。
 
 ![xargs]({{site.baseurl}}/pics/xargs.png)
 
-	范例六：basename命令可用于去除文件的前缀，只获取文件名。
+范例六：basename命令可用于去除文件的前缀，只获取文件名。
 
 ![basename]({{site.baseurl}}/pics/basename.png)
 
