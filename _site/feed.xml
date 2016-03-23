@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 23 Mar 2016 19:05:29 +0800</pubDate>
-    <lastBuildDate>Wed, 23 Mar 2016 19:05:29 +0800</lastBuildDate>
+    <pubDate>Wed, 23 Mar 2016 19:09:42 +0800</pubDate>
+    <lastBuildDate>Wed, 23 Mar 2016 19:09:42 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -29,6 +29,9 @@
 &lt;blockquote&gt;
   &lt;p&gt;jekyll博客的搭建和发布可参考:&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&quot;&gt;阮一峰的博客&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h4&gt;解答 2016年2月23日&lt;/h4&gt;
+&lt;p&gt;github应该采用的是utc时间，只需要将博客的&lt;code class=&quot;highlighter-rouge&quot;&gt;yaml&lt;/code&gt;信息头中的	&lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt;参数进行时区设置，如果作者使用的是北京时间，则设置为&lt;code class=&quot;highlighter-rouge&quot;&gt;+0800&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;2. 准备的技能树&lt;/h2&gt;
 &lt;ul&gt;
