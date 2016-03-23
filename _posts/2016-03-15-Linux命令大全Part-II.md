@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux命令大全 Part Two"
-date:   2016-03-21 11:47:00 - 0800
+date:   2016-03-21 11:47:00 +0800
 categories: Linux
 ---
 * 内容目录

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Shell脚本学习 初阶"
-date:   2016-03-07 13:48:00 - 0800
+date:   2016-03-07 13:48:00 +0800
 categories: Shell
 ---
 * 内容目录
