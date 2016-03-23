@@ -5,9 +5,86 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 22 Mar 2016 23:47:31 +0800</pubDate>
-    <lastBuildDate>Tue, 22 Mar 2016 23:47:31 +0800</lastBuildDate>
+    <pubDate>Wed, 23 Mar 2016 18:41:19 +0800</pubDate>
+    <lastBuildDate>Wed, 23 Mar 2016 18:41:19 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Spring学习</title>
+        <description>
+&lt;ul&gt;
+  &lt;li&gt;参考书目：《Spring实战》&lt;/li&gt;
+  &lt;li&gt;IDE：Intellij Idea&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 23 Mar 2016 18:08:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/03/23/Spring%E5%AD%A6%E4%B9%A0.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/03/23/Spring%E5%AD%A6%E4%B9%A0.html</guid>
+        
+        
+        <category>Framework</category>
+        
+      </item>
+    
+      <item>
+        <title>程序小事</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll&quot; id=&quot;markdown-toc-jekyll&quot;&gt;1. jekyll博客发问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 准备的技能树&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 今后工作状态&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#macsed&quot; id=&quot;markdown-toc-macsed&quot;&gt;4. Mac下sed问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;5. 为博客添加目录&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;1. jekyll博客发问题&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;时间：2016年2月8日 晚&lt;/li&gt;
+  &lt;li&gt;问题回放：在本地发布无问题的jekyll博客，在&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。&lt;/li&gt;
+  &lt;li&gt;问题分析：目前还没有找到发生该问题的原因，不知道是否是因为github pages本身有这样的设置，正在调查中。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;jekyll博客的搭建和发布可参考:&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&quot;&gt;阮一峰的博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2. 准备的技能树&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;redis&lt;/li&gt;
+  &lt;li&gt;zookeeper&lt;/li&gt;
+  &lt;li&gt;spring(需要进阶)&lt;/li&gt;
+  &lt;li&gt;rest&lt;/li&gt;
+  &lt;li&gt;数据库(从mysql入手)&lt;/li&gt;
+  &lt;li&gt;脚本&lt;/li&gt;
+  &lt;li&gt;算法(需要进阶)&lt;/li&gt;
+  &lt;li&gt;网络&lt;/li&gt;
+  &lt;li&gt;javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;3. 今后工作状态&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在工作中游刃有余，同时保持对新技术的兴趣和尝试，参与到产品的设计和策划中。&lt;/li&gt;
+  &lt;li&gt;未来事不可预知，不要过多的担忧，多思无益&lt;/li&gt;
+  &lt;li&gt;不可能每次遇到问题都已做好准备，要冷静的去思考解决之法&lt;/li&gt;
+  &lt;li&gt;谦虚而脚踏实地，与志同道合的人称为朋友，不要为不合的人烦扰&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;macsed&quot;&gt;4. Mac下sed问题&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -i &#39;&#39; &#39;1a test&#39; test&lt;/code&gt;时如果是&lt;code class=&quot;highlighter-rouge&quot;&gt;1a&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;1i&lt;/code&gt;都会报错，这应该是Mac自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;问题，所以选择&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install gnu-sed&lt;/code&gt;来替换掉，改用&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;5. 为博客添加目录&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -i &#39;6a *内容目录\n{:toc}\n&#39; *.md&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 22 Mar 2016 18:11:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/03/22/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/03/22/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
+        
+        
+        <category>Develop</category>
+        
+      </item>
     
       <item>
         <title>Linux命令大全 Part Two</title>
@@ -1698,266 +1775,6 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
         
         
         <category>Shell</category>
-        
-      </item>
-    
-      <item>
-        <title>Shell脚本实例</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#fileopen&quot; id=&quot;markdown-toc-fileopen&quot;&gt;fileopen命令实现&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#todo&quot; id=&quot;markdown-toc-todo&quot;&gt;todo命令实现&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;fileopen&quot;&gt;fileopen命令实现&lt;/h2&gt;
-
-&lt;p&gt;fileopen命令是为了实现Mac系统下，在终端中用应用打开文件。&lt;br /&gt;
-首先将目录&lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/huanghuan/Work/MyCMD &lt;/code&gt;命令加入环境变量中，Mac下可配置在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bashrc&lt;/code&gt;中。然后创建&lt;code class=&quot;highlighter-rouge&quot;&gt;fileopen&lt;/code&gt;文件，其内容为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	#! /bin/sh
- 2	if [ $# != 2 ]
- 3	then
- 4	    echo &quot;输入参数错误!&quot;
- 5	else
- 6	   search_result=`find /Applications -maxdepth 1  -name *${1}*.app | wc -l`
- 7	   app_list=`find /Applications -maxdepth 1  -name *${1}*.app`
- 8	   if (($search_result&amp;lt;=0))
- 9	   then
-10	       echo &quot;未找到对应程序&quot;
-11	   elif (($search_result==1))
-12	   then
-13	       echo &quot;打开文件&quot;
-14	       open ${app_list} ${2}
-15	   else
-16	       echo &quot;符合条件的程序有:\n${app_list}&quot;
-17	       echo &quot;请重新输入正确的程序名&quot;
-18	   fi
-19	fi
-20	exit
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;命令的运行效果如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/fileopen.png&quot; alt=&quot;fileopen命令&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;PS:该命令将进一步完善，目前作为一个Shell练习而简单实现&lt;/p&gt;
-
-&lt;h2 id=&quot;todo&quot;&gt;todo命令实现&lt;/h2&gt;
-
-&lt;p&gt;todo命令实际上就是实现了一个toDoList的小命令，配置如fileopen命令，其内容为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	#! /bin/sh
- 2
- 3	path=&quot;/Users/huanghuan/Work/MyCMD/toDoList&quot;
- 4
- 5	while getopts a:r: option
- 6	do
- 7	  case $option in
- 8	       a)
- 9	         echo ${OPTARG}&quot; 创建时间:&quot;`date +%Y年-%m月-%d日` &amp;gt;&amp;gt;$path
-10	         ;;
-11	       r)
-12	         if [ -f &quot;$path&quot; ]
-13	         then
-14	             gsed -i &quot;${OPTARG}d&quot; $path
-15	         fi
-16	         ;;
-17	       ?)
-18	         echo &quot;Usage: toDo [-arp] [arg]&quot;
-19	         echo &quot;-a add todo item&quot;
-20	         echo &quot;-r remove todo item&quot;
-21	         echo &quot;-p print todo List&quot;
-22	         exit
-23	         ;;
-24	  esac
-25	done
-26
-27	echo &quot;当前待办项目:&quot;
-28	if [ -f &quot;$path&quot; ]
-29	then
-30	    cat -n $path
-31	fi
-32	exit
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;命令的运行效果如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/todo.png&quot; alt=&quot;todo命令&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;该命令的扩展参见：&lt;a href=&quot;https://github.com/sadwxqezc/todo_cmd&quot;&gt;todo扩展&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 03 Mar 2016 12:43:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/03/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/03/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</guid>
-        
-        
-        <category>Shell</category>
-        
-      </item>
-    
-      <item>
-        <title>Cookie and Session</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#cookie&quot; id=&quot;markdown-toc-cookie&quot;&gt;Cookie&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#cookie-&quot; id=&quot;markdown-toc-cookie-&quot;&gt;什么是Cookie ？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#cookie-1&quot; id=&quot;markdown-toc-cookie-1&quot;&gt;Cookie的工作原理&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#cookie-2&quot; id=&quot;markdown-toc-cookie-2&quot;&gt;Cookie的类型与内容&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#cookie-3&quot; id=&quot;markdown-toc-cookie-3&quot;&gt;Cookie示例&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#session&quot; id=&quot;markdown-toc-session&quot;&gt;Session&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#session-&quot; id=&quot;markdown-toc-session-&quot;&gt;什么是Session ？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#session-1&quot; id=&quot;markdown-toc-session-1&quot;&gt;Session的删除时间&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#session-2&quot; id=&quot;markdown-toc-session-2&quot;&gt;Session示例&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#cookiesession&quot; id=&quot;markdown-toc-cookiesession&quot;&gt;Cookie与Session的区别&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;cookie&quot;&gt;Cookie&lt;/h2&gt;
-
-&lt;h3 id=&quot;cookie-&quot;&gt;什么是Cookie ？&lt;/h3&gt;
-
-&lt;p&gt;由于&lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt;是无状态协议，它不会对之前发生过的请求和响应的状态进行管理。无状态协议虽然资源消耗少，但由于其无法管理如登陆状态等信息，给服务器管理客户端的状态带来了难题。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/http.png&quot; alt=&quot;图解Http_状态&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;为了解决该问题，Cookie技术被引入，通过在请求和响应报文中写入Cookie信息来控制客户端的状态。&lt;/p&gt;
-
-&lt;h3 id=&quot;cookie-1&quot;&gt;Cookie的工作原理&lt;/h3&gt;
-
-&lt;p&gt;在服务端发送的响应报文内会有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Set-Cookie&lt;/code&gt;字段信息，通知客户端保存Cookie。当客户端在此往同一服务器发送请求时，客户端会自动在请求报文中加入Cookie值，其选择Cookie的依据是当前的url地址。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/http_process.png&quot; alt=&quot;Cookie工作流程&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;cookie-2&quot;&gt;Cookie的类型与内容&lt;/h3&gt;
-
-&lt;p&gt;Cookie中内容以Key-Value的形式存储，存在两种类型的Cookie:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;session cookie&lt;/code&gt;（会话Cookie）：未设置过期时间的cookie，一般被保存在内存中，cookie的生命周期为浏览器会话期间&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;persistent cookie&lt;/code&gt;（持久Cookie）：设置了过期时间的cookie，浏览器会将其保存在硬盘上，直至其过期失效&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;PS:图片来自《图解Http》,书中图画的萌，我就不重新画了&lt;/p&gt;
-
-&lt;h3 id=&quot;cookie-3&quot;&gt;Cookie示例&lt;/h3&gt;
-
-&lt;p&gt;参考：&lt;a href=&quot;http://www.importnew.com/15141.html&quot;&gt;Spring MVC&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.springapp.mvc.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
-@Controller
-@RequestMapping(value = &quot;/testCookie&quot;)
-public class HelloController {
-
-	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
-	@ResponseBody
-	public String testCookie(@CookieValue(value = &quot;testCookie&quot;, defaultValue = &quot;defaultCookieValue&quot;) String cookieValue, HttpServletResponse httpServletResponse) {
-	/** 输出cookie内容 **/
-	String result = &quot;&quot;;
-	/** 创建Cookie **/
-	Cookie cookie = new Cookie(&quot;testCookie&quot;, &quot;CookieValue&quot;);
-	httpServletResponse.addCookie(cookie);
-	result += &quot;Key:testCookie&quot; + &quot;Value:&quot; + cookieValue + &quot;n&quot;;
-	return result;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;需要&lt;code class=&quot;highlighter-rouge&quot;&gt;@ResponseBody&lt;/code&gt;把&lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;的内容作为请求返回体，不然会跳转成&lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;内容&lt;code class=&quot;highlighter-rouge&quot;&gt;.jsp&lt;/code&gt;之类的。&lt;/p&gt;
-
-&lt;p&gt;第一次访问截图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cookie_init.png&quot; alt=&quot;cookie_init&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;第二次访问截图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cookie_after.png&quot; alt=&quot;cookie_after&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;session&quot;&gt;Session&lt;/h2&gt;
-
-&lt;h3 id=&quot;session-&quot;&gt;什么是Session ？&lt;/h3&gt;
-
-&lt;p&gt;本文所讲的为HTTP Session，在Java中该Session对象用&lt;code class=&quot;highlighter-rouge&quot;&gt;javax.servlet.http.HttpSession&lt;/code&gt;表示。Session代表服务器和浏览器的一次会话过程，当如JSP页面中未显示的禁止session时，在浏览器第一次请求该JSP时，服务器会为其自动创建一个session，并分配给其一个sessionID，返回给客户端。当客户端再次请求时，会自动在header中加上：&lt;code class=&quot;highlighter-rouge&quot;&gt;Cookie:JSESSIONID=分配到的sessionID&lt;/code&gt;，服务器会根据该ID在内存中找到之前创建的session对象（与Cookie不同，Session是保存在服务端）。对于同一个浏览器窗口中的多个标签，同时访问同一应用的不同页面，其session是一样的，但不同的浏览器窗口，其session不一样。&lt;/p&gt;
-
-&lt;h3 id=&quot;session-1&quot;&gt;Session的删除时间&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Session超时&lt;/li&gt;
-  &lt;li&gt;程序显示的调用&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpSession.invalidate()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;服务器关闭或停止&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;session-2&quot;&gt;Session示例&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.springapp.mvc.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpSession;
-
-/**
- * Created by huanghuan on 16/3/1.
- */
-
-@Controller
-@RequestMapping(value = &quot;/testSession&quot;)
-public class TestSession {
-
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public String testSession(HttpSession httpSession) {
-        /** 输出结果 **/
-        String result = &quot;SessionID:&quot;;
-        if (httpSession != null) {
-            result += httpSession.getId();
-            /** 参数设置 **/
-            Object value = httpSession.getAttribute(&quot;key&quot;);
-            if (value == null) {
-                httpSession.setAttribute(&quot;key&quot;, &quot;value&quot;);
-            } else {
-                result += &quot; &quot; + httpSession.getAttribute(&quot;key&quot;).toString();
-            }
-        }
-        return result;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;第一次访问截图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/testSession_init.png&quot; alt=&quot;testSession_init&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;第二次访问截图，包括在浏览器开两个窗口的情况：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/testSession_after.png&quot; alt=&quot;testSession_after&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;cookiesession&quot;&gt;Cookie与Session的区别&lt;/h2&gt;
-
-&lt;p&gt;主要在于Cookie保存在客户端而Session保存在服务端，单个Cookie保存的数据不能超过4k，同时很多浏览器限制一个站点的总Cookie数为20，而服务端的Session会占用服务器内存，影响性能。&lt;/p&gt;
-</description>
-        <pubDate>Mon, 29 Feb 2016 20:06:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/backend/2016/02/29/Cookies-And-Session.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/backend/2016/02/29/Cookies-And-Session.html</guid>
-        
-        
-        <category>Backend</category>
         
       </item>
     
