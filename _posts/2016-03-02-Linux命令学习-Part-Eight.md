@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux命令之sed与awk"
-date:   2016-03-10 11:31:00 + 0800
+date:   2016-03-10 11:31:00 - 0800
 categories: Linux
 ---
 * 内容目录
