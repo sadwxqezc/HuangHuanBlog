@@ -5,9 +5,136 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Mar 2016 18:08:45 +0800</pubDate>
-    <lastBuildDate>Tue, 29 Mar 2016 18:08:45 +0800</lastBuildDate>
+    <pubDate>Tue, 29 Mar 2016 23:58:45 +0800</pubDate>
+    <lastBuildDate>Tue, 29 Mar 2016 23:58:45 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Spring学习</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#spring&quot; id=&quot;markdown-toc-spring&quot;&gt;Spring关键特性范例&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;依赖注入和控制反转&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考书目：《Spring In Action》&lt;/li&gt;
+  &lt;li&gt;IDE：Intellij Idea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Spring框架已经是基于POJO的轻量级开发框架的领导者，其应用已十分广泛，它的根本使命是简化Java的开发过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;spring&quot;&gt;Spring关键特性范例&lt;/h2&gt;
+
+&lt;p&gt;Spring的四种关键策略：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;基于POJO(Plain Ordinary java Object)的轻量级和最小侵入性编程&lt;/li&gt;
+  &lt;li&gt;通过依赖注入(DI)和面向接口实现松耦合&lt;/li&gt;
+  &lt;li&gt;基于切面(AOP)和惯例进行声明式编程&lt;/li&gt;
+  &lt;li&gt;通过切面和模版减少样板式代码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这些特性或策略看起来总是让人头疼，还是通过一些例子来解释Spring的关键特性&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;依赖注入和控制反转&lt;/h3&gt;
+
+&lt;p&gt;依赖注入的关键作用在于解耦合，将类与类之间的对象引用进行统一管理，其实现原理是Java的反射机制。&lt;/p&gt;
+
+&lt;p&gt;下面举一个人骑车的例子：&lt;/p&gt;
+
+&lt;p&gt;People类：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	package beijing.huangh.demos;
+ 2
+ 3	/**
+ 4	 * Created by huanghuan on 16/3/29.
+ 5	 */
+ 6	public class People {
+ 7	    private Bike bike;
+ 8
+ 9	    public People(Bike bike) {
+10	        this.bike = bike;
+11	    }
+12
+13	    public void ridingBike() {
+14	        if (bike != null) {
+15	            bike.ridingBike();
+16	        }
+17	    }
+18	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Bike类：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	package beijing.huangh.demos;
+ 2
+ 3	/**
+ 4	 * Created by huanghuan on 16/3/29.
+ 5	 */
+ 6	public class Bike {
+ 7	    public void ridingBike() {
+ 8	        System.out.println(&quot;riding bike!!!&quot;);
+ 9	    }
+10	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过xml文件进行装配：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+ 2	&amp;lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+ 3	       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+ 4	       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&amp;gt;
+ 5
+ 6	       &amp;lt;bean id=&quot;bike&quot; class=&quot;beijing.huangh.demos.Bike&quot;/&amp;gt;
+ 7	       &amp;lt;bean id=&quot;people&quot; class=&quot;beijing.huangh.demos.People&quot;&amp;gt;
+ 8	              &amp;lt;constructor-arg ref=&quot;bike&quot;/&amp;gt;
+ 9	       &amp;lt;/bean&amp;gt;
+10	&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;调用测试类：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	package beijing.huangh.test;
+ 2
+ 3	import beijing.huangh.demos.People;
+ 4	import org.springframework.context.ApplicationContext;
+ 5	import org.springframework.context.support.ClassPathXmlApplicationContext;
+ 6
+ 7	/**
+ 8	 * Created by huanghuan on 16/3/29.
+ 9	 */
+10	public class DemoTest {
+11	    public static void main(String[] args) {
+12	        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;spring-config.xml&quot;);
+13	        People people = (People) context.getBean(&quot;people&quot;);
+14	        people.ridingBike();
+15	    }
+16	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;输出结果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/bike.png&quot; alt=&quot;依赖注入范例&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;从这个范例中我们可以看出，类对象的构建和相互引用都由Spring的配置文件控制，&lt;code class=&quot;highlighter-rouge&quot;&gt;people&lt;/code&gt;对象所需要的&lt;code class=&quot;highlighter-rouge&quot;&gt;bike&lt;/code&gt;对象，也是由Spring框架通过构造器去注入。这样的方式咋看起来确实能够降低项目的复杂度，开发起来更加便捷，同时可以有效重用对象。但可以预见的是，当一个项目较为庞大，有多达数百个类，在这种情况下，如果依旧采用上诉的配置文件装配方法，整个配置文件将显得十分庞杂。而且IDE往往对框架的支持有限，要知道一个对象被注入了什么其它对象，恐怕只能进行不断的&lt;code class=&quot;highlighter-rouge&quot;&gt;file search&lt;/code&gt;了，Spring是否能解决我所说的问题了，我将在接下来的学习中寻找答案。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 29 Mar 2016 18:38:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/03/29/Spring%E5%AD%A6%E4%B9%A0.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/03/29/Spring%E5%AD%A6%E4%B9%A0.html</guid>
+        
+        
+        <category>Framework</category>
+        
+      </item>
     
       <item>
         <title>算法学习计划</title>
@@ -144,23 +271,6 @@
         
         
         <category>Develop</category>
-        
-      </item>
-    
-      <item>
-        <title>Spring学习</title>
-        <description>
-&lt;ul&gt;
-  &lt;li&gt;参考书目：《Spring实战》&lt;/li&gt;
-  &lt;li&gt;IDE：Intellij Idea&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 23 Mar 2016 18:08:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/03/23/Spring%E5%AD%A6%E4%B9%A0.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/03/23/Spring%E5%AD%A6%E4%B9%A0.html</guid>
-        
-        
-        <category>Framework</category>
         
       </item>
     
