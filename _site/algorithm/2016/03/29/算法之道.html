@@ -8,7 +8,7 @@
 	<title>算法学习计划</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/12/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/29/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -97,12 +97,16 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>算法学习计划</h1>
-        <p>Mar 12, 2016</p>
+        <p>Mar 29, 2016</p>
       </header>
       <hr>
       <article>
         <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">算法学习计划</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">算法基础</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">插入排序</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="section">算法学习计划</h2>
@@ -115,13 +119,57 @@ var _hmt = _hmt || [];
 
 <p>代码地址：<a href="https://github.com/sadwxqezc/Algorithms.git">Github</a></p>
 
+<h2 id="section-1">算法基础</h2>
+
+<blockquote>
+  <p>算法是解决问题的步骤</p>
+</blockquote>
+
+<h3 id="section-2">插入排序</h3>
+
+<p>《算法导论》中对插入排序举了一个非常恰当的列子：大家斗地主时，边摸牌边对手中的牌排序，这实际上就是一个插入排序的过程，保证手中的牌始终是有序的。</p>
+
+<p>将如我们要对数组<code class="highlighter-rouge">[1,3,7,-1,11,2,23,0,1]</code>排序，要求结果为升序，用插入排序的写法如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public static void myInsertSort(int[] sequence) {
+    for (int j = 1; j &lt; sequence.length; j++) {
+        int i = 0;
+        int temp = sequence[j];
+        while (i &lt; j &amp;&amp; sequence[i] &lt; temp) {
+            i++;
+        }
+        for (int k = j; k &gt; i; k--) {
+            sequence[k] = sequence[k - 1];
+        }
+        sequence[i] = temp;
+    }
+}
+</code></pre>
+</div>
+
+<p>我的做法是从前往后找插入位置，而书中的做法是从后往前找，其写法如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public static void bookInsertSort(int[] sequence) {
+    for (int j = 1; j &lt; sequence.length; j++) {
+        int temp = sequence[j];
+        int i = j - 1;
+        while (i &gt; 0 &amp;&amp; sequence[i] &gt; temp) {
+            sequence[i + 1] = sequence[i];
+            i--;
+        }
+        sequence[i + 1] = temp;
+    }
+}
+</code></pre>
+</div>
+
+<p>两者时间性能差别不大，书上的写法显得更加简洁。</p>
+
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/develop/2016/03/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html">上一篇博客：正则表达式</a><br>
+      <a href="/HuangHuanBlog/develop/2016/03/23/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html">上一篇博客：程序小事</a><br>
       
-      
-      <a href="/HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html">下一篇博客：Linux命令大全 Part One</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -130,7 +178,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/algorithm/2016/03/12/算法之道" data-title="算法学习计划" data-url="sadwxqezc.github.io/algorithm/2016/03/12/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html"></div>
+      <div class="ds-thread" data-thread-key="/algorithm/2016/03/29/算法之道" data-title="算法学习计划" data-url="sadwxqezc.github.io/algorithm/2016/03/29/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
