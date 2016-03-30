@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Spring学习</title>
+	<title>算法练习</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/03/29/Spring%E5%AD%A6%E4%B9%A0.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/30/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -96,134 +96,47 @@ var _hmt = _hmt || [];
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>Spring学习</h1>
-        <p>Mar 29, 2016</p>
+        <h1>算法练习</h1>
+        <p>Mar 30, 2016</p>
       </header>
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#spring" id="markdown-toc-spring">Spring关键特性范例</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">依赖注入和控制反转</a></li>
-    </ul>
-  </li>
+  <li><a href="#section" id="markdown-toc-section">求二叉树节点见的最大距离</a></li>
 </ul>
 
-<ul>
-  <li>参考书目：《Spring In Action》</li>
-  <li>IDE：Intellij Idea</li>
-</ul>
+<h3 id="section">求二叉树节点见的最大距离</h3>
 
-<blockquote>
-  <p>Spring框架已经是基于POJO的轻量级开发框架的领导者，其应用已十分广泛，它的根本使命是简化Java的开发过程。</p>
-</blockquote>
+<p>输入图例：</p>
 
-<h2 id="spring">Spring关键特性范例</h2>
+<p><img src="/HuangHuanBlog/pics/btree_max_distance.png" alt="max distance of binary tree" /></p>
 
-<p>Spring的四种关键策略：</p>
+<p>代码：</p>
 
-<ul>
-  <li>基于POJO(Plain Ordinary java Object)的轻量级和最小侵入性编程</li>
-  <li>通过依赖注入(DI)和面向接口实现松耦合</li>
-  <li>基于切面(AOP)和惯例进行声明式编程</li>
-  <li>通过切面和模版减少样板式代码</li>
-</ul>
+<div class="highlighter-rouge"><pre class="highlight"><code>static int max=0;
 
-<p>这些特性或策略看起来总是让人头疼，还是通过一些例子来解释Spring的关键特性</p>
-
-<h3 id="section">依赖注入和控制反转</h3>
-
-<p>依赖注入的关键作用在于解耦合，将类与类之间的对象引用进行统一管理，其实现原理是Java的反射机制。</p>
-
-<p>下面举一个人骑车的例子：</p>
-
-<p>People类：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> 1	package beijing.huangh.demos;
- 2
- 3	/**
- 4	 * Created by huanghuan on 16/3/29.
- 5	 */
- 6	public class People {
- 7	    private Bike bike;
- 8
- 9	    public People(Bike bike) {
-10	        this.bike = bike;
-11	    }
-12
-13	    public void ridingBike() {
-14	        if (bike != null) {
-15	            bike.ridingBike();
-16	        }
-17	    }
-18	}
+static int maxDepth(BinaryTreeNode root) {
+    if (root == null) {
+        return 0;
+    }
+    int maxLeft = (root.getLeft() == null) ? 0 : 1 + maxDepth(root.getLeft());
+    int maxRight = (root.getRight() == null) ? 0 : 1 + maxDepth(root.getRight());
+    int tempMax=maxLeft+maxRight;
+    max=(tempMax&gt;max)?tempMax:max;
+    return (maxLeft&gt;maxRight)?maxLeft:maxRight;
+}
 </code></pre>
 </div>
 
-<p>Bike类：</p>
+<p>最后max的值为：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> 1	package beijing.huangh.demos;
- 2
- 3	/**
- 4	 * Created by huanghuan on 16/3/29.
- 5	 */
- 6	public class Bike {
- 7	    public void ridingBike() {
- 8	        System.out.println("riding bike!!!");
- 9	    }
-10	}
-</code></pre>
-</div>
-
-<p>通过xml文件进行装配：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> 1	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
- 2	&lt;beans xmlns="http://www.springframework.org/schema/beans"
- 3	       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- 4	       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
- 5
- 6	       &lt;bean id="bike" class="beijing.huangh.demos.Bike"/&gt;
- 7	       &lt;bean id="people" class="beijing.huangh.demos.People"&gt;
- 8	              &lt;constructor-arg ref="bike"/&gt;
- 9	       &lt;/bean&gt;
-10	&lt;/beans&gt;
-</code></pre>
-</div>
-
-<p>调用测试类：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> 1	package beijing.huangh.test;
- 2
- 3	import beijing.huangh.demos.People;
- 4	import org.springframework.context.ApplicationContext;
- 5	import org.springframework.context.support.ClassPathXmlApplicationContext;
- 6
- 7	/**
- 8	 * Created by huanghuan on 16/3/29.
- 9	 */
-10	public class DemoTest {
-11	    public static void main(String[] args) {
-12	        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-13	        People people = (People) context.getBean("people");
-14	        people.ridingBike();
-15	    }
-16	}
-</code></pre>
-</div>
-
-<p>输出结果：</p>
-
-<p><img src="/HuangHuanBlog/pics/bike.png" alt="依赖注入范例" /></p>
-
-<p>从这个范例中我们可以看出，类对象的构建和相互引用都由Spring的配置文件控制，<code class="highlighter-rouge">people</code>对象所需要的<code class="highlighter-rouge">bike</code>对象，也是由Spring框架通过构造器去注入。这样的方式咋看起来确实能够降低项目的复杂度，开发起来更加便捷，同时可以有效重用对象。但可以预见的是，当一个项目较为庞大，有多达数百个类，在这种情况下，如果依旧采用上诉的配置文件装配方法，整个配置文件将显得十分庞杂。而且IDE往往对框架的支持有限，要知道一个对象被注入了什么其它对象，恐怕只能进行不断的<code class="highlighter-rouge">file search</code>了，Spring是否能解决我所说的问题了，我将在接下来的学习中寻找答案。</p>
-
+<p><img src="/HuangHuanBlog/pics/max_distance_result.png" alt="max distance result" /></p>
 
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/algorithm/2016/03/29/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html">上一篇博客：算法学习计划</a><br>
+      <a href="/HuangHuanBlog/framework/2016/03/29/Spring%E5%AD%A6%E4%B9%A0.html">上一篇博客：Spring学习</a><br>
       
-      
-      <a href="/HuangHuanBlog/algorithm/2016/03/30/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0.html">下一篇博客：算法练习</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -232,7 +145,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/framework/2016/03/29/Spring学习" data-title="Spring学习" data-url="sadwxqezc.github.io/framework/2016/03/29/Spring%E5%AD%A6%E4%B9%A0.html"></div>
+      <div class="ds-thread" data-thread-key="/algorithm/2016/03/30/算法练习" data-title="算法练习" data-url="sadwxqezc.github.io/algorithm/2016/03/30/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0.html"></div>
       
       <!-- 多说评论框 end -->
     </div>

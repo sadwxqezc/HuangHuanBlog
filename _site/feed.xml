@@ -5,9 +5,51 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 30 Mar 2016 00:04:04 +0800</pubDate>
-    <lastBuildDate>Wed, 30 Mar 2016 00:04:04 +0800</lastBuildDate>
+    <pubDate>Wed, 30 Mar 2016 10:45:11 +0800</pubDate>
+    <lastBuildDate>Wed, 30 Mar 2016 10:45:11 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>算法练习</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;求二叉树节点见的最大距离&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;求二叉树节点见的最大距离&lt;/h3&gt;
+
+&lt;p&gt;输入图例：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/btree_max_distance.png&quot; alt=&quot;max distance of binary tree&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;static int max=0;
+
+static int maxDepth(BinaryTreeNode root) {
+    if (root == null) {
+        return 0;
+    }
+    int maxLeft = (root.getLeft() == null) ? 0 : 1 + maxDepth(root.getLeft());
+    int maxRight = (root.getRight() == null) ? 0 : 1 + maxDepth(root.getRight());
+    int tempMax=maxLeft+maxRight;
+    max=(tempMax&amp;gt;max)?tempMax:max;
+    return (maxLeft&amp;gt;maxRight)?maxLeft:maxRight;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;最后max的值为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/max_distance_result.png&quot; alt=&quot;max distance result&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 30 Mar 2016 10:13:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/30/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/30/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0.html</guid>
+        
+        
+        <category>Algorithm</category>
+        
+      </item>
     
       <item>
         <title>Spring学习</title>
@@ -1665,279 +1707,6 @@ gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
         
         
         <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Shell脚本学习 初阶</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#mac&quot; id=&quot;markdown-toc-mac&quot;&gt;范例代码(Mac下)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;基本知识介绍&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;基本语法&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;mac&quot;&gt;范例代码(Mac下)&lt;/h2&gt;
-
-&lt;p&gt;以一段Git代码提交脚本为例：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  # 添加目录下所有文件
-2  git add . 
-3  # message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
-4  message=`date +%Y-%m-%d-%H-%M`
-5  # getopts命令可获取输入的参数，如m:则表示检查&#39;-m&#39;的参数输入，并将参数名存入opt中。
-6  # 如果未找到参数，则存入?,参数值通过OPTARG变量获得，变量通过$取值。
-7
-8  while getopts m: opt
-9  do
-10   case $opt in
-11     m)
-12       message=$OPTARG
-13       ;;
-14     ?)
-15       echo &quot;Usage: args [-m]&quot;
-16       echo &quot;-m means message&quot;
-17       echo &quot;exit&quot;
-18       exit
-19       ;;
-20   esac
-21 done
-22 # git提交message信息
-23 git commit -m &quot;$message&quot;
-24 git push origin gh-pages
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Git代码提交脚本执行效果截图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/git_shell.png&quot; alt=&quot;Git代码提交&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;基本知识介绍&lt;/h2&gt;
-&lt;p&gt;参考：&lt;a href=&quot;http://www.jianshu.com/p/4b7f99486cab&quot;&gt;Shell脚本30分钟入门&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;一般所指的Shell是指Shell脚本（Shell script），是为Shell编写的脚本程序。而Shell本身是用户访问操作系统内核服务的程序界面，Shell编程与其它语言类似，只需要编写代码的编辑器和能够解释执行的程序即可。Bourne shell是标准的Shell解释器，其所在路径往往是&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;在Shell脚本中，第一行一般是&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;#!&lt;/code&gt;是用于约定的标记，告诉系统该脚本需要什么解释器执行。当然如果文件以&lt;code class=&quot;highlighter-rouge&quot;&gt;.sh&lt;/code&gt;作为后缀的话，不写这一行也能正确执行。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;基本语法&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;Shell变量&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;变量定义与赋值 &lt;code class=&quot;highlighter-rouge&quot;&gt;testVar=&quot;testValue&quot;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;变量的取值只需要在前面加入&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;符号，如&lt;code class=&quot;highlighter-rouge&quot;&gt;$testVar&lt;/code&gt;，加花括号可以帮助解释器识别边界，如&lt;code class=&quot;highlighter-rouge&quot;&gt;${testVar}&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;代码范例：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1 #! /bin/sh
-2 count=0
-3 for testVar in Let us learn Shell
-4 do
-5     echo &quot;Word:${testVar}_Number:$count&quot;
-6     ((count++))
-7 done
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;脚本执行结果：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/var.png&quot; alt=&quot;var.sh&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;字符串&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;单引号的特点: &lt;br /&gt;
-1.单引号中的所有字符串都原样输出，字符串中的变量无效&lt;br /&gt;
-2.单引号中不能出现单引号，转义亦无效&lt;/li&gt;
-  &lt;li&gt;双引号的特点：&lt;br /&gt;
-1.双引号中可以有变量，并读取变量值&lt;br /&gt;
-2.双引号中可以出现转义字符&lt;/li&gt;
-  &lt;li&gt;``符号之间字符串可用于执行指令&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;代码范例：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  #! /bin/sh
-2  testString=&#39;this is a test&#39;
-3  echo &#39;$testString&#39;
-4  echo &quot;$testString&quot;
-5  testString=&quot;${testString} string catenate&quot;
-6  echo $testString
-7  testString=&quot;&quot;$testString&quot; string catenate&quot;
-8  echo $testString
-9  echo &quot;The length: ${#testString}&quot;
-10 echo &quot;Part of the string: ${testString:1:7}&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;脚本执行结果：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/shell_string.png&quot; alt=&quot;string.sh&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;Shell中的各种括号&lt;/b&gt;&lt;/h4&gt;
-&lt;p&gt;作为脚本语言，shell各种各样的符号括号挺让人头疼，降低了其代码的可读性
-参考：&lt;a href=&quot;http://blog.csdn.net/taiyang1987912/article/details/39551385&quot;&gt;Shell中各种括号的作用&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Shell中大括号&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;可以用来限定变量名称的范围&lt;/li&gt;
-  &lt;li&gt;Shell中&lt;code&gt;``&lt;/code&gt;和&lt;code&gt;()&lt;/code&gt;，可以执行其中的命令并读出结果&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;(())&lt;/code&gt;中支持POSIX标准的计算，符合C语言的运算符都可以用在其中，表达式真值为1，假则为0&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;[]&lt;/code&gt;中放置条件表达式&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;代码范例：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  #! /bin/sh
-2  if ((1))
-3  then
-4      echo $(pwd)
-5  fi
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;脚本执行结果：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/brackets.png&quot; alt=&quot;brackets&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;条件判断与流程控制&lt;/b&gt;&lt;/h4&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;if else代码范例：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  if condition
-2  then
-3      phase one
-4      phase two
-5  elif condition2
-6  then
-7      phase three
-8  else
-9      #else后不能为空
-10      phase four
-1 fi
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;for while代码范例：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# for (shell)
-1  for param in paramOne paramTwo ... paramN
-2  do
-3      phase one
-4      phase two
-5  done
-# for (C)
-1  for (( EXP1;EXP2;EXP3))
-2  do
-3     phase one
-4     phase two
-5  done
-# while
-1  while condition
-2  do
-3     phase one
-4  done
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;case 代码范例：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  case $opt in
-2       valueOne)
-3          phase one
-4          ;;
-5       valueTwo)
-6          phase two
-7          ;;
-8       *)
-9          echo &quot;error&quot;
-10 esac
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;Shell函数&lt;/b&gt;&lt;/h4&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;代码范例：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1  #! /bin/sh
-2 
-3  function add(){
-4    if [ $# != 2 ]
-5    then
-6       return 1
-7    else
-8       return $(($1+$2))
-9    fi
-10 }
-11
-12 add 1 2
-13 echo &quot;1+2=$?&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;执行结果：&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/shell_function.png&quot; alt=&quot;shell function&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;Shell传入变量&lt;/b&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$0&lt;/code&gt;当前脚本的文件名&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$n&lt;/code&gt;第n个参数的值&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$#&lt;/code&gt;传入的参数个数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$*&lt;/code&gt;所有参数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$?&lt;/code&gt;上个命令的退出状态或行数的返回值&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$$&lt;/code&gt;当前Shell进行ID&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;Shell文件判断逻辑&lt;/b&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-a&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;－e&lt;/code&gt;：文件是否存在&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-b&lt;/code&gt;：文件存在且为块特殊文件&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-c&lt;/code&gt;：文件存在且为字符特殊文件&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt;：文件存在且为一个目录&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt;：文件存在且为常规文件&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-L&lt;/code&gt;：文件存在且软链接&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-s&lt;/code&gt;：文件存在且不为空&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt;：文件存在且当前进程可读&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-w&lt;/code&gt;：文件存在且当前进程可写&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-x&lt;/code&gt;：文件存在且当前进程可执行&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt;：字符串长度不为空&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-z&lt;/code&gt;：字符串长度为空&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 07 Mar 2016 13:48:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/07/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/07/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html</guid>
-        
-        
-        <category>Shell</category>
         
       </item>
     
