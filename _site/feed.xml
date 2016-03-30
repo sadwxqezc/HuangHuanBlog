@@ -5,9 +5,138 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 30 Mar 2016 10:45:11 +0800</pubDate>
-    <lastBuildDate>Wed, 30 Mar 2016 10:45:11 +0800</lastBuildDate>
+    <pubDate>Wed, 30 Mar 2016 12:11:29 +0800</pubDate>
+    <lastBuildDate>Wed, 30 Mar 2016 12:11:29 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Shell脚本实例</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#fileopen&quot; id=&quot;markdown-toc-fileopen&quot;&gt;fileopen命令实现&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#todo&quot; id=&quot;markdown-toc-todo&quot;&gt;todo命令实现&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#valid-phone-numbers&quot; id=&quot;markdown-toc-valid-phone-numbers&quot;&gt;Valid Phone Numbers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fileopen&quot;&gt;fileopen命令实现&lt;/h2&gt;
+
+&lt;p&gt;fileopen命令是为了实现Mac系统下，在终端中用应用打开文件。&lt;br /&gt;
+首先将目录&lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/huanghuan/Work/MyCMD &lt;/code&gt;命令加入环境变量中，Mac下可配置在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bashrc&lt;/code&gt;中。然后创建&lt;code class=&quot;highlighter-rouge&quot;&gt;fileopen&lt;/code&gt;文件，其内容为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	#! /bin/sh
+ 2	if [ $# != 2 ]
+ 3	then
+ 4	    echo &quot;输入参数错误!&quot;
+ 5	else
+ 6	   search_result=`find /Applications -maxdepth 1  -name *${1}*.app | wc -l`
+ 7	   app_list=`find /Applications -maxdepth 1  -name *${1}*.app`
+ 8	   if (($search_result&amp;lt;=0))
+ 9	   then
+10	       echo &quot;未找到对应程序&quot;
+11	   elif (($search_result==1))
+12	   then
+13	       echo &quot;打开文件&quot;
+14	       open ${app_list} ${2}
+15	   else
+16	       echo &quot;符合条件的程序有:\n${app_list}&quot;
+17	       echo &quot;请重新输入正确的程序名&quot;
+18	   fi
+19	fi
+20	exit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;命令的运行效果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/fileopen.png&quot; alt=&quot;fileopen命令&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PS:该命令将进一步完善，目前作为一个Shell练习而简单实现&lt;/p&gt;
+
+&lt;h2 id=&quot;todo&quot;&gt;todo命令实现&lt;/h2&gt;
+
+&lt;p&gt;todo命令实际上就是实现了一个toDoList的小命令，配置如fileopen命令，其内容为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1	#! /bin/sh
+ 2
+ 3	path=&quot;/Users/huanghuan/Work/MyCMD/toDoList&quot;
+ 4
+ 5	while getopts a:r: option
+ 6	do
+ 7	  case $option in
+ 8	       a)
+ 9	         echo ${OPTARG}&quot; 创建时间:&quot;`date +%Y年-%m月-%d日` &amp;gt;&amp;gt;$path
+10	         ;;
+11	       r)
+12	         if [ -f &quot;$path&quot; ]
+13	         then
+14	             gsed -i &quot;${OPTARG}d&quot; $path
+15	         fi
+16	         ;;
+17	       ?)
+18	         echo &quot;Usage: toDo [-arp] [arg]&quot;
+19	         echo &quot;-a add todo item&quot;
+20	         echo &quot;-r remove todo item&quot;
+21	         echo &quot;-p print todo List&quot;
+22	         exit
+23	         ;;
+24	  esac
+25	done
+26
+27	echo &quot;当前待办项目:&quot;
+28	if [ -f &quot;$path&quot; ]
+29	then
+30	    cat -n $path
+31	fi
+32	exit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;命令的运行效果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/todo.png&quot; alt=&quot;todo命令&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;该命令的扩展参见：&lt;a href=&quot;https://github.com/sadwxqezc/todo_cmd&quot;&gt;todo扩展&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;valid-phone-numbers&quot;&gt;Valid Phone Numbers&lt;/h2&gt;
+
+&lt;p&gt;来源于Leetcode题目：&lt;a href=&quot;https://leetcode.com/problems/valid-phone-numbers/&quot;&gt;Valid Phone Numbers&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Given a text file file.txt that contains list of phone numbers (one per line), write a one liner bash script to print all valid phone numbers.&lt;/p&gt;
+
+&lt;p&gt;You may assume that a valid phone number must appear in one of the following two formats: (xxx) xxx-xxxx or xxx-xxx-xxxx. (x means a digit)&lt;/p&gt;
+
+&lt;p&gt;You may also assume each line in the text file must not contain leading or trailing white spaces.&lt;/p&gt;
+
+&lt;p&gt;For example, assume that file.txt has the following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;987-123-4567
+123 456 7890
+(123) 456-7890
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Your script should output the following valid phone numbers:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;987-123-4567
+(123) 456-7890
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;脚本代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;grep -E &#39;^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$&#39; file.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;-E&lt;/code&gt;可以少写很多转义字符，这道题还值得注意的是：&lt;a href=&quot;https://leetcode.com/discuss/29452/whats-the-difference-between-d-and-0-9-in-grep&quot;&gt;what’s the difference between \d and [0-9] in grep&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 30 Mar 2016 12:05:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/30/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/30/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</guid>
+        
+        
+        <category>Shell</category>
+        
+      </item>
     
       <item>
         <title>算法练习</title>
@@ -1399,314 +1528,6 @@ tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
         
         
         <category>Develop</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令之sed与awk</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#sedmac&quot; id=&quot;markdown-toc-sedmac&quot;&gt;1. sed命令(Mac)&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#sed&quot; id=&quot;markdown-toc-sed&quot;&gt;sed命令语法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sed-1&quot; id=&quot;markdown-toc-sed-1&quot;&gt;sed命令示例&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#awk-mac&quot; id=&quot;markdown-toc-awk-mac&quot;&gt;2. awk (Mac)&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#awk&quot; id=&quot;markdown-toc-awk&quot;&gt;awk语法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#awk-1&quot; id=&quot;markdown-toc-awk-1&quot;&gt;awk代码块表示方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#awk-2&quot; id=&quot;markdown-toc-awk-2&quot;&gt;awk内置变量&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#awk-3&quot; id=&quot;markdown-toc-awk-3&quot;&gt;awk内置函数&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#awk-4&quot; id=&quot;markdown-toc-awk-4&quot;&gt;awk示例&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt;是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;使用的是&lt;code class=&quot;highlighter-rouge&quot;&gt;gnu-sed 4.2.2&lt;/code&gt;版本，对应下文中出现的&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed&lt;/code&gt;，而不是Mac自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt;同样使用&lt;code class=&quot;highlighter-rouge&quot;&gt;gnu&lt;/code&gt;版本的&lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt;，对应文中出现的&lt;code class=&quot;highlighter-rouge&quot;&gt;gawk&lt;/code&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;sedmac&quot;&gt;1. sed命令(Mac)&lt;/h2&gt;
-
-&lt;p&gt;sed是Linux中的一个文件编辑工具，按行处理文件内容，可以实现插入，删除，替换等功能。更重要的是sed命令可以用script来处理文本文件，能够应对复杂的编辑需求。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;sed&quot;&gt;sed命令语法&lt;/h3&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 sed [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;h5&gt;&lt;b&gt;选项:&lt;/b&gt;&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-e &amp;lt;script&amp;gt;&lt;/code&gt; 按script编辑文本并输出到控制台，但不修改原文件内容&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-f filename&lt;/code&gt; 调用sed脚本文件&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt; 直接修改读取的文件内容，而不输出到终端&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt; 使用安静模式，只有经过sed处理的行才会被显示出来&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt; 使用延伸型的正则表达式语法，预设的是基础的正则语法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;&lt;b&gt;动作命令[n1[,n2]] function&lt;/b&gt;&lt;/h5&gt;
-&lt;p&gt;n1,n2表示起始行和结束行，不一定存在，而function表示动作行为&lt;/p&gt;
-&lt;h5&gt;&lt;b&gt;常用function命令:&lt;/b&gt;&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; 新增一行内容（在指定行的下一行）&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt; 取代内容，可取代n1,n2之间的行&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; 删除行&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; 插入一行内容（在指定行的上一行）&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; 列印，将某个选择的资料印出，常与&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -n&lt;/code&gt;连用&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; 取代，搭配正则表达式，替换文本中的内容&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;sed-1&quot;&gt;sed命令示例&lt;/h3&gt;
-&lt;p&gt;1. 行的删除：`&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -lha | nl | gsed &#39;1,3d&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;删除输出中的第1到第3行，此时参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt;可不加。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sed_d.png&quot; alt=&quot;sed delete&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2. 行的插入：&lt;/p&gt;
-
-&lt;p&gt;a. 在指定行前插入&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed &#39;4a 插入的第一行\n插入的第二行&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;b. 在指定行后插入&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed &#39;1i 插入的第一行\n插入的第二行&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;若要让操作更新到原文件中，需加&lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt;，该操作较为危险。建议使用&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed -i.bak &#39;1i test&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这样的执行方式，通过这种方式可额外生成&lt;code class=&quot;highlighter-rouge&quot;&gt;testSed.bak&lt;/code&gt;文件，该文件保存了原始内容，这样更安全。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sed_insert.png&quot; alt=&quot;sed insert&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3. 行的选择性显示：&lt;/p&gt;
-
-&lt;p&gt;有时会显示文件中某个区间内容的需求，这时通过&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -n&lt;/code&gt;可以做到：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed -n &#39;2,$p&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sed_n.png&quot; alt=&quot;sed print&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4. 搜索并执行命令：&lt;/p&gt;
-
-&lt;p&gt;a. 搜索含有关键字的行：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed -n &#39;/^第.行/p&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sed_search.png&quot; alt=&quot;sed search and print&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;b. 搜索并删除：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed &#39;/第四行/d&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gsed_sr.png&quot; alt=&quot;sed search and remove&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;c. 执行多组命令：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed &#39;/四/{s/行/列/;s/第四列/测试/}&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;表示替换，从图中的结果可以看到，这个过程有点类似&lt;code class=&quot;highlighter-rouge&quot;&gt;SQL的where查询&lt;/code&gt;，后面的命令在前面的执行结果下执行。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gsed_mul.png&quot; alt=&quot;sed search and multiple operations&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;5. 内容替换：&lt;/p&gt;
-
-&lt;p&gt;a. 区域替换：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed &#39;2,3c 替换内容&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sed_c.png&quot; alt=&quot;sed c replace&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;b. 搜索替换：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed &#39;s/行/列/g&#39; testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;如果没有&lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt;则只替换行内匹配的第一个&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gsed_g.png&quot; alt=&quot;sed g replace&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6. 多重编辑：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsed -e &#39;1i 测试行&#39; -e &#39;1d&#39;  testSed
-gsed -e &#39;1d&#39; -e &#39;1i测试行&#39;  testSed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;从图中可以看到两者执行的区别，由于&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gsed_e.png&quot; alt=&quot;sed -e&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;awk-mac&quot;&gt;2. awk (Mac)&lt;/h2&gt;
-
-&lt;p&gt;awk时非常强大的文本分析工具，非常适用于生成分析报告。awk会将文本逐行的读入，默认以空格或制表符为分隔符进行切片，然后对切片后的部分分析处理。awk十分强大，实际上它也有自己的编程语言：“样式扫描和处理语言”，其名称源自于创始人Alfred Aho，Peter Weinberger，Brian Kernighan。&lt;/p&gt;
-
-&lt;h3 id=&quot;awk&quot;&gt;awk语法&lt;/h3&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 awk [option] &#39;[pattern][codeblock]&#39; [filenames]&lt;/b&gt;&lt;/h4&gt;
-
-&lt;p&gt;codeblock表示代码块区域&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-F&lt;/code&gt; 指定域分隔符&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt; 调用脚本&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-v&lt;/code&gt; 定义变量&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;awk-1&quot;&gt;awk代码块表示方法&lt;/h3&gt;
-&lt;p&gt;awk中的&lt;code class=&quot;highlighter-rouge&quot;&gt;BEGIN,END&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;BEGIN {} // { statement one; statement two} END {}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BEGIN&lt;/code&gt; 初始代码块&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;//&lt;/code&gt; 匹配代码块，与sed中的用法类似&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt; 命令代码块，包含多条命令语句，用&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt;分隔&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;END&lt;/code&gt; 结尾代码块，在每一行执行完后运行。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;awk中的条件语句与&lt;code class=&quot;highlighter-rouge&quot;&gt;C语言&lt;/code&gt;相同，支持&lt;code class=&quot;highlighter-rouge&quot;&gt;while,for,break,continue&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if( condition expression ){
-    statement one;
-}else if ( condition expression ){
-    statement two;
-}else{
-    statement three;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;awk中的数组表示方式为&lt;code class=&quot;highlighter-rouge&quot;&gt;array[key]&lt;/code&gt;，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt; 可以是字母或数字，其内部实际上是用&lt;code class=&quot;highlighter-rouge&quot;&gt;hash&lt;/code&gt;的方式存储。&lt;/p&gt;
-
-&lt;h3 id=&quot;awk-2&quot;&gt;awk内置变量&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; 表示当前行所有内容，&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; 第n个域的内容，用&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;取值&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ARGC&lt;/code&gt; 命令行参数个数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ARGV&lt;/code&gt; 命令行参数排列&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENVIRON&lt;/code&gt; 支持队列中系统的环境变量使用&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FILENAME&lt;/code&gt; 正在浏览的文件名&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FNR&lt;/code&gt; 浏览文件的记录数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FS&lt;/code&gt; 设置输入域的分隔符，等价于&lt;code class=&quot;highlighter-rouge&quot;&gt;-F&lt;/code&gt;选项，在&lt;code class=&quot;highlighter-rouge&quot;&gt;BEGIN&lt;/code&gt;时定义&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NF&lt;/code&gt; 域的个数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NR&lt;/code&gt; 已经读取的记录个数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;OFS&lt;/code&gt; 输出域分隔符&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ORS&lt;/code&gt; 输出记录分隔符&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RS&lt;/code&gt; 控制记录分隔符&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;awk-3&quot;&gt;awk内置函数&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cos(x),sin(x),sqrt(x),rand()&lt;/code&gt;等算数类函数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sub(),index(),length(),substr(),sprintf(),split()&lt;/code&gt;等字符串函数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getline(),system(),close(),mktime(),systime()&lt;/code&gt;等其它函数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;function funcName(){}&lt;/code&gt;自定义函数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;详细内容参考：&lt;a href=&quot;http://blog.jobbole.com/92497/&quot;&gt;awk内部函数&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;awk-4&quot;&gt;awk示例&lt;/h3&gt;
-
-&lt;p&gt;1. 打印账户和账户对应的shell：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat -n /etc/passwd | gawk -F &#39;:&#39; &#39;{print $1&quot; &quot;$5}&#39; | gsed &#39;1,10d&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;$1&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;$5&lt;/code&gt;分别表示分割后的第一个和第五个域。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_print.png&quot; alt=&quot;awk print&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2. 使用&lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -lha | gawk &#39;{printf(&quot;owner:%-15s size:%-10s name:%-15s\n&quot;,$3,$5,$NF)}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;类似C语言的&lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gawk_printf.png&quot; alt=&quot;awk printf&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3. 使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Begin End&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat /etc/passwd | gawk -F: &#39;BEGIN{print &quot;名称-权限&quot;} {print $1&quot;-&quot;$5} END{print &quot;the end!&quot;}&#39; | sed &#39;2,11d&#39; | column -t -s &#39;-&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_begin_end.png&quot; alt=&quot;awk begin&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4. awk中模式匹配的使用：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat -n /etc/passwd | gawk -F: &#39;/System/{print $1&quot; &quot;$5}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;搜索包含&lt;code class=&quot;highlighter-rouge&quot;&gt;System&lt;/code&gt;关键字的行并输出。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gawk_search.png&quot; alt=&quot;awk search&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;5. 统计文件夹下的文件数目：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -lha | gawk &#39;BEGIN {count=0} {count++} END { print &quot;File Count:&quot;count}&#39; 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;最好在&lt;code class=&quot;highlighter-rouge&quot;&gt;BEGIN&lt;/code&gt;中初始化变量&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_count.png&quot; alt=&quot;awk count&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6. 输出文件夹下大小小于200B的文件名称：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;BEGIN{i=0} {if(NF&amp;gt;=5&amp;amp;&amp;amp;$5&amp;lt;200){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在调用某个域的值之前，需要先判断该域是否存在，此时用&lt;code class=&quot;highlighter-rouge&quot;&gt;NF&lt;/code&gt;值。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_if.png&quot; alt=&quot;awk if for&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;7. 调用自定义函数实现范例6中的功能：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -l | gawk &#39;function check(total,size){if(total&amp;gt;=5&amp;amp;&amp;amp;size&amp;lt;200){return 1;} return 0;} BEGIN{i=0} {if(check(NF,$5)){filename[i++]=$9;}} END{print &quot;total:&quot;i;for(j=0;j&amp;lt;i;j++){print &quot;filename:&quot;filename[j];}}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/awk_function.png&quot; alt=&quot;awk function&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 10 Mar 2016 11:31:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/10/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/10/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0-Part-Eight.html</guid>
-        
-        
-        <category>Linux</category>
         
       </item>
     
