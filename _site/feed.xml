@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 30 Mar 2016 12:11:29 +0800</pubDate>
-    <lastBuildDate>Wed, 30 Mar 2016 12:11:29 +0800</lastBuildDate>
+    <pubDate>Wed, 30 Mar 2016 22:31:13 +0800</pubDate>
+    <lastBuildDate>Wed, 30 Mar 2016 22:31:13 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -15,6 +15,8 @@
   &lt;li&gt;&lt;a href=&quot;#fileopen&quot; id=&quot;markdown-toc-fileopen&quot;&gt;fileopen命令实现&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#todo&quot; id=&quot;markdown-toc-todo&quot;&gt;todo命令实现&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#valid-phone-numbers&quot; id=&quot;markdown-toc-valid-phone-numbers&quot;&gt;Valid Phone Numbers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#transpose-file&quot; id=&quot;markdown-toc-transpose-file&quot;&gt;Transpose File&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#word-frequency&quot; id=&quot;markdown-toc-word-frequency&quot;&gt;Word Frequency&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;fileopen&quot;&gt;fileopen命令实现&lt;/h2&gt;
@@ -128,6 +130,71 @@
 &lt;/div&gt;
 
 &lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;-E&lt;/code&gt;可以少写很多转义字符，这道题还值得注意的是：&lt;a href=&quot;https://leetcode.com/discuss/29452/whats-the-difference-between-d-and-0-9-in-grep&quot;&gt;what’s the difference between \d and [0-9] in grep&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;transpose-file&quot;&gt;Transpose File&lt;/h2&gt;
+
+&lt;p&gt;来源于Leetcode题目：&lt;a href=&quot;https://leetcode.com/problems/transpose-file/&quot;&gt;Transpose File&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Given a text file file.txt, transpose its content.&lt;/p&gt;
+
+&lt;p&gt;You may assume that each row has the same number of columns and each field is separated by the ‘ ‘ character.&lt;/p&gt;
+
+&lt;p&gt;For example, if file.txt has the following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name age
+alice 21
+ryan 30
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name alice ryan
+age 21 30
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;脚本代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;awk -F &#39; &#39; &#39;BEGIN{line=0;column=1} {while(column&amp;lt;=NF){array[line,column]=$column; column++;} line++;column=1;} END{for(i=1;i&amp;lt;=NF;i++){for(j=0;j&amp;lt;line;j++){printf(&quot;%s&quot;,array[j,i]);if(j&amp;lt;line-1){printf(&quot; &quot;)}} printf(&quot;\n&quot;);}}&#39; file.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;word-frequency&quot;&gt;Word Frequency&lt;/h2&gt;
+
+&lt;p&gt;来源于Leetcode题目：&lt;a href=&quot;https://leetcode.com/problems/word-frequency/&quot;&gt;Word Frequency&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Write a bash script to calculate the frequency of each word in a text file words.txt.&lt;/p&gt;
+
+&lt;p&gt;For simplicity sake, you may assume:&lt;/p&gt;
+
+&lt;p&gt;words.txt contains only lowercase characters and space ‘ ‘ characters.
+Each word must consist of lowercase characters only.
+Words are separated by one or more whitespace characters.
+For example, assume that words.txt has the following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;the day is sunny the the
+the sunny is is
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Your script should output the following, sorted by descending frequency:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;the 4
+is 3
+sunny 2
+day 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note:
+Don’t worry about handling ties, it is guaranteed that each word’s frequency count is unique.&lt;/p&gt;
+
+&lt;p&gt;脚本代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed &#39;s/ /\n/g&#39; words.txt | sed &#39;/^$/d&#39; | sort | uniq -c | sort -nr | awk -F &#39; &#39; &#39;{print $2&quot; &quot;$1}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Wed, 30 Mar 2016 12:05:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/30/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html</link>

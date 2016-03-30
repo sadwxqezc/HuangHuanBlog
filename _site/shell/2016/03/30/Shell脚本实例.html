@@ -105,6 +105,8 @@ var _hmt = _hmt || [];
   <li><a href="#fileopen" id="markdown-toc-fileopen">fileopen命令实现</a></li>
   <li><a href="#todo" id="markdown-toc-todo">todo命令实现</a></li>
   <li><a href="#valid-phone-numbers" id="markdown-toc-valid-phone-numbers">Valid Phone Numbers</a></li>
+  <li><a href="#transpose-file" id="markdown-toc-transpose-file">Transpose File</a></li>
+  <li><a href="#word-frequency" id="markdown-toc-word-frequency">Word Frequency</a></li>
 </ul>
 
 <h2 id="fileopen">fileopen命令实现</h2>
@@ -218,6 +220,71 @@ var _hmt = _hmt || [];
 </div>
 
 <p>使用<code class="highlighter-rouge">-E</code>可以少写很多转义字符，这道题还值得注意的是：<a href="https://leetcode.com/discuss/29452/whats-the-difference-between-d-and-0-9-in-grep">what’s the difference between \d and [0-9] in grep</a></p>
+
+<h2 id="transpose-file">Transpose File</h2>
+
+<p>来源于Leetcode题目：<a href="https://leetcode.com/problems/transpose-file/">Transpose File</a></p>
+
+<p>Given a text file file.txt, transpose its content.</p>
+
+<p>You may assume that each row has the same number of columns and each field is separated by the ‘ ‘ character.</p>
+
+<p>For example, if file.txt has the following content:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>name age
+alice 21
+ryan 30
+</code></pre>
+</div>
+
+<p>Output the following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>name alice ryan
+age 21 30
+</code></pre>
+</div>
+
+<p>脚本代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>awk -F ' ' 'BEGIN{line=0;column=1} {while(column&lt;=NF){array[line,column]=$column; column++;} line++;column=1;} END{for(i=1;i&lt;=NF;i++){for(j=0;j&lt;line;j++){printf("%s",array[j,i]);if(j&lt;line-1){printf(" ")}} printf("\n");}}' file.txt
+</code></pre>
+</div>
+
+<h2 id="word-frequency">Word Frequency</h2>
+
+<p>来源于Leetcode题目：<a href="https://leetcode.com/problems/word-frequency/">Word Frequency</a></p>
+
+<p>Write a bash script to calculate the frequency of each word in a text file words.txt.</p>
+
+<p>For simplicity sake, you may assume:</p>
+
+<p>words.txt contains only lowercase characters and space ‘ ‘ characters.
+Each word must consist of lowercase characters only.
+Words are separated by one or more whitespace characters.
+For example, assume that words.txt has the following content:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>the day is sunny the the
+the sunny is is
+</code></pre>
+</div>
+
+<p>Your script should output the following, sorted by descending frequency:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>the 4
+is 3
+sunny 2
+day 1
+</code></pre>
+</div>
+
+<p>Note:
+Don’t worry about handling ties, it is guaranteed that each word’s frequency count is unique.</p>
+
+<p>脚本代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sed 's/ /\n/g' words.txt | sed '/^$/d' | sort | uniq -c | sort -nr | awk -F ' ' '{print $2" "$1}'
+</code></pre>
+</div>
 
       </article>
       <hr>
