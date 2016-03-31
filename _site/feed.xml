@@ -5,8 +5,8 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 31 Mar 2016 18:37:25 +0800</pubDate>
-    <lastBuildDate>Thu, 31 Mar 2016 18:37:25 +0800</lastBuildDate>
+    <pubDate>Thu, 31 Mar 2016 18:40:08 +0800</pubDate>
+    <lastBuildDate>Thu, 31 Mar 2016 18:40:08 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -276,10 +276,10 @@ Don’t worry about handling ties, it is guaranteed that each word’s frequency
       <item>
         <title>算法练习</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;求二叉树节点见的最大距离&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;求二叉树的最大距离&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;求二叉树节点见的最大距离&lt;/h3&gt;
+&lt;h3 id=&quot;section&quot;&gt;求二叉树的最大距离&lt;/h3&gt;
 
 &lt;p&gt;输入图例：&lt;/p&gt;
 
