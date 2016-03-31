@@ -5,14 +5,14 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 31 Mar 2016 17:58:23 +0800</pubDate>
-    <lastBuildDate>Thu, 31 Mar 2016 17:58:23 +0800</lastBuildDate>
+    <pubDate>Thu, 31 Mar 2016 18:37:25 +0800</pubDate>
+    <lastBuildDate>Thu, 31 Mar 2016 18:37:25 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
         <title>程序小事</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyllgithub&quot; id=&quot;markdown-toc-jekyllgithub&quot;&gt;1. jekyll博客github发布问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-github&quot; id=&quot;markdown-toc-jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 准备的技能树&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 今后工作状态&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#macsed&quot; id=&quot;markdown-toc-macsed&quot;&gt;4. Mac下sed问题&lt;/a&gt;&lt;/li&gt;
@@ -20,7 +20,7 @@
   &lt;li&gt;&lt;a href=&quot;#rescuetime&quot; id=&quot;markdown-toc-rescuetime&quot;&gt;6. 尝试使用rescuetime&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;jekyllgithub&quot;&gt;1. jekyll博客github发布问题&lt;/h2&gt;
+&lt;h2 id=&quot;jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;时间：2016年2月8日 晚&lt;/li&gt;
   &lt;li&gt;问题回放：在本地发布无问题的jekyll博客，在&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。&lt;/li&gt;
