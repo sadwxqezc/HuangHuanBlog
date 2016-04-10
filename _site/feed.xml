@@ -5,9 +5,202 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Apr 2016 19:57:52 +0800</pubDate>
-    <lastBuildDate>Sun, 10 Apr 2016 19:57:52 +0800</lastBuildDate>
+    <pubDate>Sun, 10 Apr 2016 20:00:37 +0800</pubDate>
+    <lastBuildDate>Sun, 10 Apr 2016 20:00:37 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>算法导论学习</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;算法导论学习&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;算法基础&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;插入排序&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;分治策略&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;最大连续子数组和&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;算法导论学习&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式，书中复杂度部分的学习暂时略过。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;主要学习资料：&lt;a href=&quot;http://open.163.com/special/opencourse/algorithms.html&quot;&gt;算法导论 第三版&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;代码地址：&lt;a href=&quot;https://github.com/sadwxqezc/Algorithms.git&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;算法基础&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;算法是解决问题的步骤&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;插入排序&lt;/h3&gt;
+
+&lt;p&gt;《算法导论》中对插入排序举了一个非常恰当的列子：大家斗地主时，边摸牌边对手中的牌排序，这实际上就是一个插入排序的过程，保证手中的牌始终是有序的。&lt;/p&gt;
+
+&lt;p&gt;将如我们要对数组&lt;code class=&quot;highlighter-rouge&quot;&gt;[1,3,7,-1,11,2,23,0,1]&lt;/code&gt;排序，要求结果为升序，用插入排序的写法如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static void myInsertSort(int[] sequence) {
+    for (int j = 1; j &amp;lt; sequence.length; j++) {
+        int i = 0;
+        int temp = sequence[j];
+        while (i &amp;lt; j &amp;amp;&amp;amp; sequence[i] &amp;lt; temp) {
+            i++;
+        }
+        for (int k = j; k &amp;gt; i; k--) {
+            sequence[k] = sequence[k - 1];
+        }
+        sequence[i] = temp;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;我的做法是从前往后找插入位置，而书中的做法是从后往前找，其写法如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static void bookInsertSort(int[] sequence) {
+    for (int j = 1; j &amp;lt; sequence.length; j++) {
+        int temp = sequence[j];
+        int i = j - 1;
+        while (i &amp;gt; 0 &amp;amp;&amp;amp; sequence[i] &amp;gt; temp) {
+            sequence[i + 1] = sequence[i];
+            i--;
+        }
+        sequence[i + 1] = temp;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;两者时间性能差别不大，书上的写法显得更加简洁。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;分治策略&lt;/h2&gt;
+
+&lt;p&gt;分治策略(Divide and Conquer)寻求的是递归的求解子问题，把规模大的问题分解成规模更小的问题去解决，在每个递归中有如下三个步骤：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;分解(Divide)：将问题划分为规模更小的子问题，问题的本质与原问题一致&lt;/li&gt;
+  &lt;li&gt;解决(Conquer)：递归的求解出子问题，如果子问题的规模已经足够小，则停止递归，求解并返回具体值&lt;/li&gt;
+  &lt;li&gt;合并(Combine)：步骤将子问题的解组合成原问题的解&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;分治的方法往往可以用递归式子来表示，能写出递归式，问题基本就已经解决了，剩下的就是敲出代码，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;Merge Sort&lt;/code&gt;的递归式如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T(n)=O(1) (n=1)
+T(n)=2T(n/2)+O(n) (n&amp;gt;1)
+求解可得T(n)=O(nlgn)，即为归并排序的时间复杂度
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;最大连续子数组和&lt;/h3&gt;
+&lt;h4&gt;问题描述：&lt;/h4&gt;
+&lt;p&gt;求数组&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;的和最大的最大连续子数组。&lt;/p&gt;
+
+&lt;h4&gt;解法一：暴力搜索&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private static void violentSearch(int[] array) {
+    int maxSum = 0;
+    for (int i = 0; i &amp;lt; array.length; i++) {
+        int temp = 0;
+        for (int j = i; j &amp;lt; array.length; j++) {
+            temp += array[j];
+            if (temp &amp;gt; maxSum) {
+                maxSum = temp;
+            }
+        }
+    }
+    System.out.println(&quot;maxSum:&quot; + maxSum);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;输出结果是43，很明显这是一种时间复杂度较高的做法。&lt;/p&gt;
+
+&lt;h4&gt;解法二：分治策略&lt;/h4&gt;
+
+&lt;p&gt;运用分治策略的话，我们可以把数组中分，然后问题变为，求左子数组的最大连续和，右子数组的最大连续和，以及跨越中分点的最大连续后，然后求出三者中的最大值。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private static int divideAndConquer(int[] array, int start, int end) {
+    if (start == end) {
+        return array[start];
+    } else {
+        int mid = (start + end) / 2;
+        int max_right = divideAndConquer(array, mid + 1, end);
+        int max_left = max_right;
+        if (start &amp;lt; mid - 1) {
+            max_left = divideAndConquer(array, start, mid - 1);
+        }
+        int max_mid = findMaxCrossingMid(array, start, mid, end);
+        if (max_left &amp;lt; max_right) {
+            max_left = max_right;
+        }
+        if (max_left &amp;lt; max_mid) {
+            max_left = max_mid;
+        }
+        return max_left;
+    }
+}
+
+private static int findMaxCrossingMid(int[] array, int start, int mid, int end) {
+    int result = array[mid];
+    int left = findMaxBackward(array, mid - 1, start);
+    int right = findMaxForward(array, mid + 1, end);
+    if (left &amp;gt; 0) {
+        result += left;
+    }
+    if (right &amp;gt; 0) {
+        result += right;
+    }
+    return result;
+}
+
+private static int findMaxForward(int[] array, int start, int end) {
+    if (start &amp;gt; end) {
+        return 0;
+    }
+    int sum = array[start];
+    int max = array[start];
+    for (int i = start + 1; i &amp;lt;= end; i++) {
+        sum += array[i];
+        if (sum &amp;gt; max) {
+            max = sum;
+        }
+    }
+    return max;
+}
+
+private static int findMaxBackward(int[] array, int start, int end) {
+    if (start &amp;lt; end) {
+        return 0;
+    }
+    int sum = array[start];
+    int max = array[start];
+    for (int i = start - 1; i &amp;gt;= end; i--) {
+        sum += array[i];
+        if (sum &amp;gt; max) {
+            max = sum;
+        }
+    }
+    return max;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;结果为43，与书上不同，这里我专门写了&lt;code class=&quot;highlighter-rouge&quot;&gt;findMaxForward()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;findMaxBackWard()&lt;/code&gt;两个小方法，虽然导致代码较长，但我个人认为这样的写法更加清晰，出了问题好发现。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 10 Apr 2016 20:00:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/04/10/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/04/10/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</guid>
+        
+        
+        <category>Algorithm</category>
+        
+      </item>
     
       <item>
         <title>读书笔记-思</title>
@@ -509,199 +702,6 @@ static int maxDepth(BinaryTreeNode root) {
         
         
         <category>Framework</category>
-        
-      </item>
-    
-      <item>
-        <title>算法导论学习</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;算法导论学习&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;算法基础&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;插入排序&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;分治策略&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;最大连续子数组和&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;算法导论学习&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式，书中复杂度部分的学习暂时略过。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;主要学习资料：&lt;a href=&quot;http://open.163.com/special/opencourse/algorithms.html&quot;&gt;算法导论 第三版&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;代码地址：&lt;a href=&quot;https://github.com/sadwxqezc/Algorithms.git&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;算法基础&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;算法是解决问题的步骤&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;section-2&quot;&gt;插入排序&lt;/h3&gt;
-
-&lt;p&gt;《算法导论》中对插入排序举了一个非常恰当的列子：大家斗地主时，边摸牌边对手中的牌排序，这实际上就是一个插入排序的过程，保证手中的牌始终是有序的。&lt;/p&gt;
-
-&lt;p&gt;将如我们要对数组&lt;code class=&quot;highlighter-rouge&quot;&gt;[1,3,7,-1,11,2,23,0,1]&lt;/code&gt;排序，要求结果为升序，用插入排序的写法如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static void myInsertSort(int[] sequence) {
-    for (int j = 1; j &amp;lt; sequence.length; j++) {
-        int i = 0;
-        int temp = sequence[j];
-        while (i &amp;lt; j &amp;amp;&amp;amp; sequence[i] &amp;lt; temp) {
-            i++;
-        }
-        for (int k = j; k &amp;gt; i; k--) {
-            sequence[k] = sequence[k - 1];
-        }
-        sequence[i] = temp;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;我的做法是从前往后找插入位置，而书中的做法是从后往前找，其写法如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static void bookInsertSort(int[] sequence) {
-    for (int j = 1; j &amp;lt; sequence.length; j++) {
-        int temp = sequence[j];
-        int i = j - 1;
-        while (i &amp;gt; 0 &amp;amp;&amp;amp; sequence[i] &amp;gt; temp) {
-            sequence[i + 1] = sequence[i];
-            i--;
-        }
-        sequence[i + 1] = temp;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;两者时间性能差别不大，书上的写法显得更加简洁。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;分治策略&lt;/h2&gt;
-
-&lt;p&gt;分治策略(Divide and Conquer)寻求的是递归的求解子问题，把规模大的问题分解成规模更小的问题去解决，在每个递归中有如下三个步骤：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;分解(Divide)：将问题划分为规模更小的子问题，问题的本质与原问题一致&lt;/li&gt;
-  &lt;li&gt;解决(Conquer)：递归的求解出子问题，如果子问题的规模已经足够小，则停止递归，求解并返回具体值&lt;/li&gt;
-  &lt;li&gt;合并(Combine)：步骤将子问题的解组合成原问题的解&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;分治的方法往往可以用递归式子来表示，能写出递归式，问题基本就已经解决了，剩下的就是敲出代码，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;Merge Sort&lt;/code&gt;的递归式如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T(n)=O(1) (n=1)
-T(n)=2T(n/2)+O(n) (n&amp;gt;1)
-求解可得T(n)=O(nlgn)，即为归并排序的时间复杂度
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;最大连续子数组和&lt;/h3&gt;
-&lt;h4&gt;问题描述：&lt;/h4&gt;
-&lt;p&gt;求数组&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;的和最大的最大连续子数组。&lt;/p&gt;
-
-&lt;h4&gt;解法一：暴力搜索&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private static void violentSearch(int[] array) {
-    int maxSum = 0;
-    for (int i = 0; i &amp;lt; array.length; i++) {
-        int temp = 0;
-        for (int j = i; j &amp;lt; array.length; j++) {
-            temp += array[j];
-            if (temp &amp;gt; maxSum) {
-                maxSum = temp;
-            }
-        }
-    }
-    System.out.println(&quot;maxSum:&quot; + maxSum);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;输出结果是43，很明显这是一种时间复杂度较高的做法。&lt;/p&gt;
-
-&lt;h4&gt;解法二：分治策略&lt;/h4&gt;
-
-&lt;p&gt;运用分治策略的话，我们可以把数组中分，然后问题变为，求左子数组的最大连续和，右子数组的最大连续和，以及跨越中分点的最大连续后，然后求出三者中的最大值。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private static int divideAndConquer(int[] array, int start, int end) {
-    if (start == end) {
-        return array[start];
-    } else {
-        int mid = (start + end) / 2;
-        int max_right = divideAndConquer(array, mid + 1, end);
-        int max_left = max_right;
-        if (start &amp;lt; mid - 1) {
-            max_left = divideAndConquer(array, start, mid - 1);
-        }
-        int max_mid = findMaxCrossingMid(array, start, mid, end);
-        if (max_left &amp;lt; max_right) {
-            max_left = max_right;
-        }
-        if (max_left &amp;lt; max_mid) {
-            max_left = max_mid;
-        }
-        return max_left;
-    }
-}
-
-private static int findMaxCrossingMid(int[] array, int start, int mid, int end) {
-    int result = array[mid];
-    int left = findMaxBackward(array, mid - 1, start);
-    int right = findMaxForward(array, mid + 1, end);
-    if (left &amp;gt; 0) {
-        result += left;
-    }
-    if (right &amp;gt; 0) {
-        result += right;
-    }
-    return result;
-}
-
-private static int findMaxForward(int[] array, int start, int end) {
-    if (start &amp;gt; end) {
-        return 0;
-    }
-    int sum = array[start];
-    int max = array[start];
-    for (int i = start + 1; i &amp;lt;= end; i++) {
-        sum += array[i];
-        if (sum &amp;gt; max) {
-            max = sum;
-        }
-    }
-    return max;
-}
-
-private static int findMaxBackward(int[] array, int start, int end) {
-    if (start &amp;lt; end) {
-        return 0;
-    }
-    int sum = array[start];
-    int max = array[start];
-    for (int i = start - 1; i &amp;gt;= end; i--) {
-        sum += array[i];
-        if (sum &amp;gt; max) {
-            max = sum;
-        }
-    }
-    return max;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;结果为43，与书上不同，这里我专门写了&lt;code class=&quot;highlighter-rouge&quot;&gt;findMaxForward()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;findMaxBackWard()&lt;/code&gt;两个小方法，虽然导致代码较长，但我个人认为这样的写法更加清晰，出了问题好发现。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 29 Mar 2016 17:19:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/29/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/algorithm/2016/03/29/%E7%AE%97%E6%B3%95%E4%B9%8B%E9%81%93.html</guid>
-        
-        
-        <category>Algorithm</category>
         
       </item>
     
