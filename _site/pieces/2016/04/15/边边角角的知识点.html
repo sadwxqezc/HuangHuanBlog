@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Cookie and Session</title>
+	<title>边边角角的知识点</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/backend/2016/02/29/Cookies-And-Session.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2016/04/15/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -97,170 +97,72 @@ var _hmt = _hmt || [];
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>Cookie and Session</h1>
-        <p>Feb 29, 2016</p>
+        <h1>边边角角的知识点</h1>
+        <p>Apr 15, 2016</p>
       </header>
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#cookie" id="markdown-toc-cookie">Cookie</a>    <ul>
-      <li><a href="#cookie-" id="markdown-toc-cookie-">什么是Cookie ？</a></li>
-      <li><a href="#cookie-1" id="markdown-toc-cookie-1">Cookie的工作原理</a></li>
-      <li><a href="#cookie-2" id="markdown-toc-cookie-2">Cookie的类型与内容</a></li>
-      <li><a href="#cookie-3" id="markdown-toc-cookie-3">Cookie示例</a></li>
-    </ul>
-  </li>
-  <li><a href="#session" id="markdown-toc-session">Session</a>    <ul>
-      <li><a href="#session-" id="markdown-toc-session-">什么是Session ？</a></li>
-      <li><a href="#session-1" id="markdown-toc-session-1">Session的删除时间</a></li>
-      <li><a href="#session-2" id="markdown-toc-session-2">Session示例</a></li>
-    </ul>
-  </li>
-  <li><a href="#cookiesession" id="markdown-toc-cookiesession">Cookie与Session的区别</a></li>
+  <li><a href="#setuid" id="markdown-toc-setuid">1. setuid权限</a></li>
+  <li><a href="#section" id="markdown-toc-section">2. 执行权限</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">3. 标准输出与错误输出</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">4. 重定向</a></li>
+  <li><a href="#java" id="markdown-toc-java">5. Java方法签名</a></li>
+  <li><a href="#flash-cookie" id="markdown-toc-flash-cookie">6. flash cookie</a></li>
+  <li><a href="#su--su" id="markdown-toc-su--su">7. su -与su的区别</a></li>
 </ul>
 
-<h2 id="cookie">Cookie</h2>
+<h2 id="setuid">1. setuid权限</h2>
 
-<h3 id="cookie-">什么是Cookie ？</h3>
+<p>今天调了一下Iterm2中<code class="highlighter-rouge">ls</code>的配色，发现在<code class="highlighter-rouge">\bin</code>目录下有如图的显示效果：</p>
 
-<p>由于<code class="highlighter-rouge">http</code>是无状态协议，它不会对之前发生过的请求和响应的状态进行管理。无状态协议虽然资源消耗少，但由于其无法管理如登陆状态等信息，给服务器管理客户端的状态带来了难题。</p>
+<p><img src="/HuangHuanBlog/pics/setuid_1.png" alt="setuid" /></p>
 
-<p><img src="/HuangHuanBlog/pics/http.png" alt="图解Http_状态" /></p>
+<p>ps和rcp的执行文件颜色和其它不同，从<code class="highlighter-rouge">ls -lha</code>的结果来看它们两个与其它文件并没有什么不同，于是我再用<code class="highlighter-rouge">file</code>命令查看文件：</p>
 
-<p>为了解决该问题，Cookie技术被引入，通过在请求和响应报文中写入Cookie信息来控制客户端的状态。</p>
+<p><img src="/HuangHuanBlog/pics/setuid_2.png" alt="setuid_2" /></p>
 
-<h3 id="cookie-1">Cookie的工作原理</h3>
+<p>此时发现ps和rcp的前面多了个<code class="highlighter-rouge">setuid</code>的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了<code class="highlighter-rouge">setuid</code>外还有<code class="highlighter-rouge">setgid</code>和<code class="highlighter-rouge">stick bit</code>。</p>
 
-<p>在服务端发送的响应报文内会有一个<code class="highlighter-rouge">Set-Cookie</code>字段信息，通知客户端保存Cookie。当客户端在此往同一服务器发送请求时，客户端会自动在请求报文中加入Cookie值，其选择Cookie的依据是当前的url地址。</p>
+<h2 id="section">2. 执行权限</h2>
 
-<p><img src="/HuangHuanBlog/pics/http_process.png" alt="Cookie工作流程" /></p>
+<p><img src="/HuangHuanBlog/pics/execute.png" alt="execute" /></p>
 
-<h3 id="cookie-2">Cookie的类型与内容</h3>
+<p>如上图所示，作为execute.sh的owner，我拥有<code class="highlighter-rouge">rw</code>读写权限，但如果想通过<code class="highlighter-rouge">./execute.sh</code>直接执行，却被告知权限不够，而用<code class="highlighter-rouge">sh execute.sh</code>却能够执行。后者实际上是将脚本交由<code class="highlighter-rouge">/bin/sh</code>执行，仅仅需要读权限即可。那么如果我只有<code class="highlighter-rouge">execute.sh</code>的<code class="highlighter-rouge">x</code>执行权限，是否能够直接执行了？</p>
 
-<p>Cookie中内容以Key-Value的形式存储，存在两种类型的Cookie:</p>
+<p><img src="/HuangHuanBlog/pics/execute_x.png" alt="execute_x" /></p>
 
-<ul>
-  <li><code class="highlighter-rouge">session cookie</code>（会话Cookie）：未设置过期时间的cookie，一般被保存在内存中，cookie的生命周期为浏览器会话期间</li>
-  <li><code class="highlighter-rouge">persistent cookie</code>（持久Cookie）：设置了过期时间的cookie，浏览器会将其保存在硬盘上，直至其过期失效</li>
-</ul>
+<p>如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行<code class="highlighter-rouge">execute.sh</code>，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要<code class="highlighter-rouge">\bin\sh</code>程序去读取并解释执行，所以同时亦需要读权限。</p>
 
-<p>PS:图片来自《图解Http》,书中图画的萌，我就不重新画了</p>
+<h2 id="section-1">3. 标准输出与错误输出</h2>
 
-<h3 id="cookie-3">Cookie示例</h3>
+<p>在Shell脚本中有时能看到 <code class="highlighter-rouge">&gt;/dev/null 2&gt;&amp;1</code>这样的语句，在语句中<code class="highlighter-rouge">&gt;/dev/null</code>等同于<code class="highlighter-rouge">1&gt;/dev/null</code>，其中<code class="highlighter-rouge">1</code>表示<code class="highlighter-rouge">stdout</code>标准输出，而<code class="highlighter-rouge">/dev/null</code>表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，<code class="highlighter-rouge">1&gt;/dev/null</code>则表示不输出任何信息到终端，也不定向到系统文件中。而<code class="highlighter-rouge">2</code>表示标准错误输出，而<code class="highlighter-rouge">&amp;</code>表示等同于的意思，<code class="highlighter-rouge">2&gt;&amp;1</code>则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。</p>
 
-<p>参考：<a href="http://www.importnew.com/15141.html">Spring MVC</a></p>
+<h2 id="section-2">4. 重定向</h2>
+<p>在使用<code class="highlighter-rouge">&gt;</code>重定向时，会先判断右边文件是否存在，存在则先删除，不存在则创建。因此，<code class="highlighter-rouge">cat test &gt; test</code>这样的操作，结果永远为空。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.springapp.mvc.controller;
+<h2 id="java">5. Java方法签名</h2>
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+<p>方法签名：返回值内行＋方法名＋参数列表，参数列表受到参数的顺序，类型，数量的影响，<code class="highlighter-rouge">public void test(int a,long b)</code>和<code class="highlighter-rouge">public void test(long a,int b)</code>签名不同。</p>
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+<h2 id="flash-cookie">6. flash cookie</h2>
 
-@Controller
-@RequestMapping(value = "/testCookie")
-public class HelloController {
+<p>flash cookie用于记录用户在浏览flash网页时保留信息，它比http cookie的容量更大，没有默认过期时间且难以删除。flash cookie容易被用来窃取普通用户的信息，且难以预防，这点需要注意。</p>
 
-	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
-	@ResponseBody
-	public String testCookie(@CookieValue(value = "testCookie", defaultValue = "defaultCookieValue") String cookieValue, HttpServletResponse httpServletResponse) {
-	/** 输出cookie内容 **/
-	String result = "";
-	/** 创建Cookie **/
-	Cookie cookie = new Cookie("testCookie", "CookieValue");
-	httpServletResponse.addCookie(cookie);
-	result += "Key:testCookie" + "Value:" + cookieValue + "n";
-	return result;
-	}
-}
-</code></pre>
-</div>
+<p>ps：第三方如何盗取用户cookies？ 可以通过在广告位中植入代码，获取原网站给用户种下的cookies</p>
 
-<p>需要<code class="highlighter-rouge">@ResponseBody</code>把<code class="highlighter-rouge">return</code>的内容作为请求返回体，不然会跳转成<code class="highlighter-rouge">return</code>内容<code class="highlighter-rouge">.jsp</code>之类的。</p>
+<h2 id="su--su">7. su -与su的区别</h2>
 
-<p>第一次访问截图：</p>
-
-<p><img src="/HuangHuanBlog/pics/cookie_init.png" alt="cookie_init" /></p>
-
-<p>第二次访问截图：</p>
-
-<p><img src="/HuangHuanBlog/pics/cookie_after.png" alt="cookie_after" /></p>
-
-<h2 id="session">Session</h2>
-
-<h3 id="session-">什么是Session ？</h3>
-
-<p>本文所讲的为HTTP Session，在Java中该Session对象用<code class="highlighter-rouge">javax.servlet.http.HttpSession</code>表示。Session代表服务器和浏览器的一次会话过程，当如JSP页面中未显示的禁止session时，在浏览器第一次请求该JSP时，服务器会为其自动创建一个session，并分配给其一个sessionID，返回给客户端。当客户端再次请求时，会自动在header中加上：<code class="highlighter-rouge">Cookie:JSESSIONID=分配到的sessionID</code>，服务器会根据该ID在内存中找到之前创建的session对象（与Cookie不同，Session是保存在服务端）。对于同一个浏览器窗口中的多个标签，同时访问同一应用的不同页面，其session是一样的，但不同的浏览器窗口，其session不一样。</p>
-
-<h3 id="session-1">Session的删除时间</h3>
-<ul>
-  <li>Session超时</li>
-  <li>程序显示的调用<code class="highlighter-rouge">HttpSession.invalidate()</code></li>
-  <li>服务器关闭或停止</li>
-</ul>
-
-<h3 id="session-2">Session示例</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.springapp.mvc.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpSession;
-
-/**
- * Created by huanghuan on 16/3/1.
- */
-
-@Controller
-@RequestMapping(value = "/testSession")
-public class TestSession {
-
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public String testSession(HttpSession httpSession) {
-        /** 输出结果 **/
-        String result = "SessionID:";
-        if (httpSession != null) {
-            result += httpSession.getId();
-            /** 参数设置 **/
-            Object value = httpSession.getAttribute("key");
-            if (value == null) {
-                httpSession.setAttribute("key", "value");
-            } else {
-                result += " " + httpSession.getAttribute("key").toString();
-            }
-        }
-        return result;
-    }
-}
-</code></pre>
-</div>
-
-<p>第一次访问截图：</p>
-
-<p><img src="/HuangHuanBlog/pics/testSession_init.png" alt="testSession_init" /></p>
-
-<p>第二次访问截图，包括在浏览器开两个窗口的情况：</p>
-
-<p><img src="/HuangHuanBlog/pics/testSession_after.png" alt="testSession_after" /></p>
-
-<h2 id="cookiesession">Cookie与Session的区别</h2>
-
-<p>主要在于Cookie保存在客户端而Session保存在服务端，单个Cookie保存的数据不能超过4k，同时很多浏览器限制一个站点的总Cookie数为20，而服务端的Session会占用服务器内存，影响性能。</p>
+<p><code class="highlighter-rouge">su - USERNAME</code>切换用户后，工作环境同时也切换<br />
+<code class="highlighter-rouge">su USERNAME</code> 切换后不改变原用户的工作目录和环境变量目录</p>
 
       </article>
       <hr>
       
+      <a href="/HuangHuanBlog/read/2016/04/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html">上一篇博客：读书笔记-学</a><br>
       
-      <a href="/HuangHuanBlog/shell/2016/03/07/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">下一篇博客：Shell脚本学习 初阶</a>
+      
+      <a href="/HuangHuanBlog/linux/2016/04/17/Linux%E5%B7%A5%E4%BD%9C.html">下一篇博客：Mac高效开发小技能</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -269,7 +171,7 @@ public class TestSession {
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/backend/2016/02/29/Cookies-And-Session" data-title="Cookie and Session" data-url="sadwxqezc.github.io/backend/2016/02/29/Cookies-And-Session.html"></div>
+      <div class="ds-thread" data-thread-key="/pieces/2016/04/15/边边角角的知识点" data-title="边边角角的知识点" data-url="sadwxqezc.github.io/pieces/2016/04/15/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html"></div>
       
       <!-- 多说评论框 end -->
     </div>

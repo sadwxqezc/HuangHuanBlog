@@ -5,9 +5,140 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Apr 2016 20:21:41 +0800</pubDate>
-    <lastBuildDate>Sun, 10 Apr 2016 20:21:41 +0800</lastBuildDate>
+    <pubDate>Sun, 17 Apr 2016 22:49:56 +0800</pubDate>
+    <lastBuildDate>Sun, 17 Apr 2016 22:49:56 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Mac高效开发小技能</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#pushddir&quot; id=&quot;markdown-toc-pushddir&quot;&gt;1. pushd和dir命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ctrlr&quot; id=&quot;markdown-toc-ctrlr&quot;&gt;2. CTRL+R&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#iterm2&quot; id=&quot;markdown-toc-iterm2&quot;&gt;3. Iterm2分屏&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#keycue&quot; id=&quot;markdown-toc-keycue&quot;&gt;4. KeyCue&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#spectacle&quot; id=&quot;markdown-toc-spectacle&quot;&gt;5. Spectacle&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;系统是：MacOS&lt;br /&gt;
+本文主要记录一些我在工作中掌握的能提高效率的小技能。&lt;/p&gt;
+
+&lt;h3 id=&quot;pushddir&quot;&gt;1. pushd和dir命令&lt;/h3&gt;
+
+&lt;p&gt;在Mac或者Linux环境下，切换目录是个非常麻烦的事情，为了提高这个过程的效率，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;pushd&lt;/code&gt;命令。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;pushd与dir：&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/pushd.png&quot; alt=&quot;pushd&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图所示，&lt;code class=&quot;highlighter-rouge&quot;&gt;pushd&lt;/code&gt;命令能够在&lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt;到某个目录下的同时，将该目录保存。保存的目录可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;dirs -v&lt;/code&gt;查看，下次要切换到一个目录的时候，可以直接&lt;code class=&quot;highlighter-rouge&quot;&gt;pushd +&amp;lt;对应编号&amp;gt;&lt;/code&gt;，非常的方便。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;cd -命令&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;相对更简单点的是&lt;code class=&quot;highlighter-rouge&quot;&gt;cd -&lt;/code&gt;命令，它能直接返回之前所在的目录，其效果如下图所示。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cd.png&quot; alt=&quot;cd&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;ctrlr&quot;&gt;2. CTRL+R&lt;/h3&gt;
+
+&lt;p&gt;这个真是超级实用，可以搜索已经使用过的命令，如果没找到，再&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+R&lt;/code&gt;到下一个匹配的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ctrlr.png&quot; alt=&quot;ctrl+r&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;iterm2&quot;&gt;3. Iterm2分屏&lt;/h3&gt;
+
+&lt;p&gt;之前用过&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;的切分屏幕，如果是在一个Linux环境下，还比较实用（但公司的机器装&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;之类的比较麻烦，&lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;之类的有时不让用，而且也不能每台机器都去装）。所以其实不如用Iterm2的分屏，&lt;code class=&quot;highlighter-rouge&quot;&gt;Command+D&lt;/code&gt;是垂直分割，&lt;code class=&quot;highlighter-rouge&quot;&gt;Command+Shift+D&lt;/code&gt;是水平分割，然后多连几次。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cmdd.png&quot; alt=&quot;cmd+d&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;keycue&quot;&gt;4. KeyCue&lt;/h3&gt;
+
+&lt;p&gt;KeyCue可以用来显示当前软件的快捷键，长按&lt;code class=&quot;highlighter-rouge&quot;&gt;Command&lt;/code&gt;健即可。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/keycue.png&quot; alt=&quot;keycue&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;spectacle&quot;&gt;5. Spectacle&lt;/h3&gt;
+
+&lt;p&gt;相信工作的时候程序员都不只一个屏幕，我目前就是一台Mac接两台显示器，显示器多了把软件拖来拖去很不方便，还要调显示的大小更浪费时间，Spectacle通过几个快捷键就能帮我们解决这个问题。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/spectacle.png&quot; alt=&quot;spectacle&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;比如&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+option+command+&amp;lt;方向键&amp;gt;&lt;/code&gt;就能把当前软件丢到另一个屏幕上，然后再用快捷键调显示比例，两下搞定。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Apr 2016 22:14:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/04/17/Linux%E5%B7%A5%E4%BD%9C.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/04/17/Linux%E5%B7%A5%E4%BD%9C.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>边边角角的知识点</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#setuid&quot; id=&quot;markdown-toc-setuid&quot;&gt;1. setuid权限&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 执行权限&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 标准输出与错误输出&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;4. 重定向&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#java&quot; id=&quot;markdown-toc-java&quot;&gt;5. Java方法签名&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#flash-cookie&quot; id=&quot;markdown-toc-flash-cookie&quot;&gt;6. flash cookie&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#su--su&quot; id=&quot;markdown-toc-su--su&quot;&gt;7. su -与su的区别&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;setuid&quot;&gt;1. setuid权限&lt;/h2&gt;
+
+&lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ps和rcp的执行文件颜色和其它不同，从&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha&lt;/code&gt;的结果来看它们两个与其它文件并没有什么不同，于是我再用&lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt;命令查看文件：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2. 执行权限&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/execute.png&quot; alt=&quot;execute&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图所示，作为execute.sh的owner，我拥有&lt;code class=&quot;highlighter-rouge&quot;&gt;rw&lt;/code&gt;读写权限，但如果想通过&lt;code class=&quot;highlighter-rouge&quot;&gt;./execute.sh&lt;/code&gt;直接执行，却被告知权限不够，而用&lt;code class=&quot;highlighter-rouge&quot;&gt;sh execute.sh&lt;/code&gt;却能够执行。后者实际上是将脚本交由&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt;执行，仅仅需要读权限即可。那么如果我只有&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;执行权限，是否能够直接执行了？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/execute_x.png&quot; alt=&quot;execute_x&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin\sh&lt;/code&gt;程序去读取并解释执行，所以同时亦需要读权限。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;3. 标准输出与错误输出&lt;/h2&gt;
+
+&lt;p&gt;在Shell脚本中有时能看到 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt;这样的语句，在语句中&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null&lt;/code&gt;等同于&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;表示&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;标准输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/null&lt;/code&gt;表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;则表示不输出任何信息到终端，也不定向到系统文件中。而&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;表示标准错误输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;表示等同于的意思，&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&amp;amp;1&lt;/code&gt;则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;4. 重定向&lt;/h2&gt;
+&lt;p&gt;在使用&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;重定向时，会先判断右边文件是否存在，存在则先删除，不存在则创建。因此，&lt;code class=&quot;highlighter-rouge&quot;&gt;cat test &amp;gt; test&lt;/code&gt;这样的操作，结果永远为空。&lt;/p&gt;
+
+&lt;h2 id=&quot;java&quot;&gt;5. Java方法签名&lt;/h2&gt;
+
+&lt;p&gt;方法签名：返回值内行＋方法名＋参数列表，参数列表受到参数的顺序，类型，数量的影响，&lt;code class=&quot;highlighter-rouge&quot;&gt;public void test(int a,long b)&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;public void test(long a,int b)&lt;/code&gt;签名不同。&lt;/p&gt;
+
+&lt;h2 id=&quot;flash-cookie&quot;&gt;6. flash cookie&lt;/h2&gt;
+
+&lt;p&gt;flash cookie用于记录用户在浏览flash网页时保留信息，它比http cookie的容量更大，没有默认过期时间且难以删除。flash cookie容易被用来窃取普通用户的信息，且难以预防，这点需要注意。&lt;/p&gt;
+
+&lt;p&gt;ps：第三方如何盗取用户cookies？ 可以通过在广告位中植入代码，获取原网站给用户种下的cookies&lt;/p&gt;
+
+&lt;h2 id=&quot;su--su&quot;&gt;7. su -与su的区别&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;su - USERNAME&lt;/code&gt;切换用户后，工作环境同时也切换&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;su USERNAME&lt;/code&gt; 切换后不改变原用户的工作目录和环境变量目录&lt;/p&gt;
+</description>
+        <pubDate>Fri, 15 Apr 2016 15:41:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2016/04/15/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2016/04/15/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
+        
+        
+        <category>Pieces</category>
+        
+      </item>
     
       <item>
         <title>读书笔记-学</title>
@@ -1072,577 +1203,6 @@ screen -r yourname //返回该screen
         <pubDate>Mon, 21 Mar 2016 11:47:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/21/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-II.html</link>
         <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/21/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-II.html</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>胡思乱想</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#ipmac&quot; id=&quot;markdown-toc-ipmac&quot;&gt;1. 为什么同时需要IP和MAC？&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;ipmac&quot;&gt;1. 为什么同时需要IP和MAC？&lt;/h3&gt;
-
-&lt;p&gt;在看《图解HTTP》这本书时，突然想到这个问题，上知乎一查，正好也有这个问题：&lt;a href=&quot;https://www.zhihu.com/question/21546408&quot;&gt;有了IP地址，为什么还要用MAC地址？&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;首先在知乎的回答中，我比较认可的说法是同时使用IP和MAC地址，能够起到很好的分层效果。依赖于数据链路层的MAC地址，可在其上构建各种协议，而不仅限于IP。&lt;/p&gt;
-
-&lt;p&gt;那么问题来了，在现有的网络结构里，如果我们就用IP或MAC来构建整个网络，给每个设备分配一个固定的ID，是否会简单很多？实际上不是这样，MAC就像人的身份证，而IP就像人的住址，不管人跑哪里去，都可以通过住址快速的找到他。而假如只有身份证信息，而不知道住址，要找到一个人相当于大海捞针。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 16 Mar 2016 16:04:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/confused/2016/03/16/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/confused/2016/03/16/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3.html</guid>
-        
-        
-        <category>Confused</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux命令大全 Part One</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#grep&quot; id=&quot;markdown-toc-grep&quot;&gt;1. grep命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ls&quot; id=&quot;markdown-toc-ls&quot;&gt;2. ls命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#find&quot; id=&quot;markdown-toc-find&quot;&gt;3. find命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#wc&quot; id=&quot;markdown-toc-wc&quot;&gt;4. wc命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#cat&quot; id=&quot;markdown-toc-cat&quot;&gt;5. cat命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tail&quot; id=&quot;markdown-toc-tail&quot;&gt;6. tail命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#head&quot; id=&quot;markdown-toc-head&quot;&gt;7. head命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#du&quot; id=&quot;markdown-toc-du&quot;&gt;8. du命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#whichwhereis&quot; id=&quot;markdown-toc-whichwhereis&quot;&gt;9. which和whereis&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#sort&quot; id=&quot;markdown-toc-sort&quot;&gt;10. sort命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#netstat&quot; id=&quot;markdown-toc-netstat&quot;&gt;11. netstat命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#more&quot; id=&quot;markdown-toc-more&quot;&gt;12. more命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#less&quot; id=&quot;markdown-toc-less&quot;&gt;13. less命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ps&quot; id=&quot;markdown-toc-ps&quot;&gt;14. ps命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tmuxmac&quot; id=&quot;markdown-toc-tmuxmac&quot;&gt;15. tmux命令(Mac)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ackmac&quot; id=&quot;markdown-toc-ackmac&quot;&gt;16. ack命令(Mac)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;命令后带(Mac)标记的，表示该命令在Mac OSX下测试，其它的在Debian下测试。&lt;/p&gt;
-
-&lt;h3 id=&quot;grep&quot;&gt;1. grep命令&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;文本查找命令, 能够使用正则表达式的方式搜索文本，其搜索对象可以是单个或则多个文件&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 grep [option] [regex] [path]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-c 只输出匹配行的数目&lt;br /&gt;
--n 显示匹配行的行号&lt;br /&gt;
--v 显示不包含匹配文本的行&lt;br /&gt;
--i 不区分大小写 (grep是大小写敏感的)&lt;br /&gt;
--R 文件夹下递归搜索&lt;br /&gt;
--l 只显示匹配的文件名  &lt;br /&gt;
--H 显示文件名&lt;br /&gt;
--A NUM(after)显示匹配的后几行&lt;br /&gt;
--B NUM(before)显示匹配的前几行&lt;br /&gt;
--C NUM显示匹配的前后几行  &lt;br /&gt;
-–color 标出颜色&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：man grep | grep --color=always -n search
-带颜色的文本搜索，并同时输出行号
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_color_n.png&quot; alt=&quot;带颜色的搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：man grep | grep --color=always -n &#39;\&amp;lt;search\&amp;gt;&#39;
-正则表达式模式的搜索
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_color_n_regex.png&quot; alt=&quot;正则表达式的搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：grep -nR --color=always  a ./*.yml
-在文件夹下的yml文件中搜索，并标注行号和对应行
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_dir.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：grep -lR a ./*.yml
-在文件夹下的yml文件中搜索，但只输出匹配的文件名
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/grep_dir_only.png&quot; alt=&quot;文件夹搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;ls&quot;&gt;2. ls命令&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;ls是命令行中用的最多的命令之一了，用于显示目录下的文件&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 ls [option]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-a 列出所有文件，包括’.’开头的隐藏文件&lt;br /&gt;
--h 使打印结果易于使用者查看(human readable)&lt;br /&gt;
--l 列出文件的详细信息：创建者，创建时间，读写权限等&lt;br /&gt;
--s 显示文件大小&lt;br /&gt;
--t 按时间进行文件的排序&lt;br /&gt;
--S 以大小进行排序&lt;br /&gt;
--r 当前条件逆序&lt;br /&gt;
--L 显示文件链接名&lt;br /&gt;
--R 将目录中所有文件都递归显示出来&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：ls -lharts
-输出文件信息，并时间从旧到新排列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ls_r_t.png&quot; alt=&quot;详细信息&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：ls -R
-递归输出目录下的所有文件
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ls_R.png&quot; alt=&quot;ls递归&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;find&quot;&gt;3. find命令&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;文件查找命令,find命令将递归的搜索目录下符合要求的所有文件&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 find [path] [option] [expression]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-name 查找名为filename的文件&lt;br /&gt;
--perm 查找符合执行权限
--user 按照文件的所属主查找&lt;br /&gt;
--mtime -n +n 按照文件的更改时间查找文件，n代表天数&lt;br /&gt;
--ctime -n +n 按照创建时间查找&lt;br /&gt;
--newer f1 !f2 查更改时间在f1和f2之间的文件    &lt;br /&gt;
--size n 查找长度为n块的文件，一块为512 bytes&lt;br /&gt;
--depth 使得查找在进入子目录前先行查找完本目录&lt;br /&gt;
--prune 查找时忽略某个目录
--type 按文件类型查找，b为块设备，d为目录，f为普通文档&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：find ~ -name &#39;*.yml&#39; | grep &#39;\.yml&#39; --color=always
-在用户目录下查找文件名后缀为.yml的文件
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_name.png&quot; alt=&quot;按照文件名查找&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：find . -perm 644
-查找当前目录下权限为644的所有文件
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_perm.png&quot; alt=&quot;按照权限的搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：find . -path &#39;./_site*&#39; -a -prune -o -name &#39;feed.xml&#39; -print
-整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
--a -o实际为逻辑与和逻辑或，当路径匹配时将执行-prune，那么将不会查找匹配路径中的文件，
-当路径不匹配时则不执行-prune，-o后的语句始终执行。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_prune.png&quot; alt=&quot;忽略一些文件夹搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：find . -maxdepth 2 -size 3
-控制查找的深度
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/find_depth.png&quot; alt=&quot;限制搜索深度&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;补充：Linux的权限模式为三元组“owner”，“group”，“other”,权限对应表如下&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;rwx&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;-wx&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;rw-&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;-w-&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r-x&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;--x&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r--&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;---&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;wc&quot;&gt;4. wc命令&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;用于统计输入中的字节数，字数，行数并输出&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 wc [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-c 统计字节数&lt;br /&gt;
--l 统计行数&lt;br /&gt;
--m 统计字符数&lt;br /&gt;
--w 统计字数，一个字为由空白，跳格或换行字符分隔的字符串&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：wc -l _config.yml
-统计行数，-c实际上可以查看文件的大小
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/wc.png&quot; alt=&quot;统计&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;cat&quot;&gt;5. cat命令&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;连结命令(Concatenation)，连结多个文本，或者以标准输出形式打印文件的内容&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;h4&gt;&lt;b&gt;基本格式 cat [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-    &lt;p&gt;-n 队输出的所有行编号&lt;br /&gt;
--b 与-n类似，但空行不编号&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：cat -b testColumn(cat -n testColumn)
-显示文件内容
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cat_b_n.png&quot; alt=&quot;显示文件内容到控制台&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：cat testColumn testCat
-同时显示两个文件内容
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cat_mul.png&quot; alt=&quot;显示两个文件&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：cat testColumn testCat&amp;gt;merge
-将两个内容连结并输出到一个文件中，&amp;gt;为重新创建，&amp;gt;&amp;gt;为追加
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cat_merge.png&quot; alt=&quot;连结并输出&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;tail&quot;&gt;6. tail命令&lt;/h3&gt;
-
-&lt;p&gt;文本查看命令，可以看文本的最后几行。tail命令的优点在于其内容能够与输入同步更新，非常适用于查看实时日志。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 tail [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-n number&lt;/code&gt; 定位参数，+5表示从第五行开始显示，10或-10表示显示最后10行&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 监控文本变化，更新内容&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-k number&lt;/code&gt; 从number所指的KB处开始读取&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;tail -n -5 catalina.out&lt;/code&gt;
-输出最后5行&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tail_n.png&quot; alt=&quot;tail_n&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;tail -f catalina.out&lt;/code&gt;
-监听catalina.out最后行的变化并显示&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tail_f.png&quot; alt=&quot;tail_f&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;head&quot;&gt;7. head命令&lt;/h3&gt;
-
-&lt;p&gt;该命令与tail命令类似，默认显示文件前两行的内容&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 head [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-n number&lt;/code&gt; 显示前几行,-5表示文件中除了最后5行之外的所有内容&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-c number&lt;/code&gt; 显示前几个字节&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;head -n 5 server.xml&lt;/code&gt;和&lt;code&gt;head -n －5 server.xml&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/head_n.png&quot; alt=&quot;head_n&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;du&quot;&gt;8. du命令&lt;/h3&gt;
-
-&lt;p&gt;该命令用于查看系统中文件和目录所占用的空间&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 du [option] [name]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-h&lt;/code&gt; 用human readable的方式显示&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;--max-depth=number&lt;/code&gt; 最大的查询层次&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有文件的大小，默认只显示目录的大小&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;du -h&lt;/code&gt; 显示目录下所有文件夹的大小&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/du.png&quot; alt=&quot;du&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;du -h catalina.out&lt;/code&gt;和&lt;code&gt;du -h ../logs&lt;/code&gt; 显示文件或目录的大小&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/du_name.png&quot; alt=&quot;du_name&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code&gt;du -ah --max-depth=1&lt;/code&gt;显示递归的层次为1，显示所有文件和文件夹大小&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/du_max_depth.png&quot; alt=&quot;du_max_depth&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;whichwhereis&quot;&gt;9. which和whereis&lt;/h3&gt;
-
-&lt;p&gt;which命令的作用是在PATH变量制定的路径中，查找系统命令的位置。&lt;br /&gt;
-whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man说明文件，源代码文件｝。whereis的查询时通过查询系统的数据库文件记录，所以速度比find更快，但由于数据库的更新频率较为缓慢，其结果与实际状况并不一定一致。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-m&lt;/code&gt; 只查找说明文件&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-b&lt;/code&gt; 只查找二进制文件&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：which命令&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/which.png&quot; alt=&quot;which&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：whereis命令&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/whereis.png&quot; alt=&quot;whereis&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;sort&quot;&gt;10. sort命令&lt;/h3&gt;
-
-&lt;p&gt;sort命令用于对文本进行排序，并将结果输出。其以文本的每一行为单位，从首字符向后，依次按照ascii码值进行比较，最后升序排列。（默认是忽略每行前面空格的）&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 sort [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 忽略重复行&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 按照数字大小排序&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 逆序&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-k start,end&lt;/code&gt;start为比较的起始位置，end为结束位置&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;sort sort.txt&lt;/code&gt; 排序&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sort.png&quot; alt=&quot;sort&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;br /&gt;
-1. &lt;code&gt;sort -nk 2 -t - sort.txt&lt;/code&gt; 以&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;进行分割，对分割后的第二个域进行排序；&lt;br /&gt;
-2. &lt;code&gt;sort -nrk 2 -t - sort.txt&lt;/code&gt; 逆序排序&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sort_t.png&quot; alt=&quot;sort_t&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code&gt;sort -t - -k 1.7 -nk 3,3 sort_k.txt&lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;-k start,end&lt;/code&gt;中end可以省略，上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;1.7&lt;/code&gt;表示分割后第一个域的第7个字符，由于没有&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;，则表示对第一个域中第7字符及其之后的字符排序。而&lt;code class=&quot;highlighter-rouge&quot;&gt;3,3&lt;/code&gt;则表示在前面排序的基础上，再对第三个域进行排序。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/sort_k.png&quot; alt=&quot;sort_k&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;netstat&quot;&gt;11. netstat命令&lt;/h3&gt;
-
-&lt;p&gt;netstat用于输出linux系统的网络情况信息，以前面试的时候还被问过：“如何查看占用某个端口的程序的pid?”，这个问题实际用&lt;code&gt;netstat -anp&lt;/code&gt;输出，然后再grep一下即可。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 netstat [option]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有socket连接&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-l&lt;/code&gt; 显示监控中(listening)的socket连接&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 直接使用ip地址，而不使用域名服务器&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-p&lt;/code&gt; 显示正在使用socket的程序的pid和名称&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 打印路由表&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 显示TCP传输协议的连线状况&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 显示UDP传输协议的连线状况&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-s&lt;/code&gt; 显示网络工作信息统计表&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;netstat -anp&lt;/code&gt;
-显示程序的pid和名称&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/netstat_anp.png&quot; alt=&quot;netstat 端口&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;netstat -r&lt;/code&gt;
-输出本机路由表&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/netstat_r.png&quot; alt=&quot;netstat 路由表&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：&lt;code&gt;netstat -lts&lt;/code&gt;
-输出监听状态中的tcp协议统计信息&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/netstat_lts.png&quot; alt=&quot;netstat tcp统计&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;more&quot;&gt;12. more命令&lt;/h3&gt;
-
-&lt;p&gt;more命令用于显示文件的内容，与cat和tail等命令不同的是，more命令是按页显示文件内容，同时具有搜寻字符串的功能。（由于more具有向前翻页功能，因此该命令会加载整个文件）&lt;/p&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 more [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;+n&lt;/code&gt; 从第n行开始显示&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; 定义屏幕大小为n行&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;+/pattern&lt;/code&gt; 再显示前按pattern匹配子串并显示&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;-s&lt;/code&gt; 把连续的多个空行显示为一行&lt;/p&gt;
-
-    &lt;p&gt;常用操作命令：&lt;/p&gt;
-    &lt;ul&gt;
-  &lt;li&gt;Enter 向下n行，默认为1行&lt;/li&gt;
-  &lt;li&gt;Ctrl+F 跳过一屏&lt;/li&gt;
-  &lt;li&gt;Ctrl+B 返回上一屏&lt;/li&gt;
-  &lt;li&gt;空格键 向下滚动一屏&lt;/li&gt;
-  &lt;li&gt;= 输出当前行的行号&lt;/li&gt;
-  &lt;li&gt;在more模式中回车，输入&lt;code&gt;/pattern&lt;/code&gt;可以持续向下搜索&lt;/li&gt;&lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;more +/Deploy catalina.out&lt;/code&gt;&lt;br /&gt;
-在catalina.out文件中查找“Deploy字符第一次出现的位置”，并从该处的前两行开始显示输出&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/more_+.png&quot; alt=&quot;more 搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;more +10 -10 catalina.out&lt;/code&gt;&lt;br /&gt;
-从第10行开始，每页10行&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/more_+_-.png&quot; alt=&quot;more 参数&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;less&quot;&gt;13. less命令&lt;/h3&gt;
-
-&lt;p&gt;less命令与more命令对应，既可以前后翻看文件，同时还有前后搜索功能，除此之外，less在查看前不会加载整个文件。&lt;/p&gt;
-
-&lt;h4&gt;&lt;b&gt;基本格式 less [option] [filename]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;－N&lt;/code&gt; 显示每行的行号&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-i&lt;/code&gt; 忽略搜索时的大小写&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-s&lt;/code&gt; 将连续空行显示为一行&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;-m&lt;/code&gt; 显示百分比&lt;/p&gt;
-
-    &lt;p&gt;常用操作命令：&lt;/p&gt;
-    &lt;ul&gt;
-  &lt;li&gt;/字符串 向下搜索“字符串”功能&lt;/li&gt;
-  &lt;li&gt;?字符串 向上搜索“字符串”功能&lt;/li&gt;
-  &lt;li&gt;n 重复前一个搜索&lt;/li&gt;
-  &lt;li&gt;空格键 滚动一页&lt;/li&gt;
-  &lt;li&gt;d 滚动半页&lt;/li&gt;
-  &lt;li&gt;b 回溯一页&lt;/li&gt;
-  &lt;li&gt;y 回溯一行&lt;/li&gt;
-  &lt;li&gt;q 退出less命令&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;less -Nm catalina.out&lt;/code&gt;&lt;br /&gt;
-显示行号和百分比&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/less_Nm.png&quot; alt=&quot;less 行号百分比&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;/detail&lt;/code&gt;或者&lt;code&gt;?detail&lt;/code&gt;
-向前向后搜索”detail”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/less_search.png&quot; alt=&quot;less 搜索&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;ps&quot;&gt;14. ps命令&lt;/h3&gt;
-
-&lt;p&gt;ps命令用来在Linux系统中显示进程的状态快照，其参数选项可谓非常之多。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 ps [option]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-a&lt;/code&gt; 显示所有用户的进程&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-x&lt;/code&gt; 显示没有控制终端的进程&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 按照用户名称查询进程&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-f&lt;/code&gt; 列出全部信息，常和其它选项联用&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-j&lt;/code&gt; 用任务格式来显示进程&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-e&lt;/code&gt; 显示所有进程&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;ps -ef&lt;/code&gt; 用标准格式显示所有进程&lt;br /&gt;
-显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ps_ef.png&quot; alt=&quot;ps_ef&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：&lt;code&gt;ps aux&lt;/code&gt;&lt;br /&gt;
-显示的项目有：USER, PID, %CPU, %MEM, VSZ(虚拟内存量KB), RSS(固定内存量), TTY(进程所运行在的终端机), STAT, START, TIME, COMMAND&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ps_aux.png&quot; alt=&quot;ps_aux&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;tmuxmac&quot;&gt;15. tmux命令(Mac)&lt;/h3&gt;
-
-&lt;p&gt;tmux(Terminal Multiplexer)命令是一个颇为炫酷的命令，其特点与screen命令类似。tmux通过开出窗口，分拆面板，接管和分离会话，能够让使用者在一个窗口内同时进行多项操作。&lt;br /&gt;
-tmux在osx的安装方式：&lt;code&gt;brew install tmux&lt;/code&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 tmux [option]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;tmux new -s sessionName&lt;/code&gt; 创建新的session会话&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;tmux attach -t sessionName&lt;/code&gt; 重新连接上某一个session&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;tmux kill-session -t sessionName&lt;/code&gt; 杀死某个session&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;tmux ls&lt;/code&gt; 显示所有会话&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;tmux new -s mySession&lt;/code&gt; 创建一个名为mySession的会话&lt;br /&gt;
-输入&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b d&lt;/code&gt;将从此会话脱离，如果要重新连接，则使用&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux attach -t mySession&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_mySession.png&quot; alt=&quot;tmux_new&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例二：在范例一的mySession中按下&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b c&lt;/code&gt;则会在mySession中创建一个新的窗口&lt;br /&gt;
-可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b w&lt;/code&gt;来查看窗口列表，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &amp;lt;窗口号&amp;gt;&lt;/code&gt;来切换窗口&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b f&lt;/code&gt;来查找窗口，&lt;code class=&quot;highlighter-rouge&quot;&gt;exit&lt;/code&gt;来退出窗口&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_windows.png&quot; alt=&quot;tmux_multiple&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;为了便于穿窗口的识别，还可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b ,&lt;/code&gt;来重命名窗口&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_rename.png&quot; alt=&quot;tmux_rename&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;范例三：tmux还支持把窗口分割成多个面板，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &quot;&lt;/code&gt;为水平分割，&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b %&lt;/code&gt;为垂直分割&lt;br /&gt;
-通过&lt;code class=&quot;highlighter-rouge&quot;&gt;CTRL+b &amp;lt;光标键&amp;gt;&lt;/code&gt;来进行窗口移动&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/tmux_panes.png&quot; alt=&quot;tmux_panes&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;ackmac&quot;&gt;16. ack命令(Mac)&lt;/h3&gt;
-
-&lt;p&gt;ack(better than grep)命令的作用和grep类似，但效果更好。&lt;/p&gt;
-&lt;h4&gt;&lt;b&gt;基本格式 ack [option] [pattern]&lt;/b&gt;&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;-w&lt;/code&gt; 按单词匹配&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;--ingore-dir&lt;/code&gt; 忽略某些目录&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;范例一：&lt;code&gt;ack -w 测试&lt;/code&gt; 与grep搜索的对比&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ack_w.png&quot; alt=&quot;ack_w&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-</description>
-        <pubDate>Mon, 14 Mar 2016 16:24:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html</guid>
         
         
         <category>Linux</category>

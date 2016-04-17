@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>边边角角的知识点</title>
+	<title>Mac高效开发小技能</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/04/17/Linux%E5%B7%A5%E4%BD%9C.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -97,64 +97,71 @@ var _hmt = _hmt || [];
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>边边角角的知识点</h1>
-        <p>Feb 24, 2016</p>
+        <h1>Mac高效开发小技能</h1>
+        <p>Apr 17, 2016</p>
       </header>
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#setuid" id="markdown-toc-setuid">1. setuid权限</a></li>
-  <li><a href="#section" id="markdown-toc-section">2. 执行权限</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">3. 标准输出与错误输出</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">4. 重定向</a></li>
-  <li><a href="#java" id="markdown-toc-java">5. Java方法签名</a></li>
-  <li><a href="#flash-cookie" id="markdown-toc-flash-cookie">6. flash cookie</a></li>
+  <li><a href="#pushddir" id="markdown-toc-pushddir">1. pushd和dir命令</a></li>
+  <li><a href="#ctrlr" id="markdown-toc-ctrlr">2. CTRL+R</a></li>
+  <li><a href="#iterm2" id="markdown-toc-iterm2">3. Iterm2分屏</a></li>
+  <li><a href="#keycue" id="markdown-toc-keycue">4. KeyCue</a></li>
+  <li><a href="#spectacle" id="markdown-toc-spectacle">5. Spectacle</a></li>
 </ul>
 
-<h2 id="setuid">1. setuid权限</h2>
+<p>系统是：MacOS<br />
+本文主要记录一些我在工作中掌握的能提高效率的小技能。</p>
 
-<p>今天调了一下Iterm2中<code class="highlighter-rouge">ls</code>的配色，发现在<code class="highlighter-rouge">\bin</code>目录下有如图的显示效果：</p>
+<h3 id="pushddir">1. pushd和dir命令</h3>
 
-<p><img src="/HuangHuanBlog/pics/setuid_1.png" alt="setuid" /></p>
+<p>在Mac或者Linux环境下，切换目录是个非常麻烦的事情，为了提高这个过程的效率，可以使用<code class="highlighter-rouge">pushd</code>命令。</p>
 
-<p>ps和rcp的执行文件颜色和其它不同，从<code class="highlighter-rouge">ls -lha</code>的结果来看它们两个与其它文件并没有什么不同，于是我再用<code class="highlighter-rouge">file</code>命令查看文件：</p>
+<p><b>pushd与dir：</b></p>
 
-<p><img src="/HuangHuanBlog/pics/setuid_2.png" alt="setuid_2" /></p>
+<p><img src="/HuangHuanBlog/pics/pushd.png" alt="pushd" /></p>
 
-<p>此时发现ps和rcp的前面多了个<code class="highlighter-rouge">setuid</code>的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了<code class="highlighter-rouge">setuid</code>外还有<code class="highlighter-rouge">setgid</code>和<code class="highlighter-rouge">stick bit</code>。</p>
+<p>如上图所示，<code class="highlighter-rouge">pushd</code>命令能够在<code class="highlighter-rouge">cd</code>到某个目录下的同时，将该目录保存。保存的目录可以通过<code class="highlighter-rouge">dirs -v</code>查看，下次要切换到一个目录的时候，可以直接<code class="highlighter-rouge">pushd +&lt;对应编号&gt;</code>，非常的方便。</p>
 
-<h2 id="section">2. 执行权限</h2>
+<p><b>cd -命令</b></p>
 
-<p><img src="/HuangHuanBlog/pics/execute.png" alt="execute" /></p>
+<p>相对更简单点的是<code class="highlighter-rouge">cd -</code>命令，它能直接返回之前所在的目录，其效果如下图所示。</p>
 
-<p>如上图所示，作为execute.sh的owner，我拥有<code class="highlighter-rouge">rw</code>读写权限，但如果想通过<code class="highlighter-rouge">./execute.sh</code>直接执行，却被告知权限不够，而用<code class="highlighter-rouge">sh execute.sh</code>却能够执行。后者实际上是将脚本交由<code class="highlighter-rouge">/bin/sh</code>执行，仅仅需要读权限即可。那么如果我只有<code class="highlighter-rouge">execute.sh</code>的<code class="highlighter-rouge">x</code>执行权限，是否能够直接执行了？</p>
+<p><img src="/HuangHuanBlog/pics/cd.png" alt="cd" /></p>
 
-<p><img src="/HuangHuanBlog/pics/execute_x.png" alt="execute_x" /></p>
+<hr />
 
-<p>如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行<code class="highlighter-rouge">execute.sh</code>，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要<code class="highlighter-rouge">\bin\sh</code>程序去读取并解释执行，所以同时亦需要读权限。</p>
+<h3 id="ctrlr">2. CTRL+R</h3>
 
-<h2 id="section-1">3. 标准输出与错误输出</h2>
+<p>这个真是超级实用，可以搜索已经使用过的命令，如果没找到，再<code class="highlighter-rouge">Ctrl+R</code>到下一个匹配的。</p>
 
-<p>在Shell脚本中有时能看到 <code class="highlighter-rouge">&gt;/dev/null 2&gt;&amp;1</code>这样的语句，在语句中<code class="highlighter-rouge">&gt;/dev/null</code>等同于<code class="highlighter-rouge">1&gt;/dev/null</code>，其中<code class="highlighter-rouge">1</code>表示<code class="highlighter-rouge">stdout</code>标准输出，而<code class="highlighter-rouge">/dev/null</code>表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，<code class="highlighter-rouge">1&gt;/dev/null</code>则表示不输出任何信息到终端，也不定向到系统文件中。而<code class="highlighter-rouge">2</code>表示标准错误输出，而<code class="highlighter-rouge">&amp;</code>表示等同于的意思，<code class="highlighter-rouge">2&gt;&amp;1</code>则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。</p>
+<p><img src="/HuangHuanBlog/pics/ctrlr.png" alt="ctrl+r" /></p>
 
-<h2 id="section-2">4. 重定向</h2>
-<p>在使用<code class="highlighter-rouge">&gt;</code>重定向时，会先判断右边文件是否存在，存在则先删除，不存在则创建。因此，<code class="highlighter-rouge">cat test &gt; test</code>这样的操作，结果永远为空。</p>
+<h3 id="iterm2">3. Iterm2分屏</h3>
 
-<h2 id="java">5. Java方法签名</h2>
+<p>之前用过<code class="highlighter-rouge">tmux</code>的切分屏幕，如果是在一个Linux环境下，还比较实用（但公司的机器装<code class="highlighter-rouge">tmux</code>之类的比较麻烦，<code class="highlighter-rouge">apt-get</code>和<code class="highlighter-rouge">yum</code>之类的有时不让用，而且也不能每台机器都去装）。所以其实不如用Iterm2的分屏，<code class="highlighter-rouge">Command+D</code>是垂直分割，<code class="highlighter-rouge">Command+Shift+D</code>是水平分割，然后多连几次。</p>
 
-<p>方法签名：返回值内行＋方法名＋参数列表，参数列表受到参数的顺序，类型，数量的影响，<code class="highlighter-rouge">public void test(int a,long b)</code>和<code class="highlighter-rouge">public void test(long a,int b)</code>签名不同。</p>
+<p><img src="/HuangHuanBlog/pics/cmdd.png" alt="cmd+d" /></p>
 
-<h2 id="flash-cookie">6. flash cookie</h2>
+<h3 id="keycue">4. KeyCue</h3>
 
-<p>flash cookie用于记录用户在浏览flash网页时保留信息，它比http cookie的容量更大，没有默认过期时间且难以删除。flash cookie容易被用来窃取普通用户的信息，且难以预防，这点需要注意。</p>
+<p>KeyCue可以用来显示当前软件的快捷键，长按<code class="highlighter-rouge">Command</code>健即可。</p>
 
-<p>ps：第三方如何盗取用户cookies？ 可以通过在广告位中植入代码，获取原网站给用户种下的cookies</p>
+<p><img src="/HuangHuanBlog/pics/keycue.png" alt="keycue" /></p>
+
+<h3 id="spectacle">5. Spectacle</h3>
+
+<p>相信工作的时候程序员都不只一个屏幕，我目前就是一台Mac接两台显示器，显示器多了把软件拖来拖去很不方便，还要调显示的大小更浪费时间，Spectacle通过几个快捷键就能帮我们解决这个问题。</p>
+
+<p><img src="/HuangHuanBlog/pics/spectacle.png" alt="spectacle" /></p>
+
+<p>比如<code class="highlighter-rouge">ctrl+option+command+&lt;方向键&gt;</code>就能把当前软件丢到另一个屏幕上，然后再用快捷键调显示比例，两下搞定。</p>
 
       </article>
       <hr>
       
+      <a href="/HuangHuanBlog/pieces/2016/04/15/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html">上一篇博客：边边角角的知识点</a><br>
       
-      <a href="/HuangHuanBlog/backend/2016/02/29/Cookies-And-Session.html">下一篇博客：Cookie and Session</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -163,7 +170,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/pieces/2016/02/24/边边角角的知识点" data-title="边边角角的知识点" data-url="sadwxqezc.github.io/pieces/2016/02/24/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html"></div>
+      <div class="ds-thread" data-thread-key="/linux/2016/04/17/Linux工作" data-title="Mac高效开发小技能" data-url="sadwxqezc.github.io/linux/2016/04/17/Linux%E5%B7%A5%E4%BD%9C.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
