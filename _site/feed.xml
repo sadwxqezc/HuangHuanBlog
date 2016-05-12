@@ -5,9 +5,90 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 12 May 2016 22:32:41 +0800</pubDate>
-    <lastBuildDate>Thu, 12 May 2016 22:32:41 +0800</lastBuildDate>
+    <pubDate>Thu, 12 May 2016 22:59:34 +0800</pubDate>
+    <lastBuildDate>Thu, 12 May 2016 22:59:34 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>程序小事</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-github&quot; id=&quot;markdown-toc-jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 准备的技能树&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 今后工作状态&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#macsed&quot; id=&quot;markdown-toc-macsed&quot;&gt;4. Mac下sed问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;5. 为博客添加目录&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#rescuetime&quot; id=&quot;markdown-toc-rescuetime&quot;&gt;6. 尝试使用rescuetime&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;7. 工作入职(2015-04-04)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;8. 博客迁移计划(2015-5-12)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;时间：2016年2月8日 晚&lt;/li&gt;
+  &lt;li&gt;问题回放：在本地发布无问题的jekyll博客，在&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。&lt;/li&gt;
+  &lt;li&gt;问题分析：目前还没有找到发生该问题的原因，不知道是否是因为github pages本身有这样的设置，正在调查中。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;jekyll博客的搭建和发布可参考:&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&quot;&gt;阮一峰的博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;解答 2016年2月23日&lt;/h4&gt;
+&lt;p&gt;github应该采用的是utc时间，只需要将博客的&lt;code class=&quot;highlighter-rouge&quot;&gt;yaml&lt;/code&gt;信息头中的	&lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt;参数进行时区设置，如果作者使用的是北京时间，则设置为&lt;code class=&quot;highlighter-rouge&quot;&gt;+0800&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2. 准备的技能树&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;redis&lt;/li&gt;
+  &lt;li&gt;zookeeper&lt;/li&gt;
+  &lt;li&gt;spring(需要进阶)&lt;/li&gt;
+  &lt;li&gt;rest&lt;/li&gt;
+  &lt;li&gt;数据库(从mysql入手)&lt;/li&gt;
+  &lt;li&gt;脚本&lt;/li&gt;
+  &lt;li&gt;算法(需要进阶)&lt;/li&gt;
+  &lt;li&gt;网络&lt;/li&gt;
+  &lt;li&gt;javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;3. 今后工作状态&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在工作中游刃有余，同时保持对新技术的兴趣和尝试，参与到产品的设计和策划中。&lt;/li&gt;
+  &lt;li&gt;未来事不可预知，不要过多的担忧，多思无益&lt;/li&gt;
+  &lt;li&gt;不可能每次遇到问题都已做好准备，要冷静的去思考解决之法&lt;/li&gt;
+  &lt;li&gt;谦虚而脚踏实地，与志同道合的人称为朋友，不要为不合的人烦扰&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;macsed&quot;&gt;4. Mac下sed问题&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -i &#39;&#39; &#39;1a test&#39; test&lt;/code&gt;时如果是&lt;code class=&quot;highlighter-rouge&quot;&gt;1a&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;1i&lt;/code&gt;都会报错，这应该是Mac自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;问题，所以选择&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install gnu-sed&lt;/code&gt;来替换掉，改用&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;5. 为博客添加目录&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -i &#39;6a *内容目录\n{:toc}\n&#39; *.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;rescuetime&quot;&gt;6. 尝试使用rescuetime&lt;/h2&gt;
+
+&lt;p&gt;时间管理应该是以后工作很重要的内容，尝试使用&lt;code class=&quot;highlighter-rouge&quot;&gt;rescuetime&lt;/code&gt;来管理时间，之后可以对比下和番茄工作法的区别。&lt;/p&gt;
+
+&lt;p&gt;2015-5-12日：使用了一段rescuetime后，发现意义并不是很大，可能我目前所在的是一个纯粹的开发的阶段，每天的时间都在开发代码，rescuetime显示的效率都在87％左右。这个工具只能看到我是否在专心工作，并不能衡量工作的效率。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;7. 工作入职(2015-04-04)&lt;/h2&gt;
+
+&lt;p&gt;这是入职的第三天，周围的同事给我感觉挺不错，在这个部门相信我能学到不少东西，加油吧少年，Be simple !&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;8. 博客迁移计划(2015-5-12)&lt;/h2&gt;
+
+&lt;p&gt;最近刚开始工作，没怎么写博客了，现在工作的内容开始熟悉了，准备针对工作中的问题和学到的东西进行定期的总结。&lt;br /&gt;
+博客准备进行一下改版，&lt;a href=&quot;http://novoland.github.io/index.html&quot;&gt;novoland的博客&lt;/a&gt;风格很不错，准备照着他的改版。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 12 May 2016 22:53:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/05/12/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/05/12/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
+        
+        
+        <category>Develop</category>
+        
+      </item>
     
       <item>
         <title>读书笔记-学</title>
@@ -426,79 +507,6 @@ private static int findMaxBackward(int[] array, int start, int end) {
         
         
         <category>Read</category>
-        
-      </item>
-    
-      <item>
-        <title>程序小事</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyll-github&quot; id=&quot;markdown-toc-jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 准备的技能树&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 今后工作状态&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#macsed&quot; id=&quot;markdown-toc-macsed&quot;&gt;4. Mac下sed问题&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;5. 为博客添加目录&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#rescuetime&quot; id=&quot;markdown-toc-rescuetime&quot;&gt;6. 尝试使用rescuetime&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;7. 工作入职&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;时间：2016年2月8日 晚&lt;/li&gt;
-  &lt;li&gt;问题回放：在本地发布无问题的jekyll博客，在&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。&lt;/li&gt;
-  &lt;li&gt;问题分析：目前还没有找到发生该问题的原因，不知道是否是因为github pages本身有这样的设置，正在调查中。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;jekyll博客的搭建和发布可参考:&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&quot;&gt;阮一峰的博客&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4&gt;解答 2016年2月23日&lt;/h4&gt;
-&lt;p&gt;github应该采用的是utc时间，只需要将博客的&lt;code class=&quot;highlighter-rouge&quot;&gt;yaml&lt;/code&gt;信息头中的	&lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt;参数进行时区设置，如果作者使用的是北京时间，则设置为&lt;code class=&quot;highlighter-rouge&quot;&gt;+0800&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;2. 准备的技能树&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;redis&lt;/li&gt;
-  &lt;li&gt;zookeeper&lt;/li&gt;
-  &lt;li&gt;spring(需要进阶)&lt;/li&gt;
-  &lt;li&gt;rest&lt;/li&gt;
-  &lt;li&gt;数据库(从mysql入手)&lt;/li&gt;
-  &lt;li&gt;脚本&lt;/li&gt;
-  &lt;li&gt;算法(需要进阶)&lt;/li&gt;
-  &lt;li&gt;网络&lt;/li&gt;
-  &lt;li&gt;javascript&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;3. 今后工作状态&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在工作中游刃有余，同时保持对新技术的兴趣和尝试，参与到产品的设计和策划中。&lt;/li&gt;
-  &lt;li&gt;未来事不可预知，不要过多的担忧，多思无益&lt;/li&gt;
-  &lt;li&gt;不可能每次遇到问题都已做好准备，要冷静的去思考解决之法&lt;/li&gt;
-  &lt;li&gt;谦虚而脚踏实地，与志同道合的人称为朋友，不要为不合的人烦扰&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;macsed&quot;&gt;4. Mac下sed问题&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -i &#39;&#39; &#39;1a test&#39; test&lt;/code&gt;时如果是&lt;code class=&quot;highlighter-rouge&quot;&gt;1a&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;1i&lt;/code&gt;都会报错，这应该是Mac自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;问题，所以选择&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install gnu-sed&lt;/code&gt;来替换掉，改用&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;5. 为博客添加目录&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -i &#39;6a *内容目录\n{:toc}\n&#39; *.md&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;rescuetime&quot;&gt;6. 尝试使用rescuetime&lt;/h2&gt;
-
-&lt;p&gt;时间管理应该是以后工作很重要的内容，尝试使用&lt;code class=&quot;highlighter-rouge&quot;&gt;rescuetime&lt;/code&gt;来管理时间，之后可以对比下和番茄工作法的区别。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;7. 工作入职&lt;/h2&gt;
-
-&lt;p&gt;这是入职的第三天，周围的同事给我感觉挺不错，在这个部门相信我能学到不少东西，加油吧少年，Be simple !&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 Apr 2016 10:51:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/04/06/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/04/06/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
-        
-        
-        <category>Develop</category>
         
       </item>
     
