@@ -5,9 +5,40 @@
     <description>黄欢的博客：程序，读书，电影</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Apr 2016 22:49:56 +0800</pubDate>
-    <lastBuildDate>Sun, 17 Apr 2016 22:49:56 +0800</lastBuildDate>
+    <pubDate>Thu, 12 May 2016 22:32:41 +0800</pubDate>
+    <lastBuildDate>Thu, 12 May 2016 22:32:41 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>读书笔记-学</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#effective-java&quot; id=&quot;markdown-toc-effective-java&quot;&gt;1. Effective Java&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#spring-in-action&quot; id=&quot;markdown-toc-spring-in-action&quot;&gt;2. Spring in action&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;effective-java&quot;&gt;1. Effective Java&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;By Joshua Bloch&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/effective_java.jpg&quot; alt=&quot;Effective Java&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;正在学习&lt;/p&gt;
+
+&lt;h2 id=&quot;spring-in-action&quot;&gt;2. Spring in action&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;By Craig Walls&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/springinaction.jpg&quot; alt=&quot;Spring in action&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书紧紧围绕着&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Action&lt;/code&gt;，在工作中能设计到的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;实用技术基本都有讲解，并不涉及&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;的原理，对于工作上的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;使用恰好合适。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 24 Apr 2016 20:57:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
     
       <item>
         <title>Mac高效开发小技能</title>
@@ -137,35 +168,6 @@
         
         
         <category>Pieces</category>
-        
-      </item>
-    
-      <item>
-        <title>读书笔记-学</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#effective-java&quot; id=&quot;markdown-toc-effective-java&quot;&gt;1. Effective Java&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#java-restful-web-service&quot; id=&quot;markdown-toc-java-restful-web-service&quot;&gt;2. Java RESTful Web Service实战&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;effective-java&quot;&gt;1. Effective Java&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By Joshua Bloch&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/effective_java.jpg&quot; alt=&quot;Effective Java&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;java-restful-web-service&quot;&gt;2. Java RESTful Web Service实战&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;韩陆&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/java_restful.jpg&quot; alt=&quot;Java RESTful&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;正在学习&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 10 Apr 2016 20:14:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/04/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/04/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
-        
-        
-        <category>Read</category>
         
       </item>
     
