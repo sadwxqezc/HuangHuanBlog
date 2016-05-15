@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>胡思乱想</title>
-	<meta name="description" content="  1. 为什么同时需要IP和MAC？1. 为什么同时需要IP和MAC？在看《图解HTTP》这本书时，突然想到这个问题，上知乎一查，正好也有这个问题：有了IP地址，为什么还要用MAC地址？。首先在知乎的回答中，我比较认可的说法是同时使用IP和MAC地址，能够起到很好的分层效果。依赖于数据链路层的MAC地址，可在其...">
+	<title>程序小事</title>
+	<meta name="description" content="  1. jekyll github发布问题  2. 准备的技能树  3. 今后工作状态  4. Mac下sed问题  5. 为博客添加目录  6. 尝试使用rescuetime  7. 工作入职(2015-04-04)  8. 博客迁移计划(2015-5-12)1. jekyll github发布问题  时间：...">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/confused/2016/03/16/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/05/12/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -90,30 +90,86 @@ var _hmt = _hmt || [];
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>胡思乱想</h1>
-        <p>Mar 16, 2016</p>
+        <h1>程序小事</h1>
+        <p>May 12, 2016</p>
       </header>
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#ipmac" id="markdown-toc-ipmac">1. 为什么同时需要IP和MAC？</a></li>
+  <li><a href="#jekyll-github" id="markdown-toc-jekyll-github">1. jekyll github发布问题</a></li>
+  <li><a href="#section" id="markdown-toc-section">2. 准备的技能树</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">3. 今后工作状态</a></li>
+  <li><a href="#macsed" id="markdown-toc-macsed">4. Mac下sed问题</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">5. 为博客添加目录</a></li>
+  <li><a href="#rescuetime" id="markdown-toc-rescuetime">6. 尝试使用rescuetime</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">7. 工作入职(2015-04-04)</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">8. 博客迁移计划(2015-5-12)</a></li>
 </ul>
 
-<h3 id="ipmac">1. 为什么同时需要IP和MAC？</h3>
+<h2 id="jekyll-github">1. jekyll github发布问题</h2>
+<ul>
+  <li>时间：2016年2月8日 晚</li>
+  <li>问题回放：在本地发布无问题的jekyll博客，在<code class="highlighter-rouge">push</code>到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。</li>
+  <li>问题分析：目前还没有找到发生该问题的原因，不知道是否是因为github pages本身有这样的设置，正在调查中。</li>
+</ul>
 
-<p>在看《图解HTTP》这本书时，突然想到这个问题，上知乎一查，正好也有这个问题：<a href="https://www.zhihu.com/question/21546408">有了IP地址，为什么还要用MAC地址？</a>。</p>
+<blockquote>
+  <p>jekyll博客的搭建和发布可参考:<a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">阮一峰的博客</a></p>
+</blockquote>
 
-<p>首先在知乎的回答中，我比较认可的说法是同时使用IP和MAC地址，能够起到很好的分层效果。依赖于数据链路层的MAC地址，可在其上构建各种协议，而不仅限于IP。</p>
+<h4>解答 2016年2月23日</h4>
+<p>github应该采用的是utc时间，只需要将博客的<code class="highlighter-rouge">yaml</code>信息头中的	<code class="highlighter-rouge">date</code>参数进行时区设置，如果作者使用的是北京时间，则设置为<code class="highlighter-rouge">+0800</code></p>
 
-<p>那么问题来了，在现有的网络结构里，如果我们就用IP或MAC来构建整个网络，给每个设备分配一个固定的ID，是否会简单很多？实际上不是这样，MAC就像人的身份证，而IP就像人的住址，不管人跑哪里去，都可以通过住址快速的找到他。而假如只有身份证信息，而不知道住址，要找到一个人相当于大海捞针。</p>
+<h2 id="section">2. 准备的技能树</h2>
+<ul>
+  <li>redis</li>
+  <li>zookeeper</li>
+  <li>spring(需要进阶)</li>
+  <li>rest</li>
+  <li>数据库(从mysql入手)</li>
+  <li>脚本</li>
+  <li>算法(需要进阶)</li>
+  <li>网络</li>
+  <li>javascript</li>
+</ul>
+
+<h2 id="section-1">3. 今后工作状态</h2>
+
+<ul>
+  <li>在工作中游刃有余，同时保持对新技术的兴趣和尝试，参与到产品的设计和策划中。</li>
+  <li>未来事不可预知，不要过多的担忧，多思无益</li>
+  <li>不可能每次遇到问题都已做好准备，要冷静的去思考解决之法</li>
+  <li>谦虚而脚踏实地，与志同道合的人称为朋友，不要为不合的人烦扰</li>
+</ul>
+
+<h2 id="macsed">4. Mac下sed问题</h2>
+
+<p><code class="highlighter-rouge">sed -i '' '1a test' test</code>时如果是<code class="highlighter-rouge">1a</code>或者<code class="highlighter-rouge">1i</code>都会报错，这应该是Mac自带的<code class="highlighter-rouge">sed</code>问题，所以选择<code class="highlighter-rouge">brew install gnu-sed</code>来替换掉，改用<code class="highlighter-rouge">gsed</code>。</p>
+
+<h2 id="section-2">5. 为博客添加目录</h2>
+
+<p><code class="highlighter-rouge">gsed -i '6a *内容目录\n{:toc}\n' *.md</code></p>
+
+<h2 id="rescuetime">6. 尝试使用rescuetime</h2>
+
+<p>时间管理应该是以后工作很重要的内容，尝试使用<code class="highlighter-rouge">rescuetime</code>来管理时间，之后可以对比下和番茄工作法的区别。</p>
+
+<p>2015-5-12日：使用了一段rescuetime后，发现意义并不是很大，可能我目前所在的是一个纯粹的开发的阶段，每天的时间都在开发代码，rescuetime显示的效率都在87％左右。这个工具只能看到我是否在专心工作，并不能衡量工作的效率。</p>
+
+<h2 id="section-3">7. 工作入职(2015-04-04)</h2>
+
+<p>这是入职的第三天，周围的同事给我感觉挺不错，在这个部门相信我能学到不少东西，加油吧少年，Be simple !</p>
+
+<h2 id="section-4">8. 博客迁移计划(2015-5-12)</h2>
+
+<p>最近刚开始工作，没怎么写博客了，现在工作的内容开始熟悉了，准备针对工作中的问题和学到的东西进行定期的总结。<br />
+博客准备进行一下改版，<a href="http://novoland.github.io/index.html">novoland的博客</a>风格很不错，准备照着他的改版。</p>
 
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html">上一篇博客：Linux命令大全 Part One</a><br>
+      <a href="/HuangHuanBlog/read/2016/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html">上一篇博客：读书笔记-学</a><br>
       
-      
-      <a href="/HuangHuanBlog/linux/2016/03/21/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-II.html">下一篇博客：Linux命令大全 Part Two</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -122,7 +178,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/confused/2016/03/16/胡思乱想" data-title="胡思乱想" data-url="sadwxqezc.github.io/confused/2016/03/16/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3.html"></div>
+      <div class="ds-thread" data-thread-key="/develop/2016/05/12/程序小事" data-title="程序小事" data-url="sadwxqezc.github.io/develop/2016/05/12/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html"></div>
       
       <!-- 多说评论框 end -->
     </div>
