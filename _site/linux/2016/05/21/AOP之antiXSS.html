@@ -108,12 +108,15 @@ var _hmt = _hmt || [];
 </ul>
 
 <h2 id="section">开发原因</h2>
+
 <p>在后台开发过程中，往往需要对用户的输入进行antiXSS等过滤，以防止被攻击。以Dao层为例，这一层在写入数据库之前，应该对数据进行过滤，此时对应的一半是<code class="highlighter-rouge">save()</code>，<code class="highlighter-rouge">saveOrUpdate()</code>和<code class="highlighter-rouge">update()</code>操作，输入多数情况下是基本类型或者对于数据库实体的<code class="highlighter-rouge">Entity</code>。如果按照以往的写法，主要需要对<code class="highlighter-rouge">String</code>类型的数据（包括<code class="highlighter-rouge">Entity</code>中的<code class="highlighter-rouge">String</code> Field）进行过滤，这时往往需要为对应的字段掉用<code class="highlighter-rouge">antiXSS</code>方法，造成大量的<code class="highlighter-rouge">get/set</code>代码，颇为麻烦，也造成代码冗长。因此，既然<code class="highlighter-rouge">Spring</code>具有强大的	<code class="highlighter-rouge">AOP</code>功能，不妨尝试用它简化这一过程。</p>
 
 <h2 id="section-1">开发组件</h2>
+
 <p>SpringBoot，Intellij，Lombok(一个用于消除<code class="highlighter-rouge">get/set</code>,<code class="highlighter-rouge">toString</code>,<code class="highlighter-rouge">hashcode</code>这类代码的工具)</p>
 
 <h2 id="section-2">开发思路</h2>
+
 <p>通过 <code class="highlighter-rouge">AOP</code>中的<code class="highlighter-rouge">doAround</code>方法截取传入参数，并利用反射筛选出其中的<code class="highlighter-rouge">String</code> Filed进行antiXSS处理。</p>
 
 <h2 id="section-3">实现细节</h2>
