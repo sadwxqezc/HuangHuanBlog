@@ -2,14 +2,14 @@
 layout: post
 title:  "利用AOP进行Dao层antiXSS过滤"
 date:   2016-05-21 12:59:00 +0800
-categories: Linux
+categories: Framework
 ---
 * 内容目录
 {:toc}
 
 ## 开发原因
 
-在后台开发过程中，往往需要对用户的输入进行antiXSS等过滤，以防止被攻击。以Dao层为例，这一层在写入数据库之前，应该对数据进行过滤，此时对应的一般是`save()`，`saveOrUpdate()`和`update()`操作，输入多数情况下是基本类型或者对于数据库实体的`Entity`。如果按照以往的写法，主要需要对`String`类型的数据（包括`Entity`中的`String` Field）进行过滤，这时往往需要为对应的字段调用`antiXSS()`方法，造成大量的`get/set`代码，颇为麻烦，也造成代码冗长。因此，既然`Spring`具有强大的`AOP`功能，不妨尝试用它简化这一过程。
+在后台开发过程中，往往需要对用户的输入进行antiXSS等ßΩ过滤，以防止被攻击。以Dao层为例，这一层在写入数据库之前，应该对数据进行过滤，此时对应的一般是`save()`，`saveOrUpdate()`和`update()`操作，输入多数情况下是基本类型或者对于数据库实体的`Entity`。如果按照以往的写法，主要需要对`String`类型的数据（包括`Entity`中的`String` Field）进行过滤，这时往往需要为对应的字段调用`antiXSS()`方法，造成大量的`get/set`代码，颇为麻烦，也造成代码冗长。因此，既然`Spring`具有强大的`AOP`功能，不妨尝试用它简化这一过程。
 
 ## 开发组件
 
