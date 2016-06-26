@@ -5,9 +5,255 @@
     <description>北京网易有道后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 13 Jun 2016 22:17:59 +0800</pubDate>
-    <lastBuildDate>Mon, 13 Jun 2016 22:17:59 +0800</lastBuildDate>
+    <pubDate>Sun, 26 Jun 2016 11:58:02 +0800</pubDate>
+    <lastBuildDate>Sun, 26 Jun 2016 11:58:02 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>利用Annotation Processing生成Hibernate工具</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;开发原因&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;开发组件&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;开发思路&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;实现细节&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;注解&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#processor&quot; id=&quot;markdown-toc-processor&quot;&gt;注解Processor的实现&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;配置文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#maven&quot; id=&quot;markdown-toc-maven&quot;&gt;生成Maven包&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;测试&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;开发原因&lt;/h2&gt;
+
+&lt;p&gt;在使用Hibernate时候，经常会写这样的代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Override
+public List getTemplateList(long id) {
+    DetachedCriteria criteria = DetachedCriteria.forClass(Template.class);
+    criteria.add(Restrictions.eq(&quot;id&quot;, id));
+    criteria.addOrder(Order.desc(&quot;create_time&quot;));
+    return findByDetachedCriteria(criteria);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在设置条件的时候，不得不使用hibernate 实体类中对应的字段，这个时侯要么是跳到对应类或xml文件里复制粘贴，要么是自己手打，还容易出错。这个时侯就会想，如果能为实体类生成一些方法，以获取对应的实体类字段名，那就方便多了，达到如下这种效果：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Override
+public List getTemplateList(long id) {
+    DetachedCriteria criteria = DetachedCriteria.forClass(Template.class);
+    criteria.add(Restrictions.eq(TemplateTool.getId(), id));
+    criteria.addOrder(Order.desc(TemplateTool.getCreate_Time());
+    return findByDetachedCriteria(criteria);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这样是不是方便了很多，在IDE的帮助下，能有效提高写代码的效率。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;开发组件&lt;/h2&gt;
+
+&lt;p&gt;Intellij&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;开发思路&lt;/h2&gt;
+
+&lt;p&gt;根据开发原因，很容联想到一个开源工具&lt;code class=&quot;highlighter-rouge&quot;&gt;LomBok&lt;/code&gt;，它能够自动生成&lt;code class=&quot;highlighter-rouge&quot;&gt;Getter/Setter&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;toString&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;hashCode&lt;/code&gt;等方法，在intellij上配合lombok的插件，能够实时调出这些方法。于是我尝试在Lombok上去拓展，但发现Lombok并不能直接拓展，需要修改其源码并重新编译，这就没必要了。然后了解了一下Lombok的原理，是基于&lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation Processing&lt;/code&gt;来实现的，简单来说就是为&lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt;注册一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Processor&lt;/code&gt;，在编译时动态生成代码，这算是实现工具的神器了。&lt;/p&gt;
+
+&lt;p&gt;于是我学习了一下这片文章 &lt;a href=&quot;http://hannesdorfmann.com/annotation-processing/annotationprocessing101&quot;&gt;Annotation Processing&lt;/a&gt;，照着上面所诉的模式写了一个Hibernate工具。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;实现细节&lt;/h2&gt;
+
+&lt;p&gt;源码参见：&lt;a href=&quot;https://github.com/sadwxqezc/AP&quot;&gt;Huang Huan Github Annotation Processing&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;注解&lt;/h3&gt;
+
+&lt;p&gt;首先需要定义一个作用于&lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt;阶段的注解：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Documented
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.SOURCE)
+public @interface ORMTool {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;processor&quot;&gt;注解Processor的实现&lt;/h3&gt;
+
+&lt;p&gt;定义一个&lt;code class=&quot;highlighter-rouge&quot;&gt;ORMToolProcessor&lt;/code&gt;来对应该注解：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@AutoService(Processor.class)
+@SupportedAnnotationTypes(&quot;bj.huanghuan.annotation.ORMTool&quot;)
+public class ORMToolProcessor extends AbstractProcessor {
+
+    /**
+     * 打印信息
+     **/
+    private Messager messager;
+
+    /**
+     * 创建文件工具
+     **/
+    private Filer filer;
+
+    /**
+     * element工具
+     **/
+    private Elements elementUtils;
+
+
+    private static final String SUFFIX = &quot;Tool&quot;;
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnv) {
+        super.init(processingEnv);
+        messager = processingEnv.getMessager();
+        filer = processingEnv.getFiler();
+        elementUtils = processingEnv.getElementUtils();
+    }
+
+    @Override
+    public boolean process(Set&amp;lt;? extends TypeElement&amp;gt; annotations, 
+    RoundEnvironment roundEnv) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(ORMTool.class)) {
+            if (element.getKind() != ElementKind.CLASS) {
+                printError(element, 
+                &quot;Only Classes can be annotated with @%s&quot;,
+                 ORMTool.class.getSimpleName());
+                return true;
+            }
+            TypeElement typeElement = (TypeElement) element;
+            String className = typeElement.getSimpleName() + SUFFIX;
+            try {
+                JavaFileObject classFile = filer.createSourceFile(className);
+                Writer writer = classFile.openWriter();
+                JavaWriter javaWriter = new JavaWriter(writer);
+                /*************** package Name *************/
+                PackageElement packageElement = elementUtils.getPackageOf(typeElement);
+                if (!packageElement.isUnnamed()) {
+                    javaWriter.emitPackage(packageElement.getQualifiedName().toString());
+                    javaWriter.emitEmptyLine();
+                } else {
+                    javaWriter.emitPackage(&quot;&quot;);
+                }
+
+                javaWriter.beginType(className, &quot;class&quot;, EnumSet.of(Modifier.PUBLIC));
+                javaWriter.emitEmptyLine();
+
+                /************ generate getter for fields ************/
+                List&amp;lt;VariableElement&amp;gt; insideElements =
+                 ElementFilter.fieldsIn(typeElement.getEnclosedElements());
+                for (VariableElement variableElement : insideElements) {
+                    javaWriter.beginMethod(&quot;String&quot;,
+                     variableElement.getSimpleName().toString(),
+                     EnumSet.of(Modifier.PUBLIC, Modifier.STATIC),
+                     null, null);
+                    javaWriter.emitStatement(&quot;return \&quot;&quot; +
+                     variableElement.getSimpleName().toString() + &quot;\&quot;&quot;);
+                    javaWriter.endMethod();
+                    javaWriter.emitEmptyLine();
+                }
+
+                javaWriter.endType();
+                javaWriter.close();
+            } catch (IOException e) {
+                messager.printMessage(Diagnostic.Kind.ERROR, 
+                &quot;Gennerate Source Code Failed!&quot;);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latestSupported();
+    }
+
+    /**
+     * 错误日志打印
+     *
+     * @param element
+     * @param msg
+     * @param args
+     */
+    private void printError(Element element, String msg, Object... args) {
+        messager.printMessage(Diagnostic.Kind.ERROR, String.format(msg, args), element);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这部门代码里有一些需要解释的地方：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@AutoService&lt;/code&gt;是Google提供的注册一个工具，其实作用应该是省去后面我将要讲的配置文件，不过影响不大。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;process(Set&amp;lt;? extends TypeElement&amp;gt; annotations, ...)&lt;/code&gt;是处理的入口，首先判断被&lt;code class=&quot;highlighter-rouge&quot;&gt;ORMTool&lt;/code&gt;注解的元素是不是&lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt;类型，然后利用&lt;code class=&quot;highlighter-rouge&quot;&gt;JavaWriter&lt;/code&gt;这个代码生成工具来构建新的Java文件，为注解的类生成一个对应的tool类。该类包含了被注解类中所有&lt;code class=&quot;highlighter-rouge&quot;&gt;Field&lt;/code&gt;的参数名&lt;code class=&quot;highlighter-rouge&quot;&gt;Getter&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;这里面的&lt;code class=&quot;highlighter-rouge&quot;&gt;TypeElement&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;VariableElement&lt;/code&gt;分别指的类类型和域类型。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;配置文件&lt;/h3&gt;
+
+&lt;p&gt;这里需要一个配置文件，文件全路径是&lt;code class=&quot;highlighter-rouge&quot;&gt;/META-INF/services/javax.annotation.processing.Processor&lt;/code&gt;，配置文件中写入&lt;code class=&quot;highlighter-rouge&quot;&gt;ORMToolProcessor&lt;/code&gt;中的路径，如&lt;code class=&quot;highlighter-rouge&quot;&gt;bj.huanghuan.processor.ORMToolProcessor&lt;/code&gt;。实际上又了上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;@AutoService&lt;/code&gt;其实应该不需要手写这个文件了，不过我没试过，读者有兴趣可以试试。&lt;/p&gt;
+
+&lt;p&gt;截图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ap-structure&quot; alt=&quot;文件结构&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;maven&quot;&gt;生成Maven包&lt;/h3&gt;
+
+&lt;p&gt;最后需要生成一个Maven包，加入到其它项目中供调用。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;测试&lt;/h3&gt;
+
+&lt;p&gt;测试用的&lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;类：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ORMTool
+public class Test {
+
+	private int id;
+
+	private String name;
+
+	private Boolean isNew;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;生成的&lt;code class=&quot;highlighter-rouge&quot;&gt;TestTool&lt;/code&gt;类:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class TestTool {
+	public TestTool() {
+	}
+
+	public static String id() {
+    	return &quot;id&quot;;
+	}
+
+	public static String name() {
+    	return &quot;name&quot;;
+	}
+
+	public static String isNew() {
+    	return &quot;isNew&quot;;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-7&quot;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;这种方式的工具需要在使用前编译一下代码，也算是点小遗憾了，要实现&lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt;那样无需手动编译的效果，需要实现对应的Intellij插件，这份工作就看以后有没有精力做了。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 26 Jun 2016 10:49:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/06/26/%E5%88%A9%E7%94%A8Annotation-Processing%E7%94%9F%E6%88%90Hibernate%E5%B7%A5%E5%85%B7.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/06/26/%E5%88%A9%E7%94%A8Annotation-Processing%E7%94%9F%E6%88%90Hibernate%E5%B7%A5%E5%85%B7.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>读书笔记-思</title>
@@ -870,71 +1116,6 @@ AntiXSSAspectTest.TestEntity(id=2, text=test save Object(antiXSS success))
         
         
         <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>边边角角的知识点</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#setuid&quot; id=&quot;markdown-toc-setuid&quot;&gt;1. setuid权限&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 执行权限&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 标准输出与错误输出&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;4. 重定向&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#java&quot; id=&quot;markdown-toc-java&quot;&gt;5. Java方法签名&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#flash-cookie&quot; id=&quot;markdown-toc-flash-cookie&quot;&gt;6. flash cookie&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#su--su&quot; id=&quot;markdown-toc-su--su&quot;&gt;7. su -与su的区别&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;setuid&quot;&gt;1. setuid权限&lt;/h2&gt;
-
-&lt;p&gt;今天调了一下Iterm2中&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;的配色，发现在&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin&lt;/code&gt;目录下有如图的显示效果：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_1.png&quot; alt=&quot;setuid&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ps和rcp的执行文件颜色和其它不同，从&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -lha&lt;/code&gt;的结果来看它们两个与其它文件并没有什么不同，于是我再用&lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt;命令查看文件：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/setuid_2.png&quot; alt=&quot;setuid_2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;此时发现ps和rcp的前面多了个&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了&lt;code class=&quot;highlighter-rouge&quot;&gt;setuid&lt;/code&gt;外还有&lt;code class=&quot;highlighter-rouge&quot;&gt;setgid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;stick bit&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;2. 执行权限&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/execute.png&quot; alt=&quot;execute&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如上图所示，作为execute.sh的owner，我拥有&lt;code class=&quot;highlighter-rouge&quot;&gt;rw&lt;/code&gt;读写权限，但如果想通过&lt;code class=&quot;highlighter-rouge&quot;&gt;./execute.sh&lt;/code&gt;直接执行，却被告知权限不够，而用&lt;code class=&quot;highlighter-rouge&quot;&gt;sh execute.sh&lt;/code&gt;却能够执行。后者实际上是将脚本交由&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt;执行，仅仅需要读权限即可。那么如果我只有&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;执行权限，是否能够直接执行了？&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/execute_x.png&quot; alt=&quot;execute_x&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行&lt;code class=&quot;highlighter-rouge&quot;&gt;execute.sh&lt;/code&gt;，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要&lt;code class=&quot;highlighter-rouge&quot;&gt;\bin\sh&lt;/code&gt;程序去读取并解释执行，所以同时亦需要读权限。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;3. 标准输出与错误输出&lt;/h2&gt;
-
-&lt;p&gt;在Shell脚本中有时能看到 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt;这样的语句，在语句中&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;/dev/null&lt;/code&gt;等同于&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;表示&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;标准输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/null&lt;/code&gt;表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，&lt;code class=&quot;highlighter-rouge&quot;&gt;1&amp;gt;/dev/null&lt;/code&gt;则表示不输出任何信息到终端，也不定向到系统文件中。而&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;表示标准错误输出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;表示等同于的意思，&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&amp;amp;1&lt;/code&gt;则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;4. 重定向&lt;/h2&gt;
-&lt;p&gt;在使用&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;重定向时，会先判断右边文件是否存在，存在则先删除，不存在则创建。因此，&lt;code class=&quot;highlighter-rouge&quot;&gt;cat test &amp;gt; test&lt;/code&gt;这样的操作，结果永远为空。&lt;/p&gt;
-
-&lt;h2 id=&quot;java&quot;&gt;5. Java方法签名&lt;/h2&gt;
-
-&lt;p&gt;方法签名：返回值内行＋方法名＋参数列表，参数列表受到参数的顺序，类型，数量的影响，&lt;code class=&quot;highlighter-rouge&quot;&gt;public void test(int a,long b)&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;public void test(long a,int b)&lt;/code&gt;签名不同。&lt;/p&gt;
-
-&lt;h2 id=&quot;flash-cookie&quot;&gt;6. flash cookie&lt;/h2&gt;
-
-&lt;p&gt;flash cookie用于记录用户在浏览flash网页时保留信息，它比http cookie的容量更大，没有默认过期时间且难以删除。flash cookie容易被用来窃取普通用户的信息，且难以预防，这点需要注意。&lt;/p&gt;
-
-&lt;p&gt;ps：第三方如何盗取用户cookies？ 可以通过在广告位中植入代码，获取原网站给用户种下的cookies&lt;/p&gt;
-
-&lt;h2 id=&quot;su--su&quot;&gt;7. su -与su的区别&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;su - USERNAME&lt;/code&gt;切换用户后，工作环境同时也切换&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;su USERNAME&lt;/code&gt; 切换后不改变原用户的工作目录和环境变量目录&lt;/p&gt;
-</description>
-        <pubDate>Fri, 15 Apr 2016 15:41:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2016/04/15/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2016/04/15/%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.html</guid>
-        
-        
-        <category>Pieces</category>
         
       </item>
     
