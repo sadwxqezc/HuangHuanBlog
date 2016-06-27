@@ -2,7 +2,7 @@
 layout: post
 title:  "利用Annotation Processing生成Hibernate工具"
 date:   2016-06-26 10:49:00 +0800
-categories: Linux
+categories: Framework
 ---
 * 内容目录
 {:toc}
