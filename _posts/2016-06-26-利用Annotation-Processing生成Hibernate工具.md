@@ -38,7 +38,7 @@ Intellij
 
 ## 开发思路
 
-根据开发原因，很容联想到一个开源工具`LomBok`，它能够自动生成`Getter/Setter`，`toString`，`hashCode`等方法，在intellij上配合lombok的插件，能够实时调出这些方法。于是我尝试在Lombok上去拓展，但发现Lombok并不能直接拓展，需要修改其源码并重新编译，这就没必要了。然后了解了一下Lombok的原理，是基于`Annotation Processing`来实现的，简单来说就是为`Annotation`注册一个`Processor`，在编译时动态生成代码，这算是实现工具的神器了。
+根据开发原因，很容联想到一个开源工具`LomBok`，它能够自动生成`Getter/Setter`，`toString`，`hashCode`等方法，在intellij上配合lombok的插件，能够实时调出这些方法。于是我尝试在Lombok上去拓展，但发现Lombok并不能直接拓展，需要修改其源码并重新编译，这就没必要了。然后了解了一下Lombok的原理，是基于`Annotation Processing`来实现的，简单来说就是为`Annotation`注册一个`Processor`，在编译时动态生成代码，这算是实现工具的神器了。(这里当时认识有错误，Lombok实际是通过修改AST来实现的，并非`Annotation Processing` 2016－07－01)
 
 于是我学习了一下这片文章 [Annotation Processing](http://hannesdorfmann.com/annotation-processing/annotationprocessing101)，照着上面所诉的模式写了一个Hibernate工具。
 
@@ -212,4 +212,4 @@ Intellij
 	
 ### 总结
 
-这种方式的工具需要在使用前编译一下代码，也算是点小遗憾了，要实现`Lombok`那样无需手动编译的效果，需要实现对应的Intellij插件，这份工作就看以后有没有精力做了。
+这种方式的工具需要在使用前编译一下代码，而且不能在原始代码上进行修改，也算是点小遗憾了。
