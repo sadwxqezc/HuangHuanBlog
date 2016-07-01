@@ -213,3 +213,4 @@ Intellij
 ### 总结
 
 这种方式的工具需要在使用前编译一下代码，而且不能在原始代码上进行修改，也算是点小遗憾了。
+PS: intellij上有个叫GeneratePropertyNameConstants的插件，用这个也可以，只不过麻烦些
