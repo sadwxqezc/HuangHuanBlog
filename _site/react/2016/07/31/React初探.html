@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Redux开发初探</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <p class="navbar-text">程序员的学习之路</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Redux开发初探</h1>
+        <p>Jul 31, 2016</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">概述</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">用到的主要技术和工具</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">开发工具</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">相关技术和组件</a></li>
+    </ul>
+  </li>
+  <li><a href="#react" id="markdown-toc-react">React的思想</a></li>
+  <li><a href="#redux" id="markdown-toc-redux">Redux的思想</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">代码实现</a>    <ul>
+      <li><a href="#section-5" id="markdown-toc-section-5">1.定义显示模块</a></li>
+      <li><a href="#action" id="markdown-toc-action">2.定义Action</a></li>
+      <li><a href="#reducer" id="markdown-toc-reducer">3.定义Reducer</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">4.定义容器</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-7" id="markdown-toc-section-7">结果图</a></li>
+  <li><a href="#section-8" id="markdown-toc-section-8">总结</a></li>
+</ul>
+
+<h3 id="section">概述</h3>
+
+<p><strong>服务端</strong>的研发工程师或多或少也会参与一些<strong>前端</strong>的开发工作，有时候是因为前端人力的匮乏（以前实习的服务端组就没有前端，后台管理的网页都需要自己写），有时是因为自己想开发一些组内的小工具。因此，掌握一套前端开发技术，能够快速的构建网站也算是一个必备的技能。<br />
+在上述的背景下，由于组内目前采用了<strong>Redux</strong>来进行开发，我也趁机初步实践了一下，这里来分享一下我的实践结果。<br />
+<strong>注意</strong>：本文不涉及基本概念和语法的介绍，相关内容可参见：</p>
+
+<ul>
+  <li><a href="http://www.hubwiz.com/class/552762019964049d1872fc88">React在线课堂</a></li>
+  <li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html">React入门实例教程</a></li>
+  <li><a href="http://cn.redux.js.org/">Redux中文文档</a></li>
+  <li><a href="http://es6.ruanyifeng.com/">ECMAScript入门</a></li>
+  <li><a href="http://www.material-ui.com/">Material UI</a></li>
+  <li><a href="http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence">如何使用NPM来管理你的Node.js依赖</a></li>
+</ul>
+
+<h3 id="section-1">用到的主要技术和工具</h3>
+
+<h5 id="section-2">开发工具</h5>
+
+<ul>
+  <li>WebStorm</li>
+  <li>Intellij Idea</li>
+  <li>Chrome&amp;React插件</li>
+</ul>
+
+<h5 id="section-3">相关技术和组件</h5>
+
+<ul>
+  <li>React</li>
+  <li>Redux</li>
+  <li>Material-UI</li>
+  <li>Node.js</li>
+  <li>SpringBoot</li>
+</ul>
+
+<h3 id="react">React的思想</h3>
+
+<p><strong>React</strong>是由Facebook推出的JavaScript库，用于简化和规范前端的开发，同时优化页面的性能。作为一个写Java的后端开发，以前对<strong>JavaScript</strong>的印象就是灵活而混乱，100人的JavaScript代码100种风格，有的工程师好歹会设计一下，进行一些模块化的提取和复用，而有的工程师甚至把JS都往一个<code class="highlighter-rouge">html</code>活着<code class="highlighter-rouge">vm</code>文件里写，简直要命。而React的出现，以及<strong>ES6</strong>的应用，能够有效提高前端代码的可读性，同时提高其渲染性能（关于性能方面，因为还怎么接触，暂时不做讨论）。</p>
+
+<p>归纳一下，我理解的<strong>React</strong>的思想可以分为这几部分：</p>
+
+<ul>
+  <li><strong>组件化</strong>，其实<strong>React</strong>和<strong>ES6</strong>的结合，写起来真的挺像<strong>Java</strong>，在开发过程中能够很好的进行组件的分离和复用。</li>
+  <li>用<strong>状态(state)</strong>和<strong>参数(props)</strong>来代表组件的内容，每一个组件都有其独立的状态，该状态受组件内部行为的影响，同时受到外部参数的影响而改变。</li>
+  <li><strong>单向数据流</strong>，相比于<strong>双向绑定</strong>，实际是一个简化的思想，虽然会带来更多的代码，但流程更加清晰，问题更好追踪。</li>
+  <li>页面的渲染由<strong>React</strong>控制，React会根据组件state的改变情况来决定是否进行重新渲染。</li>
+</ul>
+
+<p>所以，<strong>React</strong>相当于给了我们一个最佳实践的模版，开发者只需要关心<strong>行为</strong>和<strong>数据</strong>，完全从页面的渲染部分解放了出来。</p>
+
+<h3 id="redux">Redux的思想</h3>
+
+<p>理解了<strong>React</strong>的思想，那么就我的理解而言，<strong>Redux</strong>实际上是一个管理<strong>action</strong>,<strong>state</strong>和<strong>props</strong>的工具，<strong>React</strong>让开发者需要关注用户的行为和数据，而<strong>Redux</strong>为我们提供了一个管理这两者的最佳实践模版。<br />
+Redux共由三个主要组件：</p>
+
+<ul>
+  <li>Action 定义动作的类型，和动作中携带的参数</li>
+  <li>Reducer 进行动作的处理，和状态的改变</li>
+  <li>Store 相当于一个小的数据库，用来存储所有组件的状态</li>
+</ul>
+
+<p>Redux的规定，将用户操作的行为定义为Action，这些Action都需要由Reducer去处理。如果需要获取远端的数据，可以利用<code class="highlighter-rouge">fetch</code>和<code class="highlighter-rouge">middleware</code>来实现。</p>
+
+<h3 id="section-4">代码实现</h3>
+
+<h4 id="section-5">1.定义显示模块</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import FlatButton from 'material-ui/FlatButton';
+import MenuItem from 'material-ui/MenuItem';
+import RefreshIndicator from 'material-ui/RefreshIndicator';
+
+const commentStyle = {
+    width: 300
+};
+
+const filedStyle = {
+    width: 200
+};
+
+const loadingStyle = {
+    display: 'inline-block',
+    position: 'relative'
+};
+
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showCheckboxes: false,
+            open: false,
+            info: '暂无内容可以显示',
+            scrollable: true,
+            detectHeight: true,
+        };
+    }
+
+    hanldeClose() {
+        this.setState({
+            open: false
+        });
+    }
+
+    render() {
+
+        return (
+            &lt;div&gt;
+                &lt;div&gt;
+                    &lt;MenuItem&gt;
+                        表名:{this.props.params.tableName}
+                    &lt;/MenuItem&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;Table&gt;
+                        &lt;TableHeader
+                            displaySelectAll={this.state.showCheckboxes}
+                            adjustForCheckbox={this.state.showCheckboxes}&gt;
+                            &lt;TableRow&gt;
+                                &lt;TableHeaderColumn style={filedStyle}&gt;字段名&lt;/TableHeaderColumn&gt;
+                                &lt;TableHeaderColumn style={commentStyle}&gt;字段描述&lt;/TableHeaderColumn&gt;
+                                &lt;TableHeaderColumn&gt;字段类型&lt;/TableHeaderColumn&gt;
+                                &lt;TableHeaderColumn&gt;是否可为空&lt;/TableHeaderColumn&gt;
+                                &lt;TableHeaderColumn&gt;键类型&lt;/TableHeaderColumn&gt;
+                                &lt;TableHeaderColumn&gt;默认值&lt;/TableHeaderColumn&gt;
+                            &lt;/TableRow&gt;
+                        &lt;/TableHeader&gt;
+                        &lt;TableBody displayRowCheckbox={this.state.showCheckboxes}&gt;
+                            {this.props.tableItems.map((tableItem)=&gt;(
+                                &lt;TableRow key={tableItem[0]}&gt;
+                                    &lt;TableRowColumn style={filedStyle}&gt;
+                                        {tableItem[0]}
+                                    &lt;/TableRowColumn&gt;
+                                    &lt;TableRowColumn style={commentStyle}&gt;
+                                        {tableItem[1]}
+                                    &lt;/TableRowColumn&gt;
+                                    &lt;TableRowColumn&gt;
+                                        {tableItem[2]}
+                                    &lt;/TableRowColumn&gt;
+                                    &lt;TableRowColumn&gt;
+                                        {tableItem[3]}
+                                    &lt;/TableRowColumn&gt;
+                                    &lt;TableRowColumn&gt;
+                                        {tableItem[4]}
+                                    &lt;/TableRowColumn&gt;
+                                    &lt;TableRowColumn &gt;
+                                        {tableItem[5]}
+                                    &lt;/TableRowColumn&gt;
+                                &lt;/TableRow&gt;)
+                            )}
+                        &lt;/TableBody&gt;
+                    &lt;/Table&gt;
+                    &lt;RefreshIndicator
+                        size={50}
+                        left={512}
+                        top={0}
+                        loadingColor={"#FF9800"}
+                        status={this.props.loading}
+                        style={loadingStyle}
+                    /&gt;
+                &lt;/div&gt;
+            &lt;/div &gt;);
+    }
+}
+
+/**
+ * 将状态的改变绑定到props
+ */
+const mapStateToProps = (state)=&gt; {
+    return {
+        params: state.requestReducer.tableParams,
+        tableItems: state.requestReducer.tableItems,
+        loading: state.requestReducer.loading
+    }
+};
+
+export default connect(mapStateToProps)(App);
+</code></pre>
+</div>
+
+<p>该模块为一个<code class="highlighter-rouge">table</code>，其参数主要为<code class="highlighter-rouge">tableItems</code>，通过<code class="highlighter-rouge">mapStateToProps</code>方法，该参数将会随着状态中的<code class="highlighter-rouge">state.requestReducer.tableItems</code>而改变。</p>
+
+<h4 id="action">2.定义Action</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import fetch from 'isomorphic-fetch';
+
+
+/**
+ * 请求表数据中
+ */
+export const REQUESTING = "REQUESTING";
+
+/**
+ * 获取到表的描述信息
+ */
+export const RECEIVE_TABLE_DESCRIPTIONS = "RECEIVE_TABLE_DESCRIPTIONS";
+
+/**
+ * 获取表的描述信息
+ * @param params 请求参数
+ * @param tableItems 表的描述项
+ */
+export function receiveTableDescriptions(tableParams, tableItems) {
+	return {
+    	type: RECEIVE_TABLE_DESCRIPTIONS,
+    	tableParams,
+    	tableItems
+	}
+}
+
+/**
+ * 请求参数
+ */
+export function requesting(loading) {
+	return {
+    	type: REQUESTING,
+    	loading
+	}
+}
+
+/**
+ * 根据数据库名和表名获取表的描述
+ */
+export function fetchTableDescriptions(tableParams) {
+	return function (dispatch) {
+    	dispatch(requesting({loading: 'loading'}));
+    	return fetch(`http://yourServiceAddress/dbs/${tableParams.dbName}/tables/${tableParams.tableName}`)
+        	.then(response=&gt;response.json())
+        	.then(json=&gt;dispatch(receiveTableDescriptions(tableParams, json.data))
+        	).catch(e=&gt;console.log("Fetch table names error", e))
+	};
+}
+</code></pre>
+</div>
+
+<p>在<code class="highlighter-rouge">fetchTableDescriptions</code>中用到的<code class="highlighter-rouge">dispatch</code>是用来连接ACTION和REDUCER的桥梁，这个方法中发送了两个ACTION, <strong>REQUESTING</strong>用来表示正在请求，会在页面上显示进度条提示，<strong>RECEIVE_TABLE_DESCRIPTIONS</strong>表示接受到数据，用来改变<code class="highlighter-rouge">Table</code>中的内容，这个行为需要一个<code class="highlighter-rouge">Button</code>来触发，这里我们就不做赘述了，触发的方式是：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import { fetchTableDescriptions } from '../actions/AppAction';
+
+handleButtonClick(item) {
+    this.props.fetchTableDescriptions({
+        dbName: 'yourDbName',
+        tableName: item
+    });
+}
+</code></pre>
+</div>
+
+<h4 id="reducer">3.定义Reducer</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import { combineReducers } from 'redux';
+import { RECEIVE_TABLE_DESCRIPTIONS,REQUESTING } from '../actions/AppAction';
+
+/**
+ * 请求的reducer
+ */
+function requestReducer(state = {
+	loading: 'hide',
+	tableItems: [],
+	tableParams: {tableName: '请在左侧选择表名'}
+}, action) {
+	switch (action.type) {
+    	case REQUESTING:
+        	return Object.assign(
+            	{},
+            	state,
+            	{
+               		loading: 'loading'
+            	});
+    	case RECEIVE_TABLE_DESCRIPTIONS:
+        	return Object.assign(
+            	{},
+            	state,
+            	{
+                	loading: 'hide',
+                	tableParams: action.tableParams,
+                	tableItems: action.tableItems
+            	}
+        	);
+    	default:
+        	return state;
+	}
+}
+
+
+const rootReducer = combineReducers({
+	requestReducer
+});
+
+export default rootReducer;
+</code></pre>
+</div>
+
+<h4 id="section-6">4.定义容器</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
+
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Provider } from 'react-redux';
+import App from './App';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
+
+class Index extends Component {
+
+	constructor(props) {
+    	super(props);
+	}
+
+	render() {
+    	return (
+        	&lt;Provider store={store}&gt;
+            	&lt;MuiThemeProvider&gt;
+               	 &lt;App/&gt;	
+            	&lt;/MuiThemeProvider&gt;
+        	&lt;/Provider&gt;
+    	);
+	}
+}
+
+ReactDOM.render(
+	&lt;Index/&gt;,
+	document.getElementById('app')
+);
+</code></pre>
+</div>
+
+<p>这里主要用来配置<code class="highlighter-rouge">store</code>，其代码内容如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+ * 配置store
+ * Created by huanghuan on 16/7/21.
+ */
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleWare from 'redux-thunk'; //用于做异步action
+import createLogger from 'redux-logger'; //日志
+import rootReducer from '../reducers/root'; //主reducer
+
+export default function configureStore(preloadedState) {
+	//创建store,并应用middleware
+	const store = createStore(
+    	rootReducer,
+    	preloadedState,
+    	applyMiddleware(thunkMiddleWare, createLogger())
+	);
+
+	//reducer的热替换?
+	if (module.hot) {
+    	module.hot.accept('../reducers', ()=&gt; {
+        	const nextRootReducer = require('../reducers').default;
+        	store.replaceReducer(nextRootReducer);
+    	})
+	}
+
+	return store;
+};
+</code></pre>
+</div>
+
+<h3 id="section-7">结果图</h3>
+
+<p>在定义完所有组件后，运行的结果如下：</p>
+
+<p><img src="/HuangHuanBlog/pics/react_demo.jpg" alt="demo" /></p>
+
+<h3 id="section-8">总结</h3>
+
+<p>这边文章通过一个简单的例子，粗略的介绍了我对Redux的使用体会，虽然感觉<code class="highlighter-rouge">React</code>和<code class="highlighter-rouge">Redux</code>有一定的入门成本，但一旦入门，开发的效率和效果真的非常让人满意，值得大家尝试。</p>
+
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/framework/2016/06/26/%E5%88%A9%E7%94%A8Annotation-Processing%E7%94%9F%E6%88%90Hibernate%E5%B7%A5%E5%85%B7.html">上一篇博客：利用Annotation Processing生成Hibernate工具</a><br>
+      
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="/react/2016/07/31/React初探" data-title="Redux开发初探" data-url="sadwxqezc.github.io/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>北京网易有道后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+   
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huanghuan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>

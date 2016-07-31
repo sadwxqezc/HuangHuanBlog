@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>利用Annotation Processing生成Hibernate工具</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/06/26/%E5%88%A9%E7%94%A8Annotation-Processing%E7%94%9F%E6%88%90Hibernate%E5%B7%A5%E5%85%B7.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <p class="navbar-text">程序员的学习之路</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>利用Annotation Processing生成Hibernate工具</h1>
+        <p>Jun 26, 2016</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">开发原因</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">开发组件</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">开发思路</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">实现细节</a>    <ul>
+      <li><a href="#section-4" id="markdown-toc-section-4">注解</a></li>
+      <li><a href="#processor" id="markdown-toc-processor">注解Processor的实现</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">配置文件</a></li>
+      <li><a href="#maven" id="markdown-toc-maven">生成Maven包</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">测试</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">总结</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="section">开发原因</h2>
+
+<p>在使用Hibernate时候，经常会写这样的代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@Override
+public List getTemplateList(long id) {
+    DetachedCriteria criteria = DetachedCriteria.forClass(Template.class);
+    criteria.add(Restrictions.eq("id", id));
+    criteria.addOrder(Order.desc("create_time"));
+    return findByDetachedCriteria(criteria);
+}
+</code></pre>
+</div>
+
+<p>在设置条件的时候，不得不使用hibernate 实体类中对应的字段，这个时侯要么是跳到对应类或xml文件里复制粘贴，要么是自己手打，还容易出错。这个时侯就会想，如果能为实体类生成一些方法，以获取对应的实体类字段名，那就方便多了，达到如下这种效果：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@Override
+public List getTemplateList(long id) {
+    DetachedCriteria criteria = DetachedCriteria.forClass(Template.class);
+    criteria.add(Restrictions.eq(TemplateTool.getId(), id));
+    criteria.addOrder(Order.desc(TemplateTool.getCreate_Time());
+    return findByDetachedCriteria(criteria);
+}
+</code></pre>
+</div>
+
+<p>这样是不是方便了很多，在IDE的帮助下，能有效提高写代码的效率。</p>
+
+<h2 id="section-1">开发组件</h2>
+
+<p>Intellij</p>
+
+<h2 id="section-2">开发思路</h2>
+
+<p>根据开发原因，很容联想到一个开源工具<code class="highlighter-rouge">LomBok</code>，它能够自动生成<code class="highlighter-rouge">Getter/Setter</code>，<code class="highlighter-rouge">toString</code>，<code class="highlighter-rouge">hashCode</code>等方法，在intellij上配合lombok的插件，能够实时调出这些方法。于是我尝试在Lombok上去拓展，但发现Lombok并不能直接拓展，需要修改其源码并重新编译，这就没必要了。然后了解了一下Lombok的原理，是基于<code class="highlighter-rouge">Annotation Processing</code>来实现的，简单来说就是为<code class="highlighter-rouge">Annotation</code>注册一个<code class="highlighter-rouge">Processor</code>，在编译时动态生成代码，这算是实现工具的神器了。(这里当时认识有错误，Lombok实际是通过修改AST来实现的，并非<code class="highlighter-rouge">Annotation Processing</code> 2016－07－01)</p>
+
+<p>于是我学习了一下这片文章 <a href="http://hannesdorfmann.com/annotation-processing/annotationprocessing101">Annotation Processing</a>，照着上面所诉的模式写了一个Hibernate工具。</p>
+
+<h2 id="section-3">实现细节</h2>
+
+<p>源码参见：<a href="https://github.com/sadwxqezc/AP">Huang Huan Github Annotation Processing</a></p>
+
+<h3 id="section-4">注解</h3>
+
+<p>首先需要定义一个作用于<code class="highlighter-rouge">source</code>阶段的注解：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@Documented
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.SOURCE)
+public @interface ORMTool {
+}
+</code></pre>
+</div>
+
+<h3 id="processor">注解Processor的实现</h3>
+
+<p>定义一个<code class="highlighter-rouge">ORMToolProcessor</code>来对应该注解：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@AutoService(Processor.class)
+@SupportedAnnotationTypes("bj.huanghuan.annotation.ORMTool")
+public class ORMToolProcessor extends AbstractProcessor {
+
+    /**
+     * 打印信息
+     **/
+    private Messager messager;
+
+    /**
+     * 创建文件工具
+     **/
+    private Filer filer;
+
+    /**
+     * element工具
+     **/
+    private Elements elementUtils;
+
+
+    private static final String SUFFIX = "Tool";
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnv) {
+        super.init(processingEnv);
+        messager = processingEnv.getMessager();
+        filer = processingEnv.getFiler();
+        elementUtils = processingEnv.getElementUtils();
+    }
+
+    @Override
+    public boolean process(Set&lt;? extends TypeElement&gt; annotations, 
+    RoundEnvironment roundEnv) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(ORMTool.class)) {
+            if (element.getKind() != ElementKind.CLASS) {
+                printError(element, 
+                "Only Classes can be annotated with @%s",
+                 ORMTool.class.getSimpleName());
+                return true;
+            }
+            TypeElement typeElement = (TypeElement) element;
+            String className = typeElement.getSimpleName() + SUFFIX;
+            try {
+                JavaFileObject classFile = filer.createSourceFile(className);
+                Writer writer = classFile.openWriter();
+                JavaWriter javaWriter = new JavaWriter(writer);
+                /*************** package Name *************/
+                PackageElement packageElement = elementUtils.getPackageOf(typeElement);
+                if (!packageElement.isUnnamed()) {
+                    javaWriter.emitPackage(packageElement.getQualifiedName().toString());
+                    javaWriter.emitEmptyLine();
+                } else {
+                    javaWriter.emitPackage("");
+                }
+
+                javaWriter.beginType(className, "class", EnumSet.of(Modifier.PUBLIC));
+                javaWriter.emitEmptyLine();
+
+                /************ generate getter for fields ************/
+                List&lt;VariableElement&gt; insideElements =
+                 ElementFilter.fieldsIn(typeElement.getEnclosedElements());
+                for (VariableElement variableElement : insideElements) {
+                    javaWriter.beginMethod("String",
+                     variableElement.getSimpleName().toString(),
+                     EnumSet.of(Modifier.PUBLIC, Modifier.STATIC),
+                     null, null);
+                    javaWriter.emitStatement("return \"" +
+                     variableElement.getSimpleName().toString() + "\"");
+                    javaWriter.endMethod();
+                    javaWriter.emitEmptyLine();
+                }
+
+                javaWriter.endType();
+                javaWriter.close();
+            } catch (IOException e) {
+                messager.printMessage(Diagnostic.Kind.ERROR, 
+                "Gennerate Source Code Failed!");
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latestSupported();
+    }
+
+    /**
+     * 错误日志打印
+     *
+     * @param element
+     * @param msg
+     * @param args
+     */
+    private void printError(Element element, String msg, Object... args) {
+        messager.printMessage(Diagnostic.Kind.ERROR, String.format(msg, args), element);
+    }
+}
+</code></pre>
+</div>
+
+<p>这部门代码里有一些需要解释的地方：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">@AutoService</code>是Google提供的注册一个工具，其实作用应该是省去后面我将要讲的配置文件，不过影响不大。</li>
+  <li><code class="highlighter-rouge">process(Set&lt;? extends TypeElement&gt; annotations, ...)</code>是处理的入口，首先判断被<code class="highlighter-rouge">ORMTool</code>注解的元素是不是<code class="highlighter-rouge">Class</code>类型，然后利用<code class="highlighter-rouge">JavaWriter</code>这个代码生成工具来构建新的Java文件，为注解的类生成一个对应的tool类。该类包含了被注解类中所有<code class="highlighter-rouge">Field</code>的参数名<code class="highlighter-rouge">Getter</code>。</li>
+  <li>这里面的<code class="highlighter-rouge">TypeElement</code>，<code class="highlighter-rouge">VariableElement</code>分别指的类类型和域类型。</li>
+</ul>
+
+<h3 id="section-5">配置文件</h3>
+
+<p>这里需要一个配置文件，文件全路径是<code class="highlighter-rouge">/META-INF/services/javax.annotation.processing.Processor</code>，配置文件中写入<code class="highlighter-rouge">ORMToolProcessor</code>中的路径，如<code class="highlighter-rouge">bj.huanghuan.processor.ORMToolProcessor</code>。实际上又了上面的<code class="highlighter-rouge">@AutoService</code>其实应该不需要手写这个文件了，不过我没试过，读者有兴趣可以试试。</p>
+
+<p>截图：</p>
+
+<p><img src="/HuangHuanBlog/pics/ap-structure" alt="文件结构" /></p>
+
+<h3 id="maven">生成Maven包</h3>
+
+<p>最后需要生成一个Maven包，加入到其它项目中供调用。</p>
+
+<h3 id="section-6">测试</h3>
+
+<p>测试用的<code class="highlighter-rouge">Test</code>类：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@ORMTool
+public class Test {
+
+	private int id;
+
+	private String name;
+
+	private Boolean isNew;
+}
+</code></pre>
+</div>
+
+<p>生成的<code class="highlighter-rouge">TestTool</code>类:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public class TestTool {
+	public TestTool() {
+	}
+
+	public static String id() {
+    	return "id";
+	}
+
+	public static String name() {
+    	return "name";
+	}
+
+	public static String isNew() {
+    	return "isNew";
+	}
+}
+</code></pre>
+</div>
+
+<h3 id="section-7">总结</h3>
+
+<p>这种方式的工具需要在使用前编译一下代码，而且不能在原始代码上进行修改，也算是点小遗憾了。
+PS: intellij上有个叫GeneratePropertyNameConstants的插件，用这个也可以，只不过麻烦些</p>
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/read/2016/06/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html">上一篇博客：读书笔记-思</a><br>
+      
+      
+      <a href="/HuangHuanBlog/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html">下一篇博客：Redux开发初探</a>
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="/framework/2016/06/26/利用Annotation-Processing生成Hibernate工具" data-title="利用Annotation Processing生成Hibernate工具" data-url="sadwxqezc.github.io/framework/2016/06/26/%E5%88%A9%E7%94%A8Annotation-Processing%E7%94%9F%E6%88%90Hibernate%E5%B7%A5%E5%85%B7.html"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>北京网易有道后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+   
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huanghuan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
