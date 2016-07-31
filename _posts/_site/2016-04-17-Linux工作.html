@@ -1,0 +1,54 @@
+<ul id="markdown-toc">
+  <li><a href="#pushddir" id="markdown-toc-pushddir">1. pushd和dir命令</a></li>
+  <li><a href="#ctrlr" id="markdown-toc-ctrlr">2. CTRL+R</a></li>
+  <li><a href="#iterm2" id="markdown-toc-iterm2">3. Iterm2分屏</a></li>
+  <li><a href="#keycue" id="markdown-toc-keycue">4. KeyCue</a></li>
+  <li><a href="#spectacle" id="markdown-toc-spectacle">5. Spectacle</a></li>
+</ul>
+
+<p>系统是：MacOS<br />
+本文主要记录一些我在工作中掌握的能提高效率的小技能。</p>
+
+<h3 id="pushddir">1. pushd和dir命令</h3>
+
+<p>在Mac或者Linux环境下，切换目录是个非常麻烦的事情，为了提高这个过程的效率，可以使用<code class="highlighter-rouge">pushd</code>命令。</p>
+
+<p><b>pushd与dir：</b></p>
+
+<p><img src="/pics/pushd.png" alt="pushd" /></p>
+
+<p>如上图所示，<code class="highlighter-rouge">pushd</code>命令能够在<code class="highlighter-rouge">cd</code>到某个目录下的同时，将该目录保存。保存的目录可以通过<code class="highlighter-rouge">dirs -v</code>查看，下次要切换到一个目录的时候，可以直接<code class="highlighter-rouge">pushd +&lt;对应编号&gt;</code>，非常的方便。</p>
+
+<p><b>cd -命令</b></p>
+
+<p>相对更简单点的是<code class="highlighter-rouge">cd -</code>命令，它能直接返回之前所在的目录，其效果如下图所示。</p>
+
+<p><img src="/pics/cd.png" alt="cd" /></p>
+
+<hr />
+
+<h3 id="ctrlr">2. CTRL+R</h3>
+
+<p>这个真是超级实用，可以搜索已经使用过的命令，如果没找到，再<code class="highlighter-rouge">Ctrl+R</code>到下一个匹配的。</p>
+
+<p><img src="/pics/ctrlr.png" alt="ctrl+r" /></p>
+
+<h3 id="iterm2">3. Iterm2分屏</h3>
+
+<p>之前用过<code class="highlighter-rouge">tmux</code>的切分屏幕，如果是在一个Linux环境下，还比较实用（但公司的机器装<code class="highlighter-rouge">tmux</code>之类的比较麻烦，<code class="highlighter-rouge">apt-get</code>和<code class="highlighter-rouge">yum</code>之类的有时不让用，而且也不能每台机器都去装）。所以其实不如用Iterm2的分屏，<code class="highlighter-rouge">Command+D</code>是垂直分割，<code class="highlighter-rouge">Command+Shift+D</code>是水平分割，然后多连几次。</p>
+
+<p><img src="/pics/cmdd.png" alt="cmd+d" /></p>
+
+<h3 id="keycue">4. KeyCue</h3>
+
+<p>KeyCue可以用来显示当前软件的快捷键，长按<code class="highlighter-rouge">Command</code>健即可。</p>
+
+<p><img src="/pics/keycue.png" alt="keycue" /></p>
+
+<h3 id="spectacle">5. Spectacle</h3>
+
+<p>相信工作的时候程序员都不只一个屏幕，我目前就是一台Mac接两台显示器，显示器多了把软件拖来拖去很不方便，还要调显示的大小更浪费时间，Spectacle通过几个快捷键就能帮我们解决这个问题。</p>
+
+<p><img src="/pics/spectacle.png" alt="spectacle" /></p>
+
+<p>比如<code class="highlighter-rouge">ctrl+option+command+&lt;方向键&gt;</code>就能把当前软件丢到另一个屏幕上，然后再用快捷键调显示比例，两下搞定。</p>

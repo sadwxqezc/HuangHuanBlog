@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>事务的隔离性</title>
-	<meta name="description" content="">
+	<meta name="description" content="北京网易有道后台研发工程师">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/06/06/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E6%80%A7.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/writing/2016-06-06-%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E6%80%A7.md.notready">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -91,29 +91,28 @@ var _hmt = _hmt || [];
     <div class="post-area post">
       <header>
         <h1>事务的隔离性</h1>
-        <p>Jun 6, 2016</p>
+        <p>Jul 26, 2016</p>
       </header>
       <hr>
       <article>
-        <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">隔离性的作用</a></li>
-  <li><a href="#innodb" id="markdown-toc-innodb">Innodb中的四种隔离级别</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">事务隔离的实现原理</a></li>
-</ul>
+        * 内容目录
+{:toc}
 
-<h2 id="section">隔离性的作用</h2>
+## 隔离性的作用
 
-<h2 id="innodb">Innodb中的四种隔离级别</h2>
 
-<h2 id="section-1">事务隔离的实现原理</h2>
 
+## Innodb中的四种隔离级别
+
+
+
+## 事务隔离的实现原理
+
+
+参考：[Innodb中的事务隔离级别和锁的关系](http://tech.meituan.com/innodb-lock.html)
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/framework/2016/06/05/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1.html">上一篇博客：什么是数据库事务？</a><br>
-      
-      
-      <a href="/HuangHuanBlog/read/2016/06/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html">下一篇博客：读书笔记-思</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
@@ -122,7 +121,7 @@ var _hmt = _hmt || [];
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/framework/2016/06/06/事务的隔离性" data-title="事务的隔离性" data-url="sadwxqezc.github.io/framework/2016/06/06/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E6%80%A7.html"></div>
+      <div class="ds-thread" data-thread-key="" data-title="事务的隔离性" data-url="sadwxqezc.github.io/writing/2016-06-06-%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E6%80%A7.md.notready"></div>
       
       <!-- 多说评论框 end -->
     </div>

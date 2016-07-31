@@ -1,0 +1,536 @@
+<ul id="markdown-toc">
+  <li><a href="#grep" id="markdown-toc-grep">1. grep命令</a></li>
+  <li><a href="#ls" id="markdown-toc-ls">2. ls命令</a></li>
+  <li><a href="#find" id="markdown-toc-find">3. find命令</a></li>
+  <li><a href="#wc" id="markdown-toc-wc">4. wc命令</a></li>
+  <li><a href="#cat" id="markdown-toc-cat">5. cat命令</a></li>
+  <li><a href="#tail" id="markdown-toc-tail">6. tail命令</a></li>
+  <li><a href="#head" id="markdown-toc-head">7. head命令</a></li>
+  <li><a href="#du" id="markdown-toc-du">8. du命令</a></li>
+  <li><a href="#whichwhereis" id="markdown-toc-whichwhereis">9. which和whereis</a></li>
+  <li><a href="#sort" id="markdown-toc-sort">10. sort命令</a></li>
+  <li><a href="#netstat" id="markdown-toc-netstat">11. netstat命令</a></li>
+  <li><a href="#more" id="markdown-toc-more">12. more命令</a></li>
+  <li><a href="#less" id="markdown-toc-less">13. less命令</a></li>
+  <li><a href="#ps" id="markdown-toc-ps">14. ps命令</a></li>
+  <li><a href="#tmuxmac" id="markdown-toc-tmuxmac">15. tmux命令(Mac)</a></li>
+  <li><a href="#ackmac" id="markdown-toc-ackmac">16. ack命令(Mac)</a></li>
+</ul>
+
+<p>命令后带(Mac)标记的，表示该命令在Mac OSX下测试，其它的在Debian下测试。</p>
+
+<h3 id="grep">1. grep命令</h3>
+
+<blockquote>
+  <p>文本查找命令, 能够使用正则表达式的方式搜索文本，其搜索对象可以是单个或则多个文件</p>
+
+  <blockquote>
+    <h4><b>基本格式 grep [option] [regex] [path]</b></h4>
+    <p>-c 只输出匹配行的数目<br />
+-n 显示匹配行的行号<br />
+-v 显示不包含匹配文本的行<br />
+-i 不区分大小写 (grep是大小写敏感的)<br />
+-R 文件夹下递归搜索<br />
+-l 只显示匹配的文件名  <br />
+-H 显示文件名<br />
+-A NUM(after)显示匹配的后几行<br />
+-B NUM(before)显示匹配的前几行<br />
+-C NUM显示匹配的前后几行  <br />
+–color 标出颜色</p>
+  </blockquote>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：man grep | grep --color=always -n search
+带颜色的文本搜索，并同时输出行号
+</code></pre>
+</div>
+
+<p><img src="/pics/grep_color_n.png" alt="带颜色的搜索" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：man grep | grep --color=always -n '\&lt;search\&gt;'
+正则表达式模式的搜索
+</code></pre>
+</div>
+
+<p><img src="/pics/grep_color_n_regex.png" alt="正则表达式的搜索" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例三：grep -nR --color=always  a ./*.yml
+在文件夹下的yml文件中搜索，并标注行号和对应行
+</code></pre>
+</div>
+
+<p><img src="/pics/grep_dir.png" alt="文件夹搜索" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例四：grep -lR a ./*.yml
+在文件夹下的yml文件中搜索，但只输出匹配的文件名
+</code></pre>
+</div>
+
+<p><img src="/pics/grep_dir_only.png" alt="文件夹搜索" /></p>
+
+<hr />
+
+<h3 id="ls">2. ls命令</h3>
+
+<blockquote>
+  <p>ls是命令行中用的最多的命令之一了，用于显示目录下的文件</p>
+
+  <blockquote>
+    <h4><b>基本格式 ls [option]</b></h4>
+    <p>-a 列出所有文件，包括’.’开头的隐藏文件<br />
+-h 使打印结果易于使用者查看(human readable)<br />
+-l 列出文件的详细信息：创建者，创建时间，读写权限等<br />
+-s 显示文件大小<br />
+-t 按时间进行文件的排序<br />
+-S 以大小进行排序<br />
+-r 当前条件逆序<br />
+-L 显示文件链接名<br />
+-R 将目录中所有文件都递归显示出来</p>
+  </blockquote>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：ls -lharts
+输出文件信息，并时间从旧到新排列
+</code></pre>
+</div>
+
+<p><img src="/pics/ls_r_t.png" alt="详细信息" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：ls -R
+递归输出目录下的所有文件
+</code></pre>
+</div>
+
+<p><img src="/pics/ls_R.png" alt="ls递归" /></p>
+
+<hr />
+
+<h3 id="find">3. find命令</h3>
+
+<blockquote>
+  <p>文件查找命令,find命令将递归的搜索目录下符合要求的所有文件</p>
+
+  <blockquote>
+    <h4><b>基本格式 find [path] [option] [expression]</b></h4>
+    <p>-name 查找名为filename的文件<br />
+-perm 查找符合执行权限
+-user 按照文件的所属主查找<br />
+-mtime -n +n 按照文件的更改时间查找文件，n代表天数<br />
+-ctime -n +n 按照创建时间查找<br />
+-newer f1 !f2 查更改时间在f1和f2之间的文件    <br />
+-size n 查找长度为n块的文件，一块为512 bytes<br />
+-depth 使得查找在进入子目录前先行查找完本目录<br />
+-prune 查找时忽略某个目录
+-type 按文件类型查找，b为块设备，d为目录，f为普通文档</p>
+  </blockquote>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：find ~ -name '*.yml' | grep '\.yml' --color=always
+在用户目录下查找文件名后缀为.yml的文件
+</code></pre>
+</div>
+
+<p><img src="/pics/find_name.png" alt="按照文件名查找" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：find . -perm 644
+查找当前目录下权限为644的所有文件
+</code></pre>
+</div>
+
+<p><img src="/pics/find_perm.png" alt="按照权限的搜索" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例三：find . -path './_site*' -a -prune -o -name 'feed.xml' -print
+整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
+-a -o实际为逻辑与和逻辑或，当路径匹配时将执行-prune，那么将不会查找匹配路径中的文件，
+当路径不匹配时则不执行-prune，-o后的语句始终执行。
+</code></pre>
+</div>
+
+<p><img src="/pics/find_prune.png" alt="忽略一些文件夹搜索" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例四：find . -maxdepth 2 -size 3
+控制查找的深度
+</code></pre>
+</div>
+
+<p><img src="/pics/find_depth.png" alt="限制搜索深度" /></p>
+
+<p>补充：Linux的权限模式为三元组“owner”，“group”，“other”,权限对应表如下</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>rwx</td>
+      <td>7</td>
+      <td>-wx</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>rw-</td>
+      <td>6</td>
+      <td>-w-</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>r-x</td>
+      <td>5</td>
+      <td>--x</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>r--</td>
+      <td>4</td>
+      <td>---</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="wc">4. wc命令</h3>
+
+<blockquote>
+  <p>用于统计输入中的字节数，字数，行数并输出</p>
+
+  <blockquote>
+    <h4><b>基本格式 wc [option] [filename]</b></h4>
+    <p>-c 统计字节数<br />
+-l 统计行数<br />
+-m 统计字符数<br />
+-w 统计字数，一个字为由空白，跳格或换行字符分隔的字符串</p>
+  </blockquote>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：wc -l _config.yml
+统计行数，-c实际上可以查看文件的大小
+</code></pre>
+</div>
+
+<p><img src="/pics/wc.png" alt="统计" /></p>
+
+<hr />
+
+<h3 id="cat">5. cat命令</h3>
+
+<blockquote>
+  <p>连结命令(Concatenation)，连结多个文本，或者以标准输出形式打印文件的内容</p>
+
+  <blockquote>
+    <h4><b>基本格式 cat [option] [filename]</b></h4>
+    <p>-n 队输出的所有行编号<br />
+-b 与-n类似，但空行不编号</p>
+  </blockquote>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例一：cat -b testColumn(cat -n testColumn)
+显示文件内容
+</code></pre>
+</div>
+
+<p><img src="/pics/cat_b_n.png" alt="显示文件内容到控制台" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例二：cat testColumn testCat
+同时显示两个文件内容
+</code></pre>
+</div>
+
+<p><img src="/pics/cat_mul.png" alt="显示两个文件" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>范例三：cat testColumn testCat&gt;merge
+将两个内容连结并输出到一个文件中，&gt;为重新创建，&gt;&gt;为追加
+</code></pre>
+</div>
+
+<p><img src="/pics/cat_merge.png" alt="连结并输出" /></p>
+
+<hr />
+
+<h3 id="tail">6. tail命令</h3>
+
+<p>文本查看命令，可以看文本的最后几行。tail命令的优点在于其内容能够与输入同步更新，非常适用于查看实时日志。</p>
+<h4><b>基本格式 tail [option] [filename]</b></h4>
+<ul>
+  <li><code>-n number</code> 定位参数，+5表示从第五行开始显示，10或-10表示显示最后10行</li>
+  <li><code>-f</code> 监控文本变化，更新内容</li>
+  <li><code>-k number</code> 从number所指的KB处开始读取</li>
+</ul>
+
+<p>范例一：<code>tail -n -5 catalina.out</code>
+输出最后5行</p>
+
+<p><img src="/pics/tail_n.png" alt="tail_n" /></p>
+
+<p>范例二：<code>tail -f catalina.out</code>
+监听catalina.out最后行的变化并显示</p>
+
+<p><img src="/pics/tail_f.png" alt="tail_f" /></p>
+
+<hr />
+
+<h3 id="head">7. head命令</h3>
+
+<p>该命令与tail命令类似，默认显示文件前两行的内容</p>
+<h4><b>基本格式 head [option] [filename]</b></h4>
+<ul>
+  <li><code>-n number</code> 显示前几行,-5表示文件中除了最后5行之外的所有内容</li>
+  <li><code>-c number</code> 显示前几个字节</li>
+</ul>
+
+<p>范例一：<code>head -n 5 server.xml</code>和<code>head -n －5 server.xml</code></p>
+
+<p><img src="/pics/head_n.png" alt="head_n" /></p>
+
+<hr />
+
+<h3 id="du">8. du命令</h3>
+
+<p>该命令用于查看系统中文件和目录所占用的空间</p>
+<h4><b>基本格式 du [option] [name]</b></h4>
+<ul>
+  <li><code>-h</code> 用human readable的方式显示</li>
+  <li><code>--max-depth=number</code> 最大的查询层次</li>
+  <li><code>-a</code> 显示所有文件的大小，默认只显示目录的大小</li>
+</ul>
+
+<p>范例一：<code>du -h</code> 显示目录下所有文件夹的大小</p>
+
+<p><img src="/pics/du.png" alt="du" /></p>
+
+<p>范例二：<code>du -h catalina.out</code>和<code>du -h ../logs</code> 显示文件或目录的大小</p>
+
+<p><img src="/pics/du_name.png" alt="du_name" /></p>
+
+<p>范例三：<code>du -ah --max-depth=1</code>显示递归的层次为1，显示所有文件和文件夹大小</p>
+
+<p><img src="/pics/du_max_depth.png" alt="du_max_depth" /></p>
+
+<hr />
+
+<h3 id="whichwhereis">9. which和whereis</h3>
+
+<p>which命令的作用是在PATH变量制定的路径中，查找系统命令的位置。<br />
+whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man说明文件，源代码文件｝。whereis的查询时通过查询系统的数据库文件记录，所以速度比find更快，但由于数据库的更新频率较为缓慢，其结果与实际状况并不一定一致。</p>
+
+<ul>
+  <li><code>-m</code> 只查找说明文件</li>
+  <li><code>-b</code> 只查找二进制文件</li>
+</ul>
+
+<p>范例一：which命令</p>
+
+<p><img src="/pics/which.png" alt="which" /></p>
+
+<p>范例二：whereis命令</p>
+
+<p><img src="/pics/whereis.png" alt="whereis" /></p>
+
+<hr />
+
+<h3 id="sort">10. sort命令</h3>
+
+<p>sort命令用于对文本进行排序，并将结果输出。其以文本的每一行为单位，从首字符向后，依次按照ascii码值进行比较，最后升序排列。（默认是忽略每行前面空格的）</p>
+<h4><b>基本格式 sort [option] [filename]</b></h4>
+<ul>
+  <li><code>-u</code> 忽略重复行</li>
+  <li><code>-n</code> 按照数字大小排序</li>
+  <li><code>-r</code> 逆序</li>
+  <li><code>-k start,end</code>start为比较的起始位置，end为结束位置</li>
+</ul>
+
+<p>范例一：<code>sort sort.txt</code> 排序</p>
+
+<p><img src="/pics/sort.png" alt="sort" /></p>
+
+<p>范例二：<br />
+1. <code>sort -nk 2 -t - sort.txt</code> 以<code class="highlighter-rouge">-</code>进行分割，对分割后的第二个域进行排序；<br />
+2. <code>sort -nrk 2 -t - sort.txt</code> 逆序排序</p>
+
+<p><img src="/pics/sort_t.png" alt="sort_t" /></p>
+
+<p>范例三：<code>sort -t - -k 1.7 -nk 3,3 sort_k.txt</code><br />
+<code class="highlighter-rouge">-k start,end</code>中end可以省略，上面的<code class="highlighter-rouge">1.7</code>表示分割后第一个域的第7个字符，由于没有<code class="highlighter-rouge">end</code>，则表示对第一个域中第7字符及其之后的字符排序。而<code class="highlighter-rouge">3,3</code>则表示在前面排序的基础上，再对第三个域进行排序。</p>
+
+<p><img src="/pics/sort_k.png" alt="sort_k" /></p>
+
+<hr />
+
+<h3 id="netstat">11. netstat命令</h3>
+
+<p>netstat用于输出linux系统的网络情况信息，以前面试的时候还被问过：“如何查看占用某个端口的程序的pid?”，这个问题实际用<code>netstat -anp</code>输出，然后再grep一下即可。</p>
+<h4><b>基本格式 netstat [option]</b></h4>
+<ul>
+  <li><code>-a</code> 显示所有socket连接</li>
+  <li><code>-l</code> 显示监控中(listening)的socket连接</li>
+  <li><code>-n</code> 直接使用ip地址，而不使用域名服务器</li>
+  <li><code>-p</code> 显示正在使用socket的程序的pid和名称</li>
+  <li><code>-r</code> 打印路由表</li>
+  <li><code>-t</code> 显示TCP传输协议的连线状况</li>
+  <li><code>-u</code> 显示UDP传输协议的连线状况</li>
+  <li><code>-s</code> 显示网络工作信息统计表</li>
+</ul>
+
+<p>范例一：<code>netstat -anp</code>
+显示程序的pid和名称</p>
+
+<p><img src="/pics/netstat_anp.png" alt="netstat 端口" /></p>
+
+<p>范例二：<code>netstat -r</code>
+输出本机路由表</p>
+
+<p><img src="/pics/netstat_r.png" alt="netstat 路由表" /></p>
+
+<p>范例三：<code>netstat -lts</code>
+输出监听状态中的tcp协议统计信息</p>
+
+<p><img src="/pics/netstat_lts.png" alt="netstat tcp统计" /></p>
+
+<hr />
+
+<h3 id="more">12. more命令</h3>
+
+<p>more命令用于显示文件的内容，与cat和tail等命令不同的是，more命令是按页显示文件内容，同时具有搜寻字符串的功能。（由于more具有向前翻页功能，因此该命令会加载整个文件）</p>
+
+<h4><b>基本格式 more [option] [filename]</b></h4>
+<ul>
+  <li><code>+n</code> 从第n行开始显示</li>
+  <li><code>-n</code> 定义屏幕大小为n行</li>
+  <li><code>+/pattern</code> 再显示前按pattern匹配子串并显示</li>
+  <li>
+    <p><code>-s</code> 把连续的多个空行显示为一行</p>
+
+    <p>常用操作命令：</p>
+    <ul>
+  <li>Enter 向下n行，默认为1行</li>
+  <li>Ctrl+F 跳过一屏</li>
+  <li>Ctrl+B 返回上一屏</li>
+  <li>空格键 向下滚动一屏</li>
+  <li>= 输出当前行的行号</li>
+  <li>在more模式中回车，输入<code>/pattern</code>可以持续向下搜索</li></ul>
+  </li>
+</ul>
+
+<p>范例一：<code>more +/Deploy catalina.out</code><br />
+在catalina.out文件中查找“Deploy字符第一次出现的位置”，并从该处的前两行开始显示输出</p>
+
+<p><img src="/pics/more_+.png" alt="more 搜索" /></p>
+
+<p>范例二：<code>more +10 -10 catalina.out</code><br />
+从第10行开始，每页10行</p>
+
+<p><img src="/pics/more_+_-.png" alt="more 参数" /></p>
+
+<hr />
+
+<h3 id="less">13. less命令</h3>
+
+<p>less命令与more命令对应，既可以前后翻看文件，同时还有前后搜索功能，除此之外，less在查看前不会加载整个文件。</p>
+
+<h4><b>基本格式 less [option] [filename]</b></h4>
+<ul>
+  <li><code>－N</code> 显示每行的行号</li>
+  <li><code>-i</code> 忽略搜索时的大小写</li>
+  <li><code>-s</code> 将连续空行显示为一行</li>
+  <li>
+    <p><code>-m</code> 显示百分比</p>
+
+    <p>常用操作命令：</p>
+    <ul>
+  <li>/字符串 向下搜索“字符串”功能</li>
+  <li>?字符串 向上搜索“字符串”功能</li>
+  <li>n 重复前一个搜索</li>
+  <li>空格键 滚动一页</li>
+  <li>d 滚动半页</li>
+  <li>b 回溯一页</li>
+  <li>y 回溯一行</li>
+  <li>q 退出less命令</li>
+  </ul>
+  </li>
+</ul>
+
+<p>范例一：<code>less -Nm catalina.out</code><br />
+显示行号和百分比</p>
+
+<p><img src="/pics/less_Nm.png" alt="less 行号百分比" /></p>
+
+<p>范例二：<code>/detail</code>或者<code>?detail</code>
+向前向后搜索”detail”</p>
+
+<p><img src="/pics/less_search.png" alt="less 搜索" /></p>
+
+<hr />
+
+<h3 id="ps">14. ps命令</h3>
+
+<p>ps命令用来在Linux系统中显示进程的状态快照，其参数选项可谓非常之多。</p>
+<h4><b>基本格式 ps [option]</b></h4>
+<ul>
+  <li><code>-a</code> 显示所有用户的进程</li>
+  <li><code>-x</code> 显示没有控制终端的进程</li>
+  <li><code>-u</code> 按照用户名称查询进程</li>
+  <li><code>-f</code> 列出全部信息，常和其它选项联用</li>
+  <li><code>-j</code> 用任务格式来显示进程</li>
+  <li><code>-e</code> 显示所有进程</li>
+</ul>
+
+<p>范例一：<code>ps -ef</code> 用标准格式显示所有进程<br />
+显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD</p>
+
+<p><img src="/pics/ps_ef.png" alt="ps_ef" /></p>
+
+<p>范例二：<code>ps aux</code><br />
+显示的项目有：USER, PID, %CPU, %MEM, VSZ(虚拟内存量KB), RSS(固定内存量), TTY(进程所运行在的终端机), STAT, START, TIME, COMMAND</p>
+
+<p><img src="/pics/ps_aux.png" alt="ps_aux" /></p>
+
+<hr />
+
+<h3 id="tmuxmac">15. tmux命令(Mac)</h3>
+
+<p>tmux(Terminal Multiplexer)命令是一个颇为炫酷的命令，其特点与screen命令类似。tmux通过开出窗口，分拆面板，接管和分离会话，能够让使用者在一个窗口内同时进行多项操作。<br />
+tmux在osx的安装方式：<code>brew install tmux</code></p>
+<h4><b>基本格式 tmux [option]</b></h4>
+<ul>
+  <li><code>tmux new -s sessionName</code> 创建新的session会话</li>
+  <li><code>tmux attach -t sessionName</code> 重新连接上某一个session</li>
+  <li><code>tmux kill-session -t sessionName</code> 杀死某个session</li>
+  <li><code>tmux ls</code> 显示所有会话</li>
+</ul>
+
+<p>范例一：<code>tmux new -s mySession</code> 创建一个名为mySession的会话<br />
+输入<code class="highlighter-rouge">CTRL+b d</code>将从此会话脱离，如果要重新连接，则使用<code class="highlighter-rouge">tmux attach -t mySession</code></p>
+
+<p><img src="/pics/tmux_mySession.png" alt="tmux_new" /></p>
+
+<p>范例二：在范例一的mySession中按下<code class="highlighter-rouge">CTRL+b c</code>则会在mySession中创建一个新的窗口<br />
+可以通过<code class="highlighter-rouge">CTRL+b w</code>来查看窗口列表，<code class="highlighter-rouge">CTRL+b &lt;窗口号&gt;</code>来切换窗口<br />
+<code class="highlighter-rouge">CTRL+b f</code>来查找窗口，<code class="highlighter-rouge">exit</code>来退出窗口</p>
+
+<p><img src="/pics/tmux_windows.png" alt="tmux_multiple" /></p>
+
+<p>为了便于穿窗口的识别，还可以通过<code class="highlighter-rouge">CTRL+b ,</code>来重命名窗口</p>
+
+<p><img src="/pics/tmux_rename.png" alt="tmux_rename" /></p>
+
+<p>范例三：tmux还支持把窗口分割成多个面板，<code class="highlighter-rouge">CTRL+b "</code>为水平分割，<code class="highlighter-rouge">CTRL+b %</code>为垂直分割<br />
+通过<code class="highlighter-rouge">CTRL+b &lt;光标键&gt;</code>来进行窗口移动</p>
+
+<p><img src="/pics/tmux_panes.png" alt="tmux_panes" /></p>
+
+<hr />
+
+<h3 id="ackmac">16. ack命令(Mac)</h3>
+
+<p>ack(better than grep)命令的作用和grep类似，但效果更好。</p>
+<h4><b>基本格式 ack [option] [pattern]</b></h4>
+<ul>
+  <li><code>-w</code> 按单词匹配</li>
+  <li><code>--ingore-dir</code> 忽略某些目录</li>
+</ul>
+
+<p>范例一：<code>ack -w 测试</code> 与grep搜索的对比</p>
+
+<p><img src="/pics/ack_w.png" alt="ack_w" /></p>
+
+<hr />
+
