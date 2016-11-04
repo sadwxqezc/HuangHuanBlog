@@ -5,9 +5,441 @@
     <description>北京网易有道后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 31 Jul 2016 11:49:39 +0800</pubDate>
-    <lastBuildDate>Sun, 31 Jul 2016 11:49:39 +0800</lastBuildDate>
+    <pubDate>Fri, 04 Nov 2016 12:37:14 +0800</pubDate>
+    <lastBuildDate>Fri, 04 Nov 2016 12:37:14 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>React学习笔记</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#react&quot; id=&quot;markdown-toc-react&quot;&gt;React学习笔记&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#jsx&quot; id=&quot;markdown-toc-jsx&quot;&gt;JSX&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;范例&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#dom&quot; id=&quot;markdown-toc-dom&quot;&gt;非DOM属性&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;事件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;组建生命周期&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;首次使用组件时&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;之后使用该组件时&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;应用状态改变时&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;销毁时&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;数据流&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#props&quot; id=&quot;markdown-toc-props&quot;&gt;Props&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#state&quot; id=&quot;markdown-toc-state&quot;&gt;State&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#propsstate&quot; id=&quot;markdown-toc-propsstate&quot;&gt;Props和State中存放的数据&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;事件处理&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#setstate&quot; id=&quot;markdown-toc-setstate&quot;&gt;setState&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#replacestate&quot; id=&quot;markdown-toc-replacestate&quot;&gt;replaceState&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;组件的复合&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;react&quot;&gt;React学习笔记&lt;/h1&gt;
+
+&lt;p&gt;来自 &lt;em&gt;《React 引领未来的用户界面开发框架》&lt;/em&gt;一书&lt;/p&gt;
+
+&lt;h2 id=&quot;jsx&quot;&gt;JSX&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;JavaScript XML，一种在React组建内部构建标签的类XML语法，实际会被转换成JavaScript函数&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;范例&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//编写一个Divider
+var Divider = React.createClass({
+  render: function(){
+    &amp;lt;div className=&quot;divider&quot;&amp;gt;
+    	&amp;lt;h2&amp;gt;{this.props.children}&amp;lt;/h2&amp;gt;&amp;lt;hr/&amp;gt;
+    &amp;lt;/div&amp;gt;
+  }
+})
+
+//Divider调用
+&amp;lt;Divider&amp;gt;Questions&amp;lt;/Divider&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;dom&quot;&gt;非DOM属性&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt;  可选的唯一标志符，便于React渲染时重用&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ref&lt;/code&gt;  表示父子组建之间的引用&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dangerouslySetInnerHTML&lt;/code&gt; 在需要将HTML内容设置为字符串时使用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;事件&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;事件已经被规范化，并同统一用驼峰形式表示。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;handleClick: function(event){...},
+render: function(){
+  return &amp;lt;div onClick={this.handleClick}&amp;gt;...&amp;lt;/div&amp;gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;实际上，如CSS的表示也是用这样的形式。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;组建生命周期&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;首次使用组件时&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getDefaultProps&lt;/code&gt; 可以为实例设置默认的&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;值&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt; 初始化每个实例初始化&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;值&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillMount&lt;/code&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;之间最后修改&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;值的机会&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 创建虚拟DOM，是组件中唯一必要的方法&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt;可以在该方法中通过调用&lt;code class=&quot;highlighter-rouge&quot;&gt;this.getDOMNode()&lt;/code&gt;来访问真实的DOM，可以在这里调用如JQuery等工具。如果React运行在服务端，该方法不会被调用&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;之后使用该组件时&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillMount&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;应用状态改变时&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillReceivProps&lt;/code&gt; 组件的props可以通过父辈组件来修改，此时该方法将被调用&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shouldComponentUpdate&lt;/code&gt; 在渲染前判断是否需要更新，做到精确的优化，不要草率的使用该方法&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillUpdate&lt;/code&gt;不可以在该方法中更新&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;值&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidUpdate&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt;类似&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;销毁时&lt;/h3&gt;
+
+&lt;p&gt;调用&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillUnmount&lt;/code&gt;，可以在这个方法中做一些清理工作，比如创建的定时器或者添加的事件监听器&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;数据流&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;React中数据流是单向的，从父节点传递到子节点，因而组件是简单且易于把握的，组件只需要从父节点获取props渲染即可。如果顶层组件的某个prop改变了，React会递归地向下遍历整棵组件树，重新渲染所有使用这个属性的组件。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;props&quot;&gt;Props&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Props即为properties，能够把任意类型的数据传递给组件。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//挂载数据时设置组件的props
+var components=[{title:&#39;test_0&#39;},{title:&#39;test_1&#39;}];
+&amp;lt;ListComponents components={components}/&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;this.props&lt;/code&gt;来访问组件的&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;，但不能通过这种方式修改它，一个组件绝对不可以自己修改自己的&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;可以是字符串，对象，事件处理器等。可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;PropTypes&lt;/code&gt;来验证&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;的类型，推荐使用。&lt;/p&gt;
+
+&lt;h3 id=&quot;state&quot;&gt;State&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;每一个React组件都可以拥有自己的state，其与props的区别是，state只存在于组件内部&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;的值应该通过&lt;code class=&quot;highlighter-rouge&quot;&gt;this.setState()&lt;/code&gt;修改，只要该状态被修改，&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;方法就会被调用，然后导致之后的一系列变化。状态总是让组件变得更加复杂，把状态针对不同的组件独立开来，能更有利于调试。&lt;/p&gt;
+
+&lt;h3 id=&quot;propsstate&quot;&gt;Props和State中存放的数据&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;中不要保存计算出的值，而应该保存最简单的数据，即为组件工作时的必要数据。而&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;用来作为数据源，保证数据的单向流动。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-8&quot;&gt;事件处理&lt;/h2&gt;
+
+&lt;p&gt;绑定方式实际上和JavaScript并没太大差别，例如：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var Demo = React.createClass({
+  render: function(){
+    &amp;lt;div onClick={this.handleClick}&amp;gt;Click here&amp;lt;/div&amp;gt;
+  }
+  
+  handleClick: function(event){
+    this.setState({isClicked : true});
+  }
+});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;setstate&quot;&gt;setState&lt;/h3&gt;
+
+&lt;p&gt;合并对象的方式来更新组件的状态&lt;/p&gt;
+
+&lt;h3 id=&quot;replacestate&quot;&gt;replaceState&lt;/h3&gt;
+
+&lt;p&gt;将&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;整个替换为新的&lt;/p&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;组件的复合&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;React的一个突出特点是构建组件的能力，实际上React代码主要就是构建组件，就像编写HTML文档时使用元素一样。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;// 封装一个radio input作为子组件
+var AnswerRadioInput = React.createClass({
+  	propTypes : {
+     	id: React.PropTypes.string,
+      	name: React.PropTypes.string.isRequired,
+      	label: React.PropTypes.string.isRequired,
+      	value: React.PropTypes.string.isRequired,
+      	checked: React.PropTypes.bool
+  	},
+  	getDefaultProps : function(){
+      retrun{
+        id: null,
+        checked:false
+      }
+  	},
+    getInitialState : function(){
+      var id = this.props.id? this.props.id : uniqueId(&#39;radio-&#39;);
+      return {
+        checked : this.props.checked,
+        id : id,
+        name : id
+      }
+    },
+	render : function(){
+      return (
+        &amp;lt;div className=&quot;radio&quot;&amp;gt;
+          &amp;lt;!-- htmlFor表示该Label为哪个控件服务，点击该label时，所比绑定的元素将获得焦点 --&amp;gt;
+          &amp;lt;label htmlFor={this.props.id}&amp;gt;
+            &amp;lt;input type=&quot;radio&quot;
+              name={this.props.name}
+              id={this.props.id}
+              value={this.props.value}
+              checked={this.state.checked}/&amp;gt;
+            	{this.props.label}
+          &amp;lt;/label&amp;gt;
+        &amp;lt;/div&amp;gt;
+      )
+	}
+});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;以上构建了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;AnswerRadioInput&lt;/code&gt;组件，之后构建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;AnswerMultipleChoiceQuestion&lt;/code&gt;来组合这一组件。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;// 父组件
+var AnswerMultipleChoiceQuestion = React.createClass({
+	propTyes: {
+      value: React.PropTypes.string,
+      choices: React.PropTypes.array.isRequired,
+      onCompleted: React.PropTyes.func.isRequired
+	},
+  	getInitialState: function(){
+      return {
+        id: uniqueId(&#39;multiple-choice-&#39;),
+        value: this.props.value
+      }
+  	},
+  	renderChoices: function(){
+      return this.props.choices.map(function(choice,i){
+        return AnswerRadioInput({
+          id: &quot;choice-&quot;+i,
+          name: this.state.id,
+          label: choice,
+          value: choice,
+          checked: this.state.value === choice
+        });
+      }.bind(this))
+  	},
+  	render: function(){
+      return (
+        &amp;lt;div className=&quot;form-group&quot;&amp;gt;
+        	&amp;lt;label className=&quot;survey-item-label&quot; htmlFor={this.state.id}&amp;gt;
+              	{this.props.label}
+          	&amp;lt;/label&amp;gt;
+          	&amp;lt;div className=&quot;survey-item-content&quot;&amp;gt;
+          		{this.renderChoices()}
+          	&amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+      );
+  	}
+});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;此时存在一个问题，子组件没办法把自身的变化通知给父组件，因此，父组件需要关联子组件才能知道其更新。方法实际上就是回调，父组件通过向子组件中传入一个回调函数，子组件在需要时调用。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//父组件传入回调函数
+var AnswerMultipleChoiceQuestion = React.createClass({
+  ...
+  handleChanged: function(value){
+    this.setState({value:value});
+	this.props.onCompleted(value);
+  },
+  renderChoices: function(){
+    return this.props.choices.map(function(choice, i){
+      return AnswerRadioInput({
+        ...
+        onChanged: this.handleChanged
+      });
+    }.bind(this));
+  },
+});
+
+//子组件调用回调
+var AnswerRadioInpu = React.createClass({
+  propTypes: {
+    ...
+    onChanged: React.PropTypes.func.isRequired
+  },
+  handleChanged: function(event){
+    //event.target 找到事件的触发对象input
+    var checked = event.target.checked;
+    this.setState({checked: checked});
+    if(checked){
+      this.props.onChange(this.props.value);
+    }
+  },
+  render: function(){
+    return(
+      &amp;lt;div className=&quot;radio&quot;&amp;gt;
+        &amp;lt;label htmlFor={this.state.id}&amp;gt;
+        	&amp;lt;input type=&quot;radio&quot;
+              ...
+              onChange={this.handleChanged}/&amp;gt;
+          	{this.props.label}
+        &amp;lt;/label&amp;gt;
+      &amp;lt;/div&amp;gt;
+    )
+  }
+})&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Thu, 03 Nov 2016 12:24:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/11/03/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/11/03/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html</guid>
+        
+        
+        <category>React</category>
+        
+      </item>
+    
+      <item>
+        <title>VPN搭建小记</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;引言&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;服务器购买&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#pptp&quot; id=&quot;markdown-toc-pptp&quot;&gt;方案一：PPTP协议搭建&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ppppptpdiptables&quot; id=&quot;markdown-toc-ppppptpdiptables&quot;&gt;1.安装ppp，pptpd和iptables&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.修改相关配置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;3.配置转发规则并启动&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;小结&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#l2tpipsec&quot; id=&quot;markdown-toc-l2tpipsec&quot;&gt;方案二：L2TP/IPsec搭建&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#android-60&quot; id=&quot;markdown-toc-android-60&quot;&gt;Android 6.0问题&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;同一局域网问题&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;引言&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;VPN&lt;/strong&gt; 的作用相信大家也很清楚了，我在网上买的几个VPN感觉都不太稳定，速度还慢，所以决定自己搭建一个VPN。网上一般推荐用 &lt;strong&gt;搬瓦工&lt;/strong&gt; 和 &lt;strong&gt;Linode&lt;/strong&gt; 的 &lt;strong&gt;VPS&lt;/strong&gt; 来搭建，但因为我自己还想在服务器上做一些VPN之外的事情，所以选择了阿里云的 &lt;strong&gt;ECS&lt;/strong&gt; 来搭建。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;服务器购买&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/aliyun.png&quot; alt=&quot;demo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图所示，选择阿里云香港ECS服务器，然后内存的话 &lt;strong&gt;1G&lt;/strong&gt; 就足够了，操作系统是 &lt;strong&gt;CentOS 32位&lt;/strong&gt;。然后如果是自己用的话，网络一定要选择按流量计费，根据我这几天用的情况，一天流量费几分钱，还是很便宜的，而且带宽可以选大些，速度快。&lt;/p&gt;
+
+&lt;h3 id=&quot;pptp&quot;&gt;方案一：PPTP协议搭建&lt;/h3&gt;
+
+&lt;p&gt;一开始自然是选择最简单的 &lt;strong&gt;PPTP&lt;/strong&gt; 协议方式，这个协议没有 &lt;strong&gt;L2TP/IPsec&lt;/strong&gt; 安全，但因为是自己用，倒是无所谓了。参考的教程是&lt;a href=&quot;http://effmx.com/articles/zai-vpsshang-da-jian-pptp-vpnde-ji-jian-gong-lue/&quot;&gt;在VPS上搭建PPTP VPN极简攻略&lt;/a&gt;。主要步骤如下：&lt;/p&gt;
+
+&lt;h4 id=&quot;ppppptpdiptables&quot;&gt;1.安装ppp，pptpd和iptables&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+yum install -y ppp iptables
+yum install pptpd
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/b21c12bf86e8&quot;&gt;搬瓦工VPN搭建&lt;/a&gt;上说要装 &lt;strong&gt;Perl&lt;/strong&gt; 什么了，不过阿里云的机器上貌似不需要。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;2.修改相关配置&lt;/h4&gt;
+&lt;p&gt;```
+/** 修改DNS /etc/ppp/options.pptpd */
+ms-dns 8.8.8.8
+md-dns 8.8.4.4&lt;/p&gt;
+
+&lt;p&gt;/** 修改服务器IP和分配给客户端的IP /etc/pptpd.conf **/
+localip 192.168.0.1 //VPN服务器ip
+remoteip 192.168.0.234-255 //客户端ip
+```&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+/** 允许转发 /etc/sysctl.conf */
+net.ipv4.ip_forward=1
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;修改后，&lt;code class=&quot;highlighter-rouge&quot;&gt;sysctl -p&lt;/code&gt;保存。&lt;/p&gt;
+
+&lt;p&gt;```
+/** 配置账号　/etc/ppp/chap-secrets **/
+myusername pptpd mypassword *&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;3.配置转发规则并启动&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+/home/huanghuan/service iptables start //启动iptables
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
+(你的服务器的公网地址)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后启动VPN&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+/home/huanghuan/service pptpd restart
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;小结&lt;/h4&gt;
+
+&lt;p&gt;然后你就可以通过 &lt;strong&gt;PPTP&lt;/strong&gt; 来连接VPN并使用了，但是在这里我却发现个问题，升级后的IOS，OSX不支持PPTP了。。。，这就很尴尬了，虽然Android是可以用的，但做个半成品出来就没啥意思了。而且我还发现即使在没升级的OSX上用，速度还很慢，所以这个方案就废弃了。&lt;/p&gt;
+
+&lt;h3 id=&quot;l2tpipsec&quot;&gt;方案二：L2TP/IPsec搭建&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;L2TP&lt;/strong&gt; 据说吞吐量比 &lt;strong&gt;PPTP&lt;/strong&gt; 大很多，我在网上直接找了一个一件配置脚本来用，参见&lt;a href=&quot;https://teddysun.com/448.html&quot;&gt;L2TP/IPSec一键安装脚本&lt;/a&gt;。这个脚本装完之后其实还有不少问题，首先它的安装脚本是&lt;code class=&quot;highlighter-rouge&quot;&gt;l2tp.sh&lt;/code&gt;，然后安装后会生成一个&lt;code class=&quot;highlighter-rouge&quot;&gt;l2tp.log&lt;/code&gt;，在里面可能会报一些错，然后自己对着这些错去搜解决方法，倒是很快。解决了报错的问题，并重新执行&lt;code class=&quot;highlighter-rouge&quot;&gt;l2tp.sh&lt;/code&gt;后，我能够连接VPN，但却上不了了网。这个问题倒是很好解决，因为这种情况肯定是VPN服务器没有把客户端的请求转发出去，所以我重新配了下 &lt;strong&gt;IPtables&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
+(你的服务器的公网地址)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;之后就能在IOS和MAC上连接这个VPN了。&lt;/p&gt;
+
+&lt;h4 id=&quot;android-60&quot;&gt;Android 6.0问题&lt;/h4&gt;
+
+&lt;p&gt;以为已经搞定了，但之后又发现了一个问题，Android特么又连不上了。。。，又是一通搜，发现这居然是个Android的Bug。在Google的论坛上&lt;a href=&quot;https://code.google.com/p/android/issues/detail?id=196939&quot;&gt;Issuce 196930: L2TP/IPsec VPN does not work in Android 6.0.1&lt;/a&gt;，我们的大Google都被用户骂成狗了。参考了一下论坛中用户的解决方法，在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/ipsec.conf&lt;/code&gt;中添加这些配置：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+ike=aes256-sha2_256
+phase2alg=aes256-sha2_256
+sha2-truncbug=yes
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这个问题的原因是Android的L2TP/IPsec实现有问题，而且还是个存在了很久了的问题。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;同一局域网问题&lt;/h4&gt;
+
+&lt;p&gt;既然Android，IOS/OSX都可以了，那问题按理说应该到此结束了。但后来发现如果在同一个局域网里，同时用IPsec/L2TP的方式连VPN，有一个会被顶掉（我的情况都是OSX被顶掉）。这个问题应该是因为局域网里的机器出网IP是一样的，应该在局域网内做一些配置可能才行，不过我就没去研究这个了。如果觉得是个问题，可以OSX用IPsec/L2TP，然后Android用L2TP，这样是可以在同一局域网里同时用的。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;VPN的配置总的来说还是挺简单的，不过其中的原理还没有深入理解，我大概看了下PPTP和L2TP/IPsec的原理，也算挺复杂的了，以后有需要可以去研究下。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 30 Oct 2016 18:41:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>Redux开发初探</title>
@@ -413,6 +845,31 @@ export default function configureStore(preloadedState) {
         
         
         <category>React</category>
+        
+      </item>
+    
+      <item>
+        <title>事务的隔离性</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;隔离性的作用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#innodb&quot; id=&quot;markdown-toc-innodb&quot;&gt;Innodb中的四种隔离级别&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;事务隔离的实现原理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;隔离性的作用&lt;/h2&gt;
+
+&lt;h2 id=&quot;innodb&quot;&gt;Innodb中的四种隔离级别&lt;/h2&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;事务隔离的实现原理&lt;/h2&gt;
+
+&lt;p&gt;参考：&lt;a href=&quot;http://tech.meituan.com/innodb-lock.html&quot;&gt;Innodb中的事务隔离级别和锁的关系&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 26 Jul 2016 14:26:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/07/26/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E6%80%A7.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/07/26/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E6%80%A7.html</guid>
+        
+        
+        <category>Framework</category>
         
       </item>
     
@@ -1320,184 +1777,6 @@ AntiXSSAspectTest.TestEntity(id=2, text=test save Object(antiXSS success))
         <pubDate>Sat, 21 May 2016 12:59:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/05/21/AOP%E4%B9%8BantiXSS.html</link>
         <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/05/21/AOP%E4%B9%8BantiXSS.html</guid>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>程序小事</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyll-github&quot; id=&quot;markdown-toc-jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 准备的技能树&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 今后工作状态&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#macsed&quot; id=&quot;markdown-toc-macsed&quot;&gt;4. Mac下sed问题&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;5. 为博客添加目录&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#rescuetime&quot; id=&quot;markdown-toc-rescuetime&quot;&gt;6. 尝试使用rescuetime&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;7. 工作入职(2015-04-04)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;8. 博客迁移计划(2015-5-12)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;jekyll-github&quot;&gt;1. jekyll github发布问题&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;时间：2016年2月8日 晚&lt;/li&gt;
-  &lt;li&gt;问题回放：在本地发布无问题的jekyll博客，在&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;到github上时迟迟不能显示。但如果把博客的创建时间设置为今天之前，则发布成功。&lt;/li&gt;
-  &lt;li&gt;问题分析：目前还没有找到发生该问题的原因，不知道是否是因为github pages本身有这样的设置，正在调查中。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;jekyll博客的搭建和发布可参考:&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&quot;&gt;阮一峰的博客&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4&gt;解答 2016年2月23日&lt;/h4&gt;
-&lt;p&gt;github应该采用的是utc时间，只需要将博客的&lt;code class=&quot;highlighter-rouge&quot;&gt;yaml&lt;/code&gt;信息头中的	&lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt;参数进行时区设置，如果作者使用的是北京时间，则设置为&lt;code class=&quot;highlighter-rouge&quot;&gt;+0800&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;2. 准备的技能树&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;redis&lt;/li&gt;
-  &lt;li&gt;zookeeper&lt;/li&gt;
-  &lt;li&gt;spring(需要进阶)&lt;/li&gt;
-  &lt;li&gt;rest&lt;/li&gt;
-  &lt;li&gt;数据库(从mysql入手)&lt;/li&gt;
-  &lt;li&gt;脚本&lt;/li&gt;
-  &lt;li&gt;算法(需要进阶)&lt;/li&gt;
-  &lt;li&gt;网络&lt;/li&gt;
-  &lt;li&gt;javascript&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;3. 今后工作状态&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在工作中游刃有余，同时保持对新技术的兴趣和尝试，参与到产品的设计和策划中。&lt;/li&gt;
-  &lt;li&gt;未来事不可预知，不要过多的担忧，多思无益&lt;/li&gt;
-  &lt;li&gt;不可能每次遇到问题都已做好准备，要冷静的去思考解决之法&lt;/li&gt;
-  &lt;li&gt;谦虚而脚踏实地，与志同道合的人称为朋友，不要为不合的人烦扰&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;macsed&quot;&gt;4. Mac下sed问题&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -i &#39;&#39; &#39;1a test&#39; test&lt;/code&gt;时如果是&lt;code class=&quot;highlighter-rouge&quot;&gt;1a&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;1i&lt;/code&gt;都会报错，这应该是Mac自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;问题，所以选择&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install gnu-sed&lt;/code&gt;来替换掉，改用&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;5. 为博客添加目录&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gsed -i &#39;6a *内容目录\n{:toc}\n&#39; *.md&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;rescuetime&quot;&gt;6. 尝试使用rescuetime&lt;/h2&gt;
-
-&lt;p&gt;时间管理应该是以后工作很重要的内容，尝试使用&lt;code class=&quot;highlighter-rouge&quot;&gt;rescuetime&lt;/code&gt;来管理时间，之后可以对比下和番茄工作法的区别。&lt;/p&gt;
-
-&lt;p&gt;2015-5-12日：使用了一段rescuetime后，发现意义并不是很大，可能我目前所在的是一个纯粹的开发的阶段，每天的时间都在开发代码，rescuetime显示的效率都在87％左右。这个工具只能看到我是否在专心工作，并不能衡量工作的效率。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;7. 工作入职(2015-04-04)&lt;/h2&gt;
-
-&lt;p&gt;这是入职的第三天，周围的同事给我感觉挺不错，在这个部门相信我能学到不少东西，加油吧少年，Be simple !&lt;/p&gt;
-
-&lt;h2 id=&quot;section-4&quot;&gt;8. 博客迁移计划(2015-5-12)&lt;/h2&gt;
-
-&lt;p&gt;最近刚开始工作，没怎么写博客了，现在工作的内容开始熟悉了，准备针对工作中的问题和学到的东西进行定期的总结。&lt;br /&gt;
-博客准备进行一下改版，&lt;a href=&quot;http://novoland.github.io/index.html&quot;&gt;novoland的博客&lt;/a&gt;风格很不错，准备照着他的改版。&lt;/p&gt;
-</description>
-        <pubDate>Thu, 12 May 2016 22:53:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/05/12/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/develop/2016/05/12/%E7%A8%8B%E5%BA%8F%E5%B0%8F%E4%BA%8B.html</guid>
-        
-        
-        <category>Develop</category>
-        
-      </item>
-    
-      <item>
-        <title>读书笔记-学</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#effective-java&quot; id=&quot;markdown-toc-effective-java&quot;&gt;1. Effective Java&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#spring-in-action&quot; id=&quot;markdown-toc-spring-in-action&quot;&gt;2. Spring in action&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;effective-java&quot;&gt;1. Effective Java&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By Joshua Bloch&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/effective_java.jpg&quot; alt=&quot;Effective Java&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;正在学习&lt;/p&gt;
-
-&lt;h2 id=&quot;spring-in-action&quot;&gt;2. Spring in action&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;By Craig Walls&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/springinaction.jpg&quot; alt=&quot;Spring in action&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这本书紧紧围绕着&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Action&lt;/code&gt;，在工作中能设计到的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;实用技术基本都有讲解，并不涉及&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;的原理，对于工作上的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;使用恰好合适。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 24 Apr 2016 20:57:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
-        
-        
-        <category>Read</category>
-        
-      </item>
-    
-      <item>
-        <title>Mac高效开发小技能</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#pushddir&quot; id=&quot;markdown-toc-pushddir&quot;&gt;1. pushd和dir命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ctrlr&quot; id=&quot;markdown-toc-ctrlr&quot;&gt;2. CTRL+R&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#iterm2&quot; id=&quot;markdown-toc-iterm2&quot;&gt;3. Iterm2分屏&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#keycue&quot; id=&quot;markdown-toc-keycue&quot;&gt;4. KeyCue&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#spectacle&quot; id=&quot;markdown-toc-spectacle&quot;&gt;5. Spectacle&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;系统是：MacOS&lt;br /&gt;
-本文主要记录一些我在工作中掌握的能提高效率的小技能。&lt;/p&gt;
-
-&lt;h3 id=&quot;pushddir&quot;&gt;1. pushd和dir命令&lt;/h3&gt;
-
-&lt;p&gt;在Mac或者Linux环境下，切换目录是个非常麻烦的事情，为了提高这个过程的效率，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;pushd&lt;/code&gt;命令。&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;pushd与dir：&lt;/b&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/pushd.png&quot; alt=&quot;pushd&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如上图所示，&lt;code class=&quot;highlighter-rouge&quot;&gt;pushd&lt;/code&gt;命令能够在&lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt;到某个目录下的同时，将该目录保存。保存的目录可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;dirs -v&lt;/code&gt;查看，下次要切换到一个目录的时候，可以直接&lt;code class=&quot;highlighter-rouge&quot;&gt;pushd +&amp;lt;对应编号&amp;gt;&lt;/code&gt;，非常的方便。&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;cd -命令&lt;/b&gt;&lt;/p&gt;
-
-&lt;p&gt;相对更简单点的是&lt;code class=&quot;highlighter-rouge&quot;&gt;cd -&lt;/code&gt;命令，它能直接返回之前所在的目录，其效果如下图所示。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cd.png&quot; alt=&quot;cd&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;ctrlr&quot;&gt;2. CTRL+R&lt;/h3&gt;
-
-&lt;p&gt;这个真是超级实用，可以搜索已经使用过的命令，如果没找到，再&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+R&lt;/code&gt;到下一个匹配的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ctrlr.png&quot; alt=&quot;ctrl+r&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;iterm2&quot;&gt;3. Iterm2分屏&lt;/h3&gt;
-
-&lt;p&gt;之前用过&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;的切分屏幕，如果是在一个Linux环境下，还比较实用（但公司的机器装&lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;之类的比较麻烦，&lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;之类的有时不让用，而且也不能每台机器都去装）。所以其实不如用Iterm2的分屏，&lt;code class=&quot;highlighter-rouge&quot;&gt;Command+D&lt;/code&gt;是垂直分割，&lt;code class=&quot;highlighter-rouge&quot;&gt;Command+Shift+D&lt;/code&gt;是水平分割，然后多连几次。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cmdd.png&quot; alt=&quot;cmd+d&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;keycue&quot;&gt;4. KeyCue&lt;/h3&gt;
-
-&lt;p&gt;KeyCue可以用来显示当前软件的快捷键，长按&lt;code class=&quot;highlighter-rouge&quot;&gt;Command&lt;/code&gt;健即可。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/keycue.png&quot; alt=&quot;keycue&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;spectacle&quot;&gt;5. Spectacle&lt;/h3&gt;
-
-&lt;p&gt;相信工作的时候程序员都不只一个屏幕，我目前就是一台Mac接两台显示器，显示器多了把软件拖来拖去很不方便，还要调显示的大小更浪费时间，Spectacle通过几个快捷键就能帮我们解决这个问题。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/spectacle.png&quot; alt=&quot;spectacle&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;比如&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+option+command+&amp;lt;方向键&amp;gt;&lt;/code&gt;就能把当前软件丢到另一个屏幕上，然后再用快捷键调显示比例，两下搞定。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 17 Apr 2016 22:14:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/04/17/Linux%E5%B7%A5%E4%BD%9C.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/04/17/Linux%E5%B7%A5%E4%BD%9C.html</guid>
         
         
         <category>Linux</category>

@@ -112,6 +112,7 @@ var _hmt = _hmt || [];
   <li><a href="#ps" id="markdown-toc-ps">14. ps命令</a></li>
   <li><a href="#tmuxmac" id="markdown-toc-tmuxmac">15. tmux命令(Mac)</a></li>
   <li><a href="#ackmac" id="markdown-toc-ackmac">16. ack命令(Mac)</a></li>
+  <li><a href="#kill" id="markdown-toc-kill">17. kill命令</a></li>
 </ul>
 
 <p>命令后带(Mac)标记的，表示该命令在Mac OSX下测试，其它的在Debian下测试。</p>
@@ -631,6 +632,27 @@ tmux在osx的安装方式：<code>brew install tmux</code></p>
 
 <hr />
 
+<h3 id="kill">17. kill命令</h3>
+
+<p>kill命令用于终止指定的进程，其工作原理是通过向进程发送指定的信号。</p>
+
+<h4><b>基本格式 kill [params] [pid]</b></h4>
+
+<p>常用的是：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>kill -9 pid //强制终止
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">-1</code> Hup 终端断线</li>
+  <li><code class="highlighter-rouge">-2</code> INT 中断（同<code class="highlighter-rouge">Ctrl+c</code>）</li>
+  <li><code class="highlighter-rouge">-3</code> QUIT 退出(同<code class="highlighter-rouge">Ctrl+\</code>)</li>
+  <li><code class="highlighter-rouge">-15</code> TERM 终止，是默认的信号，如果应用本身会捕获该信号，则不能终止</li>
+  <li><code class="highlighter-rouge">-9</code> KILL 强制终止</li>
+  <li><code class="highlighter-rouge">-18</code> CONT 继续</li>
+  <li><code class="highlighter-rouge">-19</code> STOP 暂停(同<code class="highlighter-rouge">Ctrl+z</code>)</li>
+</ul>
 
       </article>
       <hr>

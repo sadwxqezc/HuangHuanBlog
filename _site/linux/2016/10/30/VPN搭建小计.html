@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>VPN搭建小记</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <p class="navbar-text">程序员的学习之路</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>VPN搭建小记</h1>
+        <p>Oct 30, 2016</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">引言</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">服务器购买</a></li>
+  <li><a href="#pptp" id="markdown-toc-pptp">方案一：PPTP协议搭建</a>    <ul>
+      <li><a href="#ppppptpdiptables" id="markdown-toc-ppppptpdiptables">1.安装ppp，pptpd和iptables</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2.修改相关配置</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">3.配置转发规则并启动</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">小结</a></li>
+    </ul>
+  </li>
+  <li><a href="#l2tpipsec" id="markdown-toc-l2tpipsec">方案二：L2TP/IPsec搭建</a>    <ul>
+      <li><a href="#android-60" id="markdown-toc-android-60">Android 6.0问题</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">同一局域网问题</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">总结</a></li>
+</ul>
+
+<h3 id="section">引言</h3>
+
+<p><strong>VPN</strong> 的作用相信大家也很清楚了，我在网上买的几个VPN感觉都不太稳定，速度还慢，所以决定自己搭建一个VPN。网上一般推荐用 <strong>搬瓦工</strong> 和 <strong>Linode</strong> 的 <strong>VPS</strong> 来搭建，但因为我自己还想在服务器上做一些VPN之外的事情，所以选择了阿里云的 <strong>ECS</strong> 来搭建。</p>
+
+<h3 id="section-1">服务器购买</h3>
+
+<p><img src="/HuangHuanBlog/pics/aliyun.png" alt="demo" /></p>
+
+<p>如图所示，选择阿里云香港ECS服务器，然后内存的话 <strong>1G</strong> 就足够了，操作系统是 <strong>CentOS 32位</strong>。然后如果是自己用的话，网络一定要选择按流量计费，根据我这几天用的情况，一天流量费几分钱，还是很便宜的，而且带宽可以选大些，速度快。</p>
+
+<h3 id="pptp">方案一：PPTP协议搭建</h3>
+
+<p>一开始自然是选择最简单的 <strong>PPTP</strong> 协议方式，这个协议没有 <strong>L2TP/IPsec</strong> 安全，但因为是自己用，倒是无所谓了。参考的教程是<a href="http://effmx.com/articles/zai-vpsshang-da-jian-pptp-vpnde-ji-jian-gong-lue/">在VPS上搭建PPTP VPN极简攻略</a>。主要步骤如下：</p>
+
+<h4 id="ppppptpdiptables">1.安装ppp，pptpd和iptables</h4>
+<p><code class="highlighter-rouge">
+yum install -y ppp iptables
+yum install pptpd
+</code></p>
+
+<p><a href="http://www.jianshu.com/p/b21c12bf86e8">搬瓦工VPN搭建</a>上说要装 <strong>Perl</strong> 什么了，不过阿里云的机器上貌似不需要。</p>
+
+<h4 id="section-2">2.修改相关配置</h4>
+<p>```
+/** 修改DNS /etc/ppp/options.pptpd */
+ms-dns 8.8.8.8
+md-dns 8.8.4.4</p>
+
+<p>/** 修改服务器IP和分配给客户端的IP /etc/pptpd.conf **/
+localip 192.168.0.1 //VPN服务器ip
+remoteip 192.168.0.234-255 //客户端ip
+```</p>
+
+<p><code class="highlighter-rouge">
+/** 允许转发 /etc/sysctl.conf */
+net.ipv4.ip_forward=1
+</code></p>
+
+<p>修改后，<code class="highlighter-rouge">sysctl -p</code>保存。</p>
+
+<p>```
+/** 配置账号　/etc/ppp/chap-secrets **/
+myusername pptpd mypassword *</p>
+
+<p>```</p>
+
+<h4 id="section-3">3.配置转发规则并启动</h4>
+
+<p><code class="highlighter-rouge">
+/home/huanghuan/service iptables start //启动iptables
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
+(你的服务器的公网地址)
+</code></p>
+
+<p>然后启动VPN</p>
+
+<p><code class="highlighter-rouge">
+/home/huanghuan/service pptpd restart
+</code></p>
+
+<h4 id="section-4">小结</h4>
+
+<p>然后你就可以通过 <strong>PPTP</strong> 来连接VPN并使用了，但是在这里我却发现个问题，升级后的IOS，OSX不支持PPTP了。。。，这就很尴尬了，虽然Android是可以用的，但做个半成品出来就没啥意思了。而且我还发现即使在没升级的OSX上用，速度还很慢，所以这个方案就废弃了。</p>
+
+<h3 id="l2tpipsec">方案二：L2TP/IPsec搭建</h3>
+
+<p><strong>L2TP</strong> 据说吞吐量比 <strong>PPTP</strong> 大很多，我在网上直接找了一个一件配置脚本来用，参见<a href="https://teddysun.com/448.html">L2TP/IPSec一键安装脚本</a>。这个脚本装完之后其实还有不少问题，首先它的安装脚本是<code class="highlighter-rouge">l2tp.sh</code>，然后安装后会生成一个<code class="highlighter-rouge">l2tp.log</code>，在里面可能会报一些错，然后自己对着这些错去搜解决方法，倒是很快。解决了报错的问题，并重新执行<code class="highlighter-rouge">l2tp.sh</code>后，我能够连接VPN，但却上不了了网。这个问题倒是很好解决，因为这种情况肯定是VPN服务器没有把客户端的请求转发出去，所以我重新配了下 <strong>IPtables</strong>。</p>
+
+<p><code class="highlighter-rouge">
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
+(你的服务器的公网地址)
+</code></p>
+
+<p>之后就能在IOS和MAC上连接这个VPN了。</p>
+
+<h4 id="android-60">Android 6.0问题</h4>
+
+<p>以为已经搞定了，但之后又发现了一个问题，Android特么又连不上了。。。，又是一通搜，发现这居然是个Android的Bug。在Google的论坛上<a href="https://code.google.com/p/android/issues/detail?id=196939">Issuce 196930: L2TP/IPsec VPN does not work in Android 6.0.1</a>，我们的大Google都被用户骂成狗了。参考了一下论坛中用户的解决方法，在<code class="highlighter-rouge">/etc/ipsec.conf</code>中添加这些配置：</p>
+
+<p><code class="highlighter-rouge">
+ike=aes256-sha2_256
+phase2alg=aes256-sha2_256
+sha2-truncbug=yes
+</code></p>
+
+<p>这个问题的原因是Android的L2TP/IPsec实现有问题，而且还是个存在了很久了的问题。</p>
+
+<h4 id="section-5">同一局域网问题</h4>
+
+<p>既然Android，IOS/OSX都可以了，那问题按理说应该到此结束了。但后来发现如果在同一个局域网里，同时用IPsec/L2TP的方式连VPN，有一个会被顶掉（我的情况都是OSX被顶掉）。这个问题应该是因为局域网里的机器出网IP是一样的，应该在局域网内做一些配置可能才行，不过我就没去研究这个了。如果觉得是个问题，可以OSX用IPsec/L2TP，然后Android用L2TP，这样是可以在同一局域网里同时用的。</p>
+
+<h3 id="section-6">总结</h3>
+
+<p>VPN的配置总的来说还是挺简单的，不过其中的原理还没有深入理解，我大概看了下PPTP和L2TP/IPsec的原理，也算挺复杂的了，以后有需要可以去研究下。</p>
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html">上一篇博客：Redux开发初探</a><br>
+      
+      
+      <a href="/HuangHuanBlog/react/2016/11/03/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">下一篇博客：React学习笔记</a>
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="/linux/2016/10/30/VPN搭建小计" data-title="VPN搭建小记" data-url="sadwxqezc.github.io/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>北京网易有道后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+   
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huanghuan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
