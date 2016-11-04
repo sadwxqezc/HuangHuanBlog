@@ -5,8 +5,8 @@
     <description>北京网易有道后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 Nov 2016 12:37:14 +0800</pubDate>
-    <lastBuildDate>Fri, 04 Nov 2016 12:37:14 +0800</lastBuildDate>
+    <pubDate>Fri, 04 Nov 2016 16:56:19 +0800</pubDate>
+    <lastBuildDate>Fri, 04 Nov 2016 16:56:19 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -29,7 +29,7 @@
       &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;数据流&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#props&quot; id=&quot;markdown-toc-props&quot;&gt;Props&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#state&quot; id=&quot;markdown-toc-state&quot;&gt;State&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#propsstate&quot; id=&quot;markdown-toc-propsstate&quot;&gt;Props和State中存放的数据&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#propsstate&quot; id=&quot;markdown-toc-propsstate&quot;&gt;Props和State存放数据&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;事件处理&lt;/a&gt;        &lt;ul&gt;
@@ -38,6 +38,14 @@
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;组件的复合&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mixin&quot; id=&quot;markdown-toc-mixin&quot;&gt;Mixin&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dom-1&quot; id=&quot;markdown-toc-dom-1&quot;&gt;DOM操作&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;表单&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;无约束组件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;约束组件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#react-router&quot; id=&quot;markdown-toc-react-router&quot;&gt;React Router&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -49,7 +57,7 @@
 &lt;h2 id=&quot;jsx&quot;&gt;JSX&lt;/h2&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;JavaScript XML，一种在React组建内部构建标签的类XML语法，实际会被转换成JavaScript函数&lt;/p&gt;
+  &lt;p&gt;JavaScript XML，一种在React组建内部构建标签的类XML语法，实际会被转换成JavaScript函数。JSX的表达能力很强，也很适合组件化的React开发。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;范例&lt;/h3&gt;
@@ -148,7 +156,7 @@ var components=[{title:&#39;test_0&#39;},{title:&#39;test_1&#39;}];
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;的值应该通过&lt;code class=&quot;highlighter-rouge&quot;&gt;this.setState()&lt;/code&gt;修改，只要该状态被修改，&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;方法就会被调用，然后导致之后的一系列变化。状态总是让组件变得更加复杂，把状态针对不同的组件独立开来，能更有利于调试。&lt;/p&gt;
 
-&lt;h3 id=&quot;propsstate&quot;&gt;Props和State中存放的数据&lt;/h3&gt;
+&lt;h3 id=&quot;propsstate&quot;&gt;Props和State存放数据&lt;/h3&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;中不要保存计算出的值，而应该保存最简单的数据，即为组件工作时的必要数据。而&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;用来作为数据源，保证数据的单向流动。&lt;/p&gt;
 
@@ -160,7 +168,7 @@ var components=[{title:&#39;test_0&#39;},{title:&#39;test_1&#39;}];
   render: function(){
     &amp;lt;div onClick={this.handleClick}&amp;gt;Click here&amp;lt;/div&amp;gt;
   }
-  
+
   handleClick: function(event){
     this.setState({isClicked : true});
   }
@@ -203,7 +211,7 @@ var AnswerRadioInput = React.createClass({
         name : id
       }
     },
-	render : function(){
+    render : function(){
       return (
         &amp;lt;div className=&quot;radio&quot;&amp;gt;
           &amp;lt;!-- htmlFor表示该Label为哪个控件服务，点击该label时，所比绑定的元素将获得焦点 --&amp;gt;
@@ -217,7 +225,7 @@ var AnswerRadioInput = React.createClass({
           &amp;lt;/label&amp;gt;
         &amp;lt;/div&amp;gt;
       )
-	}
+    }
 });&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;以上构建了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;AnswerRadioInput&lt;/code&gt;组件，之后构建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;AnswerMultipleChoiceQuestion&lt;/code&gt;来组合这一组件。&lt;/p&gt;
@@ -225,9 +233,9 @@ var AnswerRadioInput = React.createClass({
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;// 父组件
 var AnswerMultipleChoiceQuestion = React.createClass({
 	propTyes: {
-      value: React.PropTypes.string,
-      choices: React.PropTypes.array.isRequired,
-      onCompleted: React.PropTyes.func.isRequired
+	  value: React.PropTypes.string,
+	  choices: React.PropTypes.array.isRequired,
+	  onCompleted: React.PropTyes.func.isRequired
 	},
   	getInitialState: function(){
       return {
@@ -267,7 +275,7 @@ var AnswerMultipleChoiceQuestion = React.createClass({
   ...
   handleChanged: function(value){
     this.setState({value:value});
-	this.props.onCompleted(value);
+    this.props.onCompleted(value);
   },
   renderChoices: function(){
     return this.props.choices.map(function(choice, i){
@@ -306,6 +314,136 @@ var AnswerRadioInpu = React.createClass({
     )
   }
 })&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;mixin&quot;&gt;Mixin&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;mixin允许我们定义可以在多个组件中共用的方法&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;// 定义IntervalMixin
+var IntervalMixin = {
+​	setInterval: function(callback, interval){
+​		var token = setInterval(callback, interval);
+​		this.__intervals.push(token);
+​		return token;
+​	},
+​	componentDidMount: function(){
+​		this.__intervals=[];
+​	},
+​	componentWillUnmount: function(){
+​		this.__intervals.map(clearInterval);
+​	}
+}；
+
+//定义组件
+var Since2014 = React.createClass({
+​	//实际相当于把mixins中的内容解构了出来，放在了Since2014中
+​	mixins: [IntervalMixin],
+​	componentDidMount: function(){
+​		this.setInterval(this.forceUpdate.bind(this),1000);
+​	},
+​	render: function()	{
+​		var from = Number(new Date(2014, 0, 1));
+​		var to =Date.now();
+​		return (
+​			&amp;lt;div&amp;gt;{Math.round((to-from)/1000)}&amp;lt;/div&amp;gt;
+​		);
+​	}
+});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;dom-1&quot;&gt;DOM操作&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在某些情况下，为了实现某些需求就不得不去操作底层的DOM。最常见的场景包括：需要与一个没有使用React的第三方类库进行整合，或者执行一个React没有原生支持的操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var DoodleArea = React.createClass({
+​	render: function(){
+​		//通过设定一个ref属性，之后可以通过this.refs.mainCanvas来访问到&amp;lt;canvas&amp;gt;组件
+​		return &amp;lt;canvas ref=&quot;mainCanvas&quot;/&amp;gt;;
+​	}，
+​	componentDisMount: function(){
+​		//在这里通过getDOMNode()方法来访问到底层的DOM节点，也可以在事件处理器中调用
+​		var canvasNode= this.refs.mainCanvas.getDOMNode();
+​	}
+});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;section-10&quot;&gt;表单&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-11&quot;&gt;无约束组件&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;组件本身控制其值&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var MyForm = React.createClass({
+​	submitHandler: function(event){
+​		event.preventDefault();
+​		var text=this.refs.text.getDOMNode().value;
+​		alert(helloTo);
+​	},
+​	render: function(){
+​		return (
+​			&amp;lt;form onSubmit={this.submitHandler}&amp;gt;
+​				&amp;lt;input ref=&quot;text&quot; type=&quot;text&quot; defaultValue=&quot;Hello world!&quot;/&amp;gt;
+​				&amp;lt;br/&amp;gt;
+​				&amp;lt;button type=&quot;submit&quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
+​			&amp;lt;/form&amp;gt;
+​		);
+​	}
+});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-12&quot;&gt;约束组件&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;约束组件的值被存储在state中，由React控制&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var MyForm = React.createClass({
+​	getInitialState: function(){
+​		return {
+​			text: &#39;hello world!&#39;
+​		}
+​	},
+​	…
+​	render: function(){
+​		return (
+​			&amp;lt;form onSubmit={this.submitHandler}&amp;gt;
+​				&amp;lt;input type=&quot;text&quot; value={this.state.text}
+					 onChange={this.handleChange}/&amp;gt;
+​				...
+​			&amp;lt;/form&amp;gt;
+​		);
+​	}
+});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;对于如&lt;code class=&quot;highlighter-rouge&quot;&gt;handleChange&lt;/code&gt; 方法，还可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;bind&lt;/code&gt;方法传递更多参数，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;this.handleChange.bind(this, &quot;name&quot;)&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;react-router&quot;&gt;React Router&lt;/h2&gt;
+
+&lt;p&gt;React的介绍即讲过其非常适合于单页面应用，页面之间的切换需要&lt;code class=&quot;highlighter-rouge&quot;&gt;Router&lt;/code&gt;的帮助。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;React-router完全由React Component构成，路由被定义为了组件，路由的处理器也是组件&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//react router的写法如下
+var appRouter=(
+​	&amp;lt;Routes location=&quot;history&quot;&amp;gt;
+​		&amp;lt;Route title=&quot;SurveryBuilder&quot; handler={App}&amp;gt;
+​			&amp;lt;Route name=&quot;list&quot; path=&quot;/&quot; handler={ListSurveys}/&amp;gt;
+​			&amp;lt;Route title=&quot;Add survey to surveyBuilder&quot; name=&quot;add&quot; 
+				path=&quot;/add_survey&quot; handler={AddSurvey}/&amp;gt;
+​			&amp;lt;NotFound title=&quot;Page Not Found&quot; handler={NotFoundHandler}/&amp;gt;
+​		&amp;lt;/Route&amp;gt;
+​	&amp;lt;/Routes&amp;gt;
+
+);&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;每一个处理器就对应着特定页面的组件，需要将上面的路由作为最顶层的组件渲染来启动。&lt;/p&gt;
+
+&lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;react-router Link&lt;/code&gt;组件来进行导航。&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 03 Nov 2016 12:24:00 +0800</pubDate>

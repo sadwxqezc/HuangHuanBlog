@@ -113,7 +113,7 @@ var _hmt = _hmt || [];
       <li><a href="#section-7" id="markdown-toc-section-7">数据流</a>        <ul>
           <li><a href="#props" id="markdown-toc-props">Props</a></li>
           <li><a href="#state" id="markdown-toc-state">State</a></li>
-          <li><a href="#propsstate" id="markdown-toc-propsstate">Props和State中存放的数据</a></li>
+          <li><a href="#propsstate" id="markdown-toc-propsstate">Props和State存放数据</a></li>
         </ul>
       </li>
       <li><a href="#section-8" id="markdown-toc-section-8">事件处理</a>        <ul>
@@ -122,6 +122,14 @@ var _hmt = _hmt || [];
         </ul>
       </li>
       <li><a href="#section-9" id="markdown-toc-section-9">组件的复合</a></li>
+      <li><a href="#mixin" id="markdown-toc-mixin">Mixin</a></li>
+      <li><a href="#dom-1" id="markdown-toc-dom-1">DOM操作</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">表单</a>        <ul>
+          <li><a href="#section-11" id="markdown-toc-section-11">无约束组件</a></li>
+          <li><a href="#section-12" id="markdown-toc-section-12">约束组件</a></li>
+        </ul>
+      </li>
+      <li><a href="#react-router" id="markdown-toc-react-router">React Router</a></li>
     </ul>
   </li>
 </ul>
@@ -133,7 +141,7 @@ var _hmt = _hmt || [];
 <h2 id="jsx">JSX</h2>
 
 <blockquote>
-  <p>JavaScript XML，一种在React组建内部构建标签的类XML语法，实际会被转换成JavaScript函数</p>
+  <p>JavaScript XML，一种在React组建内部构建标签的类XML语法，实际会被转换成JavaScript函数。JSX的表达能力很强，也很适合组件化的React开发。</p>
 </blockquote>
 
 <h3 id="section">范例</h3>
@@ -232,7 +240,7 @@ var components=[{title:'test_0'},{title:'test_1'}];
 
 <p><code class="highlighter-rouge">state</code>的值应该通过<code class="highlighter-rouge">this.setState()</code>修改，只要该状态被修改，<code class="highlighter-rouge">render</code>方法就会被调用，然后导致之后的一系列变化。状态总是让组件变得更加复杂，把状态针对不同的组件独立开来，能更有利于调试。</p>
 
-<h3 id="propsstate">Props和State中存放的数据</h3>
+<h3 id="propsstate">Props和State存放数据</h3>
 
 <p><code class="highlighter-rouge">state</code>中不要保存计算出的值，而应该保存最简单的数据，即为组件工作时的必要数据。而<code class="highlighter-rouge">props</code>用来作为数据源，保证数据的单向流动。</p>
 
@@ -244,7 +252,7 @@ var components=[{title:'test_0'},{title:'test_1'}];
   render: function(){
     &lt;div onClick={this.handleClick}&gt;Click here&lt;/div&gt;
   }
-  
+
   handleClick: function(event){
     this.setState({isClicked : true});
   }
@@ -287,7 +295,7 @@ var AnswerRadioInput = React.createClass({
         name : id
       }
     },
-	render : function(){
+    render : function(){
       return (
         &lt;div className="radio"&gt;
           &lt;!-- htmlFor表示该Label为哪个控件服务，点击该label时，所比绑定的元素将获得焦点 --&gt;
@@ -301,7 +309,7 @@ var AnswerRadioInput = React.createClass({
           &lt;/label&gt;
         &lt;/div&gt;
       )
-	}
+    }
 });</code></pre></figure>
 
 <p>以上构建了一个<code class="highlighter-rouge">AnswerRadioInput</code>组件，之后构建一个<code class="highlighter-rouge">AnswerMultipleChoiceQuestion</code>来组合这一组件。</p>
@@ -309,9 +317,9 @@ var AnswerRadioInput = React.createClass({
 <figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">// 父组件
 var AnswerMultipleChoiceQuestion = React.createClass({
 	propTyes: {
-      value: React.PropTypes.string,
-      choices: React.PropTypes.array.isRequired,
-      onCompleted: React.PropTyes.func.isRequired
+	  value: React.PropTypes.string,
+	  choices: React.PropTypes.array.isRequired,
+	  onCompleted: React.PropTyes.func.isRequired
 	},
   	getInitialState: function(){
       return {
@@ -351,7 +359,7 @@ var AnswerMultipleChoiceQuestion = React.createClass({
   ...
   handleChanged: function(value){
     this.setState({value:value});
-	this.props.onCompleted(value);
+    this.props.onCompleted(value);
   },
   renderChoices: function(){
     return this.props.choices.map(function(choice, i){
@@ -390,6 +398,136 @@ var AnswerRadioInpu = React.createClass({
     )
   }
 })</code></pre></figure>
+
+<h2 id="mixin">Mixin</h2>
+
+<blockquote>
+  <p>mixin允许我们定义可以在多个组件中共用的方法</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">// 定义IntervalMixin
+var IntervalMixin = {
+​	setInterval: function(callback, interval){
+​		var token = setInterval(callback, interval);
+​		this.__intervals.push(token);
+​		return token;
+​	},
+​	componentDidMount: function(){
+​		this.__intervals=[];
+​	},
+​	componentWillUnmount: function(){
+​		this.__intervals.map(clearInterval);
+​	}
+}；
+
+//定义组件
+var Since2014 = React.createClass({
+​	//实际相当于把mixins中的内容解构了出来，放在了Since2014中
+​	mixins: [IntervalMixin],
+​	componentDidMount: function(){
+​		this.setInterval(this.forceUpdate.bind(this),1000);
+​	},
+​	render: function()	{
+​		var from = Number(new Date(2014, 0, 1));
+​		var to =Date.now();
+​		return (
+​			&lt;div&gt;{Math.round((to-from)/1000)}&lt;/div&gt;
+​		);
+​	}
+});</code></pre></figure>
+
+<h2 id="dom-1">DOM操作</h2>
+
+<blockquote>
+  <p>在某些情况下，为了实现某些需求就不得不去操作底层的DOM。最常见的场景包括：需要与一个没有使用React的第三方类库进行整合，或者执行一个React没有原生支持的操作。</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">var DoodleArea = React.createClass({
+​	render: function(){
+​		//通过设定一个ref属性，之后可以通过this.refs.mainCanvas来访问到&lt;canvas&gt;组件
+​		return &lt;canvas ref="mainCanvas"/&gt;;
+​	}，
+​	componentDisMount: function(){
+​		//在这里通过getDOMNode()方法来访问到底层的DOM节点，也可以在事件处理器中调用
+​		var canvasNode= this.refs.mainCanvas.getDOMNode();
+​	}
+});</code></pre></figure>
+
+<h2 id="section-10">表单</h2>
+
+<h3 id="section-11">无约束组件</h3>
+
+<blockquote>
+  <p>组件本身控制其值</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">var MyForm = React.createClass({
+​	submitHandler: function(event){
+​		event.preventDefault();
+​		var text=this.refs.text.getDOMNode().value;
+​		alert(helloTo);
+​	},
+​	render: function(){
+​		return (
+​			&lt;form onSubmit={this.submitHandler}&gt;
+​				&lt;input ref="text" type="text" defaultValue="Hello world!"/&gt;
+​				&lt;br/&gt;
+​				&lt;button type="submit"&gt;Submit&lt;/button&gt;
+​			&lt;/form&gt;
+​		);
+​	}
+});</code></pre></figure>
+
+<h3 id="section-12">约束组件</h3>
+
+<blockquote>
+  <p>约束组件的值被存储在state中，由React控制</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">var MyForm = React.createClass({
+​	getInitialState: function(){
+​		return {
+​			text: 'hello world!'
+​		}
+​	},
+​	…
+​	render: function(){
+​		return (
+​			&lt;form onSubmit={this.submitHandler}&gt;
+​				&lt;input type="text" value={this.state.text}
+					 onChange={this.handleChange}/&gt;
+​				...
+​			&lt;/form&gt;
+​		);
+​	}
+});</code></pre></figure>
+
+<p>对于如<code class="highlighter-rouge">handleChange</code> 方法，还可以用<code class="highlighter-rouge">bind</code>方法传递更多参数，例如<code class="highlighter-rouge">this.handleChange.bind(this, "name")</code>。</p>
+
+<h2 id="react-router">React Router</h2>
+
+<p>React的介绍即讲过其非常适合于单页面应用，页面之间的切换需要<code class="highlighter-rouge">Router</code>的帮助。</p>
+
+<blockquote>
+  <p>React-router完全由React Component构成，路由被定义为了组件，路由的处理器也是组件</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">//react router的写法如下
+var appRouter=(
+​	&lt;Routes location="history"&gt;
+​		&lt;Route title="SurveryBuilder" handler={App}&gt;
+​			&lt;Route name="list" path="/" handler={ListSurveys}/&gt;
+​			&lt;Route title="Add survey to surveyBuilder" name="add" 
+				path="/add_survey" handler={AddSurvey}/&gt;
+​			&lt;NotFound title="Page Not Found" handler={NotFoundHandler}/&gt;
+​		&lt;/Route&gt;
+​	&lt;/Routes&gt;
+
+);</code></pre></figure>
+
+<p>每一个处理器就对应着特定页面的组件，需要将上面的路由作为最顶层的组件渲染来启动。</p>
+
+<p>使用<code class="highlighter-rouge">react-router Link</code>组件来进行导航。</p>
 
 
       </article>
