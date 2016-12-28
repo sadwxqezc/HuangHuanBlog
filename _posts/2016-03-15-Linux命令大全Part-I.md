@@ -10,9 +10,9 @@ categories: Linux
 命令后带(Mac)标记的，表示该命令在Mac OSX下测试，其它的在Debian下测试。
 
 ### 1\. grep命令
- 
+
 > 文本查找命令, 能够使用正则表达式的方式搜索文本，其搜索对象可以是单个或则多个文件
-> 
+>
 > > <h4><b>基本格式 grep [option] [regex] [path]</b></h4>
 > > -o 只按行显示匹配的字符  
 > > -c 只输出匹配行的数目  
@@ -29,22 +29,22 @@ categories: Linux
 
 	范例一：man grep | grep --color=always -n search
 	带颜色的文本搜索，并同时输出行号
-	
+
 ![带颜色的搜索]({{site.baseurl}}/pics/grep_color_n.png)  
 
 	范例二：man grep | grep --color=always -n '\<search\>'
 	正则表达式模式的搜索
-	
+
 ![正则表达式的搜索]({{site.baseurl}}/pics/grep_color_n_regex.png)
 
 	范例三：grep -nR --color=always  a ./*.yml
 	在文件夹下的yml文件中搜索，并标注行号和对应行
-	
+
 ![文件夹搜索]({{site.baseurl}}/pics/grep_dir.png)
-	
+​	
 	范例四：grep -lR a ./*.yml
 	在文件夹下的yml文件中搜索，但只输出匹配的文件名
-	
+
 ![文件夹搜索]({{site.baseurl}}/pics/grep_dir_only.png)
 
 ---
@@ -65,21 +65,21 @@ categories: Linux
 > > -R 将目录中所有文件都递归显示出来  
 
 	范例一：ls -lharts
-    输出文件信息，并时间从旧到新排列
-    
+	输出文件信息，并时间从旧到新排列
+
 ![详细信息]({{site.baseurl}}/pics/ls_r_t.png)
 
 	范例二：ls -R
 	递归输出目录下的所有文件
-	
+
 ![ls递归]({{site.baseurl}}/pics/ls_R.png)
 
 ---
 
 ### 3\. find命令
- 
+
 > 文件查找命令,find命令将递归的搜索目录下符合要求的所有文件
-> 
+>
 > > <h4><b>基本格式 find [path] [option] [expression]</b></h4>
 > > -name 查找名为filename的文件  
 > > -perm 查找符合执行权限
@@ -94,24 +94,24 @@ categories: Linux
 
 	范例一：find ~ -name '*.yml' | grep '\.yml' --color=always
 	在用户目录下查找文件名后缀为.yml的文件
-	
+
 ![按照文件名查找]({{site.baseurl}}/pics/find_name.png)  
 
 	范例二：find . -perm 644
 	查找当前目录下权限为644的所有文件
-	
+
 ![按照权限的搜索]({{site.baseurl}}/pics/find_perm.png)
 
 	范例三：find . -path './_site*' -a -prune -o -name 'feed.xml' -print
 	整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
 	-a -o实际为逻辑与和逻辑或，当路径匹配时将执行-prune，那么将不会查找匹配路径中的文件，
 	当路径不匹配时则不执行-prune，-o后的语句始终执行。
-	
+
 ![忽略一些文件夹搜索]({{site.baseurl}}/pics/find_prune.png)
-	
+​	
 	范例四：find . -maxdepth 2 -size 3
-    控制查找的深度
-	
+	控制查找的深度
+
 ![限制搜索深度]({{site.baseurl}}/pics/find_depth.png)
 
 补充：Linux的权限模式为三元组“owner”，“group”，“other”,权限对应表如下  
@@ -126,7 +126,7 @@ r\-\- | 4 | \-\-\- | 0
 ### 4\. wc命令
 
 > 用于统计输入中的字节数，字数，行数并输出
-> 
+>
 > > <h4><b>基本格式 wc [option] [filename]</b></h4>
 > > -c 统计字节数  
 > > -l 统计行数  
@@ -135,7 +135,7 @@ r\-\- | 4 | \-\-\- | 0
 
 	范例一：wc -l _config.yml
 	统计行数，-c实际上可以查看文件的大小
-	
+
 ![统计]({{site.baseurl}}/pics/wc.png)  
 
 ---
@@ -143,14 +143,14 @@ r\-\- | 4 | \-\-\- | 0
 ### 5\. cat命令
 
 > 连结命令(Concatenation)，连结多个文本，或者以标准输出形式打印文件的内容
-> 
+>
 > > <h4><b>基本格式 cat [option] [filename]</b></h4>  
 > > -n 队输出的所有行编号  
 > > -b 与-n类似，但空行不编号      
 
 	范例一：cat -b testColumn(cat -n testColumn)
 	显示文件内容
-	
+
 ![显示文件内容到控制台]({{site.baseurl}}/pics/cat_b_n.png)
 
 	范例二：cat testColumn testCat
@@ -166,7 +166,7 @@ r\-\- | 4 | \-\-\- | 0
 ---
 
 ### 6\. tail命令
- 
+
 文本查看命令，可以看文本的最后几行。tail命令的优点在于其内容能够与输入同步更新，非常适用于查看实时日志。
 <h4><b>基本格式 tail [option] [filename]</b></h4>
 + <code>-n number</code> 定位参数，+5表示从第五行开始显示，10或-10表示显示最后10行
@@ -175,7 +175,7 @@ r\-\- | 4 | \-\-\- | 0
 
 范例一：<code>tail -n -5 catalina.out</code>
 输出最后5行
-	
+​	
 ![tail_n]({{site.baseurl}}/pics/tail_n.png)  
 
 范例二：<code>tail -f catalina.out</code>
@@ -239,7 +239,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 ---
 
 ### 10\. sort命令
- 
+
 sort命令用于对文本进行排序，并将结果输出。其以文本的每一行为单位，从首字符向后，依次按照ascii码值进行比较，最后升序排列。（默认是忽略每行前面空格的）
 <h4><b>基本格式 sort [option] [filename]</b></h4>
 + <code>-u</code> 忽略重复行
@@ -248,7 +248,7 @@ sort命令用于对文本进行排序，并将结果输出。其以文本的每�
 + <code>-k start,end</code>start为比较的起始位置，end为结束位置
 
 范例一：<code>sort sort.txt</code> 排序
-	
+​	
 ![sort]({{site.baseurl}}/pics/sort.png)  
 
 范例二：  
@@ -304,15 +304,15 @@ more命令用于显示文件的内容，与cat和tail等命令不同的是，mor
 + <code>+/pattern</code> 再显示前按pattern匹配子串并显示
 + <code>-s</code> 把连续的多个空行显示为一行
 
-	常用操作命令：
-	<ul>
-	<li>Enter 向下n行，默认为1行</li>
-	<li>Ctrl+F 跳过一屏</li>
-	<li>Ctrl+B 返回上一屏</li>
-	<li>空格键 向下滚动一屏</li>
-	<li>= 输出当前行的行号</li>
-	<li>在more模式中回车，输入<code>/pattern</code>可以持续向下搜索</li></ul>
-	
+  常用操作命令：
+  <ul>
+  <li>Enter 向下n行，默认为1行</li>
+  <li>Ctrl+F 跳过一屏</li>
+  <li>Ctrl+B 返回上一屏</li>
+  <li>空格键 向下滚动一屏</li>
+  <li>= 输出当前行的行号</li>
+  <li>在more模式中回车，输入<code>/pattern</code>可以持续向下搜索</li></ul>
+
 范例一：<code>more +/Deploy catalina.out</code>  
 在catalina.out文件中查找“Deploy字符第一次出现的位置”，并从该处的前两行开始显示输出
 
@@ -335,18 +335,18 @@ less命令与more命令对应，既可以前后翻看文件，同时还有前后
 + <code>-s</code> 将连续空行显示为一行
 + <code>-m</code> 显示百分比
 
-	常用操作命令：
-	<ul>
-	<li>/字符串 向下搜索“字符串”功能</li>
-	<li>?字符串 向上搜索“字符串”功能</li>
-	<li>n 重复前一个搜索</li>
-	<li>空格键 滚动一页</li>
-	<li>d 滚动半页</li>
-	<li>b 回溯一页</li>
-	<li>y 回溯一行</li>
-	<li>q 退出less命令</li>
-	</ul>
-	
+  常用操作命令：
+  <ul>
+  <li>/字符串 向下搜索“字符串”功能</li>
+  <li>?字符串 向上搜索“字符串”功能</li>
+  <li>n 重复前一个搜索</li>
+  <li>空格键 滚动一页</li>
+  <li>d 滚动半页</li>
+  <li>b 回溯一页</li>
+  <li>y 回溯一行</li>
+  <li>q 退出less命令</li>
+  </ul>
+
 范例一：<code>less -Nm catalina.out</code>  
 显示行号和百分比
 
@@ -360,7 +360,7 @@ less命令与more命令对应，既可以前后翻看文件，同时还有前后
 ---
 
 ### 14\. ps命令
- 
+
 ps命令用来在Linux系统中显示进程的状态快照，其参数选项可谓非常之多。
 <h4><b>基本格式 ps [option]</b></h4>
 + <code>-a</code> 显示所有用户的进程
@@ -372,7 +372,7 @@ ps命令用来在Linux系统中显示进程的状态快照，其参数选项可�
 
 范例一：<code>ps -ef</code> 用标准格式显示所有进程  
 显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD
-	
+​	
 ![ps_ef]({{site.baseurl}}/pics/ps_ef.png)  
 
 范例二：<code>ps aux</code>  
@@ -383,7 +383,7 @@ ps命令用来在Linux系统中显示进程的状态快照，其参数选项可�
 ---
 
 ### 15\. tmux命令(Mac)
- 
+
 tmux(Terminal Multiplexer)命令是一个颇为炫酷的命令，其特点与screen命令类似。tmux通过开出窗口，分拆面板，接管和分离会话，能够让使用者在一个窗口内同时进行多项操作。  
 tmux在osx的安装方式：<code>brew install tmux</code>  
 <h4><b>基本格式 tmux [option]</b></h4>
@@ -415,7 +415,7 @@ tmux在osx的安装方式：<code>brew install tmux</code>
 ---
 
 ### 16\. ack命令(Mac)
- 
+
 ack(better than grep)命令的作用和grep类似，但效果更好。
 <h4><b>基本格式 ack [option] [pattern]</b></h4>
 + <code>-w</code> 按单词匹配
@@ -423,7 +423,7 @@ ack(better than grep)命令的作用和grep类似，但效果更好。
 
 
 范例一：<code>ack -w 测试</code> 与grep搜索的对比
-	
+​	
 ![ack_w]({{site.baseurl}}/pics/ack_w.png)  
 
 ---
@@ -437,7 +437,7 @@ kill命令用于终止指定的进程，其工作原理是通过向进程发送�
 常用的是：
 
 	kill -9 pid //强制终止
-	
+
 + `-1` Hup 终端断线
 + `-2` INT 中断（同`Ctrl+c`）
 + `-3` QUIT 退出(同`Ctrl+\`)

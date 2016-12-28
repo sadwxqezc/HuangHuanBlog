@@ -5,9 +5,163 @@
     <description>北京网易有道后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 Nov 2016 16:56:19 +0800</pubDate>
-    <lastBuildDate>Fri, 04 Nov 2016 16:56:19 +0800</lastBuildDate>
+    <pubDate>Wed, 28 Dec 2016 17:09:18 +0800</pubDate>
+    <lastBuildDate>Wed, 28 Dec 2016 17:09:18 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>读书笔记-学</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#spring-in-action&quot; id=&quot;markdown-toc-spring-in-action&quot;&gt;1. Spring in action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 分布式服务框架实践与原理&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#react-&quot; id=&quot;markdown-toc-react-&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#springboot&quot; id=&quot;markdown-toc-springboot&quot;&gt;4. Springboot实战&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#javascript&quot; id=&quot;markdown-toc-javascript&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#http&quot; id=&quot;markdown-toc-http&quot;&gt;6. 图解Http&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#java-transaction-book&quot; id=&quot;markdown-toc-java-transaction-book&quot;&gt;7. Java transaction book&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#java&quot; id=&quot;markdown-toc-java&quot;&gt;8. Java核心技术&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;spring-in-action&quot;&gt;1. Spring in action&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;By Craig Walls&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/springinaction.jpg&quot; alt=&quot;Spring in action&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书紧紧围绕着&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Action&lt;/code&gt;，在工作中能设计到的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;实用技术基本都有讲解，并不涉及&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;的原理，对于工作上的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;使用恰好合适。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;2. 分布式服务框架实践与原理&lt;/h3&gt;
+
+&lt;p&gt;讲了很多实践经验和原理性的东西，但在没有实践机会的情况下，这类书的帮助不大。&lt;/p&gt;
+
+&lt;h3 id=&quot;react-&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/h3&gt;
+
+&lt;p&gt;讲React非常清晰的一本入门书籍，里面的例子都很实用。&lt;/p&gt;
+
+&lt;h3 id=&quot;springboot&quot;&gt;4. Springboot实战&lt;/h3&gt;
+
+&lt;p&gt;比较水的一本书，罗列了一堆东西，但都不深入，如果不了解Springboot倒是可以看看。&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/h3&gt;
+
+&lt;p&gt;这本书写的很好，把JavaScript的基本原理部分讲的很清楚，特别是作用域链，BOM等知识，不过因为看的这版有点偏老，里面很多内容有点过时，作为JavaScript的学习资料还是很不错的。&lt;/p&gt;
+
+&lt;h3 id=&quot;http&quot;&gt;6. 图解Http&lt;/h3&gt;
+
+&lt;p&gt;这本书该有的内容都有，而且都有相应的图形，虽然有时候显得有点太浅显了，不过是很好的Http学习资料。&lt;/p&gt;
+
+&lt;h3 id=&quot;java-transaction-book&quot;&gt;7. Java transaction book&lt;/h3&gt;
+
+&lt;p&gt;在InfoQ上找到的一本讲事务的书，对本地式事务，编程式事务，声明式事务的讲解很清晰，其中也涉及了XA接口的设计原理，整本书短小精悍。&lt;/p&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;8. Java核心技术&lt;/h3&gt;
+
+&lt;p&gt;这个书除了前面讲Java原理部分有点用，之后的感觉真的有点过时了，可能是我看的版本太老了，里面大量章节的Swing, Applets什么的让人挺无语的。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 23 Nov 2016 15:53:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
+    
+      <item>
+        <title>读书笔记-思</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 万历十五年&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#this-is-water&quot; id=&quot;markdown-toc-this-is-water&quot;&gt;2. This is Water&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 看见&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;4. 最好的告别&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;5. 追风筝的人&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;6. 悟空传&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;其它阅读过的书单&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;[美]黄仁宇著&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
+
+&lt;p&gt;万历十五年即为1587年，作者认为这一年为明朝历史的转折点，这个帝国从此走向灭亡。而我对本书的理解是，其作为转折点的原因有二：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;万历皇帝的怠政&lt;/li&gt;
+  &lt;li&gt;国家的积弊：长期的以道德代替法律治理国家，以及文官治国发展到了一个顶峰，国家的体制已经凝固，难以改革。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。&lt;/p&gt;
+
+&lt;h2 id=&quot;this-is-water&quot;&gt;2. This is Water&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;By David Foster Wallace&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/this_is_water.jpg&quot; alt=&quot;this is water&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在繁琐无聊的日常中，日复一日地保持自觉与警醒，困难得不可想象&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;视频链接：&lt;a href=&quot;http://v.youku.com/v_show/id_XNjYyMjYzNDky.html?from=y1.2-1-103.3.4-1.1-1-1-3-0#paction&quot;&gt;生命中最简单又最困难的事&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2016年2月24日：写给将要参加工作的自己，莫要被生活所淹没，选择思考的方式，保持自觉与警醒。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;3. 看见&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;柴静&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/kanjian.jpeg&quot; alt=&quot;kanjian&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;柴静的这本书，给我最大的震动便如书中所说的“真实自有万钧之力”，“人生是一个摆脱矇昧的过程”，要接近“真实”需要去感受的勇气和能力。能够感受才能够理解，在理解的基础上才能正确的思考，以接近“真实”，获取宽容的能力。但这需要一个过程，需要在生活中摔打和淬炼，要理解自己的弱点，也能理解别人的弱点，但要克服弱点并不是一个快速的过程，毕竟“如果人的弱点那么容易被克服，还要这么长的人生干什么”。而如果不正视自己的弱点，去感受和接受，时间只会带来经验的积累，却不会带来成长。&lt;/p&gt;
+
+&lt;p&gt;感谢柴静这本书，让我知道了她“看见”的历程。虽然对于柴静人们各有褒贬，但既然能看见她的缺点和局限，也应能看到她的努力和思考，我相信今后的某个时刻，我会因为自己的生活，而回过头来再看这本书，寻求启发。毕竟柴静也是通过那么丰富的人生经历才能悟出一些道理，我也不可能只是靠多读几本书就能“看见”一切，还是要在真实的生活中磨砺。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;4. 最好的告别&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;By Atul Gavande&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/being_mortal.jpg&quot; alt=&quot;Being Mortal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一本见证了太多生死的医生写出来的书，如果人能够仅仅因为衰老，而在爱的人的身边平静离去，那将是每个人都期望的告别。但这本书用实际的例子告诉我们，人的衰老是必然的，也许技术可以延长这个过程，但往往伴随着痛苦的代价。’being mortal’，我们都是凡人，会经历亲人的衰老，也会迎来自己的衰老，在这个过程之中，我们需要接受现实，去尽可能的选择亲人或自己更想要的结果，做最好的告别。&lt;/p&gt;
+
+&lt;p&gt;很多豆瓣读者会说书中作者并没有说清楚什么时候应该放手，什么时候应该告别。但其实作者已经说的很清楚，告别的时机并不因该由医生决定，医生是作为一个解释者的角色，而决定主要来自于患者自身的意愿，而家人应该在此基础上，帮助患者找到最好的告别方式。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;5. 追风筝的人&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;By Khaled Hosseini&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/kiteRunner.jpeg&quot; alt=&quot;Kite Runner&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;相信很多人会被那句“为你，千千万万遍”所打动，这也是贯穿全文的一句话，而最后哈桑的遭遇也令人叹息。
+但整篇小说我认为最为成功的人物塑造是“父亲”，这个角色具有很多面：“冷漠的父亲”，“成功的商人”，“象征着勇气的英雄”，“思想自由的阿富汗人”，“和仆人的妻子有染的可憎的人”，“朋友”。我们或多或少能够在他是身上找到自己父亲的影子，对于男孩子来说，与父亲的关系往往很难如母亲那般亲近，年幼的时候会对父亲的威严感到畏惧，而长大了之后很多时候是用“朋友”的方式和父亲相处，之间总是隐隐有那么一堵墙，而能透过这堵墙的，是那斩不断的血脉联系。&lt;/p&gt;
+
+&lt;p&gt;这篇小说中的“父亲”让我似乎明白了什么是生命的延续，也许对于“父亲”来说，不论孩子是否令自己满意，那总是他们身上的一种责任，一份宿命，一份存在的意义，他们会愿意为此做任何的事情，这样他们才能像书中的“父亲”一样平静的离开。实际上这是身处各个阶层的父亲都在做的事，作为“孩子”却不应该把这当作理所当然，理解这份平凡的伟大，it’s what makes us better than us!&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;6. 悟空传&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;今何在&lt;/em&gt;&lt;br /&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/wukong.jpg&quot; alt=&quot;Wu Kong&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;曾经踏碎凌霄，放肆桀骜的猴王，变成了一个痛苦迷茫，自我束缚的可怜猴。这个世界上并没有自由，总会有人搭建一套规则来让他运行，下位者反抗上位者，也许一开始真的带着让所有人自由的豪情，。但在这个过程中，会经历，会得到会失去，会害怕和恐惧，这些经历和情绪会改变自己，那份豪情总会被消磨殆尽。&lt;/p&gt;
+
+&lt;p&gt;这本书之所以能感动大家，便是因为你总能把自己映照在悟空身上，活的越久，越不自由。&lt;/p&gt;
+
+&lt;p&gt;这本书的文字有点晦涩，有故弄玄虚的感觉，偶尔能出现几句振聋发聩的句子，但总体让人读起来很不舒服。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;其它阅读过的书单&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;鞋狗(耐克创始人自传)&lt;/li&gt;
+  &lt;li&gt;读懂金融的第一本书(金融知识启蒙)&lt;/li&gt;
+  &lt;li&gt;趋势红利(就当看了点小故事吧，感觉写的不痛不痒的)&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 23 Nov 2016 15:48:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
     
       <item>
         <title>React学习笔记</title>
@@ -1259,94 +1413,6 @@ PS: intellij上有个叫GeneratePropertyNameConstants的插件，用这个也可
       </item>
     
       <item>
-        <title>读书笔记-思</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 万历十五年&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#this-is-water&quot; id=&quot;markdown-toc-this-is-water&quot;&gt;2. This is Water&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 看见&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;4. 最好的告别&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;5. 追风筝的人&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;6. 悟空传&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;[美]黄仁宇著&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
-
-&lt;p&gt;万历十五年即为1587年，作者认为这一年为明朝历史的转折点，这个帝国从此走向灭亡。而我对本书的理解是，其作为转折点的原因有二：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;万历皇帝的怠政&lt;/li&gt;
-  &lt;li&gt;国家的积弊：长期的以道德代替法律治理国家，以及文官治国发展到了一个顶峰，国家的体制已经凝固，难以改革。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。&lt;/p&gt;
-
-&lt;h2 id=&quot;this-is-water&quot;&gt;2. This is Water&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By David Foster Wallace&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/this_is_water.jpg&quot; alt=&quot;this is water&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;在繁琐无聊的日常中，日复一日地保持自觉与警醒，困难得不可想象&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;视频链接：&lt;a href=&quot;http://v.youku.com/v_show/id_XNjYyMjYzNDky.html?from=y1.2-1-103.3.4-1.1-1-1-3-0#paction&quot;&gt;生命中最简单又最困难的事&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;2016年2月24日：写给将要参加工作的自己，莫要被生活所淹没，选择思考的方式，保持自觉与警醒。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;3. 看见&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;柴静&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/kanjian.jpeg&quot; alt=&quot;kanjian&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;柴静的这本书，给我最大的震动便如书中所说的“真实自有万钧之力”，“人生是一个摆脱矇昧的过程”，要接近“真实”需要去感受的勇气和能力。能够感受才能够理解，在理解的基础上才能正确的思考，以接近“真实”，获取宽容的能力。但这需要一个过程，需要在生活中摔打和淬炼，要理解自己的弱点，也能理解别人的弱点，但要克服弱点并不是一个快速的过程，毕竟“如果人的弱点那么容易被克服，还要这么长的人生干什么”。而如果不正视自己的弱点，去感受和接受，时间只会带来经验的积累，却不会带来成长。&lt;/p&gt;
-
-&lt;p&gt;感谢柴静这本书，让我知道了她“看见”的历程。虽然对于柴静人们各有褒贬，但既然能看见她的缺点和局限，也应能看到她的努力和思考，我相信今后的某个时刻，我会因为自己的生活，而回过头来再看这本书，寻求启发。毕竟柴静也是通过那么丰富的人生经历才能悟出一些道理，我也不可能只是靠多读几本书就能“看见”一切，还是要在真实的生活中磨砺。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;4. 最好的告别&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By Atul Gavande&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/being_mortal.jpg&quot; alt=&quot;Being Mortal&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这是一本见证了太多生死的医生写出来的书，如果人能够仅仅因为衰老，而在爱的人的身边平静离去，那将是每个人都期望的告别。但这本书用实际的例子告诉我们，人的衰老是必然的，也许技术可以延长这个过程，但往往伴随着痛苦的代价。’being mortal’，我们都是凡人，会经历亲人的衰老，也会迎来自己的衰老，在这个过程之中，我们需要接受现实，去尽可能的选择亲人或自己更想要的结果，做最好的告别。&lt;/p&gt;
-
-&lt;p&gt;很多豆瓣读者会说书中作者并没有说清楚什么时候应该放手，什么时候应该告别。但其实作者已经说的很清楚，告别的时机并不因该由医生决定，医生是作为一个解释者的角色，而决定主要来自于患者自身的意愿，而家人应该在此基础上，帮助患者找到最好的告别方式。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;5. 追风筝的人&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By Khaled Hosseini&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/kiteRunner.jpeg&quot; alt=&quot;Kite Runner&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;相信很多人会被那句“为你，千千万万遍”所打动，这也是贯穿全文的一句话，而最后哈桑的遭遇也令人叹息。
-但整篇小说我认为最为成功的人物塑造是“父亲”，这个角色具有很多面：“冷漠的父亲”，“成功的商人”，“象征着勇气的英雄”，“思想自由的阿富汗人”，“和仆人的妻子有染的可憎的人”，“朋友”。我们或多或少能够在他是身上找到自己父亲的影子，对于男孩子来说，与父亲的关系往往很难如母亲那般亲近，年幼的时候会对父亲的威严感到畏惧，而长大了之后很多时候是用“朋友”的方式和父亲相处，之间总是隐隐有那么一堵墙，而能透过这堵墙的，是那斩不断的血脉联系。&lt;/p&gt;
-
-&lt;p&gt;这篇小说中的“父亲”让我似乎明白了什么是生命的延续，也许对于“父亲”来说，不论孩子是否令自己满意，那总是他们身上的一种责任，一份宿命，一份存在的意义，他们会愿意为此做任何的事情，这样他们才能像书中的“父亲”一样平静的离开。实际上这是身处各个阶层的父亲都在做的事，作为“孩子”却不应该把这当作理所当然，理解这份平凡的伟大，it’s what makes us better than us!&lt;/p&gt;
-
-&lt;h2 id=&quot;section-4&quot;&gt;6. 悟空传&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;今何在&lt;/em&gt;&lt;br /&gt;
-&lt;img src=&quot;/HuangHuanBlog/pics/wukong.jpg&quot; alt=&quot;Wu Kong&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;曾经踏碎凌霄，放肆桀骜的猴王，变成了一个痛苦迷茫，自我束缚的可怜猴。这个世界上并没有自由，总会有人搭建一套规则来让他运行，下位者反抗上位者，也许一开始真的带着让所有人自由的豪情，。但在这个过程中，会经历，会得到会失去，会害怕和恐惧，这些经历和情绪会改变自己，那份豪情总会被消磨殆尽。&lt;/p&gt;
-
-&lt;p&gt;这本书之所以能感动大家，便是因为你总能把自己映照在悟空身上，活的越久，越不自由。&lt;/p&gt;
-
-&lt;p&gt;这本书的文字有点晦涩，有故弄玄虚的感觉，偶尔能出现几句振聋发聩的句子，但总体让人读起来很不舒服。&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 13 Jun 2016 22:16:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/06/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/06/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</guid>
-        
-        
-        <category>Read</category>
-        
-      </item>
-    
-      <item>
         <title>什么是数据库事务？</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;事务的定义　&lt;/a&gt;&lt;/li&gt;
@@ -1647,277 +1713,6 @@ public void testMulitSourceTransactionWithOutRollBack() {
         
         
         <category>Framework</category>
-        
-      </item>
-    
-      <item>
-        <title>利用AOP进行Dao层antiXSS过滤</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;开发原因&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;开发组件&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;开发思路&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;实现细节&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;注解&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;注解的实现&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;测试&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;开发原因&lt;/h2&gt;
-
-&lt;p&gt;在后台开发过程中，往往需要对用户的输入进行antiXSS等ßΩ过滤，以防止被攻击。以Dao层为例，这一层在写入数据库之前，应该对数据进行过滤，此时对应的一般是&lt;code class=&quot;highlighter-rouge&quot;&gt;save()&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;saveOrUpdate()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;update()&lt;/code&gt;操作，输入多数情况下是基本类型或者对于数据库实体的&lt;code class=&quot;highlighter-rouge&quot;&gt;Entity&lt;/code&gt;。如果按照以往的写法，主要需要对&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;类型的数据（包括&lt;code class=&quot;highlighter-rouge&quot;&gt;Entity&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; Field）进行过滤，这时往往需要为对应的字段调用&lt;code class=&quot;highlighter-rouge&quot;&gt;antiXSS()&lt;/code&gt;方法，造成大量的&lt;code class=&quot;highlighter-rouge&quot;&gt;get/set&lt;/code&gt;代码，颇为麻烦，也造成代码冗长。因此，既然&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;具有强大的&lt;code class=&quot;highlighter-rouge&quot;&gt;AOP&lt;/code&gt;功能，不妨尝试用它简化这一过程。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;开发组件&lt;/h2&gt;
-
-&lt;p&gt;SpringBoot，Intellij，Lombok(一个用于消除&lt;code class=&quot;highlighter-rouge&quot;&gt;get/set&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;toString&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;hashcode&lt;/code&gt;这类代码的工具)&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;开发思路&lt;/h2&gt;
-
-&lt;p&gt;通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;AOP&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;doAround&lt;/code&gt;方法截取传入参数，并利用反射筛选出其中的&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; Filed进行antiXSS处理。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;实现细节&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;注解&lt;/h3&gt;
-
-&lt;p&gt;首先需要定义一个专门用来对方法进行antiXSS处理的注解：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package beijing.huanghuan.anotations;
-
-import java.lang.annotation.*;
-
-/**
- * AntiXSS注解
- * &amp;lt;p/&amp;gt;
- * Created by huanghuan on 16/5/21.
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface AntiXSS {
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;注解的实现&lt;/h3&gt;
-
-&lt;p&gt;定义一个&lt;code class=&quot;highlighter-rouge&quot;&gt;AntiXSSAspect&lt;/code&gt;来对应该注解：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package beijing.huanghuan.anotations.aop;
-
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Field;
-
-/**
- * 对String或者Entity中的String进行AntiXSS处理
- * &amp;lt;p/&amp;gt;
- * Created by huanghuan on 16/5/21.
- */
-@Service
-@Aspect
-public class AntiXSSAspect {
-
-    /**
-     * 定义切面，定位到@AntiXSS注解的地方
-     */
-    @Pointcut(&quot;@annotation(beijing.huanghuan.anotations.AntiXSS)&quot;)
-    public void antiXSSPointCut() {
-
-    }
-
-    /**
-     * 对String类型或包含String类型的Entity进行antiXSS处理
-     *
-     * @param point
-     */
-    @Around(&quot;antiXSSPointCut()&quot;)
-    public Object doAround(ProceedingJoinPoint point) {
-        Object result = null;
-        Object args[] = point.getArgs();
-        try {
-            antiXSS(args);
-            result = point.proceed(args);
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        return result;
-    }
-
-    /**
-     * antiXSS处理
-     *
-     * @param args
-     */
-    private void antiXSS(Object[] args) {
-        if (args == null) {
-            return;
-        }
-        for (int i = 0; i &amp;lt; args.length; i++) {
-            if (args[i] == null) {
-                continue;
-            }
-            if (args[i] instanceof String) {
-                args[i] = antiXSS((String) args[i]);
-            }
-            if (!isPrimitive(args[i])) {
-                args[i] = antiXSSEntity(args[i]);
-            }
-        }
-    }
-
-    /**
-     * 对Entity进行antiXSS
-     *
-     * @param object
-     * @return 处理后的结果
-     */
-    private Object antiXSSEntity(Object object) {
-        Field[] fields = object.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            try {
-                Object arg = field.get(object);
-                if (arg instanceof String) {
-                    arg = antiXSS((String) arg);
-                    field.set(object, arg);
-                }
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return object;
-    }
-
-    /**
-     * 判断是否是基本类型
-     *
-     * @param arg
-     * @return
-     */
-    private boolean isPrimitive(Object arg) {
-        try {
-            /************ 基本类型中包含Class&amp;lt;T&amp;gt; TYPE字段 **********/
-            Field field = arg.getClass().getDeclaredField(&quot;TYPE&quot;);
-            field.setAccessible(true);
-            Class fieldClass = (Class) field.get(arg);
-            if (fieldClass.isPrimitive()) {
-                return true;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * antiXSS实现
-     *
-     * @param target
-     * @return
-     */
-    private String antiXSS(String target) {
-        /********* 自己的antiXSS或其它实现 **********/
-        return target + &quot;(antiXSS success)&quot;;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在这部分代码中&lt;code class=&quot;highlighter-rouge&quot;&gt;@PointCut&lt;/code&gt;定义了其作用的位置是&lt;code class=&quot;highlighter-rouge&quot;&gt;AntiXSS&lt;/code&gt;注解的方法，而&lt;code class=&quot;highlighter-rouge&quot;&gt;@Around&lt;/code&gt;来进行参数处理，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;ProceedingJoinPoint&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;getArgs&lt;/code&gt;即可获得所有的入参数，进行处理后通过&lt;code class=&quot;highlighter-rouge&quot;&gt;proceed(args[])&lt;/code&gt;传回。&lt;/p&gt;
-
-&lt;p&gt;在处理的过程中，由于我们只需要对&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;类型的域进行处理，对于本来就是基本类型的域，可以直接通过&lt;code class=&quot;highlighter-rouge&quot;&gt;instanceof String&lt;/code&gt;进行判定，而对于&lt;code class=&quot;highlighter-rouge&quot;&gt;Entity&lt;/code&gt;这种&lt;code class=&quot;highlighter-rouge&quot;&gt;POJO&lt;/code&gt;类型的对象，我们需要一些其它的方法，来首现判定出它不是基本类型，然后再分析出其中的&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; Filed i.e. 反射:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;首先通过&lt;code class=&quot;highlighter-rouge&quot;&gt;getClass().getDeclaredFields()&lt;/code&gt;获取对象中的所有Field，并将它们的访问权限设置为&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;对每一个Field，获取其中的名为&lt;code class=&quot;highlighter-rouge&quot;&gt;TYPE&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;Field&lt;/code&gt;，这其实是一个取巧的方法，之所以这么做是因为基本类型的&lt;code class=&quot;highlighter-rouge&quot;&gt;wrapper&lt;/code&gt;里都一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Class&amp;lt;T&amp;gt; TYPE&lt;/code&gt;字段，通过该字段能够判定它是不是基本类型，而普通的与数据库对应的&lt;code class=&quot;highlighter-rouge&quot;&gt;Entity&lt;/code&gt;自然是不会有这中种字段的。&lt;/li&gt;
-  &lt;li&gt;然后将该Field转化为Class，并通过Class的&lt;code class=&quot;highlighter-rouge&quot;&gt;isPrimitive&lt;/code&gt;方法来判定是否为基本类型，期间出现任何异常则表示该对象不是基本类型&lt;/li&gt;
-  &lt;li&gt;当判定出该对象是&lt;code class=&quot;highlighter-rouge&quot;&gt;Entity&lt;/code&gt;，则获取其中的所有Field，按照之前的思路进行处理。注意，上面的代码只支持包含基本类型的Entity，对于像&lt;code class=&quot;highlighter-rouge&quot;&gt;hibernate&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;many to one&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;one to many&lt;/code&gt;的判定，还需要读者自己去实现。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;这里补充&lt;code class=&quot;highlighter-rouge&quot;&gt;Double&lt;/code&gt;源码中的&lt;code class=&quot;highlighter-rouge&quot;&gt;Type&lt;/code&gt;字段定义：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
- * The {@code Class} instance representing the primitive type
- * {@code double}.
- *
- * @since JDK1.1
- */
-public static final Class&amp;lt;Double&amp;gt; TYPE=(Class&amp;lt;Double&amp;gt;)Class.getPrimitiveClass(&quot;double&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;测试&lt;/h3&gt;
-
-&lt;p&gt;测试用的&lt;code class=&quot;highlighter-rouge&quot;&gt;TestAntiXSSDaoImpl&lt;/code&gt;类：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
- * Created by huanghuan on 16/5/21.
- */
-@Repository
-public class TestAntiXSSDaoImpl {
-
-    @AntiXSS
-    public void testSave(long id, String text) {
-        System.out.println(&quot;id: &quot; + id + &quot; text: &quot; + text);
-    }
-
-    @AntiXSS
-    public void testSaveObject(Object object) {
-        System.out.println(object.toString());
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;测试类&lt;code class=&quot;highlighter-rouge&quot;&gt;AntiXSSAspectTest&lt;/code&gt;类,&lt;code class=&quot;highlighter-rouge&quot;&gt;@Data&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt;注解，自动生成&lt;code class=&quot;highlighter-rouge&quot;&gt;toString&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
- * Created by huanghuan on 16/5/21.
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(Starter.class)
-public class AntiXSSAspectTest {
-
-    @Autowired
-    private TestAntiXSSDaoImpl testAntiXSSDao;
-
-    @Test
-    public void testAntiXSS() {
-        testAntiXSSDao.testSave(1, &quot;test save string&quot;);
-        testAntiXSSDao.testSaveObject(new TestEntity());
-    }
-
-    public
-    @Data
-    class TestEntity {
-        long id = 2;
-        String text = &quot;test save Object&quot;;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;测试结果：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;id:1 text: test save string(antiXSS success)
-AntiXSSAspectTest.TestEntity(id=2, text=test save Object(antiXSS success))
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;成功的进行的处理，至于&lt;code class=&quot;highlighter-rouge&quot;&gt;antiXSS&lt;/code&gt;的具体实现请自己补充。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 21 May 2016 12:59:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/05/21/AOP%E4%B9%8BantiXSS.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/05/21/AOP%E4%B9%8BantiXSS.html</guid>
-        
-        
-        <category>Linux</category>
         
       </item>
     
