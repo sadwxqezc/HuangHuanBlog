@@ -108,19 +108,10 @@ var _hmt = _hmt || [];
     </ul>
   </li>
   <li><a href="#section-8" id="markdown-toc-section-8">常用的设计模式</a>    <ul>
-      <li><a href="#builder" id="markdown-toc-builder">Builder模式</a>        <ul>
-          <li><a href="#section-9" id="markdown-toc-section-9">基类</a></li>
-          <li><a href="#section-10" id="markdown-toc-section-10">实现类</a></li>
-          <li><a href="#section-11" id="markdown-toc-section-11">使用</a></li>
-        </ul>
-      </li>
-      <li><a href="#section-12" id="markdown-toc-section-12">策略模式和简单工厂模式</a>        <ul>
-          <li><a href="#interface" id="markdown-toc-interface">定义Interface</a></li>
-          <li><a href="#section-13" id="markdown-toc-section-13">定义实现策略</a></li>
-          <li><a href="#section-14" id="markdown-toc-section-14">定义工厂</a></li>
-          <li><a href="#section-15" id="markdown-toc-section-15">使用</a></li>
-        </ul>
-      </li>
+      <li><a href="#builder" id="markdown-toc-builder">Builder模式</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">策略模式和简单工厂模式</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">责任链模式</a></li>
+      <li><a href="#section-11" id="markdown-toc-section-11">装饰器模式</a></li>
     </ul>
   </li>
 </ul>
@@ -182,7 +173,7 @@ var _hmt = _hmt || [];
 <h3 id="builder">Builder模式</h3>
 <p>Builder模式非常适用于需要多个构造参数的场景，相比于<code class="highlighter-rouge">new</code>一个对象，然后用一堆<code class="highlighter-rouge">setter</code>去赋值的方式，这种模式的可读性显然要强很多。在我的项目中，需要调用其它系统的Rest服务，在拼接URL时，用这种模式就非常方便。</p>
 
-<h4 id="section-9">基类</h4>
+<h4>基类</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * 请求构造器基本类
@@ -220,7 +211,7 @@ var _hmt = _hmt || [];
 
 <p>其中包含了基本的<code class="highlighter-rouge">prefix</code>前缀和<code class="highlighter-rouge">params</code>参数。</p>
 
-<h4 id="section-10">实现类</h4>
+<h4>实现类</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * 语音地址
@@ -255,7 +246,7 @@ var _hmt = _hmt || [];
 
 <p>这里定义一个语音查询服务的Builder，实际上在<code class="highlighter-rouge">build()</code>中，根据需求还可以设置一些默认参数，所以才基类中将其定义为虚方法。</p>
 
-<h4 id="section-11">使用</h4>
+<h4>使用</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
 	<span class="n">String</span> <span class="n">voiceURL</span><span class="o">=</span><span class="k">new</span> <span class="n">VoiceBuilder</span><span class="o">(</span><span class="s">"http://address/service?"</span><span class="o">)</span>
@@ -264,10 +255,10 @@ var _hmt = _hmt || [];
 
 <p>是不是很简洁且方便。</p>
 
-<h3 id="section-12">策略模式和简单工厂模式</h3>
+<h3 id="section-9">策略模式和简单工厂模式</h3>
 <p>策略模式在各类系统中都很常见，其实现也很简单，定义好<code class="highlighter-rouge">interface</code>即可，不同的策略间应该满足隔离和单一职责原则，相互间独立而不耦合。延续刚才的例子，当一个服务需要根据输入参数的不同，去调用不同的服务时，策略模式就非常合适了。</p>
 
-<h4 id="interface">定义Interface</h4>
+<h4>定义Interface</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * Api调用策略接口
@@ -285,7 +276,7 @@ var _hmt = _hmt || [];
     <span class="n">JSONObject</span> <span class="n">getApiRequest</span><span class="o">(</span><span class="n">RequestParams</span> <span class="n">requestParams</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ApiException</span><span class="o">;</span>
 <span class="o">}</span></code></pre></figure>
 
-<h4 id="section-13">定义实现策略</h4>
+<h4>定义实现策略</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoStrategy</span> <span class="kd">implements</span> <span class="n">ApiStrategy</span> <span class="o">{</span>
 
@@ -295,7 +286,7 @@ var _hmt = _hmt || [];
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<h4 id="section-14">定义工厂</h4>
+<h4>定义工厂</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * 策略模式管理者，决定Api的调用策略
@@ -318,7 +309,7 @@ var _hmt = _hmt || [];
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<h4 id="section-15">使用</h4>
+<h4>使用</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
 	<span class="n">RequestParams</span> <span class="n">req</span><span class="o">=</span><span class="k">new</span> <span class="n">RequestParams</span><span class="o">();</span>
@@ -326,6 +317,126 @@ var _hmt = _hmt || [];
 <span class="o">}</span></code></pre></figure>
 
 <p>这样的策略之后添加修改策略都会很方便，当然简单工厂方法不满足开闭条件，适用于策略较少的场景。</p>
+
+<h3 id="section-10">责任链模式</h3>
+<p>当需要依次处理一个任务时，可以采用责任链模式，这个模式可实际应用在参数校验，或则流程处理中（比如SpringMVC的9大handler，也就是用类似的模式依次产生作用）</p>
+
+<h4>定义基类</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Handler</span> <span class="o">{</span>
+
+    <span class="kd">protected</span> <span class="n">Handler</span> <span class="n">nextHandler</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">();</span>
+
+    <span class="kd">public</span> <span class="n">Handler</span> <span class="n">getNextHandler</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">nextHandler</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setNextHandler</span><span class="o">(</span><span class="n">Handler</span> <span class="n">handler</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nextHandler</span> <span class="o">=</span> <span class="n">handler</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4>定义子类</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Father</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"father is called"</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">getNextHandler</span><span class="o">().</span><span class="na">handle</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Son</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"son is called"</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">getNextHandler</span><span class="o">().</span><span class="na">handle</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GrandSon</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"grand son is called"</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">getNextHandler</span><span class="o">().</span><span class="na">handle</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4>使用</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Father</span> <span class="n">father</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Father</span><span class="o">();</span>
+    <span class="n">Son</span> <span class="n">son</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Son</span><span class="o">();</span>
+    <span class="n">GrandSon</span> <span class="n">grandSon</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GrandSon</span><span class="o">();</span>
+    <span class="n">father</span><span class="o">.</span><span class="na">setNextHandler</span><span class="o">(</span><span class="n">son</span><span class="o">);</span>
+    <span class="n">son</span><span class="o">.</span><span class="na">setNextHandler</span><span class="o">(</span><span class="n">grandSon</span><span class="o">);</span>
+    <span class="n">father</span><span class="o">.</span><span class="na">handle</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="section-11">装饰器模式</h3>
+
+<p><img src="/HuangHuanBlog/pics/decorate.png" alt="screen" /></p>
+
+<p>装饰器模式主要的作用是为现有的类增加新的功能，其使用和实现和代理模式很像，主要的区别在于控制权的转移，代理模式强调访问必须经由代理，而装饰器模式并无此约定。我们经常用到的Java IO类，便是装饰器模式的实现。</p>
+
+<h4>基类</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Component</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Decorator</span> <span class="kd">extends</span> <span class="n">Component</span><span class="o">{</span>
+  <span class="kd">protected</span> <span class="n">Component</span> <span class="n">component</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="n">Decorator</span><span class="o">(</span><span class="n">Component</span> <span class="n">component</span><span class="o">){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">component</span><span class="o">=</span><span class="n">component</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4>实现类</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConcreteComponent</span> <span class="kd">extends</span> <span class="n">Component</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">(){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"## doing something ##"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConcreteDecorator</span> <span class="kd">extends</span> <span class="n">Decorator</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="n">ConcreteDecorator</span><span class="o">(</span><span class="n">Component</span> <span class="n">component</span><span class="o">){</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">component</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="n">decorateMethod</span><span class="o">(){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"## decorating ##"</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">(){</span>
+    <span class="n">decorateMethod</span><span class="o">();</span>
+    <span class="n">component</span><span class="o">.</span><span class="na">operation</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4>使用</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">Component</span> <span class="n">component</span><span class="o">=</span><span class="k">new</span> <span class="n">ConcreteDecorator</span><span class="o">(</span><span class="k">new</span> <span class="n">ConcreteComponent</span><span class="o">());</span>
+  <span class="n">component</span><span class="o">.</span><span class="na">operation</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
 
       </article>
       <hr>
