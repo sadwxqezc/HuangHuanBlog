@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Linux命令大全 Part One</title>
-	<meta name="description" content="  1. grep命令  2. ls命令  3. find命令  4. wc命令  5. cat命令  6. tail命令  7. head命令  8. du命令  9. which和whereis  10. sort命令  11. netstat命令  12. more命令  13. less命令  14. p...">
+	<meta name="description" content="">
 	
 	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
@@ -158,12 +158,10 @@ var _hmt = _hmt || [];
 </code></pre>
 </div>
 
-<p><img src="/HuangHuanBlog/pics/grep_dir.png" alt="文件夹搜索" /></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>范例四：grep -lR a ./*.yml
-在文件夹下的yml文件中搜索，但只输出匹配的文件名
-</code></pre>
-</div>
+<p><img src="/HuangHuanBlog/pics/grep_dir.png" alt="文件夹搜索" />
+​	
+	范例四：grep -lR a ./*.yml
+	在文件夹下的yml文件中搜索，但只输出匹配的文件名</p>
 
 <p><img src="/HuangHuanBlog/pics/grep_dir_only.png" alt="文件夹搜索" /></p>
 
@@ -245,12 +243,10 @@ var _hmt = _hmt || [];
 </code></pre>
 </div>
 
-<p><img src="/HuangHuanBlog/pics/find_prune.png" alt="忽略一些文件夹搜索" /></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>范例四：find . -maxdepth 2 -size 3
-控制查找的深度
-</code></pre>
-</div>
+<p><img src="/HuangHuanBlog/pics/find_prune.png" alt="忽略一些文件夹搜索" />
+​	
+	范例四：find . -maxdepth 2 -size 3
+	控制查找的深度</p>
 
 <p><img src="/HuangHuanBlog/pics/find_depth.png" alt="限制搜索深度" /></p>
 
@@ -356,9 +352,9 @@ var _hmt = _hmt || [];
 </ul>
 
 <p>范例一：<code>tail -n -5 catalina.out</code>
-输出最后5行</p>
-
-<p><img src="/HuangHuanBlog/pics/tail_n.png" alt="tail_n" /></p>
+输出最后5行
+​	
+<img src="/HuangHuanBlog/pics/tail_n.png" alt="tail_n" /></p>
 
 <p>范例二：<code>tail -f catalina.out</code>
 监听catalina.out最后行的变化并显示</p>
@@ -437,9 +433,9 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
   <li><code>-k start,end</code>start为比较的起始位置，end为结束位置</li>
 </ul>
 
-<p>范例一：<code>sort sort.txt</code> 排序</p>
-
-<p><img src="/HuangHuanBlog/pics/sort.png" alt="sort" /></p>
+<p>范例一：<code>sort sort.txt</code> 排序
+​	
+<img src="/HuangHuanBlog/pics/sort.png" alt="sort" /></p>
 
 <p>范例二：<br />
 1. <code>sort -nk 2 -t - sort.txt</code> 以<code class="highlighter-rouge">-</code>进行分割，对分割后的第二个域进行排序；<br />
@@ -500,12 +496,12 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
     <p>常用操作命令：</p>
     <ul>
-  <li>Enter 向下n行，默认为1行</li>
-  <li>Ctrl+F 跳过一屏</li>
-  <li>Ctrl+B 返回上一屏</li>
-  <li>空格键 向下滚动一屏</li>
-  <li>= 输出当前行的行号</li>
-  <li>在more模式中回车，输入<code>/pattern</code>可以持续向下搜索</li></ul>
+<li>Enter 向下n行，默认为1行</li>
+<li>Ctrl+F 跳过一屏</li>
+<li>Ctrl+B 返回上一屏</li>
+<li>空格键 向下滚动一屏</li>
+<li>= 输出当前行的行号</li>
+<li>在more模式中回车，输入<code>/pattern</code>可以持续向下搜索</li></ul>
   </li>
 </ul>
 
@@ -535,15 +531,15 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
     <p>常用操作命令：</p>
     <ul>
-  <li>/字符串 向下搜索“字符串”功能</li>
-  <li>?字符串 向上搜索“字符串”功能</li>
-  <li>n 重复前一个搜索</li>
-  <li>空格键 滚动一页</li>
-  <li>d 滚动半页</li>
-  <li>b 回溯一页</li>
-  <li>y 回溯一行</li>
-  <li>q 退出less命令</li>
-  </ul>
+<li>/字符串 向下搜索“字符串”功能</li>
+<li>?字符串 向上搜索“字符串”功能</li>
+<li>n 重复前一个搜索</li>
+<li>空格键 滚动一页</li>
+<li>d 滚动半页</li>
+<li>b 回溯一页</li>
+<li>y 回溯一行</li>
+<li>q 退出less命令</li>
+</ul>
   </li>
 </ul>
 
@@ -573,9 +569,9 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 </ul>
 
 <p>范例一：<code>ps -ef</code> 用标准格式显示所有进程<br />
-显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD</p>
-
-<p><img src="/HuangHuanBlog/pics/ps_ef.png" alt="ps_ef" /></p>
+显示的项目有：UID, PID, PPID(父进程ID), C(CPU资源百分比), STIME, TTY, TIME, CMD
+​	
+<img src="/HuangHuanBlog/pics/ps_ef.png" alt="ps_ef" /></p>
 
 <p>范例二：<code>ps aux</code><br />
 显示的项目有：USER, PID, %CPU, %MEM, VSZ(虚拟内存量KB), RSS(固定内存量), TTY(进程所运行在的终端机), STAT, START, TIME, COMMAND</p>
@@ -627,9 +623,9 @@ tmux在osx的安装方式：<code>brew install tmux</code></p>
   <li><code>--ingore-dir</code> 忽略某些目录</li>
 </ul>
 
-<p>范例一：<code>ack -w 测试</code> 与grep搜索的对比</p>
-
-<p><img src="/HuangHuanBlog/pics/ack_w.png" alt="ack_w" /></p>
+<p>范例一：<code>ack -w 测试</code> 与grep搜索的对比
+​	
+<img src="/HuangHuanBlog/pics/ack_w.png" alt="ack_w" /></p>
 
 <hr />
 
