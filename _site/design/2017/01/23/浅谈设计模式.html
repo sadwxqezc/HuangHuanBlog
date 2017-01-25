@@ -112,6 +112,7 @@ var _hmt = _hmt || [];
       <li><a href="#section-9" id="markdown-toc-section-9">策略模式和简单工厂模式</a></li>
       <li><a href="#section-10" id="markdown-toc-section-10">责任链模式</a></li>
       <li><a href="#section-11" id="markdown-toc-section-11">装饰器模式</a></li>
+      <li><a href="#section-12" id="markdown-toc-section-12">观察者模式</a></li>
     </ul>
   </li>
 </ul>
@@ -435,6 +436,80 @@ var _hmt = _hmt || [];
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
   <span class="n">Component</span> <span class="n">component</span><span class="o">=</span><span class="k">new</span> <span class="n">ConcreteDecorator</span><span class="o">(</span><span class="k">new</span> <span class="n">ConcreteComponent</span><span class="o">());</span>
   <span class="n">component</span><span class="o">.</span><span class="na">operation</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="section-12">观察者模式</h3>
+
+<p><img src="/HuangHuanBlog/pics/observer.png" alt="observer" /></p>
+
+<p>观察者模式在设计中非常常见，系统层面像Zookeeper，JQuery事件等多是使用的该模式。</p>
+
+<h4>主题</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Subject</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">&gt;</span> <span class="n">observers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">&gt;();</span>
+
+    <span class="kt">void</span> <span class="n">attach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">);</span>
+
+    <span class="kt">void</span> <span class="n">detach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">);</span>
+
+    <span class="kt">void</span> <span class="n">notifyObserver</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ConcreteSubject</span> <span class="kd">implements</span> <span class="n">Subject</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">attach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">observers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">observer</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">detach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">observers</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Observer</span> <span class="n">observerTemp</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">observerTemp</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">observer</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">iterator</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">notifyObserver</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Observer</span> <span class="n">observerTemp</span> <span class="o">:</span> <span class="n">observers</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">observerTemp</span><span class="o">.</span><span class="na">printMessage</span><span class="o">(</span><span class="s">"this is a test"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4>观察者</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Observer</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="n">printMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ConcreteObserver</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">ConcreteObserver</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">printMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4>使用</h4>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcreteSubject</span><span class="o">();</span>
+    <span class="n">Observer</span> <span class="n">observer1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcreteObserver</span><span class="o">(</span><span class="s">"one"</span><span class="o">);</span>
+    <span class="n">Observer</span> <span class="n">observer2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcreteObserver</span><span class="o">(</span><span class="s">"two"</span><span class="o">);</span>
+    <span class="n">subject</span><span class="o">.</span><span class="na">attach</span><span class="o">(</span><span class="n">observer1</span><span class="o">);</span>
+    <span class="n">subject</span><span class="o">.</span><span class="na">attach</span><span class="o">(</span><span class="n">observer2</span><span class="o">);</span>
+    <span class="n">subject</span><span class="o">.</span><span class="na">notifyObserver</span><span class="o">();</span>
+    <span class="n">subject</span><span class="o">.</span><span class="na">detach</span><span class="o">(</span><span class="n">observer1</span><span class="o">);</span>
+    <span class="n">subject</span><span class="o">.</span><span class="na">notifyObserver</span><span class="o">();</span>
 <span class="o">}</span></code></pre></figure>
 
 
