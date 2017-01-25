@@ -259,6 +259,10 @@ var _hmt = _hmt || [];
 <h3 id="section-9">策略模式和简单工厂模式</h3>
 <p>策略模式在各类系统中都很常见，其实现也很简单，定义好<code class="highlighter-rouge">interface</code>即可，不同的策略间应该满足隔离和单一职责原则，相互间独立而不耦合。延续刚才的例子，当一个服务需要根据输入参数的不同，去调用不同的服务时，策略模式就非常合适了。</p>
 
+<h4>策略模式类图</h4>
+
+<p><img src="/HuangHuanBlog/pics/strategy.png" alt="strategy" /></p>
+
 <h4>定义Interface</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
