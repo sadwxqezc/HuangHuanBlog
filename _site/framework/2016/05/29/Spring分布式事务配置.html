@@ -189,7 +189,8 @@ public AnnotationSessionFactoryBean sessionFactory(@Qualifier("db1") AtomikosDat
     properties.put("hibernate.show_sql", "false");
     properties.put("hibernate.format_sql", "format");
     properties.put("hibernate.connection.autocommit", "true");
-    properties.put("hibernate.connection.url", atomikosDataSourceBean.getXaProperties().get("URL"));
+    properties.put("hibernate.connection.url",
+	 atomikosDataSourceBean.getXaProperties().get("URL"));
     properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
     sessionFactory.setHibernateProperties(properties);
     return sessionFactory;
@@ -234,7 +235,8 @@ public AnnotationSessionFactoryBean db2SessionFactory(
     properties.put("hibernate.show_sql", "false");
     properties.put("hibernate.format_sql", "format");
     properties.put("hibernate.connection.autocommit", "true");
-    properties.put("hibernate.connection.url", atomikosDataSourceBean.getXaProperties().get("URL"));
+    properties.put("hibernate.connection.url",
+	 atomikosDataSourceBean.getXaProperties().get("URL"));
     properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
     sessionFactory.setHibernateProperties(properties);
     return sessionFactory;
