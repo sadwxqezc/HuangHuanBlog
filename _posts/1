@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "详解Spring事务"
+date:   2016-06-02 17:03:00 +0800
+categories: Framework
+---
+
+1. [详解Spring事务：什么是事务?](http://sadwxqezc.github.io/HuangHuanBlog/framework/2016/06/05/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1.html)。
+2. [详解Spring事务：事务的隔离性]()。
+3. [详解Spring事务：Spring的事务管理]()。
+4. [详解Spring事务：Spring中事务的Propagation]()。
+5. [详解Spring事务：XA事务]()。
