@@ -96,14 +96,22 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">数据结构</a>    <ul>
-      <li><a href="#zookeeper" id="markdown-toc-zookeeper">Zookeeper数据结构的特点</a></li>
+  <li><a href="#section" id="markdown-toc-section">1. 数据结构</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">2. 节点</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">2.1 简单封装</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">2.2 创建节点</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">2.3 监听节点。</a></li>
     </ul>
   </li>
-  <li><a href="#section-1" id="markdown-toc-section-1">节点</a>    <ul>
-      <li><a href="#zookeeper-1" id="markdown-toc-zookeeper-1">Zookeeper简单封装</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">节点的创建</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">监听节点的变化。</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">3. 集群</a>    <ul>
+      <li><a href="#section-6" id="markdown-toc-section-6">3.1 角色</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">3.2 读写模式</a></li>
+      <li><a href="#zab" id="markdown-toc-zab">3.3 ZAB协议</a>        <ul>
+          <li><a href="#quorum" id="markdown-toc-quorum">3.3.1 Quorum</a></li>
+          <li><a href="#section-8" id="markdown-toc-section-8">3.3.2 四个阶段</a></li>
+          <li><a href="#n1" id="markdown-toc-n1">3.3.3 2N+1</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -112,10 +120,8 @@ var _hmt = _hmt || [];
   <p>Zookeeper是Apache Hadoop的一个子项目，本质是一个分布式小文件系统，主要解决分布式系统应用中遇到的数据管理问题（一致性问题）：统一命名服务，状态同步服务，集群管理，分布式应用配置项的管理。</p>
 </blockquote>
 
-<h2 id="section">数据结构</h2>
+<h2 id="section">1. 数据结构</h2>
 <p><img src="/HuangHuanBlog/pics/zk.png" alt="Zookeeper" /></p>
-
-<h3 id="zookeeper">Zookeeper数据结构的特点</h3>
 
 <ol>
   <li>每个<strong>子目录项</strong>（比如图中的<strong>NameService</strong>）都被称为<strong>znode</strong>。</li>
@@ -125,7 +131,7 @@ var _hmt = _hmt || [];
   <li><strong>znode</strong>可以被监控，包括这个节点中存储的数据的修改，子节点目录的变化等，一旦变化可以通知监听的客户端，这个是Zookeeper的重要特性。</li>
 </ol>
 
-<h2 id="section-1">节点</h2>
+<h2 id="section-1">2. 节点</h2>
 
 <p>Zookeeper有四种类型的节点:</p>
 
@@ -138,7 +144,7 @@ var _hmt = _hmt || [];
 
 <p>节点在创建后其类型不能被修改。</p>
 
-<h3 id="zookeeper-1">Zookeeper简单封装</h3>
+<h3 id="section-2">2.1 简单封装</h3>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * Zookeeper测试类
@@ -159,7 +165,7 @@ var _hmt = _hmt || [];
         <span class="n">zooKeeper</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">createNode</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span><span class="o">,</span> <span class="n">CreateMode</span> <span class="n">createMode</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">createNode</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span><span class="o">,</span> <span class="n">CreateMode</span> <span class="n">createMode</span><span class="o">)</span>
         <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
         <span class="n">zooKeeper</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">data</span><span class="o">,</span> <span class="n">ZooDefs</span><span class="o">.</span><span class="na">Ids</span><span class="o">.</span><span class="na">OPEN_ACL_UNSAFE</span><span class="o">,</span> <span class="n">createMode</span><span class="o">);</span>
     <span class="o">}</span>
@@ -177,7 +183,7 @@ var _hmt = _hmt || [];
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<h3 id="section-2">节点的创建</h3>
+<h3 id="section-3">2.2 创建节点</h3>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
         <span class="n">ZookeeperTest</span> <span class="n">zookeeperTest</span><span class="o">=</span><span class="k">new</span> <span class="n">ZookeeperTest</span><span class="o">();</span>
@@ -185,7 +191,7 @@ var _hmt = _hmt || [];
         <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">zookeeperTest</span><span class="o">.</span><span class="na">createNode</span><span class="o">(</span><span class="s">"/test"</span><span class="o">,</span> <span class="s">"test"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span>
             <span class="n">CreateMode</span><span class="o">.</span><span class="na">PERSISTENT</span><span class="o">));</span>
                 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">zookeeperTest</span><span class="o">.</span><span class="na">createNode</span><span class="o">(</span><span class="s">"/test/child"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> 
+            <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">zookeeperTest</span><span class="o">.</span><span class="na">createNode</span><span class="o">(</span><span class="s">"/test/child"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
                 <span class="n">CreateMode</span><span class="o">.</span><span class="na">PERSISTENT_SEQUENTIAL</span><span class="o">));</span>
         <span class="o">}</span>
     <span class="o">}</span></code></pre></figure>
@@ -201,12 +207,12 @@ var _hmt = _hmt || [];
 
 <p>临时节点的创建原理类似，但在客户端断开连接后，临时节点的内容将消失。</p>
 
-<h3 id="section-3">监听节点的变化。</h3>
+<h3 id="section-4">2.3 监听节点。</h3>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
         <span class="n">ZookeeperTest</span> <span class="n">zookeeperTest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZookeeperTest</span><span class="o">();</span>
         <span class="n">zookeeperTest</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="s">"127.0.0.1"</span><span class="o">);</span>
-        <span class="n">zookeeperTest</span><span class="o">.</span><span class="na">createNode</span><span class="o">(</span><span class="s">"/test/watch"</span><span class="o">,</span> <span class="s">"watch"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> 
+        <span class="n">zookeeperTest</span><span class="o">.</span><span class="na">createNode</span><span class="o">(</span><span class="s">"/test/watch"</span><span class="o">,</span> <span class="s">"watch"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span>
             <span class="n">CreateMode</span><span class="o">.</span><span class="na">PERSISTENT</span><span class="o">);</span>
         <span class="n">zookeeperTest</span><span class="o">.</span><span class="na">watch</span><span class="o">(</span><span class="s">"/test/watch"</span><span class="o">);</span>
         <span class="n">zookeeperTest</span><span class="o">.</span><span class="na">deleteNode</span><span class="o">(</span><span class="s">"/test/watch"</span><span class="o">);</span>
@@ -218,6 +224,71 @@ var _hmt = _hmt || [];
 <span class="err">信息</span><span class="o">:</span> <span class="err">#</span> <span class="n">connect</span> <span class="n">WatchedEvent</span> <span class="nl">state:</span><span class="n">SyncConnected</span> <span class="nl">type:</span><span class="n">NodeDeleted</span> <span class="nl">path:</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">watch</span>
 <span class="err">信息</span><span class="o">:</span> <span class="err">#</span> <span class="n">event</span> <span class="n">WatchedEvent</span> <span class="nl">state:</span><span class="n">SyncConnected</span> <span class="nl">type:</span><span class="n">NodeDeleted</span> <span class="nl">path:</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">watch</span></code></pre></figure>
 
+<h2 id="section-5">3. 集群</h2>
+
+<p><img src="/HuangHuanBlog/pics/zk_Cluster.png" alt="Cluster" /></p>
+
+<h3 id="section-6">3.1 角色</h3>
+
+<p>Zookeeper集群中包含三个角色：</p>
+
+<ol>
+  <li><strong>Leader</strong>: 负责进行投票的发起和决议，更新系统的状态，为客户端提供读和写服务。</li>
+  <li><strong>Follower</strong>: 用于接受客户端请求并且向客户端返回结果，同时在选主过程中参与投票，为客户端提供读服务。</li>
+  <li><strong>Observer</strong>: 实际上是不参加投票的Follower，用于扩展系统。</li>
+</ol>
+
+<p>其中<strong>Follower</strong>和<strong>Observer</strong>统称为<strong>Learner</strong>，</p>
+
+<h3 id="section-7">3.2 读写模式</h3>
+
+<p>在一个Zookeeper集群中，读写操作可以发生在任何一个集群角色上，而写的请求都会被转发到Leader，然后Leader通过Zookeeper中的原子广播协议（<strong>ZAB</strong>协议，可以理解为Paxos协议的一种简化形式），将请求广播给所有的Learner，当Leader收到一半以上的写成功ACK后，就认为该写操作成功了，则将该操作持久化，并告诉客户端。</p>
+
+<h3 id="zab">3.3 ZAB协议</h3>
+
+<p><img src="/HuangHuanBlog/pics/zab.png" alt="zab" /></p>
+
+<p>ZAB（Atomic broadcast protocol）协议是为Zookeeper专门设计的支持恢复崩溃的原子广播协议，它是Zookeeper实现分布式数据一致性的基础，基于此，Zookeeper实现了一种主备模式的系统架构来保持集群中各个副本之间的数据一致性。</p>
+
+<h4 id="quorum">3.3.1 Quorum</h4>
+
+<p><strong>Quorum名词解释：</strong> 集群中超过半数的节点集合。</p>
+
+<p>之所以Zookeeper的写操作只需要半数以上的写成功ACK后，就认为该操作成功，是因为<strong>ZAB协议</strong>中的<strong>Quorum</strong>机制。</p>
+
+<blockquote>
+  <p><strong>Quorum</strong>解决的是<strong>Read Only Write All</strong>带来的写性能问题，能够不需要更新全部数据，但又保证返回给用户的是有效数据。
+<strong>Quorum</strong>的关键在于更新多少个数据副本，使得读取时总能够取到有效数据。假设一共有<strong>N</strong>个副本，其中<strong>k</strong>个已经更新，<strong>N-k</strong>个未更新，那么只要读取集群中<strong>N-k+1</strong>个数据，就一定能读到最新的数据（前文提到，<strong>znode</strong>是具有版本的，选取其中版本最新的即可）。</p>
+</blockquote>
+
+<p>所以从这里可以看到，Quorum机制为Zookeeper的读写提供了一种调整的可能，在读和写性能中做tradeoff。</p>
+
+<h4 id="section-8">3.3.2 四个阶段</h4>
+
+<p>注意Zookeeper中的Observer和ZAB协议没有关系。</p>
+
+<p><strong>第一阶段：Leader election（选举阶段）</strong></p>
+
+<p>最初时，所有节点都处于选举阶段，当其中一个节点得到了超过了半数节点的票数，它才能当选准Leader。只有达到第三阶段，准Leader才回变成实际的Leader。这一阶段Zookeeper使用的算法有<strong>Fast Leader Election</strong>。</p>
+
+<p><strong>第二阶段：Discovery（发现阶段）</strong></p>
+
+<p>这个阶段中，Followers和准Leader进行通信，同步Followers最近最近接收的事务提议。这一阶段的主要目的是发现当前大多数节点接受的最新提议，并让Followers接收准Leader定义的epoch（相当于朝代号，每一代Leader会有自己的epoch）。</p>
+
+<p><strong>第三阶段：Synchronization（同步阶段）</strong></p>
+
+<p>同步阶段主要是利用Leader前一阶段获得的最新提议历史，同步集群中的所有副本。只有当Quorum都同步完成，准Leader才回称为真的Leader。</p>
+
+<p><strong>第四阶段：Broadcast（广播阶段）</strong></p>
+
+<p>这个阶段Zookeeper才能够正式对外提供事务服务，并且Leader可以进行消息广播。</p>
+
+<h4 id="n1">3.3.3 2N+1</h4>
+<p>Zookeeper有这么一个特性：<strong>集群中只要有过半的机器是正常工作的，那么整个集群对外就是可用的</strong> ，所以容错性上讲，2N和2N-1的容错性都是N-1，而2N+1的容错性为N，所以一般推荐节点数配置为奇数个。为什么会有这样一个特性了？因为Zookeeper的大多数行为都是基于投票的，需要半数以上的节点同意才能执行。</p>
+
+<blockquote>
+  <p>The rationale for having an odd number is Zookeeper always requires a majority of the nodes in the Zookeeper cluster to agree on any change. This means that any number of nodes less than half can fail and Zookeeper can still function. For example,  if you have 4 nodes configured, you can only suffer one failure and still continue operating. If you have two failures, then the 2 remaining nodes can never by greater than half (since they are exactly half) of the nodes. This is no better than with three nodes. Also, since the chance of two failures in four nodes is slightly more likely than the chance of two failures in three nodes, this would not be favorable.</p>
+</blockquote>
 
       </article>
       <hr>
