@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Maven之三十分钟入门</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <p class="navbar-text">上周UV:650 本周UV:150</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Maven之三十分钟入门</h1>
+        <p>May 1, 2017</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#maven" id="markdown-toc-maven">Maven</a>    <ul>
+      <li><a href="#maven-1" id="markdown-toc-maven-1">Maven概述</a>        <ul>
+          <li><a href="#pom" id="markdown-toc-pom">一个基本的Pom文件</a></li>
+          <li><a href="#maven-2" id="markdown-toc-maven-2">Maven项目的基本结构</a></li>
+          <li><a href="#maven-3" id="markdown-toc-maven-3">Maven的执行</a>            <ul>
+              <li><a href="#mvn-compile" id="markdown-toc-mvn-compile">1. mvn compile</a></li>
+              <li><a href="#mvn-test" id="markdown-toc-mvn-test">2. mvn test</a></li>
+              <li><a href="#mvn-package" id="markdown-toc-mvn-package">3. mvn package</a></li>
+              <li><a href="#mvn-install" id="markdown-toc-mvn-install">4. mvn install</a></li>
+            </ul>
+          </li>
+          <li><a href="#plugins" id="markdown-toc-plugins">Plugins</a></li>
+          <li><a href="#section" id="markdown-toc-section">资源文件打包</a></li>
+          <li><a href="#section-1" id="markdown-toc-section-1">文件过滤</a></li>
+          <li><a href="#dependencies" id="markdown-toc-dependencies">Dependencies</a></li>
+          <li><a href="#section-2" id="markdown-toc-section-2">包的发布</a></li>
+          <li><a href="#modules" id="markdown-toc-modules">多Modules管理</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="maven">Maven</h1>
+
+<blockquote>
+  <p>Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model(POM), Maven can manage a project’s build, reporting and documentation from a central piece of information.</p>
+</blockquote>
+
+<p><strong>参考文档:</strong><a href="http://maven.apache.org/guides/">Maven Documentation</a></p>
+
+<h2 id="maven-1">Maven概述</h2>
+
+<h3 id="pom">一个基本的Pom文件</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+  <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">modelVersion</span><span class="o">&gt;</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">modelVersion</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">my</span><span class="o">-</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">packaging</span><span class="o">&gt;</span><span class="n">jar</span><span class="o">&lt;/</span><span class="n">packaging</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">Maven</span> <span class="n">Quick</span> <span class="n">Start</span> <span class="n">Archetype</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span><span class="nl">http:</span><span class="c1">//maven.apache.org&lt;/url&gt;</span>
+  <span class="o">&lt;</span><span class="n">dependencies</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">4.11</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">dependencies</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>Pom文件是面向工程的一个管理模型，全称是Project Object Model。这个Pom文件中包含的基本内容有：</p>
+
+<ol>
+  <li><strong>project</strong> pom文件的顶层元素</li>
+  <li><strong>modelVersion</strong> Pom对象模型的版本</li>
+  <li><strong>groupId</strong> 是创建这个项目的组织或部门的唯一标志，比如说<code class="highlighter-rouge">org.apache.maven.plugins</code>就是所有Maven plugins的groupId</li>
+  <li><strong>artifactId</strong> 是这个项目生成结果的唯一标志，Maven生成结果的命名模式为<code class="highlighter-rouge">&lt;artifactId&gt;-&lt;version&gt;.&lt;extension&gt;</code>，比如说<code class="highlighter-rouge">my app-1.0.jar</code></li>
+  <li><strong>packaging</strong> 这个参数表明了项目生成结果的打包模式，比如JAR，WAR，EAR等，同时这个参数还表明了build过程采用的特定生命周期</li>
+  <li><strong>version</strong> 这个参数表明了项目生成结果的版本，在version里经常会看到SNAPSHOT标志，它表明了项目处于开发阶段。</li>
+  <li><strong>name</strong> 这个参数代表项目的展示名字，通常作用在Maven生成的文档中</li>
+  <li><strong>url</strong> 这个参数代表哪里可以找到该项目，通常作用在Maven生成的文档中</li>
+  <li><strong>description</strong> 这个参数描述了项目的基本信息，通常作用在Maven生成的文档中</li>
+</ol>
+
+<h3 id="maven-2">Maven项目的基本结构</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">my</span><span class="o">-</span><span class="n">app</span>
+<span class="o">|--</span> <span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
+<span class="err">`</span><span class="o">--</span> <span class="n">src</span>
+    <span class="o">|--</span> <span class="n">main</span>
+    <span class="o">|</span>   <span class="err">`</span><span class="o">--</span> <span class="n">java</span>
+    <span class="o">|</span>       <span class="err">`</span><span class="o">--</span> <span class="n">com</span>
+    <span class="o">|</span>           <span class="err">`</span><span class="o">--</span> <span class="n">mycompany</span>
+    <span class="o">|</span>               <span class="err">`</span><span class="o">--</span> <span class="n">app</span>
+    <span class="o">|</span>                   <span class="err">`</span><span class="o">--</span> <span class="n">App</span><span class="o">.</span><span class="na">java</span>
+    <span class="err">`</span><span class="o">--</span> <span class="n">test</span>
+        <span class="err">`</span><span class="o">--</span> <span class="n">java</span>
+            <span class="err">`</span><span class="o">--</span> <span class="n">com</span>
+                <span class="err">`</span><span class="o">--</span> <span class="n">mycompany</span>
+                    <span class="err">`</span><span class="o">--</span> <span class="n">app</span>
+                        <span class="err">`</span><span class="o">--</span> <span class="n">AppTest</span><span class="o">.</span><span class="na">java</span></code></pre></figure>
+
+<p>上面是一个Maven项目的基本结构，项目的相关资源位于<code class="highlighter-rouge">${basedir}/src/main/java</code>中，而测试的资源位于<code class="highlighter-rouge">${basedir}/src/test/java</code>中，而pom文件位于<code class="highlighter-rouge">pom.xml</code>中。</p>
+
+<h3 id="maven-3">Maven的执行</h3>
+
+<h4 id="mvn-compile">1. mvn compile</h4>
+
+<p>执行<code class="highlighter-rouge">mvn compile</code>，编译的结果会默认放在<code class="highlighter-rouge">${basedir}/target/classes</code>目录下。</p>
+
+<h4 id="mvn-test">2. mvn test</h4>
+
+<p>执行<code class="highlighter-rouge">mvn test</code>，会执行<code class="highlighter-rouge">${basedir}/src/test/java</code>中的单元测试。如果只想编译测试代码而不执行，则执行<code class="highlighter-rouge">mvn test-compile</code>。</p>
+
+<h4 id="mvn-package">3. mvn package</h4>
+
+<p>执行<code class="highlighter-rouge">mvn package</code>会对项目进行打包，假如当前在pom中的packaging设定为jar，那么执行该命令后会在<code class="highlighter-rouge">${basedir}/target</code>目录下生成对应的jar包。</p>
+
+<h4 id="mvn-install">4. mvn install</h4>
+
+<p>如果想把<code class="highlighter-rouge">mvn package</code>生成的Jar文件安装在本地库中以让其它项目引用，则可以执行<code class="highlighter-rouge">mvn install</code>命令，将生成的jar包放在<code class="highlighter-rouge">${user.home}/.m2/repository</code>中。</p>
+
+<h3 id="plugins">Plugins</h3>
+
+<p>Plugins用来定制Maven项目的编译过程，假如要配置Java Compiler允许JDK 5.0的资源，那么只需要在Pom中增加如下内容：</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">build</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">plugins</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">maven</span><span class="o">.</span><span class="na">plugins</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">maven</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">plugin</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">3.3</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">configuration</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="mf">1.5</span><span class="o">&lt;/</span><span class="n">source</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span><span class="mf">1.5</span><span class="o">&lt;/</span><span class="n">target</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">plugin</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">plugins</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">build</span><span class="o">&gt;</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">&lt;configuration&gt;</code>中的配置会应用在对应Plugin的所有Goal。</p>
+
+<h3 id="section">资源文件打包</h3>
+
+<p><code class="highlighter-rouge">${basedir}/src/main/resources</code>目录下的所有文件都会被打包到Jar文件中，比如如下一个文件结构:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">my</span><span class="o">-</span><span class="n">app</span>
+<span class="o">|--</span> <span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
+<span class="err">`</span><span class="o">--</span> <span class="n">src</span>
+    <span class="o">|--</span> <span class="n">main</span>
+    <span class="o">|</span>   <span class="o">|--</span> <span class="n">java</span>
+    <span class="o">|</span>   <span class="o">|</span>   <span class="err">`</span><span class="o">--</span> <span class="n">com</span>
+    <span class="o">|</span>   <span class="o">|</span>       <span class="err">`</span><span class="o">--</span> <span class="n">mycompany</span>
+    <span class="o">|</span>   <span class="o">|</span>           <span class="err">`</span><span class="o">--</span> <span class="n">app</span>
+    <span class="o">|</span>   <span class="o">|</span>               <span class="err">`</span><span class="o">--</span> <span class="n">App</span><span class="o">.</span><span class="na">java</span>
+    <span class="o">|</span>   <span class="err">`</span><span class="o">--</span> <span class="n">resources</span>
+    <span class="o">|</span>       <span class="err">`</span><span class="o">--</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span>
+    <span class="o">|</span>           <span class="err">`</span><span class="o">--</span> <span class="n">application</span><span class="o">.</span><span class="na">properties</span>
+    <span class="err">`</span><span class="o">--</span> <span class="n">test</span>
+        <span class="err">`</span><span class="o">--</span> <span class="n">java</span>
+            <span class="err">`</span><span class="o">--</span> <span class="n">com</span>
+                <span class="err">`</span><span class="o">--</span> <span class="n">mycompany</span>
+                    <span class="err">`</span><span class="o">--</span> <span class="n">app</span>
+                        <span class="err">`</span><span class="o">--</span> <span class="n">AppTest</span><span class="o">.</span><span class="na">java</span></code></pre></figure>
+
+<p>该项目打包成Jar文件后的内部组织结构为:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">|--</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="n">MANIFEST</span><span class="o">.</span><span class="na">MF</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="n">application</span><span class="o">.</span><span class="na">properties</span>
+<span class="o">|</span>   <span class="err">`</span><span class="o">--</span> <span class="n">maven</span>
+<span class="o">|</span>       <span class="err">`</span><span class="o">--</span> <span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span>
+<span class="o">|</span>           <span class="err">`</span><span class="o">--</span> <span class="n">my</span><span class="o">-</span><span class="n">app</span>
+<span class="o">|</span>               <span class="o">|--</span> <span class="n">pom</span><span class="o">.</span><span class="na">properties</span>
+<span class="o">|</span>               <span class="err">`</span><span class="o">--</span> <span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
+<span class="err">`</span><span class="o">--</span> <span class="n">com</span>
+    <span class="err">`</span><span class="o">--</span> <span class="n">mycompany</span>
+        <span class="err">`</span><span class="o">--</span> <span class="n">app</span>
+            <span class="err">`</span><span class="o">--</span> <span class="n">App</span><span class="o">.</span><span class="na">class</span></code></pre></figure>
+
+<h3 id="section-1">文件过滤</h3>
+
+<p>Maven支持文件过滤的功能，可以在build时候为文件提供变量赋值，比如说上面的<code class="highlighter-rouge">application.properties</code>文件中有如下定义:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">#</span> <span class="n">application</span><span class="o">.</span><span class="na">properties</span>
+<span class="n">application</span><span class="o">.</span><span class="na">name</span><span class="o">=</span><span class="err">$</span><span class="o">{</span><span class="n">project</span><span class="o">.</span><span class="na">name</span><span class="o">}</span>
+<span class="n">application</span><span class="o">.</span><span class="na">version</span><span class="o">=</span><span class="err">$</span><span class="o">{</span><span class="n">project</span><span class="o">.</span><span class="na">version</span><span class="o">}</span></code></pre></figure>
+
+<p>那么需要在pom文件中做如下的定义：</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+  <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">modelVersion</span><span class="o">&gt;</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">modelVersion</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">my</span><span class="o">-</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">packaging</span><span class="o">&gt;</span><span class="n">jar</span><span class="o">&lt;/</span><span class="n">packaging</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">Maven</span> <span class="n">Quick</span> <span class="n">Start</span> <span class="n">Archetype</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span><span class="nl">http:</span><span class="c1">//maven.apache.org&lt;/url&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">dependencies</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">4.11</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">dependencies</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">build</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">resources</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">resource</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">resources</span><span class="o">&lt;/</span><span class="n">directory</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">filtering</span><span class="o">&gt;</span><span class="kc">true</span><span class="o">&lt;/</span><span class="n">filtering</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">resource</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">resources</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">build</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>执行<code class="highlighter-rouge">mvn process-resources</code>命令后，在<code class="highlighter-rouge">target/classes</code>下找到<code class="highlighter-rouge">application.properties</code>可以看到如下结果：</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">#</span> <span class="n">application</span><span class="o">.</span><span class="na">properties</span>
+<span class="n">application</span><span class="o">.</span><span class="na">name</span><span class="o">=</span><span class="n">Maven</span> <span class="n">Quick</span> <span class="n">Start</span> <span class="n">Archetype</span>
+<span class="n">application</span><span class="o">.</span><span class="na">version</span><span class="o">=</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span></code></pre></figure>
+
+<p>可见其中形如<code class="highlighter-rouge">${&lt;property name&gt;}</code>的变量已经被替换成了对应的值，如果要引入其它文件中定义的属性，只需要在pom文件中定义<code class="highlighter-rouge">&lt;filters&gt;</code>，比如:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">  <span class="o">&lt;</span><span class="n">build</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">filters</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">filter</span><span class="o">&gt;</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">filters</span><span class="o">/</span><span class="n">filter</span><span class="o">.</span><span class="na">properties</span><span class="o">&lt;/</span><span class="n">filter</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">filters</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">resources</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">resource</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">resources</span><span class="o">&lt;/</span><span class="n">directory</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">filtering</span><span class="o">&gt;</span><span class="kc">true</span><span class="o">&lt;/</span><span class="n">filtering</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">resource</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">resources</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">build</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>那么Maven会先读出<code class="highlighter-rouge">filter.properties</code>中的属性，然后把这些属性注入对应的resources中。</p>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<p><code class="highlighter-rouge">&lt;dependencies&gt;</code>标签下列出了所有的外部依赖，比如下面的Pom文件添加了Junit的依赖:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+  <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">modelVersion</span><span class="o">&gt;</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">modelVersion</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">my</span><span class="o">-</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">packaging</span><span class="o">&gt;</span><span class="n">jar</span><span class="o">&lt;/</span><span class="n">packaging</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">Maven</span> <span class="n">Quick</span> <span class="n">Start</span> <span class="n">Archetype</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span><span class="nl">http:</span><span class="c1">//maven.apache.org&lt;/url&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">dependencies</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">4.11</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">dependencies</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">&lt;dependency&gt;</code>的<code class="highlighter-rouge">&lt;scope&gt;</code>标签的值可以为compile，test和runtime，当Maven编译项目时，它首先会在<code class="highlighter-rouge">${user.home}/.m2/repository</code>这个本地库目录下寻找所需的依赖，如果没有会去远程的库上寻找，并将其下载到本地库中，默认的远程库地址为<code class="highlighter-rouge">http://repo.maven.apache.org/maven2/</code>。</p>
+
+<h3 id="section-2">包的发布</h3>
+
+<p>当需要发布一个包的远程仓库时，需要配置库的地址和相应的权限，一个范例如下:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+  <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">modelVersion</span><span class="o">&gt;</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">modelVersion</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">my</span><span class="o">-</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">packaging</span><span class="o">&gt;</span><span class="n">jar</span><span class="o">&lt;/</span><span class="n">packaging</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">Maven</span> <span class="n">Quick</span> <span class="n">Start</span> <span class="n">Archetype</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span><span class="nl">http:</span><span class="c1">//maven.apache.org&lt;/url&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">dependencies</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">4.11</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">codehaus</span><span class="o">.</span><span class="na">plexus</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">plexus</span><span class="o">-</span><span class="n">utils</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">dependencies</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">build</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">filters</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">filter</span><span class="o">&gt;</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">filters</span><span class="o">/</span><span class="n">filters</span><span class="o">.</span><span class="na">properties</span><span class="o">&lt;/</span><span class="n">filter</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">filters</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">resources</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">resource</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">resources</span><span class="o">&lt;/</span><span class="n">directory</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">filtering</span><span class="o">&gt;</span><span class="kc">true</span><span class="o">&lt;/</span><span class="n">filtering</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">resource</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">resources</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">build</span><span class="o">&gt;</span>
+  <span class="o">&lt;!--</span>
+   <span class="o">|</span>
+   <span class="o">|</span>
+   <span class="o">|</span>
+   <span class="o">--&gt;</span>
+  <span class="o">&lt;</span><span class="n">distributionManagement</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">repository</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">id</span><span class="o">&gt;</span><span class="n">mycompany</span><span class="o">-</span><span class="n">repository</span><span class="o">&lt;/</span><span class="n">id</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">MyCompany</span> <span class="n">Repository</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span><span class="nl">scp:</span><span class="c1">//repository.mycompany.com/repository/maven2&lt;/url&gt;</span>
+    <span class="o">&lt;/</span><span class="n">repository</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">distributionManagement</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>它所需要的权限配置在<code class="highlighter-rouge">settings.xml</code>中：</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">settings</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/SETTINGS/1.0.0"</span>
+  <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">"http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd"</span><span class="o">&gt;</span>
+  <span class="o">...</span>
+  <span class="o">&lt;</span><span class="n">servers</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">server</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">id</span><span class="o">&gt;</span><span class="n">mycompany</span><span class="o">-</span><span class="n">repository</span><span class="o">&lt;/</span><span class="n">id</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="n">jvanzyl</span><span class="o">&lt;/</span><span class="n">username</span><span class="o">&gt;</span>
+      <span class="o">&lt;!--</span> <span class="n">Default</span> <span class="n">value</span> <span class="n">is</span> <span class="o">~/.</span><span class="na">ssh</span><span class="o">/</span><span class="n">id_dsa</span> <span class="o">--&gt;</span>
+      <span class="o">&lt;</span><span class="n">privateKey</span><span class="o">&gt;/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">identity</span><span class="o">&lt;/</span><span class="n">privateKey</span><span class="o">&gt;</span> <span class="o">(</span><span class="k">default</span> <span class="n">is</span> <span class="o">~/.</span><span class="na">ssh</span><span class="o">/</span><span class="n">id_dsa</span><span class="o">)</span>
+      <span class="o">&lt;</span><span class="n">passphrase</span><span class="o">&gt;</span><span class="n">my_key_passphrase</span><span class="o">&lt;/</span><span class="n">passphrase</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">server</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">servers</span><span class="o">&gt;</span>
+  <span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">settings</span><span class="o">&gt;</span></code></pre></figure>
+
+<h3 id="modules">多Modules管理</h3>
+
+<p>Maven很好的支持了多个Modules的管理，假如一个Maven项目结构如下:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">+-</span> <span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
+<span class="o">+-</span> <span class="n">my</span><span class="o">-</span><span class="n">app</span>
+<span class="o">|</span> <span class="o">+-</span> <span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
+<span class="o">|</span> <span class="o">+-</span> <span class="n">src</span>
+<span class="o">|</span>   <span class="o">+-</span> <span class="n">main</span>
+<span class="o">|</span>     <span class="o">+-</span> <span class="n">java</span>
+<span class="o">+-</span> <span class="n">my</span><span class="o">-</span><span class="n">webapp</span>
+<span class="o">|</span> <span class="o">+-</span> <span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
+<span class="o">|</span> <span class="o">+-</span> <span class="n">src</span>
+<span class="o">|</span>   <span class="o">+-</span> <span class="n">main</span>
+<span class="o">|</span>     <span class="o">+-</span> <span class="n">webapp</span></code></pre></figure>
+
+<p>对于根目录下的pom文件，内容如下:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+  <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">modelVersion</span><span class="o">&gt;</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">modelVersion</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">packaging</span><span class="o">&gt;</span><span class="n">pom</span><span class="o">&lt;/</span><span class="n">packaging</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">modules</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="n">my</span><span class="o">-</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="n">my</span><span class="o">-</span><span class="n">webapp</span><span class="o">&lt;/</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">modules</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>其中的<code class="highlighter-rouge">&lt;modules&gt;</code>定义了其管理的两个子modules。</p>
+
+<p>假如my-webapp需要依赖my-app包，那么在<code class="highlighter-rouge">my-webapp/pom.xml</code>中增加:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">  <span class="o">...</span>
+  <span class="o">&lt;</span><span class="n">dependencies</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">my</span><span class="o">-</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+    <span class="o">...</span>
+  <span class="o">&lt;/</span><span class="n">dependencies</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>然后在my-app和my-webapp的pom文件中都增加parent配置:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+  <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="nl">xsi:</span><span class="n">schemaLocation</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">parent</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">app</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">parent</span><span class="o">&gt;</span>
+  <span class="o">...</span></code></pre></figure>
+
+<p>然后在最顶层目录下执行<code class="highlighter-rouge">mvn clean install</code>，会创建<code class="highlighter-rouge">my-webapp/target/my-webapp.war</code>，其中包含:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="err">$</span> <span class="n">jar</span> <span class="n">tvf</span> <span class="n">my</span><span class="o">-</span><span class="n">webapp</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">webapp</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">.</span><span class="na">war</span>
+   <span class="mi">0</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span>
+ <span class="mi">222</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">54</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">MANIFEST</span><span class="o">.</span><span class="na">MF</span>
+   <span class="mi">0</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">maven</span><span class="o">/</span>
+   <span class="mi">0</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">maven</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">/</span>
+   <span class="mi">0</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">maven</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">webapp</span><span class="o">/</span>
+<span class="mi">3239</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">maven</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">webapp</span><span class="o">/</span><span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
+   <span class="mi">0</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">WEB</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span>
+ <span class="mi">215</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">WEB</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">web</span><span class="o">.</span><span class="na">xml</span>
+ <span class="mi">123</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">maven</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="na">mycompany</span><span class="o">.</span><span class="na">app</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">webapp</span><span class="o">/</span><span class="n">pom</span><span class="o">.</span><span class="na">properties</span>
+  <span class="mi">52</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">index</span><span class="o">.</span><span class="na">jsp</span>
+   <span class="mi">0</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">WEB</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span>
+<span class="mi">2713</span> <span class="n">Fri</span> <span class="n">Jun</span> <span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mi">56</span> <span class="n">EST</span> <span class="mi">2005</span> <span class="n">WEB</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">.</span><span class="na">jar</span></code></pre></figure>
+
+<p>可见<code class="highlighter-rouge">my-app-1.0-SNAPSHOT.jar</code>已经被放到了<code class="highlighter-rouge">WEB-INF/lib</code>目录下。</p>
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/pieces/2017/02/16/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B.html">上一篇博客：离别是新的开始</a><br>
+      
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>美团金融后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
