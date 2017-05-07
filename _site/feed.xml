@@ -5,9 +5,151 @@
     <description>美团金融后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 01 May 2017 21:30:00 +0800</pubDate>
-    <lastBuildDate>Mon, 01 May 2017 21:30:00 +0800</lastBuildDate>
+    <pubDate>Sun, 07 May 2017 18:01:14 +0800</pubDate>
+    <lastBuildDate>Sun, 07 May 2017 18:01:14 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Innodb锁介绍-Innodb中的各类锁概述</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#innodb&quot; id=&quot;markdown-toc-innodb&quot;&gt;Innodb锁概述&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;概述&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;一次封锁法&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;两阶段锁协议&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;加锁阶段&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;解锁阶段&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#innodb-1&quot; id=&quot;markdown-toc-innodb-1&quot;&gt;Innodb中的各种锁&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#shared-lock-and-exclusive-locks&quot; id=&quot;markdown-toc-shared-lock-and-exclusive-locks&quot;&gt;Shared Lock And Exclusive Locks&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#record-locks&quot; id=&quot;markdown-toc-record-locks&quot;&gt;Record Locks&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#next-key-locks&quot; id=&quot;markdown-toc-next-key-locks&quot;&gt;Next-key Locks&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#intention-locks&quot; id=&quot;markdown-toc-intention-locks&quot;&gt;Intention Locks&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#gap-locks&quot; id=&quot;markdown-toc-gap-locks&quot;&gt;GAP Locks&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#insert-intention-locks&quot; id=&quot;markdown-toc-insert-intention-locks&quot;&gt;Insert Intention Locks&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#auto-inc-locks&quot; id=&quot;markdown-toc-auto-inc-locks&quot;&gt;AUTO-INC Locks&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;innodb&quot;&gt;Innodb锁概述&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;参考文档:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://tech.meituan.com/innodb-lock.html&quot;&gt;美团Innodb锁介绍&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://yeshaoting.cn/article/database/mysql%20insert%E9%94%81%E6%9C%BA%E5%88%B6/&quot;&gt;MySQL insert锁机制&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.6/en/innodb-locking.html&quot;&gt;MySQL锁官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;概述&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Innodb中行级锁作用于索引之上，如果没有索引，则只能够锁表。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;一次封锁法&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;为了预防死锁，一般应用中推荐一次封锁法。也就是在方法的开始阶段，已经预先知道会用到哪些数据，然后全部锁住，在方法运行完成之后，再进行解锁。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;一次封锁法能够预防死锁，但从该方法的定义中可以看到，每次操作都锁住全部数据，如果这样数据的执行只能是串行化的，性能不高。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;两阶段锁协议&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;数据库遵循的是两段锁协议，将事物分解成加锁和解锁两个阶段&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;加锁阶段&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;该阶段可以进行加锁操作，在对任何数据进行读操作之前要申请并获得S锁(Shared Lock，其它事务可以继续加S锁，但不能加Exclusive Lock，即排他锁)；而在进行写操作之前，需要申请X锁(Exclusive Lock，其它事务不能再获得任何锁)。加锁不成功则进入等待状态，而不能再加其它锁。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;从这个定义可以看出，加锁阶段定义了事务之间的协调规则，能够有效提高多个事务之间的执行性能，但同时也带来了死锁的风险，之后会举例介绍死锁的成因。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;解锁阶段&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;事务进入解锁阶段将释放其持有的锁，该阶段只能进行解锁操作，而不能再加其它锁。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;innodb-1&quot;&gt;Innodb中的各种锁&lt;/h2&gt;
+
+&lt;h3 id=&quot;shared-lock-and-exclusive-locks&quot;&gt;Shared Lock And Exclusive Locks&lt;/h3&gt;
+
+&lt;p&gt;这是两个行级锁，包括 &lt;strong&gt;Shared Lock(S 共享锁)&lt;/strong&gt; 和 &lt;strong&gt;Exclusive Lock(X 排他锁):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;共享锁&lt;/strong&gt; 允许持有锁的事务去读取一行数据，可以有多个事务同时持有共享锁，但当数据被加上共享锁时，不能再被加排他锁。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;排他锁&lt;/strong&gt; 允许持有锁的事务去更新或则删除一行数据，同时只能有一个事务持有排他锁，当数据被加上排他锁时，不能再加共享锁。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;record-locks&quot;&gt;Record Locks&lt;/h3&gt;
+
+&lt;p&gt;记录锁是作用在索引上，比如这么一条语句：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UPDATE&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;这条语句将会在&lt;code class=&quot;highlighter-rouge&quot;&gt;c1&lt;/code&gt;值为10这条记录的索引加锁，阻止其它事务的插入，更新和删除操作。
+即使&lt;code class=&quot;highlighter-rouge&quot;&gt;c1&lt;/code&gt;不存在索引，Innodb也会创建一个隐藏的&lt;code class=&quot;highlighter-rouge&quot;&gt;clustered index&lt;/code&gt;，并用其作为锁的依据。&lt;/p&gt;
+
+&lt;h3 id=&quot;next-key-locks&quot;&gt;Next-key Locks&lt;/h3&gt;
+
+&lt;p&gt;Next-key锁是记录锁和Gap锁的结合，锁住了记录和记录之前的一段Gap区间。
+比如索引包含了10，11，13和20，那么Next-key分出的区间如下：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;negative&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;infinity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;positive&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;infinity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;intention-locks&quot;&gt;Intention Locks&lt;/h3&gt;
+
+&lt;p&gt;Intention Locks(意向锁)是MySQL为了支持不同粒度的锁而设计的一种 &lt;strong&gt;表级别锁(但不是通常认为的表锁)&lt;/strong&gt; ，它表示了表之后将被加上哪种行级锁。意向锁的分类如下：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Intention Shared Lock，意向共享锁(IS)&lt;/strong&gt; ，表示事务将要在表上加共享锁，规则是在表中申请某些行的共享锁之前，必须先申请&lt;code class=&quot;highlighter-rouge&quot;&gt;IS&lt;/code&gt;锁。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Intention Exclusive Lock，意向排他锁(IX)&lt;/strong&gt; ，表示事务将要在标上加排他锁，规则是在表中申请某些行的排他锁之前，必须先申请&lt;code class=&quot;highlighter-rouge&quot;&gt;IX&lt;/code&gt;锁。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LOCK&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SHARE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MODE&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;该语句将会在表上加&lt;code class=&quot;highlighter-rouge&quot;&gt;IS&lt;/code&gt;锁，同时在对应的记录上加上&lt;code class=&quot;highlighter-rouge&quot;&gt;S&lt;/code&gt;锁。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UPDATE&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;该语句将会在标上加上&lt;code class=&quot;highlighter-rouge&quot;&gt;IX&lt;/code&gt;锁，同时在对应的记录上加上&lt;code class=&quot;highlighter-rouge&quot;&gt;X&lt;/code&gt;锁。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;表级锁的兼容性矩阵：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/matrix.png&quot; alt=&quot;Matrix&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;事实上意向锁不会和行级的&lt;code class=&quot;highlighter-rouge&quot;&gt;S&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;X&lt;/code&gt;锁产生冲突，只会和表级的&lt;code class=&quot;highlighter-rouge&quot;&gt;S&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;X&lt;/code&gt;锁产生冲突。&lt;/p&gt;
+
+&lt;h3 id=&quot;gap-locks&quot;&gt;GAP Locks&lt;/h3&gt;
+&lt;p&gt;Gap锁是一种范围锁，Gap锁作用范围是Record锁之间，或者Record锁之前与Record锁之后的范围。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gap.png&quot; alt=&quot;Gap&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图所示，首先当前该记录存在索引，id为5和30的记录将整个分为了 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;=5&lt;/code&gt; ，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;5&amp;amp;&amp;lt;=30&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;30&lt;/code&gt; 三个区间，如果要更新30的数据，那么 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;5&lt;/code&gt; 的所有区间都会被锁住。&lt;/p&gt;
+
+&lt;h3 id=&quot;insert-intention-locks&quot;&gt;Insert Intention Locks&lt;/h3&gt;
+&lt;p&gt;Insert Intention Locks也就是插入意向锁，但它其实是一种GAP锁，在行数据被插入之前，设定的一种锁，如果两个事务要插入同一个GAP中的不同行记录，它们都会获取这个GAP的插入意向锁，但相互之间不会冲突。&lt;/p&gt;
+
+&lt;h3 id=&quot;auto-inc-locks&quot;&gt;AUTO-INC Locks&lt;/h3&gt;
+&lt;p&gt;AUTO-INC锁是一种特殊的表级别锁，主要处理表中带有自增列的情况。实际上是为了保证自增的正确性，所以有了这种锁。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 07 May 2017 17:05:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html</guid>
+        
+        
+        <category>MySQL</category>
+        
+      </item>
     
       <item>
         <title>Maven之三十分钟入门</title>
@@ -2225,253 +2367,6 @@ export default function configureStore(preloadedState) {
         
         
         <category>React</category>
-        
-      </item>
-    
-      <item>
-        <title>利用Annotation Processing生成Hibernate工具</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;开发原因&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;开发组件&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;开发思路&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;实现细节&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;注解&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#processor&quot; id=&quot;markdown-toc-processor&quot;&gt;注解Processor的实现&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;配置文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#maven&quot; id=&quot;markdown-toc-maven&quot;&gt;生成Maven包&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;测试&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;开发原因&lt;/h2&gt;
-
-&lt;p&gt;在使用Hibernate时候，经常会写这样的代码：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Override
-public List getTemplateList(long id) {
-    DetachedCriteria criteria = DetachedCriteria.forClass(Template.class);
-    criteria.add(Restrictions.eq(&quot;id&quot;, id));
-    criteria.addOrder(Order.desc(&quot;create_time&quot;));
-    return findByDetachedCriteria(criteria);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在设置条件的时候，不得不使用hibernate 实体类中对应的字段，这个时侯要么是跳到对应类或xml文件里复制粘贴，要么是自己手打，还容易出错。这个时侯就会想，如果能为实体类生成一些方法，以获取对应的实体类字段名，那就方便多了，达到如下这种效果：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Override
-public List getTemplateList(long id) {
-    DetachedCriteria criteria = DetachedCriteria.forClass(Template.class);
-    criteria.add(Restrictions.eq(TemplateTool.getId(), id));
-    criteria.addOrder(Order.desc(TemplateTool.getCreate_Time());
-    return findByDetachedCriteria(criteria);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这样是不是方便了很多，在IDE的帮助下，能有效提高写代码的效率。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;开发组件&lt;/h2&gt;
-
-&lt;p&gt;Intellij&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;开发思路&lt;/h2&gt;
-
-&lt;p&gt;根据开发原因，很容联想到一个开源工具&lt;code class=&quot;highlighter-rouge&quot;&gt;LomBok&lt;/code&gt;，它能够自动生成&lt;code class=&quot;highlighter-rouge&quot;&gt;Getter/Setter&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;toString&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;hashCode&lt;/code&gt;等方法，在intellij上配合lombok的插件，能够实时调出这些方法。于是我尝试在Lombok上去拓展，但发现Lombok并不能直接拓展，需要修改其源码并重新编译，这就没必要了。然后了解了一下Lombok的原理，是基于&lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation Processing&lt;/code&gt;来实现的，简单来说就是为&lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt;注册一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Processor&lt;/code&gt;，在编译时动态生成代码，这算是实现工具的神器了。(这里当时认识有错误，Lombok实际是通过修改AST来实现的，并非&lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation Processing&lt;/code&gt; 2016－07－01)&lt;/p&gt;
-
-&lt;p&gt;于是我学习了一下这片文章 &lt;a href=&quot;http://hannesdorfmann.com/annotation-processing/annotationprocessing101&quot;&gt;Annotation Processing&lt;/a&gt;，照着上面所诉的模式写了一个Hibernate工具。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;实现细节&lt;/h2&gt;
-
-&lt;p&gt;源码参见：&lt;a href=&quot;https://github.com/sadwxqezc/AP&quot;&gt;Huang Huan Github Annotation Processing&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;注解&lt;/h3&gt;
-
-&lt;p&gt;首先需要定义一个作用于&lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt;阶段的注解：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Documented
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.SOURCE)
-public @interface ORMTool {
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;processor&quot;&gt;注解Processor的实现&lt;/h3&gt;
-
-&lt;p&gt;定义一个&lt;code class=&quot;highlighter-rouge&quot;&gt;ORMToolProcessor&lt;/code&gt;来对应该注解：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@AutoService(Processor.class)
-@SupportedAnnotationTypes(&quot;bj.huanghuan.annotation.ORMTool&quot;)
-public class ORMToolProcessor extends AbstractProcessor {
-
-    /**
-     * 打印信息
-     **/
-    private Messager messager;
-
-    /**
-     * 创建文件工具
-     **/
-    private Filer filer;
-
-    /**
-     * element工具
-     **/
-    private Elements elementUtils;
-
-
-    private static final String SUFFIX = &quot;Tool&quot;;
-
-    @Override
-    public synchronized void init(ProcessingEnvironment processingEnv) {
-        super.init(processingEnv);
-        messager = processingEnv.getMessager();
-        filer = processingEnv.getFiler();
-        elementUtils = processingEnv.getElementUtils();
-    }
-
-    @Override
-    public boolean process(Set&amp;lt;? extends TypeElement&amp;gt; annotations, 
-    RoundEnvironment roundEnv) {
-        for (Element element : roundEnv.getElementsAnnotatedWith(ORMTool.class)) {
-            if (element.getKind() != ElementKind.CLASS) {
-                printError(element, 
-                &quot;Only Classes can be annotated with @%s&quot;,
-                 ORMTool.class.getSimpleName());
-                return true;
-            }
-            TypeElement typeElement = (TypeElement) element;
-            String className = typeElement.getSimpleName() + SUFFIX;
-            try {
-                JavaFileObject classFile = filer.createSourceFile(className);
-                Writer writer = classFile.openWriter();
-                JavaWriter javaWriter = new JavaWriter(writer);
-                /*************** package Name *************/
-                PackageElement packageElement = elementUtils.getPackageOf(typeElement);
-                if (!packageElement.isUnnamed()) {
-                    javaWriter.emitPackage(packageElement.getQualifiedName().toString());
-                    javaWriter.emitEmptyLine();
-                } else {
-                    javaWriter.emitPackage(&quot;&quot;);
-                }
-
-                javaWriter.beginType(className, &quot;class&quot;, EnumSet.of(Modifier.PUBLIC));
-                javaWriter.emitEmptyLine();
-
-                /************ generate getter for fields ************/
-                List&amp;lt;VariableElement&amp;gt; insideElements =
-                 ElementFilter.fieldsIn(typeElement.getEnclosedElements());
-                for (VariableElement variableElement : insideElements) {
-                    javaWriter.beginMethod(&quot;String&quot;,
-                     variableElement.getSimpleName().toString(),
-                     EnumSet.of(Modifier.PUBLIC, Modifier.STATIC),
-                     null, null);
-                    javaWriter.emitStatement(&quot;return \&quot;&quot; +
-                     variableElement.getSimpleName().toString() + &quot;\&quot;&quot;);
-                    javaWriter.endMethod();
-                    javaWriter.emitEmptyLine();
-                }
-
-                javaWriter.endType();
-                javaWriter.close();
-            } catch (IOException e) {
-                messager.printMessage(Diagnostic.Kind.ERROR, 
-                &quot;Gennerate Source Code Failed!&quot;);
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public SourceVersion getSupportedSourceVersion() {
-        return SourceVersion.latestSupported();
-    }
-
-    /**
-     * 错误日志打印
-     *
-     * @param element
-     * @param msg
-     * @param args
-     */
-    private void printError(Element element, String msg, Object... args) {
-        messager.printMessage(Diagnostic.Kind.ERROR, String.format(msg, args), element);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这部门代码里有一些需要解释的地方：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@AutoService&lt;/code&gt;是Google提供的注册一个工具，其实作用应该是省去后面我将要讲的配置文件，不过影响不大。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;process(Set&amp;lt;? extends TypeElement&amp;gt; annotations, ...)&lt;/code&gt;是处理的入口，首先判断被&lt;code class=&quot;highlighter-rouge&quot;&gt;ORMTool&lt;/code&gt;注解的元素是不是&lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt;类型，然后利用&lt;code class=&quot;highlighter-rouge&quot;&gt;JavaWriter&lt;/code&gt;这个代码生成工具来构建新的Java文件，为注解的类生成一个对应的tool类。该类包含了被注解类中所有&lt;code class=&quot;highlighter-rouge&quot;&gt;Field&lt;/code&gt;的参数名&lt;code class=&quot;highlighter-rouge&quot;&gt;Getter&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;这里面的&lt;code class=&quot;highlighter-rouge&quot;&gt;TypeElement&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;VariableElement&lt;/code&gt;分别指的类类型和域类型。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;配置文件&lt;/h3&gt;
-
-&lt;p&gt;这里需要一个配置文件，文件全路径是&lt;code class=&quot;highlighter-rouge&quot;&gt;/META-INF/services/javax.annotation.processing.Processor&lt;/code&gt;，配置文件中写入&lt;code class=&quot;highlighter-rouge&quot;&gt;ORMToolProcessor&lt;/code&gt;中的路径，如&lt;code class=&quot;highlighter-rouge&quot;&gt;bj.huanghuan.processor.ORMToolProcessor&lt;/code&gt;。实际上又了上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;@AutoService&lt;/code&gt;其实应该不需要手写这个文件了，不过我没试过，读者有兴趣可以试试。&lt;/p&gt;
-
-&lt;p&gt;截图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/ap-structure&quot; alt=&quot;文件结构&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;maven&quot;&gt;生成Maven包&lt;/h3&gt;
-
-&lt;p&gt;最后需要生成一个Maven包，加入到其它项目中供调用。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;测试&lt;/h3&gt;
-
-&lt;p&gt;测试用的&lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;类：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ORMTool
-public class Test {
-
-	private int id;
-
-	private String name;
-
-	private Boolean isNew;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;生成的&lt;code class=&quot;highlighter-rouge&quot;&gt;TestTool&lt;/code&gt;类:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class TestTool {
-	public TestTool() {
-	}
-
-	public static String id() {
-    	return &quot;id&quot;;
-	}
-
-	public static String name() {
-    	return &quot;name&quot;;
-	}
-
-	public static String isNew() {
-    	return &quot;isNew&quot;;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-7&quot;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;这种方式的工具需要在使用前编译一下代码，而且不能在原始代码上进行修改，也算是点小遗憾了。
-PS: intellij上有个叫GeneratePropertyNameConstants的插件，用这个也可以，只不过麻烦些&lt;/p&gt;
-</description>
-        <pubDate>Sun, 26 Jun 2016 10:49:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/06/26/%E5%88%A9%E7%94%A8Annotation-Processing%E7%94%9F%E6%88%90Hibernate%E5%B7%A5%E5%85%B7.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/06/26/%E5%88%A9%E7%94%A8Annotation-Processing%E7%94%9F%E6%88%90Hibernate%E5%B7%A5%E5%85%B7.html</guid>
-        
-        
-        <category>Framework</category>
         
       </item>
     
