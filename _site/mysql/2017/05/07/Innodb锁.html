@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Innodb锁介绍-Innodb中的各类锁概述</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <p class="navbar-text">上周UV:650 本周UV:150</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Innodb锁介绍-Innodb中的各类锁概述</h1>
+        <p>May 7, 2017</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#innodb" id="markdown-toc-innodb">Innodb锁概述</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">概述</a>        <ul>
+          <li><a href="#section-1" id="markdown-toc-section-1">一次封锁法</a></li>
+          <li><a href="#section-2" id="markdown-toc-section-2">两阶段锁协议</a>            <ul>
+              <li><a href="#section-3" id="markdown-toc-section-3">加锁阶段</a></li>
+              <li><a href="#section-4" id="markdown-toc-section-4">解锁阶段</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#innodb-1" id="markdown-toc-innodb-1">Innodb中的各种锁</a>        <ul>
+          <li><a href="#shared-lock-and-exclusive-locks" id="markdown-toc-shared-lock-and-exclusive-locks">Shared Lock And Exclusive Locks</a></li>
+          <li><a href="#record-locks" id="markdown-toc-record-locks">Record Locks</a></li>
+          <li><a href="#next-key-locks" id="markdown-toc-next-key-locks">Next-key Locks</a></li>
+          <li><a href="#intention-locks" id="markdown-toc-intention-locks">Intention Locks</a></li>
+          <li><a href="#gap-locks" id="markdown-toc-gap-locks">GAP Locks</a></li>
+          <li><a href="#insert-intention-locks" id="markdown-toc-insert-intention-locks">Insert Intention Locks</a></li>
+          <li><a href="#auto-inc-locks" id="markdown-toc-auto-inc-locks">AUTO-INC Locks</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="innodb">Innodb锁概述</h1>
+
+<p><strong>参考文档:</strong></p>
+
+<ol>
+  <li><a href="http://tech.meituan.com/innodb-lock.html">美团Innodb锁介绍</a></li>
+  <li><a href="http://yeshaoting.cn/article/database/mysql%20insert%E9%94%81%E6%9C%BA%E5%88%B6/">MySQL insert锁机制</a></li>
+  <li><a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-locking.html">MySQL锁官方文档</a></li>
+</ol>
+
+<h2 id="section">概述</h2>
+<blockquote>
+  <p>Innodb中行级锁作用于索引之上，如果没有索引，则只能够锁表。</p>
+</blockquote>
+
+<h3 id="section-1">一次封锁法</h3>
+<blockquote>
+  <p>为了预防死锁，一般应用中推荐一次封锁法。也就是在方法的开始阶段，已经预先知道会用到哪些数据，然后全部锁住，在方法运行完成之后，再进行解锁。</p>
+</blockquote>
+
+<p>一次封锁法能够预防死锁，但从该方法的定义中可以看到，每次操作都锁住全部数据，如果这样数据的执行只能是串行化的，性能不高。</p>
+
+<h3 id="section-2">两阶段锁协议</h3>
+<blockquote>
+  <p>数据库遵循的是两段锁协议，将事物分解成加锁和解锁两个阶段</p>
+</blockquote>
+
+<h4 id="section-3">加锁阶段</h4>
+<blockquote>
+  <p>该阶段可以进行加锁操作，在对任何数据进行读操作之前要申请并获得S锁(Shared Lock，其它事务可以继续加S锁，但不能加Exclusive Lock，即排他锁)；而在进行写操作之前，需要申请X锁(Exclusive Lock，其它事务不能再获得任何锁)。加锁不成功则进入等待状态，而不能再加其它锁。</p>
+</blockquote>
+
+<p>从这个定义可以看出，加锁阶段定义了事务之间的协调规则，能够有效提高多个事务之间的执行性能，但同时也带来了死锁的风险，之后会举例介绍死锁的成因。</p>
+
+<h4 id="section-4">解锁阶段</h4>
+<blockquote>
+  <p>事务进入解锁阶段将释放其持有的锁，该阶段只能进行解锁操作，而不能再加其它锁。</p>
+</blockquote>
+
+<h2 id="innodb-1">Innodb中的各种锁</h2>
+
+<h3 id="shared-lock-and-exclusive-locks">Shared Lock And Exclusive Locks</h3>
+
+<p>这是两个行级锁，包括 <strong>Shared Lock(S 共享锁)</strong> 和 <strong>Exclusive Lock(X 排他锁):</strong></p>
+
+<ol>
+  <li><strong>共享锁</strong> 允许持有锁的事务去读取一行数据，可以有多个事务同时持有共享锁，但当数据被加上共享锁时，不能再被加排他锁。</li>
+  <li><strong>排他锁</strong> 允许持有锁的事务去更新或则删除一行数据，同时只能有一个事务持有排他锁，当数据被加上排他锁时，不能再加共享锁。</li>
+</ol>
+
+<h3 id="record-locks">Record Locks</h3>
+
+<p>记录锁是作用在索引上，比如这么一条语句：</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">SELECT</span> <span class="n">c1</span> <span class="n">FROM</span> <span class="n">t</span> <span class="n">WHERE</span> <span class="n">c1</span><span class="o">=</span><span class="mi">10</span> <span class="n">FOR</span> <span class="n">UPDATE</span></code></pre></figure>
+
+<p>这条语句将会在<code class="highlighter-rouge">c1</code>值为10这条记录的索引加锁，阻止其它事务的插入，更新和删除操作。
+即使<code class="highlighter-rouge">c1</code>不存在索引，Innodb也会创建一个隐藏的<code class="highlighter-rouge">clustered index</code>，并用其作为锁的依据。</p>
+
+<h3 id="next-key-locks">Next-key Locks</h3>
+
+<p>Next-key锁是记录锁和Gap锁的结合，锁住了记录和记录之前的一段Gap区间。
+比如索引包含了10，11，13和20，那么Next-key分出的区间如下：</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">(</span><span class="n">negative</span> <span class="n">infinity</span><span class="o">,</span> <span class="mi">10</span><span class="o">]</span>
+<span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">11</span><span class="o">]</span>
+<span class="o">(</span><span class="mi">11</span><span class="o">,</span> <span class="mi">13</span><span class="o">]</span>
+<span class="o">(</span><span class="mi">13</span><span class="o">,</span> <span class="mi">20</span><span class="o">]</span>
+<span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="n">positive</span> <span class="n">infinity</span><span class="o">)</span></code></pre></figure>
+
+<h3 id="intention-locks">Intention Locks</h3>
+
+<p>Intention Locks(意向锁)是MySQL为了支持不同粒度的锁而设计的一种 <strong>表级别锁(但不是通常认为的表锁)</strong> ，它表示了表之后将被加上哪种行级锁。意向锁的分类如下：</p>
+
+<ol>
+  <li><strong>Intention Shared Lock，意向共享锁(IS)</strong> ，表示事务将要在表上加共享锁，规则是在表中申请某些行的共享锁之前，必须先申请<code class="highlighter-rouge">IS</code>锁。</li>
+  <li><strong>Intention Exclusive Lock，意向排他锁(IX)</strong> ，表示事务将要在标上加排他锁，规则是在表中申请某些行的排他锁之前，必须先申请<code class="highlighter-rouge">IX</code>锁。</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">SELECT</span> <span class="o">...</span> <span class="n">LOCK</span> <span class="n">IN</span> <span class="n">SHARE</span> <span class="n">MODE</span></code></pre></figure>
+
+<p>该语句将会在表上加<code class="highlighter-rouge">IS</code>锁，同时在对应的记录上加上<code class="highlighter-rouge">S</code>锁。</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">SELECT</span> <span class="o">...</span> <span class="n">FOR</span> <span class="n">UPDATE</span></code></pre></figure>
+
+<p>该语句将会在标上加上<code class="highlighter-rouge">IX</code>锁，同时在对应的记录上加上<code class="highlighter-rouge">X</code>锁。</p>
+
+<p><strong>表级锁的兼容性矩阵：</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/matrix.png" alt="Matrix" /></p>
+
+<p>事实上意向锁不会和行级的<code class="highlighter-rouge">S</code>和<code class="highlighter-rouge">X</code>锁产生冲突，只会和表级的<code class="highlighter-rouge">S</code>和<code class="highlighter-rouge">X</code>锁产生冲突。</p>
+
+<h3 id="gap-locks">GAP Locks</h3>
+<p>Gap锁是一种范围锁，Gap锁作用范围是Record锁之间，或者Record锁之前与Record锁之后的范围。</p>
+
+<p><img src="/HuangHuanBlog/pics/gap.png" alt="Gap" /></p>
+
+<p>如图所示，首先当前该记录存在索引，id为5和30的记录将整个分为了 <code class="highlighter-rouge">&lt;=5</code> ，<code class="highlighter-rouge">&gt;5&amp;&lt;=30</code> 和 <code class="highlighter-rouge">&gt;30</code> 三个区间，如果要更新30的数据，那么 <code class="highlighter-rouge">&gt;5</code> 的所有区间都会被锁住。</p>
+
+<h3 id="insert-intention-locks">Insert Intention Locks</h3>
+<p>Insert Intention Locks也就是插入意向锁，但它其实是一种GAP锁，在行数据被插入之前，设定的一种锁，如果两个事务要插入同一个GAP中的不同行记录，它们都会获取这个GAP的插入意向锁，但相互之间不会冲突。</p>
+
+<h3 id="auto-inc-locks">AUTO-INC Locks</h3>
+<p>AUTO-INC锁是一种特殊的表级别锁，主要处理表中带有自增列的情况。实际上是为了保证自增的正确性，所以有了这种锁。</p>
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html">上一篇博客：Maven之三十分钟入门</a><br>
+      
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>美团金融后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
