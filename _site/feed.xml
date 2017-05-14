@@ -5,9 +5,78 @@
     <description>美团金融后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 May 2017 18:01:14 +0800</pubDate>
-    <lastBuildDate>Sun, 07 May 2017 18:01:14 +0800</lastBuildDate>
+    <pubDate>Sun, 14 May 2017 21:58:17 +0800</pubDate>
+    <lastBuildDate>Sun, 14 May 2017 21:58:17 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>PHP自动化测试锤子-PHPUnit&amp;Uopz</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#php&quot; id=&quot;markdown-toc-php&quot;&gt;PHP自动化测试概述&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#phpunit&quot; id=&quot;markdown-toc-phpunit&quot;&gt;锤子一: PHPUnit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#uopz&quot; id=&quot;markdown-toc-uopz&quot;&gt;锤子二: Uopz&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jenkins&quot; id=&quot;markdown-toc-jenkins&quot;&gt;锤子三：Jenkins&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;php&quot;&gt;PHP自动化测试概述&lt;/h2&gt;
+&lt;p&gt;PHP是一种偏脚本化的语言，了解过ES6的朋友会发现PHP和ES6其实语法和一些特性上已经很接近了，对于我这种一直学Java的人来讲，觉得PHP和ES6语法上基本没太大区别。由于PHP的这种脚本化的特性，编码的风格一个人一个样，令其难以进行测试，这应该是每个想对PHP搞自动化测试，特别是其中单元化测试的人都会遇到的问题。我最近在公司接了个任务，要对项目中的一些很复杂的回路脚本进行自动化测试，希望组内所有人Merge代码的时候，会自动跑测试Case，这篇文章就是分享我在做这个任务时所找到的锤子。&lt;/p&gt;
+
+&lt;h2 id=&quot;phpunit&quot;&gt;锤子一: PHPUnit&lt;/h2&gt;
+&lt;p&gt;PHPUnit是大家马上就会找到的一个锤子，关于它官方提供了PHPUnit-Book，里面介绍了其提供的测试工具和一些测试基本理念，大家可以花一天左右的时间系统的看完这个文档，我这里就不做赘述了。我举一个 &lt;strong&gt;理想情况&lt;/strong&gt; 下的PHPUnit测试的例子：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/phpunit-ideal.png&quot; alt=&quot;PHPUnit-ideal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图展示的是测试&lt;code class=&quot;highlighter-rouge&quot;&gt;MyFoo&lt;/code&gt;类中的&lt;code class=&quot;highlighter-rouge&quot;&gt;doSomething&lt;/code&gt;方法，这个方法实际是调用了传入的&lt;code class=&quot;highlighter-rouge&quot;&gt;MyBar&lt;/code&gt;类中的&lt;code class=&quot;highlighter-rouge&quot;&gt;doSomethingElse&lt;/code&gt;方法，在这种情况下，我们只需要利用PHPUnit提供的测试替身工具，构建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;MyBar&lt;/code&gt;的测试替身，然后Mock掉其中的&lt;code class=&quot;highlighter-rouge&quot;&gt;doSomethingElse&lt;/code&gt;方法，再将其传入&lt;code class=&quot;highlighter-rouge&quot;&gt;MyFoo&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;doSomething&lt;/code&gt;方法中。&lt;/p&gt;
+
+&lt;p&gt;通过上面的步骤，我们实现了单元测试所需要的隔离，&lt;code class=&quot;highlighter-rouge&quot;&gt;doSomething&lt;/code&gt;方法不再实际依赖于外部。然后我们只需要对这个php文件执行&lt;code class=&quot;highlighter-rouge&quot;&gt;phpunit&lt;/code&gt;命令，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;test&lt;/code&gt;前缀的方法就会被运行，一个测试就跑起来了。&lt;/p&gt;
+
+&lt;p&gt;然而虽然理想是丰满的，但现实很残酷，实际的PHP代码很少有这么写的，且不说每个人各有各的风格，每个公司还各有个的框架，下面举个我们公司常见的写法：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/phpunit-real.png&quot; alt=&quot;PHPUnit-real&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图上所示，我们的项目中倾向于这种静态调用的面向过程写法，这种写法的问题是PHPUnit基本上就失效了，我们的测试将无从入手，那么该怎么办了?&lt;/p&gt;
+
+&lt;h2 id=&quot;uopz&quot;&gt;锤子二: Uopz&lt;/h2&gt;
+&lt;p&gt;PHPUnit无法解决问题，有两个工具可以解决 &lt;strong&gt;php-test-helper&lt;/strong&gt; 和 &lt;strong&gt;Uopz&lt;/strong&gt; ，其中 &lt;strong&gt;php-test-helper&lt;/strong&gt; 实际已经不再维护了，Github主页上也指向了 &lt;strong&gt;Uopz&lt;/strong&gt;，这里我也就主要说说 &lt;strong&gt;Uopz&lt;/strong&gt; 工具，这个工具可以做什么了，&lt;strong&gt;Uopz&lt;/strong&gt; 的全称是 &lt;strong&gt;User Operations For Zend&lt;/strong&gt; ，能够在运行时改变PHP的行为，下面是它提供的主要方法：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;uopz_function //备份一个方法
+uopz_compose //构建一个类
+uopz_flags //改变类或者方法的Flag定义
+uopz_function //创建一个function
+uopz_overload //覆盖一个VM的操作码（这个后来并没有使用，存在问题，实际使用时通过PHPUnit的基境来实现了这个方法的功能）
+uopz_redefine //创建或者重定义一个常量
+uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;这个工具十分强大，基于它真的什么都能搞，就是麻烦点，比如刚才哪个PHPUnit不可测的代码，用上Uopz就不一样了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/uopz.png&quot; alt=&quot;Uopz&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PHPUnit不能Mock静态的方法，但Uopz可以，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;uopz_function&lt;/code&gt;方法，可以改变原始的&lt;code class=&quot;highlighter-rouge&quot;&gt;MyBar1&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;MyBar2&lt;/code&gt;中&lt;code class=&quot;highlighter-rouge&quot;&gt;doSomething&lt;/code&gt;方法的行为，达到我们刚才用PHPUnit构造测试替身的效果。甚至你还可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;uopz_compose&lt;/code&gt;重定义一个自己的&lt;code class=&quot;highlighter-rouge&quot;&gt;MyBar1&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;MyBar2&lt;/code&gt;，有了这个方法几乎无所不能，但代价也就是麻烦点。&lt;/p&gt;
+
+&lt;p&gt;我用这个给公司的回路脚本写测试Case，200行的回路代码，写了1000多行的测试代码，因为要Mock太多的类，重定义很多方法，确实很麻烦，对于经常改动的代码，这样搞代价可能不可承受，但如果代码的变动不大，但每次改动的风险却很大，那么这个就值得了。关于Uopz的详细用法，大家可以找我交流，里面坑还是不少。&lt;/p&gt;
+
+&lt;h2 id=&quot;jenkins&quot;&gt;锤子三：Jenkins&lt;/h2&gt;
+&lt;p&gt;对于自动化来讲，Jenkins应该是最常用的CI工具了，要做的也就是配置对仓库定期的变动检查，或者代码长裤自己挂Hook，通知Jenkins运行自测代码。这样每次代码变动时，Jenkins都会跑一遍Case，如果发现问题则可以邮件通知开发者。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;总结&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;PHPUnit Uopz Jenkins&lt;/strong&gt; 是用的自动化测试三剑客，三者缺一不可，如果想更好的更高效的进行自动化测试，有两个建议：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;代码可测性（这其实是最重要的了）&lt;/li&gt;
+  &lt;li&gt;封装Uopz的方法&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;做到这些，PHP的自动化测试将简单而高效。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 May 2017 21:08:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html</guid>
+        
+        
+        <category>PHP</category>
+        
+      </item>
     
       <item>
         <title>Innodb锁介绍-Innodb中的各类锁概述</title>
@@ -1960,413 +2029,6 @@ sha2-truncbug=yes
         
         
         <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Redux开发初探</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;概述&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;用到的主要技术和工具&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;开发工具&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;相关技术和组件&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#react&quot; id=&quot;markdown-toc-react&quot;&gt;React的思想&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#redux&quot; id=&quot;markdown-toc-redux&quot;&gt;Redux的思想&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;代码实现&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;1.定义显示模块&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#action&quot; id=&quot;markdown-toc-action&quot;&gt;2.定义Action&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#reducer&quot; id=&quot;markdown-toc-reducer&quot;&gt;3.定义Reducer&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;4.定义容器&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;结果图&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;概述&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;服务端&lt;/strong&gt;的研发工程师或多或少也会参与一些&lt;strong&gt;前端&lt;/strong&gt;的开发工作，有时候是因为前端人力的匮乏（以前实习的服务端组就没有前端，后台管理的网页都需要自己写），有时是因为自己想开发一些组内的小工具。因此，掌握一套前端开发技术，能够快速的构建网站也算是一个必备的技能。&lt;br /&gt;
-在上述的背景下，由于组内目前采用了&lt;strong&gt;Redux&lt;/strong&gt;来进行开发，我也趁机初步实践了一下，这里来分享一下我的实践结果。&lt;br /&gt;
-&lt;strong&gt;注意&lt;/strong&gt;：本文不涉及基本概念和语法的介绍，相关内容可参见：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.hubwiz.com/class/552762019964049d1872fc88&quot;&gt;React在线课堂&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/03/react.html&quot;&gt;React入门实例教程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://cn.redux.js.org/&quot;&gt;Redux中文文档&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://es6.ruanyifeng.com/&quot;&gt;ECMAScript入门&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.material-ui.com/&quot;&gt;Material UI&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence&quot;&gt;如何使用NPM来管理你的Node.js依赖&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;用到的主要技术和工具&lt;/h3&gt;
-
-&lt;h5 id=&quot;section-2&quot;&gt;开发工具&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;WebStorm&lt;/li&gt;
-  &lt;li&gt;Intellij Idea&lt;/li&gt;
-  &lt;li&gt;Chrome&amp;amp;React插件&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;section-3&quot;&gt;相关技术和组件&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;React&lt;/li&gt;
-  &lt;li&gt;Redux&lt;/li&gt;
-  &lt;li&gt;Material-UI&lt;/li&gt;
-  &lt;li&gt;Node.js&lt;/li&gt;
-  &lt;li&gt;SpringBoot&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;react&quot;&gt;React的思想&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;是由Facebook推出的JavaScript库，用于简化和规范前端的开发，同时优化页面的性能。作为一个写Java的后端开发，以前对&lt;strong&gt;JavaScript&lt;/strong&gt;的印象就是灵活而混乱，100人的JavaScript代码100种风格，有的工程师好歹会设计一下，进行一些模块化的提取和复用，而有的工程师甚至把JS都往一个&lt;code class=&quot;highlighter-rouge&quot;&gt;html&lt;/code&gt;活着&lt;code class=&quot;highlighter-rouge&quot;&gt;vm&lt;/code&gt;文件里写，简直要命。而React的出现，以及&lt;strong&gt;ES6&lt;/strong&gt;的应用，能够有效提高前端代码的可读性，同时提高其渲染性能（关于性能方面，因为还怎么接触，暂时不做讨论）。&lt;/p&gt;
-
-&lt;p&gt;归纳一下，我理解的&lt;strong&gt;React&lt;/strong&gt;的思想可以分为这几部分：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;组件化&lt;/strong&gt;，其实&lt;strong&gt;React&lt;/strong&gt;和&lt;strong&gt;ES6&lt;/strong&gt;的结合，写起来真的挺像&lt;strong&gt;Java&lt;/strong&gt;，在开发过程中能够很好的进行组件的分离和复用。&lt;/li&gt;
-  &lt;li&gt;用&lt;strong&gt;状态(state)&lt;/strong&gt;和&lt;strong&gt;参数(props)&lt;/strong&gt;来代表组件的内容，每一个组件都有其独立的状态，该状态受组件内部行为的影响，同时受到外部参数的影响而改变。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;单向数据流&lt;/strong&gt;，相比于&lt;strong&gt;双向绑定&lt;/strong&gt;，实际是一个简化的思想，虽然会带来更多的代码，但流程更加清晰，问题更好追踪。&lt;/li&gt;
-  &lt;li&gt;页面的渲染由&lt;strong&gt;React&lt;/strong&gt;控制，React会根据组件state的改变情况来决定是否进行重新渲染。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;所以，&lt;strong&gt;React&lt;/strong&gt;相当于给了我们一个最佳实践的模版，开发者只需要关心&lt;strong&gt;行为&lt;/strong&gt;和&lt;strong&gt;数据&lt;/strong&gt;，完全从页面的渲染部分解放了出来。&lt;/p&gt;
-
-&lt;h3 id=&quot;redux&quot;&gt;Redux的思想&lt;/h3&gt;
-
-&lt;p&gt;理解了&lt;strong&gt;React&lt;/strong&gt;的思想，那么就我的理解而言，&lt;strong&gt;Redux&lt;/strong&gt;实际上是一个管理&lt;strong&gt;action&lt;/strong&gt;,&lt;strong&gt;state&lt;/strong&gt;和&lt;strong&gt;props&lt;/strong&gt;的工具，&lt;strong&gt;React&lt;/strong&gt;让开发者需要关注用户的行为和数据，而&lt;strong&gt;Redux&lt;/strong&gt;为我们提供了一个管理这两者的最佳实践模版。&lt;br /&gt;
-Redux共由三个主要组件：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Action 定义动作的类型，和动作中携带的参数&lt;/li&gt;
-  &lt;li&gt;Reducer 进行动作的处理，和状态的改变&lt;/li&gt;
-  &lt;li&gt;Store 相当于一个小的数据库，用来存储所有组件的状态&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Redux的规定，将用户操作的行为定义为Action，这些Action都需要由Reducer去处理。如果需要获取远端的数据，可以利用&lt;code class=&quot;highlighter-rouge&quot;&gt;fetch&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;middleware&lt;/code&gt;来实现。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;代码实现&lt;/h3&gt;
-
-&lt;h4 id=&quot;section-5&quot;&gt;1.定义显示模块&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import React, { Component } from &#39;react&#39;;
-import { connect } from &#39;react-redux&#39;;
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from &#39;material-ui/Table&#39;;
-import FlatButton from &#39;material-ui/FlatButton&#39;;
-import MenuItem from &#39;material-ui/MenuItem&#39;;
-import RefreshIndicator from &#39;material-ui/RefreshIndicator&#39;;
-
-const commentStyle = {
-    width: 300
-};
-
-const filedStyle = {
-    width: 200
-};
-
-const loadingStyle = {
-    display: &#39;inline-block&#39;,
-    position: &#39;relative&#39;
-};
-
-class App extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            showCheckboxes: false,
-            open: false,
-            info: &#39;暂无内容可以显示&#39;,
-            scrollable: true,
-            detectHeight: true,
-        };
-    }
-
-    hanldeClose() {
-        this.setState({
-            open: false
-        });
-    }
-
-    render() {
-
-        return (
-            &amp;lt;div&amp;gt;
-                &amp;lt;div&amp;gt;
-                    &amp;lt;MenuItem&amp;gt;
-                        表名:{this.props.params.tableName}
-                    &amp;lt;/MenuItem&amp;gt;
-                &amp;lt;/div&amp;gt;
-                &amp;lt;div&amp;gt;
-                    &amp;lt;Table&amp;gt;
-                        &amp;lt;TableHeader
-                            displaySelectAll={this.state.showCheckboxes}
-                            adjustForCheckbox={this.state.showCheckboxes}&amp;gt;
-                            &amp;lt;TableRow&amp;gt;
-                                &amp;lt;TableHeaderColumn style={filedStyle}&amp;gt;字段名&amp;lt;/TableHeaderColumn&amp;gt;
-                                &amp;lt;TableHeaderColumn style={commentStyle}&amp;gt;字段描述&amp;lt;/TableHeaderColumn&amp;gt;
-                                &amp;lt;TableHeaderColumn&amp;gt;字段类型&amp;lt;/TableHeaderColumn&amp;gt;
-                                &amp;lt;TableHeaderColumn&amp;gt;是否可为空&amp;lt;/TableHeaderColumn&amp;gt;
-                                &amp;lt;TableHeaderColumn&amp;gt;键类型&amp;lt;/TableHeaderColumn&amp;gt;
-                                &amp;lt;TableHeaderColumn&amp;gt;默认值&amp;lt;/TableHeaderColumn&amp;gt;
-                            &amp;lt;/TableRow&amp;gt;
-                        &amp;lt;/TableHeader&amp;gt;
-                        &amp;lt;TableBody displayRowCheckbox={this.state.showCheckboxes}&amp;gt;
-                            {this.props.tableItems.map((tableItem)=&amp;gt;(
-                                &amp;lt;TableRow key={tableItem[0]}&amp;gt;
-                                    &amp;lt;TableRowColumn style={filedStyle}&amp;gt;
-                                        {tableItem[0]}
-                                    &amp;lt;/TableRowColumn&amp;gt;
-                                    &amp;lt;TableRowColumn style={commentStyle}&amp;gt;
-                                        {tableItem[1]}
-                                    &amp;lt;/TableRowColumn&amp;gt;
-                                    &amp;lt;TableRowColumn&amp;gt;
-                                        {tableItem[2]}
-                                    &amp;lt;/TableRowColumn&amp;gt;
-                                    &amp;lt;TableRowColumn&amp;gt;
-                                        {tableItem[3]}
-                                    &amp;lt;/TableRowColumn&amp;gt;
-                                    &amp;lt;TableRowColumn&amp;gt;
-                                        {tableItem[4]}
-                                    &amp;lt;/TableRowColumn&amp;gt;
-                                    &amp;lt;TableRowColumn &amp;gt;
-                                        {tableItem[5]}
-                                    &amp;lt;/TableRowColumn&amp;gt;
-                                &amp;lt;/TableRow&amp;gt;)
-                            )}
-                        &amp;lt;/TableBody&amp;gt;
-                    &amp;lt;/Table&amp;gt;
-                    &amp;lt;RefreshIndicator
-                        size={50}
-                        left={512}
-                        top={0}
-                        loadingColor={&quot;#FF9800&quot;}
-                        status={this.props.loading}
-                        style={loadingStyle}
-                    /&amp;gt;
-                &amp;lt;/div&amp;gt;
-            &amp;lt;/div &amp;gt;);
-    }
-}
-
-/**
- * 将状态的改变绑定到props
- */
-const mapStateToProps = (state)=&amp;gt; {
-    return {
-        params: state.requestReducer.tableParams,
-        tableItems: state.requestReducer.tableItems,
-        loading: state.requestReducer.loading
-    }
-};
-
-export default connect(mapStateToProps)(App);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;该模块为一个&lt;code class=&quot;highlighter-rouge&quot;&gt;table&lt;/code&gt;，其参数主要为&lt;code class=&quot;highlighter-rouge&quot;&gt;tableItems&lt;/code&gt;，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;mapStateToProps&lt;/code&gt;方法，该参数将会随着状态中的&lt;code class=&quot;highlighter-rouge&quot;&gt;state.requestReducer.tableItems&lt;/code&gt;而改变。&lt;/p&gt;
-
-&lt;h4 id=&quot;action&quot;&gt;2.定义Action&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import fetch from &#39;isomorphic-fetch&#39;;
-
-
-/**
- * 请求表数据中
- */
-export const REQUESTING = &quot;REQUESTING&quot;;
-
-/**
- * 获取到表的描述信息
- */
-export const RECEIVE_TABLE_DESCRIPTIONS = &quot;RECEIVE_TABLE_DESCRIPTIONS&quot;;
-
-/**
- * 获取表的描述信息
- * @param params 请求参数
- * @param tableItems 表的描述项
- */
-export function receiveTableDescriptions(tableParams, tableItems) {
-	return {
-    	type: RECEIVE_TABLE_DESCRIPTIONS,
-    	tableParams,
-    	tableItems
-	}
-}
-
-/**
- * 请求参数
- */
-export function requesting(loading) {
-	return {
-    	type: REQUESTING,
-    	loading
-	}
-}
-
-/**
- * 根据数据库名和表名获取表的描述
- */
-export function fetchTableDescriptions(tableParams) {
-	return function (dispatch) {
-    	dispatch(requesting({loading: &#39;loading&#39;}));
-    	return fetch(`http://yourServiceAddress/dbs/${tableParams.dbName}/tables/${tableParams.tableName}`)
-        	.then(response=&amp;gt;response.json())
-        	.then(json=&amp;gt;dispatch(receiveTableDescriptions(tableParams, json.data))
-        	).catch(e=&amp;gt;console.log(&quot;Fetch table names error&quot;, e))
-	};
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;fetchTableDescriptions&lt;/code&gt;中用到的&lt;code class=&quot;highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;是用来连接ACTION和REDUCER的桥梁，这个方法中发送了两个ACTION, &lt;strong&gt;REQUESTING&lt;/strong&gt;用来表示正在请求，会在页面上显示进度条提示，&lt;strong&gt;RECEIVE_TABLE_DESCRIPTIONS&lt;/strong&gt;表示接受到数据，用来改变&lt;code class=&quot;highlighter-rouge&quot;&gt;Table&lt;/code&gt;中的内容，这个行为需要一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt;来触发，这里我们就不做赘述了，触发的方式是：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import { fetchTableDescriptions } from &#39;../actions/AppAction&#39;;
-
-handleButtonClick(item) {
-    this.props.fetchTableDescriptions({
-        dbName: &#39;yourDbName&#39;,
-        tableName: item
-    });
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;reducer&quot;&gt;3.定义Reducer&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import { combineReducers } from &#39;redux&#39;;
-import { RECEIVE_TABLE_DESCRIPTIONS,REQUESTING } from &#39;../actions/AppAction&#39;;
-
-/**
- * 请求的reducer
- */
-function requestReducer(state = {
-	loading: &#39;hide&#39;,
-	tableItems: [],
-	tableParams: {tableName: &#39;请在左侧选择表名&#39;}
-}, action) {
-	switch (action.type) {
-    	case REQUESTING:
-        	return Object.assign(
-            	{},
-            	state,
-            	{
-               		loading: &#39;loading&#39;
-            	});
-    	case RECEIVE_TABLE_DESCRIPTIONS:
-        	return Object.assign(
-            	{},
-            	state,
-            	{
-                	loading: &#39;hide&#39;,
-                	tableParams: action.tableParams,
-                	tableItems: action.tableItems
-            	}
-        	);
-    	default:
-        	return state;
-	}
-}
-
-
-const rootReducer = combineReducers({
-	requestReducer
-});
-
-export default rootReducer;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-6&quot;&gt;4.定义容器&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var injectTapEventPlugin = require(&#39;react-tap-event-plugin&#39;);
-injectTapEventPlugin();
-
-import React, { Component } from &#39;react&#39;;
-import ReactDOM from &#39;react-dom&#39;;
-import MuiThemeProvider from &#39;material-ui/styles/MuiThemeProvider&#39;;
-import { Provider } from &#39;react-redux&#39;;
-import App from &#39;./App&#39;;
-import configureStore from &#39;./store/configureStore&#39;;
-
-const store = configureStore();
-
-class Index extends Component {
-
-	constructor(props) {
-    	super(props);
-	}
-
-	render() {
-    	return (
-        	&amp;lt;Provider store={store}&amp;gt;
-            	&amp;lt;MuiThemeProvider&amp;gt;
-               	 &amp;lt;App/&amp;gt;	
-            	&amp;lt;/MuiThemeProvider&amp;gt;
-        	&amp;lt;/Provider&amp;gt;
-    	);
-	}
-}
-
-ReactDOM.render(
-	&amp;lt;Index/&amp;gt;,
-	document.getElementById(&#39;app&#39;)
-);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这里主要用来配置&lt;code class=&quot;highlighter-rouge&quot;&gt;store&lt;/code&gt;，其代码内容如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
- * 配置store
- * Created by huanghuan on 16/7/21.
- */
-import { createStore, applyMiddleware } from &#39;redux&#39;;
-import thunkMiddleWare from &#39;redux-thunk&#39;; //用于做异步action
-import createLogger from &#39;redux-logger&#39;; //日志
-import rootReducer from &#39;../reducers/root&#39;; //主reducer
-
-export default function configureStore(preloadedState) {
-	//创建store,并应用middleware
-	const store = createStore(
-    	rootReducer,
-    	preloadedState,
-    	applyMiddleware(thunkMiddleWare, createLogger())
-	);
-
-	//reducer的热替换?
-	if (module.hot) {
-    	module.hot.accept(&#39;../reducers&#39;, ()=&amp;gt; {
-        	const nextRootReducer = require(&#39;../reducers&#39;).default;
-        	store.replaceReducer(nextRootReducer);
-    	})
-	}
-
-	return store;
-};
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-7&quot;&gt;结果图&lt;/h3&gt;
-
-&lt;p&gt;在定义完所有组件后，运行的结果如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/react_demo.jpg&quot; alt=&quot;demo&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;section-8&quot;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;这边文章通过一个简单的例子，粗略的介绍了我对Redux的使用体会，虽然感觉&lt;code class=&quot;highlighter-rouge&quot;&gt;React&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Redux&lt;/code&gt;有一定的入门成本，但一旦入门，开发的效率和效果真的非常让人满意，值得大家尝试。&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 31 Jul 2016 11:29:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html</guid>
-        
-        
-        <category>React</category>
         
       </item>
     
