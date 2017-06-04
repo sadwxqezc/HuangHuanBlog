@@ -5,9 +5,107 @@
     <description>美团金融后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 14 May 2017 21:58:17 +0800</pubDate>
-    <lastBuildDate>Sun, 14 May 2017 21:58:17 +0800</lastBuildDate>
+    <pubDate>Sun, 04 Jun 2017 22:58:29 +0800</pubDate>
+    <lastBuildDate>Sun, 04 Jun 2017 22:58:29 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Innodb锁介绍-Innodb中死锁</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;死锁&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;死锁的产生条件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;死锁范例&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#innodb&quot; id=&quot;markdown-toc-innodb&quot;&gt;Innodb中的死锁&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;引言&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#innodb-1&quot; id=&quot;markdown-toc-innodb-1&quot;&gt;Innodb死锁产生条件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#innodb-2&quot; id=&quot;markdown-toc-innodb-2&quot;&gt;Innodb死锁范例&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;死锁&lt;/h1&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;当两个以上的运算单元，双方都在等待对方停止运行，以获取系统资源，但是没有一方提前退出时，就称之为死锁。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;死锁问题是计算机系统中常见的问题，在Innodb中同样存在。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;死锁的产生条件&lt;/h2&gt;
+&lt;p&gt;死锁产生必须要满足以下四个条件：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;互斥条件&lt;/strong&gt;: 即为某个资源在同一时间只允许被一个单元占有。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;不可抢占条件&lt;/strong&gt;:被单元占有的资源不可被其它单元抢占。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;占有且申请条件&lt;/strong&gt;:单元当前至少占有一个资源，且该单元同时向系统申请其它的资源。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;循环等待条件&lt;/strong&gt;:单元之前存在一个资源的循环等待序列。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;死锁范例&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/deadlock.jpg&quot; alt=&quot;死锁&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在百度上盗了一张图，如图所示，单元T1和T2各自占有了一个资源，又同时想要占据别人的资源，这样僵持不下，也就产生了死锁。对于计算机系统而言，死锁会导致系统停滞，对于Innodb而言，死锁会给数据的读写产生阻碍。&lt;/p&gt;
+
+&lt;h2 id=&quot;innodb&quot;&gt;Innodb中的死锁&lt;/h2&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;引言&lt;/h2&gt;
+
+&lt;p&gt;在介绍之前，先讲一个我们工作中踩到的一个坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;背景描述&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我们的订单表中存在一个Unique Key，假设该Unique Key的名字为U_KEY，它是由一个ID和时间戳构成的。在实际运行中，存在用同一个Unique Key反复创建订单的行为，这种情况的发生有可能是因为恶意刷单或者是偶然的请求重发。对于这种情况，先到达的插入请求会成功，之后的请求会产生Unique Key冲突而失败，但这个过程中会时不时的出现Dead Lock Detected的情况(数据库会自动Kill死锁)，这里我们采用的是&lt;code class=&quot;highlighter-rouge&quot;&gt;insert ignore&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问题原因&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在插入时，MySQL会给行记录加上排他锁(Index-record lock)，假如此时有三个同样的插入请求，都开启了事务，其中一个先拿到了排他锁开始插入，之后的事务会出现Duplicate Key错误，而此时它们会申请该行的共享锁，如果这个时候拿到排他锁的事务回滚，那么另外两个事务会同时申请该行的排他锁（过程参考&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.5/en/innodb-locks-set.html&quot;&gt;MySQL锁机制&lt;/a&gt;。由于排他锁和共享锁是互斥的，此时就产生了死锁的情况。&lt;/p&gt;
+
+&lt;p&gt;这里可能会有人有疑问，为什么出现Duplicate Key错误的时候会加共享锁了，我的理解是冲突检测本身是一种读操作，所以冲突之后的轮询需要加共享锁。据这个例子的主要目的是告诉大家死锁问题是我们工作中会遇到的，需要重视。&lt;/p&gt;
+
+&lt;h3 id=&quot;innodb-1&quot;&gt;Innodb死锁产生条件&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;两个以上的并发事务&lt;/li&gt;
+  &lt;li&gt;每个事务当前持有了锁，且未释放&lt;/li&gt;
+  &lt;li&gt;每个事务都在申请新的锁&lt;/li&gt;
+  &lt;li&gt;事务之间产生了锁资源的循环等待&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;其实这也就是Innodb版的死锁条件，只是资源变成了锁而已。&lt;/p&gt;
+
+&lt;h3 id=&quot;innodb-2&quot;&gt;Innodb死锁范例&lt;/h3&gt;
+
+&lt;p&gt;明白了死锁的产生条件，那么我试着自己构建一个死锁的情况。&lt;/p&gt;
+
+&lt;p&gt;表的开始状态如下图：
+&lt;img src=&quot;/HuangHuanBlog/pics/trans_init.png&quot; alt=&quot;初始状态&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;开启事务A，更新id=5的记录：
+&lt;img src=&quot;/HuangHuanBlog/pics/trans_a_5.png&quot; alt=&quot;A 5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;开启事务B，更新id=6的记录：
+&lt;img src=&quot;/HuangHuanBlog/pics/trans_b_6.png&quot; alt=&quot;B 5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;开启事务A，更新id=6的记录，会发现卡住了：
+&lt;img src=&quot;/HuangHuanBlog/pics/trans_a_6.png&quot; alt=&quot;A 6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;再在事务B，更新id=5的记录，会发现出现了死锁：
+&lt;img src=&quot;/HuangHuanBlog/pics/trans_b_5.png&quot; alt=&quot;B 5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后事务A更新id=6的记录执行成功，因为事务B因为死锁被数据库Kill掉了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/trans_5_commit.png&quot; alt=&quot;A commit&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 May 2017 21:23:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html</guid>
+        
+        
+        <category>MySQL</category>
+        
+      </item>
     
       <item>
         <title>PHP自动化测试锤子-PHPUnit&amp;Uopz</title>
@@ -1905,130 +2003,6 @@ var appRouter=(
         
         
         <category>React</category>
-        
-      </item>
-    
-      <item>
-        <title>VPN搭建小记</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;引言&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;服务器购买&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#pptp&quot; id=&quot;markdown-toc-pptp&quot;&gt;方案一：PPTP协议搭建&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#ppppptpdiptables&quot; id=&quot;markdown-toc-ppppptpdiptables&quot;&gt;1.安装ppp，pptpd和iptables&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.修改相关配置&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;3.配置转发规则并启动&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;小结&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#l2tpipsec&quot; id=&quot;markdown-toc-l2tpipsec&quot;&gt;方案二：L2TP/IPsec搭建&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#android-60&quot; id=&quot;markdown-toc-android-60&quot;&gt;Android 6.0问题&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;同一局域网问题&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;引言&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;VPN&lt;/strong&gt; 的作用相信大家也很清楚了，我在网上买的几个VPN感觉都不太稳定，速度还慢，所以决定自己搭建一个VPN。网上一般推荐用 &lt;strong&gt;搬瓦工&lt;/strong&gt; 和 &lt;strong&gt;Linode&lt;/strong&gt; 的 &lt;strong&gt;VPS&lt;/strong&gt; 来搭建，但因为我自己还想在服务器上做一些VPN之外的事情，所以选择了阿里云的 &lt;strong&gt;ECS&lt;/strong&gt; 来搭建。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;服务器购买&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/aliyun.png&quot; alt=&quot;demo&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如图所示，选择阿里云香港ECS服务器，然后内存的话 &lt;strong&gt;1G&lt;/strong&gt; 就足够了，操作系统是 &lt;strong&gt;CentOS 32位&lt;/strong&gt;。然后如果是自己用的话，网络一定要选择按流量计费，根据我这几天用的情况，一天流量费几分钱，还是很便宜的，而且带宽可以选大些，速度快。&lt;/p&gt;
-
-&lt;h3 id=&quot;pptp&quot;&gt;方案一：PPTP协议搭建&lt;/h3&gt;
-
-&lt;p&gt;一开始自然是选择最简单的 &lt;strong&gt;PPTP&lt;/strong&gt; 协议方式，这个协议没有 &lt;strong&gt;L2TP/IPsec&lt;/strong&gt; 安全，但因为是自己用，倒是无所谓了。参考的教程是&lt;a href=&quot;http://effmx.com/articles/zai-vpsshang-da-jian-pptp-vpnde-ji-jian-gong-lue/&quot;&gt;在VPS上搭建PPTP VPN极简攻略&lt;/a&gt;。主要步骤如下：&lt;/p&gt;
-
-&lt;h4 id=&quot;ppppptpdiptables&quot;&gt;1.安装ppp，pptpd和iptables&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-yum install -y ppp iptables
-yum install pptpd
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/b21c12bf86e8&quot;&gt;搬瓦工VPN搭建&lt;/a&gt;上说要装 &lt;strong&gt;Perl&lt;/strong&gt; 什么了，不过阿里云的机器上貌似不需要。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;2.修改相关配置&lt;/h4&gt;
-&lt;p&gt;```
-/** 修改DNS /etc/ppp/options.pptpd */
-ms-dns 8.8.8.8
-md-dns 8.8.4.4&lt;/p&gt;
-
-&lt;p&gt;/** 修改服务器IP和分配给客户端的IP /etc/pptpd.conf **/
-localip 192.168.0.1 //VPN服务器ip
-remoteip 192.168.0.234-255 //客户端ip
-```&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-/** 允许转发 /etc/sysctl.conf */
-net.ipv4.ip_forward=1
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;修改后，&lt;code class=&quot;highlighter-rouge&quot;&gt;sysctl -p&lt;/code&gt;保存。&lt;/p&gt;
-
-&lt;p&gt;```
-/** 配置账号　/etc/ppp/chap-secrets **/
-myusername pptpd mypassword *&lt;/p&gt;
-
-&lt;p&gt;```&lt;/p&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;3.配置转发规则并启动&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-/home/huanghuan/service iptables start //启动iptables
-iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
-(你的服务器的公网地址)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;然后启动VPN&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-/home/huanghuan/service pptpd restart
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;小结&lt;/h4&gt;
-
-&lt;p&gt;然后你就可以通过 &lt;strong&gt;PPTP&lt;/strong&gt; 来连接VPN并使用了，但是在这里我却发现个问题，升级后的IOS，OSX不支持PPTP了。。。，这就很尴尬了，虽然Android是可以用的，但做个半成品出来就没啥意思了。而且我还发现即使在没升级的OSX上用，速度还很慢，所以这个方案就废弃了。&lt;/p&gt;
-
-&lt;h3 id=&quot;l2tpipsec&quot;&gt;方案二：L2TP/IPsec搭建&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;L2TP&lt;/strong&gt; 据说吞吐量比 &lt;strong&gt;PPTP&lt;/strong&gt; 大很多，我在网上直接找了一个一件配置脚本来用，参见&lt;a href=&quot;https://teddysun.com/448.html&quot;&gt;L2TP/IPSec一键安装脚本&lt;/a&gt;。这个脚本装完之后其实还有不少问题，首先它的安装脚本是&lt;code class=&quot;highlighter-rouge&quot;&gt;l2tp.sh&lt;/code&gt;，然后安装后会生成一个&lt;code class=&quot;highlighter-rouge&quot;&gt;l2tp.log&lt;/code&gt;，在里面可能会报一些错，然后自己对着这些错去搜解决方法，倒是很快。解决了报错的问题，并重新执行&lt;code class=&quot;highlighter-rouge&quot;&gt;l2tp.sh&lt;/code&gt;后，我能够连接VPN，但却上不了了网。这个问题倒是很好解决，因为这种情况肯定是VPN服务器没有把客户端的请求转发出去，所以我重新配了下 &lt;strong&gt;IPtables&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
-(你的服务器的公网地址)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;之后就能在IOS和MAC上连接这个VPN了。&lt;/p&gt;
-
-&lt;h4 id=&quot;android-60&quot;&gt;Android 6.0问题&lt;/h4&gt;
-
-&lt;p&gt;以为已经搞定了，但之后又发现了一个问题，Android特么又连不上了。。。，又是一通搜，发现这居然是个Android的Bug。在Google的论坛上&lt;a href=&quot;https://code.google.com/p/android/issues/detail?id=196939&quot;&gt;Issuce 196930: L2TP/IPsec VPN does not work in Android 6.0.1&lt;/a&gt;，我们的大Google都被用户骂成狗了。参考了一下论坛中用户的解决方法，在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/ipsec.conf&lt;/code&gt;中添加这些配置：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-ike=aes256-sha2_256
-phase2alg=aes256-sha2_256
-sha2-truncbug=yes
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这个问题的原因是Android的L2TP/IPsec实现有问题，而且还是个存在了很久了的问题。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-5&quot;&gt;同一局域网问题&lt;/h4&gt;
-
-&lt;p&gt;既然Android，IOS/OSX都可以了，那问题按理说应该到此结束了。但后来发现如果在同一个局域网里，同时用IPsec/L2TP的方式连VPN，有一个会被顶掉（我的情况都是OSX被顶掉）。这个问题应该是因为局域网里的机器出网IP是一样的，应该在局域网内做一些配置可能才行，不过我就没去研究这个了。如果觉得是个问题，可以OSX用IPsec/L2TP，然后Android用L2TP，这样是可以在同一局域网里同时用的。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;VPN的配置总的来说还是挺简单的，不过其中的原理还没有深入理解，我大概看了下PPTP和L2TP/IPsec的原理，也算挺复杂的了，以后有需要可以去研究下。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 30 Oct 2016 18:41:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html</guid>
-        
-        
-        <category>Linux</category>
         
       </item>
     

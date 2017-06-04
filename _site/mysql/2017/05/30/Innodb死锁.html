@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PHP自动化测试锤子-PHPUnit&Uopz</title>
+	<title>Innodb锁介绍-Innodb中死锁</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html">
+	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html">
 	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
@@ -90,76 +90,103 @@ var _hmt = _hmt || [];
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>PHP自动化测试锤子-PHPUnit&Uopz</h1>
-        <p>May 14, 2017</p>
+        <h1>Innodb锁介绍-Innodb中死锁</h1>
+        <p>May 30, 2017</p>
       </header>
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#php" id="markdown-toc-php">PHP自动化测试概述</a></li>
-  <li><a href="#phpunit" id="markdown-toc-phpunit">锤子一: PHPUnit</a></li>
-  <li><a href="#uopz" id="markdown-toc-uopz">锤子二: Uopz</a></li>
-  <li><a href="#jenkins" id="markdown-toc-jenkins">锤子三：Jenkins</a></li>
-  <li><a href="#section" id="markdown-toc-section">总结</a></li>
+  <li><a href="#section" id="markdown-toc-section">死锁</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">死锁的产生条件</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">死锁范例</a></li>
+      <li><a href="#innodb" id="markdown-toc-innodb">Innodb中的死锁</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">引言</a>        <ul>
+          <li><a href="#innodb-1" id="markdown-toc-innodb-1">Innodb死锁产生条件</a></li>
+          <li><a href="#innodb-2" id="markdown-toc-innodb-2">Innodb死锁范例</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="php">PHP自动化测试概述</h2>
-<p>PHP是一种偏脚本化的语言，了解过ES6的朋友会发现PHP和ES6其实语法和一些特性上已经很接近了，对于我这种一直学Java的人来讲，觉得PHP和ES6语法上基本没太大区别。由于PHP的这种脚本化的特性，编码的风格一个人一个样，令其难以进行测试，这应该是每个想对PHP搞自动化测试，特别是其中单元化测试的人都会遇到的问题。我最近在公司接了个任务，要对项目中的一些很复杂的回路脚本进行自动化测试，希望组内所有人Merge代码的时候，会自动跑测试Case，这篇文章就是分享我在做这个任务时所找到的锤子。</p>
+<h1 id="section">死锁</h1>
+<blockquote>
+  <p>当两个以上的运算单元，双方都在等待对方停止运行，以获取系统资源，但是没有一方提前退出时，就称之为死锁。</p>
+</blockquote>
 
-<h2 id="phpunit">锤子一: PHPUnit</h2>
-<p>PHPUnit是大家马上就会找到的一个锤子，关于它官方提供了PHPUnit-Book，里面介绍了其提供的测试工具和一些测试基本理念，大家可以花一天左右的时间系统的看完这个文档，我这里就不做赘述了。我举一个 <strong>理想情况</strong> 下的PHPUnit测试的例子：</p>
+<p>死锁问题是计算机系统中常见的问题，在Innodb中同样存在。</p>
 
-<p><img src="/HuangHuanBlog/pics/phpunit-ideal.png" alt="PHPUnit-ideal" /></p>
-
-<p>上图展示的是测试<code class="highlighter-rouge">MyFoo</code>类中的<code class="highlighter-rouge">doSomething</code>方法，这个方法实际是调用了传入的<code class="highlighter-rouge">MyBar</code>类中的<code class="highlighter-rouge">doSomethingElse</code>方法，在这种情况下，我们只需要利用PHPUnit提供的测试替身工具，构建一个<code class="highlighter-rouge">MyBar</code>的测试替身，然后Mock掉其中的<code class="highlighter-rouge">doSomethingElse</code>方法，再将其传入<code class="highlighter-rouge">MyFoo</code>的<code class="highlighter-rouge">doSomething</code>方法中。</p>
-
-<p>通过上面的步骤，我们实现了单元测试所需要的隔离，<code class="highlighter-rouge">doSomething</code>方法不再实际依赖于外部。然后我们只需要对这个php文件执行<code class="highlighter-rouge">phpunit</code>命令，其中<code class="highlighter-rouge">test</code>前缀的方法就会被运行，一个测试就跑起来了。</p>
-
-<p>然而虽然理想是丰满的，但现实很残酷，实际的PHP代码很少有这么写的，且不说每个人各有各的风格，每个公司还各有个的框架，下面举个我们公司常见的写法：</p>
-
-<p><img src="/HuangHuanBlog/pics/phpunit-real.png" alt="PHPUnit-real" /></p>
-
-<p>如图上所示，我们的项目中倾向于这种静态调用的面向过程写法，这种写法的问题是PHPUnit基本上就失效了，我们的测试将无从入手，那么该怎么办了?</p>
-
-<h2 id="uopz">锤子二: Uopz</h2>
-<p>PHPUnit无法解决问题，有两个工具可以解决 <strong>php-test-helper</strong> 和 <strong>Uopz</strong> ，其中 <strong>php-test-helper</strong> 实际已经不再维护了，Github主页上也指向了 <strong>Uopz</strong>，这里我也就主要说说 <strong>Uopz</strong> 工具，这个工具可以做什么了，<strong>Uopz</strong> 的全称是 <strong>User Operations For Zend</strong> ，能够在运行时改变PHP的行为，下面是它提供的主要方法：</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php">uopz_function //备份一个方法
-uopz_compose //构建一个类
-uopz_flags //改变类或者方法的Flag定义
-uopz_function //创建一个function
-uopz_overload //覆盖一个VM的操作码（这个后来并没有使用，存在问题，实际使用时通过PHPUnit的基境来实现了这个方法的功能）
-uopz_redefine //创建或者重定义一个常量
-uopz_restore //恢复方法到之前备份的状态</code></pre></figure>
-
-<p>这个工具十分强大，基于它真的什么都能搞，就是麻烦点，比如刚才哪个PHPUnit不可测的代码，用上Uopz就不一样了：</p>
-
-<p><img src="/HuangHuanBlog/pics/uopz.png" alt="Uopz" /></p>
-
-<p>PHPUnit不能Mock静态的方法，但Uopz可以，通过<code class="highlighter-rouge">uopz_function</code>方法，可以改变原始的<code class="highlighter-rouge">MyBar1</code>和<code class="highlighter-rouge">MyBar2</code>中<code class="highlighter-rouge">doSomething</code>方法的行为，达到我们刚才用PHPUnit构造测试替身的效果。甚至你还可以用<code class="highlighter-rouge">uopz_compose</code>重定义一个自己的<code class="highlighter-rouge">MyBar1</code>和<code class="highlighter-rouge">MyBar2</code>，有了这个方法几乎无所不能，但代价也就是麻烦点。</p>
-
-<p>我用这个给公司的回路脚本写测试Case，200行的回路代码，写了1000多行的测试代码，因为要Mock太多的类，重定义很多方法，确实很麻烦，对于经常改动的代码，这样搞代价可能不可承受，但如果代码的变动不大，但每次改动的风险却很大，那么这个就值得了。关于Uopz的详细用法，大家可以找我交流，里面坑还是不少。</p>
-
-<h2 id="jenkins">锤子三：Jenkins</h2>
-<p>对于自动化来讲，Jenkins应该是最常用的CI工具了，要做的也就是配置对仓库定期的变动检查，或者代码长裤自己挂Hook，通知Jenkins运行自测代码。这样每次代码变动时，Jenkins都会跑一遍Case，如果发现问题则可以邮件通知开发者。</p>
-
-<h2 id="section">总结</h2>
-<p><strong>PHPUnit Uopz Jenkins</strong> 是用的自动化测试三剑客，三者缺一不可，如果想更好的更高效的进行自动化测试，有两个建议：</p>
+<h2 id="section-1">死锁的产生条件</h2>
+<p>死锁产生必须要满足以下四个条件：</p>
 
 <ol>
-  <li>代码可测性（这其实是最重要的了）</li>
-  <li>封装Uopz的方法</li>
+  <li><strong>互斥条件</strong>: 即为某个资源在同一时间只允许被一个单元占有。</li>
+  <li><strong>不可抢占条件</strong>:被单元占有的资源不可被其它单元抢占。</li>
+  <li><strong>占有且申请条件</strong>:单元当前至少占有一个资源，且该单元同时向系统申请其它的资源。</li>
+  <li><strong>循环等待条件</strong>:单元之前存在一个资源的循环等待序列。</li>
 </ol>
 
-<p>做到这些，PHP的自动化测试将简单而高效。</p>
+<h2 id="section-2">死锁范例</h2>
+
+<p><img src="/HuangHuanBlog/pics/deadlock.jpg" alt="死锁" /></p>
+
+<p>在百度上盗了一张图，如图所示，单元T1和T2各自占有了一个资源，又同时想要占据别人的资源，这样僵持不下，也就产生了死锁。对于计算机系统而言，死锁会导致系统停滞，对于Innodb而言，死锁会给数据的读写产生阻碍。</p>
+
+<h2 id="innodb">Innodb中的死锁</h2>
+
+<h2 id="section-3">引言</h2>
+
+<p>在介绍之前，先讲一个我们工作中踩到的一个坑。</p>
+
+<p><strong>背景描述</strong></p>
+
+<p>我们的订单表中存在一个Unique Key，假设该Unique Key的名字为U_KEY，它是由一个ID和时间戳构成的。在实际运行中，存在用同一个Unique Key反复创建订单的行为，这种情况的发生有可能是因为恶意刷单或者是偶然的请求重发。对于这种情况，先到达的插入请求会成功，之后的请求会产生Unique Key冲突而失败，但这个过程中会时不时的出现Dead Lock Detected的情况(数据库会自动Kill死锁)，这里我们采用的是<code class="highlighter-rouge">insert ignore</code>。</p>
+
+<p><strong>问题原因</strong></p>
+
+<p>在插入时，MySQL会给行记录加上排他锁(Index-record lock)，假如此时有三个同样的插入请求，都开启了事务，其中一个先拿到了排他锁开始插入，之后的事务会出现Duplicate Key错误，而此时它们会申请该行的共享锁，如果这个时候拿到排他锁的事务回滚，那么另外两个事务会同时申请该行的排他锁（过程参考<a href="https://dev.mysql.com/doc/refman/5.5/en/innodb-locks-set.html">MySQL锁机制</a>。由于排他锁和共享锁是互斥的，此时就产生了死锁的情况。</p>
+
+<p>这里可能会有人有疑问，为什么出现Duplicate Key错误的时候会加共享锁了，我的理解是冲突检测本身是一种读操作，所以冲突之后的轮询需要加共享锁。据这个例子的主要目的是告诉大家死锁问题是我们工作中会遇到的，需要重视。</p>
+
+<h3 id="innodb-1">Innodb死锁产生条件</h3>
+
+<ol>
+  <li>两个以上的并发事务</li>
+  <li>每个事务当前持有了锁，且未释放</li>
+  <li>每个事务都在申请新的锁</li>
+  <li>事务之间产生了锁资源的循环等待</li>
+</ol>
+
+<p>其实这也就是Innodb版的死锁条件，只是资源变成了锁而已。</p>
+
+<h3 id="innodb-2">Innodb死锁范例</h3>
+
+<p>明白了死锁的产生条件，那么我试着自己构建一个死锁的情况。</p>
+
+<p>表的开始状态如下图：
+<img src="/HuangHuanBlog/pics/trans_init.png" alt="初始状态" /></p>
+
+<p>开启事务A，更新id=5的记录：
+<img src="/HuangHuanBlog/pics/trans_a_5.png" alt="A 5" /></p>
+
+<p>开启事务B，更新id=6的记录：
+<img src="/HuangHuanBlog/pics/trans_b_6.png" alt="B 5" /></p>
+
+<p>开启事务A，更新id=6的记录，会发现卡住了：
+<img src="/HuangHuanBlog/pics/trans_a_6.png" alt="A 6" /></p>
+
+<p>再在事务B，更新id=5的记录，会发现出现了死锁：
+<img src="/HuangHuanBlog/pics/trans_b_5.png" alt="B 5" /></p>
+
+<p>然后事务A更新id=6的记录执行成功，因为事务B因为死锁被数据库Kill掉了：</p>
+
+<p><img src="/HuangHuanBlog/pics/trans_5_commit.png" alt="A commit" /></p>
 
       </article>
       <hr>
       
-      <a href="/HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html">上一篇博客：Innodb锁介绍-Innodb中的各类锁概述</a><br>
+      <a href="/HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html">上一篇博客：PHP自动化测试锤子-PHPUnit&Uopz</a><br>
       
-      
-      <a href="/HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html">下一篇博客：Innodb锁介绍-Innodb中死锁</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
