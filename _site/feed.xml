@@ -5,8 +5,8 @@
     <description>美团金融后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 04 Jun 2017 22:58:29 +0800</pubDate>
-    <lastBuildDate>Sun, 04 Jun 2017 22:58:29 +0800</lastBuildDate>
+    <pubDate>Sun, 11 Jun 2017 20:42:01 +0800</pubDate>
+    <lastBuildDate>Sun, 11 Jun 2017 20:42:01 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -18,7 +18,12 @@
       &lt;li&gt;&lt;a href=&quot;#innodb&quot; id=&quot;markdown-toc-innodb&quot;&gt;Innodb中的死锁&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;引言&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#innodb-1&quot; id=&quot;markdown-toc-innodb-1&quot;&gt;Innodb死锁产生条件&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#innodb-2&quot; id=&quot;markdown-toc-innodb-2&quot;&gt;Innodb死锁范例&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#innodb-2&quot; id=&quot;markdown-toc-innodb-2&quot;&gt;Innodb死锁范例&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;1. 典型的死锁案例&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#insert&quot; id=&quot;markdown-toc-insert&quot;&gt;2. Insert死锁&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#case&quot; id=&quot;markdown-toc-case&quot;&gt;3. 工作中的另一个死锁Case&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -73,30 +78,99 @@
   &lt;li&gt;事务之间产生了锁资源的循环等待&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;其实这也就是Innodb版的死锁条件，只是资源变成了锁而已。&lt;/p&gt;
+&lt;p&gt;其实这也就是Innodb版的死锁条件，只是资源变成了锁而已。要避免死锁，其实就是要避免上诉死锁条件的产生。&lt;/p&gt;
 
 &lt;h3 id=&quot;innodb-2&quot;&gt;Innodb死锁范例&lt;/h3&gt;
 
-&lt;p&gt;明白了死锁的产生条件，那么我试着自己构建一个死锁的情况。&lt;/p&gt;
+&lt;p&gt;明白了死锁的产生条件，那么我试着来实际测试一些典型的死锁情况。&lt;/p&gt;
 
-&lt;p&gt;表的开始状态如下图：
-&lt;img src=&quot;/HuangHuanBlog/pics/trans_init.png&quot; alt=&quot;初始状态&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;section-4&quot;&gt;1. 典型的死锁案例&lt;/h4&gt;
 
-&lt;p&gt;开启事务A，更新id=5的记录：
+&lt;p&gt;&lt;strong&gt;表的开始状态如下图&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/trans_init.png&quot; alt=&quot;初始状态&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;开启事务A，更新id=5的记录&lt;/strong&gt;
 &lt;img src=&quot;/HuangHuanBlog/pics/trans_a_5.png&quot; alt=&quot;A 5&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;开启事务B，更新id=6的记录：
+&lt;p&gt;&lt;strong&gt;开启事务B，更新id=6的记录&lt;/strong&gt;
 &lt;img src=&quot;/HuangHuanBlog/pics/trans_b_6.png&quot; alt=&quot;B 5&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;开启事务A，更新id=6的记录，会发现卡住了：
+&lt;p&gt;&lt;strong&gt;开启事务A，更新id=6的记录，会发现卡住了&lt;/strong&gt;
 &lt;img src=&quot;/HuangHuanBlog/pics/trans_a_6.png&quot; alt=&quot;A 6&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;再在事务B，更新id=5的记录，会发现出现了死锁：
+&lt;p&gt;&lt;strong&gt;再在事务B，更新id=5的记录，会发现出现了死锁&lt;/strong&gt;
 &lt;img src=&quot;/HuangHuanBlog/pics/trans_b_5.png&quot; alt=&quot;B 5&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;然后事务A更新id=6的记录执行成功，因为事务B因为死锁被数据库Kill掉了：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;然后事务A更新id=6的记录执行成功，因为事务B因为死锁被数据库Kill掉了&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/trans_5_commit.png&quot; alt=&quot;A commit&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;insert&quot;&gt;2. Insert死锁&lt;/h4&gt;
+&lt;p&gt;在引言中我介绍了一个我们工作中遇到的坑，下面我们尝试自己复现一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;表的开始状态如下图&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/insert_init.png&quot; alt=&quot;初始状态&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务A插入一条id=7的记录&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/insert_a_insert.png&quot; alt=&quot;A insert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务B执行同样的插入语句&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/insert_other_insert.png&quot; alt=&quot;Other insert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;会发现事务卡住了&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务C执行同样的插入语句&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/insert_other_insert.png&quot; alt=&quot;Other insert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;发现事务同样卡住了&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务A rollback&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/insert_a_rollback.png&quot; alt=&quot;A rollback&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;事务A &lt;code class=&quot;highlighter-rouge&quot;&gt;rollback&lt;/code&gt;后，会发现事务C爆出了 &lt;strong&gt;死锁&lt;/strong&gt; ,符合我们的设想&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/insert_c_deadlock.png&quot; alt=&quot;C deadlock&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;需要注意的是&lt;/strong&gt; ，如果事务A不是&lt;code class=&quot;highlighter-rouge&quot;&gt;rollback&lt;/code&gt;，而是&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，那么不会产生死锁，而是爆出两个Duplicate Error，读者可以想一下这是为什么？&lt;/p&gt;
+
+&lt;h4 id=&quot;case&quot;&gt;3. 工作中的另一个死锁Case&lt;/h4&gt;
+
+&lt;p&gt;这个Case产生的原因是，事务想要&lt;code class=&quot;highlighter-rouge&quot;&gt;insert&lt;/code&gt;一条记录，然后&lt;code class=&quot;highlighter-rouge&quot;&gt;select for update&lt;/code&gt;该条记录，但如果针对一条记录，有三个事务并发执行，那么同样会产生死锁，死锁的原因其实和上面类似，都是因为在产生Duplicate Error时，事务会加Share lock。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;表的开始状态如下图&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/insert_init.png&quot; alt=&quot;初始状态&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务A如下图执行&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/case_a_insert.png&quot; alt=&quot;Case a&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务B和C都执行语句如下&lt;/strong&gt;
+&lt;strong&gt;事务B&lt;/strong&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/case_bc_insert.png&quot; alt=&quot;Case b c&quot; /&gt;
+&lt;strong&gt;事务C&lt;/strong&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/case_bc_insert.png&quot; alt=&quot;Case b c&quot; /&gt;
+会发现事务都卡住&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务A此时commit&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/case_a_commit.png&quot; alt=&quot;Case a commit&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;会发现事务B和C同时爆出Duplicate Key Error&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/case_bc_duplicate.png&quot; alt=&quot;Case b c Duplicate&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事务B和C执行Select for update&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这时事务B和C依次也执行&lt;code class=&quot;highlighter-rouge&quot;&gt;select for update&lt;/code&gt;，事务B会卡住，事务C会产生如下图的死锁。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/case_bc_deadlock.png&quot; alt=&quot;Case b c deadlcok&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 30 May 2017 21:23:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html</link>

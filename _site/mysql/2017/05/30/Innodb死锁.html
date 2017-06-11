@@ -102,7 +102,12 @@ var _hmt = _hmt || [];
       <li><a href="#innodb" id="markdown-toc-innodb">Innodb中的死锁</a></li>
       <li><a href="#section-3" id="markdown-toc-section-3">引言</a>        <ul>
           <li><a href="#innodb-1" id="markdown-toc-innodb-1">Innodb死锁产生条件</a></li>
-          <li><a href="#innodb-2" id="markdown-toc-innodb-2">Innodb死锁范例</a></li>
+          <li><a href="#innodb-2" id="markdown-toc-innodb-2">Innodb死锁范例</a>            <ul>
+              <li><a href="#section-4" id="markdown-toc-section-4">1. 典型的死锁案例</a></li>
+              <li><a href="#insert" id="markdown-toc-insert">2. Insert死锁</a></li>
+              <li><a href="#case" id="markdown-toc-case">3. 工作中的另一个死锁Case</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
     </ul>
@@ -157,30 +162,99 @@ var _hmt = _hmt || [];
   <li>事务之间产生了锁资源的循环等待</li>
 </ol>
 
-<p>其实这也就是Innodb版的死锁条件，只是资源变成了锁而已。</p>
+<p>其实这也就是Innodb版的死锁条件，只是资源变成了锁而已。要避免死锁，其实就是要避免上诉死锁条件的产生。</p>
 
 <h3 id="innodb-2">Innodb死锁范例</h3>
 
-<p>明白了死锁的产生条件，那么我试着自己构建一个死锁的情况。</p>
+<p>明白了死锁的产生条件，那么我试着来实际测试一些典型的死锁情况。</p>
 
-<p>表的开始状态如下图：
-<img src="/HuangHuanBlog/pics/trans_init.png" alt="初始状态" /></p>
+<h4 id="section-4">1. 典型的死锁案例</h4>
 
-<p>开启事务A，更新id=5的记录：
+<p><strong>表的开始状态如下图</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/trans_init.png" alt="初始状态" /></p>
+
+<p><strong>开启事务A，更新id=5的记录</strong>
 <img src="/HuangHuanBlog/pics/trans_a_5.png" alt="A 5" /></p>
 
-<p>开启事务B，更新id=6的记录：
+<p><strong>开启事务B，更新id=6的记录</strong>
 <img src="/HuangHuanBlog/pics/trans_b_6.png" alt="B 5" /></p>
 
-<p>开启事务A，更新id=6的记录，会发现卡住了：
+<p><strong>开启事务A，更新id=6的记录，会发现卡住了</strong>
 <img src="/HuangHuanBlog/pics/trans_a_6.png" alt="A 6" /></p>
 
-<p>再在事务B，更新id=5的记录，会发现出现了死锁：
+<p><strong>再在事务B，更新id=5的记录，会发现出现了死锁</strong>
 <img src="/HuangHuanBlog/pics/trans_b_5.png" alt="B 5" /></p>
 
-<p>然后事务A更新id=6的记录执行成功，因为事务B因为死锁被数据库Kill掉了：</p>
+<p><strong>然后事务A更新id=6的记录执行成功，因为事务B因为死锁被数据库Kill掉了</strong></p>
 
 <p><img src="/HuangHuanBlog/pics/trans_5_commit.png" alt="A commit" /></p>
+
+<h4 id="insert">2. Insert死锁</h4>
+<p>在引言中我介绍了一个我们工作中遇到的坑，下面我们尝试自己复现一下。</p>
+
+<p><strong>表的开始状态如下图</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/insert_init.png" alt="初始状态" /></p>
+
+<p><strong>事务A插入一条id=7的记录</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/insert_a_insert.png" alt="A insert" /></p>
+
+<p><strong>事务B执行同样的插入语句</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/insert_other_insert.png" alt="Other insert" /></p>
+
+<p>会发现事务卡住了</p>
+
+<p><strong>事务C执行同样的插入语句</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/insert_other_insert.png" alt="Other insert" /></p>
+
+<p>发现事务同样卡住了</p>
+
+<p><strong>事务A rollback</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/insert_a_rollback.png" alt="A rollback" /></p>
+
+<p>事务A <code class="highlighter-rouge">rollback</code>后，会发现事务C爆出了 <strong>死锁</strong> ,符合我们的设想</p>
+
+<p><img src="/HuangHuanBlog/pics/insert_c_deadlock.png" alt="C deadlock" /></p>
+
+<p><strong>需要注意的是</strong> ，如果事务A不是<code class="highlighter-rouge">rollback</code>，而是<code class="highlighter-rouge">commit</code>，那么不会产生死锁，而是爆出两个Duplicate Error，读者可以想一下这是为什么？</p>
+
+<h4 id="case">3. 工作中的另一个死锁Case</h4>
+
+<p>这个Case产生的原因是，事务想要<code class="highlighter-rouge">insert</code>一条记录，然后<code class="highlighter-rouge">select for update</code>该条记录，但如果针对一条记录，有三个事务并发执行，那么同样会产生死锁，死锁的原因其实和上面类似，都是因为在产生Duplicate Error时，事务会加Share lock。</p>
+
+<p><strong>表的开始状态如下图</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/insert_init.png" alt="初始状态" /></p>
+
+<p><strong>事务A如下图执行</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/case_a_insert.png" alt="Case a" /></p>
+
+<p><strong>事务B和C都执行语句如下</strong>
+<strong>事务B</strong>
+<img src="/HuangHuanBlog/pics/case_bc_insert.png" alt="Case b c" />
+<strong>事务C</strong>
+<img src="/HuangHuanBlog/pics/case_bc_insert.png" alt="Case b c" />
+会发现事务都卡住</p>
+
+<p><strong>事务A此时commit</strong></p>
+
+<p><img src="/HuangHuanBlog/pics/case_a_commit.png" alt="Case a commit" /></p>
+
+<p>会发现事务B和C同时爆出Duplicate Key Error</p>
+
+<p><img src="/HuangHuanBlog/pics/case_bc_duplicate.png" alt="Case b c Duplicate" /></p>
+
+<p><strong>事务B和C执行Select for update</strong></p>
+
+<p>这时事务B和C依次也执行<code class="highlighter-rouge">select for update</code>，事务B会卡住，事务C会产生如下图的死锁。</p>
+
+<p><img src="/HuangHuanBlog/pics/case_bc_deadlock.png" alt="Case b c deadlcok" /></p>
 
       </article>
       <hr>
