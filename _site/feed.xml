@@ -5,9 +5,121 @@
     <description>美团金融后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 18 Jun 2017 23:53:59 +0800</pubDate>
-    <lastBuildDate>Sun, 18 Jun 2017 23:53:59 +0800</lastBuildDate>
+    <pubDate>Sat, 24 Jun 2017 23:39:02 +0800</pubDate>
+    <lastBuildDate>Sat, 24 Jun 2017 23:39:02 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>会计入门小结</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;引言&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;会计是干什么的？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;会计三大报表&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;资产负债表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;利润表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;现金流表&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;柠檬汁摊范例&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;第一周&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;期初&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;期中&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;期末&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;引言&lt;/h1&gt;
+&lt;p&gt;因为工作相关，所以最近开始了解会计相关的知识，最开始找了一本叫《基础会计学》的书，实际上是大学的教材，但这书实在太抽象了。为了能更好的理解（主要是一般在地铁上看书，地铁上看这种死扣概念的教材叫一个蛋疼），又试了试别的，最后找到这本&lt;a href=&quot;https://item.jd.com/11339593.html&quot;&gt;《世界上最简单的会计书》&lt;/a&gt;，一共才200页，真心是最简单的会计入门书，强烈推荐。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;会计是干什么的？&lt;/h1&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;会计是企业计量，核算财务经营成果的一种方法，是以货币为主要计量单位，以凭证为依据，借助于专门的技术方法对各单位的经营互动进行完整，联系，系统的反映和监督，借以加强经济管理，提高经济效益，同时是一切商业，经济活动的语言，准则和根据。它既是经济管理的重要组成部分，又是经济管理的重要工具。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这段话是不是很长？我的理解是：会计是计量和管理企业经营行为的工具。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;会计三大报表&lt;/h1&gt;
+&lt;p&gt;会计实际上是通过多种报表的编写来实现，这里面有三个很重要的报表：资产负债表，利润表，现金流表&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;资产负债表&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;资产负债表的编制目的就是在人和物中建立一种联系，它表明了你生意中所拥有的东西，以及这种东西与那些拥有它的人或对此有要求权的人们之间的关系。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;会计是以货币为单位来计量的，我们最关心也就是货币有多少，以及货币的归属了，资产负债表也就是起这么一个作用。下面是一个典型的资产负债表的截图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/assetTable.png&quot; alt=&quot;资产负债表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;左侧的资产是公司目前所有的所有现金，存活等物品或权益，而右边包含了负债和所有者权益，负债是需要偿还的债务，而所有者权益是公司占有的权益。一个最重要的公式是：&lt;code class=&quot;highlighter-rouge&quot;&gt;总资产=总负载及所有者权益&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;利润表&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/profitTable.png&quot; alt=&quot;利润表&quot; /&gt;
+资产负债表记录了某一时刻你所拥有的资产，以及资产与人之间的关系。但是资产负债表并没有体现出实际的经营情况，比如说购买存货，生产商品，销售产品等，因此，为了满足这个需求，上图中的的利润表产生了。&lt;/p&gt;
+
+&lt;p&gt;利润表中有几个概念：&lt;code class=&quot;highlighter-rouge&quot;&gt;销售收入&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;商品销售成本&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;毛利&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;净利润&lt;/code&gt;，它们之间的关系是：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;毛利=销售收入-商品销售成本&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;净利润=毛利-费用&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;商品销售成本&lt;/code&gt;是指的与产品生产过程中有关的所有支出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;囊括的是企业经营中与产品生产不直接相关的其他支出。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;现金流表&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cast_flow.png&quot; alt=&quot;现金流表&quot; /&gt;
+现金流表记录的是现金的流入和流出，之所以把现金流单做一张表，是因为企业的经营实际上最重要的就是现金流。可能有人会问，经营靠利润表不就行了吗？但实际上利润是有欺骗性的，比如其对应的应收账款你就不一定真能收回来。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-6&quot;&gt;柠檬汁摊范例&lt;/h1&gt;
+&lt;p&gt;运用书中的案例，一个小男孩开了一个柠檬汁摊，并运用会计的知识来管理他的账务，这里我们记三周的例子。之后的记录中商品的价格读者不要介意，只是为了方便而已。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;第一周&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;期初&lt;/h3&gt;
+&lt;p&gt;第一周小男孩拿出了自己的50元，并找父母借了100元，这是柠檬汁摊最初的状态，我们用期初负债表来记录。
+&lt;img src=&quot;/HuangHuanBlog/pics/weak1_pre_debt.png&quot; alt=&quot;第一周期初资产负债表&quot; /&gt;
+这个没什么可讲的，一开始都很简单，需要注意的是借款在表中体现的为&lt;code class=&quot;highlighter-rouge&quot;&gt;应付票据&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-9&quot;&gt;期中&lt;/h3&gt;
+&lt;p&gt;在这一周小男孩依次做了以下的事：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;去杂货铺中买了50个柠檬（每个1块钱），5磅白糖（每磅2块钱），总计&lt;code class=&quot;highlighter-rouge&quot;&gt;60&lt;/code&gt;块钱&lt;/li&gt;
+  &lt;li&gt;把买来的材料做成了60杯柠檬汁，用家里的杯子装着，每一杯柠檬汁的成本是&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;块钱&lt;/li&gt;
+  &lt;li&gt;找来家里的小推车，把这60杯柠檬汁推出去卖，每一杯的价格是3块钱，最后成功卖出了&lt;code class=&quot;highlighter-rouge&quot;&gt;50&lt;/code&gt;杯&lt;/li&gt;
+  &lt;li&gt;看见卖柠檬汁很挣钱，可恶的父母向你收取了&lt;code class=&quot;highlighter-rouge&quot;&gt;20&lt;/code&gt;块的杯子使用费和水费&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-10&quot;&gt;期末&lt;/h3&gt;
+&lt;p&gt;到了第一周末，我们这样记录这一周的资产负债中变化的项目：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;现金：&lt;/strong&gt; 一开始有150块的现金，买原材料用了60块钱，埋了50杯收入150元，给父母上缴了20元，所以最后是&lt;code class=&quot;highlighter-rouge&quot;&gt;150-60+150-20=220&lt;/code&gt;，其实现金流表也就做了这件事情&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;存货：&lt;/strong&gt; 每一杯柠檬汁的成本是1块钱，剩下10杯，所以存货是&lt;code class=&quot;highlighter-rouge&quot;&gt;10&lt;/code&gt;块钱&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;本周盈利:&lt;/strong&gt; 这里的盈利简单来讲就是&lt;code class=&quot;highlighter-rouge&quot;&gt;收入-花费&lt;/code&gt;，更详细的计算会在利润表中体现，所以盈利是&lt;code class=&quot;highlighter-rouge&quot;&gt;150-50*1-20=80&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;那么第一周的期末负债表如下：
+&lt;img src=&quot;/HuangHuanBlog/pics/weak1_aft_debt.png&quot; alt=&quot;第一周期末资产负债表&quot; /&gt;
+既然左右相等，那就说明妥妥的没问题了。&lt;/p&gt;
+
+&lt;p&gt;刚才算期末资产负债表的过程其实也做了现金流表和利润表的计算过程，只是没有在负债表中体现出来，下面我们先记录这一期的利润表：
+&lt;img src=&quot;/HuangHuanBlog/pics/week1_profit.png&quot; alt=&quot;第一周利润表&quot; /&gt;
+可以看到利润表算出来的结果和资产负债表中的本周盈利是一致的，只是它更清晰的体现了&lt;code class=&quot;highlighter-rouge&quot;&gt;销售收入&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;商品成本&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;毛利&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;净利润&lt;/code&gt;的值和组成。&lt;/p&gt;
+
+&lt;p&gt;第一周的现金流表如下：
+&lt;img src=&quot;/HuangHuanBlog/pics/week1_cash.png&quot; alt=&quot;第一周现金流表&quot; /&gt;
+很简单不是吗，现金流表更好的体现了现金的收支过程，最后和资产负债表中的现金相对应。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 19 Jun 2017 23:07:00 +0800</pubDate>
+        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html</link>
+        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
     
       <item>
         <title>Innodb锁介绍-Innodb中死锁</title>
@@ -1631,452 +1743,6 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
         
         
         <category>Read</category>
-        
-      </item>
-    
-      <item>
-        <title>React学习笔记</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#react&quot; id=&quot;markdown-toc-react&quot;&gt;React学习笔记&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#jsx&quot; id=&quot;markdown-toc-jsx&quot;&gt;JSX&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;范例&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#dom&quot; id=&quot;markdown-toc-dom&quot;&gt;非DOM属性&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;事件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;组建生命周期&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;首次使用组件时&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;之后使用该组件时&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;应用状态改变时&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;销毁时&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;数据流&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#props&quot; id=&quot;markdown-toc-props&quot;&gt;Props&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#state&quot; id=&quot;markdown-toc-state&quot;&gt;State&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#propsstate&quot; id=&quot;markdown-toc-propsstate&quot;&gt;Props和State存放数据&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;事件处理&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#setstate&quot; id=&quot;markdown-toc-setstate&quot;&gt;setState&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#replacestate&quot; id=&quot;markdown-toc-replacestate&quot;&gt;replaceState&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;组件的复合&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#mixin&quot; id=&quot;markdown-toc-mixin&quot;&gt;Mixin&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dom-1&quot; id=&quot;markdown-toc-dom-1&quot;&gt;DOM操作&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;表单&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;无约束组件&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;约束组件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#react-router&quot; id=&quot;markdown-toc-react-router&quot;&gt;React Router&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;react&quot;&gt;React学习笔记&lt;/h1&gt;
-
-&lt;p&gt;来自 &lt;em&gt;《React 引领未来的用户界面开发框架》&lt;/em&gt;一书&lt;/p&gt;
-
-&lt;h2 id=&quot;jsx&quot;&gt;JSX&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;JavaScript XML，一种在React组建内部构建标签的类XML语法，实际会被转换成JavaScript函数。JSX的表达能力很强，也很适合组件化的React开发。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;范例&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//编写一个Divider
-var Divider = React.createClass({
-  render: function(){
-    &amp;lt;div className=&quot;divider&quot;&amp;gt;
-    	&amp;lt;h2&amp;gt;{this.props.children}&amp;lt;/h2&amp;gt;&amp;lt;hr/&amp;gt;
-    &amp;lt;/div&amp;gt;
-  }
-})
-
-//Divider调用
-&amp;lt;Divider&amp;gt;Questions&amp;lt;/Divider&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;dom&quot;&gt;非DOM属性&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt;  可选的唯一标志符，便于React渲染时重用&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ref&lt;/code&gt;  表示父子组建之间的引用&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dangerouslySetInnerHTML&lt;/code&gt; 在需要将HTML内容设置为字符串时使用&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;事件&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;事件已经被规范化，并同统一用驼峰形式表示。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;handleClick: function(event){...},
-render: function(){
-  return &amp;lt;div onClick={this.handleClick}&amp;gt;...&amp;lt;/div&amp;gt;
-}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;实际上，如CSS的表示也是用这样的形式。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;组建生命周期&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;首次使用组件时&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getDefaultProps&lt;/code&gt; 可以为实例设置默认的&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;值&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt; 初始化每个实例初始化&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;值&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillMount&lt;/code&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;之间最后修改&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;值的机会&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 创建虚拟DOM，是组件中唯一必要的方法&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt;可以在该方法中通过调用&lt;code class=&quot;highlighter-rouge&quot;&gt;this.getDOMNode()&lt;/code&gt;来访问真实的DOM，可以在这里调用如JQuery等工具。如果React运行在服务端，该方法不会被调用&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;之后使用该组件时&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillMount&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;应用状态改变时&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillReceivProps&lt;/code&gt; 组件的props可以通过父辈组件来修改，此时该方法将被调用&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shouldComponentUpdate&lt;/code&gt; 在渲染前判断是否需要更新，做到精确的优化，不要草率的使用该方法&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillUpdate&lt;/code&gt;不可以在该方法中更新&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;值&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidUpdate&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt;类似&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;销毁时&lt;/h3&gt;
-
-&lt;p&gt;调用&lt;code class=&quot;highlighter-rouge&quot;&gt;componentWillUnmount&lt;/code&gt;，可以在这个方法中做一些清理工作，比如创建的定时器或者添加的事件监听器&lt;/p&gt;
-
-&lt;h2 id=&quot;section-7&quot;&gt;数据流&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;React中数据流是单向的，从父节点传递到子节点，因而组件是简单且易于把握的，组件只需要从父节点获取props渲染即可。如果顶层组件的某个prop改变了，React会递归地向下遍历整棵组件树，重新渲染所有使用这个属性的组件。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;props&quot;&gt;Props&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Props即为properties，能够把任意类型的数据传递给组件。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//挂载数据时设置组件的props
-var components=[{title:&#39;test_0&#39;},{title:&#39;test_1&#39;}];
-&amp;lt;ListComponents components={components}/&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;this.props&lt;/code&gt;来访问组件的&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;，但不能通过这种方式修改它，一个组件绝对不可以自己修改自己的&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;可以是字符串，对象，事件处理器等。可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;PropTypes&lt;/code&gt;来验证&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;的类型，推荐使用。&lt;/p&gt;
-
-&lt;h3 id=&quot;state&quot;&gt;State&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;每一个React组件都可以拥有自己的state，其与props的区别是，state只存在于组件内部&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;的值应该通过&lt;code class=&quot;highlighter-rouge&quot;&gt;this.setState()&lt;/code&gt;修改，只要该状态被修改，&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;方法就会被调用，然后导致之后的一系列变化。状态总是让组件变得更加复杂，把状态针对不同的组件独立开来，能更有利于调试。&lt;/p&gt;
-
-&lt;h3 id=&quot;propsstate&quot;&gt;Props和State存放数据&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;中不要保存计算出的值，而应该保存最简单的数据，即为组件工作时的必要数据。而&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;用来作为数据源，保证数据的单向流动。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-8&quot;&gt;事件处理&lt;/h2&gt;
-
-&lt;p&gt;绑定方式实际上和JavaScript并没太大差别，例如：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var Demo = React.createClass({
-  render: function(){
-    &amp;lt;div onClick={this.handleClick}&amp;gt;Click here&amp;lt;/div&amp;gt;
-  }
-
-  handleClick: function(event){
-    this.setState({isClicked : true});
-  }
-});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;setstate&quot;&gt;setState&lt;/h3&gt;
-
-&lt;p&gt;合并对象的方式来更新组件的状态&lt;/p&gt;
-
-&lt;h3 id=&quot;replacestate&quot;&gt;replaceState&lt;/h3&gt;
-
-&lt;p&gt;将&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;整个替换为新的&lt;/p&gt;
-
-&lt;h2 id=&quot;section-9&quot;&gt;组件的复合&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;React的一个突出特点是构建组件的能力，实际上React代码主要就是构建组件，就像编写HTML文档时使用元素一样。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;// 封装一个radio input作为子组件
-var AnswerRadioInput = React.createClass({
-  	propTypes : {
-     	id: React.PropTypes.string,
-      	name: React.PropTypes.string.isRequired,
-      	label: React.PropTypes.string.isRequired,
-      	value: React.PropTypes.string.isRequired,
-      	checked: React.PropTypes.bool
-  	},
-  	getDefaultProps : function(){
-      retrun{
-        id: null,
-        checked:false
-      }
-  	},
-    getInitialState : function(){
-      var id = this.props.id? this.props.id : uniqueId(&#39;radio-&#39;);
-      return {
-        checked : this.props.checked,
-        id : id,
-        name : id
-      }
-    },
-    render : function(){
-      return (
-        &amp;lt;div className=&quot;radio&quot;&amp;gt;
-          &amp;lt;!-- htmlFor表示该Label为哪个控件服务，点击该label时，所比绑定的元素将获得焦点 --&amp;gt;
-          &amp;lt;label htmlFor={this.props.id}&amp;gt;
-            &amp;lt;input type=&quot;radio&quot;
-              name={this.props.name}
-              id={this.props.id}
-              value={this.props.value}
-              checked={this.state.checked}/&amp;gt;
-            	{this.props.label}
-          &amp;lt;/label&amp;gt;
-        &amp;lt;/div&amp;gt;
-      )
-    }
-});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;以上构建了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;AnswerRadioInput&lt;/code&gt;组件，之后构建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;AnswerMultipleChoiceQuestion&lt;/code&gt;来组合这一组件。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;// 父组件
-var AnswerMultipleChoiceQuestion = React.createClass({
-	propTyes: {
-	  value: React.PropTypes.string,
-	  choices: React.PropTypes.array.isRequired,
-	  onCompleted: React.PropTyes.func.isRequired
-	},
-  	getInitialState: function(){
-      return {
-        id: uniqueId(&#39;multiple-choice-&#39;),
-        value: this.props.value
-      }
-  	},
-  	renderChoices: function(){
-      return this.props.choices.map(function(choice,i){
-        return AnswerRadioInput({
-          id: &quot;choice-&quot;+i,
-          name: this.state.id,
-          label: choice,
-          value: choice,
-          checked: this.state.value === choice
-        });
-      }.bind(this))
-  	},
-  	render: function(){
-      return (
-        &amp;lt;div className=&quot;form-group&quot;&amp;gt;
-        	&amp;lt;label className=&quot;survey-item-label&quot; htmlFor={this.state.id}&amp;gt;
-              	{this.props.label}
-          	&amp;lt;/label&amp;gt;
-          	&amp;lt;div className=&quot;survey-item-content&quot;&amp;gt;
-          		{this.renderChoices()}
-          	&amp;lt;/div&amp;gt;
-        &amp;lt;/div&amp;gt;
-      );
-  	}
-});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;此时存在一个问题，子组件没办法把自身的变化通知给父组件，因此，父组件需要关联子组件才能知道其更新。方法实际上就是回调，父组件通过向子组件中传入一个回调函数，子组件在需要时调用。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//父组件传入回调函数
-var AnswerMultipleChoiceQuestion = React.createClass({
-  ...
-  handleChanged: function(value){
-    this.setState({value:value});
-    this.props.onCompleted(value);
-  },
-  renderChoices: function(){
-    return this.props.choices.map(function(choice, i){
-      return AnswerRadioInput({
-        ...
-        onChanged: this.handleChanged
-      });
-    }.bind(this));
-  },
-});
-
-//子组件调用回调
-var AnswerRadioInpu = React.createClass({
-  propTypes: {
-    ...
-    onChanged: React.PropTypes.func.isRequired
-  },
-  handleChanged: function(event){
-    //event.target 找到事件的触发对象input
-    var checked = event.target.checked;
-    this.setState({checked: checked});
-    if(checked){
-      this.props.onChange(this.props.value);
-    }
-  },
-  render: function(){
-    return(
-      &amp;lt;div className=&quot;radio&quot;&amp;gt;
-        &amp;lt;label htmlFor={this.state.id}&amp;gt;
-        	&amp;lt;input type=&quot;radio&quot;
-              ...
-              onChange={this.handleChanged}/&amp;gt;
-          	{this.props.label}
-        &amp;lt;/label&amp;gt;
-      &amp;lt;/div&amp;gt;
-    )
-  }
-})&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;mixin&quot;&gt;Mixin&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;mixin允许我们定义可以在多个组件中共用的方法&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;// 定义IntervalMixin
-var IntervalMixin = {
-​	setInterval: function(callback, interval){
-​		var token = setInterval(callback, interval);
-​		this.__intervals.push(token);
-​		return token;
-​	},
-​	componentDidMount: function(){
-​		this.__intervals=[];
-​	},
-​	componentWillUnmount: function(){
-​		this.__intervals.map(clearInterval);
-​	}
-}；
-
-//定义组件
-var Since2014 = React.createClass({
-​	//实际相当于把mixins中的内容解构了出来，放在了Since2014中
-​	mixins: [IntervalMixin],
-​	componentDidMount: function(){
-​		this.setInterval(this.forceUpdate.bind(this),1000);
-​	},
-​	render: function()	{
-​		var from = Number(new Date(2014, 0, 1));
-​		var to =Date.now();
-​		return (
-​			&amp;lt;div&amp;gt;{Math.round((to-from)/1000)}&amp;lt;/div&amp;gt;
-​		);
-​	}
-});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;dom-1&quot;&gt;DOM操作&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;在某些情况下，为了实现某些需求就不得不去操作底层的DOM。最常见的场景包括：需要与一个没有使用React的第三方类库进行整合，或者执行一个React没有原生支持的操作。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var DoodleArea = React.createClass({
-​	render: function(){
-​		//通过设定一个ref属性，之后可以通过this.refs.mainCanvas来访问到&amp;lt;canvas&amp;gt;组件
-​		return &amp;lt;canvas ref=&quot;mainCanvas&quot;/&amp;gt;;
-​	}，
-​	componentDisMount: function(){
-​		//在这里通过getDOMNode()方法来访问到底层的DOM节点，也可以在事件处理器中调用
-​		var canvasNode= this.refs.mainCanvas.getDOMNode();
-​	}
-});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-10&quot;&gt;表单&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-11&quot;&gt;无约束组件&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;组件本身控制其值&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var MyForm = React.createClass({
-​	submitHandler: function(event){
-​		event.preventDefault();
-​		var text=this.refs.text.getDOMNode().value;
-​		alert(helloTo);
-​	},
-​	render: function(){
-​		return (
-​			&amp;lt;form onSubmit={this.submitHandler}&amp;gt;
-​				&amp;lt;input ref=&quot;text&quot; type=&quot;text&quot; defaultValue=&quot;Hello world!&quot;/&amp;gt;
-​				&amp;lt;br/&amp;gt;
-​				&amp;lt;button type=&quot;submit&quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
-​			&amp;lt;/form&amp;gt;
-​		);
-​	}
-});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;section-12&quot;&gt;约束组件&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;约束组件的值被存储在state中，由React控制&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;var MyForm = React.createClass({
-​	getInitialState: function(){
-​		return {
-​			text: &#39;hello world!&#39;
-​		}
-​	},
-​	…
-​	render: function(){
-​		return (
-​			&amp;lt;form onSubmit={this.submitHandler}&amp;gt;
-​				&amp;lt;input type=&quot;text&quot; value={this.state.text}
-					 onChange={this.handleChange}/&amp;gt;
-​				...
-​			&amp;lt;/form&amp;gt;
-​		);
-​	}
-});&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;对于如&lt;code class=&quot;highlighter-rouge&quot;&gt;handleChange&lt;/code&gt; 方法，还可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;bind&lt;/code&gt;方法传递更多参数，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;this.handleChange.bind(this, &quot;name&quot;)&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;react-router&quot;&gt;React Router&lt;/h2&gt;
-
-&lt;p&gt;React的介绍即讲过其非常适合于单页面应用，页面之间的切换需要&lt;code class=&quot;highlighter-rouge&quot;&gt;Router&lt;/code&gt;的帮助。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;React-router完全由React Component构成，路由被定义为了组件，路由的处理器也是组件&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jsx&quot; data-lang=&quot;jsx&quot;&gt;//react router的写法如下
-var appRouter=(
-​	&amp;lt;Routes location=&quot;history&quot;&amp;gt;
-​		&amp;lt;Route title=&quot;SurveryBuilder&quot; handler={App}&amp;gt;
-​			&amp;lt;Route name=&quot;list&quot; path=&quot;/&quot; handler={ListSurveys}/&amp;gt;
-​			&amp;lt;Route title=&quot;Add survey to surveyBuilder&quot; name=&quot;add&quot; 
-				path=&quot;/add_survey&quot; handler={AddSurvey}/&amp;gt;
-​			&amp;lt;NotFound title=&quot;Page Not Found&quot; handler={NotFoundHandler}/&amp;gt;
-​		&amp;lt;/Route&amp;gt;
-​	&amp;lt;/Routes&amp;gt;
-
-);&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;每一个处理器就对应着特定页面的组件，需要将上面的路由作为最顶层的组件渲染来启动。&lt;/p&gt;
-
-&lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;react-router Link&lt;/code&gt;组件来进行导航。&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 03 Nov 2016 12:24:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/11/03/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/11/03/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html</guid>
-        
-        
-        <category>React</category>
         
       </item>
     
