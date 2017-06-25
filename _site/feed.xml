@@ -5,8 +5,8 @@
     <description>美团金融后台研发工程师</description>
     <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
     <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 24 Jun 2017 23:39:02 +0800</pubDate>
-    <lastBuildDate>Sat, 24 Jun 2017 23:39:02 +0800</lastBuildDate>
+    <pubDate>Sun, 25 Jun 2017 16:15:11 +0800</pubDate>
+    <lastBuildDate>Sun, 25 Jun 2017 16:15:11 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -27,8 +27,15 @@
           &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;期末&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;第二周&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;期初&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;期中&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;期末&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;小结&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;section&quot;&gt;引言&lt;/h1&gt;
@@ -72,7 +79,7 @@
 现金流表记录的是现金的流入和流出，之所以把现金流单做一张表，是因为企业的经营实际上最重要的就是现金流。可能有人会问，经营靠利润表不就行了吗？但实际上利润是有欺骗性的，比如其对应的应收账款你就不一定真能收回来。&lt;/p&gt;
 
 &lt;h1 id=&quot;section-6&quot;&gt;柠檬汁摊范例&lt;/h1&gt;
-&lt;p&gt;运用书中的案例，一个小男孩开了一个柠檬汁摊，并运用会计的知识来管理他的账务，这里我们记三周的例子。之后的记录中商品的价格读者不要介意，只是为了方便而已。&lt;/p&gt;
+&lt;p&gt;运用书中的案例，一个小男孩开了一个柠檬汁摊，并运用会计的知识来管理他的账务，这里我们记两周的例子来进行说明。之后的记录中商品的价格读者不要介意，只是为了方便而已。&lt;/p&gt;
 
 &lt;h2 id=&quot;section-7&quot;&gt;第一周&lt;/h2&gt;
 
@@ -100,17 +107,58 @@
   &lt;li&gt;&lt;strong&gt;本周盈利:&lt;/strong&gt; 这里的盈利简单来讲就是&lt;code class=&quot;highlighter-rouge&quot;&gt;收入-花费&lt;/code&gt;，更详细的计算会在利润表中体现，所以盈利是&lt;code class=&quot;highlighter-rouge&quot;&gt;150-50*1-20=80&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;那么第一周的期末负债表如下：
+&lt;p&gt;&lt;strong&gt;那么第一周的期末负债表如下：&lt;/strong&gt;
 &lt;img src=&quot;/HuangHuanBlog/pics/weak1_aft_debt.png&quot; alt=&quot;第一周期末资产负债表&quot; /&gt;
 既然左右相等，那就说明妥妥的没问题了。&lt;/p&gt;
 
-&lt;p&gt;刚才算期末资产负债表的过程其实也做了现金流表和利润表的计算过程，只是没有在负债表中体现出来，下面我们先记录这一期的利润表：
+&lt;p&gt;&lt;strong&gt;刚才算期末资产负债表的过程其实也做了现金流表和利润表的计算过程，只是没有在负债表中体现出来，下面我们先记录这一期的利润表：&lt;/strong&gt;
 &lt;img src=&quot;/HuangHuanBlog/pics/week1_profit.png&quot; alt=&quot;第一周利润表&quot; /&gt;
 可以看到利润表算出来的结果和资产负债表中的本周盈利是一致的，只是它更清晰的体现了&lt;code class=&quot;highlighter-rouge&quot;&gt;销售收入&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;商品成本&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;毛利&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;净利润&lt;/code&gt;的值和组成。&lt;/p&gt;
 
-&lt;p&gt;第一周的现金流表如下：
+&lt;p&gt;&lt;strong&gt;第一周的现金流表如下：&lt;/strong&gt;
 &lt;img src=&quot;/HuangHuanBlog/pics/week1_cash.png&quot; alt=&quot;第一周现金流表&quot; /&gt;
 很简单不是吗，现金流表更好的体现了现金的收支过程，最后和资产负债表中的现金相对应。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-11&quot;&gt;第二周&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-12&quot;&gt;期初&lt;/h3&gt;
+&lt;p&gt;有了第一周的成功，小男孩挣到了钱有了经验，但不幸的是冰箱里剩下的10杯柠檬汁杯爸妈和姐姐喝掉了，他们并不准备为此支付任何钱，于是期初的资产负债表变成了这样。
+&lt;img src=&quot;/HuangHuanBlog/pics/week2_pre_debt.png&quot; alt=&quot;第二周期初资产负债表&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-13&quot;&gt;期中&lt;/h3&gt;
+&lt;p&gt;在这一周中小男孩依次做了以下的事：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在杂货铺中&lt;code class=&quot;highlighter-rouge&quot;&gt;赊账&lt;/code&gt;购买了100个柠檬（每个1块钱），10磅白糖（每磅2块钱），总计&lt;code class=&quot;highlighter-rouge&quot;&gt;120&lt;/code&gt;块钱&lt;/li&gt;
+  &lt;li&gt;把买来的材料做成了90杯柠檬汁，耗费了74个柠檬和磅糖，8磅白糖，每一杯成本&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;块钱&lt;/li&gt;
+  &lt;li&gt;购买了一个二手的贩卖小车，花费了&lt;code class=&quot;highlighter-rouge&quot;&gt;150&lt;/code&gt;元&lt;/li&gt;
+  &lt;li&gt;卖出了80杯柠檬汁，期中20杯是顾客赊购的，每一杯&lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;块钱，销售额&lt;code class=&quot;highlighter-rouge&quot;&gt;240&lt;/code&gt;元，现金收入&lt;code class=&quot;highlighter-rouge&quot;&gt;180&lt;/code&gt;元&lt;/li&gt;
+  &lt;li&gt;偿还了爸妈&lt;code class=&quot;highlighter-rouge&quot;&gt;50&lt;/code&gt;块钱，可恶的他们还收取了&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;块的利息&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-14&quot;&gt;期末&lt;/h3&gt;
+&lt;p&gt;这一周增加了几个新的项目：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;应付账款：&lt;/strong&gt; 因为在杂货铺中赊购了120元的东西，所以应付账款是&lt;code class=&quot;highlighter-rouge&quot;&gt;120&lt;/code&gt;元&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;固定资产：&lt;/strong&gt; 购买的贩卖小车是一项固定资产，计入资产列中，实际上是资产中&lt;code class=&quot;highlighter-rouge&quot;&gt;150&lt;/code&gt;元的现金转换成了固定资产，并不影响利润&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;应收账款：&lt;/strong&gt; 有20杯是顾客赊购的，这些要归于资产中的应付账款中，一共&lt;code class=&quot;highlighter-rouge&quot;&gt;60&lt;/code&gt;元&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;坏账:&lt;/strong&gt; 因为之前的10杯柠檬汁被强行消费掉了，其价值&lt;code class=&quot;highlighter-rouge&quot;&gt;10&lt;/code&gt;元只能算作亏损或者坏账去掉&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;那么第二周末的资产负债表如下：&lt;/strong&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/week2_aft_debt.png&quot; alt=&quot;第二周末资产负债表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;第二周的利润表如下：&lt;/strong&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/week2_profit.png&quot; alt=&quot;第二周利润表&quot; /&gt;
+和本期盈利是对应的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;第二周的现金流表如下:&lt;/strong&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/week2_cash.png&quot; alt=&quot;第二周现金流量表&quot; /&gt;
+和资产负债表中的现金正好对应。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-15&quot;&gt;小结&lt;/h1&gt;
+&lt;p&gt;在我的理解中，资产负债表是一个宏观的记录表，二利润表和现金流表是其中关键项目的细化，通过这三个报表，能够较为清楚的了解到公司的经营状况。&lt;/p&gt;
 </description>
         <pubDate>Mon, 19 Jun 2017 23:07:00 +0800</pubDate>
         <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html</link>
