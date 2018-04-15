@@ -8,8 +8,8 @@
 	<title>Maven之三十分钟入门</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -97,22 +97,22 @@ var _hmt = _hmt || [];
       <article>
         <ul id="markdown-toc">
   <li><a href="#maven" id="markdown-toc-maven">Maven</a>    <ul>
-      <li><a href="#maven-1" id="markdown-toc-maven-1">Maven概述</a>        <ul>
-          <li><a href="#pom" id="markdown-toc-pom">一个基本的Pom文件</a></li>
-          <li><a href="#maven-2" id="markdown-toc-maven-2">Maven项目的基本结构</a></li>
-          <li><a href="#maven-3" id="markdown-toc-maven-3">Maven的执行</a>            <ul>
-              <li><a href="#mvn-compile" id="markdown-toc-mvn-compile">1. mvn compile</a></li>
-              <li><a href="#mvn-test" id="markdown-toc-mvn-test">2. mvn test</a></li>
-              <li><a href="#mvn-package" id="markdown-toc-mvn-package">3. mvn package</a></li>
-              <li><a href="#mvn-install" id="markdown-toc-mvn-install">4. mvn install</a></li>
+      <li><a href="#maven概述" id="markdown-toc-maven概述">Maven概述</a>        <ul>
+          <li><a href="#一个基本的pom文件" id="markdown-toc-一个基本的pom文件">一个基本的Pom文件</a></li>
+          <li><a href="#maven项目的基本结构" id="markdown-toc-maven项目的基本结构">Maven项目的基本结构</a></li>
+          <li><a href="#maven的执行" id="markdown-toc-maven的执行">Maven的执行</a>            <ul>
+              <li><a href="#1-mvn-compile" id="markdown-toc-1-mvn-compile">1. mvn compile</a></li>
+              <li><a href="#2-mvn-test" id="markdown-toc-2-mvn-test">2. mvn test</a></li>
+              <li><a href="#3-mvn-package" id="markdown-toc-3-mvn-package">3. mvn package</a></li>
+              <li><a href="#4-mvn-install" id="markdown-toc-4-mvn-install">4. mvn install</a></li>
             </ul>
           </li>
           <li><a href="#plugins" id="markdown-toc-plugins">Plugins</a></li>
-          <li><a href="#section" id="markdown-toc-section">资源文件打包</a></li>
-          <li><a href="#section-1" id="markdown-toc-section-1">文件过滤</a></li>
+          <li><a href="#资源文件打包" id="markdown-toc-资源文件打包">资源文件打包</a></li>
+          <li><a href="#文件过滤" id="markdown-toc-文件过滤">文件过滤</a></li>
           <li><a href="#dependencies" id="markdown-toc-dependencies">Dependencies</a></li>
-          <li><a href="#section-2" id="markdown-toc-section-2">包的发布</a></li>
-          <li><a href="#modules" id="markdown-toc-modules">多Modules管理</a></li>
+          <li><a href="#包的发布" id="markdown-toc-包的发布">包的发布</a></li>
+          <li><a href="#多modules管理" id="markdown-toc-多modules管理">多Modules管理</a></li>
         </ul>
       </li>
     </ul>
@@ -127,9 +127,9 @@ var _hmt = _hmt || [];
 
 <p><strong>参考文档:</strong><a href="http://maven.apache.org/guides/">Maven Documentation</a></p>
 
-<h2 id="maven-1">Maven概述</h2>
+<h2 id="maven概述">Maven概述</h2>
 
-<h3 id="pom">一个基本的Pom文件</h3>
+<h3 id="一个基本的pom文件">一个基本的Pom文件</h3>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">project</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
   <span class="nl">xmlns:</span><span class="n">xsi</span><span class="o">=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
@@ -166,7 +166,7 @@ var _hmt = _hmt || [];
   <li><strong>description</strong> 这个参数描述了项目的基本信息，通常作用在Maven生成的文档中</li>
 </ol>
 
-<h3 id="maven-2">Maven项目的基本结构</h3>
+<h3 id="maven项目的基本结构">Maven项目的基本结构</h3>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">my</span><span class="o">-</span><span class="n">app</span>
 <span class="o">|--</span> <span class="n">pom</span><span class="o">.</span><span class="na">xml</span>
@@ -186,21 +186,21 @@ var _hmt = _hmt || [];
 
 <p>上面是一个Maven项目的基本结构，项目的相关资源位于<code class="highlighter-rouge">${basedir}/src/main/java</code>中，而测试的资源位于<code class="highlighter-rouge">${basedir}/src/test/java</code>中，而pom文件位于<code class="highlighter-rouge">pom.xml</code>中。</p>
 
-<h3 id="maven-3">Maven的执行</h3>
+<h3 id="maven的执行">Maven的执行</h3>
 
-<h4 id="mvn-compile">1. mvn compile</h4>
+<h4 id="1-mvn-compile">1. mvn compile</h4>
 
 <p>执行<code class="highlighter-rouge">mvn compile</code>，编译的结果会默认放在<code class="highlighter-rouge">${basedir}/target/classes</code>目录下。</p>
 
-<h4 id="mvn-test">2. mvn test</h4>
+<h4 id="2-mvn-test">2. mvn test</h4>
 
 <p>执行<code class="highlighter-rouge">mvn test</code>，会执行<code class="highlighter-rouge">${basedir}/src/test/java</code>中的单元测试。如果只想编译测试代码而不执行，则执行<code class="highlighter-rouge">mvn test-compile</code>。</p>
 
-<h4 id="mvn-package">3. mvn package</h4>
+<h4 id="3-mvn-package">3. mvn package</h4>
 
 <p>执行<code class="highlighter-rouge">mvn package</code>会对项目进行打包，假如当前在pom中的packaging设定为jar，那么执行该命令后会在<code class="highlighter-rouge">${basedir}/target</code>目录下生成对应的jar包。</p>
 
-<h4 id="mvn-install">4. mvn install</h4>
+<h4 id="4-mvn-install">4. mvn install</h4>
 
 <p>如果想把<code class="highlighter-rouge">mvn package</code>生成的Jar文件安装在本地库中以让其它项目引用，则可以执行<code class="highlighter-rouge">mvn install</code>命令，将生成的jar包放在<code class="highlighter-rouge">${user.home}/.m2/repository</code>中。</p>
 
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
 
 <p><code class="highlighter-rouge">&lt;configuration&gt;</code>中的配置会应用在对应Plugin的所有Goal。</p>
 
-<h3 id="section">资源文件打包</h3>
+<h3 id="资源文件打包">资源文件打包</h3>
 
 <p><code class="highlighter-rouge">${basedir}/src/main/resources</code>目录下的所有文件都会被打包到Jar文件中，比如如下一个文件结构:</p>
 
@@ -262,7 +262,7 @@ var _hmt = _hmt || [];
         <span class="err">`</span><span class="o">--</span> <span class="n">app</span>
             <span class="err">`</span><span class="o">--</span> <span class="n">App</span><span class="o">.</span><span class="na">class</span></code></pre></figure>
 
-<h3 id="section-1">文件过滤</h3>
+<h3 id="文件过滤">文件过滤</h3>
 
 <p>Maven支持文件过滤的功能，可以在build时候为文件提供变量赋值，比如说上面的<code class="highlighter-rouge">application.properties</code>文件中有如下定义:</p>
 
@@ -357,7 +357,7 @@ var _hmt = _hmt || [];
 
 <p><code class="highlighter-rouge">&lt;dependency&gt;</code>的<code class="highlighter-rouge">&lt;scope&gt;</code>标签的值可以为compile，test和runtime，当Maven编译项目时，它首先会在<code class="highlighter-rouge">${user.home}/.m2/repository</code>这个本地库目录下寻找所需的依赖，如果没有会去远程的库上寻找，并将其下载到本地库中，默认的远程库地址为<code class="highlighter-rouge">http://repo.maven.apache.org/maven2/</code>。</p>
 
-<h3 id="section-2">包的发布</h3>
+<h3 id="包的发布">包的发布</h3>
 
 <p>当需要发布一个包的远程仓库时，需要配置库的地址和相应的权限，一个范例如下:</p>
 
@@ -433,7 +433,7 @@ var _hmt = _hmt || [];
   <span class="o">...</span>
 <span class="o">&lt;/</span><span class="n">settings</span><span class="o">&gt;</span></code></pre></figure>
 
-<h3 id="modules">多Modules管理</h3>
+<h3 id="多modules管理">多Modules管理</h3>
 
 <p>Maven很好的支持了多个Modules的管理，假如一个Maven项目结构如下:</p>
 

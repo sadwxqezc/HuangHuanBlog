@@ -144,5 +144,4 @@ function generateContent() {
         });
         $('#myAffix').width($('#myAffix').parent().width());
     }
-    console.log("myAffix!!!");
 }

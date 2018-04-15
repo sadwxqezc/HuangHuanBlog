@@ -8,8 +8,8 @@
 	<title>VPN搭建小记</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/linux/2016/10/30/VPN%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%A1.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,115 +96,107 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">引言</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">服务器购买</a></li>
-  <li><a href="#pptp" id="markdown-toc-pptp">方案一：PPTP协议搭建</a>    <ul>
-      <li><a href="#ppppptpdiptables" id="markdown-toc-ppppptpdiptables">1.安装ppp，pptpd和iptables</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.修改相关配置</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">3.配置转发规则并启动</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">小结</a></li>
+  <li><a href="#引言" id="markdown-toc-引言">引言</a></li>
+  <li><a href="#服务器购买" id="markdown-toc-服务器购买">服务器购买</a></li>
+  <li><a href="#方案一pptp协议搭建" id="markdown-toc-方案一pptp协议搭建">方案一：PPTP协议搭建</a>    <ul>
+      <li><a href="#1安装ppppptpd和iptables" id="markdown-toc-1安装ppppptpd和iptables">1.安装ppp，pptpd和iptables</a></li>
+      <li><a href="#2修改相关配置" id="markdown-toc-2修改相关配置">2.修改相关配置</a></li>
+      <li><a href="#3配置转发规则并启动" id="markdown-toc-3配置转发规则并启动">3.配置转发规则并启动</a></li>
+      <li><a href="#小结" id="markdown-toc-小结">小结</a></li>
     </ul>
   </li>
-  <li><a href="#l2tpipsec" id="markdown-toc-l2tpipsec">方案二：L2TP/IPsec搭建</a>    <ul>
-      <li><a href="#android-60" id="markdown-toc-android-60">Android 6.0问题</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">同一局域网问题</a></li>
+  <li><a href="#方案二l2tpipsec搭建" id="markdown-toc-方案二l2tpipsec搭建">方案二：L2TP/IPsec搭建</a>    <ul>
+      <li><a href="#android-60问题" id="markdown-toc-android-60问题">Android 6.0问题</a></li>
+      <li><a href="#同一局域网问题" id="markdown-toc-同一局域网问题">同一局域网问题</a></li>
     </ul>
   </li>
-  <li><a href="#section-6" id="markdown-toc-section-6">总结</a></li>
+  <li><a href="#总结" id="markdown-toc-总结">总结</a></li>
 </ul>
 
-<h3 id="section">引言</h3>
+<h3 id="引言">引言</h3>
 
 <p><strong>VPN</strong> 的作用相信大家也很清楚了，我在网上买的几个VPN感觉都不太稳定，速度还慢，所以决定自己搭建一个VPN。网上一般推荐用 <strong>搬瓦工</strong> 和 <strong>Linode</strong> 的 <strong>VPS</strong> 来搭建，但因为我自己还想在服务器上做一些VPN之外的事情，所以选择了阿里云的 <strong>ECS</strong> 来搭建。</p>
 
-<h3 id="section-1">服务器购买</h3>
+<h3 id="服务器购买">服务器购买</h3>
 
 <p><img src="/HuangHuanBlog/pics/aliyun.png" alt="demo" /></p>
 
 <p>如图所示，选择阿里云香港ECS服务器，然后内存的话 <strong>1G</strong> 就足够了，操作系统是 <strong>CentOS 32位</strong>。然后如果是自己用的话，网络一定要选择按流量计费，根据我这几天用的情况，一天流量费几分钱，还是很便宜的，而且带宽可以选大些，速度快。</p>
 
-<h3 id="pptp">方案一：PPTP协议搭建</h3>
+<h3 id="方案一pptp协议搭建">方案一：PPTP协议搭建</h3>
 
 <p>一开始自然是选择最简单的 <strong>PPTP</strong> 协议方式，这个协议没有 <strong>L2TP/IPsec</strong> 安全，但因为是自己用，倒是无所谓了。参考的教程是<a href="http://effmx.com/articles/zai-vpsshang-da-jian-pptp-vpnde-ji-jian-gong-lue/">在VPS上搭建PPTP VPN极简攻略</a>。主要步骤如下：</p>
 
-<h4 id="ppppptpdiptables">1.安装ppp，pptpd和iptables</h4>
-<p><code class="highlighter-rouge">
-yum install -y ppp iptables
+<h4 id="1安装ppppptpd和iptables">1.安装ppp，pptpd和iptables</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum install -y ppp iptables
 yum install pptpd
-</code></p>
+</code></pre></div></div>
 
 <p><a href="http://www.jianshu.com/p/b21c12bf86e8">搬瓦工VPN搭建</a>上说要装 <strong>Perl</strong> 什么了，不过阿里云的机器上貌似不需要。</p>
 
-<h4 id="section-2">2.修改相关配置</h4>
-<p>```
-/** 修改DNS /etc/ppp/options.pptpd */
+<h4 id="2修改相关配置">2.修改相关配置</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/** 修改DNS /etc/ppp/options.pptpd */
 ms-dns 8.8.8.8
-md-dns 8.8.4.4</p>
+md-dns 8.8.4.4
 
-<p>/** 修改服务器IP和分配给客户端的IP /etc/pptpd.conf **/
+/** 修改服务器IP和分配给客户端的IP /etc/pptpd.conf **/
 localip 192.168.0.1 //VPN服务器ip
 remoteip 192.168.0.234-255 //客户端ip
-```</p>
+</code></pre></div></div>
 
-<p><code class="highlighter-rouge">
-/** 允许转发 /etc/sysctl.conf */
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/** 允许转发 /etc/sysctl.conf */
 net.ipv4.ip_forward=1
-</code></p>
+</code></pre></div></div>
 
 <p>修改后，<code class="highlighter-rouge">sysctl -p</code>保存。</p>
 
-<p>```
-/** 配置账号　/etc/ppp/chap-secrets **/
-myusername pptpd mypassword *</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/** 配置账号　/etc/ppp/chap-secrets **/
+myusername pptpd mypassword *
 
-<p>```</p>
+</code></pre></div></div>
 
-<h4 id="section-3">3.配置转发规则并启动</h4>
+<h4 id="3配置转发规则并启动">3.配置转发规则并启动</h4>
 
-<p><code class="highlighter-rouge">
-/home/huanghuan/service iptables start //启动iptables
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/huanghuan/service iptables start //启动iptables
 iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
 (你的服务器的公网地址)
-</code></p>
+</code></pre></div></div>
 
 <p>然后启动VPN</p>
 
-<p><code class="highlighter-rouge">
-/home/huanghuan/service pptpd restart
-</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/huanghuan/service pptpd restart
+</code></pre></div></div>
 
-<h4 id="section-4">小结</h4>
+<h4 id="小结">小结</h4>
 
 <p>然后你就可以通过 <strong>PPTP</strong> 来连接VPN并使用了，但是在这里我却发现个问题，升级后的IOS，OSX不支持PPTP了。。。，这就很尴尬了，虽然Android是可以用的，但做个半成品出来就没啥意思了。而且我还发现即使在没升级的OSX上用，速度还很慢，所以这个方案就废弃了。</p>
 
-<h3 id="l2tpipsec">方案二：L2TP/IPsec搭建</h3>
+<h3 id="方案二l2tpipsec搭建">方案二：L2TP/IPsec搭建</h3>
 
 <p><strong>L2TP</strong> 据说吞吐量比 <strong>PPTP</strong> 大很多，我在网上直接找了一个一件配置脚本来用，参见<a href="https://teddysun.com/448.html">L2TP/IPSec一键安装脚本</a>。这个脚本装完之后其实还有不少问题，首先它的安装脚本是<code class="highlighter-rouge">l2tp.sh</code>，然后安装后会生成一个<code class="highlighter-rouge">l2tp.log</code>，在里面可能会报一些错，然后自己对着这些错去搜解决方法，倒是很快。解决了报错的问题，并重新执行<code class="highlighter-rouge">l2tp.sh</code>后，我能够连接VPN，但却上不了了网。这个问题倒是很好解决，因为这种情况肯定是VPN服务器没有把客户端的请求转发出去，所以我重新配了下 <strong>IPtables</strong>。</p>
 
-<p><code class="highlighter-rouge">
-iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source outerIp
 (你的服务器的公网地址)
-</code></p>
+</code></pre></div></div>
 
 <p>之后就能在IOS和MAC上连接这个VPN了。</p>
 
-<h4 id="android-60">Android 6.0问题</h4>
+<h4 id="android-60问题">Android 6.0问题</h4>
 
 <p>以为已经搞定了，但之后又发现了一个问题，Android特么又连不上了。。。，又是一通搜，发现这居然是个Android的Bug。在Google的论坛上<a href="https://code.google.com/p/android/issues/detail?id=196939">Issuce 196930: L2TP/IPsec VPN does not work in Android 6.0.1</a>，我们的大Google都被用户骂成狗了。参考了一下论坛中用户的解决方法，在<code class="highlighter-rouge">/etc/ipsec.conf</code>中添加这些配置：</p>
 
-<p><code class="highlighter-rouge">
-ike=aes256-sha2_256
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ike=aes256-sha2_256
 phase2alg=aes256-sha2_256
 sha2-truncbug=yes
-</code></p>
+</code></pre></div></div>
 
 <p>这个问题的原因是Android的L2TP/IPsec实现有问题，而且还是个存在了很久了的问题。</p>
 
-<h4 id="section-5">同一局域网问题</h4>
+<h4 id="同一局域网问题">同一局域网问题</h4>
 
 <p>既然Android，IOS/OSX都可以了，那问题按理说应该到此结束了。但后来发现如果在同一个局域网里，同时用IPsec/L2TP的方式连VPN，有一个会被顶掉（我的情况都是OSX被顶掉）。这个问题应该是因为局域网里的机器出网IP是一样的，应该在局域网内做一些配置可能才行，不过我就没去研究这个了。如果觉得是个问题，可以OSX用IPsec/L2TP，然后Android用L2TP，这样是可以在同一局域网里同时用的。</p>
 
-<h3 id="section-6">总结</h3>
+<h3 id="总结">总结</h3>
 
 <p>VPN的配置总的来说还是挺简单的，不过其中的原理还没有深入理解，我大概看了下PPTP和L2TP/IPsec的原理，也算挺复杂的了，以后有需要可以去研究下。</p>
 

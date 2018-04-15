@@ -6,10 +6,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shell脚本学习 初阶</title>
-	<meta name="description" content="  范例代码(Mac下)  基本知识介绍  基本语法范例代码(Mac下)以一段Git代码提交脚本为例：1  # 添加目录下所有文件2  git add . 3  # message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。4  message=`date +%Y-%m-%d-...">
+	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/07/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/shell/2016/03/07/Linux%E4%B9%8BShell%E8%84%9A%E6%9C%AC.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,16 +96,16 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#mac" id="markdown-toc-mac">范例代码(Mac下)</a></li>
-  <li><a href="#section" id="markdown-toc-section">基本知识介绍</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">基本语法</a></li>
+  <li><a href="#范例代码mac下" id="markdown-toc-范例代码mac下">范例代码(Mac下)</a></li>
+  <li><a href="#基本知识介绍" id="markdown-toc-基本知识介绍">基本知识介绍</a></li>
+  <li><a href="#基本语法" id="markdown-toc-基本语法">基本语法</a></li>
 </ul>
 
-<h2 id="mac">范例代码(Mac下)</h2>
+<h2 id="范例代码mac下">范例代码(Mac下)</h2>
 
 <p>以一段Git代码提交脚本为例：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1  # 添加目录下所有文件
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1  # 添加目录下所有文件
 2  git add . 
 3  # message为git commit的值，默认值为当前时间，``间包含字符串将被按照命令执行。
 4  message=`date +%Y-%m-%d-%H-%M`
@@ -129,14 +129,13 @@ var _hmt = _hmt || [];
 22 # git提交message信息
 23 git commit -m "$message"
 24 git push origin gh-pages
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Git代码提交脚本执行效果截图：</p>
 
 <p><img src="/HuangHuanBlog/pics/git_shell.png" alt="Git代码提交" /></p>
 
-<h2 id="section">基本知识介绍</h2>
+<h2 id="基本知识介绍">基本知识介绍</h2>
 <p>参考：<a href="http://www.jianshu.com/p/4b7f99486cab">Shell脚本30分钟入门</a></p>
 
 <p>一般所指的Shell是指Shell脚本（Shell script），是为Shell编写的脚本程序。而Shell本身是用户访问操作系统内核服务的程序界面，Shell编程与其它语言类似，只需要编写代码的编辑器和能够解释执行的程序即可。Bourne shell是标准的Shell解释器，其所在路径往往是<code class="highlighter-rouge">/bin/sh</code>。</p>
@@ -145,7 +144,7 @@ var _hmt = _hmt || [];
 
 <hr />
 
-<h2 id="section-1">基本语法</h2>
+<h2 id="基本语法">基本语法</h2>
 <p><br /></p>
 <h4><b>Shell变量</b></h4>
 <ul>
@@ -157,15 +156,14 @@ var _hmt = _hmt || [];
   <p>代码范例：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1 #! /bin/sh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 #! /bin/sh
 2 count=0
 3 for testVar in Let us learn Shell
 4 do
 5     echo "Word:${testVar}_Number:$count"
 6     ((count++))
 7 done
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>脚本执行结果：</p>
@@ -189,7 +187,7 @@ var _hmt = _hmt || [];
   <p>代码范例：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1  #! /bin/sh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1  #! /bin/sh
 2  testString='this is a test'
 3  echo '$testString'
 4  echo "$testString"
@@ -199,8 +197,7 @@ var _hmt = _hmt || [];
 8  echo $testString
 9  echo "The length: ${#testString}"
 10 echo "Part of the string: ${testString:1:7}"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>脚本执行结果：</p>
@@ -214,7 +211,7 @@ var _hmt = _hmt || [];
 参考：<a href="http://blog.csdn.net/taiyang1987912/article/details/39551385">Shell中各种括号的作用</a></p>
 
 <ul>
-  <li>Shell中大括号<code class="highlighter-rouge"><span class="p">{}</span></code>可以用来限定变量名称的范围</li>
+  <li>Shell中大括号<code class="highlighter-rouge">{}</code>可以用来限定变量名称的范围</li>
   <li>Shell中<code>``</code>和<code>()</code>，可以执行其中的命令并读出结果</li>
   <li><code>(())</code>中支持POSIX标准的计算，符合C语言的运算符都可以用在其中，表达式真值为1，假则为0</li>
   <li><code>[]</code>中放置条件表达式</li>
@@ -224,13 +221,12 @@ var _hmt = _hmt || [];
   <p>代码范例：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1  #! /bin/sh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1  #! /bin/sh
 2  if ((1))
 3  then
 4      echo $(pwd)
 5  fi
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>脚本执行结果：</p>
@@ -244,7 +240,7 @@ var _hmt = _hmt || [];
   <p>if else代码范例：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1  if condition
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1  if condition
 2  then
 3      phase one
 4      phase two
@@ -255,14 +251,13 @@ var _hmt = _hmt || [];
 9      #else后不能为空
 10      phase four
 1 fi
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>for while代码范例：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># for (shell)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># for (shell)
 1  for param in paramOne paramTwo ... paramN
 2  do
 3      phase one
@@ -279,14 +274,13 @@ var _hmt = _hmt || [];
 2  do
 3     phase one
 4  done
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>case 代码范例：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1  case $opt in
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1  case $opt in
 2       valueOne)
 3          phase one
 4          ;;
@@ -296,8 +290,7 @@ var _hmt = _hmt || [];
 8       *)
 9          echo "error"
 10 esac
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><br /></p>
 <h4><b>Shell函数</b></h4>
@@ -305,7 +298,7 @@ var _hmt = _hmt || [];
   <p>代码范例：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1  #! /bin/sh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1  #! /bin/sh
 2 
 3  function add(){
 4    if [ $# != 2 ]
@@ -318,8 +311,7 @@ var _hmt = _hmt || [];
 11
 12 add 1 2
 13 echo "1+2=$?"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>执行结果：</p>

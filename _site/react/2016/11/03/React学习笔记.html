@@ -8,8 +8,8 @@
 	<title>React学习笔记</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/11/03/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/react/2016/11/03/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,37 +96,37 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#react" id="markdown-toc-react">React学习笔记</a>    <ul>
+  <li><a href="#react学习笔记" id="markdown-toc-react学习笔记">React学习笔记</a>    <ul>
       <li><a href="#jsx" id="markdown-toc-jsx">JSX</a>        <ul>
-          <li><a href="#section" id="markdown-toc-section">范例</a></li>
-          <li><a href="#dom" id="markdown-toc-dom">非DOM属性</a></li>
-          <li><a href="#section-1" id="markdown-toc-section-1">事件</a></li>
+          <li><a href="#范例" id="markdown-toc-范例">范例</a></li>
+          <li><a href="#非dom属性" id="markdown-toc-非dom属性">非DOM属性</a></li>
+          <li><a href="#事件" id="markdown-toc-事件">事件</a></li>
         </ul>
       </li>
-      <li><a href="#section-2" id="markdown-toc-section-2">组建生命周期</a>        <ul>
-          <li><a href="#section-3" id="markdown-toc-section-3">首次使用组件时</a></li>
-          <li><a href="#section-4" id="markdown-toc-section-4">之后使用该组件时</a></li>
-          <li><a href="#section-5" id="markdown-toc-section-5">应用状态改变时</a></li>
-          <li><a href="#section-6" id="markdown-toc-section-6">销毁时</a></li>
+      <li><a href="#组建生命周期" id="markdown-toc-组建生命周期">组建生命周期</a>        <ul>
+          <li><a href="#首次使用组件时" id="markdown-toc-首次使用组件时">首次使用组件时</a></li>
+          <li><a href="#之后使用该组件时" id="markdown-toc-之后使用该组件时">之后使用该组件时</a></li>
+          <li><a href="#应用状态改变时" id="markdown-toc-应用状态改变时">应用状态改变时</a></li>
+          <li><a href="#销毁时" id="markdown-toc-销毁时">销毁时</a></li>
         </ul>
       </li>
-      <li><a href="#section-7" id="markdown-toc-section-7">数据流</a>        <ul>
+      <li><a href="#数据流" id="markdown-toc-数据流">数据流</a>        <ul>
           <li><a href="#props" id="markdown-toc-props">Props</a></li>
           <li><a href="#state" id="markdown-toc-state">State</a></li>
-          <li><a href="#propsstate" id="markdown-toc-propsstate">Props和State存放数据</a></li>
+          <li><a href="#props和state存放数据" id="markdown-toc-props和state存放数据">Props和State存放数据</a></li>
         </ul>
       </li>
-      <li><a href="#section-8" id="markdown-toc-section-8">事件处理</a>        <ul>
+      <li><a href="#事件处理" id="markdown-toc-事件处理">事件处理</a>        <ul>
           <li><a href="#setstate" id="markdown-toc-setstate">setState</a></li>
           <li><a href="#replacestate" id="markdown-toc-replacestate">replaceState</a></li>
         </ul>
       </li>
-      <li><a href="#section-9" id="markdown-toc-section-9">组件的复合</a></li>
+      <li><a href="#组件的复合" id="markdown-toc-组件的复合">组件的复合</a></li>
       <li><a href="#mixin" id="markdown-toc-mixin">Mixin</a></li>
-      <li><a href="#dom-1" id="markdown-toc-dom-1">DOM操作</a></li>
-      <li><a href="#section-10" id="markdown-toc-section-10">表单</a>        <ul>
-          <li><a href="#section-11" id="markdown-toc-section-11">无约束组件</a></li>
-          <li><a href="#section-12" id="markdown-toc-section-12">约束组件</a></li>
+      <li><a href="#dom操作" id="markdown-toc-dom操作">DOM操作</a></li>
+      <li><a href="#表单" id="markdown-toc-表单">表单</a>        <ul>
+          <li><a href="#无约束组件" id="markdown-toc-无约束组件">无约束组件</a></li>
+          <li><a href="#约束组件" id="markdown-toc-约束组件">约束组件</a></li>
         </ul>
       </li>
       <li><a href="#react-router" id="markdown-toc-react-router">React Router</a></li>
@@ -134,7 +134,7 @@ var _hmt = _hmt || [];
   </li>
 </ul>
 
-<h1 id="react">React学习笔记</h1>
+<h1 id="react学习笔记">React学习笔记</h1>
 
 <p>来自 <em>《React 引领未来的用户界面开发框架》</em>一书</p>
 
@@ -144,21 +144,21 @@ var _hmt = _hmt || [];
   <p>JavaScript XML，一种在React组建内部构建标签的类XML语法，实际会被转换成JavaScript函数。JSX的表达能力很强，也很适合组件化的React开发。</p>
 </blockquote>
 
-<h3 id="section">范例</h3>
+<h3 id="范例">范例</h3>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">//编写一个Divider
-var Divider = React.createClass({
-  render: function(){
-    &lt;div className="divider"&gt;
-    	&lt;h2&gt;{this.props.children}&lt;/h2&gt;&lt;hr/&gt;
-    &lt;/div&gt;
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="c1">//编写一个Divider</span>
+<span class="kd">var</span> <span class="nx">Divider</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"divider"</span><span class="o">&gt;</span>
+    	<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">hr</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="err">/</span><span class="nt">div</span><span class="p">&gt;</span>
   }
 })
 
 //Divider调用
-&lt;Divider&gt;Questions&lt;/Divider&gt;</code></pre></figure>
+<span class="p">&lt;</span><span class="nc">Divider</span><span class="p">&gt;</span>Questions<span class="p">&lt;/</span><span class="nc">Divider</span><span class="p">&gt;</span></code></pre></figure>
 
-<h3 id="dom">非DOM属性</h3>
+<h3 id="非dom属性">非DOM属性</h3>
 
 <ul>
   <li><code class="highlighter-rouge">key</code>  可选的唯一标志符，便于React渲染时重用</li>
@@ -166,22 +166,22 @@ var Divider = React.createClass({
   <li><code class="highlighter-rouge">dangerouslySetInnerHTML</code> 在需要将HTML内容设置为字符串时使用</li>
 </ul>
 
-<h3 id="section-1">事件</h3>
+<h3 id="事件">事件</h3>
 
 <blockquote>
   <p>事件已经被规范化，并同统一用驼峰形式表示。</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">handleClick: function(event){...},
-render: function(){
-  return &lt;div onClick={this.handleClick}&gt;...&lt;/div&gt;
-}</code></pre></figure>
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="nx">handleClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){...},</span>
+<span class="nx">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">onClick=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="si">}</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>实际上，如CSS的表示也是用这样的形式。</p>
 
-<h2 id="section-2">组建生命周期</h2>
+<h2 id="组建生命周期">组建生命周期</h2>
 
-<h3 id="section-3">首次使用组件时</h3>
+<h3 id="首次使用组件时">首次使用组件时</h3>
 
 <ol>
   <li><code class="highlighter-rouge">getDefaultProps</code> 可以为实例设置默认的<code class="highlighter-rouge">props</code>值</li>
@@ -191,7 +191,7 @@ render: function(){
   <li><code class="highlighter-rouge">componentDidMount</code>可以在该方法中通过调用<code class="highlighter-rouge">this.getDOMNode()</code>来访问真实的DOM，可以在这里调用如JQuery等工具。如果React运行在服务端，该方法不会被调用</li>
 </ol>
 
-<h3 id="section-4">之后使用该组件时</h3>
+<h3 id="之后使用该组件时">之后使用该组件时</h3>
 
 <ol>
   <li><code class="highlighter-rouge">getInitialState</code></li>
@@ -200,7 +200,7 @@ render: function(){
   <li><code class="highlighter-rouge">componentDidMount</code></li>
 </ol>
 
-<h3 id="section-5">应用状态改变时</h3>
+<h3 id="应用状态改变时">应用状态改变时</h3>
 
 <ol>
   <li><code class="highlighter-rouge">componentWillReceivProps</code> 组件的props可以通过父辈组件来修改，此时该方法将被调用</li>
@@ -210,11 +210,11 @@ render: function(){
   <li><code class="highlighter-rouge">componentDidUpdate</code>和<code class="highlighter-rouge">componentDidMount</code>类似</li>
 </ol>
 
-<h3 id="section-6">销毁时</h3>
+<h3 id="销毁时">销毁时</h3>
 
 <p>调用<code class="highlighter-rouge">componentWillUnmount</code>，可以在这个方法中做一些清理工作，比如创建的定时器或者添加的事件监听器</p>
 
-<h2 id="section-7">数据流</h2>
+<h2 id="数据流">数据流</h2>
 
 <blockquote>
   <p>React中数据流是单向的，从父节点传递到子节点，因而组件是简单且易于把握的，组件只需要从父节点获取props渲染即可。如果顶层组件的某个prop改变了，React会递归地向下遍历整棵组件树，重新渲染所有使用这个属性的组件。</p>
@@ -226,9 +226,9 @@ render: function(){
   <p>Props即为properties，能够把任意类型的数据传递给组件。</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">//挂载数据时设置组件的props
-var components=[{title:'test_0'},{title:'test_1'}];
-&lt;ListComponents components={components}/&gt;</code></pre></figure>
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="c1">//挂载数据时设置组件的props</span>
+<span class="kd">var</span> <span class="nx">components</span><span class="o">=</span><span class="p">[{</span><span class="na">title</span><span class="p">:</span><span class="s1">'test_0'</span><span class="p">},{</span><span class="na">title</span><span class="p">:</span><span class="s1">'test_1'</span><span class="p">}];</span>
+<span class="p">&lt;</span><span class="nc">ListComponents</span> <span class="na">components=</span><span class="si">{</span><span class="nx">components</span><span class="si">}</span><span class="p">/&gt;</span></code></pre></figure>
 
 <p>可以通过<code class="highlighter-rouge">this.props</code>来访问组件的<code class="highlighter-rouge">props</code>，但不能通过这种方式修改它，一个组件绝对不可以自己修改自己的<code class="highlighter-rouge">props</code>。<code class="highlighter-rouge">props</code>可以是字符串，对象，事件处理器等。可以使用<code class="highlighter-rouge">PropTypes</code>来验证<code class="highlighter-rouge">props</code>的类型，推荐使用。</p>
 
@@ -240,23 +240,23 @@ var components=[{title:'test_0'},{title:'test_1'}];
 
 <p><code class="highlighter-rouge">state</code>的值应该通过<code class="highlighter-rouge">this.setState()</code>修改，只要该状态被修改，<code class="highlighter-rouge">render</code>方法就会被调用，然后导致之后的一系列变化。状态总是让组件变得更加复杂，把状态针对不同的组件独立开来，能更有利于调试。</p>
 
-<h3 id="propsstate">Props和State存放数据</h3>
+<h3 id="props和state存放数据">Props和State存放数据</h3>
 
 <p><code class="highlighter-rouge">state</code>中不要保存计算出的值，而应该保存最简单的数据，即为组件工作时的必要数据。而<code class="highlighter-rouge">props</code>用来作为数据源，保证数据的单向流动。</p>
 
-<h2 id="section-8">事件处理</h2>
+<h2 id="事件处理">事件处理</h2>
 
 <p>绑定方式实际上和JavaScript并没太大差别，例如：</p>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">var Demo = React.createClass({
-  render: function(){
-    &lt;div onClick={this.handleClick}&gt;Click here&lt;/div&gt;
-  }
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="kd">var</span> <span class="nx">Demo</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Click</span> <span class="nx">here</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">}</span>
 
-  handleClick: function(event){
-    this.setState({isClicked : true});
-  }
-});</code></pre></figure>
+  <span class="nl">handleClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">isClicked</span> <span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
 
 <h3 id="setstate">setState</h3>
 
@@ -266,138 +266,138 @@ var components=[{title:'test_0'},{title:'test_1'}];
 
 <p>将<code class="highlighter-rouge">state</code>整个替换为新的</p>
 
-<h2 id="section-9">组件的复合</h2>
+<h2 id="组件的复合">组件的复合</h2>
 
 <blockquote>
   <p>React的一个突出特点是构建组件的能力，实际上React代码主要就是构建组件，就像编写HTML文档时使用元素一样。</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">// 封装一个radio input作为子组件
-var AnswerRadioInput = React.createClass({
-  	propTypes : {
-     	id: React.PropTypes.string,
-      	name: React.PropTypes.string.isRequired,
-      	label: React.PropTypes.string.isRequired,
-      	value: React.PropTypes.string.isRequired,
-      	checked: React.PropTypes.bool
-  	},
-  	getDefaultProps : function(){
-      retrun{
-        id: null,
-        checked:false
-      }
-  	},
-    getInitialState : function(){
-      var id = this.props.id? this.props.id : uniqueId('radio-');
-      return {
-        checked : this.props.checked,
-        id : id,
-        name : id
-      }
-    },
-    render : function(){
-      return (
-        &lt;div className="radio"&gt;
-          &lt;!-- htmlFor表示该Label为哪个控件服务，点击该label时，所比绑定的元素将获得焦点 --&gt;
-          &lt;label htmlFor={this.props.id}&gt;
-            &lt;input type="radio"
-              name={this.props.name}
-              id={this.props.id}
-              value={this.props.value}
-              checked={this.state.checked}/&gt;
-            	{this.props.label}
-          &lt;/label&gt;
-        &lt;/div&gt;
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="c1">// 封装一个radio input作为子组件</span>
+<span class="kd">var</span> <span class="nx">AnswerRadioInput</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  	<span class="na">propTypes</span> <span class="p">:</span> <span class="p">{</span>
+     	<span class="na">id</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
+      	<span class="na">name</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+      	<span class="na">label</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+      	<span class="na">value</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+      	<span class="na">checked</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">bool</span>
+  	<span class="p">},</span>
+  	<span class="na">getDefaultProps</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">retrun</span><span class="p">{</span>
+        <span class="na">id</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">checked</span><span class="p">:</span><span class="kc">false</span>
+      <span class="p">}</span>
+  	<span class="p">},</span>
+    <span class="na">getInitialState</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">id</span><span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">id</span> <span class="p">:</span> <span class="nx">uniqueId</span><span class="p">(</span><span class="s1">'radio-'</span><span class="p">);</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">checked</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">checked</span><span class="p">,</span>
+        <span class="na">id</span> <span class="p">:</span> <span class="nx">id</span><span class="p">,</span>
+        <span class="na">name</span> <span class="p">:</span> <span class="nx">id</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">render</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className=</span><span class="s2">"radio"</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="err">!--</span> <span class="nt">htmlFor</span><span class="err">表示该</span><span class="nc">Label</span><span class="err">为哪个控件服务，点击该</span><span class="nt">label</span><span class="err">时，所比绑定的元素将获得焦点</span> <span class="err">--</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span> <span class="na">htmlFor=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type=</span><span class="s2">"radio"</span>
+              <span class="na">name=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span>
+              <span class="na">id=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span>
+              <span class="na">value=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span>
+              <span class="na">checked=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">checked</span><span class="si">}</span><span class="p">/&gt;</span>
+            	<span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">label</span><span class="si">}</span>
+          <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
       )
     }
 });</code></pre></figure>
 
 <p>以上构建了一个<code class="highlighter-rouge">AnswerRadioInput</code>组件，之后构建一个<code class="highlighter-rouge">AnswerMultipleChoiceQuestion</code>来组合这一组件。</p>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">// 父组件
-var AnswerMultipleChoiceQuestion = React.createClass({
-	propTyes: {
-	  value: React.PropTypes.string,
-	  choices: React.PropTypes.array.isRequired,
-	  onCompleted: React.PropTyes.func.isRequired
-	},
-  	getInitialState: function(){
-      return {
-        id: uniqueId('multiple-choice-'),
-        value: this.props.value
-      }
-  	},
-  	renderChoices: function(){
-      return this.props.choices.map(function(choice,i){
-        return AnswerRadioInput({
-          id: "choice-"+i,
-          name: this.state.id,
-          label: choice,
-          value: choice,
-          checked: this.state.value === choice
-        });
-      }.bind(this))
-  	},
-  	render: function(){
-      return (
-        &lt;div className="form-group"&gt;
-        	&lt;label className="survey-item-label" htmlFor={this.state.id}&gt;
-              	{this.props.label}
-          	&lt;/label&gt;
-          	&lt;div className="survey-item-content"&gt;
-          		{this.renderChoices()}
-          	&lt;/div&gt;
-        &lt;/div&gt;
-      );
-  	}
-});</code></pre></figure>
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="c1">// 父组件</span>
+<span class="kd">var</span> <span class="nx">AnswerMultipleChoiceQuestion</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+	<span class="na">propTyes</span><span class="p">:</span> <span class="p">{</span>
+	  <span class="na">value</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
+	  <span class="na">choices</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">array</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+	  <span class="na">onCompleted</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTyes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span>
+	<span class="p">},</span>
+  	<span class="na">getInitialState</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">id</span><span class="p">:</span> <span class="nx">uniqueId</span><span class="p">(</span><span class="s1">'multiple-choice-'</span><span class="p">),</span>
+        <span class="na">value</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span>
+      <span class="p">}</span>
+  	<span class="p">},</span>
+  	<span class="na">renderChoices</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">choices</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">choice</span><span class="p">,</span><span class="nx">i</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">AnswerRadioInput</span><span class="p">({</span>
+          <span class="na">id</span><span class="p">:</span> <span class="s2">"choice-"</span><span class="o">+</span><span class="nx">i</span><span class="p">,</span>
+          <span class="na">name</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+          <span class="na">label</span><span class="p">:</span> <span class="nx">choice</span><span class="p">,</span>
+          <span class="na">value</span><span class="p">:</span> <span class="nx">choice</span><span class="p">,</span>
+          <span class="na">checked</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">choice</span>
+        <span class="p">});</span>
+      <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+  	<span class="p">},</span>
+  	<span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className=</span><span class="s2">"form-group"</span><span class="p">&gt;</span>
+        	<span class="p">&lt;</span><span class="nt">label</span> <span class="na">className=</span><span class="s2">"survey-item-label"</span> <span class="na">htmlFor=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&gt;</span>
+              	<span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">label</span><span class="si">}</span>
+          	<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          	<span class="p">&lt;</span><span class="nt">div</span> <span class="na">className=</span><span class="s2">"survey-item-content"</span><span class="p">&gt;</span>
+          		<span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderChoices</span><span class="p">()</span><span class="si">}</span>
+          	<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">);</span>
+  	<span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
 
 <p>此时存在一个问题，子组件没办法把自身的变化通知给父组件，因此，父组件需要关联子组件才能知道其更新。方法实际上就是回调，父组件通过向子组件中传入一个回调函数，子组件在需要时调用。</p>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">//父组件传入回调函数
-var AnswerMultipleChoiceQuestion = React.createClass({
-  ...
-  handleChanged: function(value){
-    this.setState({value:value});
-    this.props.onCompleted(value);
-  },
-  renderChoices: function(){
-    return this.props.choices.map(function(choice, i){
-      return AnswerRadioInput({
-        ...
-        onChanged: this.handleChanged
-      });
-    }.bind(this));
-  },
-});
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="c1">//父组件传入回调函数</span>
+<span class="kd">var</span> <span class="nx">AnswerMultipleChoiceQuestion</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="na">handleChanged</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">value</span><span class="p">:</span><span class="nx">value</span><span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onCompleted</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">renderChoices</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">choices</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">choice</span><span class="p">,</span> <span class="nx">i</span><span class="p">){</span>
+      <span class="k">return</span> <span class="nx">AnswerRadioInput</span><span class="p">({</span>
+        <span class="p">...</span>
+        <span class="na">onChanged</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleChanged</span>
+      <span class="p">});</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+  <span class="p">},</span>
+<span class="p">});</span>
 
-//子组件调用回调
-var AnswerRadioInpu = React.createClass({
-  propTypes: {
-    ...
-    onChanged: React.PropTypes.func.isRequired
-  },
-  handleChanged: function(event){
-    //event.target 找到事件的触发对象input
-    var checked = event.target.checked;
-    this.setState({checked: checked});
-    if(checked){
-      this.props.onChange(this.props.value);
-    }
-  },
-  render: function(){
-    return(
-      &lt;div className="radio"&gt;
-        &lt;label htmlFor={this.state.id}&gt;
-        	&lt;input type="radio"
-              ...
-              onChange={this.handleChanged}/&gt;
-          	{this.props.label}
-        &lt;/label&gt;
-      &lt;/div&gt;
-    )
-  }
-})</code></pre></figure>
+<span class="c1">//子组件调用回调</span>
+<span class="kd">var</span> <span class="nx">AnswerRadioInpu</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="na">propTypes</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="na">onChanged</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span>
+  <span class="p">},</span>
+  <span class="na">handleChanged</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="c1">//event.target 找到事件的触发对象input</span>
+    <span class="kd">var</span> <span class="nx">checked</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">checked</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">checked</span><span class="p">:</span> <span class="nx">checked</span><span class="p">});</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">checked</span><span class="p">){</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChange</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span><span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className=</span><span class="s2">"radio"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">htmlFor=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&gt;</span>
+        	<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type=</span><span class="s2">"radio"</span>
+              <span class="p">...</span>
+              <span class="na">onChange=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChanged</span><span class="si">}</span><span class="p">/&gt;</span>
+          	<span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">label</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span></code></pre></figure>
 
 <h2 id="mixin">Mixin</h2>
 
@@ -405,102 +405,102 @@ var AnswerRadioInpu = React.createClass({
   <p>mixin允许我们定义可以在多个组件中共用的方法</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">// 定义IntervalMixin
-var IntervalMixin = {
-​	setInterval: function(callback, interval){
-​		var token = setInterval(callback, interval);
-​		this.__intervals.push(token);
-​		return token;
-​	},
-​	componentDidMount: function(){
-​		this.__intervals=[];
-​	},
-​	componentWillUnmount: function(){
-​		this.__intervals.map(clearInterval);
-​	}
-}；
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="c1">// 定义IntervalMixin</span>
+<span class="kd">var</span> <span class="nx">IntervalMixin</span> <span class="o">=</span> <span class="p">{</span>
+<span class="err">​</span>	<span class="na">setInterval</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">interval</span><span class="p">){</span>
+<span class="err">​</span>		<span class="kd">var</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">interval</span><span class="p">);</span>
+<span class="err">​</span>		<span class="k">this</span><span class="p">.</span><span class="nx">__intervals</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+<span class="err">​</span>		<span class="k">return</span> <span class="nx">token</span><span class="p">;</span>
+<span class="err">​</span>	<span class="p">},</span>
+<span class="err">​</span>	<span class="na">componentDidMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="k">this</span><span class="p">.</span><span class="nx">__intervals</span><span class="o">=</span><span class="p">[];</span>
+<span class="err">​</span>	<span class="p">},</span>
+<span class="err">​</span>	<span class="na">componentWillUnmount</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="k">this</span><span class="p">.</span><span class="nx">__intervals</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">clearInterval</span><span class="p">);</span>
+<span class="err">​</span>	<span class="p">}</span>
+<span class="p">}</span><span class="err">；</span>
 
-//定义组件
-var Since2014 = React.createClass({
-​	//实际相当于把mixins中的内容解构了出来，放在了Since2014中
-​	mixins: [IntervalMixin],
-​	componentDidMount: function(){
-​		this.setInterval(this.forceUpdate.bind(this),1000);
-​	},
-​	render: function()	{
-​		var from = Number(new Date(2014, 0, 1));
-​		var to =Date.now();
-​		return (
-​			&lt;div&gt;{Math.round((to-from)/1000)}&lt;/div&gt;
+<span class="c1">//定义组件</span>
+<span class="kd">var</span> <span class="nx">Since2014</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<span class="err">​</span>	<span class="c1">//实际相当于把mixins中的内容解构了出来，放在了Since2014中</span>
+<span class="err">​</span>	<span class="na">mixins</span><span class="p">:</span> <span class="p">[</span><span class="nx">IntervalMixin</span><span class="p">],</span>
+<span class="err">​</span>	<span class="na">componentDidMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="k">this</span><span class="p">.</span><span class="nx">setInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">forceUpdate</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span><span class="mi">1000</span><span class="p">);</span>
+<span class="err">​</span>	<span class="p">},</span>
+<span class="err">​</span>	<span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span>	<span class="p">{</span>
+<span class="err">​</span>		<span class="kd">var</span> <span class="k">from</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="err">​</span>		<span class="kd">var</span> <span class="nx">to</span> <span class="o">=</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="err">​</span>		<span class="k">return</span> <span class="p">(</span>
+<span class="err">​</span>			<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">to</span><span class="o">-</span><span class="k">from</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)}&lt;</span><span class="err">/</span><span class="nt">div</span><span class="p">&gt;</span>
 ​		);
 ​	}
 });</code></pre></figure>
 
-<h2 id="dom-1">DOM操作</h2>
+<h2 id="dom操作">DOM操作</h2>
 
 <blockquote>
   <p>在某些情况下，为了实现某些需求就不得不去操作底层的DOM。最常见的场景包括：需要与一个没有使用React的第三方类库进行整合，或者执行一个React没有原生支持的操作。</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">var DoodleArea = React.createClass({
-​	render: function(){
-​		//通过设定一个ref属性，之后可以通过this.refs.mainCanvas来访问到&lt;canvas&gt;组件
-​		return &lt;canvas ref="mainCanvas"/&gt;;
-​	}，
-​	componentDisMount: function(){
-​		//在这里通过getDOMNode()方法来访问到底层的DOM节点，也可以在事件处理器中调用
-​		var canvasNode= this.refs.mainCanvas.getDOMNode();
-​	}
-});</code></pre></figure>
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="kd">var</span> <span class="nx">DoodleArea</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<span class="err">​</span>	<span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="c1">//通过设定一个ref属性，之后可以通过this.refs.mainCanvas来访问到&lt;canvas&gt;组件</span>
+<span class="err">​</span>		<span class="k">return</span> <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">ref=</span><span class="s2">"mainCanvas"</span><span class="p">/&gt;;</span>
+<span class="err">​</span>	<span class="p">}</span><span class="err">，</span>
+<span class="err">​</span>	<span class="na">componentDisMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="c1">//在这里通过getDOMNode()方法来访问到底层的DOM节点，也可以在事件处理器中调用</span>
+<span class="err">​</span>		<span class="kd">var</span> <span class="nx">canvasNode</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">mainCanvas</span><span class="p">.</span><span class="nx">getDOMNode</span><span class="p">();</span>
+<span class="err">​</span>	<span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
 
-<h2 id="section-10">表单</h2>
+<h2 id="表单">表单</h2>
 
-<h3 id="section-11">无约束组件</h3>
+<h3 id="无约束组件">无约束组件</h3>
 
 <blockquote>
   <p>组件本身控制其值</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">var MyForm = React.createClass({
-​	submitHandler: function(event){
-​		event.preventDefault();
-​		var text=this.refs.text.getDOMNode().value;
-​		alert(helloTo);
-​	},
-​	render: function(){
-​		return (
-​			&lt;form onSubmit={this.submitHandler}&gt;
-​				&lt;input ref="text" type="text" defaultValue="Hello world!"/&gt;
-​				&lt;br/&gt;
-​				&lt;button type="submit"&gt;Submit&lt;/button&gt;
-​			&lt;/form&gt;
-​		);
-​	}
-});</code></pre></figure>
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="kd">var</span> <span class="nx">MyForm</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<span class="err">​</span>	<span class="na">submitHandler</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+<span class="err">​</span>		<span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="err">​</span>		<span class="kd">var</span> <span class="nx">text</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">getDOMNode</span><span class="p">().</span><span class="nx">value</span><span class="p">;</span>
+<span class="err">​</span>		<span class="nx">alert</span><span class="p">(</span><span class="nx">helloTo</span><span class="p">);</span>
+<span class="err">​</span>	<span class="p">},</span>
+<span class="err">​</span>	<span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="k">return</span> <span class="p">(</span>
+<span class="err">​</span>			<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">submitHandler</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="err">​</span>				<span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="s2">"text"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="nx">defaultValue</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="o">/&gt;</span>
+<span class="err">​</span>				<span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+<span class="err">​</span>				<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"submit"</span><span class="o">&gt;</span><span class="nx">Submit</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+​</span>			<span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+​</span>		<span class="p">);</span>
+<span class="err">​</span>	<span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
 
-<h3 id="section-12">约束组件</h3>
+<h3 id="约束组件">约束组件</h3>
 
 <blockquote>
   <p>约束组件的值被存储在state中，由React控制</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">var MyForm = React.createClass({
-​	getInitialState: function(){
-​		return {
-​			text: 'hello world!'
-​		}
-​	},
-​	…
-​	render: function(){
-​		return (
-​			&lt;form onSubmit={this.submitHandler}&gt;
-​				&lt;input type="text" value={this.state.text}
-					 onChange={this.handleChange}/&gt;
-​				...
-​			&lt;/form&gt;
-​		);
-​	}
-});</code></pre></figure>
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="kd">var</span> <span class="nx">MyForm</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<span class="err">​</span>	<span class="na">getInitialState</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="k">return</span> <span class="p">{</span>
+<span class="err">​</span>			<span class="na">text</span><span class="p">:</span> <span class="s1">'hello world!'</span>
+<span class="err">​</span>		<span class="p">}</span>
+<span class="err">​</span>	<span class="p">},</span>
+<span class="err">​</span>	<span class="err">…</span>
+<span class="err">​</span>	<span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="err">​</span>		<span class="k">return</span> <span class="p">(</span>
+<span class="err">​</span>			<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">submitHandler</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="err">​</span>				<span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span>
+					 <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+​</span>				<span class="p">...</span>
+<span class="err">​</span>			<span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+​</span>		<span class="p">);</span>
+<span class="err">​</span>	<span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
 
 <p>对于如<code class="highlighter-rouge">handleChange</code> 方法，还可以用<code class="highlighter-rouge">bind</code>方法传递更多参数，例如<code class="highlighter-rouge">this.handleChange.bind(this, "name")</code>。</p>
 
@@ -512,18 +512,18 @@ var Since2014 = React.createClass({
   <p>React-router完全由React Component构成，路由被定义为了组件，路由的处理器也是组件</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx">//react router的写法如下
-var appRouter=(
-​	&lt;Routes location="history"&gt;
-​		&lt;Route title="SurveryBuilder" handler={App}&gt;
-​			&lt;Route name="list" path="/" handler={ListSurveys}/&gt;
-​			&lt;Route title="Add survey to surveyBuilder" name="add" 
-				path="/add_survey" handler={AddSurvey}/&gt;
-​			&lt;NotFound title="Page Not Found" handler={NotFoundHandler}/&gt;
-​		&lt;/Route&gt;
-​	&lt;/Routes&gt;
-
-);</code></pre></figure>
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="c1">//react router的写法如下</span>
+<span class="kd">var</span> <span class="nx">appRouter</span><span class="o">=</span><span class="p">(</span>
+<span class="err">​</span>	<span class="o">&lt;</span><span class="nx">Routes</span> <span class="nx">location</span><span class="o">=</span><span class="s2">"history"</span><span class="o">&gt;</span>
+<span class="err">​</span>		<span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"SurveryBuilder"</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">App</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="err">​</span>			<span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">name</span><span class="o">=</span><span class="s2">"list"</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/"</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">ListSurveys</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+​</span>			<span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"Add survey to surveyBuilder"</span> <span class="nx">name</span><span class="o">=</span><span class="s2">"add"</span> 
+				<span class="nx">path</span><span class="o">=</span><span class="s2">"/add_survey"</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">AddSurvey</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+​</span>			<span class="o">&lt;</span><span class="nx">NotFound</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"Page Not Found"</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">NotFoundHandler</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+​</span>		<span class="o">&lt;</span><span class="sr">/Route</span><span class="err">&gt;
+​</span>	<span class="o">&lt;</span><span class="sr">/Routes</span><span class="err">&gt;
+</span>
+<span class="p">);</span></code></pre></figure>
 
 <p>每一个处理器就对应着特定页面的组件，需要将上面的路由作为最顶层的组件渲染来启动。</p>
 

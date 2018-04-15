@@ -8,8 +8,8 @@
 	<title>Redux开发初探</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/react/2016/07/31/React%E5%88%9D%E6%8E%A2.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,26 +96,26 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">概述</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">用到的主要技术和工具</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">开发工具</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">相关技术和组件</a></li>
+  <li><a href="#概述" id="markdown-toc-概述">概述</a></li>
+  <li><a href="#用到的主要技术和工具" id="markdown-toc-用到的主要技术和工具">用到的主要技术和工具</a>    <ul>
+      <li><a href="#开发工具" id="markdown-toc-开发工具">开发工具</a></li>
+      <li><a href="#相关技术和组件" id="markdown-toc-相关技术和组件">相关技术和组件</a></li>
     </ul>
   </li>
-  <li><a href="#react" id="markdown-toc-react">React的思想</a></li>
-  <li><a href="#redux" id="markdown-toc-redux">Redux的思想</a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">代码实现</a>    <ul>
-      <li><a href="#section-5" id="markdown-toc-section-5">1.定义显示模块</a></li>
-      <li><a href="#action" id="markdown-toc-action">2.定义Action</a></li>
-      <li><a href="#reducer" id="markdown-toc-reducer">3.定义Reducer</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">4.定义容器</a></li>
+  <li><a href="#react的思想" id="markdown-toc-react的思想">React的思想</a></li>
+  <li><a href="#redux的思想" id="markdown-toc-redux的思想">Redux的思想</a></li>
+  <li><a href="#代码实现" id="markdown-toc-代码实现">代码实现</a>    <ul>
+      <li><a href="#1定义显示模块" id="markdown-toc-1定义显示模块">1.定义显示模块</a></li>
+      <li><a href="#2定义action" id="markdown-toc-2定义action">2.定义Action</a></li>
+      <li><a href="#3定义reducer" id="markdown-toc-3定义reducer">3.定义Reducer</a></li>
+      <li><a href="#4定义容器" id="markdown-toc-4定义容器">4.定义容器</a></li>
     </ul>
   </li>
-  <li><a href="#section-7" id="markdown-toc-section-7">结果图</a></li>
-  <li><a href="#section-8" id="markdown-toc-section-8">总结</a></li>
+  <li><a href="#结果图" id="markdown-toc-结果图">结果图</a></li>
+  <li><a href="#总结" id="markdown-toc-总结">总结</a></li>
 </ul>
 
-<h3 id="section">概述</h3>
+<h3 id="概述">概述</h3>
 
 <p><strong>服务端</strong>的研发工程师或多或少也会参与一些<strong>前端</strong>的开发工作，有时候是因为前端人力的匮乏（以前实习的服务端组就没有前端，后台管理的网页都需要自己写），有时是因为自己想开发一些组内的小工具。因此，掌握一套前端开发技术，能够快速的构建网站也算是一个必备的技能。<br />
 在上述的背景下，由于组内目前采用了<strong>Redux</strong>来进行开发，我也趁机初步实践了一下，这里来分享一下我的实践结果。<br />
@@ -130,9 +130,9 @@ var _hmt = _hmt || [];
   <li><a href="http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence">如何使用NPM来管理你的Node.js依赖</a></li>
 </ul>
 
-<h3 id="section-1">用到的主要技术和工具</h3>
+<h3 id="用到的主要技术和工具">用到的主要技术和工具</h3>
 
-<h5 id="section-2">开发工具</h5>
+<h5 id="开发工具">开发工具</h5>
 
 <ul>
   <li>WebStorm</li>
@@ -140,7 +140,7 @@ var _hmt = _hmt || [];
   <li>Chrome&amp;React插件</li>
 </ul>
 
-<h5 id="section-3">相关技术和组件</h5>
+<h5 id="相关技术和组件">相关技术和组件</h5>
 
 <ul>
   <li>React</li>
@@ -150,7 +150,7 @@ var _hmt = _hmt || [];
   <li>SpringBoot</li>
 </ul>
 
-<h3 id="react">React的思想</h3>
+<h3 id="react的思想">React的思想</h3>
 
 <p><strong>React</strong>是由Facebook推出的JavaScript库，用于简化和规范前端的开发，同时优化页面的性能。作为一个写Java的后端开发，以前对<strong>JavaScript</strong>的印象就是灵活而混乱，100人的JavaScript代码100种风格，有的工程师好歹会设计一下，进行一些模块化的提取和复用，而有的工程师甚至把JS都往一个<code class="highlighter-rouge">html</code>活着<code class="highlighter-rouge">vm</code>文件里写，简直要命。而React的出现，以及<strong>ES6</strong>的应用，能够有效提高前端代码的可读性，同时提高其渲染性能（关于性能方面，因为还怎么接触，暂时不做讨论）。</p>
 
@@ -165,7 +165,7 @@ var _hmt = _hmt || [];
 
 <p>所以，<strong>React</strong>相当于给了我们一个最佳实践的模版，开发者只需要关心<strong>行为</strong>和<strong>数据</strong>，完全从页面的渲染部分解放了出来。</p>
 
-<h3 id="redux">Redux的思想</h3>
+<h3 id="redux的思想">Redux的思想</h3>
 
 <p>理解了<strong>React</strong>的思想，那么就我的理解而言，<strong>Redux</strong>实际上是一个管理<strong>action</strong>,<strong>state</strong>和<strong>props</strong>的工具，<strong>React</strong>让开发者需要关注用户的行为和数据，而<strong>Redux</strong>为我们提供了一个管理这两者的最佳实践模版。<br />
 Redux共由三个主要组件：</p>
@@ -178,11 +178,11 @@ Redux共由三个主要组件：</p>
 
 <p>Redux的规定，将用户操作的行为定义为Action，这些Action都需要由Reducer去处理。如果需要获取远端的数据，可以利用<code class="highlighter-rouge">fetch</code>和<code class="highlighter-rouge">middleware</code>来实现。</p>
 
-<h3 id="section-4">代码实现</h3>
+<h3 id="代码实现">代码实现</h3>
 
-<h4 id="section-5">1.定义显示模块</h4>
+<h4 id="1定义显示模块">1.定义显示模块</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import React, { Component } from 'react';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import FlatButton from 'material-ui/FlatButton';
@@ -294,14 +294,13 @@ const mapStateToProps = (state)=&gt; {
 };
 
 export default connect(mapStateToProps)(App);
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>该模块为一个<code class="highlighter-rouge">table</code>，其参数主要为<code class="highlighter-rouge">tableItems</code>，通过<code class="highlighter-rouge">mapStateToProps</code>方法，该参数将会随着状态中的<code class="highlighter-rouge">state.requestReducer.tableItems</code>而改变。</p>
 
-<h4 id="action">2.定义Action</h4>
+<h4 id="2定义action">2.定义Action</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import fetch from 'isomorphic-fetch';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import fetch from 'isomorphic-fetch';
 
 
 /**
@@ -349,12 +348,11 @@ export function fetchTableDescriptions(tableParams) {
         	).catch(e=&gt;console.log("Fetch table names error", e))
 	};
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>在<code class="highlighter-rouge">fetchTableDescriptions</code>中用到的<code class="highlighter-rouge">dispatch</code>是用来连接ACTION和REDUCER的桥梁，这个方法中发送了两个ACTION, <strong>REQUESTING</strong>用来表示正在请求，会在页面上显示进度条提示，<strong>RECEIVE_TABLE_DESCRIPTIONS</strong>表示接受到数据，用来改变<code class="highlighter-rouge">Table</code>中的内容，这个行为需要一个<code class="highlighter-rouge">Button</code>来触发，这里我们就不做赘述了，触发的方式是：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import { fetchTableDescriptions } from '../actions/AppAction';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { fetchTableDescriptions } from '../actions/AppAction';
 
 handleButtonClick(item) {
     this.props.fetchTableDescriptions({
@@ -362,12 +360,11 @@ handleButtonClick(item) {
         tableName: item
     });
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<h4 id="reducer">3.定义Reducer</h4>
+<h4 id="3定义reducer">3.定义Reducer</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import { combineReducers } from 'redux';
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { combineReducers } from 'redux';
 import { RECEIVE_TABLE_DESCRIPTIONS,REQUESTING } from '../actions/AppAction';
 
 /**
@@ -407,12 +404,11 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<h4 id="section-6">4.定义容器</h4>
+<h4 id="4定义容器">4.定义容器</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>var injectTapEventPlugin = require('react-tap-event-plugin');
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
 import React, { Component } from 'react';
@@ -445,12 +441,11 @@ ReactDOM.render(
 	&lt;Index/&gt;,
 	document.getElementById('app')
 );
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>这里主要用来配置<code class="highlighter-rouge">store</code>，其代码内容如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
  * 配置store
  * Created by huanghuan on 16/7/21.
  */
@@ -477,16 +472,15 @@ export default function configureStore(preloadedState) {
 
 	return store;
 };
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<h3 id="section-7">结果图</h3>
+<h3 id="结果图">结果图</h3>
 
 <p>在定义完所有组件后，运行的结果如下：</p>
 
 <p><img src="/HuangHuanBlog/pics/react_demo.jpg" alt="demo" /></p>
 
-<h3 id="section-8">总结</h3>
+<h3 id="总结">总结</h3>
 
 <p>这边文章通过一个简单的例子，粗略的介绍了我对Redux的使用体会，虽然感觉<code class="highlighter-rouge">React</code>和<code class="highlighter-rouge">Redux</code>有一定的入门成本，但一旦入门，开发的效率和效果真的非常让人满意，值得大家尝试。</p>
 

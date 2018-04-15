@@ -8,8 +8,8 @@
 	<title>Innodb锁介绍-Innodb中的各类锁概述</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,17 +96,17 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#innodb" id="markdown-toc-innodb">Innodb锁概述</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">概述</a>        <ul>
-          <li><a href="#section-1" id="markdown-toc-section-1">一次封锁法</a></li>
-          <li><a href="#section-2" id="markdown-toc-section-2">两阶段锁协议</a>            <ul>
-              <li><a href="#section-3" id="markdown-toc-section-3">加锁阶段</a></li>
-              <li><a href="#section-4" id="markdown-toc-section-4">解锁阶段</a></li>
+  <li><a href="#innodb锁概述" id="markdown-toc-innodb锁概述">Innodb锁概述</a>    <ul>
+      <li><a href="#概述" id="markdown-toc-概述">概述</a>        <ul>
+          <li><a href="#一次封锁法" id="markdown-toc-一次封锁法">一次封锁法</a></li>
+          <li><a href="#两阶段锁协议" id="markdown-toc-两阶段锁协议">两阶段锁协议</a>            <ul>
+              <li><a href="#加锁阶段" id="markdown-toc-加锁阶段">加锁阶段</a></li>
+              <li><a href="#解锁阶段" id="markdown-toc-解锁阶段">解锁阶段</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><a href="#innodb-1" id="markdown-toc-innodb-1">Innodb中的各种锁</a>        <ul>
+      <li><a href="#innodb中的各种锁" id="markdown-toc-innodb中的各种锁">Innodb中的各种锁</a>        <ul>
           <li><a href="#shared-lock-and-exclusive-locks" id="markdown-toc-shared-lock-and-exclusive-locks">Shared Lock And Exclusive Locks</a></li>
           <li><a href="#record-locks" id="markdown-toc-record-locks">Record Locks</a></li>
           <li><a href="#next-key-locks" id="markdown-toc-next-key-locks">Next-key Locks</a></li>
@@ -120,7 +120,7 @@ var _hmt = _hmt || [];
   </li>
 </ul>
 
-<h1 id="innodb">Innodb锁概述</h1>
+<h1 id="innodb锁概述">Innodb锁概述</h1>
 
 <p><strong>参考文档:</strong></p>
 
@@ -130,36 +130,36 @@ var _hmt = _hmt || [];
   <li><a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-locking.html">MySQL锁官方文档</a></li>
 </ol>
 
-<h2 id="section">概述</h2>
+<h2 id="概述">概述</h2>
 <blockquote>
   <p>Innodb中行级锁作用于索引之上，如果没有索引，则只能够锁表。</p>
 </blockquote>
 
-<h3 id="section-1">一次封锁法</h3>
+<h3 id="一次封锁法">一次封锁法</h3>
 <blockquote>
   <p>为了预防死锁，一般应用中推荐一次封锁法。也就是在方法的开始阶段，已经预先知道会用到哪些数据，然后全部锁住，在方法运行完成之后，再进行解锁。</p>
 </blockquote>
 
 <p>一次封锁法能够预防死锁，但从该方法的定义中可以看到，每次操作都锁住全部数据，如果这样数据的执行只能是串行化的，性能不高。</p>
 
-<h3 id="section-2">两阶段锁协议</h3>
+<h3 id="两阶段锁协议">两阶段锁协议</h3>
 <blockquote>
   <p>数据库遵循的是两段锁协议，将事物分解成加锁和解锁两个阶段</p>
 </blockquote>
 
-<h4 id="section-3">加锁阶段</h4>
+<h4 id="加锁阶段">加锁阶段</h4>
 <blockquote>
   <p>该阶段可以进行加锁操作，在对任何数据进行读操作之前要申请并获得S锁(Shared Lock，其它事务可以继续加S锁，但不能加Exclusive Lock，即排他锁)；而在进行写操作之前，需要申请X锁(Exclusive Lock，其它事务不能再获得任何锁)。加锁不成功则进入等待状态，而不能再加其它锁。</p>
 </blockquote>
 
 <p>从这个定义可以看出，加锁阶段定义了事务之间的协调规则，能够有效提高多个事务之间的执行性能，但同时也带来了死锁的风险，之后会举例介绍死锁的成因。</p>
 
-<h4 id="section-4">解锁阶段</h4>
+<h4 id="解锁阶段">解锁阶段</h4>
 <blockquote>
   <p>事务进入解锁阶段将释放其持有的锁，该阶段只能进行解锁操作，而不能再加其它锁。</p>
 </blockquote>
 
-<h2 id="innodb-1">Innodb中的各种锁</h2>
+<h2 id="innodb中的各种锁">Innodb中的各种锁</h2>
 
 <h3 id="shared-lock-and-exclusive-locks">Shared Lock And Exclusive Locks</h3>
 

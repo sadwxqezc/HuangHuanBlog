@@ -8,8 +8,8 @@
 	<title>什么是数据库事务？</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/06/05/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/framework/2016/06/05/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,13 +96,13 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">事务的定义　</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">为什么需要事务？</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">事务的几大特性</a></li>
-  <li><a href="#mysql" id="markdown-toc-mysql">MySQL对事务的支持</a></li>
+  <li><a href="#事务的定义" id="markdown-toc-事务的定义">事务的定义　</a></li>
+  <li><a href="#为什么需要事务" id="markdown-toc-为什么需要事务">为什么需要事务？</a></li>
+  <li><a href="#事务的几大特性" id="markdown-toc-事务的几大特性">事务的几大特性</a></li>
+  <li><a href="#mysql对事务的支持" id="markdown-toc-mysql对事务的支持">MySQL对事务的支持</a></li>
 </ul>
 
-<h2 id="section">事务的定义　</h2>
+<h2 id="事务的定义">事务的定义　</h2>
 
 <p>引用一段wikipedia中对数据库事务的定义：</p>
 
@@ -119,13 +119,13 @@ var _hmt = _hmt || [];
 
 <p>对应的可以理解为：事务是数据库的基本工作单元，它以all-or-nothing的方式执行，让数据库从一个一致的状态转移到另一个一致的状态。即使系统发生故障，未执行完成的事务依然可以正确恢复，而事务之间可以在不同程度上进行隔离，以保证数据的正确性。</p>
 
-<h2 id="section-1">为什么需要事务？</h2>
+<h2 id="为什么需要事务">为什么需要事务？</h2>
 
 <p>事务是为了保证数据库中数据的完整性和正确性。设想没有正确的事务支持，就可能出现A向B转账，A的钱被扣掉，而B却并没收到钱的情况。事务能保证要么A转账成功，或则失败，而A和B的钱的总额保持一致的状态。事务能够为我们的所有操作保证可确定的结果，在这样的前提下，我们才能进行各种各样的操作。</p>
 
 <p>值得一提的时候，对于简单的网页应用，可能其后台仅有一个数据库，是单点的事务。而在更多的生产系统中，数据源往往不只一个，包含不同类型的数据库,MQ等，这个时候还需要分布式事务（XA事务）的支持才能保证正确性，单点的事务往往由数据库等系统本身保证，而分布式事务还需要上层中间件的支持。</p>
 
-<h2 id="section-2">事务的几大特性</h2>
+<h2 id="事务的几大特性">事务的几大特性</h2>
 
 <p>事务的几大特性ACID可以说是老生常谈了，这里先列举一下：</p>
 
@@ -136,7 +136,7 @@ var _hmt = _hmt || [];
   <li>持久性：已提交的事务，将会对数据库产生永久的影响</li>
 </ul>
 
-<h2 id="mysql">MySQL对事务的支持</h2>
+<h2 id="mysql对事务的支持">MySQL对事务的支持</h2>
 
 <p>MySQL是互联网企业中用的最多的数据库，大家都知道使用InnoDB或则BerkeleyDB作为存储引擎才支持事务，之后的章节都将默认以MySQL作为范例，采用InnoDB作为存储引擎。</p>
 

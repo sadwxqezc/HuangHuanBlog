@@ -8,8 +8,8 @@
 	<title>浅谈设计模式</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/design/2017/01/23/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/design/2017/01/23/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,82 +96,82 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#ood" id="markdown-toc-ood">面向对象设计(OOD)的七大原则</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">开闭原则</a></li>
-      <li><a href="#section-1" id="markdown-toc-section-1">里式替换原则</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">依赖倒置原则</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">接口隔离原则</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">单一职责原则</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">迪米特法则</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">合成/聚合复用原则</a></li>
-      <li><a href="#section-7" id="markdown-toc-section-7">关于静态方法</a></li>
+  <li><a href="#面向对象设计ood的七大原则" id="markdown-toc-面向对象设计ood的七大原则">面向对象设计(OOD)的七大原则</a>    <ul>
+      <li><a href="#开闭原则" id="markdown-toc-开闭原则">开闭原则</a></li>
+      <li><a href="#里式替换原则" id="markdown-toc-里式替换原则">里式替换原则</a></li>
+      <li><a href="#依赖倒置原则" id="markdown-toc-依赖倒置原则">依赖倒置原则</a></li>
+      <li><a href="#接口隔离原则" id="markdown-toc-接口隔离原则">接口隔离原则</a></li>
+      <li><a href="#单一职责原则" id="markdown-toc-单一职责原则">单一职责原则</a></li>
+      <li><a href="#迪米特法则" id="markdown-toc-迪米特法则">迪米特法则</a></li>
+      <li><a href="#合成聚合复用原则" id="markdown-toc-合成聚合复用原则">合成/聚合复用原则</a></li>
+      <li><a href="#关于静态方法" id="markdown-toc-关于静态方法">关于静态方法</a></li>
     </ul>
   </li>
-  <li><a href="#section-8" id="markdown-toc-section-8">常用的设计模式</a>    <ul>
-      <li><a href="#builder" id="markdown-toc-builder">Builder模式</a></li>
-      <li><a href="#section-9" id="markdown-toc-section-9">策略模式和简单工厂模式</a></li>
-      <li><a href="#section-10" id="markdown-toc-section-10">责任链模式</a></li>
-      <li><a href="#section-11" id="markdown-toc-section-11">装饰器模式</a></li>
-      <li><a href="#section-12" id="markdown-toc-section-12">观察者模式</a></li>
+  <li><a href="#常用的设计模式" id="markdown-toc-常用的设计模式">常用的设计模式</a>    <ul>
+      <li><a href="#builder模式" id="markdown-toc-builder模式">Builder模式</a></li>
+      <li><a href="#策略模式和简单工厂模式" id="markdown-toc-策略模式和简单工厂模式">策略模式和简单工厂模式</a></li>
+      <li><a href="#责任链模式" id="markdown-toc-责任链模式">责任链模式</a></li>
+      <li><a href="#装饰器模式" id="markdown-toc-装饰器模式">装饰器模式</a></li>
+      <li><a href="#观察者模式" id="markdown-toc-观察者模式">观察者模式</a></li>
     </ul>
   </li>
 </ul>
 
 <p>讲一讲在工作中用到的面向对象设计模式，供大家参考，之后也会继续更新。</p>
 
-<h2 id="ood">面向对象设计(OOD)的七大原则</h2>
+<h2 id="面向对象设计ood的七大原则">面向对象设计(OOD)的七大原则</h2>
 
 <p>在面向对象设计中，首先有这几大原则作为前提，然后在此基础之上有了各类设计模式。</p>
 
-<h3 id="section">开闭原则</h3>
+<h3 id="开闭原则">开闭原则</h3>
 <blockquote>
   <p>开闭原则(Open-Closed Principle, OCP), 一个软件实体应该对扩展开放，对修改关闭。即软件实体应该在尽量不修改代码的情况下进行扩展。在该原则中，软件实体可以指一个软件模块，一个由多个类组成的局部结构或者一个独立的类。</p>
 </blockquote>
 
 <p>开闭原则是面向对象的可复用设计的第一块基石，他是最重要的设计原则。为了满足开闭原则，需要对系统进行抽象化设计，抽象是开闭原则的关键。</p>
 
-<h3 id="section-1">里式替换原则</h3>
+<h3 id="里式替换原则">里式替换原则</h3>
 <blockquote>
   <p>Liskov Substitution Principle(LSP)，里式替换原则，该原则规定“子类必须能够替换其父类，否则不应当设计为其子类”。换句话说，父类出现的地方，都应该能够由其子类代替。所以子类只能去扩展基类，而不是隐藏或则覆盖基类。</p>
 </blockquote>
 
-<h3 id="section-2">依赖倒置原则</h3>
+<h3 id="依赖倒置原则">依赖倒置原则</h3>
 <blockquote>
   <p>Dependence Iversion Principle(DIP), 它讲的是“设计和实现要依赖于抽象而非实体”。一方面抽象化更符合人的思维习惯；另一方面，根据里式替换原则，可以很容易将抽象替换为扩展后的具体，这样可以很好的支持开闭原则。</p>
 </blockquote>
 
 <p>这里可以看到，在公司的Spring项目开发中，各个层次间通过<code class="highlighter-rouge">Interface</code>进行依赖，也就是基于此原则。</p>
 
-<h3 id="section-3">接口隔离原则</h3>
+<h3 id="接口隔离原则">接口隔离原则</h3>
 <blockquote>
   <p>Interface Segration Principle(ISP)，“将大的接口打散成多个小的独立的接口”。由于Java类支持实现多个接口，可以很容易的让类具有多种接口的特征，同时每个类可以选择性地只实现目标接口。</p>
 </blockquote>
 
-<h3 id="section-4">单一职责原则</h3>
+<h3 id="单一职责原则">单一职责原则</h3>
 <blockquote>
   <p>Single Responsibility Principle(SRP),单一职责原则。它讲的是不要存在多于一个导致类变更的原因，是高内聚，低耦合的一个体现。</p>
 </blockquote>
 
-<h3 id="section-5">迪米特法则</h3>
+<h3 id="迪米特法则">迪米特法则</h3>
 <blockquote>
   <p>Law of Demeter or Least Knowledge Principle(LoD or LKP)，“一个对象就尽可能少的了解其它对象”，从而实现松耦合。如果一个类的职责过多，由于多个职责耦合在了一起，任何一个职责的变更都可能引起其它职责的问题，严重影响代码的可维护性和可重用性。</p>
 </blockquote>
 
 <p>该法则实际上和单一职责原则很类似，强调的高内聚，低耦合。</p>
 
-<h3 id="section-6">合成/聚合复用原则</h3>
+<h3 id="合成聚合复用原则">合成/聚合复用原则</h3>
 <blockquote>
   <p>Composite/Aggregate Reuse Principle(CARP/CRP)，合成/聚合复用原则。如果新对象的某些功能在别的已经创建好的对象里面已经实现，那么应当尽量使用别的对象提供的功能，使之成为新对象的一部分，而不要在重新创建。新对象可以通过向这些对象的委派达到复用已有功能的效果。简而言之，尽量使用合成/聚合，而非使用继承。</p>
 </blockquote>
 
 <p>这个原则乍一看和迪米特法则相悖，但我的理解是，可以复用的功能应该是有好的抽象得到，而不是胡乱的复用，这里面其实都是考验工程师功力的地方。</p>
 
-<h3 id="section-7">关于静态方法</h3>
+<h3 id="关于静态方法">关于静态方法</h3>
 <p>静态方法实际是无状态且面向方法的设计，适合用作工具类，比如<code class="highlighter-rouge">Guava</code>，而不适合用在对象中。不过在<code class="highlighter-rouge">Java8</code>中已经支持了<code class="highlighter-rouge">interface</code>中的静态方法，也应该是作为实现类需要的工具方法存在。</p>
 
-<h2 id="section-8">常用的设计模式</h2>
+<h2 id="常用的设计模式">常用的设计模式</h2>
 
-<h3 id="builder">Builder模式</h3>
+<h3 id="builder模式">Builder模式</h3>
 <p>Builder模式非常适用于需要多个构造参数的场景，相比于<code class="highlighter-rouge">new</code>一个对象，然后用一堆<code class="highlighter-rouge">setter</code>去赋值的方式，这种模式的可读性显然要强很多。在我的项目中，需要调用其它系统的Rest服务，在拼接URL时，用这种模式就非常方便。</p>
 
 <h4>基类</h4>
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
     <span class="kd">protected</span> <span class="n">String</span> <span class="n">params</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
     <span class="kd">protected</span> <span class="n">String</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
 
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="n">appendParams</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">param</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">appendParams</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">param</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">param</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
             <span class="k">return</span><span class="o">;</span>
         <span class="o">}</span>
@@ -198,14 +198,14 @@ var _hmt = _hmt || [];
     <span class="cm">/**
      * 生成最后查询用的URL地址
      */</span>
-    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">String</span> <span class="n">build</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">String</span> <span class="nf">build</span><span class="o">();</span>
 
     <span class="cm">/**
      * 需要设置请求的前缀，比如http://address/service?
      *
      * @param prefix 前缀
      */</span>
-    <span class="kd">public</span> <span class="n">AbstractQueryBuilder</span><span class="o">(</span><span class="n">String</span> <span class="n">prefix</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">AbstractQueryBuilder</span><span class="o">(</span><span class="n">String</span> <span class="n">prefix</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -220,27 +220,27 @@ var _hmt = _hmt || [];
  */</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">VoiceBuilder</span> <span class="kd">extends</span> <span class="n">AbstractURLBuilder</span> <span class="o">{</span>
 
-    <span class="kd">public</span> <span class="n">VoiceBuilder</span><span class="o">(</span><span class="n">String</span> <span class="n">prefix</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">VoiceBuilder</span><span class="o">(</span><span class="n">String</span> <span class="n">prefix</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">(</span><span class="n">prefix</span><span class="o">);</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">VoiceBuilder</span> <span class="n">rate</span><span class="o">(</span><span class="n">String</span> <span class="n">rate</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">VoiceBuilder</span> <span class="nf">rate</span><span class="o">(</span><span class="n">String</span> <span class="n">rate</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">appendParams</span><span class="o">(</span><span class="s">"rate"</span><span class="o">,</span> <span class="n">rate</span><span class="o">);</span>
         <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">VoiceBuilder</span> <span class="n">le</span><span class="o">(</span><span class="n">String</span> <span class="n">le</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">VoiceBuilder</span> <span class="nf">le</span><span class="o">(</span><span class="n">String</span> <span class="n">le</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">appendParams</span><span class="o">(</span><span class="s">"le"</span><span class="o">,</span> <span class="n">le</span><span class="o">);</span>
         <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">VoiceBuilder</span> <span class="n">audio</span><span class="o">(</span><span class="n">String</span> <span class="n">audio</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">VoiceBuilder</span> <span class="nf">audio</span><span class="o">(</span><span class="n">String</span> <span class="n">audio</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">appendParams</span><span class="o">(</span><span class="s">"audio"</span><span class="o">,</span> <span class="n">audio</span><span class="o">);</span>
         <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">build</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">params</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -249,14 +249,14 @@ var _hmt = _hmt || [];
 
 <h4>使用</h4>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
 	<span class="n">String</span> <span class="n">voiceURL</span><span class="o">=</span><span class="k">new</span> <span class="n">VoiceBuilder</span><span class="o">(</span><span class="s">"http://address/service?"</span><span class="o">)</span>
 	<span class="o">.</span><span class="na">rate</span><span class="o">(</span><span class="s">"whatever"</span><span class="o">).</span><span class="na">le</span><span class="o">(</span><span class="s">"EN"</span><span class="o">).</span><span class="na">audio</span><span class="o">(</span><span class="s">"good"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
 <span class="o">}</span></code></pre></figure>
 
 <p>是不是很简洁且方便。</p>
 
-<h3 id="section-9">策略模式和简单工厂模式</h3>
+<h3 id="策略模式和简单工厂模式">策略模式和简单工厂模式</h3>
 <p>策略模式在各类系统中都很常见，其实现也很简单，定义好<code class="highlighter-rouge">interface</code>即可，不同的策略间应该满足隔离和单一职责原则，相互间独立而不耦合。延续刚才的例子，当一个服务需要根据输入参数的不同，去调用不同的服务时，策略模式就非常合适了。</p>
 
 <h4>策略模式类图</h4>
@@ -278,7 +278,7 @@ var _hmt = _hmt || [];
      * @return api的查询结果
      */</span>
     <span class="nd">@NotNull</span>
-    <span class="n">JSONObject</span> <span class="n">getApiRequest</span><span class="o">(</span><span class="n">RequestParams</span> <span class="n">requestParams</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ApiException</span><span class="o">;</span>
+    <span class="n">JSONObject</span> <span class="nf">getApiRequest</span><span class="o">(</span><span class="n">RequestParams</span> <span class="n">requestParams</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ApiException</span><span class="o">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <h4>定义实现策略</h4>
@@ -286,7 +286,7 @@ var _hmt = _hmt || [];
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoStrategy</span> <span class="kd">implements</span> <span class="n">ApiStrategy</span> <span class="o">{</span>
 
 	<span class="nd">@NotNull</span>
-	<span class="kd">public</span> <span class="n">JSONObject</span> <span class="n">getApiRequest</span><span class="o">(</span><span class="n">RequestParams</span> <span class="n">requestParams</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ApiException</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="n">JSONObject</span> <span class="nf">getApiRequest</span><span class="o">(</span><span class="n">RequestParams</span> <span class="n">requestParams</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ApiException</span> <span class="o">{</span>
     	<span class="cm">/** 实现 */</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -304,10 +304,10 @@ var _hmt = _hmt || [];
      * @param requestParams 请求参数
      * @return 具体的api调用策略
      */</span>
-    <span class="kd">public</span> <span class="n">ApiStrategy</span> <span class="n">decideStrategy</span><span class="o">(</span><span class="n">RequestParams</span> <span class="n">requestParams</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ApiException</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">ApiStrategy</span> <span class="nf">decideStrategy</span><span class="o">(</span><span class="n">RequestParams</span> <span class="n">requestParams</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ApiException</span> <span class="o">{</span>
     	<span class="cm">/** 根据requestParams决定调用的策略 */</span>
         <span class="k">if</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="n">DemoStrategy</span><span class="o">();</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">DemoStrategy</span><span class="o">();</span>
         <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
             <span class="k">return</span> <span class="n">whatever</span><span class="o">;</span>
         <span class="o">}</span>
@@ -316,14 +316,14 @@ var _hmt = _hmt || [];
 
 <h4>使用</h4>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
 	<span class="n">RequestParams</span> <span class="n">req</span><span class="o">=</span><span class="k">new</span> <span class="n">RequestParams</span><span class="o">();</span>
-	<span class="k">new</span> <span class="n">ApiStrategyFactory</span><span class="o">().</span><span class="na">decideStrategy</span><span class="o">(</span><span class="n">req</span><span class="o">).</span><span class="na">getApiResult</span><span class="o">();</span>
+	<span class="k">new</span> <span class="nf">ApiStrategyFactory</span><span class="o">().</span><span class="na">decideStrategy</span><span class="o">(</span><span class="n">req</span><span class="o">).</span><span class="na">getApiResult</span><span class="o">();</span>
 <span class="o">}</span></code></pre></figure>
 
 <p>这样的策略之后添加修改策略都会很方便，当然简单工厂方法不满足开闭条件，适用于策略较少的场景。</p>
 
-<h3 id="section-10">责任链模式</h3>
+<h3 id="责任链模式">责任链模式</h3>
 <p>当需要依次处理一个任务时，可以采用责任链模式，这个模式可实际应用在参数校验，或则流程处理中（比如SpringMVC的9大handler，也就是用类似的模式依次产生作用）</p>
 
 <h4>定义基类</h4>
@@ -332,13 +332,13 @@ var _hmt = _hmt || [];
 
     <span class="kd">protected</span> <span class="n">Handler</span> <span class="n">nextHandler</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">handle</span><span class="o">();</span>
 
-    <span class="kd">public</span> <span class="n">Handler</span> <span class="n">getNextHandler</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Handler</span> <span class="nf">getNextHandler</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">nextHandler</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setNextHandler</span><span class="o">(</span><span class="n">Handler</span> <span class="n">handler</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNextHandler</span><span class="o">(</span><span class="n">Handler</span> <span class="n">handler</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">nextHandler</span> <span class="o">=</span> <span class="n">handler</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -348,7 +348,7 @@ var _hmt = _hmt || [];
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Father</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="o">{</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handle</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"father is called"</span><span class="o">);</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">getNextHandler</span><span class="o">().</span><span class="na">handle</span><span class="o">();</span>
@@ -359,7 +359,7 @@ var _hmt = _hmt || [];
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Son</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="o">{</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handle</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"son is called"</span><span class="o">);</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">getNextHandler</span><span class="o">().</span><span class="na">handle</span><span class="o">();</span>
@@ -370,7 +370,7 @@ var _hmt = _hmt || [];
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">GrandSon</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="o">{</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handle</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"grand son is called"</span><span class="o">);</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">getNextHandler</span><span class="o">().</span><span class="na">handle</span><span class="o">();</span>
@@ -380,7 +380,7 @@ var _hmt = _hmt || [];
 
 <h4>使用</h4>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">Father</span> <span class="n">father</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Father</span><span class="o">();</span>
     <span class="n">Son</span> <span class="n">son</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Son</span><span class="o">();</span>
     <span class="n">GrandSon</span> <span class="n">grandSon</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GrandSon</span><span class="o">();</span>
@@ -389,7 +389,7 @@ var _hmt = _hmt || [];
     <span class="n">father</span><span class="o">.</span><span class="na">handle</span><span class="o">();</span>
 <span class="o">}</span></code></pre></figure>
 
-<h3 id="section-11">装饰器模式</h3>
+<h3 id="装饰器模式">装饰器模式</h3>
 
 <p><img src="/HuangHuanBlog/pics/decorate.png" alt="screen" /></p>
 
@@ -398,38 +398,38 @@ var _hmt = _hmt || [];
 <h4>基类</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Component</span><span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">();</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">operation</span><span class="o">();</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Decorator</span> <span class="kd">extends</span> <span class="n">Component</span><span class="o">{</span>
   <span class="kd">protected</span> <span class="n">Component</span> <span class="n">component</span><span class="o">;</span>
 
-  <span class="kd">public</span> <span class="n">Decorator</span><span class="o">(</span><span class="n">Component</span> <span class="n">component</span><span class="o">){</span>
+  <span class="kd">public</span> <span class="nf">Decorator</span><span class="o">(</span><span class="n">Component</span> <span class="n">component</span><span class="o">){</span>
     <span class="k">this</span><span class="o">.</span><span class="na">component</span><span class="o">=</span><span class="n">component</span><span class="o">;</span>
   <span class="o">}</span>
 
-  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">();</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">operation</span><span class="o">();</span>
 <span class="o">}</span></code></pre></figure>
 
 <h4>实现类</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConcreteComponent</span> <span class="kd">extends</span> <span class="n">Component</span><span class="o">{</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">(){</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">operation</span><span class="o">(){</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"## doing something ##"</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConcreteDecorator</span> <span class="kd">extends</span> <span class="n">Decorator</span><span class="o">{</span>
-  <span class="kd">public</span> <span class="n">ConcreteDecorator</span><span class="o">(</span><span class="n">Component</span> <span class="n">component</span><span class="o">){</span>
+  <span class="kd">public</span> <span class="nf">ConcreteDecorator</span><span class="o">(</span><span class="n">Component</span> <span class="n">component</span><span class="o">){</span>
     <span class="kd">super</span><span class="o">(</span><span class="n">component</span><span class="o">);</span>
   <span class="o">}</span>
 
-  <span class="kd">public</span> <span class="kt">void</span> <span class="n">decorateMethod</span><span class="o">(){</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">decorateMethod</span><span class="o">(){</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"## decorating ##"</span><span class="o">);</span>
   <span class="o">}</span>
 
   <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="n">operation</span><span class="o">(){</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">operation</span><span class="o">(){</span>
     <span class="n">decorateMethod</span><span class="o">();</span>
     <span class="n">component</span><span class="o">.</span><span class="na">operation</span><span class="o">();</span>
   <span class="o">}</span>
@@ -437,12 +437,12 @@ var _hmt = _hmt || [];
 
 <h4>使用</h4>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
   <span class="n">Component</span> <span class="n">component</span><span class="o">=</span><span class="k">new</span> <span class="n">ConcreteDecorator</span><span class="o">(</span><span class="k">new</span> <span class="n">ConcreteComponent</span><span class="o">());</span>
   <span class="n">component</span><span class="o">.</span><span class="na">operation</span><span class="o">();</span>
 <span class="o">}</span></code></pre></figure>
 
-<h3 id="section-12">观察者模式</h3>
+<h3 id="观察者模式">观察者模式</h3>
 
 <p><img src="/HuangHuanBlog/pics/observer.png" alt="observer" /></p>
 
@@ -453,20 +453,20 @@ var _hmt = _hmt || [];
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Subject</span> <span class="o">{</span>
     <span class="n">List</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">&gt;</span> <span class="n">observers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">&gt;();</span>
 
-    <span class="kt">void</span> <span class="n">attach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">attach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">);</span>
 
-    <span class="kt">void</span> <span class="n">detach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">detach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">);</span>
 
-    <span class="kt">void</span> <span class="n">notifyObserver</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">notifyObserver</span><span class="o">();</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ConcreteSubject</span> <span class="kd">implements</span> <span class="n">Subject</span> <span class="o">{</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">attach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">attach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">observers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">observer</span><span class="o">);</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">detach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">detach</span><span class="o">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">observers</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
         <span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
             <span class="n">Observer</span> <span class="n">observerTemp</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
@@ -476,7 +476,7 @@ var _hmt = _hmt || [];
         <span class="o">}</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">notifyObserver</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObserver</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">for</span> <span class="o">(</span><span class="n">Observer</span> <span class="n">observerTemp</span> <span class="o">:</span> <span class="n">observers</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">observerTemp</span><span class="o">.</span><span class="na">printMessage</span><span class="o">(</span><span class="s">"this is a test"</span><span class="o">);</span>
         <span class="o">}</span>
@@ -486,7 +486,7 @@ var _hmt = _hmt || [];
 <h4>观察者</h4>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Observer</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="n">printMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">printMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Data</span>
@@ -494,18 +494,18 @@ var _hmt = _hmt || [];
 
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="n">ConcreteObserver</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ConcreteObserver</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">printMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
 <h4>使用</h4>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcreteSubject</span><span class="o">();</span>
     <span class="n">Observer</span> <span class="n">observer1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcreteObserver</span><span class="o">(</span><span class="s">"one"</span><span class="o">);</span>
     <span class="n">Observer</span> <span class="n">observer2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcreteObserver</span><span class="o">(</span><span class="s">"two"</span><span class="o">);</span>

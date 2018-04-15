@@ -8,8 +8,8 @@
 	<title>Spring分布式事务配置(atomikos)</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2016/05/29/Spring%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/framework/2016/05/29/Spring%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,28 +96,28 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">开发原因</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">开发组件</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">开发思路</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">实现细节</a>    <ul>
-      <li><a href="#pom" id="markdown-toc-pom">Pom依赖</a></li>
-      <li><a href="#atomikos" id="markdown-toc-atomikos">Atomikos配置</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">测试</a></li>
+  <li><a href="#开发原因" id="markdown-toc-开发原因">开发原因</a></li>
+  <li><a href="#开发组件" id="markdown-toc-开发组件">开发组件</a></li>
+  <li><a href="#开发思路" id="markdown-toc-开发思路">开发思路</a></li>
+  <li><a href="#实现细节" id="markdown-toc-实现细节">实现细节</a>    <ul>
+      <li><a href="#pom依赖" id="markdown-toc-pom依赖">Pom依赖</a></li>
+      <li><a href="#atomikos配置" id="markdown-toc-atomikos配置">Atomikos配置</a></li>
+      <li><a href="#测试" id="markdown-toc-测试">测试</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="section">开发原因</h2>
+<h2 id="开发原因">开发原因</h2>
 
 <p>在Java后端开发过程中事务控制非常重要，而Spring为我们提供了方便的声明式事务方法<code class="highlighter-rouge">@transactional</code>。但是默认的Spring事务只支持单数据源，而实际上一个系统往往需要写多个数据源，这个时候我们就需要考虑如何通过Spring实现对分布式事务的支持。</p>
 
-<h2 id="section-1">开发组件</h2>
+<h2 id="开发组件">开发组件</h2>
 
 <p>框架：SpringBoot<br />
 组件：Atomikos<br />
 IDE：Intellij</p>
 
-<h2 id="section-2">开发思路</h2>
+<h2 id="开发思路">开发思路</h2>
 
 <p>对于分布式事务而言，<code class="highlighter-rouge">JTA</code>是一个不错的解决方案，通常<code class="highlighter-rouge">JTA</code>需要应用服务器的支持，但在查阅<code class="highlighter-rouge">SpringBoot</code>的文档时发现，它推荐了<code class="highlighter-rouge">Atomikos</code>和<code class="highlighter-rouge">Bitronix</code>两种无需服务器支持的分布式事务组件，文档内容如下：</p>
 
@@ -131,24 +131,23 @@ IDE：Intellij</p>
   <p>Atomikos is a popular open source transaction manager which can be embedded into your Spring Boot application. You can use the <code class="highlighter-rouge">spring-boot-starter-jta-atomikos</code> Starter POM to pull in the appropriate Atomikos libraries. Spring Boot will auto-configure Atomikos and ensure that appropriate depends-on settings are applied to your Spring beans for correct startup and shutdown ordering.</p>
 </blockquote>
 
-<h2 id="section-3">实现细节</h2>
+<h2 id="实现细节">实现细节</h2>
 
-<h3 id="pom">Pom依赖</h3>
+<h3 id="pom依赖">Pom依赖</h3>
 
 <p>就如上面文档内容所说，要在SpringBoot中使用<code class="highlighter-rouge">atomikos</code>，仅需要添加一个依赖，这也是SpringBoot非常便利的地方：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    &lt;dependency&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;dependency&gt;
         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
         &lt;artifactId&gt;spring-boot-starter-jta-atomikos&lt;/artifactId&gt;
     &lt;/dependency&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<h3 id="atomikos">Atomikos配置</h3>
+<h3 id="atomikos配置">Atomikos配置</h3>
 
 <p>值得一提的是，Spring支持通过<code class="highlighter-rouge">xml</code>配置bean，和通过<code class="highlighter-rouge">annotation</code>配置bean两种方式，在这里我们采用后者，因为<code class="highlighter-rouge">xml</code>方式真是太烦人。方式的配置方法其实很简单，只需要在注解了<code class="highlighter-rouge">@Configuration</code>的类里面，通过<code class="highlighter-rouge">@Bean</code>来配置，详细的配置内容如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/************************** atomikos 多数据源配置 ***************************/
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/************************** atomikos 多数据源配置 ***************************/
 
 /*------- db1 -------*/
 
@@ -267,28 +266,26 @@ public JtaTransactionManager transactionManager() {
     jtaTransactionManager.setTransactionManager(userTransactionManager());
     return jtaTransactionManager;
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>然后在该配置类上，通过<code class="highlighter-rouge">@EnableTransactionManagement</code>来启用事务管理，该注解会自动通过<code class="highlighter-rouge">by-type</code>查找满足条件的<code class="highlighter-rouge">PlatformTransactionManager</code>。其实通过上面的范例可以发现，该配置与我们通常单数据源配置所不同的是使用了<code class="highlighter-rouge">AtomikosDataSourceBean</code>来配置数据源，以及定义了<code class="highlighter-rouge">UserTransactionManager</code>，更详细的配置方法可以参见<a href="https://www.atomikos.com/Documentation/SpringIntegration">Atomikos Spring Integration</a>。</p>
 
 <p><code class="highlighter-rouge">Atomikos</code>的参数配置可以通过<code class="highlighter-rouge">jta.propertis</code>来配置，这里我主要配置了日志的输出位置：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># log
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># log
 com.atomikos.icatch.service=com.atomikos.icatch.standalone.UserTransactionServiceFactory
 com.atomikos.icatch.log_base_dir=translogs
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>一开始我觉得这不过是<code class="highlighter-rouge">Atomikos</code>自己打的一些纪录日志，没什么用，干脆关掉得了，但通过查阅资料发现并不是这样。<code class="highlighter-rouge">Atomikos</code>就是通过这些日志来保障事务过程的（比如进程挂了后怎么恢复），所以千万不能关，关于这点可参考文章<a href="http://blog.csdn.net/hengyunabc/article/details/19433947">扯淡下XA事务</a>。</p>
 
 <p>至此为止，配置就完成了，之后只需要再需要事务控制的地方加上<code class="highlighter-rouge">@transactional</code>注解即可。</p>
 
-<h3 id="section-4">测试</h3>
+<h3 id="测试">测试</h3>
 
 <p>测试用的<code class="highlighter-rouge">MultiDataSourceTransTest</code>类：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@Autowired
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Autowired
 private DB1TestDao db1Dao;
 
 @Autowired
@@ -308,8 +305,7 @@ public void testMulitSourceTransactionWithOutRollBack() {
     db1Dao.saveOrUpdate(new TestEntity());
     db2Dao.saveOrUpdate(new TestEntity());
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>关于SpringBoot的单元测试配置请参见<a href="http://127.0.0.1:4000/HuangHuanBlog/linux/2016/05/21/AOP%E4%B9%8BantiXSS.html">AOP之AntiXSS</a>中的范例，在SpringBoot的测试中，默认带有<code class="highlighter-rouge">@transactionl</code>的测试会回滚，也就是执行完了啥也没变，所以可以通过<code class="highlighter-rouge">@Rollback(false)</code>来强制不回滚，通过对比回滚和不回滚的执行结果，就能测试分布式事务是否得到了支持。</p>
 

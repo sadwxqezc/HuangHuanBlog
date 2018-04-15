@@ -3,55 +3,68 @@
   <channel>
     <title>黄欢的博客</title>
     <description>美团金融后台研发工程师</description>
-    <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/</link>
-    <atom:link href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 25 Jun 2017 16:15:11 +0800</pubDate>
-    <lastBuildDate>Sun, 25 Jun 2017 16:15:11 +0800</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <link>http://localhost:4000/HuangHuanBlog/</link>
+    <atom:link href="http://localhost:4000/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 15 Apr 2018 23:15:48 +0800</pubDate>
+    <lastBuildDate>Sun, 15 Apr 2018 23:15:48 +0800</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>MySQL 5.7 insert on duplicate key问题</title>
+        <description>
+</description>
+        <pubDate>Sun, 15 Apr 2018 23:15:00 +0800</pubDate>
+        <link>http://localhost:4000/HuangHuanBlog/read/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/read/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html</guid>
+        
+        
+        <category>Read</category>
+        
+      </item>
     
       <item>
         <title>会计入门小结</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;引言&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;会计是干什么的？&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;会计三大报表&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;资产负债表&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;利润表&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;现金流表&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#引言&quot; id=&quot;markdown-toc-引言&quot;&gt;引言&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#会计是干什么的&quot; id=&quot;markdown-toc-会计是干什么的&quot;&gt;会计是干什么的？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#会计三大报表&quot; id=&quot;markdown-toc-会计三大报表&quot;&gt;会计三大报表&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#资产负债表&quot; id=&quot;markdown-toc-资产负债表&quot;&gt;资产负债表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#利润表&quot; id=&quot;markdown-toc-利润表&quot;&gt;利润表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#现金流表&quot; id=&quot;markdown-toc-现金流表&quot;&gt;现金流表&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;柠檬汁摊范例&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;第一周&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;期初&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;期中&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;期末&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#柠檬汁摊范例&quot; id=&quot;markdown-toc-柠檬汁摊范例&quot;&gt;柠檬汁摊范例&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#第一周&quot; id=&quot;markdown-toc-第一周&quot;&gt;第一周&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#期初&quot; id=&quot;markdown-toc-期初&quot;&gt;期初&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#期中&quot; id=&quot;markdown-toc-期中&quot;&gt;期中&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#期末&quot; id=&quot;markdown-toc-期末&quot;&gt;期末&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;第二周&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;期初&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;期中&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;期末&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第二周&quot; id=&quot;markdown-toc-第二周&quot;&gt;第二周&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#期初-1&quot; id=&quot;markdown-toc-期初-1&quot;&gt;期初&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#期中-1&quot; id=&quot;markdown-toc-期中-1&quot;&gt;期中&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#期末-1&quot; id=&quot;markdown-toc-期末-1&quot;&gt;期末&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;小结&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#小结&quot; id=&quot;markdown-toc-小结&quot;&gt;小结&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;section&quot;&gt;引言&lt;/h1&gt;
+&lt;h1 id=&quot;引言&quot;&gt;引言&lt;/h1&gt;
 &lt;p&gt;因为工作相关，所以最近开始了解会计相关的知识，最开始找了一本叫《基础会计学》的书，实际上是大学的教材，但这书实在太抽象了。为了能更好的理解（主要是一般在地铁上看书，地铁上看这种死扣概念的教材叫一个蛋疼），又试了试别的，最后找到这本&lt;a href=&quot;https://item.jd.com/11339593.html&quot;&gt;《世界上最简单的会计书》&lt;/a&gt;，一共才200页，真心是最简单的会计入门书，强烈推荐。&lt;/p&gt;
 
-&lt;h1 id=&quot;section-1&quot;&gt;会计是干什么的？&lt;/h1&gt;
+&lt;h1 id=&quot;会计是干什么的&quot;&gt;会计是干什么的？&lt;/h1&gt;
 &lt;blockquote&gt;
   &lt;p&gt;会计是企业计量，核算财务经营成果的一种方法，是以货币为主要计量单位，以凭证为依据，借助于专门的技术方法对各单位的经营互动进行完整，联系，系统的反映和监督，借以加强经济管理，提高经济效益，同时是一切商业，经济活动的语言，准则和根据。它既是经济管理的重要组成部分，又是经济管理的重要工具。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;这段话是不是很长？我的理解是：会计是计量和管理企业经营行为的工具。&lt;/p&gt;
 
-&lt;h1 id=&quot;section-2&quot;&gt;会计三大报表&lt;/h1&gt;
+&lt;h1 id=&quot;会计三大报表&quot;&gt;会计三大报表&lt;/h1&gt;
 &lt;p&gt;会计实际上是通过多种报表的编写来实现，这里面有三个很重要的报表：资产负债表，利润表，现金流表&lt;/p&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;资产负债表&lt;/h2&gt;
+&lt;h2 id=&quot;资产负债表&quot;&gt;资产负债表&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;资产负债表的编制目的就是在人和物中建立一种联系，它表明了你生意中所拥有的东西，以及这种东西与那些拥有它的人或对此有要求权的人们之间的关系。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -62,9 +75,10 @@
 
 &lt;p&gt;左侧的资产是公司目前所有的所有现金，存活等物品或权益，而右边包含了负债和所有者权益，负债是需要偿还的债务，而所有者权益是公司占有的权益。一个最重要的公式是：&lt;code class=&quot;highlighter-rouge&quot;&gt;总资产=总负载及所有者权益&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-4&quot;&gt;利润表&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/profitTable.png&quot; alt=&quot;利润表&quot; /&gt;
-资产负债表记录了某一时刻你所拥有的资产，以及资产与人之间的关系。但是资产负债表并没有体现出实际的经营情况，比如说购买存货，生产商品，销售产品等，因此，为了满足这个需求，上图中的的利润表产生了。&lt;/p&gt;
+&lt;h2 id=&quot;利润表&quot;&gt;利润表&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/profitTable.png&quot; alt=&quot;利润表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;资产负债表记录了某一时刻你所拥有的资产，以及资产与人之间的关系。但是资产负债表并没有体现出实际的经营情况，比如说购买存货，生产商品，销售产品等，因此，为了满足这个需求，上图中的的利润表产生了。&lt;/p&gt;
 
 &lt;p&gt;利润表中有几个概念：&lt;code class=&quot;highlighter-rouge&quot;&gt;销售收入&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;商品销售成本&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;毛利&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;净利润&lt;/code&gt;，它们之间的关系是：&lt;/p&gt;
 
@@ -74,21 +88,23 @@
 
 &lt;p&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;商品销售成本&lt;/code&gt;是指的与产品生产过程中有关的所有支出，而&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;囊括的是企业经营中与产品生产不直接相关的其他支出。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-5&quot;&gt;现金流表&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cast_flow.png&quot; alt=&quot;现金流表&quot; /&gt;
-现金流表记录的是现金的流入和流出，之所以把现金流单做一张表，是因为企业的经营实际上最重要的就是现金流。可能有人会问，经营靠利润表不就行了吗？但实际上利润是有欺骗性的，比如其对应的应收账款你就不一定真能收回来。&lt;/p&gt;
+&lt;h2 id=&quot;现金流表&quot;&gt;现金流表&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/cast_flow.png&quot; alt=&quot;现金流表&quot; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;section-6&quot;&gt;柠檬汁摊范例&lt;/h1&gt;
+&lt;p&gt;现金流表记录的是现金的流入和流出，之所以把现金流单做一张表，是因为企业的经营实际上最重要的就是现金流。可能有人会问，经营靠利润表不就行了吗？但实际上利润是有欺骗性的，比如其对应的应收账款你就不一定真能收回来。&lt;/p&gt;
+
+&lt;h1 id=&quot;柠檬汁摊范例&quot;&gt;柠檬汁摊范例&lt;/h1&gt;
 &lt;p&gt;运用书中的案例，一个小男孩开了一个柠檬汁摊，并运用会计的知识来管理他的账务，这里我们记两周的例子来进行说明。之后的记录中商品的价格读者不要介意，只是为了方便而已。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;第一周&lt;/h2&gt;
+&lt;h2 id=&quot;第一周&quot;&gt;第一周&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-8&quot;&gt;期初&lt;/h3&gt;
+&lt;h3 id=&quot;期初&quot;&gt;期初&lt;/h3&gt;
 &lt;p&gt;第一周小男孩拿出了自己的50元，并找父母借了100元，这是柠檬汁摊最初的状态，我们用期初负债表来记录。
-&lt;img src=&quot;/HuangHuanBlog/pics/weak1_pre_debt.png&quot; alt=&quot;第一周期初资产负债表&quot; /&gt;
-这个没什么可讲的，一开始都很简单，需要注意的是借款在表中体现的为&lt;code class=&quot;highlighter-rouge&quot;&gt;应付票据&lt;/code&gt;。&lt;/p&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/weak1_pre_debt.png&quot; alt=&quot;第一周期初资产负债表&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;期中&lt;/h3&gt;
+&lt;p&gt;这个没什么可讲的，一开始都很简单，需要注意的是借款在表中体现的为&lt;code class=&quot;highlighter-rouge&quot;&gt;应付票据&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;期中&quot;&gt;期中&lt;/h3&gt;
 &lt;p&gt;在这一周小男孩依次做了以下的事：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -98,7 +114,7 @@
   &lt;li&gt;看见卖柠檬汁很挣钱，可恶的父母向你收取了&lt;code class=&quot;highlighter-rouge&quot;&gt;20&lt;/code&gt;块的杯子使用费和水费&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;期末&lt;/h3&gt;
+&lt;h3 id=&quot;期末&quot;&gt;期末&lt;/h3&gt;
 &lt;p&gt;到了第一周末，我们这样记录这一周的资产负债中变化的项目：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -108,24 +124,27 @@
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;那么第一周的期末负债表如下：&lt;/strong&gt;
-&lt;img src=&quot;/HuangHuanBlog/pics/weak1_aft_debt.png&quot; alt=&quot;第一周期末资产负债表&quot; /&gt;
-既然左右相等，那就说明妥妥的没问题了。&lt;/p&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/weak1_aft_debt.png&quot; alt=&quot;第一周期末资产负债表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;既然左右相等，那就说明妥妥的没问题了。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;刚才算期末资产负债表的过程其实也做了现金流表和利润表的计算过程，只是没有在负债表中体现出来，下面我们先记录这一期的利润表：&lt;/strong&gt;
-&lt;img src=&quot;/HuangHuanBlog/pics/week1_profit.png&quot; alt=&quot;第一周利润表&quot; /&gt;
-可以看到利润表算出来的结果和资产负债表中的本周盈利是一致的，只是它更清晰的体现了&lt;code class=&quot;highlighter-rouge&quot;&gt;销售收入&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;商品成本&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;毛利&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;净利润&lt;/code&gt;的值和组成。&lt;/p&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/week1_profit.png&quot; alt=&quot;第一周利润表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到利润表算出来的结果和资产负债表中的本周盈利是一致的，只是它更清晰的体现了&lt;code class=&quot;highlighter-rouge&quot;&gt;销售收入&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;商品成本&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;毛利&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;费用&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;净利润&lt;/code&gt;的值和组成。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;第一周的现金流表如下：&lt;/strong&gt;
-&lt;img src=&quot;/HuangHuanBlog/pics/week1_cash.png&quot; alt=&quot;第一周现金流表&quot; /&gt;
-很简单不是吗，现金流表更好的体现了现金的收支过程，最后和资产负债表中的现金相对应。&lt;/p&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/week1_cash.png&quot; alt=&quot;第一周现金流表&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section-11&quot;&gt;第二周&lt;/h2&gt;
+&lt;p&gt;很简单不是吗，现金流表更好的体现了现金的收支过程，最后和资产负债表中的现金相对应。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-12&quot;&gt;期初&lt;/h3&gt;
+&lt;h2 id=&quot;第二周&quot;&gt;第二周&lt;/h2&gt;
+
+&lt;h3 id=&quot;期初-1&quot;&gt;期初&lt;/h3&gt;
 &lt;p&gt;有了第一周的成功，小男孩挣到了钱有了经验，但不幸的是冰箱里剩下的10杯柠檬汁杯爸妈和姐姐喝掉了，他们并不准备为此支付任何钱，于是期初的资产负债表变成了这样。
 &lt;img src=&quot;/HuangHuanBlog/pics/week2_pre_debt.png&quot; alt=&quot;第二周期初资产负债表&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-13&quot;&gt;期中&lt;/h3&gt;
+&lt;h3 id=&quot;期中-1&quot;&gt;期中&lt;/h3&gt;
 &lt;p&gt;在这一周中小男孩依次做了以下的事：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -136,7 +155,7 @@
   &lt;li&gt;偿还了爸妈&lt;code class=&quot;highlighter-rouge&quot;&gt;50&lt;/code&gt;块钱，可恶的他们还收取了&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;块的利息&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-14&quot;&gt;期末&lt;/h3&gt;
+&lt;h3 id=&quot;期末-1&quot;&gt;期末&lt;/h3&gt;
 &lt;p&gt;这一周增加了几个新的项目：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -150,19 +169,21 @@
 &lt;img src=&quot;/HuangHuanBlog/pics/week2_aft_debt.png&quot; alt=&quot;第二周末资产负债表&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;第二周的利润表如下：&lt;/strong&gt;
-&lt;img src=&quot;/HuangHuanBlog/pics/week2_profit.png&quot; alt=&quot;第二周利润表&quot; /&gt;
-和本期盈利是对应的。&lt;/p&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/week2_profit.png&quot; alt=&quot;第二周利润表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;和本期盈利是对应的。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;第二周的现金流表如下:&lt;/strong&gt;
-&lt;img src=&quot;/HuangHuanBlog/pics/week2_cash.png&quot; alt=&quot;第二周现金流量表&quot; /&gt;
-和资产负债表中的现金正好对应。&lt;/p&gt;
+&lt;img src=&quot;/HuangHuanBlog/pics/week2_cash.png&quot; alt=&quot;第二周现金流量表&quot; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;section-15&quot;&gt;小结&lt;/h1&gt;
+&lt;p&gt;和资产负债表中的现金正好对应。&lt;/p&gt;
+
+&lt;h1 id=&quot;小结&quot;&gt;小结&lt;/h1&gt;
 &lt;p&gt;在我的理解中，资产负债表是一个宏观的记录表，二利润表和现金流表是其中关键项目的细化，通过这三个报表，能够较为清楚的了解到公司的经营状况。&lt;/p&gt;
 </description>
         <pubDate>Mon, 19 Jun 2017 23:07:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html</guid>
         
         
         <category>Read</category>
@@ -172,16 +193,16 @@
       <item>
         <title>Innodb锁介绍-Innodb中死锁</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;死锁&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;死锁的产生条件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;死锁范例&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#innodb&quot; id=&quot;markdown-toc-innodb&quot;&gt;Innodb中的死锁&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;引言&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#innodb-1&quot; id=&quot;markdown-toc-innodb-1&quot;&gt;Innodb死锁产生条件&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#innodb-2&quot; id=&quot;markdown-toc-innodb-2&quot;&gt;Innodb死锁范例&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;1. 典型的死锁案例&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#insert&quot; id=&quot;markdown-toc-insert&quot;&gt;2. Insert死锁&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#case&quot; id=&quot;markdown-toc-case&quot;&gt;3. 工作中的另一个死锁Case&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#死锁&quot; id=&quot;markdown-toc-死锁&quot;&gt;死锁&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#死锁的产生条件&quot; id=&quot;markdown-toc-死锁的产生条件&quot;&gt;死锁的产生条件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#死锁范例&quot; id=&quot;markdown-toc-死锁范例&quot;&gt;死锁范例&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#innodb中的死锁&quot; id=&quot;markdown-toc-innodb中的死锁&quot;&gt;Innodb中的死锁&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#引言&quot; id=&quot;markdown-toc-引言&quot;&gt;引言&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#innodb死锁产生条件&quot; id=&quot;markdown-toc-innodb死锁产生条件&quot;&gt;Innodb死锁产生条件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#innodb死锁范例&quot; id=&quot;markdown-toc-innodb死锁范例&quot;&gt;Innodb死锁范例&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#1-典型的死锁案例&quot; id=&quot;markdown-toc-1-典型的死锁案例&quot;&gt;1. 典型的死锁案例&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#2-insert死锁&quot; id=&quot;markdown-toc-2-insert死锁&quot;&gt;2. Insert死锁&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#3-工作中的另一个死锁case&quot; id=&quot;markdown-toc-3-工作中的另一个死锁case&quot;&gt;3. 工作中的另一个死锁Case&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
@@ -190,14 +211,14 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;section&quot;&gt;死锁&lt;/h1&gt;
+&lt;h1 id=&quot;死锁&quot;&gt;死锁&lt;/h1&gt;
 &lt;blockquote&gt;
   &lt;p&gt;当两个以上的运算单元，双方都在等待对方停止运行，以获取系统资源，但是没有一方提前退出时，就称之为死锁。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;死锁问题是计算机系统中常见的问题，在Innodb中同样存在。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;死锁的产生条件&lt;/h2&gt;
+&lt;h2 id=&quot;死锁的产生条件&quot;&gt;死锁的产生条件&lt;/h2&gt;
 &lt;p&gt;死锁产生必须要满足以下四个条件：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -207,15 +228,15 @@
   &lt;li&gt;&lt;strong&gt;循环等待条件&lt;/strong&gt;:单元之前存在一个资源的循环等待序列。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-2&quot;&gt;死锁范例&lt;/h2&gt;
+&lt;h2 id=&quot;死锁范例&quot;&gt;死锁范例&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/deadlock.jpg&quot; alt=&quot;死锁&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在百度上盗了一张图，如图所示，单元T1和T2各自占有了一个资源，又同时想要占据别人的资源，这样僵持不下，也就产生了死锁。对于计算机系统而言，死锁会导致系统停滞，对于Innodb而言，死锁会给数据的读写产生阻碍。&lt;/p&gt;
 
-&lt;h2 id=&quot;innodb&quot;&gt;Innodb中的死锁&lt;/h2&gt;
+&lt;h2 id=&quot;innodb中的死锁&quot;&gt;Innodb中的死锁&lt;/h2&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;引言&lt;/h2&gt;
+&lt;h2 id=&quot;引言&quot;&gt;引言&lt;/h2&gt;
 
 &lt;p&gt;在介绍之前，先讲一个我们工作中踩到的一个坑。&lt;/p&gt;
 
@@ -229,7 +250,7 @@
 
 &lt;p&gt;这里可能会有人有疑问，为什么出现Duplicate Key错误的时候会加共享锁了，我的理解是冲突检测本身是一种读操作，所以冲突之后的轮询需要加共享锁。据这个例子的主要目的是告诉大家死锁问题是我们工作中会遇到的，需要重视。&lt;/p&gt;
 
-&lt;h3 id=&quot;innodb-1&quot;&gt;Innodb死锁产生条件&lt;/h3&gt;
+&lt;h3 id=&quot;innodb死锁产生条件&quot;&gt;Innodb死锁产生条件&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;两个以上的并发事务&lt;/li&gt;
@@ -240,11 +261,11 @@
 
 &lt;p&gt;其实这也就是Innodb版的死锁条件，只是资源变成了锁而已。要避免死锁，其实就是要避免上诉死锁条件的产生，这种坑其实总会踩到了才会重视起来。&lt;/p&gt;
 
-&lt;h3 id=&quot;innodb-2&quot;&gt;Innodb死锁范例&lt;/h3&gt;
+&lt;h3 id=&quot;innodb死锁范例&quot;&gt;Innodb死锁范例&lt;/h3&gt;
 
 &lt;p&gt;明白了死锁的产生条件，那么我试着来实际测试一些典型的死锁情况。&lt;/p&gt;
 
-&lt;h4 id=&quot;section-4&quot;&gt;1. 典型的死锁案例&lt;/h4&gt;
+&lt;h4 id=&quot;1-典型的死锁案例&quot;&gt;1. 典型的死锁案例&lt;/h4&gt;
 
 &lt;p&gt;&lt;strong&gt;表的开始状态如下图&lt;/strong&gt;&lt;/p&gt;
 
@@ -266,7 +287,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/trans_5_commit.png&quot; alt=&quot;A commit&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;insert&quot;&gt;2. Insert死锁&lt;/h4&gt;
+&lt;h4 id=&quot;2-insert死锁&quot;&gt;2. Insert死锁&lt;/h4&gt;
 &lt;p&gt;在引言中我介绍了一个我们工作中遇到的坑，下面我们尝试自己复现一下。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;表的开始状态如下图&lt;/strong&gt;&lt;/p&gt;
@@ -299,7 +320,7 @@
 
 &lt;p&gt;&lt;strong&gt;需要注意的是&lt;/strong&gt; ，如果事务A不是&lt;code class=&quot;highlighter-rouge&quot;&gt;rollback&lt;/code&gt;，而是&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，那么不会产生死锁，而是爆出两个Duplicate Error，读者可以想一下这是为什么？&lt;/p&gt;
 
-&lt;h4 id=&quot;case&quot;&gt;3. 工作中的另一个死锁Case&lt;/h4&gt;
+&lt;h4 id=&quot;3-工作中的另一个死锁case&quot;&gt;3. 工作中的另一个死锁Case&lt;/h4&gt;
 
 &lt;p&gt;这个Case产生的原因是，事务想要&lt;code class=&quot;highlighter-rouge&quot;&gt;insert&lt;/code&gt;一条记录，然后&lt;code class=&quot;highlighter-rouge&quot;&gt;select for update&lt;/code&gt;该条记录，但如果针对一条记录，有三个事务并发执行，那么同样会产生死锁，死锁的原因其实和上面类似，都是因为在产生Duplicate Error时，事务会加Share lock。&lt;/p&gt;
 
@@ -333,8 +354,8 @@
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/case_bc_deadlock.png&quot; alt=&quot;Case b c deadlcok&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 30 May 2017 21:23:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/mysql/2017/05/30/Innodb%E6%AD%BB%E9%94%81.html</guid>
         
         
         <category>MySQL</category>
@@ -344,17 +365,17 @@
       <item>
         <title>PHP自动化测试锤子-PHPUnit&amp;Uopz</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#php&quot; id=&quot;markdown-toc-php&quot;&gt;PHP自动化测试概述&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#phpunit&quot; id=&quot;markdown-toc-phpunit&quot;&gt;锤子一: PHPUnit&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#uopz&quot; id=&quot;markdown-toc-uopz&quot;&gt;锤子二: Uopz&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jenkins&quot; id=&quot;markdown-toc-jenkins&quot;&gt;锤子三：Jenkins&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#php自动化测试概述&quot; id=&quot;markdown-toc-php自动化测试概述&quot;&gt;PHP自动化测试概述&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#锤子一-phpunit&quot; id=&quot;markdown-toc-锤子一-phpunit&quot;&gt;锤子一: PHPUnit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#锤子二-uopz&quot; id=&quot;markdown-toc-锤子二-uopz&quot;&gt;锤子二: Uopz&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#锤子三jenkins&quot; id=&quot;markdown-toc-锤子三jenkins&quot;&gt;锤子三：Jenkins&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#总结&quot; id=&quot;markdown-toc-总结&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;php&quot;&gt;PHP自动化测试概述&lt;/h2&gt;
+&lt;h2 id=&quot;php自动化测试概述&quot;&gt;PHP自动化测试概述&lt;/h2&gt;
 &lt;p&gt;PHP是一种偏脚本化的语言，了解过ES6的朋友会发现PHP和ES6其实语法和一些特性上已经很接近了，对于我这种一直学Java的人来讲，觉得PHP和ES6语法上基本没太大区别。由于PHP的这种脚本化的特性，编码的风格一个人一个样，令其难以进行测试，这应该是每个想对PHP搞自动化测试，特别是其中单元化测试的人都会遇到的问题。我最近在公司接了个任务，要对项目中的一些很复杂的回路脚本进行自动化测试，希望组内所有人Merge代码的时候，会自动跑测试Case，这篇文章就是分享我在做这个任务时所找到的锤子。&lt;/p&gt;
 
-&lt;h2 id=&quot;phpunit&quot;&gt;锤子一: PHPUnit&lt;/h2&gt;
+&lt;h2 id=&quot;锤子一-phpunit&quot;&gt;锤子一: PHPUnit&lt;/h2&gt;
 &lt;p&gt;PHPUnit是大家马上就会找到的一个锤子，关于它官方提供了PHPUnit-Book，里面介绍了其提供的测试工具和一些测试基本理念，大家可以花一天左右的时间系统的看完这个文档，我这里就不做赘述了。我举一个 &lt;strong&gt;理想情况&lt;/strong&gt; 下的PHPUnit测试的例子：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/phpunit-ideal.png&quot; alt=&quot;PHPUnit-ideal&quot; /&gt;&lt;/p&gt;
@@ -369,16 +390,16 @@
 
 &lt;p&gt;如图上所示，我们的项目中倾向于这种静态调用的面向过程写法，这种写法的问题是PHPUnit基本上就失效了，我们的测试将无从入手，那么该怎么办了?&lt;/p&gt;
 
-&lt;h2 id=&quot;uopz&quot;&gt;锤子二: Uopz&lt;/h2&gt;
+&lt;h2 id=&quot;锤子二-uopz&quot;&gt;锤子二: Uopz&lt;/h2&gt;
 &lt;p&gt;PHPUnit无法解决问题，有两个工具可以解决 &lt;strong&gt;php-test-helper&lt;/strong&gt; 和 &lt;strong&gt;Uopz&lt;/strong&gt; ，其中 &lt;strong&gt;php-test-helper&lt;/strong&gt; 实际已经不再维护了，Github主页上也指向了 &lt;strong&gt;Uopz&lt;/strong&gt;，这里我也就主要说说 &lt;strong&gt;Uopz&lt;/strong&gt; 工具，这个工具可以做什么了，&lt;strong&gt;Uopz&lt;/strong&gt; 的全称是 &lt;strong&gt;User Operations For Zend&lt;/strong&gt; ，能够在运行时改变PHP的行为，下面是它提供的主要方法：&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;uopz_function //备份一个方法
-uopz_compose //构建一个类
-uopz_flags //改变类或者方法的Flag定义
-uopz_function //创建一个function
-uopz_overload //覆盖一个VM的操作码（这个后来并没有使用，存在问题，实际使用时通过PHPUnit的基境来实现了这个方法的功能）
-uopz_redefine //创建或者重定义一个常量
-uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;nb&quot;&gt;uopz_function&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//备份一个方法&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;uopz_compose&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//构建一个类&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;uopz_flags&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//改变类或者方法的Flag定义&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;uopz_function&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//创建一个function&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;uopz_overload&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//覆盖一个VM的操作码（这个后来并没有使用，存在问题，实际使用时通过PHPUnit的基境来实现了这个方法的功能）&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;uopz_redefine&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//创建或者重定义一个常量&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;uopz_restore&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//恢复方法到之前备份的状态&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;这个工具十分强大，基于它真的什么都能搞，就是麻烦点，比如刚才哪个PHPUnit不可测的代码，用上Uopz就不一样了：&lt;/p&gt;
 
@@ -388,10 +409,10 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;我用这个给公司的回路脚本写测试Case，200行的回路代码，写了1000多行的测试代码，因为要Mock太多的类，重定义很多方法，确实很麻烦，对于经常改动的代码，这样搞代价可能不可承受，但如果代码的变动不大，但每次改动的风险却很大，那么这个就值得了。关于Uopz的详细用法，大家可以找我交流，里面坑还是不少。&lt;/p&gt;
 
-&lt;h2 id=&quot;jenkins&quot;&gt;锤子三：Jenkins&lt;/h2&gt;
+&lt;h2 id=&quot;锤子三jenkins&quot;&gt;锤子三：Jenkins&lt;/h2&gt;
 &lt;p&gt;对于自动化来讲，Jenkins应该是最常用的CI工具了，要做的也就是配置对仓库定期的变动检查，或者代码长裤自己挂Hook，通知Jenkins运行自测代码。这样每次代码变动时，Jenkins都会跑一遍Case，如果发现问题则可以邮件通知开发者。&lt;/p&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;总结&lt;/h2&gt;
+&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;PHPUnit Uopz Jenkins&lt;/strong&gt; 是用的自动化测试三剑客，三者缺一不可，如果想更好的更高效的进行自动化测试，有两个建议：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -402,8 +423,8 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;p&gt;做到这些，PHP的自动化测试将简单而高效。&lt;/p&gt;
 </description>
         <pubDate>Sun, 14 May 2017 21:08:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/php/2017/05/14/PHP%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95.html</guid>
         
         
         <category>PHP</category>
@@ -413,17 +434,17 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
       <item>
         <title>Innodb锁介绍-Innodb中的各类锁概述</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#innodb&quot; id=&quot;markdown-toc-innodb&quot;&gt;Innodb锁概述&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;概述&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;一次封锁法&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;两阶段锁协议&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;加锁阶段&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;解锁阶段&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#innodb锁概述&quot; id=&quot;markdown-toc-innodb锁概述&quot;&gt;Innodb锁概述&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#概述&quot; id=&quot;markdown-toc-概述&quot;&gt;概述&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#一次封锁法&quot; id=&quot;markdown-toc-一次封锁法&quot;&gt;一次封锁法&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#两阶段锁协议&quot; id=&quot;markdown-toc-两阶段锁协议&quot;&gt;两阶段锁协议&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#加锁阶段&quot; id=&quot;markdown-toc-加锁阶段&quot;&gt;加锁阶段&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#解锁阶段&quot; id=&quot;markdown-toc-解锁阶段&quot;&gt;解锁阶段&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#innodb-1&quot; id=&quot;markdown-toc-innodb-1&quot;&gt;Innodb中的各种锁&lt;/a&gt;        &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#innodb中的各种锁&quot; id=&quot;markdown-toc-innodb中的各种锁&quot;&gt;Innodb中的各种锁&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#shared-lock-and-exclusive-locks&quot; id=&quot;markdown-toc-shared-lock-and-exclusive-locks&quot;&gt;Shared Lock And Exclusive Locks&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#record-locks&quot; id=&quot;markdown-toc-record-locks&quot;&gt;Record Locks&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#next-key-locks&quot; id=&quot;markdown-toc-next-key-locks&quot;&gt;Next-key Locks&lt;/a&gt;&lt;/li&gt;
@@ -437,7 +458,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;innodb&quot;&gt;Innodb锁概述&lt;/h1&gt;
+&lt;h1 id=&quot;innodb锁概述&quot;&gt;Innodb锁概述&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;参考文档:&lt;/strong&gt;&lt;/p&gt;
 
@@ -447,36 +468,36 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
   &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.6/en/innodb-locking.html&quot;&gt;MySQL锁官方文档&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;概述&lt;/h2&gt;
+&lt;h2 id=&quot;概述&quot;&gt;概述&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Innodb中行级锁作用于索引之上，如果没有索引，则只能够锁表。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;一次封锁法&lt;/h3&gt;
+&lt;h3 id=&quot;一次封锁法&quot;&gt;一次封锁法&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;为了预防死锁，一般应用中推荐一次封锁法。也就是在方法的开始阶段，已经预先知道会用到哪些数据，然后全部锁住，在方法运行完成之后，再进行解锁。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;一次封锁法能够预防死锁，但从该方法的定义中可以看到，每次操作都锁住全部数据，如果这样数据的执行只能是串行化的，性能不高。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;两阶段锁协议&lt;/h3&gt;
+&lt;h3 id=&quot;两阶段锁协议&quot;&gt;两阶段锁协议&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;数据库遵循的是两段锁协议，将事物分解成加锁和解锁两个阶段&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&quot;section-3&quot;&gt;加锁阶段&lt;/h4&gt;
+&lt;h4 id=&quot;加锁阶段&quot;&gt;加锁阶段&lt;/h4&gt;
 &lt;blockquote&gt;
   &lt;p&gt;该阶段可以进行加锁操作，在对任何数据进行读操作之前要申请并获得S锁(Shared Lock，其它事务可以继续加S锁，但不能加Exclusive Lock，即排他锁)；而在进行写操作之前，需要申请X锁(Exclusive Lock，其它事务不能再获得任何锁)。加锁不成功则进入等待状态，而不能再加其它锁。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;从这个定义可以看出，加锁阶段定义了事务之间的协调规则，能够有效提高多个事务之间的执行性能，但同时也带来了死锁的风险，之后会举例介绍死锁的成因。&lt;/p&gt;
 
-&lt;h4 id=&quot;section-4&quot;&gt;解锁阶段&lt;/h4&gt;
+&lt;h4 id=&quot;解锁阶段&quot;&gt;解锁阶段&lt;/h4&gt;
 &lt;blockquote&gt;
   &lt;p&gt;事务进入解锁阶段将释放其持有的锁，该阶段只能进行解锁操作，而不能再加其它锁。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;innodb-1&quot;&gt;Innodb中的各种锁&lt;/h2&gt;
+&lt;h2 id=&quot;innodb中的各种锁&quot;&gt;Innodb中的各种锁&lt;/h2&gt;
 
 &lt;h3 id=&quot;shared-lock-and-exclusive-locks&quot;&gt;Shared Lock And Exclusive Locks&lt;/h3&gt;
 
@@ -544,8 +565,8 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;p&gt;AUTO-INC锁是一种特殊的表级别锁，主要处理表中带有自增列的情况。实际上是为了保证自增的正确性，所以有了这种锁。&lt;/p&gt;
 </description>
         <pubDate>Sun, 07 May 2017 17:05:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/mysql/2017/05/07/Innodb%E9%94%81.html</guid>
         
         
         <category>MySQL</category>
@@ -556,22 +577,22 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
         <title>Maven之三十分钟入门</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#maven&quot; id=&quot;markdown-toc-maven&quot;&gt;Maven&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#maven-1&quot; id=&quot;markdown-toc-maven-1&quot;&gt;Maven概述&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#pom&quot; id=&quot;markdown-toc-pom&quot;&gt;一个基本的Pom文件&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#maven-2&quot; id=&quot;markdown-toc-maven-2&quot;&gt;Maven项目的基本结构&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#maven-3&quot; id=&quot;markdown-toc-maven-3&quot;&gt;Maven的执行&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#mvn-compile&quot; id=&quot;markdown-toc-mvn-compile&quot;&gt;1. mvn compile&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#mvn-test&quot; id=&quot;markdown-toc-mvn-test&quot;&gt;2. mvn test&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#mvn-package&quot; id=&quot;markdown-toc-mvn-package&quot;&gt;3. mvn package&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#mvn-install&quot; id=&quot;markdown-toc-mvn-install&quot;&gt;4. mvn install&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#maven概述&quot; id=&quot;markdown-toc-maven概述&quot;&gt;Maven概述&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#一个基本的pom文件&quot; id=&quot;markdown-toc-一个基本的pom文件&quot;&gt;一个基本的Pom文件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#maven项目的基本结构&quot; id=&quot;markdown-toc-maven项目的基本结构&quot;&gt;Maven项目的基本结构&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#maven的执行&quot; id=&quot;markdown-toc-maven的执行&quot;&gt;Maven的执行&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#1-mvn-compile&quot; id=&quot;markdown-toc-1-mvn-compile&quot;&gt;1. mvn compile&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#2-mvn-test&quot; id=&quot;markdown-toc-2-mvn-test&quot;&gt;2. mvn test&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#3-mvn-package&quot; id=&quot;markdown-toc-3-mvn-package&quot;&gt;3. mvn package&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#4-mvn-install&quot; id=&quot;markdown-toc-4-mvn-install&quot;&gt;4. mvn install&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#plugins&quot; id=&quot;markdown-toc-plugins&quot;&gt;Plugins&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;资源文件打包&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;文件过滤&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#资源文件打包&quot; id=&quot;markdown-toc-资源文件打包&quot;&gt;资源文件打包&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#文件过滤&quot; id=&quot;markdown-toc-文件过滤&quot;&gt;文件过滤&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#dependencies&quot; id=&quot;markdown-toc-dependencies&quot;&gt;Dependencies&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;包的发布&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#modules&quot; id=&quot;markdown-toc-modules&quot;&gt;多Modules管理&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#包的发布&quot; id=&quot;markdown-toc-包的发布&quot;&gt;包的发布&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#多modules管理&quot; id=&quot;markdown-toc-多modules管理&quot;&gt;多Modules管理&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -586,9 +607,9 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;&lt;strong&gt;参考文档:&lt;/strong&gt;&lt;a href=&quot;http://maven.apache.org/guides/&quot;&gt;Maven Documentation&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;maven-1&quot;&gt;Maven概述&lt;/h2&gt;
+&lt;h2 id=&quot;maven概述&quot;&gt;Maven概述&lt;/h2&gt;
 
-&lt;h3 id=&quot;pom&quot;&gt;一个基本的Pom文件&lt;/h3&gt;
+&lt;h3 id=&quot;一个基本的pom文件&quot;&gt;一个基本的Pom文件&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;project&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xmlns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0&quot;&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;xmlns:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xsi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
@@ -625,7 +646,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
   &lt;li&gt;&lt;strong&gt;description&lt;/strong&gt; 这个参数描述了项目的基本信息，通常作用在Maven生成的文档中&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;maven-2&quot;&gt;Maven项目的基本结构&lt;/h3&gt;
+&lt;h3 id=&quot;maven项目的基本结构&quot;&gt;Maven项目的基本结构&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;|--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;xml&lt;/span&gt;
@@ -645,21 +666,21 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;上面是一个Maven项目的基本结构，项目的相关资源位于&lt;code class=&quot;highlighter-rouge&quot;&gt;${basedir}/src/main/java&lt;/code&gt;中，而测试的资源位于&lt;code class=&quot;highlighter-rouge&quot;&gt;${basedir}/src/test/java&lt;/code&gt;中，而pom文件位于&lt;code class=&quot;highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt;中。&lt;/p&gt;
 
-&lt;h3 id=&quot;maven-3&quot;&gt;Maven的执行&lt;/h3&gt;
+&lt;h3 id=&quot;maven的执行&quot;&gt;Maven的执行&lt;/h3&gt;
 
-&lt;h4 id=&quot;mvn-compile&quot;&gt;1. mvn compile&lt;/h4&gt;
+&lt;h4 id=&quot;1-mvn-compile&quot;&gt;1. mvn compile&lt;/h4&gt;
 
 &lt;p&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;mvn compile&lt;/code&gt;，编译的结果会默认放在&lt;code class=&quot;highlighter-rouge&quot;&gt;${basedir}/target/classes&lt;/code&gt;目录下。&lt;/p&gt;
 
-&lt;h4 id=&quot;mvn-test&quot;&gt;2. mvn test&lt;/h4&gt;
+&lt;h4 id=&quot;2-mvn-test&quot;&gt;2. mvn test&lt;/h4&gt;
 
 &lt;p&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;mvn test&lt;/code&gt;，会执行&lt;code class=&quot;highlighter-rouge&quot;&gt;${basedir}/src/test/java&lt;/code&gt;中的单元测试。如果只想编译测试代码而不执行，则执行&lt;code class=&quot;highlighter-rouge&quot;&gt;mvn test-compile&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h4 id=&quot;mvn-package&quot;&gt;3. mvn package&lt;/h4&gt;
+&lt;h4 id=&quot;3-mvn-package&quot;&gt;3. mvn package&lt;/h4&gt;
 
 &lt;p&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;mvn package&lt;/code&gt;会对项目进行打包，假如当前在pom中的packaging设定为jar，那么执行该命令后会在&lt;code class=&quot;highlighter-rouge&quot;&gt;${basedir}/target&lt;/code&gt;目录下生成对应的jar包。&lt;/p&gt;
 
-&lt;h4 id=&quot;mvn-install&quot;&gt;4. mvn install&lt;/h4&gt;
+&lt;h4 id=&quot;4-mvn-install&quot;&gt;4. mvn install&lt;/h4&gt;
 
 &lt;p&gt;如果想把&lt;code class=&quot;highlighter-rouge&quot;&gt;mvn package&lt;/code&gt;生成的Jar文件安装在本地库中以让其它项目引用，则可以执行&lt;code class=&quot;highlighter-rouge&quot;&gt;mvn install&lt;/code&gt;命令，将生成的jar包放在&lt;code class=&quot;highlighter-rouge&quot;&gt;${user.home}/.m2/repository&lt;/code&gt;中。&lt;/p&gt;
 
@@ -683,7 +704,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/code&gt;中的配置会应用在对应Plugin的所有Goal。&lt;/p&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;资源文件打包&lt;/h3&gt;
+&lt;h3 id=&quot;资源文件打包&quot;&gt;资源文件打包&lt;/h3&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;${basedir}/src/main/resources&lt;/code&gt;目录下的所有文件都会被打包到Jar文件中，比如如下一个文件结构:&lt;/p&gt;
 
@@ -721,7 +742,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
         &lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;
             &lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;文件过滤&lt;/h3&gt;
+&lt;h3 id=&quot;文件过滤&quot;&gt;文件过滤&lt;/h3&gt;
 
 &lt;p&gt;Maven支持文件过滤的功能，可以在build时候为文件提供变量赋值，比如说上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;application.properties&lt;/code&gt;文件中有如下定义:&lt;/p&gt;
 
@@ -816,7 +837,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;scope&amp;gt;&lt;/code&gt;标签的值可以为compile，test和runtime，当Maven编译项目时，它首先会在&lt;code class=&quot;highlighter-rouge&quot;&gt;${user.home}/.m2/repository&lt;/code&gt;这个本地库目录下寻找所需的依赖，如果没有会去远程的库上寻找，并将其下载到本地库中，默认的远程库地址为&lt;code class=&quot;highlighter-rouge&quot;&gt;http://repo.maven.apache.org/maven2/&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;包的发布&lt;/h3&gt;
+&lt;h3 id=&quot;包的发布&quot;&gt;包的发布&lt;/h3&gt;
 
 &lt;p&gt;当需要发布一个包的远程仓库时，需要配置库的地址和相应的权限，一个范例如下:&lt;/p&gt;
 
@@ -892,7 +913,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
   &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;modules&quot;&gt;多Modules管理&lt;/h3&gt;
+&lt;h3 id=&quot;多modules管理&quot;&gt;多Modules管理&lt;/h3&gt;
 
 &lt;p&gt;Maven很好的支持了多个Modules的管理，假如一个Maven项目结构如下:&lt;/p&gt;
 
@@ -973,8 +994,8 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;p&gt;可见&lt;code class=&quot;highlighter-rouge&quot;&gt;my-app-1.0-SNAPSHOT.jar&lt;/code&gt;已经被放到了&lt;code class=&quot;highlighter-rouge&quot;&gt;WEB-INF/lib&lt;/code&gt;目录下。&lt;/p&gt;
 </description>
         <pubDate>Mon, 01 May 2017 21:21:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/framework/2017/05/01/Maven%E4%B9%8B%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8.html</guid>
         
         
         <category>Framework</category>
@@ -993,8 +1014,8 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;p&gt;离别是新的开始，不要害怕，任性做自己。&lt;/p&gt;
 </description>
         <pubDate>Thu, 16 Feb 2017 21:21:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2017/02/16/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/pieces/2017/02/16/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/pieces/2017/02/16/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/pieces/2017/02/16/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B.html</guid>
         
         
         <category>Pieces</category>
@@ -1004,20 +1025,20 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
       <item>
         <title>Zookeeper笔记</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 数据结构&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2. 节点&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.1 简单封装&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.2 创建节点&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.3 监听节点。&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-数据结构&quot; id=&quot;markdown-toc-1-数据结构&quot;&gt;1. 数据结构&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-节点&quot; id=&quot;markdown-toc-2-节点&quot;&gt;2. 节点&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#21-简单封装&quot; id=&quot;markdown-toc-21-简单封装&quot;&gt;2.1 简单封装&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#22-创建节点&quot; id=&quot;markdown-toc-22-创建节点&quot;&gt;2.2 创建节点&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#23-监听节点&quot; id=&quot;markdown-toc-23-监听节点&quot;&gt;2.3 监听节点。&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;3. 集群&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;3.1 角色&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;3.2 读写模式&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#zab&quot; id=&quot;markdown-toc-zab&quot;&gt;3.3 ZAB协议&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#quorum&quot; id=&quot;markdown-toc-quorum&quot;&gt;3.3.1 Quorum&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;3.3.2 四个阶段&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#n1&quot; id=&quot;markdown-toc-n1&quot;&gt;3.3.3 2N+1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-集群&quot; id=&quot;markdown-toc-3-集群&quot;&gt;3. 集群&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#31-角色&quot; id=&quot;markdown-toc-31-角色&quot;&gt;3.1 角色&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#32-读写模式&quot; id=&quot;markdown-toc-32-读写模式&quot;&gt;3.2 读写模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#33-zab协议&quot; id=&quot;markdown-toc-33-zab协议&quot;&gt;3.3 ZAB协议&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#331-quorum&quot; id=&quot;markdown-toc-331-quorum&quot;&gt;3.3.1 Quorum&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#332-四个阶段&quot; id=&quot;markdown-toc-332-四个阶段&quot;&gt;3.3.2 四个阶段&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#333-2n1&quot; id=&quot;markdown-toc-333-2n1&quot;&gt;3.3.3 2N+1&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -1028,7 +1049,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
   &lt;p&gt;Zookeeper是Apache Hadoop的一个子项目，本质是一个分布式小文件系统，主要解决分布式系统应用中遇到的数据管理问题（一致性问题）：统一命名服务，状态同步服务，集群管理，分布式应用配置项的管理。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;1. 数据结构&lt;/h2&gt;
+&lt;h2 id=&quot;1-数据结构&quot;&gt;1. 数据结构&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zk.png&quot; alt=&quot;Zookeeper&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1039,7 +1060,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
   &lt;li&gt;&lt;strong&gt;znode&lt;/strong&gt;可以被监控，包括这个节点中存储的数据的修改，子节点目录的变化等，一旦变化可以通知监听的客户端，这个是Zookeeper的重要特性。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;2. 节点&lt;/h2&gt;
+&lt;h2 id=&quot;2-节点&quot;&gt;2. 节点&lt;/h2&gt;
 
 &lt;p&gt;Zookeeper有四种类型的节点:&lt;/p&gt;
 
@@ -1052,7 +1073,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;节点在创建后其类型不能被修改。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;2.1 简单封装&lt;/h3&gt;
+&lt;h3 id=&quot;21-简单封装&quot;&gt;2.1 简单封装&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/**
  * Zookeeper测试类
@@ -1062,27 +1083,27 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ZookeepeTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2181&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;# connect &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooDefs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Ids&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPEN_ACL_UNSAFE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deleteNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;deleteNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getVersion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KeeperException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KeeperException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;# event &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
@@ -1091,9 +1112,9 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;2.2 创建节点&lt;/h3&gt;
+&lt;h3 id=&quot;22-创建节点&quot;&gt;2.2 创建节点&lt;/h3&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
@@ -1115,9 +1136,9 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;临时节点的创建原理类似，但在客户端断开连接后，临时节点的内容将消失。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;2.3 监听节点。&lt;/h3&gt;
+&lt;h3 id=&quot;23-监听节点&quot;&gt;2.3 监听节点。&lt;/h3&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
@@ -1132,11 +1153,11 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NodeDeleted&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watch&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NodeDeleted&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watch&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;section-5&quot;&gt;3. 集群&lt;/h2&gt;
+&lt;h2 id=&quot;3-集群&quot;&gt;3. 集群&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zk_Cluster.png&quot; alt=&quot;Cluster&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;3.1 角色&lt;/h3&gt;
+&lt;h3 id=&quot;31-角色&quot;&gt;3.1 角色&lt;/h3&gt;
 
 &lt;p&gt;Zookeeper集群中包含三个角色：&lt;/p&gt;
 
@@ -1148,17 +1169,17 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;其中&lt;strong&gt;Follower&lt;/strong&gt;和&lt;strong&gt;Observer&lt;/strong&gt;统称为&lt;strong&gt;Learner&lt;/strong&gt;，&lt;/p&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;3.2 读写模式&lt;/h3&gt;
+&lt;h3 id=&quot;32-读写模式&quot;&gt;3.2 读写模式&lt;/h3&gt;
 
 &lt;p&gt;在一个Zookeeper集群中，读写操作可以发生在任何一个集群角色上，而写的请求都会被转发到Leader，然后Leader通过Zookeeper中的原子广播协议（&lt;strong&gt;ZAB&lt;/strong&gt;协议，可以理解为Paxos协议的一种简化形式），将请求广播给所有的Learner，当Leader收到一半以上的写成功ACK后，就认为该写操作成功了，则将该操作持久化，并告诉客户端。&lt;/p&gt;
 
-&lt;h3 id=&quot;zab&quot;&gt;3.3 ZAB协议&lt;/h3&gt;
+&lt;h3 id=&quot;33-zab协议&quot;&gt;3.3 ZAB协议&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zab.png&quot; alt=&quot;zab&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ZAB（Atomic broadcast protocol）协议是为Zookeeper专门设计的支持恢复崩溃的原子广播协议，它是Zookeeper实现分布式数据一致性的基础，基于此，Zookeeper实现了一种主备模式的系统架构来保持集群中各个副本之间的数据一致性。&lt;/p&gt;
 
-&lt;h4 id=&quot;quorum&quot;&gt;3.3.1 Quorum&lt;/h4&gt;
+&lt;h4 id=&quot;331-quorum&quot;&gt;3.3.1 Quorum&lt;/h4&gt;
 
 &lt;p&gt;&lt;strong&gt;Quorum名词解释：&lt;/strong&gt; 集群中超过半数的节点集合。&lt;/p&gt;
 
@@ -1171,7 +1192,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;所以从这里可以看到，Quorum机制为Zookeeper的读写提供了一种调整的可能，在读和写性能中做tradeoff。&lt;/p&gt;
 
-&lt;h4 id=&quot;section-8&quot;&gt;3.3.2 四个阶段&lt;/h4&gt;
+&lt;h4 id=&quot;332-四个阶段&quot;&gt;3.3.2 四个阶段&lt;/h4&gt;
 
 &lt;p&gt;注意Zookeeper中的Observer和ZAB协议没有关系。&lt;/p&gt;
 
@@ -1191,7 +1212,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;这个阶段Zookeeper才能够正式对外提供事务服务，并且Leader可以进行消息广播。&lt;/p&gt;
 
-&lt;h4 id=&quot;n1&quot;&gt;3.3.3 2N+1&lt;/h4&gt;
+&lt;h4 id=&quot;333-2n1&quot;&gt;3.3.3 2N+1&lt;/h4&gt;
 &lt;p&gt;Zookeeper有这么一个特性：&lt;strong&gt;集群中只要有过半的机器是正常工作的，那么整个集群对外就是可用的&lt;/strong&gt; ，所以容错性上讲，2N和2N-1的容错性都是N-1，而2N+1的容错性为N，所以一般推荐节点数配置为奇数个。为什么会有这样一个特性了？因为Zookeeper的大多数行为都是基于投票的，需要半数以上的节点同意才能执行。&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -1199,8 +1220,8 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 08 Feb 2017 19:46:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</guid>
         
         
         <category>Middleware</category>
@@ -1210,82 +1231,82 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
       <item>
         <title>浅谈设计模式</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#ood&quot; id=&quot;markdown-toc-ood&quot;&gt;面向对象设计(OOD)的七大原则&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;开闭原则&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;里式替换原则&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;依赖倒置原则&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;接口隔离原则&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;单一职责原则&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;迪米特法则&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;合成/聚合复用原则&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;关于静态方法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#面向对象设计ood的七大原则&quot; id=&quot;markdown-toc-面向对象设计ood的七大原则&quot;&gt;面向对象设计(OOD)的七大原则&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#开闭原则&quot; id=&quot;markdown-toc-开闭原则&quot;&gt;开闭原则&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#里式替换原则&quot; id=&quot;markdown-toc-里式替换原则&quot;&gt;里式替换原则&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#依赖倒置原则&quot; id=&quot;markdown-toc-依赖倒置原则&quot;&gt;依赖倒置原则&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#接口隔离原则&quot; id=&quot;markdown-toc-接口隔离原则&quot;&gt;接口隔离原则&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#单一职责原则&quot; id=&quot;markdown-toc-单一职责原则&quot;&gt;单一职责原则&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#迪米特法则&quot; id=&quot;markdown-toc-迪米特法则&quot;&gt;迪米特法则&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#合成聚合复用原则&quot; id=&quot;markdown-toc-合成聚合复用原则&quot;&gt;合成/聚合复用原则&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#关于静态方法&quot; id=&quot;markdown-toc-关于静态方法&quot;&gt;关于静态方法&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;常用的设计模式&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#builder&quot; id=&quot;markdown-toc-builder&quot;&gt;Builder模式&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;策略模式和简单工厂模式&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;责任链模式&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;装饰器模式&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;观察者模式&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用的设计模式&quot; id=&quot;markdown-toc-常用的设计模式&quot;&gt;常用的设计模式&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#builder模式&quot; id=&quot;markdown-toc-builder模式&quot;&gt;Builder模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#策略模式和简单工厂模式&quot; id=&quot;markdown-toc-策略模式和简单工厂模式&quot;&gt;策略模式和简单工厂模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#责任链模式&quot; id=&quot;markdown-toc-责任链模式&quot;&gt;责任链模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#装饰器模式&quot; id=&quot;markdown-toc-装饰器模式&quot;&gt;装饰器模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#观察者模式&quot; id=&quot;markdown-toc-观察者模式&quot;&gt;观察者模式&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;讲一讲在工作中用到的面向对象设计模式，供大家参考，之后也会继续更新。&lt;/p&gt;
 
-&lt;h2 id=&quot;ood&quot;&gt;面向对象设计(OOD)的七大原则&lt;/h2&gt;
+&lt;h2 id=&quot;面向对象设计ood的七大原则&quot;&gt;面向对象设计(OOD)的七大原则&lt;/h2&gt;
 
 &lt;p&gt;在面向对象设计中，首先有这几大原则作为前提，然后在此基础之上有了各类设计模式。&lt;/p&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;开闭原则&lt;/h3&gt;
+&lt;h3 id=&quot;开闭原则&quot;&gt;开闭原则&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;开闭原则(Open-Closed Principle, OCP), 一个软件实体应该对扩展开放，对修改关闭。即软件实体应该在尽量不修改代码的情况下进行扩展。在该原则中，软件实体可以指一个软件模块，一个由多个类组成的局部结构或者一个独立的类。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;开闭原则是面向对象的可复用设计的第一块基石，他是最重要的设计原则。为了满足开闭原则，需要对系统进行抽象化设计，抽象是开闭原则的关键。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;里式替换原则&lt;/h3&gt;
+&lt;h3 id=&quot;里式替换原则&quot;&gt;里式替换原则&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Liskov Substitution Principle(LSP)，里式替换原则，该原则规定“子类必须能够替换其父类，否则不应当设计为其子类”。换句话说，父类出现的地方，都应该能够由其子类代替。所以子类只能去扩展基类，而不是隐藏或则覆盖基类。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;依赖倒置原则&lt;/h3&gt;
+&lt;h3 id=&quot;依赖倒置原则&quot;&gt;依赖倒置原则&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Dependence Iversion Principle(DIP), 它讲的是“设计和实现要依赖于抽象而非实体”。一方面抽象化更符合人的思维习惯；另一方面，根据里式替换原则，可以很容易将抽象替换为扩展后的具体，这样可以很好的支持开闭原则。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;这里可以看到，在公司的Spring项目开发中，各个层次间通过&lt;code class=&quot;highlighter-rouge&quot;&gt;Interface&lt;/code&gt;进行依赖，也就是基于此原则。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;接口隔离原则&lt;/h3&gt;
+&lt;h3 id=&quot;接口隔离原则&quot;&gt;接口隔离原则&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Interface Segration Principle(ISP)，“将大的接口打散成多个小的独立的接口”。由于Java类支持实现多个接口，可以很容易的让类具有多种接口的特征，同时每个类可以选择性地只实现目标接口。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;单一职责原则&lt;/h3&gt;
+&lt;h3 id=&quot;单一职责原则&quot;&gt;单一职责原则&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Single Responsibility Principle(SRP),单一职责原则。它讲的是不要存在多于一个导致类变更的原因，是高内聚，低耦合的一个体现。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;迪米特法则&lt;/h3&gt;
+&lt;h3 id=&quot;迪米特法则&quot;&gt;迪米特法则&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Law of Demeter or Least Knowledge Principle(LoD or LKP)，“一个对象就尽可能少的了解其它对象”，从而实现松耦合。如果一个类的职责过多，由于多个职责耦合在了一起，任何一个职责的变更都可能引起其它职责的问题，严重影响代码的可维护性和可重用性。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;该法则实际上和单一职责原则很类似，强调的高内聚，低耦合。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;合成/聚合复用原则&lt;/h3&gt;
+&lt;h3 id=&quot;合成聚合复用原则&quot;&gt;合成/聚合复用原则&lt;/h3&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Composite/Aggregate Reuse Principle(CARP/CRP)，合成/聚合复用原则。如果新对象的某些功能在别的已经创建好的对象里面已经实现，那么应当尽量使用别的对象提供的功能，使之成为新对象的一部分，而不要在重新创建。新对象可以通过向这些对象的委派达到复用已有功能的效果。简而言之，尽量使用合成/聚合，而非使用继承。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;这个原则乍一看和迪米特法则相悖，但我的理解是，可以复用的功能应该是有好的抽象得到，而不是胡乱的复用，这里面其实都是考验工程师功力的地方。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;关于静态方法&lt;/h3&gt;
+&lt;h3 id=&quot;关于静态方法&quot;&gt;关于静态方法&lt;/h3&gt;
 &lt;p&gt;静态方法实际是无状态且面向方法的设计，适合用作工具类，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;Guava&lt;/code&gt;，而不适合用在对象中。不过在&lt;code class=&quot;highlighter-rouge&quot;&gt;Java8&lt;/code&gt;中已经支持了&lt;code class=&quot;highlighter-rouge&quot;&gt;interface&lt;/code&gt;中的静态方法，也应该是作为实现类需要的工具方法存在。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-8&quot;&gt;常用的设计模式&lt;/h2&gt;
+&lt;h2 id=&quot;常用的设计模式&quot;&gt;常用的设计模式&lt;/h2&gt;
 
-&lt;h3 id=&quot;builder&quot;&gt;Builder模式&lt;/h3&gt;
+&lt;h3 id=&quot;builder模式&quot;&gt;Builder模式&lt;/h3&gt;
 &lt;p&gt;Builder模式非常适用于需要多个构造参数的场景，相比于&lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt;一个对象，然后用一堆&lt;code class=&quot;highlighter-rouge&quot;&gt;setter&lt;/code&gt;去赋值的方式，这种模式的可读性显然要强很多。在我的项目中，需要调用其它系统的Rest服务，在拼接URL时，用这种模式就非常方便。&lt;/p&gt;
 
 &lt;h4&gt;基类&lt;/h4&gt;
@@ -1298,7 +1319,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
     &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;appendParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;appendParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -1312,14 +1333,14 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
     &lt;span class=&quot;cm&quot;&gt;/**
      * 生成最后查询用的URL地址
      */&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 
     &lt;span class=&quot;cm&quot;&gt;/**
      * 需要设置请求的前缀，比如http://address/service?
      *
      * @param prefix 前缀
      */&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AbstractQueryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AbstractQueryBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -1334,27 +1355,27 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
  */&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;VoiceBuilder&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AbstractURLBuilder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;VoiceBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;appendParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rate&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;le&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;le&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;le&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;le&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;appendParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;le&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;le&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;appendParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;audio&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -1363,14 +1384,14 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;h4&gt;使用&lt;/h4&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]){&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]){&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voiceURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoiceBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://address/service?&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 	&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;whatever&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;le&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;EN&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;good&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;是不是很简洁且方便。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;策略模式和简单工厂模式&lt;/h3&gt;
+&lt;h3 id=&quot;策略模式和简单工厂模式&quot;&gt;策略模式和简单工厂模式&lt;/h3&gt;
 &lt;p&gt;策略模式在各类系统中都很常见，其实现也很简单，定义好&lt;code class=&quot;highlighter-rouge&quot;&gt;interface&lt;/code&gt;即可，不同的策略间应该满足隔离和单一职责原则，相互间独立而不耦合。延续刚才的例子，当一个服务需要根据输入参数的不同，去调用不同的服务时，策略模式就非常合适了。&lt;/p&gt;
 
 &lt;h4&gt;策略模式类图&lt;/h4&gt;
@@ -1392,7 +1413,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
      * @return api的查询结果
      */&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;@NotNull&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;JSONObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getApiRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;JSONObject&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getApiRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h4&gt;定义实现策略&lt;/h4&gt;
@@ -1400,7 +1421,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DemoStrategy&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiStrategy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
 	&lt;span class=&quot;nd&quot;&gt;@NotNull&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSONObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getApiRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSONObject&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getApiRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     	&lt;span class=&quot;cm&quot;&gt;/** 实现 */&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -1418,10 +1439,10 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
      * @param requestParams 请求参数
      * @return 具体的api调用策略
      */&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiStrategy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decideStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiStrategy&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decideStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     	&lt;span class=&quot;cm&quot;&gt;/** 根据requestParams决定调用的策略 */&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DemoStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DemoStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -1430,14 +1451,14 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;h4&gt;使用&lt;/h4&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]){&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]){&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RequestParams&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApiStrategyFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;decideStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getApiResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ApiStrategyFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;decideStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getApiResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;这样的策略之后添加修改策略都会很方便，当然简单工厂方法不满足开闭条件，适用于策略较少的场景。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;责任链模式&lt;/h3&gt;
+&lt;h3 id=&quot;责任链模式&quot;&gt;责任链模式&lt;/h3&gt;
 &lt;p&gt;当需要依次处理一个任务时，可以采用责任链模式，这个模式可实际应用在参数校验，或则流程处理中（比如SpringMVC的9大handler，也就是用类似的模式依次产生作用）&lt;/p&gt;
 
 &lt;h4&gt;定义基类&lt;/h4&gt;
@@ -1446,13 +1467,13 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
     &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getNextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getNextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setNextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setNextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextHandler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -1462,7 +1483,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Father&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;father is called&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextHandler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;getNextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
@@ -1473,7 +1494,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Son&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;son is called&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextHandler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;getNextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
@@ -1484,7 +1505,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GrandSon&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grand son is called&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextHandler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;getNextHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
@@ -1494,7 +1515,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;h4&gt;使用&lt;/h4&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;Father&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;father&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Father&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;Son&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;son&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Son&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;GrandSon&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grandSon&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GrandSon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
@@ -1503,7 +1524,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
     &lt;span class=&quot;n&quot;&gt;father&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-11&quot;&gt;装饰器模式&lt;/h3&gt;
+&lt;h3 id=&quot;装饰器模式&quot;&gt;装饰器模式&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/decorate.png&quot; alt=&quot;screen&quot; /&gt;&lt;/p&gt;
 
@@ -1512,38 +1533,38 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;h4&gt;基类&lt;/h4&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decorator&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Decorator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Decorator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h4&gt;实现类&lt;/h4&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ConcreteComponent&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;## doing something ##&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ConcreteDecorator&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Decorator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConcreteDecorator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConcreteDecorator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decorateMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decorateMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;## decorating ##&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
   &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;decorateMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -1551,12 +1572,12 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;h4&gt;使用&lt;/h4&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConcreteDecorator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConcreteComponent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-12&quot;&gt;观察者模式&lt;/h3&gt;
+&lt;h3 id=&quot;观察者模式&quot;&gt;观察者模式&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/observer.png&quot; alt=&quot;observer&quot; /&gt;&lt;/p&gt;
 
@@ -1567,20 +1588,20 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
 
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;attach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;detach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;detach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notifyObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;notifyObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ConcreteSubject&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;attach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;observers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;detach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;detach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;Iterator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iterator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;iterator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iterator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observerTemp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iterator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
@@ -1590,7 +1611,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notifyObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;notifyObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observerTemp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;observerTemp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;this is a test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -1600,7 +1621,7 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 &lt;h4&gt;观察者&lt;/h4&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;printMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;printMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;nd&quot;&gt;@Data&lt;/span&gt;
@@ -1608,18 +1629,18 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
     &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConcreteObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConcreteObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;printMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;printMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h4&gt;使用&lt;/h4&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;Subject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConcreteSubject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConcreteObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;one&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConcreteObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;two&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
@@ -1632,8 +1653,8 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 </description>
         <pubDate>Mon, 23 Jan 2017 10:54:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/design/2017/01/23/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/design/2017/01/23/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/design/2017/01/23/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/design/2017/01/23/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</guid>
         
         
         <category>Design</category>
@@ -1643,17 +1664,17 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
       <item>
         <title>读书笔记-学</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#spring-in-action&quot; id=&quot;markdown-toc-spring-in-action&quot;&gt;1. Spring in action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 分布式服务框架实践与原理&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#react-&quot; id=&quot;markdown-toc-react-&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#springboot&quot; id=&quot;markdown-toc-springboot&quot;&gt;4. Springboot实战&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#javascript&quot; id=&quot;markdown-toc-javascript&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#http&quot; id=&quot;markdown-toc-http&quot;&gt;6. 图解Http&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#java-transaction-book&quot; id=&quot;markdown-toc-java-transaction-book&quot;&gt;7. Java transaction book&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#java&quot; id=&quot;markdown-toc-java&quot;&gt;8. Java核心技术&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-spring-in-action&quot; id=&quot;markdown-toc-1-spring-in-action&quot;&gt;1. Spring in action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-分布式服务框架实践与原理&quot; id=&quot;markdown-toc-2-分布式服务框架实践与原理&quot;&gt;2. 分布式服务框架实践与原理&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-react-引领未来的用户界面开发框架&quot; id=&quot;markdown-toc-3-react-引领未来的用户界面开发框架&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4-springboot实战&quot; id=&quot;markdown-toc-4-springboot实战&quot;&gt;4. Springboot实战&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5-javascript高级程序设计第二版&quot; id=&quot;markdown-toc-5-javascript高级程序设计第二版&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6-图解http&quot; id=&quot;markdown-toc-6-图解http&quot;&gt;6. 图解Http&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#7-java-transaction-book&quot; id=&quot;markdown-toc-7-java-transaction-book&quot;&gt;7. Java transaction book&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#8-java核心技术&quot; id=&quot;markdown-toc-8-java核心技术&quot;&gt;8. Java核心技术&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;spring-in-action&quot;&gt;1. Spring in action&lt;/h3&gt;
+&lt;h3 id=&quot;1-spring-in-action&quot;&gt;1. Spring in action&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;By Craig Walls&lt;/em&gt;&lt;/p&gt;
 
@@ -1661,133 +1682,37 @@ uopz_restore //恢复方法到之前备份的状态&lt;/code&gt;&lt;/pre&gt;&lt;
 
 &lt;p&gt;这本书紧紧围绕着&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Action&lt;/code&gt;，在工作中能设计到的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;实用技术基本都有讲解，并不涉及&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;的原理，对于工作上的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;使用恰好合适。&lt;/p&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;2. 分布式服务框架实践与原理&lt;/h3&gt;
+&lt;h3 id=&quot;2-分布式服务框架实践与原理&quot;&gt;2. 分布式服务框架实践与原理&lt;/h3&gt;
 
 &lt;p&gt;讲了很多实践经验和原理性的东西，但在没有实践机会的情况下，这类书的帮助不大。&lt;/p&gt;
 
-&lt;h3 id=&quot;react-&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/h3&gt;
+&lt;h3 id=&quot;3-react-引领未来的用户界面开发框架&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/h3&gt;
 
 &lt;p&gt;讲React非常清晰的一本入门书籍，里面的例子都很实用。&lt;/p&gt;
 
-&lt;h3 id=&quot;springboot&quot;&gt;4. Springboot实战&lt;/h3&gt;
+&lt;h3 id=&quot;4-springboot实战&quot;&gt;4. Springboot实战&lt;/h3&gt;
 
 &lt;p&gt;比较水的一本书，罗列了一堆东西，但都不深入，如果不了解Springboot倒是可以看看。&lt;/p&gt;
 
-&lt;h3 id=&quot;javascript&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/h3&gt;
+&lt;h3 id=&quot;5-javascript高级程序设计第二版&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/h3&gt;
 
 &lt;p&gt;这本书写的很好，把JavaScript的基本原理部分讲的很清楚，特别是作用域链，BOM等知识，不过因为看的这版有点偏老，里面很多内容有点过时，作为JavaScript的学习资料还是很不错的。&lt;/p&gt;
 
-&lt;h3 id=&quot;http&quot;&gt;6. 图解Http&lt;/h3&gt;
+&lt;h3 id=&quot;6-图解http&quot;&gt;6. 图解Http&lt;/h3&gt;
 
 &lt;p&gt;这本书该有的内容都有，而且都有相应的图形，虽然有时候显得有点太浅显了，不过是很好的Http学习资料。&lt;/p&gt;
 
-&lt;h3 id=&quot;java-transaction-book&quot;&gt;7. Java transaction book&lt;/h3&gt;
+&lt;h3 id=&quot;7-java-transaction-book&quot;&gt;7. Java transaction book&lt;/h3&gt;
 
 &lt;p&gt;在InfoQ上找到的一本讲事务的书，对本地式事务，编程式事务，声明式事务的讲解很清晰，其中也涉及了XA接口的设计原理，整本书短小精悍。&lt;/p&gt;
 
-&lt;h3 id=&quot;java&quot;&gt;8. Java核心技术&lt;/h3&gt;
+&lt;h3 id=&quot;8-java核心技术&quot;&gt;8. Java核心技术&lt;/h3&gt;
 
 &lt;p&gt;这个书除了前面讲Java原理部分有点用，之后的感觉真的有点过时了，可能是我看的版本太老了，里面大量章节的Swing, Applets什么的让人挺无语的。&lt;/p&gt;
 </description>
         <pubDate>Wed, 23 Nov 2016 15:53:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
-        
-        
-        <category>Read</category>
-        
-      </item>
-    
-      <item>
-        <title>读书笔记-思</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 万历十五年&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#this-is-water&quot; id=&quot;markdown-toc-this-is-water&quot;&gt;2. This is Water&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3. 看见&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;4. 最好的告别&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;5. 追风筝的人&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;6. 悟空传&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;其它阅读过的书单&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;1. 万历十五年&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;[美]黄仁宇著&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/wanli.jpg&quot; alt=&quot;万历十五年&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在看《万历十五年》之前，我先读完了整套《明朝那些事》，算是对整个明史有了一个全局的了解。《明朝那些事》算是在用网络小说的手法写历史，带入了较多作者个人的感情，每次人物总结会有一定的美化倾向，不够客观。但《明朝》这本书虽然不客观，却也不离谱，论述皆依据史实，同时文笔诙谐幽默，尤其对人物的描写着重笔墨，读起来通俗易懂，充满乐趣。因此，《明朝那些事》是文言文阅读能力有限的大众了解明史的较好途径，其中对于明朝政治，经济，军事等细节皆有描述，譬如“火耗”，“东林党”，&quot;心学&quot;等名词在其中有详尽的解释，能够大大降低阅读《万历十五年》的难度。&lt;/p&gt;
-
-&lt;p&gt;万历十五年即为1587年，作者认为这一年为明朝历史的转折点，这个帝国从此走向灭亡。而我对本书的理解是，其作为转折点的原因有二：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;万历皇帝的怠政&lt;/li&gt;
-  &lt;li&gt;国家的积弊：长期的以道德代替法律治理国家，以及文官治国发展到了一个顶峰，国家的体制已经凝固，难以改革。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;虽然历史读起来会让人觉得事情都是理所当然的发生，但黄仁宇先生却以1587年为剖面，分析了人在其中的推动作用，这是尤为难得的贡献。而他在书中的分析也让人明白，即使人在历史中起了重大的推动作用，但该发生的事情却早晚必会发生。明朝的实际主人是文人阶层，底层人民受他们的统治。底层的人通过几代人的努力才有可能通过科举进入文人阶层，而文人阶层也只是为了维护国家的稳定，他们以道德约束这个有千万个农村构成的国家，却根本无心推动社会的发展。如此的社会循环所维持的时间能到达300年，之后则朝代更替再来一次。看历史总会有中悲凉的感觉，似乎所有的事情都是循环往复发生，有种宿命论的感觉。然而社会制度的变迁，其触发的源头却往往从技术的革新开始，而技术革新的本源来自于人们探索的精神。我想无论是制度，技术，主义，它们实际也只是人们探索的产物，而这种探索的精神为什么又只有人类才有，于其它地球生物上却并未看到。这样的精神是人先天就存在的，还是因为一些偶然和巧合正好赋予在人的身上了，这让我颇为费解。&lt;/p&gt;
-
-&lt;h2 id=&quot;this-is-water&quot;&gt;2. This is Water&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By David Foster Wallace&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/this_is_water.jpg&quot; alt=&quot;this is water&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;在繁琐无聊的日常中，日复一日地保持自觉与警醒，困难得不可想象&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;视频链接：&lt;a href=&quot;http://v.youku.com/v_show/id_XNjYyMjYzNDky.html?from=y1.2-1-103.3.4-1.1-1-1-3-0#paction&quot;&gt;生命中最简单又最困难的事&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;2016年2月24日：写给将要参加工作的自己，莫要被生活所淹没，选择思考的方式，保持自觉与警醒。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;3. 看见&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;柴静&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/kanjian.jpeg&quot; alt=&quot;kanjian&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;柴静的这本书，给我最大的震动便如书中所说的“真实自有万钧之力”，“人生是一个摆脱矇昧的过程”，要接近“真实”需要去感受的勇气和能力。能够感受才能够理解，在理解的基础上才能正确的思考，以接近“真实”，获取宽容的能力。但这需要一个过程，需要在生活中摔打和淬炼，要理解自己的弱点，也能理解别人的弱点，但要克服弱点并不是一个快速的过程，毕竟“如果人的弱点那么容易被克服，还要这么长的人生干什么”。而如果不正视自己的弱点，去感受和接受，时间只会带来经验的积累，却不会带来成长。&lt;/p&gt;
-
-&lt;p&gt;感谢柴静这本书，让我知道了她“看见”的历程。虽然对于柴静人们各有褒贬，但既然能看见她的缺点和局限，也应能看到她的努力和思考，我相信今后的某个时刻，我会因为自己的生活，而回过头来再看这本书，寻求启发。毕竟柴静也是通过那么丰富的人生经历才能悟出一些道理，我也不可能只是靠多读几本书就能“看见”一切，还是要在真实的生活中磨砺。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;4. 最好的告别&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By Atul Gavande&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/being_mortal.jpg&quot; alt=&quot;Being Mortal&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这是一本见证了太多生死的医生写出来的书，如果人能够仅仅因为衰老，而在爱的人的身边平静离去，那将是每个人都期望的告别。但这本书用实际的例子告诉我们，人的衰老是必然的，也许技术可以延长这个过程，但往往伴随着痛苦的代价。’being mortal’，我们都是凡人，会经历亲人的衰老，也会迎来自己的衰老，在这个过程之中，我们需要接受现实，去尽可能的选择亲人或自己更想要的结果，做最好的告别。&lt;/p&gt;
-
-&lt;p&gt;很多豆瓣读者会说书中作者并没有说清楚什么时候应该放手，什么时候应该告别。但其实作者已经说的很清楚，告别的时机并不因该由医生决定，医生是作为一个解释者的角色，而决定主要来自于患者自身的意愿，而家人应该在此基础上，帮助患者找到最好的告别方式。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;5. 追风筝的人&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;By Khaled Hosseini&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/kiteRunner.jpeg&quot; alt=&quot;Kite Runner&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;相信很多人会被那句“为你，千千万万遍”所打动，这也是贯穿全文的一句话，而最后哈桑的遭遇也令人叹息。
-但整篇小说我认为最为成功的人物塑造是“父亲”，这个角色具有很多面：“冷漠的父亲”，“成功的商人”，“象征着勇气的英雄”，“思想自由的阿富汗人”，“和仆人的妻子有染的可憎的人”，“朋友”。我们或多或少能够在他是身上找到自己父亲的影子，对于男孩子来说，与父亲的关系往往很难如母亲那般亲近，年幼的时候会对父亲的威严感到畏惧，而长大了之后很多时候是用“朋友”的方式和父亲相处，之间总是隐隐有那么一堵墙，而能透过这堵墙的，是那斩不断的血脉联系。&lt;/p&gt;
-
-&lt;p&gt;这篇小说中的“父亲”让我似乎明白了什么是生命的延续，也许对于“父亲”来说，不论孩子是否令自己满意，那总是他们身上的一种责任，一份宿命，一份存在的意义，他们会愿意为此做任何的事情，这样他们才能像书中的“父亲”一样平静的离开。实际上这是身处各个阶层的父亲都在做的事，作为“孩子”却不应该把这当作理所当然，理解这份平凡的伟大，it’s what makes us better than us!&lt;/p&gt;
-
-&lt;h2 id=&quot;section-4&quot;&gt;6. 悟空传&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;今何在&lt;/em&gt;&lt;br /&gt;
-&lt;img src=&quot;/HuangHuanBlog/pics/wukong.jpg&quot; alt=&quot;Wu Kong&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;曾经踏碎凌霄，放肆桀骜的猴王，变成了一个痛苦迷茫，自我束缚的可怜猴。这个世界上并没有自由，总会有人搭建一套规则来让他运行，下位者反抗上位者，也许一开始真的带着让所有人自由的豪情，。但在这个过程中，会经历，会得到会失去，会害怕和恐惧，这些经历和情绪会改变自己，那份豪情总会被消磨殆尽。&lt;/p&gt;
-
-&lt;p&gt;这本书之所以能感动大家，便是因为你总能把自己映照在悟空身上，活的越久，越不自由。&lt;/p&gt;
-
-&lt;p&gt;这本书的文字有点晦涩，有故弄玄虚的感觉，偶尔能出现几句振聋发聩的句子，但总体让人读起来很不舒服。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-5&quot;&gt;其它阅读过的书单&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;鞋狗(耐克创始人自传)&lt;/li&gt;
-  &lt;li&gt;读懂金融的第一本书(金融知识启蒙)&lt;/li&gt;
-  &lt;li&gt;趋势红利(就当看了点小故事吧，感觉写的不痛不痒的)&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Wed, 23 Nov 2016 15:48:00 +0800</pubDate>
-        <link>http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</link>
-        <guid isPermaLink="true">http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%80%9D.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
         
         
         <category>Read</category>

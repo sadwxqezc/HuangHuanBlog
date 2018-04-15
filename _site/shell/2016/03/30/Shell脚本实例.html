@@ -6,10 +6,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shell脚本实例</title>
-	<meta name="description" content="  fileopen命令实现  todo命令实现  Valid Phone Numbers  Transpose File  Word Frequencyfileopen命令实现fileopen命令是为了实现Mac系统下，在终端中用应用打开文件。首先将目录/Users/huanghuan/Work/MyCMD 命...">
+	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/shell/2016/03/30/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/shell/2016/03/30/Shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E4%BE%8B.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,19 +96,19 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#fileopen" id="markdown-toc-fileopen">fileopen命令实现</a></li>
-  <li><a href="#todo" id="markdown-toc-todo">todo命令实现</a></li>
+  <li><a href="#fileopen命令实现" id="markdown-toc-fileopen命令实现">fileopen命令实现</a></li>
+  <li><a href="#todo命令实现" id="markdown-toc-todo命令实现">todo命令实现</a></li>
   <li><a href="#valid-phone-numbers" id="markdown-toc-valid-phone-numbers">Valid Phone Numbers</a></li>
   <li><a href="#transpose-file" id="markdown-toc-transpose-file">Transpose File</a></li>
   <li><a href="#word-frequency" id="markdown-toc-word-frequency">Word Frequency</a></li>
 </ul>
 
-<h2 id="fileopen">fileopen命令实现</h2>
+<h2 id="fileopen命令实现">fileopen命令实现</h2>
 
 <p>fileopen命令是为了实现Mac系统下，在终端中用应用打开文件。<br />
 首先将目录<code class="highlighter-rouge">/Users/huanghuan/Work/MyCMD </code>命令加入环境变量中，Mac下可配置在<code class="highlighter-rouge">/etc/bashrc</code>中。然后创建<code class="highlighter-rouge">fileopen</code>文件，其内容为：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> 1	#! /bin/sh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1	#! /bin/sh
  2	if [ $# != 2 ]
  3	then
  4	    echo "输入参数错误!"
@@ -128,8 +128,7 @@ var _hmt = _hmt || [];
 18	   fi
 19	fi
 20	exit
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>命令的运行效果如下：</p>
 
@@ -137,11 +136,11 @@ var _hmt = _hmt || [];
 
 <p>PS:该命令将进一步完善，目前作为一个Shell练习而简单实现</p>
 
-<h2 id="todo">todo命令实现</h2>
+<h2 id="todo命令实现">todo命令实现</h2>
 
 <p>todo命令实际上就是实现了一个toDoList的小命令，配置如fileopen命令，其内容为：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> 1	#! /bin/sh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1	#! /bin/sh
  2
  3	path="/Users/huanghuan/Work/MyCMD/toDoList"
  4
@@ -173,8 +172,7 @@ var _hmt = _hmt || [];
 30	    cat -n $path
 31	fi
 32	exit
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>命令的运行效果如下：</p>
 
@@ -194,24 +192,21 @@ var _hmt = _hmt || [];
 
 <p>For example, assume that file.txt has the following content:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>987-123-4567
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>987-123-4567
 123 456 7890
 (123) 456-7890
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Your script should output the following valid phone numbers:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>987-123-4567
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>987-123-4567
 (123) 456-7890
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>脚本代码：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grep -E '^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$' file.txt
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep -E '^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$' file.txt
+</code></pre></div></div>
 
 <p>使用<code class="highlighter-rouge">-E</code>可以少写很多转义字符，这道题还值得注意的是：<a href="https://leetcode.com/discuss/29452/whats-the-difference-between-d-and-0-9-in-grep">what’s the difference between \d and [0-9] in grep</a></p>
 
@@ -225,24 +220,21 @@ var _hmt = _hmt || [];
 
 <p>For example, if file.txt has the following content:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>name age
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name age
 alice 21
 ryan 30
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Output the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>name alice ryan
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name alice ryan
 age 21 30
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>脚本代码：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>awk -F ' ' 'BEGIN{line=0;column=1} {while(column&lt;=NF){array[line,column]=$column; column++;} line++;column=1;} END{for(i=1;i&lt;=NF;i++){for(j=0;j&lt;line;j++){printf("%s",array[j,i]);if(j&lt;line-1){printf(" ")}} printf("\n");}}' file.txt
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>awk -F ' ' 'BEGIN{line=0;column=1} {while(column&lt;=NF){array[line,column]=$column; column++;} line++;column=1;} END{for(i=1;i&lt;=NF;i++){for(j=0;j&lt;line;j++){printf("%s",array[j,i]);if(j&lt;line-1){printf(" ")}} printf("\n");}}' file.txt
+</code></pre></div></div>
 
 <h2 id="word-frequency">Word Frequency</h2>
 
@@ -257,28 +249,25 @@ Each word must consist of lowercase characters only.
 Words are separated by one or more whitespace characters.
 For example, assume that words.txt has the following content:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>the day is sunny the the
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>the day is sunny the the
 the sunny is is
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Your script should output the following, sorted by descending frequency:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>the 4
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>the 4
 is 3
 sunny 2
 day 1
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Note:
 Don’t worry about handling ties, it is guaranteed that each word’s frequency count is unique.</p>
 
 <p>脚本代码：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sed 's/ /\n/g' words.txt | sed '/^$/d' | sort | uniq -c | sort -nr | awk -F ' ' '{print $2" "$1}'
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed 's/ /\n/g' words.txt | sed '/^$/d' | sort | uniq -c | sort -nr | awk -F ' ' '{print $2" "$1}'
+</code></pre></div></div>
 
       </article>
       <hr>

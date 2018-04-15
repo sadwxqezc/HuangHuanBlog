@@ -8,8 +8,8 @@
 	<title>利用AOP进行Dao层antiXSS过滤</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/05/21/AOP%E4%B9%8BantiXSS.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/linux/2016/05/21/AOP%E4%B9%8BantiXSS.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,181 +96,179 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">开发原因</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">开发组件</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">开发思路</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">实现细节</a>    <ul>
-      <li><a href="#section-4" id="markdown-toc-section-4">注解</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">注解的实现</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">测试</a></li>
+  <li><a href="#开发原因" id="markdown-toc-开发原因">开发原因</a></li>
+  <li><a href="#开发组件" id="markdown-toc-开发组件">开发组件</a></li>
+  <li><a href="#开发思路" id="markdown-toc-开发思路">开发思路</a></li>
+  <li><a href="#实现细节" id="markdown-toc-实现细节">实现细节</a>    <ul>
+      <li><a href="#注解" id="markdown-toc-注解">注解</a></li>
+      <li><a href="#注解的实现" id="markdown-toc-注解的实现">注解的实现</a></li>
+      <li><a href="#测试" id="markdown-toc-测试">测试</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="section">开发原因</h2>
+<h2 id="开发原因">开发原因</h2>
 
 <p>在后台开发过程中，往往需要对用户的输入进行antiXSS等过滤，以防止被攻击。以Dao层为例，这一层在写入数据库之前，应该对数据进行过滤，此时对应的一般是<code class="highlighter-rouge">save()</code>，<code class="highlighter-rouge">saveOrUpdate()</code>和<code class="highlighter-rouge">update()</code>操作，输入多数情况下是基本类型或者对于数据库实体的<code class="highlighter-rouge">Entity</code>。如果按照以往的写法，主要需要对<code class="highlighter-rouge">String</code>类型的数据（包括<code class="highlighter-rouge">Entity</code>中的<code class="highlighter-rouge">String</code> Field）进行过滤，这时往往需要为对应的字段调用<code class="highlighter-rouge">antiXSS()</code>方法，造成大量的<code class="highlighter-rouge">get/set</code>代码，颇为麻烦，也造成代码冗长。因此，既然<code class="highlighter-rouge">Spring</code>具有强大的<code class="highlighter-rouge">AOP</code>功能，不妨尝试用它简化这一过程。</p>
 
-<h2 id="section-1">开发组件</h2>
+<h2 id="开发组件">开发组件</h2>
 
 <p>SpringBoot，Intellij，Lombok(一个用于消除<code class="highlighter-rouge">get/set</code>,<code class="highlighter-rouge">toString</code>,<code class="highlighter-rouge">hashcode</code>这类代码的工具)</p>
 
-<h2 id="section-2">开发思路</h2>
+<h2 id="开发思路">开发思路</h2>
 
 <p>通过 <code class="highlighter-rouge">AOP</code>中的<code class="highlighter-rouge">doAround</code>方法截取传入参数，并利用反射筛选出其中的<code class="highlighter-rouge">String</code> Filed进行antiXSS处理。</p>
 
-<h2 id="section-3">实现细节</h2>
+<h2 id="实现细节">实现细节</h2>
 
-<h3 id="section-4">注解</h3>
+<h3 id="注解">注解</h3>
 
 <p>首先需要定义一个专门用来对方法进行antiXSS处理的注解：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package beijing.huanghuan.anotations;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">beijing</span><span class="p">.</span><span class="n">huanghuan</span><span class="p">.</span><span class="n">anotations</span><span class="p">;</span>
 
-import java.lang.annotation.*;
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">annotation</span><span class="p">.*;</span>
 
-/**
- * AntiXSS注解
- * &lt;p/&gt;
- * Created by huanghuan on 16/5/21.
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface AntiXSS {
+<span class="p">/**</span>
+ <span class="p">*</span> <span class="n">AntiXSS</span><span class="err">注解</span>
+ <span class="p">*</span> <span class="p">&lt;</span><span class="n">p</span><span class="p">/&gt;</span>
+ <span class="p">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">huanghuan</span> <span class="n">on</span> <span class="m">16</span><span class="p">/</span><span class="m">5</span><span class="p">/</span><span class="m">21.</span>
+ <span class="p">*/</span>
+<span class="p">@</span><span class="n">Documented</span>
+<span class="p">@</span><span class="n">Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="n">RUNTIME</span><span class="p">)</span>
+<span class="p">@</span><span class="n">Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="n">METHOD</span><span class="p">)</span>
+<span class="k">public</span> <span class="p">@</span><span class="n">interface</span> <span class="n">AntiXSS</span> <span class="p">{</span>
 
-}
-</code></pre>
-</div>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<h3 id="section-5">注解的实现</h3>
+<h3 id="注解的实现">注解的实现</h3>
 
 <p>定义一个<code class="highlighter-rouge">AntiXSSAspect</code>来对应该注解：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package beijing.huanghuan.anotations.aop;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">beijing</span><span class="p">.</span><span class="n">huanghuan</span><span class="p">.</span><span class="n">anotations</span><span class="p">.</span><span class="n">aop</span><span class="p">;</span>
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Service;
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">aspectj</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">ProceedingJoinPoint</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">aspectj</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">annotation</span><span class="p">.</span><span class="n">Around</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">aspectj</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">annotation</span><span class="p">.</span><span class="n">Aspect</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">aspectj</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">annotation</span><span class="p">.</span><span class="n">Pointcut</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">springframework</span><span class="p">.</span><span class="n">stereotype</span><span class="p">.</span><span class="n">Service</span><span class="p">;</span>
 
-import java.lang.reflect.Field;
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">reflect</span><span class="p">.</span><span class="n">Field</span><span class="p">;</span>
 
-/**
- * 对String或者Entity中的String进行AntiXSS处理
- * &lt;p/&gt;
- * Created by huanghuan on 16/5/21.
- */
-@Service
-@Aspect
-public class AntiXSSAspect {
+<span class="p">/**</span>
+ <span class="p">*</span> <span class="err">对</span><span class="n">String</span><span class="err">或者</span><span class="n">Entity</span><span class="err">中的</span><span class="n">String</span><span class="err">进行</span><span class="n">AntiXSS</span><span class="err">处理</span>
+ <span class="p">*</span> <span class="p">&lt;</span><span class="n">p</span><span class="p">/&gt;</span>
+ <span class="p">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">huanghuan</span> <span class="n">on</span> <span class="m">16</span><span class="p">/</span><span class="m">5</span><span class="p">/</span><span class="m">21.</span>
+ <span class="p">*/</span>
+<span class="p">@</span><span class="n">Service</span>
+<span class="p">@</span><span class="n">Aspect</span>
+<span class="k">public</span> <span class="n">class</span> <span class="n">AntiXSSAspect</span> <span class="p">{</span>
 
-    /**
-     * 定义切面，定位到@AntiXSS注解的地方
-     */
-    @Pointcut("@annotation(beijing.huanghuan.anotations.AntiXSS)")
-    public void antiXSSPointCut() {
+    <span class="p">/**</span>
+     <span class="p">*</span> <span class="err">定义切面，定位到</span><span class="p">@</span><span class="n">AntiXSS</span><span class="err">注解的地方</span>
+     <span class="p">*/</span>
+    <span class="p">@</span><span class="n">Pointcut</span><span class="p">(</span><span class="s2">"@annotation(beijing.huanghuan.anotations.AntiXSS)"</span><span class="p">)</span>
+    <span class="k">public</span> <span class="n">void</span> <span class="n">antiXSSPointCut</span><span class="p">()</span> <span class="p">{</span>
 
-    }
+    <span class="p">}</span>
 
-    /**
-     * 对String类型或包含String类型的Entity进行antiXSS处理
-     *
-     * @param point
-     */
-    @Around("antiXSSPointCut()")
-    public Object doAround(ProceedingJoinPoint point) {
-        Object result = null;
-        Object args[] = point.getArgs();
-        try {
-            antiXSS(args);
-            result = point.proceed(args);
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        return result;
-    }
+    <span class="p">/**</span>
+     <span class="p">*</span> <span class="err">对</span><span class="n">String</span><span class="err">类型或包含</span><span class="n">String</span><span class="err">类型的</span><span class="n">Entity</span><span class="err">进行</span><span class="n">antiXSS</span><span class="err">处理</span>
+     <span class="p">*</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">param</span> <span class="n">point</span>
+     <span class="p">*/</span>
+    <span class="p">@</span><span class="n">Around</span><span class="p">(</span><span class="s2">"antiXSSPointCut()"</span><span class="p">)</span>
+    <span class="k">public</span> <span class="n">Object</span> <span class="n">doAround</span><span class="p">(</span><span class="n">ProceedingJoinPoint</span> <span class="n">point</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Object</span> <span class="n">result</span> <span class="p">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="n">Object</span> <span class="n">args</span><span class="p">[]</span> <span class="p">=</span> <span class="n">point</span><span class="p">.</span><span class="n">getArgs</span><span class="p">();</span>
+        <span class="n">try</span> <span class="p">{</span>
+            <span class="n">antiXSS</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+            <span class="n">result</span> <span class="p">=</span> <span class="n">point</span><span class="p">.</span><span class="n">proceed</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">Throwable</span> <span class="n">throwable</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">throwable</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * antiXSS处理
-     *
-     * @param args
-     */
-    private void antiXSS(Object[] args) {
-        if (args == null) {
-            return;
-        }
-        for (int i = 0; i &lt; args.length; i++) {
-            if (args[i] == null) {
-                continue;
-            }
-            if (args[i] instanceof String) {
-                args[i] = antiXSS((String) args[i]);
-            }
-            if (!isPrimitive(args[i])) {
-                args[i] = antiXSSEntity(args[i]);
-            }
-        }
-    }
+    <span class="p">/**</span>
+     <span class="p">*</span> <span class="n">antiXSS</span><span class="err">处理</span>
+     <span class="p">*</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">param</span> <span class="n">args</span>
+     <span class="p">*/</span>
+    <span class="n">private</span> <span class="n">void</span> <span class="n">antiXSS</span><span class="p">(</span><span class="n">Object</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">args</span> <span class="p">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">args</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="n">instanceof</span> <span class="k">String</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">antiXSS</span><span class="p">((</span><span class="k">String</span><span class="p">)</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="c1">!isPrimitive(args[i])) {
+</span>                <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">antiXSSEntity</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    /**
-     * 对Entity进行antiXSS
-     *
-     * @param object
-     * @return 处理后的结果
-     */
-    private Object antiXSSEntity(Object object) {
-        Field[] fields = object.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            try {
-                Object arg = field.get(object);
-                if (arg instanceof String) {
-                    arg = antiXSS((String) arg);
-                    field.set(object, arg);
-                }
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return object;
-    }
+    <span class="p">/**</span>
+     <span class="p">*</span> <span class="err">对</span><span class="n">Entity</span><span class="err">进行</span><span class="n">antiXSS</span>
+     <span class="p">*</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">param</span> <span class="n">object</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">return</span> <span class="err">处理后的结果</span>
+     <span class="p">*/</span>
+    <span class="n">private</span> <span class="n">Object</span> <span class="n">antiXSSEntity</span><span class="p">(</span><span class="n">Object</span> <span class="n">object</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Field</span><span class="p">[]</span> <span class="n">fields</span> <span class="p">=</span> <span class="n">object</span><span class="p">.</span><span class="nf">getClass</span><span class="p">().</span><span class="n">getDeclaredFields</span><span class="p">();</span>
+        <span class="n">for</span> <span class="p">(</span><span class="n">Field</span> <span class="n">field</span> <span class="p">:</span> <span class="n">fields</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">field</span><span class="p">.</span><span class="n">setAccessible</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+            <span class="n">try</span> <span class="p">{</span>
+                <span class="n">Object</span> <span class="n">arg</span> <span class="p">=</span> <span class="n">field</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">object</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">arg</span> <span class="n">instanceof</span> <span class="k">String</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">arg</span> <span class="p">=</span> <span class="n">antiXSS</span><span class="p">((</span><span class="k">String</span><span class="p">)</span> <span class="n">arg</span><span class="p">);</span>
+                    <span class="n">field</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">arg</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IllegalAccessException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">e</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">return</span> <span class="n">object</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * 判断是否是基本类型
-     *
-     * @param arg
-     * @return
-     */
-    private boolean isPrimitive(Object arg) {
-        try {
-            /************ 基本类型中包含Class&lt;T&gt; TYPE字段 **********/
-            Field field = arg.getClass().getDeclaredField("TYPE");
-            field.setAccessible(true);
-            Class fieldClass = (Class) field.get(arg);
-            if (fieldClass.isPrimitive()) {
-                return true;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
-    }
+    <span class="p">/**</span>
+     <span class="p">*</span> <span class="err">判断是否是基本类型</span>
+     <span class="p">*</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">param</span> <span class="n">arg</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">return</span>
+     <span class="p">*/</span>
+    <span class="n">private</span> <span class="k">boolean</span> <span class="n">isPrimitive</span><span class="p">(</span><span class="n">Object</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">try</span> <span class="p">{</span>
+            <span class="p">/************</span> <span class="err">基本类型中包含</span><span class="n">Class</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">TYPE</span><span class="err">字段</span> <span class="p">**********/</span>
+            <span class="n">Field</span> <span class="n">field</span> <span class="p">=</span> <span class="n">arg</span><span class="p">.</span><span class="nf">getClass</span><span class="p">().</span><span class="n">getDeclaredField</span><span class="p">(</span><span class="s2">"TYPE"</span><span class="p">);</span>
+            <span class="n">field</span><span class="p">.</span><span class="n">setAccessible</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+            <span class="n">Class</span> <span class="n">fieldClass</span> <span class="p">=</span> <span class="p">(</span><span class="n">Class</span><span class="p">)</span> <span class="n">field</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">fieldClass</span><span class="p">.</span><span class="n">isPrimitive</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">return</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * antiXSS实现
-     *
-     * @param target
-     * @return
-     */
-    private String antiXSS(String target) {
-        /********* 自己的antiXSS或其它实现 **********/
-        return target + "(antiXSS success)";
-    }
-}
-</code></pre>
-</div>
+    <span class="p">/**</span>
+     <span class="p">*</span> <span class="n">antiXSS</span><span class="err">实现</span>
+     <span class="p">*</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">param</span> <span class="n">target</span>
+     <span class="p">*</span> <span class="p">@</span><span class="n">return</span>
+     <span class="p">*/</span>
+    <span class="n">private</span> <span class="k">String</span> <span class="n">antiXSS</span><span class="p">(</span><span class="k">String</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">/*********</span> <span class="err">自己的</span><span class="n">antiXSS</span><span class="err">或其它实现</span> <span class="p">**********/</span>
+        <span class="n">return</span> <span class="n">target</span> <span class="p">+</span> <span class="s2">"(antiXSS success)"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <p>在这部分代码中<code class="highlighter-rouge">@PointCut</code>定义了其作用的位置是<code class="highlighter-rouge">AntiXSS</code>注解的方法，而<code class="highlighter-rouge">@Around</code>来进行参数处理，通过<code class="highlighter-rouge">ProceedingJoinPoint</code>的<code class="highlighter-rouge">getArgs</code>即可获得所有的入参数，进行处理后通过<code class="highlighter-rouge">proceed(args[])</code>传回。</p>
 
@@ -285,21 +283,20 @@ public class AntiXSSAspect {
 
 <p>这里补充<code class="highlighter-rouge">Double</code>源码中的<code class="highlighter-rouge">Type</code>字段定义：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
  * The {@code Class} instance representing the primitive type
  * {@code double}.
  *
  * @since JDK1.1
  */
 public static final Class&lt;Double&gt; TYPE=(Class&lt;Double&gt;)Class.getPrimitiveClass("double");
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<h3 id="section-6">测试</h3>
+<h3 id="测试">测试</h3>
 
 <p>测试用的<code class="highlighter-rouge">TestAntiXSSDaoImpl</code>类：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
  * Created by huanghuan on 16/5/21.
  */
 @Repository
@@ -315,12 +312,11 @@ public class TestAntiXSSDaoImpl {
         System.out.println(object.toString());
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>测试类<code class="highlighter-rouge">AntiXSSAspectTest</code>类,<code class="highlighter-rouge">@Data</code>是<code class="highlighter-rouge">Lombok</code>注解，自动生成<code class="highlighter-rouge">toString</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
  * Created by huanghuan on 16/5/21.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -343,15 +339,13 @@ public class AntiXSSAspectTest {
         String text = "test save Object";
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>测试结果：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>id:1 text: test save string(antiXSS success)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>id:1 text: test save string(antiXSS success)
 AntiXSSAspectTest.TestEntity(id=2, text=test save Object(antiXSS success))
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>成功的进行的处理，至于<code class="highlighter-rouge">antiXSS</code>的具体实现请自己补充。</p>
 

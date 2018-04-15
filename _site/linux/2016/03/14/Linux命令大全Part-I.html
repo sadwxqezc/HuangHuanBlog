@@ -8,8 +8,8 @@
 	<title>Linux命令大全 Part One</title>
 	<meta name="description" content="">
 	
-	<link rel="canonical" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html">
-	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://sadwxqezc.github.io/HuangHuanBlog//HuangHuanBlog/feed.xml" />
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/linux/2016/03/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8Part-I.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
 
@@ -96,28 +96,28 @@ var _hmt = _hmt || [];
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#grep" id="markdown-toc-grep">1. grep命令</a></li>
-  <li><a href="#ls" id="markdown-toc-ls">2. ls命令</a></li>
-  <li><a href="#find" id="markdown-toc-find">3. find命令</a></li>
-  <li><a href="#wc" id="markdown-toc-wc">4. wc命令</a></li>
-  <li><a href="#cat" id="markdown-toc-cat">5. cat命令</a></li>
-  <li><a href="#tail" id="markdown-toc-tail">6. tail命令</a></li>
-  <li><a href="#head" id="markdown-toc-head">7. head命令</a></li>
-  <li><a href="#du" id="markdown-toc-du">8. du命令</a></li>
-  <li><a href="#whichwhereis" id="markdown-toc-whichwhereis">9. which和whereis</a></li>
-  <li><a href="#sort" id="markdown-toc-sort">10. sort命令</a></li>
-  <li><a href="#netstat" id="markdown-toc-netstat">11. netstat命令</a></li>
-  <li><a href="#more" id="markdown-toc-more">12. more命令</a></li>
-  <li><a href="#less" id="markdown-toc-less">13. less命令</a></li>
-  <li><a href="#ps" id="markdown-toc-ps">14. ps命令</a></li>
-  <li><a href="#tmuxmac" id="markdown-toc-tmuxmac">15. tmux命令(Mac)</a></li>
-  <li><a href="#ackmac" id="markdown-toc-ackmac">16. ack命令(Mac)</a></li>
-  <li><a href="#kill" id="markdown-toc-kill">17. kill命令</a></li>
+  <li><a href="#1-grep命令" id="markdown-toc-1-grep命令">1. grep命令</a></li>
+  <li><a href="#2-ls命令" id="markdown-toc-2-ls命令">2. ls命令</a></li>
+  <li><a href="#3-find命令" id="markdown-toc-3-find命令">3. find命令</a></li>
+  <li><a href="#4-wc命令" id="markdown-toc-4-wc命令">4. wc命令</a></li>
+  <li><a href="#5-cat命令" id="markdown-toc-5-cat命令">5. cat命令</a></li>
+  <li><a href="#6-tail命令" id="markdown-toc-6-tail命令">6. tail命令</a></li>
+  <li><a href="#7-head命令" id="markdown-toc-7-head命令">7. head命令</a></li>
+  <li><a href="#8-du命令" id="markdown-toc-8-du命令">8. du命令</a></li>
+  <li><a href="#9-which和whereis" id="markdown-toc-9-which和whereis">9. which和whereis</a></li>
+  <li><a href="#10-sort命令" id="markdown-toc-10-sort命令">10. sort命令</a></li>
+  <li><a href="#11-netstat命令" id="markdown-toc-11-netstat命令">11. netstat命令</a></li>
+  <li><a href="#12-more命令" id="markdown-toc-12-more命令">12. more命令</a></li>
+  <li><a href="#13-less命令" id="markdown-toc-13-less命令">13. less命令</a></li>
+  <li><a href="#14-ps命令" id="markdown-toc-14-ps命令">14. ps命令</a></li>
+  <li><a href="#15-tmux命令mac" id="markdown-toc-15-tmux命令mac">15. tmux命令(Mac)</a></li>
+  <li><a href="#16-ack命令mac" id="markdown-toc-16-ack命令mac">16. ack命令(Mac)</a></li>
+  <li><a href="#17-kill命令" id="markdown-toc-17-kill命令">17. kill命令</a></li>
 </ul>
 
 <p>命令后带(Mac)标记的，表示该命令在Mac OSX下测试，其它的在Debian下测试。</p>
 
-<h3 id="grep">1. grep命令</h3>
+<h3 id="1-grep命令">1. grep命令</h3>
 
 <blockquote>
   <p>文本查找命令, 能够使用正则表达式的方式搜索文本，其搜索对象可以是单个或则多个文件</p>
@@ -139,24 +139,21 @@ var _hmt = _hmt || [];
   </blockquote>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例一：man grep | grep --color=always -n search
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例一：man grep | grep --color=always -n search
 带颜色的文本搜索，并同时输出行号
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/grep_color_n.png" alt="带颜色的搜索" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例二：man grep | grep --color=always -n '\&lt;search\&gt;'
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例二：man grep | grep --color=always -n '\&lt;search\&gt;'
 正则表达式模式的搜索
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/grep_color_n_regex.png" alt="正则表达式的搜索" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例三：grep -nR --color=always  a ./*.yml
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例三：grep -nR --color=always  a ./*.yml
 在文件夹下的yml文件中搜索，并标注行号和对应行
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/grep_dir.png" alt="文件夹搜索" />
 ​	
@@ -167,7 +164,7 @@ var _hmt = _hmt || [];
 
 <hr />
 
-<h3 id="ls">2. ls命令</h3>
+<h3 id="2-ls命令">2. ls命令</h3>
 
 <blockquote>
   <p>ls是命令行中用的最多的命令之一了，用于显示目录下的文件</p>
@@ -186,23 +183,21 @@ var _hmt = _hmt || [];
   </blockquote>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例一：ls -lharts
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例一：ls -lharts
 输出文件信息，并时间从旧到新排列
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/ls_r_t.png" alt="详细信息" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例二：ls -R
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例二：ls -R
 递归输出目录下的所有文件
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/ls_R.png" alt="ls递归" /></p>
 
 <hr />
 
-<h3 id="find">3. find命令</h3>
+<h3 id="3-find命令">3. find命令</h3>
 
 <blockquote>
   <p>文件查找命令,find命令将递归的搜索目录下符合要求的所有文件</p>
@@ -222,26 +217,23 @@ var _hmt = _hmt || [];
   </blockquote>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例一：find ~ -name '*.yml' | grep '\.yml' --color=always
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例一：find ~ -name '*.yml' | grep '\.yml' --color=always
 在用户目录下查找文件名后缀为.yml的文件
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/find_name.png" alt="按照文件名查找" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例二：find . -perm 644
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例二：find . -perm 644
 查找当前目录下权限为644的所有文件
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/find_perm.png" alt="按照权限的搜索" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例三：find . -path './_site*' -a -prune -o -name 'feed.xml' -print
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例三：find . -path './_site*' -a -prune -o -name 'feed.xml' -print
 整个语句是在当前目录下查找名为feed.xml的文件，同时需要忽略./_site*路径的文件。
 -a -o实际为逻辑与和逻辑或，当路径匹配时将执行-prune，那么将不会查找匹配路径中的文件，
 当路径不匹配时则不执行-prune，-o后的语句始终执行。
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/find_prune.png" alt="忽略一些文件夹搜索" />
 ​	
@@ -283,7 +275,7 @@ var _hmt = _hmt || [];
 
 <hr />
 
-<h3 id="wc">4. wc命令</h3>
+<h3 id="4-wc命令">4. wc命令</h3>
 
 <blockquote>
   <p>用于统计输入中的字节数，字数，行数并输出</p>
@@ -297,16 +289,15 @@ var _hmt = _hmt || [];
   </blockquote>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例一：wc -l _config.yml
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例一：wc -l _config.yml
 统计行数，-c实际上可以查看文件的大小
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/wc.png" alt="统计" /></p>
 
 <hr />
 
-<h3 id="cat">5. cat命令</h3>
+<h3 id="5-cat命令">5. cat命令</h3>
 
 <blockquote>
   <p>连结命令(Concatenation)，连结多个文本，或者以标准输出形式打印文件的内容</p>
@@ -318,30 +309,27 @@ var _hmt = _hmt || [];
   </blockquote>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例一：cat -b testColumn(cat -n testColumn)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例一：cat -b testColumn(cat -n testColumn)
 显示文件内容
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/cat_b_n.png" alt="显示文件内容到控制台" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例二：cat testColumn testCat
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例二：cat testColumn testCat
 同时显示两个文件内容
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/cat_mul.png" alt="显示两个文件" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>范例三：cat testColumn testCat&gt;merge
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>范例三：cat testColumn testCat&gt;merge
 将两个内容连结并输出到一个文件中，&gt;为重新创建，&gt;&gt;为追加
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/HuangHuanBlog/pics/cat_merge.png" alt="连结并输出" /></p>
 
 <hr />
 
-<h3 id="tail">6. tail命令</h3>
+<h3 id="6-tail命令">6. tail命令</h3>
 
 <p>文本查看命令，可以看文本的最后几行。tail命令的优点在于其内容能够与输入同步更新，非常适用于查看实时日志。</p>
 <h4><b>基本格式 tail [option] [filename]</b></h4>
@@ -363,7 +351,7 @@ var _hmt = _hmt || [];
 
 <hr />
 
-<h3 id="head">7. head命令</h3>
+<h3 id="7-head命令">7. head命令</h3>
 
 <p>该命令与tail命令类似，默认显示文件前两行的内容</p>
 <h4><b>基本格式 head [option] [filename]</b></h4>
@@ -378,7 +366,7 @@ var _hmt = _hmt || [];
 
 <hr />
 
-<h3 id="du">8. du命令</h3>
+<h3 id="8-du命令">8. du命令</h3>
 
 <p>该命令用于查看系统中文件和目录所占用的空间</p>
 <h4><b>基本格式 du [option] [name]</b></h4>
@@ -402,7 +390,7 @@ var _hmt = _hmt || [];
 
 <hr />
 
-<h3 id="whichwhereis">9. which和whereis</h3>
+<h3 id="9-which和whereis">9. which和whereis</h3>
 
 <p>which命令的作用是在PATH变量制定的路径中，查找系统命令的位置。<br />
 whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man说明文件，源代码文件｝。whereis的查询时通过查询系统的数据库文件记录，所以速度比find更快，但由于数据库的更新频率较为缓慢，其结果与实际状况并不一定一致。</p>
@@ -422,7 +410,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 <hr />
 
-<h3 id="sort">10. sort命令</h3>
+<h3 id="10-sort命令">10. sort命令</h3>
 
 <p>sort命令用于对文本进行排序，并将结果输出。其以文本的每一行为单位，从首字符向后，依次按照ascii码值进行比较，最后升序排列。（默认是忽略每行前面空格的）</p>
 <h4><b>基本格式 sort [option] [filename]</b></h4>
@@ -437,9 +425,11 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 ​	
 <img src="/HuangHuanBlog/pics/sort.png" alt="sort" /></p>
 
-<p>范例二：<br />
-1. <code>sort -nk 2 -t - sort.txt</code> 以<code class="highlighter-rouge">-</code>进行分割，对分割后的第二个域进行排序；<br />
-2. <code>sort -nrk 2 -t - sort.txt</code> 逆序排序</p>
+<p>范例二：</p>
+<ol>
+  <li><code>sort -nk 2 -t - sort.txt</code> 以<code class="highlighter-rouge">-</code>进行分割，对分割后的第二个域进行排序；</li>
+  <li><code>sort -nrk 2 -t - sort.txt</code> 逆序排序</li>
+</ol>
 
 <p><img src="/HuangHuanBlog/pics/sort_t.png" alt="sort_t" /></p>
 
@@ -450,7 +440,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 <hr />
 
-<h3 id="netstat">11. netstat命令</h3>
+<h3 id="11-netstat命令">11. netstat命令</h3>
 
 <p>netstat用于输出linux系统的网络情况信息，以前面试的时候还被问过：“如何查看占用某个端口的程序的pid?”，这个问题实际用<code>netstat -anp</code>输出，然后再grep一下即可。</p>
 <h4><b>基本格式 netstat [option]</b></h4>
@@ -482,7 +472,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 <hr />
 
-<h3 id="more">12. more命令</h3>
+<h3 id="12-more命令">12. more命令</h3>
 
 <p>more命令用于显示文件的内容，与cat和tail等命令不同的是，more命令是按页显示文件内容，同时具有搜寻字符串的功能。（由于more具有向前翻页功能，因此该命令会加载整个文件）</p>
 
@@ -517,7 +507,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 <hr />
 
-<h3 id="less">13. less命令</h3>
+<h3 id="13-less命令">13. less命令</h3>
 
 <p>less命令与more命令对应，既可以前后翻看文件，同时还有前后搜索功能，除此之外，less在查看前不会加载整个文件。</p>
 
@@ -555,7 +545,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 <hr />
 
-<h3 id="ps">14. ps命令</h3>
+<h3 id="14-ps命令">14. ps命令</h3>
 
 <p>ps命令用来在Linux系统中显示进程的状态快照，其参数选项可谓非常之多。</p>
 <h4><b>基本格式 ps [option]</b></h4>
@@ -580,7 +570,7 @@ whereis命令用于程序名的搜索，且只能搜索｛二进制文件，man�
 
 <hr />
 
-<h3 id="tmuxmac">15. tmux命令(Mac)</h3>
+<h3 id="15-tmux命令mac">15. tmux命令(Mac)</h3>
 
 <p>tmux(Terminal Multiplexer)命令是一个颇为炫酷的命令，其特点与screen命令类似。tmux通过开出窗口，分拆面板，接管和分离会话，能够让使用者在一个窗口内同时进行多项操作。<br />
 tmux在osx的安装方式：<code>brew install tmux</code></p>
@@ -614,7 +604,7 @@ tmux在osx的安装方式：<code>brew install tmux</code></p>
 
 <hr />
 
-<h3 id="ackmac">16. ack命令(Mac)</h3>
+<h3 id="16-ack命令mac">16. ack命令(Mac)</h3>
 
 <p>ack(better than grep)命令的作用和grep类似，但效果更好。</p>
 <h4><b>基本格式 ack [option] [pattern]</b></h4>
@@ -629,7 +619,7 @@ tmux在osx的安装方式：<code>brew install tmux</code></p>
 
 <hr />
 
-<h3 id="kill">17. kill命令</h3>
+<h3 id="17-kill命令">17. kill命令</h3>
 
 <p>kill命令用于终止指定的进程，其工作原理是通过向进程发送指定的信号。</p>
 
@@ -637,9 +627,8 @@ tmux在osx的安装方式：<code>brew install tmux</code></p>
 
 <p>常用的是：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>kill -9 pid //强制终止
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kill -9 pid //强制终止
+</code></pre></div></div>
 
 <ul>
   <li><code class="highlighter-rouge">-1</code> Hup 终端断线</li>
