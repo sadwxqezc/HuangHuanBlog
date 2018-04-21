@@ -5,20 +5,101 @@
     <description>美团金融后台研发工程师</description>
     <link>http://localhost:4000/HuangHuanBlog/</link>
     <atom:link href="http://localhost:4000/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 15 Apr 2018 23:15:48 +0800</pubDate>
-    <lastBuildDate>Sun, 15 Apr 2018 23:15:48 +0800</lastBuildDate>
+    <pubDate>Sat, 21 Apr 2018 22:39:07 +0800</pubDate>
+    <lastBuildDate>Sat, 21 Apr 2018 22:39:07 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
         <title>MySQL 5.7 insert on duplicate key问题</title>
-        <description>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#背景&quot; id=&quot;markdown-toc-背景&quot;&gt;背景&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#原因分析&quot; id=&quot;markdown-toc-原因分析&quot;&gt;原因分析&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#数据表&quot; id=&quot;markdown-toc-数据表&quot;&gt;数据表&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;背景&quot;&gt;背景&lt;/h2&gt;
+
+&lt;p&gt;参考链接：&lt;a href=&quot;https://bugs.mysql.com/bug.php?id=52020&quot;&gt;InnoDB can still deadlock on just INSERT…ON DUPLICATE KEY&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;在对不同的记录进行&lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT...ON DUPLICATE KEY&lt;/code&gt;操作时，理论上是不会存在死锁问题的，但在5.7.18等版本中，该操作却可能导致死锁，这篇文章主要分析产生的原因。&lt;/p&gt;
+
+&lt;h2 id=&quot;原因分析&quot;&gt;原因分析&lt;/h2&gt;
+
+&lt;h3 id=&quot;数据表&quot;&gt;数据表&lt;/h3&gt;
+
+&lt;p&gt;假如数据表&lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;的结构如下：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Id&lt;/th&gt;
+      &lt;th&gt;Uniq&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;Id&lt;/code&gt;为主键，&lt;code class=&quot;highlighter-rouge&quot;&gt;Uniq&lt;/code&gt;为唯一索引，执行如下操作：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Transaction 1:
+start transaction;
+insert into Test values(3,3) on duplicate key update id=3,uniq=3;
+
+Transaction 2:
+start transaction;
+insert into Test values(4,4) on duplicate key update id=4,uniq=4;
+
+Transaction 3:
+start transaction;
+insert into Test values(5,5) on duplicate key update id=5,uniq=5;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;理论上这三条记录的主键值和唯一索引值都不一样，他们插入的时候都会获取&lt;code class=&quot;highlighter-rouge&quot;&gt;(2,6)&lt;/code&gt;区间的&lt;code class=&quot;highlighter-rouge&quot;&gt;Insert Intention Lock&lt;/code&gt;，但由于各自插入的主键值和唯一索引没有冲突，所以实际是可以正常插入的的，不会发生思索。&lt;/p&gt;
+
+&lt;p&gt;那么为什么MySQL的部分版本这种情况下会发生死锁了？&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://bugs.mysql.com/bug.php?id=52020
+
+This Bug#52020 (accidental re-introduction of Bug#7975 in MySQL 5.1) affects tables that do not contain a secondary index.
+
+There is another bug that affects tables with secondary indexes:
+
+Bug#50413 insert on duplicate key update sometimes writes binlog position incorrectly
+
+Despite the title, Bug#50413 can occur even if MySQL replication or binlog is not used. That bug has was fixed in MySQL 5.7.4. 
+The fix is that when we encounter a duplicate key in the clustered index or in any unique secondary index during an INSERT, 
+
+we will acquire gap locks in the not-yet-checked secondary indexes as well. In this way, the INSERT will already have acquired some locks for the ON DUPLICATE KEY UPDATE part,
+
+thus avoiding some potential deadlocks.
+
+When there are multiple unique indexes, the execution of ON DUPLICATE KEY UPDATE can be ambiguous, which makes it tricky for statement-based replication.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意上面叙述中的关键一条：&lt;code class=&quot;highlighter-rouge&quot;&gt;Despite the title, Bug#50413 can occur even if MySQL replication or binlog is not used. That bug has was fixed in MySQL 5.7.4. The fix is that when we encounter a duplicate key in the clustered index or in any unique secondary index during an INSERT&lt;/code&gt;，开发者为了解决一个Bug，在&lt;code class=&quot;highlighter-rouge&quot;&gt;Insert&lt;/code&gt;数据时，除了给主键加&lt;code class=&quot;highlighter-rouge&quot;&gt;Insert Intention Lock&lt;/code&gt;，还会给唯一索引加&lt;code class=&quot;highlighter-rouge&quot;&gt;Gap Lock&lt;/code&gt;，但这就带来了这篇文章描述的问题。&lt;/p&gt;
+
+&lt;p&gt;当我们上文的三个事务插入时，他们除了都想在&lt;code class=&quot;highlighter-rouge&quot;&gt;(2,6)&lt;/code&gt;区间加&lt;code class=&quot;highlighter-rouge&quot;&gt;Insert Intention Lock&lt;/code&gt;之外，还想在&lt;code class=&quot;highlighter-rouge&quot;&gt;(2,6)&lt;/code&gt;区间上加&lt;code class=&quot;highlighter-rouge&quot;&gt;Gap Lock&lt;/code&gt;，由于&lt;code class=&quot;highlighter-rouge&quot;&gt;Insert Intention Lock&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Gap Lock&lt;/code&gt;冲突，这才导致了死锁。&lt;/p&gt;
 </description>
         <pubDate>Sun, 15 Apr 2018 23:15:00 +0800</pubDate>
-        <link>http://localhost:4000/HuangHuanBlog/read/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html</link>
-        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/read/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html</guid>
+        <link>http://localhost:4000/HuangHuanBlog/mysql/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/mysql/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html</guid>
         
         
-        <category>Read</category>
+        <category>MySQL</category>
         
       </item>
     
@@ -534,7 +615,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;Intention Shared Lock，意向共享锁(IS)&lt;/strong&gt; ，表示事务将要在表上加共享锁，规则是在表中申请某些行的共享锁之前，必须先申请&lt;code class=&quot;highlighter-rouge&quot;&gt;IS&lt;/code&gt;锁。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Intention Exclusive Lock，意向排他锁(IX)&lt;/strong&gt; ，表示事务将要在标上加排他锁，规则是在表中申请某些行的排他锁之前，必须先申请&lt;code class=&quot;highlighter-rouge&quot;&gt;IX&lt;/code&gt;锁。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Intention Exclusive Lock，意向排他锁(IX)&lt;/strong&gt; ，表示事务将要在表上加排他锁，规则是在表中申请某些行的排他锁之前，必须先申请&lt;code class=&quot;highlighter-rouge&quot;&gt;IX&lt;/code&gt;锁。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LOCK&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SHARE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MODE&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -543,7 +624,7 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UPDATE&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;该语句将会在标上加上&lt;code class=&quot;highlighter-rouge&quot;&gt;IX&lt;/code&gt;锁，同时在对应的记录上加上&lt;code class=&quot;highlighter-rouge&quot;&gt;X&lt;/code&gt;锁。&lt;/p&gt;
+&lt;p&gt;该语句将会在表上加上&lt;code class=&quot;highlighter-rouge&quot;&gt;IX&lt;/code&gt;锁，同时在对应的记录上加上&lt;code class=&quot;highlighter-rouge&quot;&gt;X&lt;/code&gt;锁。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;表级锁的兼容性矩阵：&lt;/strong&gt;&lt;/p&gt;
 
@@ -556,7 +637,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/gap.png&quot; alt=&quot;Gap&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;如图所示，首先当前该记录存在索引，id为5和30的记录将整个分为了 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;=5&lt;/code&gt; ，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;5&amp;amp;&amp;lt;=30&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;30&lt;/code&gt; 三个区间，如果要更新30的数据，那么 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;5&lt;/code&gt; 的所有区间都会被锁住。&lt;/p&gt;
+&lt;p&gt;如图所示，首先当前该记录存在索引，id为5和30的记录将整个分为了 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;5&lt;/code&gt; ，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;5&amp;amp;&amp;lt;30&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;30&lt;/code&gt; 三个区间，如果要更新30的数据，那么 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;5&lt;/code&gt; 的所有区间都会被锁住。&lt;/p&gt;
 
 &lt;h3 id=&quot;insert-intention-locks&quot;&gt;Insert Intention Locks&lt;/h3&gt;
 &lt;p&gt;Insert Intention Locks也就是插入意向锁，但它其实是一种GAP锁，在行数据被插入之前，设定的一种锁，如果两个事务要插入同一个GAP中的不同行记录，它们都会获取这个GAP的插入意向锁，但相互之间不会冲突。&lt;/p&gt;
