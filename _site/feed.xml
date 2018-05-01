@@ -5,16 +5,229 @@
     <description>美团金融后台研发工程师</description>
     <link>http://localhost:4000/HuangHuanBlog/</link>
     <atom:link href="http://localhost:4000/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 21 Apr 2018 22:39:07 +0800</pubDate>
-    <lastBuildDate>Sat, 21 Apr 2018 22:39:07 +0800</lastBuildDate>
+    <pubDate>Tue, 01 May 2018 18:10:01 +0800</pubDate>
+    <lastBuildDate>Tue, 01 May 2018 18:10:01 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>MySQL MVCC介绍</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#mvcc是什么&quot; id=&quot;markdown-toc-mvcc是什么&quot;&gt;MVCC是什么？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mvcc的效果&quot; id=&quot;markdown-toc-mvcc的效果&quot;&gt;MVCC的效果&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mysql的mvcc&quot; id=&quot;markdown-toc-mysql的mvcc&quot;&gt;MySQL的MVCC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;mvcc是什么&quot;&gt;MVCC是什么？&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MVCC的全称是Multi-Version Concurrency Control，通常用于数据库等场景中，实现多版本的并发控制&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Multiversion concurrency control (MCC or MVCC), is a concurrency control method commonly used by database management systems to provide concurrent access to the database and in programming languages to implement transactional memory.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;如果没有并发控制，那么如果同时有用户读写数据，那么可能出现读出的数据不一致的情况。比如说，进行银行账户A到B的转账，当A账户的钱被扣掉，而钱还没有加到B账户，此时用户查看自己的余额，会感觉钱凭空消失了。MySQL的隔离性就是用来解决这类问题的，而隔离性是通过不同的并发控制手段来实现的。对于刚才的问题，一种简单的并发控制方式，就是讲读写操作串行化，在账户间转账时，不允许查询账户，虽然这种方式可以解决问题，但无疑过于简单粗暴，效率极低。相比于串行化的并发控制，MVCC的优势在于读写影响，对于现代互联网读多写少的场景，这种方式性能明显更高。&lt;/p&gt;
+
+&lt;p&gt;MVCC是通过保存数据的多个版本来实现并发控制，当需要更新某条数据时，实现了MVCC的存储系统不会立即用新数据覆盖原始数据，而是创建该条记录的一个新的版本。对于多数数据库系统，存储会分为&lt;code class=&quot;highlighter-rouge&quot;&gt;Data Part&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Undo Log&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;Data Part&lt;/code&gt;用来存储事务已提交的数据，而&lt;code class=&quot;highlighter-rouge&quot;&gt;Undo Log&lt;/code&gt;用来存储旧版本的数据。多版本的存在允许了读和写的分离，读操作是需要读取某个版本之前的数据即可，和写操作不冲突，大大提高了性能。&lt;/p&gt;
+
+&lt;h2 id=&quot;mvcc的效果&quot;&gt;MVCC的效果&lt;/h2&gt;
+
+&lt;p&gt;假如MVCC是按照时间来判定数据的版本，在Time=1的时刻，数据库的状态如下：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Record A&lt;/th&gt;
+      &lt;th&gt;Record B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;“Record A When time=0”&lt;/td&gt;
+      &lt;td&gt;“Record B when time=0”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;“Record A When time=1”&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;这个时候系统中实际存储了三条记录，&lt;code class=&quot;highlighter-rouge&quot;&gt;Record A&lt;/code&gt;在时间0和1的各一条记录，&lt;code class=&quot;highlighter-rouge&quot;&gt;Record B&lt;/code&gt;的一条记录，如果一个事务在Time=0的时刻开启，那么读到的数据是：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Record A&lt;/th&gt;
+      &lt;th&gt;Record B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“Record A When time=0”&lt;/td&gt;
+      &lt;td&gt;“Record B when time=0”&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;如果这个事务在Time=1的时候开启，那么读到的数据是：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Record A&lt;/th&gt;
+      &lt;th&gt;Record B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“Record A When time=1”&lt;/td&gt;
+      &lt;td&gt;“Record B when time=0”&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;上面的Case可以看到，对于读来讲，事务只能读到某一个版本及这个版本之前的最新一条数据，假如在Time=2的时候，事务&lt;code class=&quot;highlighter-rouge&quot;&gt;Transaction X&lt;/code&gt;要插入&lt;code class=&quot;highlighter-rouge&quot;&gt;Record C&lt;/code&gt;，并更新&lt;code class=&quot;highlighter-rouge&quot;&gt;Record B&lt;/code&gt;，但事务还未提交，那么数据库的状态如下：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Record A&lt;/th&gt;
+      &lt;th&gt;Record B&lt;/th&gt;
+      &lt;th&gt;Record C&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;“Record A When time=0”&lt;/td&gt;
+      &lt;td&gt;“Record B when time=0”&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;“Record A When time=1”&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2(Not Committed)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;“Record B when time=2”&lt;/td&gt;
+      &lt;td&gt;“Record C When time=2”&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;这时候其它事务会读到的是什么了？在这个情况下，其它读事务所能看到系统的最新版本是系统处于Time=1的时候，所以依然不会读到&lt;code class=&quot;highlighter-rouge&quot;&gt;Transaction X&lt;/code&gt;所改写的数据，此时读到的数据依然为：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Record A&lt;/th&gt;
+      &lt;th&gt;Record B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“Record A When time=1”&lt;/td&gt;
+      &lt;td&gt;“Record B when time=0”&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;基于这种版本机制，就不会出现另一个事务读取时，出现读到&lt;code class=&quot;highlighter-rouge&quot;&gt;Record C&lt;/code&gt;而&lt;code class=&quot;highlighter-rouge&quot;&gt;Record B&lt;/code&gt;还未被&lt;code class=&quot;highlighter-rouge&quot;&gt;Transaction X&lt;/code&gt;更新的中间结果，因为其它事务所看到的系统依然处于Time=1的状态。&lt;/p&gt;
+
+&lt;p&gt;至于说，每个事务应该看到具体什么版本的数据，这个是由不同系统的MVCC实现来决定的，下文我会介绍MySQL的MVCC实现。除了读到的数据必须小于等于当前系统已提交的版本外，写事务在提交时必须大于当前的版本，而这里如果想想还会有一个问题，如果Time=2的时刻，开启了多个写或更新事务，当它们同时尝试提交时，必然会有一个事务发现数据库已经处于Time=2的状态了，那么这个事务该怎么办了？大家可以好好想想。&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql的mvcc&quot;&gt;MySQL的MVCC&lt;/h2&gt;
+
+&lt;p&gt;MySQL的Innodb引擎支持多种事务隔离级别，而其中的RR级别（Repeatable-Read）就是依靠MVCC来实现的，MySQL中MVCC的版本指的是事务ID（Transaction ID），首先来看一下MySQL Innodb中行记录的存储格式，除了最基本的行信息外，还会有一些额外的字段，这里主要介绍和MVCC有关的字段：&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_TRX_ID&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_ROLL_PTR&lt;/code&gt;，如下是一张表的初始信息：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Primary Key&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;DATA_TRX_ID&lt;/th&gt;
+      &lt;th&gt;DATA_ROLL_PTR&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2018-4-28&lt;/td&gt;
+      &lt;td&gt;Huan&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;这里面为了便于说明，表中&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_TRX_ID&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_ROLL_PTR&lt;/code&gt;存的值是Mock的值：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_TRX_ID&lt;/code&gt;：最近更新这条记录的Transaction ID，数据库每开启一个事务，事务ID都会增加，每个事务拿到的ID都不一样&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_ROLL_PTR&lt;/code&gt;：用来存储指向Undo Log中旧版本数据指针，支持了事务的回滚&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;最开始的记录无法回滚，所以DATA_ROLL_PTR为空。&lt;/p&gt;
+
+&lt;p&gt;这个时候开启事务A（事务ID:2），对记录进行了更新，但还没有提交，那么当前的数据为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/transaction_1.png&quot; alt=&quot;Transaction 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到，旧的数据会被存到Undo Log中，通过当前记录中的&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_ROLL_PTR&lt;/code&gt;关联，那么如果另一个事务中想读取该数据，读到的会是什么数据了？假如说另一个事务B在事务A之后开启(事务ID:3)，既然我们最开始说Innodb的MVCC是基于事务ID做的，那么既然事务B的事务ID比事务A的大，那么事务B就可以独到A还未提交的数据了，这明显和Innodb RR的定义不符合。实际上，事务读取时，判断应该读取哪个版本的记录，有一个较为复杂的逻辑，不是单纯的和记录上的事务ID进行比较，假设当前读的事务ID为read&lt;code class=&quot;highlighter-rouge&quot;&gt;_id&lt;/code&gt;，记录当前存储的事务ID为&lt;code class=&quot;highlighter-rouge&quot;&gt;tid&lt;/code&gt;，当前系统中未提交的事务中的最大最小事务ID分别为&lt;code class=&quot;highlighter-rouge&quot;&gt;max_tid&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;min_tid&lt;/code&gt;，那么数据可见性判断流程为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/transaction_visibility.png&quot; alt=&quot;Transaction visibility&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过上图（这个图是通过分析网上的一些博客内容得到的，和实际MySQL的逻辑细节可能不一致），在来分析上文提到的Case，由于事务B的事务ID不满足&lt;code class=&quot;highlighter-rouge&quot;&gt;read_id=tid||tid&amp;lt;min_tid&lt;/code&gt;的条件，且该记录当前有&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA_ROLL_PTP&lt;/code&gt;，所以最后该事务B实际读取的是Undo Log中的记录：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Primary Key&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;DATA_TRX_ID&lt;/th&gt;
+      &lt;th&gt;DATA_ROLL_PTR&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2018-4-28&lt;/td&gt;
+      &lt;td&gt;Huan&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;需要注意的是，MySQL的MVCC和理论上的MVCC实际有所差异，MySQL同一时刻只允许一个事务去操作某条数据，该条数据上的操作实际是串行的，也就是说一条记录的有用版本&lt;code class=&quot;highlighter-rouge&quot;&gt;实际就只会有当前记录和一条Undo Log记录&lt;/code&gt;，是&lt;code class=&quot;highlighter-rouge&quot;&gt;悲观锁&lt;/code&gt;的操作方式，而MVCC的定义上实际是&lt;code class=&quot;highlighter-rouge&quot;&gt;乐观锁&lt;/code&gt;的操作方式，某一时刻记录可以存在很多个版本。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 May 2018 14:26:00 +0800</pubDate>
+        <link>http://localhost:4000/HuangHuanBlog/mysql/2018/05/01/MVCC.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/mysql/2018/05/01/MVCC.html</guid>
+        
+        
+        <category>MySQL</category>
+        
+      </item>
     
       <item>
         <title>MySQL 5.7 insert on duplicate key问题</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#背景&quot; id=&quot;markdown-toc-背景&quot;&gt;背景&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#原因分析&quot; id=&quot;markdown-toc-原因分析&quot;&gt;原因分析&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#数据表&quot; id=&quot;markdown-toc-数据表&quot;&gt;数据表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#数据表和例子&quot; id=&quot;markdown-toc-数据表和例子&quot;&gt;数据表和例子&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#原因分析-1&quot; id=&quot;markdown-toc-原因分析-1&quot;&gt;原因分析&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -26,7 +239,7 @@
 
 &lt;h2 id=&quot;原因分析&quot;&gt;原因分析&lt;/h2&gt;
 
-&lt;h3 id=&quot;数据表&quot;&gt;数据表&lt;/h3&gt;
+&lt;h3 id=&quot;数据表和例子&quot;&gt;数据表和例子&lt;/h3&gt;
 
 &lt;p&gt;假如数据表&lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;的结构如下：&lt;/p&gt;
 
@@ -67,6 +280,8 @@ Transaction 3:
 start transaction;
 insert into Test values(5,5) on duplicate key update id=5,uniq=5;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;原因分析-1&quot;&gt;原因分析&lt;/h3&gt;
 
 &lt;p&gt;理论上这三条记录的主键值和唯一索引值都不一样，他们插入的时候都会获取&lt;code class=&quot;highlighter-rouge&quot;&gt;(2,6)&lt;/code&gt;区间的&lt;code class=&quot;highlighter-rouge&quot;&gt;Insert Intention Lock&lt;/code&gt;，但由于各自插入的主键值和唯一索引没有冲突，所以实际是可以正常插入的的，不会发生思索。&lt;/p&gt;
 
@@ -1739,64 +1954,6 @@ When there are multiple unique indexes, the execution of ON DUPLICATE KEY UPDATE
         
         
         <category>Design</category>
-        
-      </item>
-    
-      <item>
-        <title>读书笔记-学</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#1-spring-in-action&quot; id=&quot;markdown-toc-1-spring-in-action&quot;&gt;1. Spring in action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2-分布式服务框架实践与原理&quot; id=&quot;markdown-toc-2-分布式服务框架实践与原理&quot;&gt;2. 分布式服务框架实践与原理&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3-react-引领未来的用户界面开发框架&quot; id=&quot;markdown-toc-3-react-引领未来的用户界面开发框架&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#4-springboot实战&quot; id=&quot;markdown-toc-4-springboot实战&quot;&gt;4. Springboot实战&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#5-javascript高级程序设计第二版&quot; id=&quot;markdown-toc-5-javascript高级程序设计第二版&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#6-图解http&quot; id=&quot;markdown-toc-6-图解http&quot;&gt;6. 图解Http&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#7-java-transaction-book&quot; id=&quot;markdown-toc-7-java-transaction-book&quot;&gt;7. Java transaction book&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#8-java核心技术&quot; id=&quot;markdown-toc-8-java核心技术&quot;&gt;8. Java核心技术&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;1-spring-in-action&quot;&gt;1. Spring in action&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;By Craig Walls&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/springinaction.jpg&quot; alt=&quot;Spring in action&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这本书紧紧围绕着&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Action&lt;/code&gt;，在工作中能设计到的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;实用技术基本都有讲解，并不涉及&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;的原理，对于工作上的&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;使用恰好合适。&lt;/p&gt;
-
-&lt;h3 id=&quot;2-分布式服务框架实践与原理&quot;&gt;2. 分布式服务框架实践与原理&lt;/h3&gt;
-
-&lt;p&gt;讲了很多实践经验和原理性的东西，但在没有实践机会的情况下，这类书的帮助不大。&lt;/p&gt;
-
-&lt;h3 id=&quot;3-react-引领未来的用户界面开发框架&quot;&gt;3. React 引领未来的用户界面开发框架&lt;/h3&gt;
-
-&lt;p&gt;讲React非常清晰的一本入门书籍，里面的例子都很实用。&lt;/p&gt;
-
-&lt;h3 id=&quot;4-springboot实战&quot;&gt;4. Springboot实战&lt;/h3&gt;
-
-&lt;p&gt;比较水的一本书，罗列了一堆东西，但都不深入，如果不了解Springboot倒是可以看看。&lt;/p&gt;
-
-&lt;h3 id=&quot;5-javascript高级程序设计第二版&quot;&gt;5. JavaScript高级程序设计（第二版）&lt;/h3&gt;
-
-&lt;p&gt;这本书写的很好，把JavaScript的基本原理部分讲的很清楚，特别是作用域链，BOM等知识，不过因为看的这版有点偏老，里面很多内容有点过时，作为JavaScript的学习资料还是很不错的。&lt;/p&gt;
-
-&lt;h3 id=&quot;6-图解http&quot;&gt;6. 图解Http&lt;/h3&gt;
-
-&lt;p&gt;这本书该有的内容都有，而且都有相应的图形，虽然有时候显得有点太浅显了，不过是很好的Http学习资料。&lt;/p&gt;
-
-&lt;h3 id=&quot;7-java-transaction-book&quot;&gt;7. Java transaction book&lt;/h3&gt;
-
-&lt;p&gt;在InfoQ上找到的一本讲事务的书，对本地式事务，编程式事务，声明式事务的讲解很清晰，其中也涉及了XA接口的设计原理，整本书短小精悍。&lt;/p&gt;
-
-&lt;h3 id=&quot;8-java核心技术&quot;&gt;8. Java核心技术&lt;/h3&gt;
-
-&lt;p&gt;这个书除了前面讲Java原理部分有点用，之后的感觉真的有点过时了，可能是我看的版本太老了，里面大量章节的Swing, Applets什么的让人挺无语的。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 23 Nov 2016 15:53:00 +0800</pubDate>
-        <link>http://localhost:4000/HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</link>
-        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/read/2016/11/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%AD%A6.html</guid>
-        
-        
-        <category>Read</category>
         
       </item>
     

@@ -98,7 +98,8 @@ var _hmt = _hmt || [];
         <ul id="markdown-toc">
   <li><a href="#背景" id="markdown-toc-背景">背景</a></li>
   <li><a href="#原因分析" id="markdown-toc-原因分析">原因分析</a>    <ul>
-      <li><a href="#数据表" id="markdown-toc-数据表">数据表</a></li>
+      <li><a href="#数据表和例子" id="markdown-toc-数据表和例子">数据表和例子</a></li>
+      <li><a href="#原因分析-1" id="markdown-toc-原因分析-1">原因分析</a></li>
     </ul>
   </li>
 </ul>
@@ -110,7 +111,7 @@ var _hmt = _hmt || [];
 
 <h2 id="原因分析">原因分析</h2>
 
-<h3 id="数据表">数据表</h3>
+<h3 id="数据表和例子">数据表和例子</h3>
 
 <p>假如数据表<code class="highlighter-rouge">Test</code>的结构如下：</p>
 
@@ -152,6 +153,8 @@ start transaction;
 insert into Test values(5,5) on duplicate key update id=5,uniq=5;
 </code></pre></div></div>
 
+<h3 id="原因分析-1">原因分析</h3>
+
 <p>理论上这三条记录的主键值和唯一索引值都不一样，他们插入的时候都会获取<code class="highlighter-rouge">(2,6)</code>区间的<code class="highlighter-rouge">Insert Intention Lock</code>，但由于各自插入的主键值和唯一索引没有冲突，所以实际是可以正常插入的的，不会发生思索。</p>
 
 <p>那么为什么MySQL的部分版本这种情况下会发生死锁了？</p>
@@ -183,6 +186,8 @@ When there are multiple unique indexes, the execution of ON DUPLICATE KEY UPDATE
       
       <a href="/HuangHuanBlog/read/2017/06/19/%E4%BC%9A%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html">上一篇博客：会计入门小结</a><br>
       
+      
+      <a href="/HuangHuanBlog/mysql/2018/05/01/MVCC.html">下一篇博客：MySQL MVCC介绍</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>

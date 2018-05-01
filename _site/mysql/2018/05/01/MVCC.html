@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MySQL MVCC介绍</title>
+	<meta name="description" content="  MVCC是什么？MVCC是什么？">
+	
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/mysql/2018/05/01/MVCC.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+      <p class="navbar-text">上周UV:650 本周UV:150</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>MySQL MVCC介绍</h1>
+        <p>May 1, 2018</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#mvcc是什么" id="markdown-toc-mvcc是什么">MVCC是什么？</a></li>
+  <li><a href="#mvcc的效果" id="markdown-toc-mvcc的效果">MVCC的效果</a></li>
+  <li><a href="#mysql的mvcc" id="markdown-toc-mysql的mvcc">MySQL的MVCC</a></li>
+</ul>
+<h2 id="mvcc是什么">MVCC是什么？</h2>
+
+<blockquote>
+  <p>MVCC的全称是Multi-Version Concurrency Control，通常用于数据库等场景中，实现多版本的并发控制</p>
+</blockquote>
+
+<blockquote>
+  <p>Multiversion concurrency control (MCC or MVCC), is a concurrency control method commonly used by database management systems to provide concurrent access to the database and in programming languages to implement transactional memory.</p>
+</blockquote>
+
+<p>如果没有并发控制，那么如果同时有用户读写数据，那么可能出现读出的数据不一致的情况。比如说，进行银行账户A到B的转账，当A账户的钱被扣掉，而钱还没有加到B账户，此时用户查看自己的余额，会感觉钱凭空消失了。MySQL的隔离性就是用来解决这类问题的，而隔离性是通过不同的并发控制手段来实现的。对于刚才的问题，一种简单的并发控制方式，就是讲读写操作串行化，在账户间转账时，不允许查询账户，虽然这种方式可以解决问题，但无疑过于简单粗暴，效率极低。相比于串行化的并发控制，MVCC的优势在于读写影响，对于现代互联网读多写少的场景，这种方式性能明显更高。</p>
+
+<p>MVCC是通过保存数据的多个版本来实现并发控制，当需要更新某条数据时，实现了MVCC的存储系统不会立即用新数据覆盖原始数据，而是创建该条记录的一个新的版本。对于多数数据库系统，存储会分为<code class="highlighter-rouge">Data Part</code>和<code class="highlighter-rouge">Undo Log</code>，<code class="highlighter-rouge">Data Part</code>用来存储事务已提交的数据，而<code class="highlighter-rouge">Undo Log</code>用来存储旧版本的数据。多版本的存在允许了读和写的分离，读操作是需要读取某个版本之前的数据即可，和写操作不冲突，大大提高了性能。</p>
+
+<h2 id="mvcc的效果">MVCC的效果</h2>
+
+<p>假如MVCC是按照时间来判定数据的版本，在Time=1的时刻，数据库的状态如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Record A</th>
+      <th>Record B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>“Record A When time=0”</td>
+      <td>“Record B when time=0”</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>“Record A When time=1”</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这个时候系统中实际存储了三条记录，<code class="highlighter-rouge">Record A</code>在时间0和1的各一条记录，<code class="highlighter-rouge">Record B</code>的一条记录，如果一个事务在Time=0的时刻开启，那么读到的数据是：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Record A</th>
+      <th>Record B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>“Record A When time=0”</td>
+      <td>“Record B when time=0”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>如果这个事务在Time=1的时候开启，那么读到的数据是：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Record A</th>
+      <th>Record B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>“Record A When time=1”</td>
+      <td>“Record B when time=0”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>上面的Case可以看到，对于读来讲，事务只能读到某一个版本及这个版本之前的最新一条数据，假如在Time=2的时候，事务<code class="highlighter-rouge">Transaction X</code>要插入<code class="highlighter-rouge">Record C</code>，并更新<code class="highlighter-rouge">Record B</code>，但事务还未提交，那么数据库的状态如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Record A</th>
+      <th>Record B</th>
+      <th>Record C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>“Record A When time=0”</td>
+      <td>“Record B when time=0”</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>“Record A When time=1”</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>2(Not Committed)</td>
+      <td> </td>
+      <td>“Record B when time=2”</td>
+      <td>“Record C When time=2”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这时候其它事务会读到的是什么了？在这个情况下，其它读事务所能看到系统的最新版本是系统处于Time=1的时候，所以依然不会读到<code class="highlighter-rouge">Transaction X</code>所改写的数据，此时读到的数据依然为：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Record A</th>
+      <th>Record B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>“Record A When time=1”</td>
+      <td>“Record B when time=0”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>基于这种版本机制，就不会出现另一个事务读取时，出现读到<code class="highlighter-rouge">Record C</code>而<code class="highlighter-rouge">Record B</code>还未被<code class="highlighter-rouge">Transaction X</code>更新的中间结果，因为其它事务所看到的系统依然处于Time=1的状态。</p>
+
+<p>至于说，每个事务应该看到具体什么版本的数据，这个是由不同系统的MVCC实现来决定的，下文我会介绍MySQL的MVCC实现。除了读到的数据必须小于等于当前系统已提交的版本外，写事务在提交时必须大于当前的版本，而这里如果想想还会有一个问题，如果Time=2的时刻，开启了多个写或更新事务，当它们同时尝试提交时，必然会有一个事务发现数据库已经处于Time=2的状态了，那么这个事务该怎么办了？大家可以好好想想。</p>
+
+<h2 id="mysql的mvcc">MySQL的MVCC</h2>
+
+<p>MySQL的Innodb引擎支持多种事务隔离级别，而其中的RR级别（Repeatable-Read）就是依靠MVCC来实现的，MySQL中MVCC的版本指的是事务ID（Transaction ID），首先来看一下MySQL Innodb中行记录的存储格式，除了最基本的行信息外，还会有一些额外的字段，这里主要介绍和MVCC有关的字段：<code class="highlighter-rouge">DATA_TRX_ID</code>和<code class="highlighter-rouge">DATA_ROLL_PTR</code>，如下是一张表的初始信息：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Primary Key</th>
+      <th>Time</th>
+      <th>Name</th>
+      <th>DATA_TRX_ID</th>
+      <th>DATA_ROLL_PTR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2018-4-28</td>
+      <td>Huan</td>
+      <td>1</td>
+      <td>NULL</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这里面为了便于说明，表中<code class="highlighter-rouge">DATA_TRX_ID</code>和<code class="highlighter-rouge">DATA_ROLL_PTR</code>存的值是Mock的值：</p>
+
+<ol>
+  <li><code class="highlighter-rouge">DATA_TRX_ID</code>：最近更新这条记录的Transaction ID，数据库每开启一个事务，事务ID都会增加，每个事务拿到的ID都不一样</li>
+  <li><code class="highlighter-rouge">DATA_ROLL_PTR</code>：用来存储指向Undo Log中旧版本数据指针，支持了事务的回滚</li>
+</ol>
+
+<p>最开始的记录无法回滚，所以DATA_ROLL_PTR为空。</p>
+
+<p>这个时候开启事务A（事务ID:2），对记录进行了更新，但还没有提交，那么当前的数据为：</p>
+
+<p><img src="/HuangHuanBlog/pics/transaction_1.png" alt="Transaction 1" /></p>
+
+<p>可以看到，旧的数据会被存到Undo Log中，通过当前记录中的<code class="highlighter-rouge">DATA_ROLL_PTR</code>关联，那么如果另一个事务中想读取该数据，读到的会是什么数据了？假如说另一个事务B在事务A之后开启(事务ID:3)，既然我们最开始说Innodb的MVCC是基于事务ID做的，那么既然事务B的事务ID比事务A的大，那么事务B就可以独到A还未提交的数据了，这明显和Innodb RR的定义不符合。实际上，事务读取时，判断应该读取哪个版本的记录，有一个较为复杂的逻辑，不是单纯的和记录上的事务ID进行比较，假设当前读的事务ID为read<code class="highlighter-rouge">_id</code>，记录当前存储的事务ID为<code class="highlighter-rouge">tid</code>，当前系统中未提交的事务中的最大最小事务ID分别为<code class="highlighter-rouge">max_tid</code>和<code class="highlighter-rouge">min_tid</code>，那么数据可见性判断流程为：</p>
+
+<p><img src="/HuangHuanBlog/pics/transaction_visibility.png" alt="Transaction visibility" /></p>
+
+<p>通过上图（这个图是通过分析网上的一些博客内容得到的，和实际MySQL的逻辑细节可能不一致），在来分析上文提到的Case，由于事务B的事务ID不满足<code class="highlighter-rouge">read_id=tid||tid&lt;min_tid</code>的条件，且该记录当前有<code class="highlighter-rouge">DATA_ROLL_PTP</code>，所以最后该事务B实际读取的是Undo Log中的记录：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Primary Key</th>
+      <th>Time</th>
+      <th>Name</th>
+      <th>DATA_TRX_ID</th>
+      <th>DATA_ROLL_PTR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2018-4-28</td>
+      <td>Huan</td>
+      <td>1</td>
+      <td>NULL</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>需要注意的是，MySQL的MVCC和理论上的MVCC实际有所差异，MySQL同一时刻只允许一个事务去操作某条数据，该条数据上的操作实际是串行的，也就是说一条记录的有用版本<code class="highlighter-rouge">实际就只会有当前记录和一条Undo Log记录</code>，是<code class="highlighter-rouge">悲观锁</code>的操作方式，而MVCC的定义上实际是<code class="highlighter-rouge">乐观锁</code>的操作方式，某一时刻记录可以存在很多个版本。</p>
+
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/mysql/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html">上一篇博客：MySQL 5.7 insert on duplicate key问题</a><br>
+      
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>美团金融后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
