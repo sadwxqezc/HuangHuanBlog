@@ -28,6 +28,7 @@
 
 	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
 	
+	<link rel="shortcut icon" type="image/x-icon" href="/HuangHuanBlog/favicon.ico" >
 	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
@@ -65,7 +66,6 @@ var _hmt = _hmt || [];
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
-      <p class="navbar-text">上周UV:650 本周UV:150</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -79,8 +79,10 @@ var _hmt = _hmt || [];
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
+  </nav>
 
+<!-- Favicon -->
+  <link rel="shortcut icon" href="/HuangHuanBlog/pics/favicon.ico">
 </header>
 
 
@@ -270,7 +272,7 @@ var _hmt = _hmt || [];
 
 <p><img src="/HuangHuanBlog/pics/transaction_visibility.png" alt="Transaction visibility" /></p>
 
-<p>通过上图（这个图是通过分析网上的一些博客内容得到的，和实际MySQL的逻辑细节可能不一致），在来分析上文提到的Case，由于事务B的事务ID不满足<code class="highlighter-rouge">read_id=tid||tid&lt;min_tid</code>的条件，且该记录当前有<code class="highlighter-rouge">DATA_ROLL_PTP</code>，所以最后该事务B实际读取的是Undo Log中的记录：</p>
+<p>通过上图（这个图是通过分析网上的一些博客内容得到的，和实际MySQL的逻辑细节可能不一致），在来分析上文提到的Case，由于事务B的事务ID不满足<code class="highlighter-rouge">read_id=tid||tid&lt;min_tid</code>的条件，且该记录当前有<code class="highlighter-rouge">DATA_ROLL_PTR</code>，所以最后该事务B实际读取的是Undo Log中的记录：</p>
 
 <table>
   <thead>
@@ -301,6 +303,8 @@ var _hmt = _hmt || [];
       
       <a href="/HuangHuanBlog/mysql/2018/04/15/MySQL5.7%E9%97%AE%E9%A2%98.html">上一篇博客：MySQL 5.7 insert on duplicate key问题</a><br>
       
+      
+      <a href="/HuangHuanBlog/develop/2018/05/06/Git.html">下一篇博客：Git笔记</a>
       
       <hr>
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
