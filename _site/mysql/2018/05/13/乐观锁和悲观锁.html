@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>乐观锁&悲观锁</title>
+	<meta name="description" content="  什么是乐观锁，悲观锁？什么是乐观锁，悲观锁？">
+	
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/mysql/2018/05/13/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/HuangHuanBlog/favicon.ico" >
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+
+<!-- Favicon -->
+  <link rel="shortcut icon" href="/HuangHuanBlog/pics/favicon.ico">
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>乐观锁&悲观锁</h1>
+        <p>May 13, 2018</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#什么是乐观锁悲观锁" id="markdown-toc-什么是乐观锁悲观锁">什么是乐观锁，悲观锁？</a></li>
+  <li><a href="#乐观锁悲观锁举例" id="markdown-toc-乐观锁悲观锁举例">乐观锁，悲观锁举例</a>    <ul>
+      <li><a href="#数据表" id="markdown-toc-数据表">数据表</a></li>
+      <li><a href="#悲观锁实现" id="markdown-toc-悲观锁实现">悲观锁实现</a>        <ul>
+          <li><a href="#代码" id="markdown-toc-代码">代码</a></li>
+          <li><a href="#结果" id="markdown-toc-结果">结果</a></li>
+        </ul>
+      </li>
+      <li><a href="#乐观锁实现" id="markdown-toc-乐观锁实现">乐观锁实现</a>        <ul>
+          <li><a href="#代码-1" id="markdown-toc-代码-1">代码</a></li>
+          <li><a href="#结果-1" id="markdown-toc-结果-1">结果</a></li>
+        </ul>
+      </li>
+      <li><a href="#结果分析" id="markdown-toc-结果分析">结果分析</a></li>
+    </ul>
+  </li>
+</ul>
+<h2 id="什么是乐观锁悲观锁">什么是乐观锁，悲观锁？</h2>
+
+<p>关于乐观锁和悲观锁的概念，网上有很多，概括一下是：</p>
+
+<ol>
+  <li><strong>乐观锁：</strong> 只会在数据最终提交的时候去锁定数据，判断是否可以更新</li>
+  <li><strong>悲观锁：</strong> 每次操作都会进行数据的锁定，直到处理完成，杜绝其它操作更改数据的可能。</li>
+</ol>
+
+<p>网上很多博客对乐观锁，悲观锁的区别写的很模糊，就我自己的理解，两者实际最终都会对数据加锁，区别在于锁定的时机，相比于乐观锁，悲观锁往往存在一个预先锁定数据，然后处理的逻辑，所以其持有锁的时间会更长，导致整体性能降低。悲观锁的好处是处理有序进行，多数请求都能成功，而乐观锁可能会导致大量的失败。</p>
+
+<h2 id="乐观锁悲观锁举例">乐观锁，悲观锁举例</h2>
+
+<p>关于概念就不再做赘述了，直接上代码看吧，这里以电商秒杀场景为例子，这个场景下用户查询量，下单量都会非常大。我们用MySQL来存储被秒杀的商品库存，分别用乐观锁和悲观锁方式来实现，最后对比两者性能。</p>
+
+<h3 id="数据表">数据表</h3>
+
+<p><code class="highlighter-rouge">product_stock</code>用来存储产品的库存，<code class="highlighter-rouge">stock</code>表示剩余商品的数量。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create Table: CREATE TABLE `product_stock` (
+  `id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+</code></pre></div></div>
+
+<p>假设一共有<code class="highlighter-rouge">50</code>个商品，这个活动要保证的有两点：</p>
+
+<ol>
+  <li>对用户响应快</li>
+  <li>不能超卖</li>
+</ol>
+
+<p><strong>数据</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+------------+-------+
+| id   | product_id | stock |
++------+------------+-------+
+|    1 |          1 |    50 |
++------+------------+-------+
+</code></pre></div></div>
+
+<p><strong>Pojo</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Stock {
+    private int id;
+    private int product_id;
+    private int stock;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+}
+
+</code></pre></div></div>
+
+<h3 id="悲观锁实现">悲观锁实现</h3>
+
+<p>按悲观锁的思路，为了避免多个线程操作同一条数据导致的冲突，且为了避免超卖，同时应该只允许一个线程操作数据，并判断当前的库存。</p>
+
+<h4 id="代码">代码</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Transactional(rollbackFor = Exception.class)
+public void pessimistic() {
+	/* 加锁查询库存，两个true参数表示加锁查主库，也就是for update操作 */
+    Stock stock = stockMapper.selectByPrimaryKey(1, true, true);
+    /* 判断是否还有剩余 */
+    if (stock.getStock() &lt;= 0) {
+	System.out.println("已经抢完了:" + System.currentTimeMillis() / 1000);
+	return;
+    }
+    stock.setStock(stock.getStock() - 1);
+    /* 更新库存 */
+    stockMapper.updateByPrimaryKey(stock);
+    System.out.println("抢到了，剩下:" + stock.getStock() + 
+    " " + System.currentTimeMillis() / 1000);
+}
+</code></pre></div></div>
+
+<p>每一个操作先加锁查出当前的库存，然后进行扣减并更新，可能有人会问：为什么要加锁查询？原因很简单，避免超卖。</p>
+
+<h4 id="结果">结果</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>抢到了，剩下:49 1526222452
+抢到了，剩下:48 1526222452
+抢到了，剩下:47 1526222452
+抢到了，剩下:46 1526222452
+抢到了，剩下:45 1526222452
+...
+已经抢完了:1526222467
+已经抢完了:1526222467
+</code></pre></div></div>
+
+<p>执行过程中没有更新失败的情况，总耗时 <strong>15s</strong></p>
+
+<h3 id="乐观锁实现">乐观锁实现</h3>
+
+<p>乐观锁往往通过<code class="highlighter-rouge">version</code>或者<code class="highlighter-rouge">timestamp</code>来实现，以<code class="highlighter-rouge">version</code>为例，通过判断版本号，来确定是否可以更新数据，而在查询的时候带上这个<code class="highlighter-rouge">version</code>即可，不需要加锁。在这个场景下，我们用一个Trick，把<code class="highlighter-rouge">stock</code>字段当作版本号，因为<code class="highlighter-rouge">stock</code>正好每次扣减1，而且必须是连续的，所以每次更新时判断<code class="highlighter-rouge">stock</code>值是否合法，然后进行减1更新操作。</p>
+
+<h4 id="代码-1">代码</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public void optimistic() {
+    /* 不用加锁查询数据 */
+    Stock stock = stockMapper.selectByPrimaryKey(1, false, false);
+    if (stock.getStock() &lt;= 0) {
+        System.out.println("抢完了:" + System.currentTimeMillis() / 1000);
+        return;
+    }
+    /* 抢库存，并同时更新，第一个参数是新的库存，第二个参数是当前查出的库存 */
+    int value = stockMapper.updateStock(stock.getStock() - 1, stock.getStock());
+    ／* 判断是否抢成功，1表示有一条记录被修改 */
+    if (value == 1) {
+        System.out.println("抢成功，剩下:" + (stock.getStock() - 1) + " "
+        + System.currentTimeMillis() / 1000);
+    } else {
+        System.out.println("抢失败:" + System.currentTimeMillis() / 1000);
+    }
+}
+</code></pre></div></div>
+
+<p>这里有个区别的地方是用了<code class="highlighter-rouge">updateStock</code>方法，这个方法对应的操作是：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>update product_stock
+set
+stock = #{newStock} #设置新的stock
+where id = 1 and stock=#{oldStock} #只有传回的oldStock和当前stock相等的情况下才会更新
+</code></pre></div></div>
+
+<h4 id="结果-1">结果</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>抢成功，剩下:49 1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢失败:1526223502
+抢成功，剩下:48 1526223502
+...
+抢完了:1526223505
+</code></pre></div></div>
+
+<p>执行过程中有<strong>361</strong>个抢失败的情况，但总耗时<strong>3s</strong></p>
+
+<h3 id="结果分析">结果分析</h3>
+
+<p>从列子的结果来看：<strong>乐观锁的总耗时远远低于悲观锁的情况，但却导致了大量的更新失败，实际更新的次数也远高于（悲观锁也就会有50次更新操作）悲观锁</strong>，其原因是因为乐观锁在查询库存时不需要加锁，这带来了查询性能的明显提升，但也导致了更多的更新操作（因为只有最后提交的时候，才知道是否能抢到并扣库存成功），这其实就是系统设计的<code class="highlighter-rouge">Tradeoff</code> 了。</p>
+
+<p>可能有人会问，更新操作时MySQL加的排他锁不就是一种悲观锁吗，文中的乐观锁或悲观锁到数据库更新的时候不都是悲观的吗？其实我理解，乐观锁和悲观锁体现的是两种不同的设计思想，其粒度可以是数据库的锁设计，也可以是业务的处理逻辑，重点是两种思想的异同。</p>
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/develop/2018/05/06/Git.html">上一篇博客：Git笔记</a><br>
+      
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>美团金融后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
