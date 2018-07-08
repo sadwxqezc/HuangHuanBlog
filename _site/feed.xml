@@ -5,8 +5,8 @@
     <description>美团金融后台研发工程师</description>
     <link>http://localhost:4000/HuangHuanBlog/</link>
     <atom:link href="http://localhost:4000/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 13 May 2018 23:30:34 +0800</pubDate>
-    <lastBuildDate>Sun, 13 May 2018 23:30:34 +0800</lastBuildDate>
+    <pubDate>Sun, 08 Jul 2018 20:36:01 +0800</pubDate>
+    <lastBuildDate>Sun, 08 Jul 2018 20:36:01 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
@@ -223,6 +223,12 @@ where id = 1 and stock=#{oldStock} #只有传回的oldStock和当前stock相等�
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#git-tag&quot; id=&quot;markdown-toc-git-tag&quot;&gt;Git Tag&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#git-reset&quot; id=&quot;markdown-toc-git-reset&quot;&gt;Git Reset&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#git-grep&quot; id=&quot;markdown-toc-git-grep&quot;&gt;Git Grep&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#显示行号&quot; id=&quot;markdown-toc-显示行号&quot;&gt;显示行号&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#只显示文件名&quot; id=&quot;markdown-toc-只显示文件名&quot;&gt;只显示文件名&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#显示每个文件中匹配的个数&quot; id=&quot;markdown-toc-显示每个文件中匹配的个数&quot;&gt;显示每个文件中匹配的个数&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;git-log&quot;&gt;Git Log&lt;/h3&gt;
 
@@ -344,6 +350,75 @@ git reset &amp;lt;commit&amp;gt;
 
 #本地reset后远程同步
 git push -f origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;git-grep&quot;&gt;Git Grep&lt;/h3&gt;
+
+&lt;p&gt;代码搜索&lt;/p&gt;
+
+&lt;p&gt;####搜索包含指定字符的文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;huanhuang@localhost:~/Study/HuangHuanBlog$ git grep '2018'
+_posts/2018-04-15-MySQL5.7问题.md:date:   2018-04-15 23:15 +0800
+_posts/2018-05-01-MVCC.md:date:   2018-05-01 14:26 +0800
+_posts/2018-05-01-MVCC.md:| 1           | 2018-4-28 | Huan | 1           | NULL          |
+_posts/2018-05-01-MVCC.md:| 1           | 2018-4-28 | Huan | 1           | NULL          |
+_posts/2018-05-06-Git.md:date:   2018-05-06 21:05:00 +0800
+_posts/2018-05-06-Git.md:Date:   Thu May 3 20:15:23 2018 +0800
+_posts/2018-05-06-Git.md:Date:   Wed May 2 09:28:13 2018 +0800
+_posts/2018-05-06-Git.md:Date:   Tue May 1 18:10:43 2018 +0800
+_posts/2018-05-06-Git.md:Date:   Thu May 3 20:15:23 2018 +0800
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;显示行号&quot;&gt;显示行号&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;huanhuang@localhost:~/Study/HuangHuanBlog$ git grep -n '2018'
+_posts/2018-04-15-MySQL5.7问题.md:4:date:   2018-04-15 23:15 +0800
+_posts/2018-05-01-MVCC.md:4:date:   2018-05-01 14:26 +0800
+_posts/2018-05-01-MVCC.md:66:| 1           | 2018-4-28 | Huan | 1           | NULL          |
+_posts/2018-05-01-MVCC.md:87:| 1           | 2018-4-28 | Huan | 1           | NULL          |
+_posts/2018-05-06-Git.md:4:date:   2018-05-06 21:05:00 +0800
+_posts/2018-05-06-Git.md:19:Date:   Thu May 3 20:15:23 2018 +0800
+_posts/2018-05-06-Git.md:25:Date:   Wed May 2 09:28:13 2018 +0800
+_posts/2018-05-06-Git.md:31:Date:   Tue May 1 18:10:43 2018 +0800
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;只显示文件名&quot;&gt;只显示文件名&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;huanhuang@localhost:~/Study/HuangHuanBlog$ git grep --name-only '2018'
+_posts/2018-04-15-MySQL5.7问题.md
+_posts/2018-05-01-MVCC.md
+_posts/2018-05-06-Git.md
+_posts/2018-05-13-乐观锁和悲观锁.md
+_site/develop/2018/05/06/Git.html
+_site/feed.xml
+_site/index.html
+_site/mysql/2018/04/15/MySQL5.7问题.html
+_site/mysql/2018/05/01/MVCC.html
+_site/mysql/2018/05/13/乐观锁和悲观锁.html
+_site/page2/index.html
+_site/page3/index.html
+_site/page4/index.html
+_site/read/2017/06/19/会计学入门小结.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;显示每个文件中匹配的个数&quot;&gt;显示每个文件中匹配的个数&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;huanhuang@localhost:~/Study/HuangHuanBlog$ git grep -c '2018'
+_posts/2018-04-15-MySQL5.7问题.md:1
+_posts/2018-05-01-MVCC.md:3
+_posts/2018-05-06-Git.md:38
+_posts/2018-05-13-乐观锁和悲观锁.md:1
+_site/develop/2018/05/06/Git.html:13
+_site/feed.xml:25
+_site/index.html:16
+_site/mysql/2018/04/15/MySQL5.7问题.html:3
+_site/mysql/2018/05/01/MVCC.html:6
+_site/mysql/2018/05/13/乐观锁和悲观锁.html:3
+_site/page2/index.html:8
+_site/page3/index.html:8
+_site/page4/index.html:8
+_site/read/2017/06/19/会计学入门小结.html:1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 </description>
@@ -1646,22 +1721,208 @@ When there are multiple unique indexes, the execution of ON DUPLICATE KEY UPDATE
       </item>
     
       <item>
-        <title>离别是新的开始</title>
-        <description>
-&lt;p&gt;刚才请广告组全组的同事吃了饭，算是正式告别了工作了近一年的有道。和这个地方其实颇有缘分，第一次知道有道是大二实验室实习的时候，带我的实验室师兄就在有道实习，而研究生的朋友后来也在有道实习。进入有道之后，发现小组长居然和我的博士师兄以前是一个宿舍的，这些巧合加一块，真的算得上是缘分了。&lt;/p&gt;
+        <title>Zookeeper笔记</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-数据结构&quot; id=&quot;markdown-toc-1-数据结构&quot;&gt;1. 数据结构&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-节点&quot; id=&quot;markdown-toc-2-节点&quot;&gt;2. 节点&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#21-简单封装&quot; id=&quot;markdown-toc-21-简单封装&quot;&gt;2.1 简单封装&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#22-创建节点&quot; id=&quot;markdown-toc-22-创建节点&quot;&gt;2.2 创建节点&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#23-监听节点&quot; id=&quot;markdown-toc-23-监听节点&quot;&gt;2.3 监听节点。&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-集群&quot; id=&quot;markdown-toc-3-集群&quot;&gt;3. 集群&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#31-角色&quot; id=&quot;markdown-toc-31-角色&quot;&gt;3.1 角色&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#32-读写模式&quot; id=&quot;markdown-toc-32-读写模式&quot;&gt;3.2 读写模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#33-zab协议&quot; id=&quot;markdown-toc-33-zab协议&quot;&gt;3.3 ZAB协议&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#331-quorum&quot; id=&quot;markdown-toc-331-quorum&quot;&gt;3.3.1 Quorum&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#332-四个阶段&quot; id=&quot;markdown-toc-332-四个阶段&quot;&gt;3.3.2 四个阶段&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#333-2n1&quot; id=&quot;markdown-toc-333-2n1&quot;&gt;3.3.3 2N+1&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;在有道的一年也确实很开心，结识了方少爷，丹阳，家琦，亚玲，潘总，杨老师这些朋友，这也是在这里一年最大的收获。细细回想，这一年很多开心的片段都能浮现在眼前，如果说有什么不舍，应该就是不能再和这些朋友一起工作了。虽然，有道是一个少有压力，有很多空闲时间做自己想做的事情的地方，但对于25岁的我而言，却不是那么合适。这份让人羡慕的安逸并不是现阶段的我所追求的，趁着年轻，我还是想做些能让我激动起来，有挑战，受重视的工作，太安逸的日子会让人失了锐气，停滞不前。因此，我选择以离开作为新的开始，做这样的选择需要鼓起勇气，这个选择是否正确也需要以后的日子来验证，但既然迈出了这一步，就不准备再回头。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Zookeeper是Apache Hadoop的一个子项目，本质是一个分布式小文件系统，主要解决分布式系统应用中遇到的数据管理问题（一致性问题）：统一命名服务，状态同步服务，集群管理，分布式应用配置项的管理。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;未来不可预知才让人害怕，令人兴奋，使人期待，我想知道我能走到哪一步，不想接受按部就班的生活，这样才有意思不是吗？&lt;/p&gt;
+&lt;h2 id=&quot;1-数据结构&quot;&gt;1. 数据结构&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zk.png&quot; alt=&quot;Zookeeper&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;离别是新的开始，不要害怕，任性做自己。&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;每个&lt;strong&gt;子目录项&lt;/strong&gt;（比如图中的&lt;strong&gt;NameService&lt;/strong&gt;）都被称为&lt;strong&gt;znode&lt;/strong&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;znode&lt;/strong&gt;可以有&lt;strong&gt;子节点目录&lt;/strong&gt;，并且每个&lt;strong&gt;znode&lt;/strong&gt;都可以保存数据，但注意&lt;strong&gt;EPHEMERAL&lt;/strong&gt;类型的目录节点不能有子节点目录。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;znode&lt;/strong&gt;是有&lt;strong&gt;版本的&lt;/strong&gt;，每个&lt;strong&gt;znode&lt;/strong&gt;中存储的数据可以有多个版本，也就是同一访问路径可以存储多份数据。&lt;/li&gt;
+  &lt;li&gt;对于临时的&lt;strong&gt;znode&lt;/strong&gt;，一旦创建这个&lt;strong&gt;znode&lt;/strong&gt;的客户端与服务器失去联系，这个&lt;strong&gt;znode&lt;/strong&gt;也将自动删除，Zookeeper的客户端和服务器通信采用长链接方式，每个客户端和服务器通过心跳来保持连接。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;znode&lt;/strong&gt;可以被监控，包括这个节点中存储的数据的修改，子节点目录的变化等，一旦变化可以通知监听的客户端，这个是Zookeeper的重要特性。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;2-节点&quot;&gt;2. 节点&lt;/h2&gt;
+
+&lt;p&gt;Zookeeper有四种类型的节点:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;PERSISTENT&lt;/li&gt;
+  &lt;li&gt;PERSISTENT_SEQUENTIAL&lt;/li&gt;
+  &lt;li&gt;EPHEMERAL&lt;/li&gt;
+  &lt;li&gt;EPHEMERAL_SEQUENTIAL&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;节点在创建后其类型不能被修改。&lt;/p&gt;
+
+&lt;h3 id=&quot;21-简单封装&quot;&gt;2.1 简单封装&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * Zookeeper测试类
+ * Created by huanghuan on 2017/2/8.
+ */&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Log&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ZookeepeTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2181&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;# connect &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooDefs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Ids&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPEN_ACL_UNSAFE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;deleteNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getVersion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KeeperException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;# event &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;22-创建节点&quot;&gt;2.2 创建节点&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PERSISTENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/child&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PERSISTENT_SEQUENTIAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;结果为：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000000&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000001&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000002&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000003&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000004&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;临时节点的创建原理类似，但在客户端断开连接后，临时节点的内容将消失。&lt;/p&gt;
+
+&lt;h3 id=&quot;23-监听节点&quot;&gt;2.3 监听节点。&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PERSISTENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deleteNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;结果为：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NodeDeleted&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watch&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NodeDeleted&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watch&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;3-集群&quot;&gt;3. 集群&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zk_Cluster.png&quot; alt=&quot;Cluster&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;31-角色&quot;&gt;3.1 角色&lt;/h3&gt;
+
+&lt;p&gt;Zookeeper集群中包含三个角色：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Leader&lt;/strong&gt;: 负责进行投票的发起和决议，更新系统的状态，为客户端提供读和写服务。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Follower&lt;/strong&gt;: 用于接受客户端请求并且向客户端返回结果，同时在选主过程中参与投票，为客户端提供读服务。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Observer&lt;/strong&gt;: 实际上是不参加投票的Follower，用于扩展系统。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;其中&lt;strong&gt;Follower&lt;/strong&gt;和&lt;strong&gt;Observer&lt;/strong&gt;统称为&lt;strong&gt;Learner&lt;/strong&gt;，&lt;/p&gt;
+
+&lt;h3 id=&quot;32-读写模式&quot;&gt;3.2 读写模式&lt;/h3&gt;
+
+&lt;p&gt;在一个Zookeeper集群中，读写操作可以发生在任何一个集群角色上，而写的请求都会被转发到Leader，然后Leader通过Zookeeper中的原子广播协议（&lt;strong&gt;ZAB&lt;/strong&gt;协议，可以理解为Paxos协议的一种简化形式），将请求广播给所有的Learner，当Leader收到一半以上的写成功ACK后，就认为该写操作成功了，则将该操作持久化，并告诉客户端。&lt;/p&gt;
+
+&lt;h3 id=&quot;33-zab协议&quot;&gt;3.3 ZAB协议&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zab.png&quot; alt=&quot;zab&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ZAB（Atomic broadcast protocol）协议是为Zookeeper专门设计的支持恢复崩溃的原子广播协议，它是Zookeeper实现分布式数据一致性的基础，基于此，Zookeeper实现了一种主备模式的系统架构来保持集群中各个副本之间的数据一致性。&lt;/p&gt;
+
+&lt;h4 id=&quot;331-quorum&quot;&gt;3.3.1 Quorum&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Quorum名词解释：&lt;/strong&gt; 集群中超过半数的节点集合。&lt;/p&gt;
+
+&lt;p&gt;之所以Zookeeper的写操作只需要半数以上的写成功ACK后，就认为该操作成功，是因为&lt;strong&gt;ZAB协议&lt;/strong&gt;中的&lt;strong&gt;Quorum&lt;/strong&gt;机制。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Quorum&lt;/strong&gt;解决的是&lt;strong&gt;Read Only Write All&lt;/strong&gt;带来的写性能问题，能够不需要更新全部数据，但又保证返回给用户的是有效数据。
+&lt;strong&gt;Quorum&lt;/strong&gt;的关键在于更新多少个数据副本，使得读取时总能够取到有效数据。假设一共有&lt;strong&gt;N&lt;/strong&gt;个副本，其中&lt;strong&gt;k&lt;/strong&gt;个已经更新，&lt;strong&gt;N-k&lt;/strong&gt;个未更新，那么只要读取集群中&lt;strong&gt;N-k+1&lt;/strong&gt;个数据，就一定能读到最新的数据（前文提到，&lt;strong&gt;znode&lt;/strong&gt;是具有版本的，选取其中版本最新的即可）。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;所以从这里可以看到，Quorum机制为Zookeeper的读写提供了一种调整的可能，在读和写性能中做tradeoff。&lt;/p&gt;
+
+&lt;h4 id=&quot;332-四个阶段&quot;&gt;3.3.2 四个阶段&lt;/h4&gt;
+
+&lt;p&gt;注意Zookeeper中的Observer和ZAB协议没有关系。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;第一阶段：Leader election（选举阶段）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;最初时，所有节点都处于选举阶段，当其中一个节点得到了超过了半数节点的票数，它才能当选准Leader。只有达到第三阶段，准Leader才回变成实际的Leader。这一阶段Zookeeper使用的算法有&lt;strong&gt;Fast Leader Election&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;第二阶段：Discovery（发现阶段）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这个阶段中，Followers和准Leader进行通信，同步Followers最近最近接收的事务提议。这一阶段的主要目的是发现当前大多数节点接受的最新提议，并让Followers接收准Leader定义的epoch（相当于朝代号，每一代Leader会有自己的epoch）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;第三阶段：Synchronization（同步阶段）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;同步阶段主要是利用Leader前一阶段获得的最新提议历史，同步集群中的所有副本。只有当Quorum都同步完成，准Leader才回称为真的Leader。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;第四阶段：Broadcast（广播阶段）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这个阶段Zookeeper才能够正式对外提供事务服务，并且Leader可以进行消息广播。&lt;/p&gt;
+
+&lt;h4 id=&quot;333-2n1&quot;&gt;3.3.3 2N+1&lt;/h4&gt;
+&lt;p&gt;Zookeeper有这么一个特性：&lt;strong&gt;集群中只要有过半的机器是正常工作的，那么整个集群对外就是可用的&lt;/strong&gt; ，所以容错性上讲，2N和2N-1的容错性都是N-1，而2N+1的容错性为N，所以一般推荐节点数配置为奇数个。为什么会有这样一个特性了？因为Zookeeper的大多数行为都是基于投票的，需要半数以上的节点同意才能执行。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The rationale for having an odd number is Zookeeper always requires a majority of the nodes in the Zookeeper cluster to agree on any change. This means that any number of nodes less than half can fail and Zookeeper can still function. For example,  if you have 4 nodes configured, you can only suffer one failure and still continue operating. If you have two failures, then the 2 remaining nodes can never by greater than half (since they are exactly half) of the nodes. This is no better than with three nodes. Also, since the chance of two failures in four nodes is slightly more likely than the chance of two failures in three nodes, this would not be favorable.&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
-        <pubDate>Thu, 16 Feb 2017 21:21:00 +0800</pubDate>
-        <link>http://localhost:4000/HuangHuanBlog/pieces/2017/02/16/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B.html</link>
-        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/pieces/2017/02/16/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B.html</guid>
+        <pubDate>Wed, 08 Feb 2017 19:46:00 +0800</pubDate>
+        <link>http://localhost:4000/HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</guid>
         
         
-        <category>Pieces</category>
+        <category>Middleware</category>
         
       </item>
     
