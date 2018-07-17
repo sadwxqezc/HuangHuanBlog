@@ -5,9 +5,119 @@
     <description>美团金融后台研发工程师</description>
     <link>http://localhost:4000/HuangHuanBlog/</link>
     <atom:link href="http://localhost:4000/HuangHuanBlog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 08 Jul 2018 20:36:01 +0800</pubDate>
-    <lastBuildDate>Sun, 08 Jul 2018 20:36:01 +0800</lastBuildDate>
+    <pubDate>Tue, 17 Jul 2018 19:59:28 +0800</pubDate>
+    <lastBuildDate>Tue, 17 Jul 2018 19:59:28 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>折腾MacVim</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#概述&quot; id=&quot;markdown-toc-概述&quot;&gt;概述&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#阶段一需求&quot; id=&quot;markdown-toc-阶段一需求&quot;&gt;阶段一需求&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#阶段一效果&quot; id=&quot;markdown-toc-阶段一效果&quot;&gt;阶段一效果&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#对应配置&quot; id=&quot;markdown-toc-对应配置&quot;&gt;对应配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;概述&quot;&gt;概述&lt;/h3&gt;
+
+&lt;p&gt;用了一段时间的Atom莫名其妙的挂了，看网上推荐MacVim的不少，也想通过它弥补Vim编程不熟的遗憾，开始折腾一波MacVim。MacVim就是一个Mac OS上的自带编辑器加Vim的实现，命令和Vim是一样的。&lt;/p&gt;
+
+&lt;h3 id=&quot;阶段一需求&quot;&gt;阶段一需求&lt;/h3&gt;
+
+&lt;p&gt;分析一下自己对MacVim的需求，最后看下搞出来是个啥样子：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;目录树&lt;/li&gt;
+  &lt;li&gt;代码补全&lt;/li&gt;
+  &lt;li&gt;窗口分割和切换&lt;/li&gt;
+  &lt;li&gt;状态栏&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;阶段一效果&quot;&gt;阶段一效果&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/macvim-stageOne.png&quot; alt=&quot;MacVim&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;对应配置&quot;&gt;对应配置&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; *********************************************
+&quot; Vbundle插件管理
+&quot; *********************************************
+set nocompatible              &quot; required
+filetype off                  &quot; required
+
+&quot; set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+&quot; alternatively, pass a path where Vundle should install plugins
+&quot;call vundle#begin('~/some/path/here')
+
+&quot; let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+&quot; Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+&quot; All of your Plugins must be added before the following line
+call vundle#end()            &quot; required
+filetype plugin indent on    &quot; required
+
+&quot; ***************
+&quot; 切换窗口键盘指令
+&quot; ***************
+&quot; 向下
+nnoremap &amp;lt;C-J&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-J&amp;gt;
+&quot; 向上
+nnoremap &amp;lt;C-K&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-K&amp;gt;
+&quot; 向右
+nnoremap &amp;lt;C-L&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-L&amp;gt;
+&quot; 向左
+nnoremap &amp;lt;C-H&amp;gt; &amp;lt;C-W&amp;gt;&amp;lt;C-H&amp;gt;
+
+&quot; **********************
+&quot; 目录树插件NERDTree配置
+&quot; **********************
+&quot; 开启vim时默认开启NERDTree
+au vimenter * NERDTree
+&quot; 设置开启NERDTree快捷键
+map &amp;lt;F2&amp;gt; :NERDTreeToggle&amp;lt;CR&amp;gt;
+
+&quot; ************
+&quot; 代码补全相关
+&quot; ************
+let g:ycm_autoclose_preview_window_after_completion=1
+&quot; 跳转到定义处
+map &amp;lt;leader&amp;gt;g  :YcmCompleter GoToDefinitionElseDeclaration&amp;lt;CR&amp;gt;
+&quot; 默认tab、s-tab和自动补全冲突
+let g:ycm_key_list_select_completion = ['&amp;lt;TAB&amp;gt;', '&amp;lt;c-n&amp;gt;', '&amp;lt;Down&amp;gt;']
+let g:ycm_key_list_previous_completion = ['&amp;lt;S-TAB&amp;gt;', '&amp;lt;c-p&amp;gt;', '&amp;lt;Up&amp;gt;']
+let g:ycm_auto_trigger = 1
+
+&quot; ***********
+&quot; vim-airline
+&quot; ***********
+开启powerline字体
+let g:airline_powerline_fonts = 1
+&quot; 使用powerline包装过的字体
+set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;需要主要的是装&lt;code class=&quot;highlighter-rouge&quot;&gt;YouCompleteMe&lt;/code&gt;后老是会有一个错误提示，&lt;code class=&quot;highlighter-rouge&quot;&gt;Error detected while processing function youcompleteme#Enable[3]..&amp;lt;SNR&amp;gt;&lt;/code&gt;，解决的办法是找到&lt;code class=&quot;highlighter-rouge&quot;&gt;YouCompleteMe&lt;/code&gt;对应的代码，将那个错误提示改掉，文件是&lt;code class=&quot;highlighter-rouge&quot;&gt;/autoload/youcompleteme.vim&lt;/code&gt;，改动如下代码。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; function! s:SetUpPython() abort
+-  exec s:python_until_eof //原始代码
++  silent! exec s:python_until_eof //修改后代码
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 09 Jul 2018 20:05:00 +0800</pubDate>
+        <link>http://localhost:4000/HuangHuanBlog/develop/2018/07/09/MacVim.html</link>
+        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/develop/2018/07/09/MacVim.html</guid>
+        
+        
+        <category>Develop</category>
+        
+      </item>
     
       <item>
         <title>乐观锁&amp;悲观锁</title>
@@ -1717,212 +1827,6 @@ When there are multiple unique indexes, the execution of ON DUPLICATE KEY UPDATE
         
         
         <category>Framework</category>
-        
-      </item>
-    
-      <item>
-        <title>Zookeeper笔记</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#1-数据结构&quot; id=&quot;markdown-toc-1-数据结构&quot;&gt;1. 数据结构&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2-节点&quot; id=&quot;markdown-toc-2-节点&quot;&gt;2. 节点&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#21-简单封装&quot; id=&quot;markdown-toc-21-简单封装&quot;&gt;2.1 简单封装&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#22-创建节点&quot; id=&quot;markdown-toc-22-创建节点&quot;&gt;2.2 创建节点&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#23-监听节点&quot; id=&quot;markdown-toc-23-监听节点&quot;&gt;2.3 监听节点。&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3-集群&quot; id=&quot;markdown-toc-3-集群&quot;&gt;3. 集群&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#31-角色&quot; id=&quot;markdown-toc-31-角色&quot;&gt;3.1 角色&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#32-读写模式&quot; id=&quot;markdown-toc-32-读写模式&quot;&gt;3.2 读写模式&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#33-zab协议&quot; id=&quot;markdown-toc-33-zab协议&quot;&gt;3.3 ZAB协议&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#331-quorum&quot; id=&quot;markdown-toc-331-quorum&quot;&gt;3.3.1 Quorum&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#332-四个阶段&quot; id=&quot;markdown-toc-332-四个阶段&quot;&gt;3.3.2 四个阶段&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#333-2n1&quot; id=&quot;markdown-toc-333-2n1&quot;&gt;3.3.3 2N+1&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Zookeeper是Apache Hadoop的一个子项目，本质是一个分布式小文件系统，主要解决分布式系统应用中遇到的数据管理问题（一致性问题）：统一命名服务，状态同步服务，集群管理，分布式应用配置项的管理。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;1-数据结构&quot;&gt;1. 数据结构&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zk.png&quot; alt=&quot;Zookeeper&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;每个&lt;strong&gt;子目录项&lt;/strong&gt;（比如图中的&lt;strong&gt;NameService&lt;/strong&gt;）都被称为&lt;strong&gt;znode&lt;/strong&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;znode&lt;/strong&gt;可以有&lt;strong&gt;子节点目录&lt;/strong&gt;，并且每个&lt;strong&gt;znode&lt;/strong&gt;都可以保存数据，但注意&lt;strong&gt;EPHEMERAL&lt;/strong&gt;类型的目录节点不能有子节点目录。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;znode&lt;/strong&gt;是有&lt;strong&gt;版本的&lt;/strong&gt;，每个&lt;strong&gt;znode&lt;/strong&gt;中存储的数据可以有多个版本，也就是同一访问路径可以存储多份数据。&lt;/li&gt;
-  &lt;li&gt;对于临时的&lt;strong&gt;znode&lt;/strong&gt;，一旦创建这个&lt;strong&gt;znode&lt;/strong&gt;的客户端与服务器失去联系，这个&lt;strong&gt;znode&lt;/strong&gt;也将自动删除，Zookeeper的客户端和服务器通信采用长链接方式，每个客户端和服务器通过心跳来保持连接。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;znode&lt;/strong&gt;可以被监控，包括这个节点中存储的数据的修改，子节点目录的变化等，一旦变化可以通知监听的客户端，这个是Zookeeper的重要特性。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;2-节点&quot;&gt;2. 节点&lt;/h2&gt;
-
-&lt;p&gt;Zookeeper有四种类型的节点:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;PERSISTENT&lt;/li&gt;
-  &lt;li&gt;PERSISTENT_SEQUENTIAL&lt;/li&gt;
-  &lt;li&gt;EPHEMERAL&lt;/li&gt;
-  &lt;li&gt;EPHEMERAL_SEQUENTIAL&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;节点在创建后其类型不能被修改。&lt;/p&gt;
-
-&lt;h3 id=&quot;21-简单封装&quot;&gt;2.1 简单封装&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/**
- * Zookeeper测试类
- * Created by huanghuan on 2017/2/8.
- */&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@Log&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ZookeepeTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2181&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;# connect &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZooDefs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Ids&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPEN_ACL_UNSAFE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;deleteNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getVersion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KeeperException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptedException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zooKeeper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;# event &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;watchedEvent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;22-创建节点&quot;&gt;2.2 创建节点&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PERSISTENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/child&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PERSISTENT_SEQUENTIAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;结果为：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000000&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000001&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000002&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000003&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child0000000004&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;临时节点的创建原理类似，但在客户端断开连接后，临时节点的内容将消失。&lt;/p&gt;
-
-&lt;h3 id=&quot;23-监听节点&quot;&gt;2.3 监听节点。&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ZookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;CreateMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PERSISTENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zookeeperTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deleteNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/test/watch&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;结果为：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NodeDeleted&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watch&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;信息&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WatchedEvent&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;state:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncConnected&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NodeDeleted&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;path:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watch&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;3-集群&quot;&gt;3. 集群&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zk_Cluster.png&quot; alt=&quot;Cluster&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;31-角色&quot;&gt;3.1 角色&lt;/h3&gt;
-
-&lt;p&gt;Zookeeper集群中包含三个角色：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Leader&lt;/strong&gt;: 负责进行投票的发起和决议，更新系统的状态，为客户端提供读和写服务。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Follower&lt;/strong&gt;: 用于接受客户端请求并且向客户端返回结果，同时在选主过程中参与投票，为客户端提供读服务。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Observer&lt;/strong&gt;: 实际上是不参加投票的Follower，用于扩展系统。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;其中&lt;strong&gt;Follower&lt;/strong&gt;和&lt;strong&gt;Observer&lt;/strong&gt;统称为&lt;strong&gt;Learner&lt;/strong&gt;，&lt;/p&gt;
-
-&lt;h3 id=&quot;32-读写模式&quot;&gt;3.2 读写模式&lt;/h3&gt;
-
-&lt;p&gt;在一个Zookeeper集群中，读写操作可以发生在任何一个集群角色上，而写的请求都会被转发到Leader，然后Leader通过Zookeeper中的原子广播协议（&lt;strong&gt;ZAB&lt;/strong&gt;协议，可以理解为Paxos协议的一种简化形式），将请求广播给所有的Learner，当Leader收到一半以上的写成功ACK后，就认为该写操作成功了，则将该操作持久化，并告诉客户端。&lt;/p&gt;
-
-&lt;h3 id=&quot;33-zab协议&quot;&gt;3.3 ZAB协议&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/HuangHuanBlog/pics/zab.png&quot; alt=&quot;zab&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ZAB（Atomic broadcast protocol）协议是为Zookeeper专门设计的支持恢复崩溃的原子广播协议，它是Zookeeper实现分布式数据一致性的基础，基于此，Zookeeper实现了一种主备模式的系统架构来保持集群中各个副本之间的数据一致性。&lt;/p&gt;
-
-&lt;h4 id=&quot;331-quorum&quot;&gt;3.3.1 Quorum&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Quorum名词解释：&lt;/strong&gt; 集群中超过半数的节点集合。&lt;/p&gt;
-
-&lt;p&gt;之所以Zookeeper的写操作只需要半数以上的写成功ACK后，就认为该操作成功，是因为&lt;strong&gt;ZAB协议&lt;/strong&gt;中的&lt;strong&gt;Quorum&lt;/strong&gt;机制。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Quorum&lt;/strong&gt;解决的是&lt;strong&gt;Read Only Write All&lt;/strong&gt;带来的写性能问题，能够不需要更新全部数据，但又保证返回给用户的是有效数据。
-&lt;strong&gt;Quorum&lt;/strong&gt;的关键在于更新多少个数据副本，使得读取时总能够取到有效数据。假设一共有&lt;strong&gt;N&lt;/strong&gt;个副本，其中&lt;strong&gt;k&lt;/strong&gt;个已经更新，&lt;strong&gt;N-k&lt;/strong&gt;个未更新，那么只要读取集群中&lt;strong&gt;N-k+1&lt;/strong&gt;个数据，就一定能读到最新的数据（前文提到，&lt;strong&gt;znode&lt;/strong&gt;是具有版本的，选取其中版本最新的即可）。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;所以从这里可以看到，Quorum机制为Zookeeper的读写提供了一种调整的可能，在读和写性能中做tradeoff。&lt;/p&gt;
-
-&lt;h4 id=&quot;332-四个阶段&quot;&gt;3.3.2 四个阶段&lt;/h4&gt;
-
-&lt;p&gt;注意Zookeeper中的Observer和ZAB协议没有关系。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;第一阶段：Leader election（选举阶段）&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;最初时，所有节点都处于选举阶段，当其中一个节点得到了超过了半数节点的票数，它才能当选准Leader。只有达到第三阶段，准Leader才回变成实际的Leader。这一阶段Zookeeper使用的算法有&lt;strong&gt;Fast Leader Election&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;第二阶段：Discovery（发现阶段）&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;这个阶段中，Followers和准Leader进行通信，同步Followers最近最近接收的事务提议。这一阶段的主要目的是发现当前大多数节点接受的最新提议，并让Followers接收准Leader定义的epoch（相当于朝代号，每一代Leader会有自己的epoch）。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;第三阶段：Synchronization（同步阶段）&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;同步阶段主要是利用Leader前一阶段获得的最新提议历史，同步集群中的所有副本。只有当Quorum都同步完成，准Leader才回称为真的Leader。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;第四阶段：Broadcast（广播阶段）&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;这个阶段Zookeeper才能够正式对外提供事务服务，并且Leader可以进行消息广播。&lt;/p&gt;
-
-&lt;h4 id=&quot;333-2n1&quot;&gt;3.3.3 2N+1&lt;/h4&gt;
-&lt;p&gt;Zookeeper有这么一个特性：&lt;strong&gt;集群中只要有过半的机器是正常工作的，那么整个集群对外就是可用的&lt;/strong&gt; ，所以容错性上讲，2N和2N-1的容错性都是N-1，而2N+1的容错性为N，所以一般推荐节点数配置为奇数个。为什么会有这样一个特性了？因为Zookeeper的大多数行为都是基于投票的，需要半数以上的节点同意才能执行。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The rationale for having an odd number is Zookeeper always requires a majority of the nodes in the Zookeeper cluster to agree on any change. This means that any number of nodes less than half can fail and Zookeeper can still function. For example,  if you have 4 nodes configured, you can only suffer one failure and still continue operating. If you have two failures, then the 2 remaining nodes can never by greater than half (since they are exactly half) of the nodes. This is no better than with three nodes. Also, since the chance of two failures in four nodes is slightly more likely than the chance of two failures in three nodes, this would not be favorable.&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-        <pubDate>Wed, 08 Feb 2017 19:46:00 +0800</pubDate>
-        <link>http://localhost:4000/HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</link>
-        <guid isPermaLink="true">http://localhost:4000/HuangHuanBlog/middleware/2017/02/08/Zookeeper%E7%AC%94%E8%AE%B0.html</guid>
-        
-        
-        <category>Middleware</category>
         
       </item>
     
