@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Spring条件初始化资源</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="http://localhost:4000/HuangHuanBlog/framework/2018/08/05/Spring%E6%9D%A1%E4%BB%B6%E5%88%9D%E5%A7%8B%E5%8C%96Bean.html">
+	<link rel="alternate" type="application/rss+xml" title="黄欢的博客" href="http://localhost:4000/HuangHuanBlog/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/HuangHuanBlog/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/HuangHuanBlog/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/HuangHuanBlog/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/HuangHuanBlog/static/js/index.js"></script>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/HuangHuanBlog/favicon.ico" >
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7ed48a0eba15f7c92be1dc357ce39603";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse" style="border-radius:0px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HuangHuanBlog/">黄欢的博客</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/HuangHuanBlog/"><span class="glyphicon glyphicon-th-large"></span> Blog</a>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+
+<!-- Favicon -->
+  <link rel="shortcut icon" href="/HuangHuanBlog/pics/favicon.ico">
+</header>
+
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Spring条件初始化资源</h1>
+        <p>Aug 5, 2018</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#概述" id="markdown-toc-概述">概述</a></li>
+  <li><a href="#说明" id="markdown-toc-说明">说明</a></li>
+  <li><a href="#方法一spring-profile" id="markdown-toc-方法一spring-profile">方法一：Spring Profile</a>    <ul>
+      <li><a href="#profile配置" id="markdown-toc-profile配置">Profile配置</a></li>
+      <li><a href="#启用特定的profile" id="markdown-toc-启用特定的profile">启用特定的Profile</a></li>
+    </ul>
+  </li>
+  <li><a href="#方法二spring-conditional" id="markdown-toc-方法二spring-conditional">方法二：Spring Conditional</a></li>
+  <li><a href="#总结" id="markdown-toc-总结">总结</a></li>
+</ul>
+
+<h3 id="概述">概述</h3>
+
+<p>在项目中会有依据一定条件来初始化Bean的需求，特别是在分Module的代码中，底层Module实现了对各种资源的封装，比如DB，Thrift，MQ，Http，调度任务等，但是上层的需求多种多样，比如有的Module只需要使用Thrift，但由于其依赖的底层Module封装了所有的资源，导致在上层Module运行时，除了Thrift，实际还初始化了DB，MQ，Http等资源，这不仅是种不必要的浪费，有时还可能带来问题。因此，本文将主要探讨如何能依据一定的条件，按需初始化Bean，以避免不必要的浪费。</p>
+
+<h3 id="说明">说明</h3>
+
+<p>范例项目通过<code class="highlighter-rouge">Main</code>函数启动项目，项目结构参考，其中<code class="highlighter-rouge">Db.java，Http.java，Kafka.java</code>代表三种不同的资源，它们在<code class="highlighter-rouge">init</code>时会打印日志：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── example
+    │   │           └── foo
+    │   │               ├── Boot.java
+    │   │               └── beans
+    │   │                   ├── Db.java
+    │   │                   ├── Http.java
+    │   │                   └── Kafka.java
+    │   └── resources
+    │       ├── applicationContext.xml
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">applicationContext.xml</code>文件内容为：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="c">&lt;!-- Spring基础配置 --&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+       <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+       <span class="na">xmlns:aop=</span><span class="s">"http://www.springframework.org/schema/aop"</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- 类增强代理（而不是基于java的接口代理） --&gt;</span>
+    <span class="nt">&lt;aop:aspectj-autoproxy</span> <span class="na">proxy-target-class=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<p>启动类<code class="highlighter-rouge">Boot.java</code>内容为：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">com</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">foo</span><span class="p">;</span>
+
+<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">springframework</span><span class="p">.</span><span class="n">context</span><span class="p">.</span><span class="n">support</span><span class="p">.</span><span class="n">ClassPathXmlApplicationContext</span><span class="p">;</span>
+
+<span class="p">/**</span>
+ <span class="p">*</span> <span class="err">启动类</span>
+ <span class="p">*</span>
+ <span class="p">*</span> <span class="p">@</span><span class="n">author</span> <span class="n">huanhuang</span>
+ <span class="p">*/</span>
+<span class="k">public</span> <span class="n">class</span> <span class="n">Boot</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="k">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ClassPathXmlApplicationContext</span> <span class="n">context</span> <span class="p">=</span>
+                <span class="n">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="p">(</span><span class="s2">"classpath:applicationContext.xml"</span><span class="p">);</span>
+        <span class="n">context</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>资源代码以<code class="highlighter-rouge">Db.java</code>为例：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Db {
+
+    public void init() {
+        System.out.println("Db has bean initialized");
+    }
+}
+</code></pre></div></div>
+
+<h3 id="方法一spring-profile">方法一：Spring Profile</h3>
+
+<p>Profile的概念其实很常见，比如Maven也有，大家一般用Maven的Profile来管理不同环境的配置文件。但我自己之前有一个误区，以为Spring的Profile只能选者一种特定的Profile，但实际上它是支持同时指定多种Profile的，这就带来了很大的灵活性，下面介绍如何基于Spring Profile来条件初始化资源，先列下项目结构，主要多了一个配置文件<code class="highlighter-rouge">enableProfiles.properties</code>：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── example
+    │   │           └── foo
+    │   │               ├── Boot.java
+    │   │               └── beans
+    │   │                   ├── Db.java
+    │   │                   ├── Http.java
+    │   │                   └── Kafka.java
+    │   └── resources
+    │       ├── applicationContext.xml
+    │       └── enableProfiles.properties
+</code></pre></div></div>
+
+<h4 id="profile配置">Profile配置</h4>
+
+<p>在<code class="highlighter-rouge">applicationContext.xml</code>文件中为不同的资源指定了Profile:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="c">&lt;!-- Spring基础配置 --&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+       <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="na">xmlns:aop=</span><span class="s">"http://www.springframework.org/schema/aop"</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- 类增强代理（而不是基于java的接口代理） --&gt;</span>
+    <span class="nt">&lt;aop:aspectj-autoproxy</span> <span class="na">proxy-target-class=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;beans</span> <span class="na">profile=</span><span class="s">"enableDb"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.example.foo.beans.Db"</span> <span class="na">init-method=</span><span class="s">"init"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/beans&gt;</span>
+
+    <span class="nt">&lt;beans</span> <span class="na">profile=</span><span class="s">"enableHttp"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.example.foo.beans.Http"</span> <span class="na">init-method=</span><span class="s">"init"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/beans&gt;</span>
+
+    <span class="nt">&lt;beans</span> <span class="na">profile=</span><span class="s">"enableKafka"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.example.foo.beans.Kafka"</span> <span class="na">init-method=</span><span class="s">"init"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/beans&gt;</span>
+
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<h4 id="启用特定的profile">启用特定的Profile</h4>
+
+<p>这里我们把启用的profile放在了一个<code class="highlighter-rouge">enableProfiles.properties</code>文件里，内容为:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enableProfiles=enableDb,enableKafka
+</code></pre></div></div>
+
+<p>表明我们只启用<code class="highlighter-rouge">Db</code>和<code class="highlighter-rouge">Kafka</code>资源，这里要注意的一点是，从结果来看，需要在Spring初始化之前，设置选用好Profile，<code class="highlighter-rouge">Boot.java</code>代码如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * 启动类
+ *
+ * @author huanhuang
+ */
+public class Boot {
+    public static void main(String[] args) {
+        try {
+            Properties properties = PropertiesLoaderUtils
+            .loadAllProperties("enableProfiles.properties");
+            String enableProfiles = properties.getProperty("enableProfiles");
+            System.out.println(enableProfiles);
+            System.setProperty(
+            AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, enableProfiles);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        context.start();
+    }
+}
+</code></pre></div></div>
+
+<p>这段代码里我们首先手动读取了<code class="highlighter-rouge">enableProfiles.properties</code>文件，然后最关键的代码在于下面一行：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, enableProfiles);
+</code></pre></div></div>
+
+<p>这个设定了一个环境变量，实际对应是的是<code class="highlighter-rouge">spring.profiles.active</code>，最后运行结果如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Db has bean initialized
+Kafka has bean initialized
+</code></pre></div></div>
+
+<p>符合预期，只有<code class="highlighter-rouge">Db</code>和<code class="highlighter-rouge">Kafka</code>被启用了，这种方式简单明了。</p>
+
+<h3 id="方法二spring-conditional">方法二：Spring Conditional</h3>
+
+<p>Spring的<code class="highlighter-rouge">@Conditional</code>注解也就是依据一定的条件去初始化Bean，实际上Spring 4之后，<code class="highlighter-rouge">@Profile</code>注解就是通过<code class="highlighter-rouge">@Conditional</code>来实现的，基于<code class="highlighter-rouge">@Conditional</code>注解，实际上想怎么初始化资源都可以，Profile实际知识它的一个Feature。这个工具非常强大，唯一的问题是貌似不支持XML。下面是使用这种方式的代码结构：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── foo
+│   │   │               ├── Boot.java
+│   │   │               ├── beans
+│   │   │               │   ├── Db.java
+│   │   │               │   ├── Http.java
+│   │   │               │   └── Kafka.java
+│   │   │               └── config
+│   │   │                   ├── Config.java
+│   │   │                   ├── DbCondition.java
+│   │   │                   ├── HttpCondition.java
+│   │   │                   └── KafkaCondition.java
+│   │   └── resources
+│   │       └── applicationContext.xml
+</code></pre></div></div>
+
+<p>因为<code class="highlighter-rouge">@Conditional</code>是注解，所以Bean的初始化也就通过<code class="highlighter-rouge">@Configuration</code>来实现了，需要配置<code class="highlighter-rouge">applicationContext.xml</code>如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="c">&lt;!-- Spring基础配置 --&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+       <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="na">xmlns:aop=</span><span class="s">"http://www.springframework.org/schema/aop"</span>
+       <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- 类增强代理（而不是基于java的接口代理） --&gt;</span>
+    <span class="nt">&lt;aop:aspectj-autoproxy</span> <span class="na">proxy-target-class=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"com.example.foo"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<p>Bean的初始化在<code class="highlighter-rouge">Config.java</code>中：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Configuration
+public class Config {
+
+    @Bean(initMethod = "init")
+    @Conditional(DbCondition.class)
+    public Db db() {
+        return new Db();
+    }
+
+    @Bean(initMethod = "init")
+    @Conditional(HttpCondition.class)
+    public Http http() {
+        return new Http();
+    }
+
+    @Bean(initMethod = "init")
+    @Conditional(KafkaCondition.class)
+    public Kafka kafka() {
+        return new Kafka();
+    }
+}
+</code></pre></div></div>
+
+<p>可以看到，我们可以给不同的资源使用不同的Condition，非常强大，当然自己得多写点代码，以<code class="highlighter-rouge">DbCondition.class</code>为例：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * 启用Db的条件
+ *
+ * @author huanhuang
+ */
+public class DbCondition implements Condition {
+
+    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        return false;
+    }
+}
+</code></pre></div></div>
+
+<p>需要继承<code class="highlighter-rouge">Condition</code>接口，然后这个方法里怎么匹配，自己想怎么写都可以，这里我只有<code class="highlighter-rouge">HttpCondition.class</code>的方法返回<code class="highlighter-rouge">true</code>，其它都是<code class="highlighter-rouge">false</code>，运行结果如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Http has bean initialized
+</code></pre></div></div>
+
+<h3 id="总结">总结</h3>
+
+<p>Profile实际是Conditional的一个Feature，如果没有更复杂的需求，Profile就够用了，对于业务代码来讲Profile更容易理解，Conditional更适合于框架的场景。</p>
+
+      </article>
+      <hr>
+      
+      <a href="/HuangHuanBlog/develop/2018/07/09/MacVim.html">上一篇博客：折腾MacVim</a><br>
+      
+      
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:sadwxqezc@163.com"><span class="glyphicon glyphicon-envelope"></span> sadwxqezc@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/sadwxqezc">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>sadwxqezc</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/HuangHuanBlog/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>美团金融后台研发工程师</span>
+          <span class="point"> · </span>
+          <span>&copy; 2016 HuangHuan</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
