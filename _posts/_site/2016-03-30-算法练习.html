@@ -1,0 +1,29 @@
+<ul id="markdown-toc">
+  <li><a href="#求二叉树的最大距离" id="markdown-toc-求二叉树的最大距离">求二叉树的最大距离</a></li>
+</ul>
+
+<h3 id="求二叉树的最大距离">求二叉树的最大距离</h3>
+
+<p>输入图例：</p>
+
+<p><img src="/pics/btree_max_distance.png" alt="max distance of binary tree" /></p>
+
+<p>代码：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static int max=0;
+
+static int maxDepth(BinaryTreeNode root) {
+    if (root == null) {
+        return 0;
+    }
+    int maxLeft = (root.getLeft() == null) ? 0 : 1 + maxDepth(root.getLeft());
+    int maxRight = (root.getRight() == null) ? 0 : 1 + maxDepth(root.getRight());
+    int tempMax=maxLeft+maxRight;
+    max=(tempMax&gt;max)?tempMax:max;
+    return (maxLeft&gt;maxRight)?maxLeft:maxRight;
+}
+</code></pre></div></div>
+
+<p>最后max的值为：</p>
+
+<p><img src="/pics/max_distance_result.png" alt="max distance result" /></p>
