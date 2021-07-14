@@ -1,0 +1,177 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#算法导论学习" id="markdown-toc-算法导论学习">算法导论学习</a></li>
+  <li><a href="#算法基础" id="markdown-toc-算法基础">算法基础</a>    <ul>
+      <li><a href="#插入排序" id="markdown-toc-插入排序">插入排序</a></li>
+    </ul>
+  </li>
+  <li><a href="#分治策略" id="markdown-toc-分治策略">分治策略</a>    <ul>
+      <li><a href="#最大连续子数组和" id="markdown-toc-最大连续子数组和">最大连续子数组和</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="算法导论学习">算法导论学习</h2>
+
+<blockquote>
+  <p>之前的算法学习更多的是为面试准备，具有很强的目的性。现在的出发点是进一步理解和掌握基本的算法，并静下心来领会算法中思考和解决问题的方式，书中复杂度部分的学习暂时略过。</p>
+</blockquote>
+
+<p>主要学习资料：<a href="http://open.163.com/special/opencourse/algorithms.html">算法导论 第三版</a></p>
+
+<p>代码地址：<a href="https://github.com/sadwxqezc/Algorithms.git">Github</a></p>
+
+<h2 id="算法基础">算法基础</h2>
+
+<blockquote>
+  <p>算法是解决问题的步骤</p>
+</blockquote>
+
+<h3 id="插入排序">插入排序</h3>
+
+<p>《算法导论》中对插入排序举了一个非常恰当的列子：大家斗地主时，边摸牌边对手中的牌排序，这实际上就是一个插入排序的过程，保证手中的牌始终是有序的。</p>
+
+<p>将如我们要对数组<code class="language-plaintext highlighter-rouge">[1,3,7,-1,11,2,23,0,1]</code>排序，要求结果为升序，用插入排序的写法如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static void myInsertSort(int[] sequence) {
+    for (int j = 1; j &lt; sequence.length; j++) {
+        int i = 0;
+        int temp = sequence[j];
+        while (i &lt; j &amp;&amp; sequence[i] &lt; temp) {
+            i++;
+        }
+        for (int k = j; k &gt; i; k--) {
+            sequence[k] = sequence[k - 1];
+        }
+        sequence[i] = temp;
+    }
+}
+</code></pre></div></div>
+
+<p>我的做法是从前往后找插入位置，而书中的做法是从后往前找，其写法如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static void bookInsertSort(int[] sequence) {
+    for (int j = 1; j &lt; sequence.length; j++) {
+        int temp = sequence[j];
+        int i = j - 1;
+        while (i &gt; 0 &amp;&amp; sequence[i] &gt; temp) {
+            sequence[i + 1] = sequence[i];
+            i--;
+        }
+        sequence[i + 1] = temp;
+    }
+}
+</code></pre></div></div>
+
+<p>两者时间性能差别不大，书上的写法显得更加简洁。</p>
+
+<h2 id="分治策略">分治策略</h2>
+
+<p>分治策略(Divide and Conquer)寻求的是递归的求解子问题，把规模大的问题分解成规模更小的问题去解决，在每个递归中有如下三个步骤：</p>
+
+<ul>
+  <li>分解(Divide)：将问题划分为规模更小的子问题，问题的本质与原问题一致</li>
+  <li>解决(Conquer)：递归的求解出子问题，如果子问题的规模已经足够小，则停止递归，求解并返回具体值</li>
+  <li>合并(Combine)：步骤将子问题的解组合成原问题的解</li>
+</ul>
+
+<p>分治的方法往往可以用递归式子来表示，能写出递归式，问题基本就已经解决了，剩下的就是敲出代码，比如<code class="language-plaintext highlighter-rouge">Merge Sort</code>的递归式如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>T(n)=O(1) (n=1)
+T(n)=2T(n/2)+O(n) (n&gt;1)
+求解可得T(n)=O(nlgn)，即为归并排序的时间复杂度
+</code></pre></div></div>
+
+<h3 id="最大连续子数组和">最大连续子数组和</h3>
+<h4>问题描述：</h4>
+<p>求数组<code class="language-plaintext highlighter-rouge">{13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7}</code>的和最大的最大连续子数组。</p>
+
+<h4>解法一：暴力搜索</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private static void violentSearch(int[] array) {
+    int maxSum = 0;
+    for (int i = 0; i &lt; array.length; i++) {
+        int temp = 0;
+        for (int j = i; j &lt; array.length; j++) {
+            temp += array[j];
+            if (temp &gt; maxSum) {
+                maxSum = temp;
+            }
+        }
+    }
+    System.out.println("maxSum:" + maxSum);
+}
+</code></pre></div></div>
+
+<p>输出结果是43，很明显这是一种时间复杂度较高的做法。</p>
+
+<h4>解法二：分治策略</h4>
+
+<p>运用分治策略的话，我们可以把数组中分，然后问题变为，求左子数组的最大连续和，右子数组的最大连续和，以及跨越中分点的最大连续后，然后求出三者中的最大值。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private static int divideAndConquer(int[] array, int start, int end) {
+    if (start == end) {
+        return array[start];
+    } else {
+        int mid = (start + end) / 2;
+        int max_right = divideAndConquer(array, mid + 1, end);
+        int max_left = max_right;
+        if (start &lt; mid - 1) {
+            max_left = divideAndConquer(array, start, mid - 1);
+        }
+        int max_mid = findMaxCrossingMid(array, start, mid, end);
+        if (max_left &lt; max_right) {
+            max_left = max_right;
+        }
+        if (max_left &lt; max_mid) {
+            max_left = max_mid;
+        }
+        return max_left;
+    }
+}
+
+private static int findMaxCrossingMid(int[] array, int start, int mid, int end) {
+    int result = array[mid];
+    int left = findMaxBackward(array, mid - 1, start);
+    int right = findMaxForward(array, mid + 1, end);
+    if (left &gt; 0) {
+        result += left;
+    }
+    if (right &gt; 0) {
+        result += right;
+    }
+    return result;
+}
+
+private static int findMaxForward(int[] array, int start, int end) {
+    if (start &gt; end) {
+        return 0;
+    }
+    int sum = array[start];
+    int max = array[start];
+    for (int i = start + 1; i &lt;= end; i++) {
+        sum += array[i];
+        if (sum &gt; max) {
+            max = sum;
+        }
+    }
+    return max;
+}
+
+private static int findMaxBackward(int[] array, int start, int end) {
+    if (start &lt; end) {
+        return 0;
+    }
+    int sum = array[start];
+    int max = array[start];
+    for (int i = start - 1; i &gt;= end; i--) {
+        sum += array[i];
+        if (sum &gt; max) {
+            max = sum;
+        }
+    }
+    return max;
+}
+</code></pre></div></div>
+
+<p>结果为43，与书上不同，这里我专门写了<code class="language-plaintext highlighter-rouge">findMaxForward()</code>和<code class="language-plaintext highlighter-rouge">findMaxBackWard()</code>两个小方法，虽然导致代码较长，但我个人认为这样的写法更加清晰，出了问题好发现。</p>
+:ET

@@ -1,0 +1,86 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#背景" id="markdown-toc-背景">背景</a></li>
+  <li><a href="#原因分析" id="markdown-toc-原因分析">原因分析</a>    <ul>
+      <li><a href="#数据表和例子" id="markdown-toc-数据表和例子">数据表和例子</a></li>
+      <li><a href="#原因分析-1" id="markdown-toc-原因分析-1">原因分析</a></li>
+    </ul>
+  </li>
+</ul>
+<h2 id="背景">背景</h2>
+
+<p>参考链接：<a href="https://bugs.mysql.com/bug.php?id=52020">InnoDB can still deadlock on just INSERT…ON DUPLICATE KEY</a></p>
+
+<p>在对不同的记录进行<code class="language-plaintext highlighter-rouge">INSERT...ON DUPLICATE KEY</code>操作时，理论上是不会存在死锁问题的，但在5.7.18等版本中，该操作却可能导致死锁，这篇文章主要分析产生的原因。</p>
+
+<h2 id="原因分析">原因分析</h2>
+
+<h3 id="数据表和例子">数据表和例子</h3>
+
+<p>假如数据表<code class="language-plaintext highlighter-rouge">Test</code>的结构如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Uniq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>其中<code class="language-plaintext highlighter-rouge">Id</code>为主键，<code class="language-plaintext highlighter-rouge">Uniq</code>为唯一索引，执行如下操作：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Transaction 1:
+start transaction;
+insert into Test values(3,3) on duplicate key update id=3,uniq=3;
+
+Transaction 2:
+start transaction;
+insert into Test values(4,4) on duplicate key update id=4,uniq=4;
+
+Transaction 3:
+start transaction;
+insert into Test values(5,5) on duplicate key update id=5,uniq=5;
+</code></pre></div></div>
+
+<h3 id="原因分析-1">原因分析</h3>
+
+<p>理论上这三条记录的主键值和唯一索引值都不一样，他们插入的时候都会获取<code class="language-plaintext highlighter-rouge">(2,6)</code>区间的<code class="language-plaintext highlighter-rouge">Insert Intention Lock</code>，但由于各自插入的主键值和唯一索引没有冲突，所以实际是可以正常插入的的，不会发生思索。</p>
+
+<p>那么为什么MySQL的部分版本这种情况下会发生死锁了？</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://bugs.mysql.com/bug.php?id=52020
+
+This Bug#52020 (accidental re-introduction of Bug#7975 in MySQL 5.1) affects tables that do not contain a secondary index.
+
+There is another bug that affects tables with secondary indexes:
+
+Bug#50413 insert on duplicate key update sometimes writes binlog position incorrectly
+
+Despite the title, Bug#50413 can occur even if MySQL replication or binlog is not used. That bug has was fixed in MySQL 5.7.4. 
+The fix is that when we encounter a duplicate key in the clustered index or in any unique secondary index during an INSERT, 
+
+we will acquire gap locks in the not-yet-checked secondary indexes as well. In this way, the INSERT will already have acquired some locks for the ON DUPLICATE KEY UPDATE part,
+
+thus avoiding some potential deadlocks.
+
+When there are multiple unique indexes, the execution of ON DUPLICATE KEY UPDATE can be ambiguous, which makes it tricky for statement-based replication.
+</code></pre></div></div>
+
+<p>注意上面叙述中的关键一条：<code class="language-plaintext highlighter-rouge">Despite the title, Bug#50413 can occur even if MySQL replication or binlog is not used. That bug has was fixed in MySQL 5.7.4. The fix is that when we encounter a duplicate key in the clustered index or in any unique secondary index during an INSERT</code>，开发者为了解决一个Bug，在<code class="language-plaintext highlighter-rouge">Insert</code>数据时，除了给主键加<code class="language-plaintext highlighter-rouge">Insert Intention Lock</code>，还会给唯一索引加<code class="language-plaintext highlighter-rouge">Gap Lock</code>，但这就带来了这篇文章描述的问题。</p>
+
+<p>当我们上文的三个事务插入时，他们除了都想在<code class="language-plaintext highlighter-rouge">(2,6)</code>区间加<code class="language-plaintext highlighter-rouge">Insert Intention Lock</code>之外，还想在<code class="language-plaintext highlighter-rouge">(2,6)</code>区间上加<code class="language-plaintext highlighter-rouge">Gap Lock</code>，由于<code class="language-plaintext highlighter-rouge">Insert Intention Lock</code>和<code class="language-plaintext highlighter-rouge">Gap Lock</code>冲突，这才导致了死锁。</p>
+:ET

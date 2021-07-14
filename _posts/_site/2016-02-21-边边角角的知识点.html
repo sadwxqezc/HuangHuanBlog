@@ -1,0 +1,53 @@
+<ul id="markdown-toc">
+  <li><a href="#1-setuid权限" id="markdown-toc-1-setuid权限">1. setuid权限</a></li>
+  <li><a href="#2-执行权限" id="markdown-toc-2-执行权限">2. 执行权限</a></li>
+  <li><a href="#3-标准输出与错误输出" id="markdown-toc-3-标准输出与错误输出">3. 标准输出与错误输出</a></li>
+  <li><a href="#4-重定向" id="markdown-toc-4-重定向">4. 重定向</a></li>
+  <li><a href="#5-java方法签名" id="markdown-toc-5-java方法签名">5. Java方法签名</a></li>
+  <li><a href="#6-flash-cookie" id="markdown-toc-6-flash-cookie">6. flash cookie</a></li>
+  <li><a href="#7-su--与su的区别" id="markdown-toc-7-su--与su的区别">7. su -与su的区别</a></li>
+</ul>
+
+<h2 id="1-setuid权限">1. setuid权限</h2>
+
+<p>今天调了一下Iterm2中<code class="language-plaintext highlighter-rouge">ls</code>的配色，发现在<code class="language-plaintext highlighter-rouge">\bin</code>目录下有如图的显示效果：</p>
+
+<p><img src="/pics/setuid_1.png" alt="setuid" /></p>
+
+<p>ps和rcp的执行文件颜色和其它不同，从<code class="language-plaintext highlighter-rouge">ls -lha</code>的结果来看它们两个与其它文件并没有什么不同，于是我再用<code class="language-plaintext highlighter-rouge">file</code>命令查看文件：</p>
+
+<p><img src="/pics/setuid_2.png" alt="setuid_2" /></p>
+
+<p>此时发现ps和rcp的前面多了个<code class="language-plaintext highlighter-rouge">setuid</code>的参数，该参数是Linux的三个特殊权限之一，其作用是让执行该命令的用户拥有所有者的权限。除了<code class="language-plaintext highlighter-rouge">setuid</code>外还有<code class="language-plaintext highlighter-rouge">setgid</code>和<code class="language-plaintext highlighter-rouge">stick bit</code>。</p>
+
+<h2 id="2-执行权限">2. 执行权限</h2>
+
+<p><img src="/pics/execute.png" alt="execute" /></p>
+
+<p>如上图所示，作为execute.sh的owner，我拥有<code class="language-plaintext highlighter-rouge">rw</code>读写权限，但如果想通过<code class="language-plaintext highlighter-rouge">./execute.sh</code>直接执行，却被告知权限不够，而用<code class="language-plaintext highlighter-rouge">sh execute.sh</code>却能够执行。后者实际上是将脚本交由<code class="language-plaintext highlighter-rouge">/bin/sh</code>执行，仅仅需要读权限即可。那么如果我只有<code class="language-plaintext highlighter-rouge">execute.sh</code>的<code class="language-plaintext highlighter-rouge">x</code>执行权限，是否能够直接执行了？</p>
+
+<p><img src="/pics/execute_x.png" alt="execute_x" /></p>
+
+<p>如图所示，仅仅拥有执行权限或仅拥有读权限，都不能直接执行<code class="language-plaintext highlighter-rouge">execute.sh</code>，只有当两种权限同时具备时才可。我的理解是，执行权限控制文件是否可直接执行，而由于该文件亦需要<code class="language-plaintext highlighter-rouge">\bin\sh</code>程序去读取并解释执行，所以同时亦需要读权限。</p>
+
+<h2 id="3-标准输出与错误输出">3. 标准输出与错误输出</h2>
+
+<p>在Shell脚本中有时能看到 <code class="language-plaintext highlighter-rouge">&gt;/dev/null 2&gt;&amp;1</code>这样的语句，在语句中<code class="language-plaintext highlighter-rouge">&gt;/dev/null</code>等同于<code class="language-plaintext highlighter-rouge">1&gt;/dev/null</code>，其中<code class="language-plaintext highlighter-rouge">1</code>表示<code class="language-plaintext highlighter-rouge">stdout</code>标准输出，而<code class="language-plaintext highlighter-rouge">/dev/null</code>表示空设备文件。默认的标准输出和标准错误输出都是打印在屏幕上，<code class="language-plaintext highlighter-rouge">1&gt;/dev/null</code>则表示不输出任何信息到终端，也不定向到系统文件中。而<code class="language-plaintext highlighter-rouge">2</code>表示标准错误输出，而<code class="language-plaintext highlighter-rouge">&amp;</code>表示等同于的意思，<code class="language-plaintext highlighter-rouge">2&gt;&amp;1</code>则表示为标准错误输出的重定向等同于标准输出，整条语句的意思实际傻姑娘就是不输出任何内容。</p>
+
+<h2 id="4-重定向">4. 重定向</h2>
+<p>在使用<code class="language-plaintext highlighter-rouge">&gt;</code>重定向时，会先判断右边文件是否存在，存在则先删除，不存在则创建。因此，<code class="language-plaintext highlighter-rouge">cat test &gt; test</code>这样的操作，结果永远为空。</p>
+
+<h2 id="5-java方法签名">5. Java方法签名</h2>
+
+<p>方法签名：返回值内行＋方法名＋参数列表，参数列表受到参数的顺序，类型，数量的影响，<code class="language-plaintext highlighter-rouge">public void test(int a,long b)</code>和<code class="language-plaintext highlighter-rouge">public void test(long a,int b)</code>签名不同。</p>
+
+<h2 id="6-flash-cookie">6. flash cookie</h2>
+
+<p>flash cookie用于记录用户在浏览flash网页时保留信息，它比http cookie的容量更大，没有默认过期时间且难以删除。flash cookie容易被用来窃取普通用户的信息，且难以预防，这点需要注意。</p>
+
+<p>ps：第三方如何盗取用户cookies？ 可以通过在广告位中植入代码，获取原网站给用户种下的cookies</p>
+
+<h2 id="7-su--与su的区别">7. su -与su的区别</h2>
+
+<p><code class="language-plaintext highlighter-rouge">su - USERNAME</code>切换用户后，工作环境同时也切换<br />
+<code class="language-plaintext highlighter-rouge">su USERNAME</code> 切换后不改变原用户的工作目录和环境变量目录</p>

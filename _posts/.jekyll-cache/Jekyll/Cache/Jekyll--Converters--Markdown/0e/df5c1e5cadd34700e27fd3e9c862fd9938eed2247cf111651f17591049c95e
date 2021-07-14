@@ -1,0 +1,277 @@
+I"�=<ul id="markdown-toc">
+  <li><a href="#1-sed命令mac" id="markdown-toc-1-sed命令mac">1. sed命令(Mac)</a>    <ul>
+      <li><a href="#sed命令语法" id="markdown-toc-sed命令语法">sed命令语法</a></li>
+      <li><a href="#sed命令示例" id="markdown-toc-sed命令示例">sed命令示例</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-awk-mac" id="markdown-toc-2-awk-mac">2. awk (Mac)</a>    <ul>
+      <li><a href="#awk语法" id="markdown-toc-awk语法">awk语法</a></li>
+      <li><a href="#awk代码块表示方法" id="markdown-toc-awk代码块表示方法">awk代码块表示方法</a></li>
+      <li><a href="#awk内置变量" id="markdown-toc-awk内置变量">awk内置变量</a></li>
+      <li><a href="#awk内置函数" id="markdown-toc-awk内置函数">awk内置函数</a></li>
+      <li><a href="#awk示例" id="markdown-toc-awk示例">awk示例</a></li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">sed</code>与<code class="language-plaintext highlighter-rouge">awk</code>是可以单独出书的两个Linux命令，它们的功能非常强大，本章节将分别介绍着两个命令。其中<code class="language-plaintext highlighter-rouge">sed</code>使用的是<code class="language-plaintext highlighter-rouge">gnu-sed 4.2.2</code>版本，对应下文中出现的<code class="language-plaintext highlighter-rouge">gsed</code>，而不是Mac自带的<code class="language-plaintext highlighter-rouge">sed</code>。<code class="language-plaintext highlighter-rouge">awk</code>同样使用<code class="language-plaintext highlighter-rouge">gnu</code>版本的<code class="language-plaintext highlighter-rouge">awk</code>，对应文中出现的<code class="language-plaintext highlighter-rouge">gawk</code>。</p>
+</blockquote>
+
+<h2 id="1-sed命令mac">1. sed命令(Mac)</h2>
+
+<p>sed是Linux中的一个文件编辑工具，按行处理文件内容，可以实现插入，删除，替换等功能。更重要的是sed命令可以用script来处理文本文件，能够应对复杂的编辑需求。</p>
+
+<hr />
+
+<h3 id="sed命令语法">sed命令语法</h3>
+
+<h4><b>基本格式 sed [option] [filename]</b></h4>
+<h5><b>选项:</b></h5>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-e &lt;script&gt;</code> 按script编辑文本并输出到控制台，但不修改原文件内容</li>
+  <li><code class="language-plaintext highlighter-rouge">-f filename</code> 调用sed脚本文件</li>
+  <li><code class="language-plaintext highlighter-rouge">-i</code> 直接修改读取的文件内容，而不输出到终端</li>
+  <li><code class="language-plaintext highlighter-rouge">-n</code> 使用安静模式，只有经过sed处理的行才会被显示出来</li>
+  <li><code class="language-plaintext highlighter-rouge">-r</code> 使用延伸型的正则表达式语法，预设的是基础的正则语法</li>
+</ul>
+
+<h5><b>动作命令[n1[,n2]] function</b></h5>
+<p>n1,n2表示起始行和结束行，不一定存在，而function表示动作行为</p>
+<h5><b>常用function命令:</b></h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">a</code> 新增一行内容（在指定行的下一行）</li>
+  <li><code class="language-plaintext highlighter-rouge">c</code> 取代内容，可取代n1,n2之间的行</li>
+  <li><code class="language-plaintext highlighter-rouge">d</code> 删除行</li>
+  <li><code class="language-plaintext highlighter-rouge">i</code> 插入一行内容（在指定行的上一行）</li>
+  <li><code class="language-plaintext highlighter-rouge">p</code> 列印，将某个选择的资料印出，常与<code class="language-plaintext highlighter-rouge">sed -n</code>连用</li>
+  <li><code class="language-plaintext highlighter-rouge">s</code> 取代，搭配正则表达式，替换文本中的内容</li>
+</ul>
+
+<hr />
+
+<h3 id="sed命令示例">sed命令示例</h3>
+<p>1. 行的删除：`</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -lha | nl | gsed '1,3d'
+</code></pre></div></div>
+
+<p>删除输出中的第1到第3行，此时参数<code class="language-plaintext highlighter-rouge">-e</code>可不加。</p>
+
+<p><img src="/pics/sed_d.png" alt="sed delete" /></p>
+
+<p>2. 行的插入：</p>
+
+<p>a. 在指定行前插入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed '4a 插入的第一行\n插入的第二行' testSed
+</code></pre></div></div>
+
+<p>b. 在指定行后插入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed '1i 插入的第一行\n插入的第二行' testSed
+</code></pre></div></div>
+
+<p>若要让操作更新到原文件中，需加<code class="language-plaintext highlighter-rouge">-i</code>，该操作较为危险。建议使用</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed -i.bak '1i test' testSed
+</code></pre></div></div>
+
+<p>这样的执行方式，通过这种方式可额外生成<code class="language-plaintext highlighter-rouge">testSed.bak</code>文件，该文件保存了原始内容，这样更安全。</p>
+
+<p><img src="/pics/sed_insert.png" alt="sed insert" /></p>
+
+<p>3. 行的选择性显示：</p>
+
+<p>有时会显示文件中某个区间内容的需求，这时通过<code class="language-plaintext highlighter-rouge">gsed -n</code>可以做到：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed -n '2,$p' testSed
+</code></pre></div></div>
+
+<p><img src="/pics/sed_n.png" alt="sed print" /></p>
+
+<p>4. 搜索并执行命令：</p>
+
+<p>a. 搜索含有关键字的行：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed -n '/^第.行/p' testSed
+</code></pre></div></div>
+
+<p><img src="/pics/sed_search.png" alt="sed search and print" /></p>
+
+<p>b. 搜索并删除：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed '/第四行/d' testSed
+</code></pre></div></div>
+
+<p><img src="/pics/gsed_sr.png" alt="sed search and remove" /></p>
+
+<p>c. 执行多组命令：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed '/四/{s/行/列/;s/第四列/测试/}' testSed
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">s</code>表示替换，从图中的结果可以看到，这个过程有点类似<code class="language-plaintext highlighter-rouge">SQL的where查询</code>，后面的命令在前面的执行结果下执行。</p>
+
+<p><img src="/pics/gsed_mul.png" alt="sed search and multiple operations" /></p>
+
+<p>5. 内容替换：</p>
+
+<p>a. 区域替换：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed '2,3c 替换内容' testSed
+</code></pre></div></div>
+
+<p><img src="/pics/sed_c.png" alt="sed c replace" /></p>
+
+<p>b. 搜索替换：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed 's/行/列/g' testSed
+</code></pre></div></div>
+
+<p>如果没有<code class="language-plaintext highlighter-rouge">g</code>则只替换行内匹配的第一个</p>
+
+<p><img src="/pics/gsed_g.png" alt="sed g replace" /></p>
+
+<p>6. 多重编辑：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsed -e '1i 测试行' -e '1d'  testSed
+gsed -e '1d' -e '1i测试行'  testSed
+</code></pre></div></div>
+
+<p>从图中可以看到两者执行的区别，由于<code class="language-plaintext highlighter-rouge">sed</code>是按行读入缓冲区，处理后再读如下一行，所以多重编辑时命令的顺序对结果有影响。</p>
+
+<p><img src="/pics/gsed_e.png" alt="sed -e" /></p>
+
+<h2 id="2-awk-mac">2. awk (Mac)</h2>
+
+<p>awk时非常强大的文本分析工具，非常适用于生成分析报告。awk会将文本逐行的读入，默认以空格或制表符为分隔符进行切片，然后对切片后的部分分析处理。awk十分强大，实际上它也有自己的编程语言：“样式扫描和处理语言”，其名称源自于创始人Alfred Aho，Peter Weinberger，Brian Kernighan。</p>
+
+<h3 id="awk语法">awk语法</h3>
+
+<h4><b>基本格式 awk [option] '[pattern][codeblock]' [filenames]</b></h4>
+
+<p>codeblock表示代码块区域</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-F</code> 指定域分隔符</li>
+  <li><code class="language-plaintext highlighter-rouge">-f</code> 调用脚本</li>
+  <li><code class="language-plaintext highlighter-rouge">-v</code> 定义变量</li>
+</ul>
+
+<h3 id="awk代码块表示方法">awk代码块表示方法</h3>
+<p>awk中的<code class="language-plaintext highlighter-rouge">BEGIN,END</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BEGIN {} // { statement one; statement two} END {}
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">BEGIN</code> 初始代码块</li>
+  <li><code class="language-plaintext highlighter-rouge">//</code> 匹配代码块，与sed中的用法类似</li>
+  <li><code class="language-plaintext highlighter-rouge">{}</code> 命令代码块，包含多条命令语句，用<code class="language-plaintext highlighter-rouge">;</code>分隔</li>
+  <li><code class="language-plaintext highlighter-rouge">END</code> 结尾代码块，在每一行执行完后运行。</li>
+</ul>
+
+<p>awk中的条件语句与<code class="language-plaintext highlighter-rouge">C语言</code>相同，支持<code class="language-plaintext highlighter-rouge">while,for,break,continue</code>：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if( condition expression ){
+    statement one;
+}else if ( condition expression ){
+    statement two;
+}else{
+    statement three;
+}
+</code></pre></div></div>
+
+<p>awk中的数组表示方式为<code class="language-plaintext highlighter-rouge">array[key]</code>，其中<code class="language-plaintext highlighter-rouge">key</code> 可以是字母或数字，其内部实际上是用<code class="language-plaintext highlighter-rouge">hash</code>的方式存储。</p>
+
+<h3 id="awk内置变量">awk内置变量</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">0</code> 表示当前行所有内容，<code class="language-plaintext highlighter-rouge">n</code> 第n个域的内容，用<code class="language-plaintext highlighter-rouge">$</code>取值</li>
+  <li><code class="language-plaintext highlighter-rouge">ARGC</code> 命令行参数个数</li>
+  <li><code class="language-plaintext highlighter-rouge">ARGV</code> 命令行参数排列</li>
+  <li><code class="language-plaintext highlighter-rouge">ENVIRON</code> 支持队列中系统的环境变量使用</li>
+  <li><code class="language-plaintext highlighter-rouge">FILENAME</code> 正在浏览的文件名</li>
+  <li><code class="language-plaintext highlighter-rouge">FNR</code> 浏览文件的记录数</li>
+  <li><code class="language-plaintext highlighter-rouge">FS</code> 设置输入域的分隔符，等价于<code class="language-plaintext highlighter-rouge">-F</code>选项，在<code class="language-plaintext highlighter-rouge">BEGIN</code>时定义</li>
+  <li><code class="language-plaintext highlighter-rouge">NF</code> 域的个数</li>
+  <li><code class="language-plaintext highlighter-rouge">NR</code> 已经读取的记录个数</li>
+  <li><code class="language-plaintext highlighter-rouge">OFS</code> 输出域分隔符</li>
+  <li><code class="language-plaintext highlighter-rouge">ORS</code> 输出记录分隔符</li>
+  <li><code class="language-plaintext highlighter-rouge">RS</code> 控制记录分隔符</li>
+</ul>
+
+<h3 id="awk内置函数">awk内置函数</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cos(x),sin(x),sqrt(x),rand()</code>等算数类函数</li>
+  <li><code class="language-plaintext highlighter-rouge">sub(),index(),length(),substr(),sprintf(),split()</code>等字符串函数</li>
+  <li><code class="language-plaintext highlighter-rouge">getline(),system(),close(),mktime(),systime()</code>等其它函数</li>
+  <li><code class="language-plaintext highlighter-rouge">function funcName(){}</code>自定义函数</li>
+</ul>
+
+<p>详细内容参考：<a href="http://blog.jobbole.com/92497/">awk内部函数</a></p>
+
+<h3 id="awk示例">awk示例</h3>
+
+<p>1. 打印账户和账户对应的shell：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat -n /etc/passwd | gawk -F ':' '{print $1" "$5}' | gsed '1,10d'
+</code></pre></div></div>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$1</code>和<code class="language-plaintext highlighter-rouge">$5</code>分别表示分割后的第一个和第五个域。</p>
+
+<p><img src="/pics/awk_print.png" alt="awk print" /></p>
+
+<p>2. 使用<code class="language-plaintext highlighter-rouge">printf</code>：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -lha | gawk '{printf("owner:%-15s size:%-10s name:%-15s\n",$3,$5,$NF)}'
+</code></pre></div></div>
+
+<p>类似C语言的<code class="language-plaintext highlighter-rouge">printf</code>。</p>
+
+<p><img src="/pics/gawk_printf.png" alt="awk printf" /></p>
+
+<p>3. 使用<code class="language-plaintext highlighter-rouge">Begin End</code>：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat /etc/passwd | gawk -F: 'BEGIN{print "名称-权限"} {print $1"-"$5} END{print "the end!"}' | sed '2,11d' | column -t -s '-'
+</code></pre></div></div>
+
+<p><img src="/pics/awk_begin_end.png" alt="awk begin" /></p>
+
+<p>4. awk中模式匹配的使用：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat -n /etc/passwd | gawk -F: '/System/{print $1" "$5}'
+</code></pre></div></div>
+
+<p>搜索包含<code class="language-plaintext highlighter-rouge">System</code>关键字的行并输出。</p>
+
+<p><img src="/pics/gawk_search.png" alt="awk search" /></p>
+
+<p>5. 统计文件夹下的文件数目：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -lha | gawk 'BEGIN {count=0} {count++} END { print "File Count:"count}' 
+</code></pre></div></div>
+
+<p>最好在<code class="language-plaintext highlighter-rouge">BEGIN</code>中初始化变量</p>
+
+<p><img src="/pics/awk_count.png" alt="awk count" /></p>
+
+<p>6. 输出文件夹下大小小于200B的文件名称：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -l | gawk 'BEGIN{i=0} {if(NF&gt;=5&amp;&amp;$5&lt;200){filename[i++]=$9;}} END{print "total:"i;for(j=0;j&lt;i;j++){print "filename:"filename[j];}}'
+</code></pre></div></div>
+
+<p>在调用某个域的值之前，需要先判断该域是否存在，此时用<code class="language-plaintext highlighter-rouge">NF</code>值。</p>
+
+<p><img src="/pics/awk_if.png" alt="awk if for" /></p>
+
+<p>7. 调用自定义函数实现范例6中的功能：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -l | gawk 'function check(total,size){if(total&gt;=5&amp;&amp;size&lt;200){return 1;} return 0;} BEGIN{i=0} {if(check(NF,$5)){filename[i++]=$9;}} END{print "total:"i;for(j=0;j&lt;i;j++){print "filename:"filename[j];}}'
+</code></pre></div></div>
+
+<p><img src="/pics/awk_function.png" alt="awk function" /></p>
+:ET

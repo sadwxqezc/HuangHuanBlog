@@ -1,0 +1,99 @@
+I"X<ul id="markdown-toc">
+  <li><a href="#概述" id="markdown-toc-概述">概述</a></li>
+  <li><a href="#阶段一需求" id="markdown-toc-阶段一需求">阶段一需求</a></li>
+  <li><a href="#阶段一效果" id="markdown-toc-阶段一效果">阶段一效果</a></li>
+  <li><a href="#对应配置" id="markdown-toc-对应配置">对应配置</a></li>
+</ul>
+
+<h3 id="概述">概述</h3>
+
+<p>用了一段时间的Atom莫名其妙的挂了，看网上推荐MacVim的不少，也想通过它弥补Vim编程不熟的遗憾，开始折腾一波MacVim。MacVim就是一个Mac OS上的自带编辑器加Vim的实现，命令和Vim是一样的。</p>
+
+<h3 id="阶段一需求">阶段一需求</h3>
+
+<p>分析一下自己对MacVim的需求，最后看下搞出来是个啥样子：</p>
+
+<ol>
+  <li>目录树</li>
+  <li>代码补全</li>
+  <li>窗口分割和切换</li>
+  <li>状态栏</li>
+</ol>
+
+<h3 id="阶段一效果">阶段一效果</h3>
+
+<p><img src="/pics/macvim-stageOne.png" alt="MacVim" /></p>
+
+<h3 id="对应配置">对应配置</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>" *********************************************
+" Vbundle插件管理
+" *********************************************
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" ***************
+" 切换窗口键盘指令
+" ***************
+" 向下
+nnoremap &lt;C-J&gt; &lt;C-W&gt;&lt;C-J&gt;
+" 向上
+nnoremap &lt;C-K&gt; &lt;C-W&gt;&lt;C-K&gt;
+" 向右
+nnoremap &lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;
+" 向左
+nnoremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;
+
+" **********************
+" 目录树插件NERDTree配置
+" **********************
+" 开启vim时默认开启NERDTree
+au vimenter * NERDTree
+" 设置开启NERDTree快捷键
+map &lt;F2&gt; :NERDTreeToggle&lt;CR&gt;
+
+" ************
+" 代码补全相关
+" ************
+let g:ycm_autoclose_preview_window_after_completion=1
+" 跳转到定义处
+map &lt;leader&gt;g  :YcmCompleter GoToDefinitionElseDeclaration&lt;CR&gt;
+" 默认tab、s-tab和自动补全冲突
+let g:ycm_key_list_select_completion = ['&lt;TAB&gt;', '&lt;c-n&gt;', '&lt;Down&gt;']
+let g:ycm_key_list_previous_completion = ['&lt;S-TAB&gt;', '&lt;c-p&gt;', '&lt;Up&gt;']
+let g:ycm_auto_trigger = 1
+
+" ***********
+" vim-airline
+" ***********
+开启powerline字体
+let g:airline_powerline_fonts = 1
+" 使用powerline包装过的字体
+set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+</code></pre></div></div>
+<p>需要主要的是装<code class="language-plaintext highlighter-rouge">YouCompleteMe</code>后老是会有一个错误提示，<code class="language-plaintext highlighter-rouge">Error detected while processing function youcompleteme#Enable[3]..&lt;SNR&gt;</code>，解决的办法是找到<code class="language-plaintext highlighter-rouge">YouCompleteMe</code>对应的代码，将那个错误提示改掉，文件是<code class="language-plaintext highlighter-rouge">/autoload/youcompleteme.vim</code>，改动如下代码。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> function! s:SetUpPython() abort
+-  exec s:python_until_eof //原始代码
++  silent! exec s:python_until_eof //修改后代码
+</code></pre></div></div>
+:ET

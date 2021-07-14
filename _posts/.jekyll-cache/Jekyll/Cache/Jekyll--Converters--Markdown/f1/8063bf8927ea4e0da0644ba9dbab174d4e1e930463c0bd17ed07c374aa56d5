@@ -1,0 +1,254 @@
+I"m.<ul id="markdown-toc">
+  <li><a href="#开发原因" id="markdown-toc-开发原因">开发原因</a></li>
+  <li><a href="#开发组件" id="markdown-toc-开发组件">开发组件</a></li>
+  <li><a href="#开发思路" id="markdown-toc-开发思路">开发思路</a></li>
+  <li><a href="#实现细节" id="markdown-toc-实现细节">实现细节</a>    <ul>
+      <li><a href="#注解" id="markdown-toc-注解">注解</a></li>
+      <li><a href="#注解的实现" id="markdown-toc-注解的实现">注解的实现</a></li>
+      <li><a href="#测试" id="markdown-toc-测试">测试</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="开发原因">开发原因</h2>
+
+<p>在后台开发过程中，往往需要对用户的输入进行antiXSS等过滤，以防止被攻击。以Dao层为例，这一层在写入数据库之前，应该对数据进行过滤，此时对应的一般是<code class="language-plaintext highlighter-rouge">save()</code>，<code class="language-plaintext highlighter-rouge">saveOrUpdate()</code>和<code class="language-plaintext highlighter-rouge">update()</code>操作，输入多数情况下是基本类型或者对于数据库实体的<code class="language-plaintext highlighter-rouge">Entity</code>。如果按照以往的写法，主要需要对<code class="language-plaintext highlighter-rouge">String</code>类型的数据（包括<code class="language-plaintext highlighter-rouge">Entity</code>中的<code class="language-plaintext highlighter-rouge">String</code> Field）进行过滤，这时往往需要为对应的字段调用<code class="language-plaintext highlighter-rouge">antiXSS()</code>方法，造成大量的<code class="language-plaintext highlighter-rouge">get/set</code>代码，颇为麻烦，也造成代码冗长。因此，既然<code class="language-plaintext highlighter-rouge">Spring</code>具有强大的<code class="language-plaintext highlighter-rouge">AOP</code>功能，不妨尝试用它简化这一过程。</p>
+
+<h2 id="开发组件">开发组件</h2>
+
+<p>SpringBoot，Intellij，Lombok(一个用于消除<code class="language-plaintext highlighter-rouge">get/set</code>,<code class="language-plaintext highlighter-rouge">toString</code>,<code class="language-plaintext highlighter-rouge">hashcode</code>这类代码的工具)</p>
+
+<h2 id="开发思路">开发思路</h2>
+
+<p>通过 <code class="language-plaintext highlighter-rouge">AOP</code>中的<code class="language-plaintext highlighter-rouge">doAround</code>方法截取传入参数，并利用反射筛选出其中的<code class="language-plaintext highlighter-rouge">String</code> Filed进行antiXSS处理。</p>
+
+<h2 id="实现细节">实现细节</h2>
+
+<h3 id="注解">注解</h3>
+
+<p>首先需要定义一个专门用来对方法进行antiXSS处理的注解：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package beijing.huanghuan.anotations;
+
+import java.lang.annotation.*;
+
+/**
+ * AntiXSS注解
+ * &lt;p/&gt;
+ * Created by huanghuan on 16/5/21.
+ */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface AntiXSS {
+
+}
+</code></pre></div></div>
+
+<h3 id="注解的实现">注解的实现</h3>
+
+<p>定义一个<code class="language-plaintext highlighter-rouge">AntiXSSAspect</code>来对应该注解：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package beijing.huanghuan.anotations.aop;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Service;
+
+import java.lang.reflect.Field;
+
+/**
+ * 对String或者Entity中的String进行AntiXSS处理
+ * &lt;p/&gt;
+ * Created by huanghuan on 16/5/21.
+ */
+@Service
+@Aspect
+public class AntiXSSAspect {
+
+    /**
+     * 定义切面，定位到@AntiXSS注解的地方
+     */
+    @Pointcut("@annotation(beijing.huanghuan.anotations.AntiXSS)")
+    public void antiXSSPointCut() {
+
+    }
+
+    /**
+     * 对String类型或包含String类型的Entity进行antiXSS处理
+     *
+     * @param point
+     */
+    @Around("antiXSSPointCut()")
+    public Object doAround(ProceedingJoinPoint point) {
+        Object result = null;
+        Object args[] = point.getArgs();
+        try {
+            antiXSS(args);
+            result = point.proceed(args);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * antiXSS处理
+     *
+     * @param args
+     */
+    private void antiXSS(Object[] args) {
+        if (args == null) {
+            return;
+        }
+        for (int i = 0; i &lt; args.length; i++) {
+            if (args[i] == null) {
+                continue;
+            }
+            if (args[i] instanceof String) {
+                args[i] = antiXSS((String) args[i]);
+            }
+            if (!isPrimitive(args[i])) {
+                args[i] = antiXSSEntity(args[i]);
+            }
+        }
+    }
+
+    /**
+     * 对Entity进行antiXSS
+     *
+     * @param object
+     * @return 处理后的结果
+     */
+    private Object antiXSSEntity(Object object) {
+        Field[] fields = object.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                Object arg = field.get(object);
+                if (arg instanceof String) {
+                    arg = antiXSS((String) arg);
+                    field.set(object, arg);
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return object;
+    }
+
+    /**
+     * 判断是否是基本类型
+     *
+     * @param arg
+     * @return
+     */
+    private boolean isPrimitive(Object arg) {
+        try {
+            /************ 基本类型中包含Class&lt;T&gt; TYPE字段 **********/
+            Field field = arg.getClass().getDeclaredField("TYPE");
+            field.setAccessible(true);
+            Class fieldClass = (Class) field.get(arg);
+            if (fieldClass.isPrimitive()) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * antiXSS实现
+     *
+     * @param target
+     * @return
+     */
+    private String antiXSS(String target) {
+        /********* 自己的antiXSS或其它实现 **********/
+        return target + "(antiXSS success)";
+    }
+}
+</code></pre></div></div>
+
+<p>在这部分代码中<code class="language-plaintext highlighter-rouge">@PointCut</code>定义了其作用的位置是<code class="language-plaintext highlighter-rouge">AntiXSS</code>注解的方法，而<code class="language-plaintext highlighter-rouge">@Around</code>来进行参数处理，通过<code class="language-plaintext highlighter-rouge">ProceedingJoinPoint</code>的<code class="language-plaintext highlighter-rouge">getArgs</code>即可获得所有的入参数，进行处理后通过<code class="language-plaintext highlighter-rouge">proceed(args[])</code>传回。</p>
+
+<p>在处理的过程中，由于我们只需要对<code class="language-plaintext highlighter-rouge">String</code>类型的域进行处理，对于本来就是基本类型的域，可以直接通过<code class="language-plaintext highlighter-rouge">instanceof String</code>进行判定，而对于<code class="language-plaintext highlighter-rouge">Entity</code>这种<code class="language-plaintext highlighter-rouge">POJO</code>类型的对象，我们需要一些其它的方法，来首现判定出它不是基本类型，然后再分析出其中的<code class="language-plaintext highlighter-rouge">String</code> Filed i.e. 反射:</p>
+
+<ol>
+  <li>首先通过<code class="language-plaintext highlighter-rouge">getClass().getDeclaredFields()</code>获取对象中的所有Field，并将它们的访问权限设置为<code class="language-plaintext highlighter-rouge">true</code></li>
+  <li>对每一个Field，获取其中的名为<code class="language-plaintext highlighter-rouge">TYPE</code>的<code class="language-plaintext highlighter-rouge">Field</code>，这其实是一个取巧的方法，之所以这么做是因为基本类型的<code class="language-plaintext highlighter-rouge">wrapper</code>里都一个<code class="language-plaintext highlighter-rouge">Class&lt;T&gt; TYPE</code>字段，通过该字段能够判定它是不是基本类型，而普通的与数据库对应的<code class="language-plaintext highlighter-rouge">Entity</code>自然是不会有这中种字段的。</li>
+  <li>然后将该Field转化为Class，并通过Class的<code class="language-plaintext highlighter-rouge">isPrimitive</code>方法来判定是否为基本类型，期间出现任何异常则表示该对象不是基本类型</li>
+  <li>当判定出该对象是<code class="language-plaintext highlighter-rouge">Entity</code>，则获取其中的所有Field，按照之前的思路进行处理。注意，上面的代码只支持包含基本类型的Entity，对于像<code class="language-plaintext highlighter-rouge">hibernate</code>的<code class="language-plaintext highlighter-rouge">many to one</code>或者<code class="language-plaintext highlighter-rouge">one to many</code>的判定，还需要读者自己去实现。</li>
+</ol>
+
+<p>这里补充<code class="language-plaintext highlighter-rouge">Double</code>源码中的<code class="language-plaintext highlighter-rouge">Type</code>字段定义：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * The {@code Class} instance representing the primitive type
+ * {@code double}.
+ *
+ * @since JDK1.1
+ */
+public static final Class&lt;Double&gt; TYPE=(Class&lt;Double&gt;)Class.getPrimitiveClass("double");
+</code></pre></div></div>
+
+<h3 id="测试">测试</h3>
+
+<p>测试用的<code class="language-plaintext highlighter-rouge">TestAntiXSSDaoImpl</code>类：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * Created by huanghuan on 16/5/21.
+ */
+@Repository
+public class TestAntiXSSDaoImpl {
+
+    @AntiXSS
+    public void testSave(long id, String text) {
+        System.out.println("id: " + id + " text: " + text);
+    }
+
+    @AntiXSS
+    public void testSaveObject(Object object) {
+        System.out.println(object.toString());
+    }
+}
+</code></pre></div></div>
+
+<p>测试类<code class="language-plaintext highlighter-rouge">AntiXSSAspectTest</code>类,<code class="language-plaintext highlighter-rouge">@Data</code>是<code class="language-plaintext highlighter-rouge">Lombok</code>注解，自动生成<code class="language-plaintext highlighter-rouge">toString</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * Created by huanghuan on 16/5/21.
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(Starter.class)
+public class AntiXSSAspectTest {
+
+    @Autowired
+    private TestAntiXSSDaoImpl testAntiXSSDao;
+
+    @Test
+    public void testAntiXSS() {
+        testAntiXSSDao.testSave(1, "test save string");
+        testAntiXSSDao.testSaveObject(new TestEntity());
+    }
+
+    public
+    @Data
+    class TestEntity {
+        long id = 2;
+        String text = "test save Object";
+    }
+}
+</code></pre></div></div>
+
+<p>测试结果：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>id:1 text: test save string(antiXSS success)
+AntiXSSAspectTest.TestEntity(id=2, text=test save Object(antiXSS success))
+</code></pre></div></div>
+
+<p>成功的进行的处理，至于<code class="language-plaintext highlighter-rouge">antiXSS</code>的具体实现请自己补充。</p>
+:ET
